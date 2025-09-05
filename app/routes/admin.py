@@ -1,0 +1,627 @@
+# routes/admin.py
+from flask import Blueprint, render_template, request, redirect, url_for, flash, jsonify
+from flask_login import login_required, current_user, login_user, logout_user
+from app import db
+from app.models import BlogPost, BlogCategory, BlogTag, User, PricePackage
+from app.models.project import Project
+from app.auth import AdminUser
+import json
+from datetime import datetime
+
+admin = Blueprint('admin', __name__, url_prefix='/admin')
+
+@admin.route('/login', methods=['GET', 'POST'])
+def login():
+    """Admin login page."""
+    if current_user.is_authenticated:
+        return redirect(url_for('admin.dashboard'))
+        
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+        
+        user = AdminUser.query.filter_by(username=username).first()
+        if user and user.check_password(password):
+            login_user(user)
+            next_page = request.args.get('next')
+            return redirect(next_page or url_for('admin.dashboard'))
+        else:
+            flash('Invalid username or password', 'danger')
+    
+    return render_template('admin/login.html')
+
+@admin.route('/logout')
+@login_required
+def logout():
+    """Admin logout."""
+    logout_user()
+    return redirect(url_for('admin.login'))
+
+@admin.route('/')
+@login_required
+def dashboard():
+    """Admin dashboard."""
+    from sqlalchemy import func
+    
+    # Basic counts
+    recent_posts = BlogPost.query.order_by(BlogPost.created_at.desc()).limit(5).all()
+    post_count = BlogPost.query.count()
+    category_count = BlogCategory.query.count()
+    tag_count = BlogTag.query.count()
+    user_count = User.query.count()
+    
+    # Posts per category
+    posts_by_category = db.session.query(
+        BlogCategory.name,
+        func.count(BlogPost.id).label('post_count')
+    ).join(BlogPost, BlogCategory.id == BlogPost.category_id
+    ).group_by(BlogCategory.name).all()
+    
+    # Most used tags
+    popular_tags = db.session.query(
+        BlogTag.name,
+        func.count(BlogTag.id).label('tag_count')
+    ).join(BlogTag.posts
+    ).group_by(BlogTag.name
+    ).order_by(func.count(BlogTag.id).desc()
+    ).limit(5).all()
+    
+    # Posts by publish status
+    published_posts = BlogPost.query.filter_by(published=True).count()
+    draft_posts = post_count - published_posts
+    
+    return render_template(
+        'admin/dashboard.html', 
+        recent_posts=recent_posts, 
+        post_count=post_count,
+        category_count=category_count,
+        tag_count=tag_count,
+        user_count=user_count,
+        posts_by_category=posts_by_category,
+        popular_tags=popular_tags,
+        published_posts=published_posts,
+        draft_posts=draft_posts
+    )
+
+@admin.route('/blog/posts')
+@login_required
+def blog_posts():
+    """List all blog posts."""
+    page = request.args.get('page', 1, type=int)
+    posts = BlogPost.query.order_by(BlogPost.created_at.desc()).paginate(
+        page=page, per_page=10, error_out=False
+    )
+    return render_template('admin/blog_posts.html', posts=posts)
+
+@admin.route('/blog/posts/create', methods=['GET', 'POST'])
+@login_required
+def create_post():
+    """Create a new blog post."""
+    if request.method == 'POST':
+        title = request.form.get('title')
+        content = request.form.get('content')
+        excerpt = request.form.get('excerpt')
+        slug = request.form.get('slug')
+        category_id = request.form.get('category_id')
+        image_url = request.form.get('image_url')
+        published = 'published' in request.form
+        
+        # Get selected tags
+        tag_ids = request.form.getlist('tags')
+        tags = BlogTag.query.filter(BlogTag.id.in_(tag_ids)).all()
+        
+        # Get category
+        category = BlogCategory.query.get(category_id)
+        
+        # Create new blog post
+        post = BlogPost(
+            title=title,
+            content=content,
+            excerpt=excerpt,
+            slug=slug,
+            image_url=image_url,
+            published=published,
+            author=current_user,
+            category=category,
+            tags=tags
+        )
+        
+        db.session.add(post)
+        db.session.commit()
+        
+        flash('Blog post created successfully!', 'success')
+        return redirect(url_for('admin.blog_posts'))
+    
+    categories = BlogCategory.query.all()
+    tags = BlogTag.query.all()
+    
+    return render_template('admin/create_post.html', categories=categories, tags=tags)
+
+@admin.route('/blog/posts/edit/<int:id>', methods=['GET', 'POST'])
+@login_required
+def edit_post(id):
+    """Edit a blog post."""
+    post = BlogPost.query.get_or_404(id)
+    
+    if request.method == 'POST':
+        post.title = request.form.get('title')
+        post.content = request.form.get('content')
+        post.excerpt = request.form.get('excerpt')
+        post.slug = request.form.get('slug')
+        post.image_url = request.form.get('image_url')
+        post.published = 'published' in request.form
+        
+        # Update category
+        category_id = request.form.get('category_id')
+        post.category = BlogCategory.query.get(category_id)
+        
+        # Update tags
+        tag_ids = request.form.getlist('tags')
+        post.tags = BlogTag.query.filter(BlogTag.id.in_(tag_ids)).all()
+        
+        db.session.commit()
+        
+        flash('Blog post updated successfully!', 'success')
+        return redirect(url_for('admin.blog_posts'))
+    
+    categories = BlogCategory.query.all()
+    tags = BlogTag.query.all()
+    
+    return render_template('admin/edit_post.html', post=post, categories=categories, tags=tags)
+
+@admin.route('/blog/posts/delete/<int:id>', methods=['POST'])
+@login_required
+def delete_post(id):
+    """Delete a blog post."""
+    post = BlogPost.query.get_or_404(id)
+    db.session.delete(post)
+    db.session.commit()
+    
+    flash('Blog post deleted successfully!', 'success')
+    return redirect(url_for('admin.blog_posts'))
+
+@admin.route('/blog/categories')
+@login_required
+def blog_categories():
+    """List all blog categories."""
+    categories = BlogCategory.query.all()
+    return render_template('admin/blog_categories.html', categories=categories)
+
+@admin.route('/blog/categories/create', methods=['GET', 'POST'])
+@login_required
+def create_category():
+    """Create a new blog category."""
+    if request.method == 'POST':
+        name = request.form.get('name')
+        slug = request.form.get('slug')
+        description = request.form.get('description')
+        
+        category = BlogCategory(name=name, slug=slug, description=description)
+        db.session.add(category)
+        db.session.commit()
+        
+        flash('Category created successfully!', 'success')
+        return redirect(url_for('admin.blog_categories'))
+    
+    return render_template('admin/create_category.html')
+
+@admin.route('/blog/categories/edit/<int:id>', methods=['GET', 'POST'])
+@login_required
+def edit_category(id):
+    """Edit a blog category."""
+    category = BlogCategory.query.get_or_404(id)
+    
+    if request.method == 'POST':
+        category.name = request.form.get('name')
+        category.slug = request.form.get('slug')
+        category.description = request.form.get('description')
+        
+        db.session.commit()
+        
+        flash('Category updated successfully!', 'success')
+        return redirect(url_for('admin.blog_categories'))
+    
+    return render_template('admin/edit_category.html', category=category)
+
+@admin.route('/blog/tags')
+@login_required
+def blog_tags():
+    """List all blog tags."""
+    tags = BlogTag.query.all()
+    return render_template('admin/blog_tags.html', tags=tags)
+
+@admin.route('/blog/tags/create', methods=['GET', 'POST'])
+@login_required
+def create_tag():
+    """Create a new blog tag."""
+    if request.method == 'POST':
+        name = request.form.get('name')
+        slug = request.form.get('slug')
+        
+        tag = BlogTag(name=name, slug=slug)
+        db.session.add(tag)
+        db.session.commit()
+        
+        flash('Tag created successfully!', 'success')
+        return redirect(url_for('admin.blog_tags'))
+    
+    return render_template('admin/create_tag.html')
+
+@admin.route('/blog/export')
+@login_required
+def export_blog_json():
+    """Export blog data as JSON."""
+    # Custom JSON serializer for datetime objects
+    def json_serial(obj):
+        if isinstance(obj, datetime):
+            return obj.isoformat()
+        raise TypeError(f"Type {type(obj)} not serializable")
+    
+    # Get all data
+    posts = BlogPost.query.all()
+    categories = BlogCategory.query.all()
+    tags = BlogTag.query.all()
+    
+    # Format data for export
+    export_data = {
+        "posts": [],
+        "categories": [],
+        "tags": []
+    }
+    
+    for category in categories:
+        export_data["categories"].append({
+            "id": category.id,
+            "name": category.name,
+            "slug": category.slug,
+            "description": category.description
+        })
+    
+    for tag in tags:
+        export_data["tags"].append({
+            "id": tag.id,
+            "name": tag.name,
+            "slug": tag.slug
+        })
+    
+    for post in posts:
+        export_data["posts"].append({
+            "id": post.id,
+            "title": post.title,
+            "slug": post.slug,
+            "content": post.content,
+            "excerpt": post.excerpt,
+            "image_url": post.image_url,
+            "published": post.published,
+            "created_at": post.created_at,
+            "updated_at": post.updated_at,
+            "category_id": post.category_id,
+            "tags": [tag.id for tag in post.tags]
+        })
+    
+    return jsonify(export_data)
+
+@admin.route('/blog/import', methods=['GET', 'POST'])
+@login_required
+def import_blog_json():
+    """Import blog data from JSON."""
+    if request.method == 'POST':
+        # Check if a file was uploaded
+        if 'import_file' not in request.files:
+            flash('No file part', 'danger')
+            return redirect(request.url)
+        
+        file = request.files['import_file']
+        
+        # If user does not select file, browser submits empty file without filename
+        if file.filename == '':
+            flash('No selected file', 'danger')
+            return redirect(request.url)
+        
+        if file:
+            try:
+                import_data = json.loads(file.read())
+                
+                # Process categories
+                if 'categories' in import_data:
+                    for category_data in import_data['categories']:
+                        category = BlogCategory.query.filter_by(slug=category_data['slug']).first()
+                        if not category:
+                            category = BlogCategory(
+                                name=category_data['name'],
+                                slug=category_data['slug'],
+                                description=category_data.get('description', '')
+                            )
+                            db.session.add(category)
+                
+                db.session.commit()
+                
+                # Process tags
+                if 'tags' in import_data:
+                    for tag_data in import_data['tags']:
+                        tag = BlogTag.query.filter_by(slug=tag_data['slug']).first()
+                        if not tag:
+                            tag = BlogTag(
+                                name=tag_data['name'],
+                                slug=tag_data['slug']
+                            )
+                            db.session.add(tag)
+                
+                db.session.commit()
+                
+                # Process posts
+                if 'posts' in import_data:
+                    for post_data in import_data['posts']:
+                        post = BlogPost.query.filter_by(slug=post_data['slug']).first()
+                        if not post:
+                            # Get category
+                            category = BlogCategory.query.get(post_data['category_id'])
+                            
+                            # Create post
+                            post = BlogPost(
+                                title=post_data['title'],
+                                slug=post_data['slug'],
+                                content=post_data['content'],
+                                excerpt=post_data.get('excerpt', ''),
+                                image_url=post_data.get('image_url', ''),
+                                published=post_data.get('published', True),
+                                created_at=datetime.fromisoformat(post_data['created_at']) if 'created_at' in post_data else datetime.utcnow(),
+                                updated_at=datetime.fromisoformat(post_data['updated_at']) if 'updated_at' in post_data else datetime.utcnow(),
+                                category=category
+                            )
+                            
+                            # Get author (or use first user)
+                            post.author = current_user
+                            
+                            # Add tags
+                            if 'tags' in post_data:
+                                post.tags = BlogTag.query.filter(BlogTag.id.in_(post_data['tags'])).all()
+                            
+                            db.session.add(post)
+                
+                db.session.commit()
+                
+                flash('Blog data imported successfully!', 'success')
+                return redirect(url_for('admin.dashboard'))
+                
+            except Exception as e:
+                flash(f'Error importing data: {str(e)}', 'danger')
+                return redirect(request.url)
+    
+    return render_template('admin/import_blog.html')
+
+@admin.route('/blog/tags/edit/<int:id>', methods=['GET', 'POST'])
+@login_required
+def edit_tag(id):
+    """Edit a blog tag."""
+    tag = BlogTag.query.get_or_404(id)
+    
+    if request.method == 'POST':
+        tag.name = request.form.get('name')
+        tag.slug = request.form.get('slug')
+        
+        db.session.commit()
+        
+        flash('Tag updated successfully!', 'success')
+        return redirect(url_for('admin.blog_tags'))
+    
+    return render_template('admin/edit_tag.html', tag=tag)
+
+@admin.route('/blog/tags/delete/<int:id>', methods=['POST'])
+@login_required
+def delete_tag(id):
+    """Delete a blog tag."""
+    tag = BlogTag.query.get_or_404(id)
+    db.session.delete(tag)
+    db.session.commit()
+    
+    flash('Tag deleted successfully!', 'success')
+    return redirect(url_for('admin.blog_tags'))
+    
+# Price Package Management Routes
+@admin.route('/pricing')
+@login_required
+def pricing_packages():
+    """List all pricing packages."""
+    # Check if user is admin
+    if not current_user.is_admin:
+        flash('Access denied. Admin privileges required.', 'danger')
+        return redirect(url_for('admin.dashboard'))
+    
+    packages = PricePackage.query.order_by(PricePackage.hours).all()
+    return render_template('admin/pricing_packages.html', packages=packages)
+
+@admin.route('/pricing/create', methods=['GET', 'POST'])
+@login_required
+def create_pricing_package():
+    """Create a new pricing package."""
+    # Check if user is admin
+    if not current_user.is_admin:
+        flash('Access denied. Admin privileges required.', 'danger')
+        return redirect(url_for('admin.dashboard'))
+    
+    if request.method == 'POST':
+        name = request.form.get('name')
+        hours = request.form.get('hours')
+        price_per_hour = request.form.get('price_per_hour')
+        description = request.form.get('description')
+        is_active = 'is_active' in request.form
+        
+        # Validate required fields
+        if not all([name, hours, price_per_hour]):
+            flash('Name, hours, and price per hour are required', 'danger')
+            return redirect(url_for('admin.create_pricing_package'))
+        
+        try:
+            hours = int(hours)
+            price_per_hour = float(price_per_hour)
+        except ValueError:
+            flash('Hours must be an integer and price must be a number', 'danger')
+            return redirect(url_for('admin.create_pricing_package'))
+        
+        package = PricePackage(
+            name=name,
+            hours=hours,
+            price_per_hour=price_per_hour,
+            description=description,
+            is_active=is_active
+        )
+        
+        db.session.add(package)
+        db.session.commit()
+        
+        flash('Pricing package created successfully!', 'success')
+        return redirect(url_for('admin.pricing_packages'))
+    
+    return render_template('admin/create_pricing_package.html')
+
+@admin.route('/pricing/edit/<int:id>', methods=['GET', 'POST'])
+@login_required
+def edit_pricing_package(id):
+    """Edit a pricing package."""
+    # Check if user is admin
+    if not current_user.is_admin:
+        flash('Access denied. Admin privileges required.', 'danger')
+        return redirect(url_for('admin.dashboard'))
+    
+    package = PricePackage.query.get_or_404(id)
+    
+    if request.method == 'POST':
+        name = request.form.get('name')
+        hours = request.form.get('hours')
+        price_per_hour = request.form.get('price_per_hour')
+        description = request.form.get('description')
+        is_active = 'is_active' in request.form
+        
+        # Validate required fields
+        if not all([name, hours, price_per_hour]):
+            flash('Name, hours, and price per hour are required', 'danger')
+            return redirect(url_for('admin.edit_pricing_package', id=id))
+        
+        try:
+            hours = int(hours)
+            price_per_hour = float(price_per_hour)
+        except ValueError:
+            flash('Hours must be an integer and price must be a number', 'danger')
+            return redirect(url_for('admin.edit_pricing_package', id=id))
+        
+        package.name = name
+        package.hours = hours
+        package.price_per_hour = price_per_hour
+        package.description = description
+        package.is_active = is_active
+        
+        db.session.commit()
+        
+        flash('Pricing package updated successfully!', 'success')
+        return redirect(url_for('admin.pricing_packages'))
+    
+    return render_template('admin/edit_pricing_package.html', package=package)
+
+@admin.route('/pricing/delete/<int:id>', methods=['POST'])
+@login_required
+def delete_pricing_package(id):
+    """Delete a pricing package."""
+    # Check if user is admin
+    if not current_user.is_admin:
+        flash('Access denied. Admin privileges required.', 'danger')
+        return redirect(url_for('admin.dashboard'))
+    
+    package = PricePackage.query.get_or_404(id)
+    db.session.delete(package)
+    db.session.commit()
+    
+    flash('Pricing package deleted successfully!', 'success')
+    return redirect(url_for('admin.pricing_packages'))
+
+# User Management Routes
+@admin.route('/users')
+@login_required
+def users():
+    """List all users."""
+    # Check if user is admin
+    if not current_user.is_admin:
+        flash('Access denied. Admin privileges required.', 'danger')
+        return redirect(url_for('admin.dashboard'))
+        
+    users = User.query.all()
+    return render_template('admin/users.html', users=users)
+
+@admin.route('/users/<int:user_id>')
+@login_required
+def user_detail(user_id):
+    """View user details and projects."""
+    # Check if user is admin
+    if not current_user.is_admin:
+        flash('Access denied. Admin privileges required.', 'danger')
+        return redirect(url_for('admin.dashboard'))
+        
+    user = User.query.get_or_404(user_id)
+    return render_template('admin/user_detail.html', user=user)
+
+@admin.route('/users/<int:user_id>/add_project', methods=['GET', 'POST'])
+@login_required
+def add_user_project(user_id):
+    """Add project to user."""
+    # Check if user is admin
+    if not current_user.is_admin:
+        flash('Access denied. Admin privileges required.', 'danger')
+        return redirect(url_for('admin.dashboard'))
+        
+    user = User.query.get_or_404(user_id)
+    
+    if request.method == 'POST':
+        title = request.form.get('title')
+        description = request.form.get('description')
+        status = request.form.get('status')
+        start_date_str = request.form.get('start_date')
+        estimated_end_date_str = request.form.get('estimated_end_date')
+        budget = request.form.get('budget')
+        
+        # Validate required fields
+        if not all([title, description, status]):
+            flash('Title, description and status are required.', 'danger')
+            return redirect(url_for('admin.add_user_project', user_id=user_id))
+            
+        # Convert dates if provided
+        start_date = None
+        estimated_end_date = None
+        
+        if start_date_str:
+            try:
+                start_date = datetime.strptime(start_date_str, '%Y-%m-%d')
+            except ValueError:
+                flash('Invalid start date format. Use YYYY-MM-DD.', 'danger')
+                return redirect(url_for('admin.add_user_project', user_id=user_id))
+                
+        if estimated_end_date_str:
+            try:
+                estimated_end_date = datetime.strptime(estimated_end_date_str, '%Y-%m-%d')
+            except ValueError:
+                flash('Invalid estimated end date format. Use YYYY-MM-DD.', 'danger')
+                return redirect(url_for('admin.add_user_project', user_id=user_id))
+        
+        # Create new project
+        try:
+            budget_value = float(budget) if budget else None
+        except ValueError:
+            flash('Budget must be a number.', 'danger')
+            return redirect(url_for('admin.add_user_project', user_id=user_id))
+            
+        project = Project(
+            title=title,
+            description=description,
+            status=status,
+            start_date=start_date,
+            estimated_end_date=estimated_end_date,
+            budget=budget_value,
+            client=user
+        )
+        
+        db.session.add(project)
+        db.session.commit()
+        
+        flash(f'Project "{title}" added to user {user.name or user.email}!', 'success')
+        return redirect(url_for('admin.user_detail', user_id=user_id))
+    
+    return render_template('admin/add_user_project.html', user=user)

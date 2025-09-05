@@ -1,0 +1,247 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block head %}
+{{ super() }}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+    .admin-sidebar {
+        background-color: #212529;
+        min-height: calc(100vh - 60px);
+        color: white;
+        padding: 20px 0;
+    }
+    .admin-sidebar .nav-link {
+        color: rgba(255,255,255,.75);
+        padding: 10px 20px;
+        border-left: 4px solid transparent;
+        transition: all 0.2s;
+    }
+    .admin-sidebar .nav-link:hover {
+        color: white;
+        background: rgba(255,255,255,.1);
+    }
+    .admin-sidebar .nav-link.active {
+        color: white;
+        border-left-color: #d53f8c;
+    }
+    .admin-sidebar .nav-link i {
+        margin-right: 10px;
+    }
+    .admin-content {
+        padding: 20px;
+    }
+    .admin-header {
+        background-color: #f8f9fa;
+        border-bottom: 1px solid #dee2e6;
+        padding: 15px 20px;
+        margin-bottom: 20px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="admin-container">
+    <div class="row g-0">
+        <div class="col-md-2 admin-sidebar">
+            <div class="text-center mb-4">
+                <h5>Admin Panel</h5>
+                <p class="small text-muted">{{ current_user.email }}</p>
+            </div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="{{ url_for('admin.dashboard') }}" class="nav-link active">
+                        <i class="fas fa-tachometer-alt"></i> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('admin.users') }}" class="nav-link">
+                        <i class="fas fa-users"></i> Users
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('admin.blog_posts') }}" class="nav-link">
+                        <i class="fas fa-newspaper"></i> Blog Posts
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('admin.pricing_packages') }}" class="nav-link">
+                        <i class="fas fa-euro-sign"></i> Pricing
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('admin.blog_categories') }}" class="nav-link">
+                        <i class="fas fa-folder"></i> Categories
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('admin.blog_tags') }}" class="nav-link">
+                        <i class="fas fa-tags"></i> Tags
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-10">
+            <div class="admin-header">
+                <h1 class="mb-0">Admin Dashboard</h1>
+            </div>
+            <div class="admin-content">
+                <div class="admin-dashboard container">
+    <!-- Hidden div with chart data -->
+    <div id="chart-data" style="display: none;">
+        {
+            "publishedPosts": {{ published_posts }},
+            "draftPosts": {{ draft_posts }},
+            "categoryLabels": [{% for category in posts_by_category %}"{{ category[0] }}"{% if not loop.last %}, {% endif %}{% endfor %}],
+            "categoryData": [{% for category in posts_by_category %}{{ category[1] }}{% if not loop.last %}, {% endif %}{% endfor %}]
+        }
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="mb-0">Admin Dashboard</h1>
+        <div>
+            <a href="{{ url_for('admin.import_blog_json') }}" class="btn btn-outline-primary me-2">
+                <i class="fas fa-upload"></i> Import Blog Data
+            </a>
+            <a href="{{ url_for('admin.export_blog_json') }}" class="btn btn-outline-secondary">
+                <i class="fas fa-download"></i> Export Blog Data
+            </a>
+        </div>
+    </div>
+    
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="card bg-primary text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Blog Posts</h5>
+                    <p class="card-text display-4">{{ post_count }}</p>
+                    <a href="{{ url_for('admin.blog_posts') }}" class="btn btn-light">Manage Posts</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-success text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Categories</h5>
+                    <p class="card-text display-4">{{ category_count }}</p>
+                    <a href="{{ url_for('admin.blog_categories') }}" class="btn btn-light">Manage Categories</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-info text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Tags</h5>
+                    <p class="card-text display-4">{{ tag_count }}</p>
+                    <a href="{{ url_for('admin.blog_tags') }}" class="btn btn-light">Manage Tags</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-warning text-dark">
+                <div class="card-body">
+                    <h5 class="card-title">Users</h5>
+                    <p class="card-text display-4">{{ user_count if user_count is defined else "?" }}</p>
+                    <a href="{{ url_for('admin.users') }}" class="btn btn-dark">Manage Users</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="card-title mb-0">Publication Status</h5>
+                </div>
+                <div class="card-body">
+                    <canvas id="publishStatusChart"></canvas>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="card-title mb-0">Posts by Category</h5>
+                </div>
+                <div class="card-body">
+                    <canvas id="categoryChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="card-title mb-0">Popular Tags</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        {% for tag in popular_tags %}
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                {{ tag.name }}
+                                <span class="badge bg-primary rounded-pill">{{ tag.tag_count }}</span>
+                            </li>
+                        {% else %}
+                            <li class="list-group-item">No tags found</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-12 mt-4">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Recent Blog Posts</h5>
+                    <a href="{{ url_for('admin.create_post') }}" class="btn btn-primary">Create New Post</a>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Category</th>
+                                <th>Date</th>
+                                <th>Published</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for post in recent_posts %}
+                            <tr>
+                                <td>{{ post.title }}</td>
+                                <td>{{ post.category.name }}</td>
+                                <td>{{ post.created_at.strftime('%Y-%m-%d') }}</td>
+                                <td>
+                                    {% if post.published %}
+                                        <span class="badge bg-success">Published</span>
+                                    {% else %}
+                                        <span class="badge bg-secondary">Draft</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <a href="{{ url_for('admin.edit_post', id=post.id) }}" class="btn btn-sm btn-outline-primary">Edit</a>
+                                    <a href="{{ url_for('blog.post', slug=post.slug) }}" class="btn btn-sm btn-outline-info" target="_blank">View</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <a href="{{ url_for('admin.blog_posts') }}" class="btn btn-outline-primary">View All Posts</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block scripts %}
+{{ super() }}
+<script src="{{ url_for('static', filename='js/admin-dashboard-charts.js') }}"></script>
+{% endblock %}
+
+{% endblock %}

@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Blog Post - Admin{% endblock %}
+
+{% block content %}
+<div class="admin-edit-post container my-5">
+    <h1 class="mb-4">Edit Blog Post</h1>
+    
+    <form method="post">
+        <div class="card">
+            <div class="card-body">
+                <!-- Title -->
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title</label>
+                    <input type="text" class="form-control" id="title" name="title" value="{{ post.title }}" required>
+                </div>
+                
+                <!-- Slug -->
+                <div class="mb-3">
+                    <label for="slug" class="form-label">Slug</label>
+                    <input type="text" class="form-control" id="slug" name="slug" value="{{ post.slug }}" required>
+                    <small class="text-muted">URL-friendly version of the title (e.g., "my-blog-post")</small>
+                </div>
+                
+                <!-- Category -->
+                <div class="mb-3">
+                    <label for="category_id" class="form-label">Category</label>
+                    <select class="form-select" id="category_id" name="category_id" required>
+                        <option value="">Select a category</option>
+                        {% for category in categories %}
+                            <option value="{{ category.id }}" {% if post.category_id == category.id %}selected{% endif %}>
+                                {{ category.name }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <!-- Tags -->
+                <div class="mb-3">
+                    <label class="form-label">Tags</label>
+                    <div class="row">
+                        {% for tag in tags %}
+                            <div class="col-md-3 col-sm-4 mb-2">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="tag-{{ tag.id }}" name="tags" 
+                                        value="{{ tag.id }}" {% if tag in post.tags %}checked{% endif %}>
+                                    <label class="form-check-label" for="tag-{{ tag.id }}">
+                                        {{ tag.name }}
+                                    </label>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                
+                <!-- Featured Image URL -->
+                <div class="mb-3">
+                    <label for="image_url" class="form-label">Featured Image URL</label>
+                    <input type="text" class="form-control" id="image_url" name="image_url" 
+                        value="{{ post.image_url }}" placeholder="/static/img/blog/your-image.jpg">
+                </div>
+                
+                <!-- Excerpt -->
+                <div class="mb-3">
+                    <label for="excerpt" class="form-label">Excerpt</label>
+                    <textarea class="form-control" id="excerpt" name="excerpt" rows="3" required>{{ post.excerpt }}</textarea>
+                    <small class="text-muted">A brief summary of the blog post</small>
+                </div>
+                
+                <!-- Content -->
+                <div class="mb-3">
+                    <label for="content" class="form-label">Content</label>
+                    <textarea class="form-control" id="content" name="content" rows="15" required>{{ post.content }}</textarea>
+                    <small class="text-muted">HTML content is allowed</small>
+                </div>
+                
+                <!-- Published Status -->
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="published" name="published" 
+                        {% if post.published %}checked{% endif %}>
+                    <label class="form-check-label" for="published">Published</label>
+                </div>
+                
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <a href="{{ url_for('admin.blog_posts') }}" class="btn btn-outline-secondary me-md-2">Cancel</a>
+                    <button type="submit" class="btn btn-primary">Update Post</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

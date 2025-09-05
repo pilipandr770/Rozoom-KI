@@ -1,0 +1,196 @@
+{% extends 'base.html' %}
+
+{% block title %}Pricing — Rozoom-KI{% endblock %}
+
+{% block head %}
+{{ super() }}
+<style>
+    .pricing-section {
+        padding: 60px 0;
+    }
+    
+    .pricing-header {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+    
+    .pricing-card {
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        padding: 30px;
+        margin-bottom: 30px;
+        height: 100%;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .pricing-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .pricing-card.featured {
+        border-color: var(--primary-color);
+        box-shadow: 0 6px 12px rgba(37, 99, 235, 0.15);
+        position: relative;
+        z-index: 1;
+    }
+    
+    .pricing-name {
+        font-size: 22px;
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: var(--primary-color);
+    }
+    
+    .pricing-hours {
+        font-size: 18px;
+        color: var(--text-color);
+        margin-bottom: 10px;
+    }
+    
+    .pricing-price {
+        font-size: 34px;
+        font-weight: 700;
+        margin: 20px 0;
+        color: var(--primary-dark);
+    }
+    
+    .pricing-per-hour {
+        font-size: 16px;
+        color: var(--light-text);
+        margin-bottom: 20px;
+        display: block;
+    }
+    
+    .pricing-description {
+        margin-bottom: 25px;
+        flex-grow: 1;
+        color: var(--light-text);
+    }
+    
+    .pricing-btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: var(--primary-color);
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        font-weight: 500;
+        transition: background-color 0.3s;
+    }
+    
+    .pricing-btn:hover {
+        background-color: var(--primary-dark);
+    }
+    
+    .featured-tag {
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        background-color: #10b981;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    .pricing-container {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .pricing-bottom {
+        margin-top: auto;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="pricing-section">
+    <div class="container">
+        <div class="pricing-header">
+            <h1>Choose Your Package</h1>
+            <p class="lead">Get the perfect amount of development time for your project needs</p>
+        </div>
+
+        <div class="row">
+            {% if packages %}
+                {% for package in packages %}
+                    <div class="col-md-4 mb-4">
+                        <div class="pricing-card {% if loop.index == 2 %}featured{% endif %}">
+                            {% if loop.index == 2 %}
+                                <div class="featured-tag">Most Popular</div>
+                            {% endif %}
+                            <div class="pricing-container">
+                                <h3 class="pricing-name">{{ package.name }}</h3>
+                                <div class="pricing-hours">{{ package.hours }} Hours</div>
+                                <div class="pricing-price">€{{ "%.2f"|format(package.total_price) }}</div>
+                                <span class="pricing-per-hour">€{{ "%.2f"|format(package.price_per_hour) }} per hour</span>
+                                
+                                <div class="pricing-description">
+                                    {% if package.description %}
+                                        <p>{{ package.description }}</p>
+                                    {% else %}
+                                        <ul>
+                                            <li>{{ package.hours }} development hours</li>
+                                            <li>Custom solutions</li>
+                                            <li>Support included</li>
+                                            <li>Regular updates</li>
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                                
+                                <div class="pricing-bottom">
+                                    <a href="/contact" class="pricing-btn">Select Package</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="col-12 text-center">
+                    <div class="alert alert-info">
+                        <p>No pricing packages are currently available. Please contact us for custom pricing.</p>
+                        <a href="/contact" class="btn btn-primary mt-3">Contact Us</a>
+                    </div>
+                </div>
+            {% endif %}
+            
+            <!-- Custom Package -->
+            <div class="col-md-4 mb-4">
+                <div class="pricing-card">
+                    <div class="pricing-container">
+                        <h3 class="pricing-name">Custom Package</h3>
+                        <div class="pricing-hours">Tailored to Your Needs</div>
+                        <div class="pricing-price">Contact Us</div>
+                        <span class="pricing-per-hour">For special requirements</span>
+                        
+                        <div class="pricing-description">
+                            <ul>
+                                <li>Flexible hours</li>
+                                <li>Custom development</li>
+                                <li>Dedicated support</li>
+                                <li>Priority service</li>
+                                <li>Enterprise solutions</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="pricing-bottom">
+                            <a href="/contact" class="pricing-btn">Get in Touch</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-5 text-center">
+            <h2>Need Help Choosing?</h2>
+            <p>Contact our team for a free consultation and we'll help you select the perfect package for your project.</p>
+            <a href="/contact" class="btn btn-lg btn-primary">Contact Us</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

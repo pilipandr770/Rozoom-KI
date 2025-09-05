@@ -1,0 +1,273 @@
+{% extends 'base.html' %}
+
+{% block title %}Project Details - Rozoom-KI{% endblock %}
+
+{% block content %}
+<div class="container-fluid py-4">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-3 col-lg-2">
+            <div class="dashboard-sidebar p-3 bg-light rounded">
+                <h5 class="mb-3">{{ current_user.name }}</h5>
+                <div class="list-group mb-4">
+                    <a href="{{ url_for('dashboard.index') }}" class="list-group-item list-group-item-action">
+                        <i class="fas fa-home"></i> Dashboard
+                    </a>
+                    <a href="{{ url_for('dashboard.projects') }}" class="list-group-item list-group-item-action active">
+                        <i class="fas fa-project-diagram"></i> Projects
+                    </a>
+                    <a href="{{ url_for('dashboard.messages') }}" class="list-group-item list-group-item-action">
+                        <i class="fas fa-envelope"></i> Messages
+                    </a>
+                    <a href="{{ url_for('dashboard.invoices') }}" class="list-group-item list-group-item-action">
+                        <i class="fas fa-file-invoice"></i> Invoices
+                    </a>
+                    <a href="{{ url_for('dashboard.profile') }}" class="list-group-item list-group-item-action">
+                        <i class="fas fa-user-cog"></i> Profile Settings
+                    </a>
+                </div>
+                <div class="d-grid gap-2">
+                    <a href="{{ url_for('auth.logout') }}" class="btn btn-outline-danger">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="col-md-9 col-lg-10">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <a href="{{ url_for('dashboard.projects') }}" class="btn btn-outline-secondary btn-sm mb-2">
+                        <i class="fas fa-arrow-left"></i> Back to Projects
+                    </a>
+                    <h1 class="mb-0">{{ project.title }}</h1>
+                </div>
+                <span class="badge bg-{{ {'new': 'info', 'in_progress': 'primary', 'testing': 'warning', 'completed': 'success'}[project.status] }} fs-5">
+                    {{ project.status|replace('_', ' ')|title }}
+                </span>
+            </div>
+            
+            <!-- Project Overview -->
+            <div class="row mb-4">
+                <div class="col-md-8">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Project Overview</h5>
+                            <div class="mb-4">
+                                <h6 class="text-muted mb-2">Description</h6>
+                                <p>{{ project.description or 'No description provided.' }}</p>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <h6 class="text-muted mb-2">Start Date</h6>
+                                    <p class="mb-0">{{ project.start_date.strftime('%Y-%m-%d') if project.start_date else 'Not started yet' }}</p>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <h6 class="text-muted mb-2">Estimated Completion</h6>
+                                    <p class="mb-0">{{ project.estimated_end_date.strftime('%Y-%m-%d') if project.estimated_end_date else 'Not set' }}</p>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-12 mb-3">
+                                    <h6 class="text-muted mb-2">Progress</h6>
+                                    <div class="progress mb-2" style="height: 10px;">
+                                        <div class="progress-bar" role="progressbar" style="width: {{ project.progress }}%" 
+                                            aria-valuenow="{{ project.progress }}" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <p class="text-end small mb-0">{{ project.progress }}% Complete</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Project Details</h5>
+                            
+                            <div class="mb-3">
+                                <h6 class="text-muted mb-2">Budget</h6>
+                                <p>{{ "€{:,.2f}".format(project.budget) if project.budget else 'Not set' }}</p>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <h6 class="text-muted mb-2">Project Created</h6>
+                                <p>{{ project.created_at.strftime('%Y-%m-%d') }}</p>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <h6 class="text-muted mb-2">Last Updated</h6>
+                                <p>{{ project.updated_at.strftime('%Y-%m-%d') }}</p>
+                            </div>
+                            
+                            <hr>
+                            
+                            <div class="d-grid gap-2">
+                                <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#contactSupportModal">
+                                    <i class="fas fa-comment"></i> Contact Project Manager
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tasks and Updates Tabs -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-header bg-white">
+                    <ul class="nav nav-tabs card-header-tabs" id="projectTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="tasks-tab" data-bs-toggle="tab" data-bs-target="#tasks" type="button" role="tab" aria-controls="tasks" aria-selected="true">
+                                <i class="fas fa-tasks"></i> Tasks
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="updates-tab" data-bs-toggle="tab" data-bs-target="#updates" type="button" role="tab" aria-controls="updates" aria-selected="false">
+                                <i class="fas fa-history"></i> Updates & Milestones
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <div class="tab-content" id="projectTabsContent">
+                        <div class="tab-pane fade show active" id="tasks" role="tabpanel" aria-labelledby="tasks-tab">
+                            {% if tasks %}
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Task</th>
+                                                <th>Status</th>
+                                                <th>Due Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for task in tasks %}
+                                                <tr>
+                                                    <td>
+                                                        <div class="fw-bold">{{ task.title }}</div>
+                                                        <div class="small text-muted">{{ task.description|truncate(60) if task.description else '' }}</div>
+                                                    </td>
+                                                    <td>
+                                                        <span class="badge bg-{{ {'pending': 'warning', 'in_progress': 'info', 'completed': 'success'}[task.status] }}">
+                                                            {{ task.status|replace('_', ' ')|title }}
+                                                        </span>
+                                                    </td>
+                                                    <td>{{ task.due_date.strftime('%Y-%m-%d') if task.due_date else 'Not set' }}</td>
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            {% else %}
+                                <div class="text-center py-4">
+                                    <i class="fas fa-tasks fa-3x mb-3 text-muted"></i>
+                                    <h4>No tasks defined yet</h4>
+                                    <p>Tasks will appear here once the project planning phase is complete</p>
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="tab-pane fade" id="updates" role="tabpanel" aria-labelledby="updates-tab">
+                            {% if updates %}
+                                <div class="timeline">
+                                    {% for update in updates %}
+                                        <div class="timeline-item pb-4">
+                                            <div class="timeline-marker {% if update.is_milestone %}timeline-marker-milestone{% endif %}"></div>
+                                            <div class="timeline-content">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <h5 class="mb-0 {% if update.is_milestone %}text-primary{% endif %}">
+                                                        {% if update.is_milestone %}<i class="fas fa-flag"></i>{% endif %} {{ update.title }}
+                                                    </h5>
+                                                    <span class="small text-muted">{{ update.created_at.strftime('%Y-%m-%d') }}</span>
+                                                </div>
+                                                <p class="mt-2">{{ update.content }}</p>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                <div class="text-center py-4">
+                                    <i class="fas fa-history fa-3x mb-3 text-muted"></i>
+                                    <h4>No updates yet</h4>
+                                    <p>Project updates and milestones will appear here</p>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Contact Support Modal -->
+<div class="modal fade" id="contactSupportModal" tabindex="-1" aria-labelledby="contactSupportModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="contactSupportModalLabel">Contact Project Manager</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="subject" class="form-label">Subject</label>
+                        <input type="text" class="form-control" id="subject" value="RE: {{ project.title }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea class="form-control" id="message" rows="5" placeholder="Type your message here..."></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary">Send Message</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block head %}
+{{ super() }}
+<style>
+    /* Timeline styling for updates */
+    .timeline {
+        position: relative;
+        padding-left: 30px;
+    }
+    
+    .timeline::before {
+        content: '';
+        position: absolute;
+        left: 9px;
+        top: 0;
+        height: 100%;
+        width: 2px;
+        background-color: #e9ecef;
+    }
+    
+    .timeline-item {
+        position: relative;
+    }
+    
+    .timeline-marker {
+        position: absolute;
+        left: -30px;
+        top: 5px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: #dee2e6;
+        border: 2px solid #fff;
+    }
+    
+    .timeline-marker-milestone {
+        background-color: #0d6efd;
+    }
+</style>
+{% endblock %}

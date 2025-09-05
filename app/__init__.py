@@ -1,0 +1,114 @@
+from flask import Flask, current_app
+from .config import Config
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
+from flask_login import LoginManager
+from flask_mail import Mail
+import os
+
+db = SQLAlchemy()
+migrate = Migrate()
+mail = Mail()
+
+# Import here to avoid circular imports
+from app.auth import login_manager
+
+
+def setup_schema_handling(app):
+    """Configure schema handling based on the database dialect.
+    
+    For Postgres: Set search_path to use schema
+    For SQLite: Remove schema from all table definitions
+    """
+    from sqlalchemy import text, event
+    
+    # Get database info
+    engine = db.get_engine(app)
+    dialect = engine.dialect.name
+    schema = app.config.get('POSTGRES_SCHEMA')
+    
+    # For SQLite: Remove schema from all tables at runtime
+    if dialect == 'sqlite':
+        # Inspect all tables and remove schema
+        for table in db.metadata.tables.values():
+            table.schema = None
+        
+        # Listen for table creation to ensure no schema is used
+        @event.listens_for(db.metadata, 'after_create')
+        def after_create(target, connection, **kw):
+            for table in target.tables.values():
+                if table.schema:
+                    table.schema = None
+    
+    # For Postgres: Set search_path
+    elif dialect in ('postgresql', 'postgres') and schema:
+        try:
+            with engine.connect() as conn:
+                conn.execute(text(f"SET search_path TO {schema}, public"))
+                
+            # Ensure every new connection sets the search path
+            @event.listens_for(engine, "connect")
+            def connect(dbapi_connection, connection_record):
+                cursor = dbapi_connection.cursor()
+                cursor.execute(f"SET search_path TO {schema}, public")
+                cursor.close()
+        except Exception as e:
+            app.logger.error(f"Error setting up Postgres schema: {e}")
+
+
+def create_app():
+    app = Flask(__name__, static_folder='static', template_folder='templates')
+    app.config.from_object(Config)
+    
+    # Force SQLite for development if FLASK_ENV is set to development
+    if os.environ.get('FLASK_ENV') == 'development' and not os.environ.get('DATABASE_URL'):
+        app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///dev.db'
+    
+    # Initialize database
+    db.init_app(app)
+    migrate.init_app(app, db)
+    
+    # Initialize Flask-Login
+    login_manager.init_app(app)
+    
+    # Initialize Flask-Mail
+    mail.init_app(app)
+    
+    # Configure schema handling based on DB dialect
+    with app.app_context():
+        try:
+            setup_schema_handling(app)
+        except Exception as e:
+            app.logger.warning(f"Schema setup deferred: {e}")
+    
+    # Initialize or update database schema manually
+    from .database import init_database_schema
+    try:
+        init_database_schema(app)
+    except Exception as e:
+        app.logger.warning(f"Database schema update deferred: {e}")
+    
+    # Create admin user
+    from app.auth import create_admin_user
+    create_admin_user(app)
+    
+    # Register blueprints
+    from .pages import pages_bp
+    from .api import api_bp
+    from .routes.admin import admin
+    from .routes.blog import blog
+    from .routes.auth import auth_bp
+    from .routes.dashboard import dashboard_bp
+    
+    app.register_blueprint(pages_bp)
+    app.register_blueprint(api_bp)
+    app.register_blueprint(admin)
+    app.register_blueprint(blog)
+    app.register_blueprint(auth_bp)
+    app.register_blueprint(dashboard_bp)
+    
+    # Register CLI commands
+    from .commands import register_commands
+    register_commands(app)
+    
+    return app

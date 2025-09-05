@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact Us — Rozoom-KI{% endblock %}
+
+{% block content %}
+<div class="contact-header">
+  <h1>Get in Touch</h1>
+  <p class="contact-subtitle">Have a question or ready to start your next project? We're here to help!</p>
+</div>
+
+<div class="contact-wrapper">
+  <div class="contact-info">
+    <div class="contact-card">
+      <div class="contact-icon">
+        <i class="fas fa-map-marker-alt"></i>
+      </div>
+      <h3>Our Office</h3>
+      <p>Hauptstraße 15<br>10178 Berlin, Germany</p>
+    </div>
+    
+    <div class="contact-card">
+      <div class="contact-icon">
+        <i class="fas fa-envelope"></i>
+      </div>
+      <h3>Email Us</h3>
+      <p>info@rozoom-ki.com<br>support@rozoom-ki.com</p>
+    </div>
+    
+    <div class="contact-card">
+      <div class="contact-icon">
+        <i class="fas fa-phone"></i>
+      </div>
+      <h3>Call Us</h3>
+      <p>+49 30 123456789<br>Mon-Fri 9:00-18:00</p>
+    </div>
+    
+    <div class="social-links">
+      <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+      <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+    </div>
+  </div>
+  
+  <div class="contact-form-container">
+    <h2>Send Us a Message</h2>
+    <form method="post" action="/contact" class="contact-form">
+      {% if success %}
+      <div class="form-success">
+        <i class="fas fa-check-circle"></i>
+        <p>Your message has been sent successfully. We'll get back to you soon!</p>
+      </div>
+      {% endif %}
+      
+      {% if error %}
+      <div class="form-error">
+        <i class="fas fa-exclamation-circle"></i>
+        <p>{{ error }}</p>
+      </div>
+      {% endif %}
+      
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your full name" required />
+      </div>
+      
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email address" required />
+      </div>
+      
+      <div class="form-group">
+        <label for="message">Your Message</label>
+        <textarea id="message" name="message" rows="5" placeholder="How can we help you?" required></textarea>
+      </div>
+      
+      <div class="form-group">
+        <label class="checkbox-container">
+          <input type="checkbox" name="privacy_consent" required />
+          <span class="checkmark"></span>
+          I consent to having this website store my submitted information so they can respond to my inquiry
+        </label>
+      </div>
+      
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+  </div>
+</div>
+
+<div class="map-container">
+  <iframe 
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2428.4092231792297!2d13.3868908!3d52.5199429!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a851df545e5763%3A0xd7efbd71c46b66c5!2sHauptstra%C3%9Fe%2C%2010178%20Berlin!5e0!3m2!1sen!2sde!4v1662562887872!5m2!1sen!2sde" 
+    width="100%" 
+    height="400" 
+    style="border:0;" 
+    allowfullscreen="" 
+    loading="lazy" 
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>
+{% endblock %}

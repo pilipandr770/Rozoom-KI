@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Category - Admin{% endblock %}
+
+{% block content %}
+<div class="admin-edit-category container my-5">
+    <h1 class="mb-4">Edit Category</h1>
+    
+    <form method="post">
+        <div class="card">
+            <div class="card-body">
+                <!-- Name -->
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" value="{{ category.name }}" required>
+                </div>
+                
+                <!-- Slug -->
+                <div class="mb-3">
+                    <label for="slug" class="form-label">Slug</label>
+                    <input type="text" class="form-control" id="slug" name="slug" value="{{ category.slug }}" required>
+                    <small class="text-muted">URL-friendly version of the name (e.g., "web-development")</small>
+                </div>
+                
+                <!-- Description -->
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea class="form-control" id="description" name="description" rows="3">{{ category.description }}</textarea>
+                </div>
+                
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <a href="{{ url_for('admin.blog_categories') }}" class="btn btn-outline-secondary me-md-2">Cancel</a>
+                    <button type="submit" class="btn btn-primary">Update Category</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

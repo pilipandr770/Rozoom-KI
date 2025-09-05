@@ -1,0 +1,181 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin - Pricing Packages{% endblock %}
+
+{% block head %}
+{{ super() }}
+<style>
+    .admin-sidebar {
+        background-color: #212529;
+        min-height: calc(100vh - 60px);
+        color: white;
+        padding: 20px 0;
+    }
+    .admin-sidebar .nav-link {
+        color: rgba(255,255,255,.75);
+        padding: 10px 20px;
+        border-left: 4px solid transparent;
+        transition: all 0.2s;
+    }
+    .admin-sidebar .nav-link:hover {
+        color: white;
+        background: rgba(255,255,255,.1);
+    }
+    .admin-sidebar .nav-link.active {
+        color: white;
+        border-left-color: #d53f8c;
+    }
+    .admin-sidebar .nav-link i {
+        margin-right: 10px;
+    }
+    .admin-content {
+        padding: 20px;
+    }
+    .admin-header {
+        background-color: #f8f9fa;
+        border-bottom: 1px solid #dee2e6;
+        padding: 15px 20px;
+        margin-bottom: 20px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="admin-container">
+    <div class="row g-0">
+        <div class="col-md-2 admin-sidebar">
+            <div class="text-center mb-4">
+                <h5>Admin Panel</h5>
+                <p class="small text-muted">{{ current_user.email }}</p>
+            </div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="{{ url_for('admin.dashboard') }}" class="nav-link">
+                        <i class="fas fa-tachometer-alt"></i> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('admin.users') }}" class="nav-link">
+                        <i class="fas fa-users"></i> Users
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('admin.pricing_packages') }}" class="nav-link active">
+                        <i class="fas fa-tags"></i> Pricing
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('admin.blog_posts') }}" class="nav-link">
+                        <i class="fas fa-newspaper"></i> Blog Posts
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('admin.blog_categories') }}" class="nav-link">
+                        <i class="fas fa-folder"></i> Categories
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('admin.blog_tags') }}" class="nav-link">
+                        <i class="fas fa-tags"></i> Tags
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-10">
+            <div class="admin-header">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1 class="mb-0">Pricing Packages</h1>
+                    <a href="{{ url_for('admin.create_pricing_package') }}" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> New Package
+                    </a>
+                </div>
+            </div>
+            <div class="admin-content">
+                {% include 'includes/flash_messages.html' %}
+                
+                <div class="card shadow-sm">
+                    <div class="card-header bg-dark text-white">
+                        <h5 class="mb-0">Pricing Packages</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Hours</th>
+                                        <th>Price per Hour (€)</th>
+                                        <th>Total Price (€)</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for package in packages %}
+                                    <tr>
+                                        <td>{{ package.id }}</td>
+                                        <td>{{ package.name }}</td>
+                                        <td>{{ package.hours }}</td>
+                                        <td>{{ "%.2f"|format(package.price_per_hour) }}</td>
+                                        <td>{{ "%.2f"|format(package.total_price) }}</td>
+                                        <td>
+                                            {% if package.is_active %}
+                                            <span class="badge bg-success">Active</span>
+                                            {% else %}
+                                            <span class="badge bg-secondary">Inactive</span>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <a href="{{ url_for('admin.edit_pricing_package', id=package.id) }}" class="btn btn-sm btn-primary">
+                                                    <i class="fas fa-edit"></i> Edit
+                                                </a>
+                                                <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ package.id }}">
+                                                    <i class="fas fa-trash"></i> Delete
+                                                </button>
+                                            </div>
+                                            
+                                            <!-- Delete Modal -->
+                                            <div class="modal fade" id="deleteModal{{ package.id }}" tabindex="-1" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title">Delete Package</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <p>Are you sure you want to delete the pricing package <strong>{{ package.name }}</strong>?</p>
+                                                            <p>This action cannot be undone.</p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                            <form action="{{ url_for('admin.delete_pricing_package', id=package.id) }}" method="POST">
+                                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    {% else %}
+                                    <tr>
+                                        <td colspan="7" class="text-center">
+                                            <p class="text-muted my-5">No pricing packages found</p>
+                                            <a href="{{ url_for('admin.create_pricing_package') }}" class="btn btn-primary">
+                                                <i class="fas fa-plus"></i> Create First Package
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

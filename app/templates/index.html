@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+
+{% block title %}Rozoom-KI - AI Solutions for Your Business{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <div class="hero-content">
+    <h1>Intelligent AI Solutions for Modern Business</h1>
+    <p class="hero-subtitle">Transform your business with our state-of-the-art AI assistants and custom solutions</p>
+    <div class="hero-cta">
+      <a href="/services" class="btn">Explore Services</a>
+      <a href="/contact" class="btn btn-secondary">Contact Us</a>
+      {% if not current_user.is_authenticated %}
+      <a href="{{ url_for('auth.register') }}" class="btn btn-outline-primary">Sign Up for Free</a>
+      {% else %}
+      <a href="{{ url_for('dashboard.index') }}" class="btn btn-outline-primary">Go to Dashboard</a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<section class="features">
+  <h2 class="section-title">How We Can Help</h2>
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="feature-icon">
+        <i class="fas fa-globe fa-2x"></i>
+      </div>
+      <h3>Web Development</h3>
+      <p>Custom websites and web applications with AI-powered features to enhance user experience.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <i class="fas fa-mobile-alt fa-2x"></i>
+      </div>
+      <h3>Mobile Solutions</h3>
+      <p>Native and cross-platform mobile applications with intelligent features and analytics.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <i class="fas fa-brain fa-2x"></i>
+      </div>
+      <h3>ML & AI Integration</h3>
+      <p>Integrate machine learning models and AI capabilities into your existing software systems.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <i class="fas fa-robot fa-2x"></i>
+      </div>
+      <h3>Process Automation</h3>
+      <p>Automate repetitive tasks and workflows to increase efficiency and reduce costs.</p>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <h2 class="section-title">What Our Clients Say</h2>
+  <div class="testimonial-slider">
+    <div class="testimonial-card">
+      <div class="testimonial-content">
+        <p>"Rozoom-KI transformed our customer service with their AI assistant. Response times dropped by 60% and customer satisfaction increased dramatically."</p>
+      </div>
+      <div class="testimonial-author">
+        <strong>Michael Berger</strong>
+        <span>CTO, TechSolutions GmbH</span>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-content">
+        <p>"The machine learning integration for our inventory management has saved us thousands of euros monthly and improved our forecasting accuracy by 40%."</p>
+      </div>
+      <div class="testimonial-author">
+        <strong>Anna Schmidt</strong>
+        <span>Operations Director, RetailPlus</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% if not current_user.is_authenticated %}
+<section class="account-cta">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-7">
+        <h2>Create Your Personal Account</h2>
+        <p class="lead">Track your projects, access personalized services, and collaborate with our team in real-time.</p>
+        <ul class="feature-list">
+          <li><i class="fas fa-check-circle text-success"></i> Personal dashboard to monitor project progress</li>
+          <li><i class="fas fa-check-circle text-success"></i> Direct messaging with our development team</li>
+          <li><i class="fas fa-check-circle text-success"></i> Online invoicing and payment processing</li>
+          <li><i class="fas fa-check-circle text-success"></i> Project milestone tracking and updates</li>
+        </ul>
+      </div>
+      <div class="col-md-5">
+        <div class="card shadow">
+          <div class="card-body p-4">
+            <h3 class="card-title mb-4 text-center">Register Now</h3>
+            <div class="d-grid gap-3">
+              <a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-lg">Create Account</a>
+              <a href="{{ url_for('auth.login') }}" class="btn btn-outline-secondary">Already have an account? Login</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<section class="cta-section">
+  <h2>Ready to transform your business with AI?</h2>
+  <p>Our team of experts is ready to help you implement intelligent solutions.</p>
+  <a href="/contact" class="btn">Get Started Today</a>
+</section>
+{% endblock %}

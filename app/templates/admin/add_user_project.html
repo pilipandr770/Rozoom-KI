@@ -1,0 +1,159 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin - Add User Project{% endblock %}
+
+{% block head %}
+{{ super() }}
+<style>
+    .admin-sidebar {
+        background-color: #212529;
+        min-height: calc(100vh - 60px);
+        color: white;
+        padding: 20px 0;
+    }
+    .admin-sidebar .nav-link {
+        color: rgba(255,255,255,.75);
+        padding: 10px 20px;
+        border-left: 4px solid transparent;
+        transition: all 0.2s;
+    }
+    .admin-sidebar .nav-link:hover {
+        color: white;
+        background: rgba(255,255,255,.1);
+    }
+    .admin-sidebar .nav-link.active {
+        color: white;
+        border-left-color: #d53f8c;
+    }
+    .admin-sidebar .nav-link i {
+        margin-right: 10px;
+    }
+    .admin-content {
+        padding: 20px;
+    }
+    .admin-header {
+        background-color: #f8f9fa;
+        border-bottom: 1px solid #dee2e6;
+        padding: 15px 20px;
+        margin-bottom: 20px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="admin-container">
+    <div class="row g-0">
+        <div class="col-md-2 admin-sidebar">
+            <div class="text-center mb-4">
+                <h5>Admin Panel</h5>
+                <p class="small text-muted">{{ current_user.email }}</p>
+            </div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="{{ url_for('admin.dashboard') }}" class="nav-link">
+                        <i class="fas fa-tachometer-alt"></i> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('admin.users') }}" class="nav-link active">
+                        <i class="fas fa-users"></i> Users
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('admin.blog_posts') }}" class="nav-link">
+                        <i class="fas fa-newspaper"></i> Blog Posts
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('admin.blog_categories') }}" class="nav-link">
+                        <i class="fas fa-folder"></i> Categories
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('admin.blog_tags') }}" class="nav-link">
+                        <i class="fas fa-tags"></i> Tags
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-10">
+            <div class="admin-header">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1 class="mb-0">Add Project for {{ user.name or user.email }}</h1>
+                    <a href="{{ url_for('admin.user_detail', user_id=user.id) }}" class="btn btn-outline-secondary">
+                        <i class="fas fa-arrow-left"></i> Back to User Details
+                    </a>
+                </div>
+            </div>
+            <div class="admin-content">
+    <!-- Заголовок уже перемещен в админ-хедер -->
+
+    {% include 'includes/flash_messages.html' %}
+
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">Project Information</h5>
+        </div>
+        <div class="card-body">
+            <form method="post" action="{{ url_for('admin.add_user_project', user_id=user.id) }}">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Project Title*</label>
+                            <input type="text" class="form-control" id="title" name="title" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="status" class="form-label">Status*</label>
+                            <select class="form-select" id="status" name="status" required>
+                                <option value="new">New</option>
+                                <option value="in_progress">In Progress</option>
+                                <option value="testing">Testing</option>
+                                <option value="completed">Completed</option>
+                                <option value="on_hold">On Hold</option>
+                                <option value="cancelled">Cancelled</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="budget" class="form-label">Budget</label>
+                            <div class="input-group">
+                                <span class="input-group-text">$</span>
+                                <input type="number" step="0.01" min="0" class="form-control" id="budget" name="budget">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="start_date" class="form-label">Start Date</label>
+                            <input type="date" class="form-control" id="start_date" name="start_date">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="estimated_end_date" class="form-label">Estimated End Date</label>
+                            <input type="date" class="form-control" id="estimated_end_date" name="estimated_end_date">
+                        </div>
+                    </div>
+                    
+                    <div class="col-12">
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Project Description*</label>
+                            <textarea class="form-control" id="description" name="description" rows="5" required></textarea>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Create Project
+                    </button>
+                </div>
+            </form>
+        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

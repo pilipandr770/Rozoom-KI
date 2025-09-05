@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block title %}Blog Tags - Admin{% endblock %}
+
+{% block content %}
+<div class="admin-blog-tags container my-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Blog Tags</h1>
+        <a href="{{ url_for('admin.create_tag') }}" class="btn btn-primary">Create New Tag</a>
+    </div>
+    
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    
+    <div class="card">
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Slug</th>
+                        <th>Post Count</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for tag in tags %}
+                    <tr>
+                        <td>{{ tag.name }}</td>
+                        <td>{{ tag.slug }}</td>
+                        <td>{{ tag.posts | length }}</td>
+                        <td>
+                            <div class="btn-group">
+                                <a href="{{ url_for('admin.edit_tag', id=tag.id) }}" class="btn btn-sm btn-outline-primary">Edit</a>
+                                <a href="{{ url_for('blog.tag', slug=tag.slug) }}" class="btn btn-sm btn-outline-info" target="_blank">View</a>
+                                <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteTagModal-{{ tag.id }}">Delete</button>
+                            </div>
+                            
+                            <!-- Delete Modal -->
+                            <div class="modal fade" id="deleteTagModal-{{ tag.id }}" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Confirm Deletion</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Are you sure you want to delete the tag "{{ tag.name }}"?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                            <form action="{{ url_for('admin.delete_tag', id=tag.id) }}" method="post">
+                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

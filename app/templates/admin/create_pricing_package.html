@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin - Create Pricing Package{% endblock %}
+
+{% block head %}
+{{ super() }}
+<style>
+    .admin-sidebar {
+        background-color: #212529;
+        min-height: calc(100vh - 60px);
+        color: white;
+        padding: 20px 0;
+    }
+    .admin-sidebar .nav-link {
+        color: rgba(255,255,255,.75);
+        padding: 10px 20px;
+        border-left: 4px solid transparent;
+        transition: all 0.2s;
+    }
+    .admin-sidebar .nav-link:hover {
+        color: white;
+        background: rgba(255,255,255,.1);
+    }
+    .admin-sidebar .nav-link.active {
+        color: white;
+        border-left-color: #d53f8c;
+    }
+    .admin-sidebar .nav-link i {
+        margin-right: 10px;
+    }
+    .admin-content {
+        padding: 20px;
+    }
+    .admin-header {
+        background-color: #f8f9fa;
+        border-bottom: 1px solid #dee2e6;
+        padding: 15px 20px;
+        margin-bottom: 20px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="admin-container">
+    <div class="row g-0">
+        <div class="col-md-2 admin-sidebar">
+            <div class="text-center mb-4">
+                <h5>Admin Panel</h5>
+                <p class="small text-muted">{{ current_user.email }}</p>
+            </div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="{{ url_for('admin.dashboard') }}" class="nav-link">
+                        <i class="fas fa-tachometer-alt"></i> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('admin.users') }}" class="nav-link">
+                        <i class="fas fa-users"></i> Users
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('admin.pricing_packages') }}" class="nav-link active">
+                        <i class="fas fa-tags"></i> Pricing
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('admin.blog_posts') }}" class="nav-link">
+                        <i class="fas fa-newspaper"></i> Blog Posts
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('admin.blog_categories') }}" class="nav-link">
+                        <i class="fas fa-folder"></i> Categories
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('admin.blog_tags') }}" class="nav-link">
+                        <i class="fas fa-tags"></i> Tags
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-10">
+            <div class="admin-header">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1 class="mb-0">Create Pricing Package</h1>
+                    <a href="{{ url_for('admin.pricing_packages') }}" class="btn btn-outline-secondary">
+                        <i class="fas fa-arrow-left"></i> Back to Packages
+                    </a>
+                </div>
+            </div>
+            <div class="admin-content">
+                {% include 'includes/flash_messages.html' %}
+                
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Package Details</h5>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" action="{{ url_for('admin.create_pricing_package') }}">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="name" class="form-label">Package Name*</label>
+                                        <input type="text" class="form-control" id="name" name="name" required placeholder="e.g., Basic Package">
+                                        <div class="form-text">A short name for the package</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="mb-3">
+                                        <label for="hours" class="form-label">Hours*</label>
+                                        <input type="number" min="1" class="form-control" id="hours" name="hours" required placeholder="e.g., 10">
+                                        <div class="form-text">Number of hours included in the package</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="mb-3">
+                                        <label for="price_per_hour" class="form-label">Price per Hour (€)*</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text">€</span>
+                                            <input type="number" min="0" step="0.01" class="form-control" id="price_per_hour" name="price_per_hour" required placeholder="e.g., 100">
+                                        </div>
+                                        <div class="form-text">Cost per hour in Euro</div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="mb-3">
+                                        <label for="description" class="form-label">Description</label>
+                                        <textarea class="form-control" id="description" name="description" rows="3" placeholder="Description of what's included in the package..."></textarea>
+                                        <div class="form-text">Additional details about what's included in the package</div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="is_active" name="is_active" checked>
+                                        <label class="form-check-label" for="is_active">Active</label>
+                                        <div class="form-text">Only active packages are displayed on the pricing page</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-4 d-flex justify-content-end">
+                                <a href="{{ url_for('admin.pricing_packages') }}" class="btn btn-outline-secondary me-2">Cancel</a>
+                                <button type="submit" class="btn btn-primary">Create Package</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

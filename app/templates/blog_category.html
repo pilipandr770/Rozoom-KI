@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ category }} — Rozoom-KI Blog{% endblock %}
+
+{% block content %}
+<div class="blog-header">
+  <h1>Category: {{ category }}</h1>
+  <p class="lead">Articles related to {{ category }}</p>
+</div>
+
+<div class="blog-container">
+  <main class="blog-main">
+    {% if posts %}
+      {% for post in posts %}
+        <article class="blog-post">
+          <div class="post-image">
+            {% if post.image_url %}
+              <img src="{{ post.image_url }}" alt="{{ post.title }}">
+            {% else %}
+              <img src="{{ url_for('static', filename='img/blog/default-post.jpg') }}" alt="{{ post.title }}">
+            {% endif %}
+            <span class="post-category">{{ category }}</span>
+          </div>
+          <div class="post-content">
+            <h2><a href="{{ url_for('pages.blog_post', slug=post.slug) }}">{{ post.title }}</a></h2>
+            <div class="post-meta">
+              <span class="post-date">{{ post.created_at.strftime('%B %d, %Y') }}</span>
+              <span class="post-author">by {{ post.author }}</span>
+            </div>
+            <div class="post-excerpt">
+              <p>{{ post.excerpt }}</p>
+            </div>
+            <a href="{{ url_for('pages.blog_post', slug=post.slug) }}" class="btn">Read More</a>
+          </div>
+        </article>
+      {% endfor %}
+
+      {% if pagination.has_next or pagination.has_prev %}
+        <div class="pagination">
+          {% if pagination.has_prev %}
+            <a href="{{ url_for('pages.blog_category', category=category, page=pagination.prev_num) }}" class="pagination-prev">
+              <i class="fas fa-chevron-left"></i> Previous
+            </a>
+          {% endif %}
+          
+          <span class="pagination-info">Page {{ pagination.page }} of {{ pagination.pages }}</span>
+          
+          {% if pagination.has_next %}
+            <a href="{{ url_for('pages.blog_category', category=category, page=pagination.next_num) }}" class="pagination-next">
+              Next <i class="fas fa-chevron-right"></i>
+            </a>
+          {% endif %}
+        </div>
+      {% endif %}
+    {% else %}
+      <div class="no-posts">
+        <i class="fas fa-folder-open"></i>
+        <h2>No posts in this category</h2>
+        <p>There are currently no articles in the {{ category }} category.</p>
+        <a href="{{ url_for('pages.blog') }}" class="btn">Back to Blog</a>
+      </div>
+    {% endif %}
+  </main>
+
+  <aside class="blog-sidebar">
+    <div class="sidebar-widget search-widget">
+      <h3>Search</h3>
+      <form action="{{ url_for('pages.blog_search') }}" method="GET">
+        <div class="search-input">
+          <input type="text" name="q" placeholder="Search posts..." required>
+          <button type="submit">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div class="sidebar-widget categories-widget">
+      <h3>Categories</h3>
+      <ul class="category-list">
+        {% if categories %}
+          {% for cat in categories %}
+            <li class="{{ 'active' if cat.name == category else '' }}">
+              <a href="{{ url_for('pages.blog_category', category=cat.name) }}">
+                {{ cat.name }}
+                <span class="count">{{ cat.count }}</span>
+              </a>
+            </li>
+          {% endfor %}
+        {% else %}
+          <li>No categories yet</li>
+        {% endif %}
+      </ul>
+    </div>
+
+    <div class="sidebar-widget recent-widget">
+      <h3>Recent Posts</h3>
+      <ul class="recent-posts">
+        {% if recent_posts %}
+          {% for post in recent_posts %}
+            <li>
+              <a href="{{ url_for('pages.blog_post', slug=post.slug) }}">
+                <div class="recent-post-image">
+                  {% if post.image_url %}
+                    <img src="{{ post.image_url }}" alt="{{ post.title }}">
+                  {% else %}
+                    <img src="{{ url_for('static', filename='img/blog/default-post.jpg') }}" alt="{{ post.title }}">
+                  {% endif %}
+                </div>
+                <div class="recent-post-info">
+                  <h4>{{ post.title }}</h4>
+                  <span class="recent-post-date">{{ post.created_at.strftime('%B %d, %Y') }}</span>
+                </div>
+              </a>
+            </li>
+          {% endfor %}
+        {% else %}
+          <li>No recent posts</li>
+        {% endif %}
+      </ul>
+    </div>
+  </aside>
+</div>
+{% endblock %}

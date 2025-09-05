@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% block title %}Create Blog Post - Admin{% endblock %}
+
+{% block content %}
+<div class="admin-create-post container my-5">
+    <h1 class="mb-4">Create Blog Post</h1>
+    
+    <form method="post">
+        <div class="card">
+            <div class="card-body">
+                <!-- Title -->
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title</label>
+                    <input type="text" class="form-control" id="title" name="title" required>
+                </div>
+                
+                <!-- Slug -->
+                <div class="mb-3">
+                    <label for="slug" class="form-label">Slug</label>
+                    <input type="text" class="form-control" id="slug" name="slug" required>
+                    <small class="text-muted">URL-friendly version of the title (e.g., "my-blog-post")</small>
+                </div>
+                
+                <!-- Category -->
+                <div class="mb-3">
+                    <label for="category_id" class="form-label">Category</label>
+                    <select class="form-select" id="category_id" name="category_id" required>
+                        <option value="">Select a category</option>
+                        {% for category in categories %}
+                            <option value="{{ category.id }}">{{ category.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <!-- Tags -->
+                <div class="mb-3">
+                    <label class="form-label">Tags</label>
+                    <div class="row">
+                        {% for tag in tags %}
+                            <div class="col-md-3 col-sm-4 mb-2">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="tag-{{ tag.id }}" name="tags" value="{{ tag.id }}">
+                                    <label class="form-check-label" for="tag-{{ tag.id }}">
+                                        {{ tag.name }}
+                                    </label>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                
+                <!-- Featured Image URL -->
+                <div class="mb-3">
+                    <label for="image_url" class="form-label">Featured Image URL</label>
+                    <input type="text" class="form-control" id="image_url" name="image_url" placeholder="/static/img/blog/your-image.jpg">
+                </div>
+                
+                <!-- Excerpt -->
+                <div class="mb-3">
+                    <label for="excerpt" class="form-label">Excerpt</label>
+                    <textarea class="form-control" id="excerpt" name="excerpt" rows="3" required></textarea>
+                    <small class="text-muted">A brief summary of the blog post</small>
+                </div>
+                
+                <!-- Content -->
+                <div class="mb-3">
+                    <label for="content" class="form-label">Content</label>
+                    <textarea class="form-control" id="content" name="content" rows="15" required></textarea>
+                    <small class="text-muted">HTML content is allowed</small>
+                </div>
+                
+                <!-- Published Status -->
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="published" name="published" checked>
+                    <label class="form-check-label" for="published">Published</label>
+                </div>
+                
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <a href="{{ url_for('admin.blog_posts') }}" class="btn btn-outline-secondary me-md-2">Cancel</a>
+                    <button type="submit" class="btn btn-primary">Create Post</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% block scripts %}
+<script>
+    // Auto-generate slug from title
+    document.getElementById('title').addEventListener('input', function() {
+        const title = this.value;
+        const slug = title.toLowerCase()
+            .replace(/[^\w\s-]/g, '')  // Remove special characters
+            .replace(/\s+/g, '-')      // Replace spaces with hyphens
+            .replace(/-+/g, '-');      // Replace multiple hyphens with single hyphen
+        
+        document.getElementById('slug').value = slug;
+    });
+</script>
+{% endblock %}
+
+{% endblock %}
