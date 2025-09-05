@@ -11,24 +11,24 @@
                 <h5 class="mb-3">{{ current_user.name }}</h5>
                 <div class="list-group mb-4">
                     <a href="{{ url_for('dashboard.index') }}" class="list-group-item list-group-item-action">
-                        <i class="fas fa-home"></i> Dashboard
+                        <i class="fas fa-home"></i> {{ _('Dashboard') }}
                     </a>
                     <a href="{{ url_for('dashboard.projects') }}" class="list-group-item list-group-item-action active">
-                        <i class="fas fa-project-diagram"></i> Projects
+                        <i class="fas fa-project-diagram"></i> {{ _('Projects') }}
                     </a>
                     <a href="{{ url_for('dashboard.messages') }}" class="list-group-item list-group-item-action">
-                        <i class="fas fa-envelope"></i> Messages
+                        <i class="fas fa-envelope"></i> {{ _('Messages') }}
                     </a>
                     <a href="{{ url_for('dashboard.invoices') }}" class="list-group-item list-group-item-action">
-                        <i class="fas fa-file-invoice"></i> Invoices
+                        <i class="fas fa-file-invoice"></i> {{ _('Invoices') }}
                     </a>
                     <a href="{{ url_for('dashboard.profile') }}" class="list-group-item list-group-item-action">
-                        <i class="fas fa-user-cog"></i> Profile Settings
+                        <i class="fas fa-user-cog"></i> {{ _('Profile Settings') }}
                     </a>
                 </div>
                 <div class="d-grid gap-2">
                     <a href="{{ url_for('auth.logout') }}" class="btn btn-outline-danger">
-                        <i class="fas fa-sign-out-alt"></i> Logout
+                        <i class="fas fa-sign-out-alt"></i> {{ _('Logout') }}
                     </a>
                 </div>
             </div>
@@ -39,7 +39,7 @@
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <div>
                     <a href="{{ url_for('dashboard.projects') }}" class="btn btn-outline-secondary btn-sm mb-2">
-                        <i class="fas fa-arrow-left"></i> Back to Projects
+                        <i class="fas fa-arrow-left"></i> {{ _('Back to Projects') }}
                     </a>
                     <h1 class="mb-0">{{ project.title }}</h1>
                 </div>
@@ -53,31 +53,31 @@
                 <div class="col-md-8">
                     <div class="card border-0 shadow-sm h-100">
                         <div class="card-body">
-                            <h5 class="card-title">Project Overview</h5>
+                            <h5 class="card-title">{{ _('Project Overview') }}</h5>
                             <div class="mb-4">
-                                <h6 class="text-muted mb-2">Description</h6>
-                                <p>{{ project.description or 'No description provided.' }}</p>
+                                <h6 class="text-muted mb-2">{{ _('Description') }}</h6>
+                                <p>{{ project.description or _('No description provided.') }}</p>
                             </div>
                             
                             <div class="row">
                                 <div class="col-md-6 mb-3">
-                                    <h6 class="text-muted mb-2">Start Date</h6>
-                                    <p class="mb-0">{{ project.start_date.strftime('%Y-%m-%d') if project.start_date else 'Not started yet' }}</p>
+                                    <h6 class="text-muted mb-2">{{ _('Start Date') }}</h6>
+                                    <p class="mb-0">{{ project.start_date.strftime('%Y-%m-%d') if project.start_date else _('Not started yet') }}</p>
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <h6 class="text-muted mb-2">Estimated Completion</h6>
-                                    <p class="mb-0">{{ project.estimated_end_date.strftime('%Y-%m-%d') if project.estimated_end_date else 'Not set' }}</p>
+                                    <h6 class="text-muted mb-2">{{ _('Estimated Completion') }}</h6>
+                                    <p class="mb-0">{{ project.estimated_end_date.strftime('%Y-%m-%d') if project.estimated_end_date else _('Not set') }}</p>
                                 </div>
                             </div>
                             
                             <div class="row">
                                 <div class="col-12 mb-3">
-                                    <h6 class="text-muted mb-2">Progress</h6>
+                                    <h6 class="text-muted mb-2">{{ _('Progress') }}</h6>
                                     <div class="progress mb-2" style="height: 10px;">
                                         <div class="progress-bar" role="progressbar" style="width: {{ project.progress }}%" 
                                             aria-valuenow="{{ project.progress }}" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
-                                    <p class="text-end small mb-0">{{ project.progress }}% Complete</p>
+                                    <p class="text-end small mb-0">{{ project.progress }}% {{ _('Complete') }}</p>
                                 </div>
                             </div>
                         </div>
@@ -86,20 +86,20 @@
                 <div class="col-md-4">
                     <div class="card border-0 shadow-sm h-100">
                         <div class="card-body">
-                            <h5 class="card-title">Project Details</h5>
+                            <h5 class="card-title">{{ _('Project Details') }}</h5>
                             
                             <div class="mb-3">
-                                <h6 class="text-muted mb-2">Budget</h6>
-                                <p>{{ "€{:,.2f}".format(project.budget) if project.budget else 'Not set' }}</p>
+                                <h6 class="text-muted mb-2">{{ _('Budget') }}</h6>
+                                <p>{{ "€{:,.2f}".format(project.budget) if project.budget else _('Not set') }}</p>
                             </div>
                             
                             <div class="mb-3">
-                                <h6 class="text-muted mb-2">Project Created</h6>
+                                <h6 class="text-muted mb-2">{{ _('Project Created') }}</h6>
                                 <p>{{ project.created_at.strftime('%Y-%m-%d') }}</p>
                             </div>
                             
                             <div class="mb-3">
-                                <h6 class="text-muted mb-2">Last Updated</h6>
+                                <h6 class="text-muted mb-2">{{ _('Last Updated') }}</h6>
                                 <p>{{ project.updated_at.strftime('%Y-%m-%d') }}</p>
                             </div>
                             
@@ -107,7 +107,7 @@
                             
                             <div class="d-grid gap-2">
                                 <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#contactSupportModal">
-                                    <i class="fas fa-comment"></i> Contact Project Manager
+                                    <i class="fas fa-comment"></i> {{ _('Contact Project Manager') }}
                                 </a>
                             </div>
                         </div>
@@ -121,12 +121,12 @@
                     <ul class="nav nav-tabs card-header-tabs" id="projectTabs" role="tablist">
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="tasks-tab" data-bs-toggle="tab" data-bs-target="#tasks" type="button" role="tab" aria-controls="tasks" aria-selected="true">
-                                <i class="fas fa-tasks"></i> Tasks
+                                <i class="fas fa-tasks"></i> {{ _('Tasks') }}
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="updates-tab" data-bs-toggle="tab" data-bs-target="#updates" type="button" role="tab" aria-controls="updates" aria-selected="false">
-                                <i class="fas fa-history"></i> Updates & Milestones
+                                <i class="fas fa-history"></i> {{ _('Updates & Milestones') }}
                             </button>
                         </li>
                     </ul>
@@ -139,9 +139,9 @@
                                     <table class="table">
                                         <thead>
                                             <tr>
-                                                <th>Task</th>
-                                                <th>Status</th>
-                                                <th>Due Date</th>
+                                                <th>{{ _('Task') }}</th>
+                                                <th>{{ _('Status') }}</th>
+                                                <th>{{ _('Due Date') }}</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -156,7 +156,7 @@
                                                             {{ task.status|replace('_', ' ')|title }}
                                                         </span>
                                                     </td>
-                                                    <td>{{ task.due_date.strftime('%Y-%m-%d') if task.due_date else 'Not set' }}</td>
+                                                    <td>{{ task.due_date.strftime('%Y-%m-%d') if task.due_date else _('Not set') }}</td>
                                                 </tr>
                                             {% endfor %}
                                         </tbody>
@@ -165,8 +165,8 @@
                             {% else %}
                                 <div class="text-center py-4">
                                     <i class="fas fa-tasks fa-3x mb-3 text-muted"></i>
-                                    <h4>No tasks defined yet</h4>
-                                    <p>Tasks will appear here once the project planning phase is complete</p>
+                                    <h4>{{ _('No tasks defined yet') }}</h4>
+                                    <p>{{ _('Tasks will appear here once the project planning phase is complete') }}</p>
                                 </div>
                             {% endif %}
                         </div>
@@ -191,8 +191,8 @@
                             {% else %}
                                 <div class="text-center py-4">
                                     <i class="fas fa-history fa-3x mb-3 text-muted"></i>
-                                    <h4>No updates yet</h4>
-                                    <p>Project updates and milestones will appear here</p>
+                                    <h4>{{ _('No updates yet') }}</h4>
+                                    <p>{{ _('Project updates and milestones will appear here') }}</p>
                                 </div>
                             {% endif %}
                         </div>
@@ -208,24 +208,24 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="contactSupportModalLabel">Contact Project Manager</h5>
+                <h5 class="modal-title" id="contactSupportModalLabel">{{ _('Contact Project Manager') }}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form>
                     <div class="mb-3">
-                        <label for="subject" class="form-label">Subject</label>
+                        <label for="subject" class="form-label">{{ _('Subject') }}</label>
                         <input type="text" class="form-control" id="subject" value="RE: {{ project.title }}">
                     </div>
                     <div class="mb-3">
-                        <label for="message" class="form-label">Message</label>
-                        <textarea class="form-control" id="message" rows="5" placeholder="Type your message here..."></textarea>
+                        <label for="message" class="form-label">{{ _('Message') }}</label>
+                        <textarea class="form-control" id="message" rows="5" placeholder="{{ _('Type your message here...') }}"></textarea>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary">Send Message</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ _('Cancel') }}</button>
+                <button type="button" class="btn btn-primary">{{ _('Send Message') }}</button>
             </div>
         </div>
     </div>

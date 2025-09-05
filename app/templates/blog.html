@@ -4,8 +4,8 @@
 
 {% block content %}
 <div class="blog-header">
-  <h1>Our Blog</h1>
-  <p class="lead">Latest insights, news and technology updates</p>
+  <h1>{{ _('Our Blog') }}</h1>
+  <p class="lead">{{ _('Latest insights, news and technology updates') }}</p>
 </div>
 
 <div class="blog-container">
@@ -27,12 +27,12 @@
             <h2><a href="{{ url_for('pages.blog_post', slug=post.slug) }}">{{ post.title }}</a></h2>
             <div class="post-meta">
               <span class="post-date">{{ post.created_at.strftime('%B %d, %Y') }}</span>
-              <span class="post-author">by {{ post.author }}</span>
+              <span class="post-author">{{ _('by') }} {{ post.author }}</span>
             </div>
             <div class="post-excerpt">
               <p>{{ post.excerpt }}</p>
             </div>
-            <a href="{{ url_for('pages.blog_post', slug=post.slug) }}" class="btn">Read More</a>
+            <a href="{{ url_for('pages.blog_post', slug=post.slug) }}" class="btn">{{ _('Read More') }}</a>
           </div>
         </article>
       {% endfor %}
@@ -41,15 +41,15 @@
         <div class="pagination">
           {% if pagination.has_prev %}
             <a href="{{ url_for('pages.blog', page=pagination.prev_num) }}" class="pagination-prev">
-              <i class="fas fa-chevron-left"></i> Previous
+              <i class="fas fa-chevron-left"></i> {{ _('Previous') }}
             </a>
           {% endif %}
           
-          <span class="pagination-info">Page {{ pagination.page }} of {{ pagination.pages }}</span>
+          <span class="pagination-info">{{ _('Page') }} {{ pagination.page }} {{ _('of') }} {{ pagination.pages }}</span>
           
           {% if pagination.has_next %}
             <a href="{{ url_for('pages.blog', page=pagination.next_num) }}" class="pagination-next">
-              Next <i class="fas fa-chevron-right"></i>
+              {{ _('Next') }} <i class="fas fa-chevron-right"></i>
             </a>
           {% endif %}
         </div>
@@ -57,18 +57,18 @@
     {% else %}
       <div class="no-posts">
         <i class="fas fa-pen-nib"></i>
-        <h2>No posts yet</h2>
-        <p>Check back soon for our latest articles and insights.</p>
+        <h2>{{ _('No posts yet') }}</h2>
+        <p>{{ _('Check back soon for our latest articles and insights.') }}</p>
       </div>
     {% endif %}
   </main>
 
   <aside class="blog-sidebar">
     <div class="sidebar-widget search-widget">
-      <h3>Search</h3>
+      <h3>{{ _('Search') }}</h3>
       <form action="{{ url_for('pages.blog_search') }}" method="GET">
         <div class="search-input">
-          <input type="text" name="q" placeholder="Search posts..." required>
+          <input type="text" name="q" placeholder="{{ _('Search posts...') }}" required>
           <button type="submit">
             <i class="fas fa-search"></i>
           </button>
@@ -77,7 +77,7 @@
     </div>
 
     <div class="sidebar-widget categories-widget">
-      <h3>Categories</h3>
+      <h3>{{ _('Categories') }}</h3>
       <ul class="category-list">
         {% if categories %}
           {% for category in categories %}
@@ -89,13 +89,13 @@
             </li>
           {% endfor %}
         {% else %}
-          <li>No categories yet</li>
+          <li>{{ _('No categories yet') }}</li>
         {% endif %}
       </ul>
     </div>
 
     <div class="sidebar-widget recent-widget">
-      <h3>Recent Posts</h3>
+      <h3>{{ _('Recent Posts') }}</h3>
       <ul class="recent-posts">
         {% if recent_posts %}
           {% for post in recent_posts %}
@@ -116,13 +116,13 @@
             </li>
           {% endfor %}
         {% else %}
-          <li>No recent posts</li>
+          <li>{{ _('No recent posts') }}</li>
         {% endif %}
       </ul>
     </div>
 
     <div class="sidebar-widget tags-widget">
-      <h3>Popular Tags</h3>
+      <h3>{{ _('Popular Tags') }}</h3>
       <div class="tag-cloud">
         {% if tags %}
           {% for tag in tags %}
@@ -131,7 +131,7 @@
             </a>
           {% endfor %}
         {% else %}
-          <span>No tags yet</span>
+          <span>{{ _('No tags yet') }}</span>
         {% endif %}
       </div>
     </div>

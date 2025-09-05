@@ -11,24 +11,24 @@
                 <h5 class="mb-3">{{ current_user.name }}</h5>
                 <div class="list-group mb-4">
                     <a href="{{ url_for('dashboard.index') }}" class="list-group-item list-group-item-action">
-                        <i class="fas fa-home"></i> Dashboard
+                        <i class="fas fa-home"></i> {{ _('Dashboard') }}
                     </a>
                     <a href="{{ url_for('dashboard.projects') }}" class="list-group-item list-group-item-action">
-                        <i class="fas fa-project-diagram"></i> Projects
+                        <i class="fas fa-project-diagram"></i> {{ _('Projects') }}
                     </a>
                     <a href="{{ url_for('dashboard.messages') }}" class="list-group-item list-group-item-action">
-                        <i class="fas fa-envelope"></i> Messages
+                        <i class="fas fa-envelope"></i> {{ _('Messages') }}
                     </a>
                     <a href="{{ url_for('dashboard.invoices') }}" class="list-group-item list-group-item-action active">
-                        <i class="fas fa-file-invoice"></i> Invoices
+                        <i class="fas fa-file-invoice"></i> {{ _('Invoices') }}
                     </a>
                     <a href="{{ url_for('dashboard.profile') }}" class="list-group-item list-group-item-action">
-                        <i class="fas fa-user-cog"></i> Profile Settings
+                        <i class="fas fa-user-cog"></i> {{ _('Profile Settings') }}
                     </a>
                 </div>
                 <div class="d-grid gap-2">
                     <a href="{{ url_for('auth.logout') }}" class="btn btn-outline-danger">
-                        <i class="fas fa-sign-out-alt"></i> Logout
+                        <i class="fas fa-sign-out-alt"></i> {{ _('Logout') }}
                     </a>
                 </div>
             </div>
@@ -37,28 +37,28 @@
         <!-- Main Content -->
         <div class="col-md-9 col-lg-10">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <h1>Invoices</h1>
+                <h1>{{ _('Invoices') }}</h1>
                 <div class="d-flex">
                     <div class="dropdown me-2">
                         <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="filterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fas fa-filter"></i> Filter
+                            <i class="fas fa-filter"></i> {{ _('Filter') }}
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="filterDropdown">
-                            <li><a class="dropdown-item filter-option" href="#" data-filter="all">All Invoices</a></li>
-                            <li><a class="dropdown-item filter-option" href="#" data-filter="paid">Paid</a></li>
-                            <li><a class="dropdown-item filter-option" href="#" data-filter="pending">Pending</a></li>
-                            <li><a class="dropdown-item filter-option" href="#" data-filter="overdue">Overdue</a></li>
+                            <li><a class="dropdown-item filter-option" href="#" data-filter="all">{{ _('All Invoices') }}</a></li>
+                            <li><a class="dropdown-item filter-option" href="#" data-filter="paid">{{ _('Paid') }}</a></li>
+                            <li><a class="dropdown-item filter-option" href="#" data-filter="pending">{{ _('Pending') }}</a></li>
+                            <li><a class="dropdown-item filter-option" href="#" data-filter="overdue">{{ _('Overdue') }}</a></li>
                         </ul>
                     </div>
                     <div class="dropdown">
                         <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="sortDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fas fa-sort"></i> Sort
+                            <i class="fas fa-sort"></i> {{ _('Sort') }}
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="sortDropdown">
-                            <li><a class="dropdown-item sort-option" href="#" data-sort="date-desc">Date (Newest First)</a></li>
-                            <li><a class="dropdown-item sort-option" href="#" data-sort="date-asc">Date (Oldest First)</a></li>
-                            <li><a class="dropdown-item sort-option" href="#" data-sort="amount-desc">Amount (Highest First)</a></li>
-                            <li><a class="dropdown-item sort-option" href="#" data-sort="amount-asc">Amount (Lowest First)</a></li>
+                            <li><a class="dropdown-item sort-option" href="#" data-sort="date-desc">{{ _('Date (Newest First)') }}</a></li>
+                            <li><a class="dropdown-item sort-option" href="#" data-sort="date-asc">{{ _('Date (Oldest First)') }}</a></li>
+                            <li><a class="dropdown-item sort-option" href="#" data-sort="amount-desc">{{ _('Amount (Highest First)') }}</a></li>
+                            <li><a class="dropdown-item sort-option" href="#" data-sort="amount-asc">{{ _('Amount (Lowest First)') }}</a></li>
                         </ul>
                     </div>
                 </div>
@@ -76,7 +76,7 @@
                                     </div>
                                 </div>
                                 <div class="flex-grow-1">
-                                    <h6 class="text-muted mb-0">Total Invoices</h6>
+                                    <h6 class="text-muted mb-0">{{ _('Total Invoices') }}</h6>
                                     <h4 class="mb-0">{{ invoices|length }}</h4>
                                 </div>
                             </div>
@@ -93,7 +93,7 @@
                                     </div>
                                 </div>
                                 <div class="flex-grow-1">
-                                    <h6 class="text-muted mb-0">Paid</h6>
+                                    <h6 class="text-muted mb-0">{{ _('Paid') }}</h6>
                                     <h4 class="mb-0">{{ paid_count }}</h4>
                                 </div>
                             </div>
@@ -110,7 +110,7 @@
                                     </div>
                                 </div>
                                 <div class="flex-grow-1">
-                                    <h6 class="text-muted mb-0">Pending</h6>
+                                    <h6 class="text-muted mb-0">{{ _('Pending') }}</h6>
                                     <h4 class="mb-0">{{ pending_count }}</h4>
                                 </div>
                             </div>
@@ -127,7 +127,7 @@
                                     </div>
                                 </div>
                                 <div class="flex-grow-1">
-                                    <h6 class="text-muted mb-0">Overdue</h6>
+                                    <h6 class="text-muted mb-0">{{ _('Overdue') }}</h6>
                                     <h4 class="mb-0">{{ overdue_count }}</h4>
                                 </div>
                             </div>
@@ -144,13 +144,13 @@
                             <table class="table table-hover mb-0" id="invoicesTable">
                                 <thead class="table-light">
                                     <tr>
-                                        <th>Invoice #</th>
-                                        <th>Project</th>
-                                        <th>Date</th>
-                                        <th>Due Date</th>
-                                        <th>Amount</th>
-                                        <th>Status</th>
-                                        <th>Actions</th>
+                                        <th>{{ _('Invoice #') }}</th>
+                                        <th>{{ _('Project') }}</th>
+                                        <th>{{ _('Date') }}</th>
+                                        <th>{{ _('Due Date') }}</th>
+                                        <th>{{ _('Amount') }}</th>
+                                        <th>{{ _('Status') }}</th>
+                                        <th>{{ _('Actions') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -165,11 +165,11 @@
                                             <td>{{ "€{:,.2f}".format(invoice.amount) }}</td>
                                             <td>
                                                 {% if invoice.status == 'paid' %}
-                                                    <span class="badge bg-success">Paid</span>
+                                                    <span class="badge bg-success">{{ _('Paid') }}</span>
                                                 {% elif invoice.status == 'pending' %}
-                                                    <span class="badge bg-warning">Pending</span>
+                                                    <span class="badge bg-warning">{{ _('Pending') }}</span>
                                                 {% elif invoice.status == 'overdue' %}
-                                                    <span class="badge bg-danger">Overdue</span>
+                                                    <span class="badge bg-danger">{{ _('Overdue') }}</span>
                                                 {% endif %}
                                             </td>
                                             <td>
@@ -195,8 +195,8 @@
                     {% else %}
                         <div class="text-center py-5">
                             <i class="fas fa-file-invoice fa-3x mb-3 text-muted"></i>
-                            <h4>No invoices available</h4>
-                            <p>Your invoices will appear here once they are generated</p>
+                            <h4>{{ _('No invoices available') }}</h4>
+                            <p>{{ _('Your invoices will appear here once they are generated') }}</p>
                         </div>
                     {% endif %}
                 </div>

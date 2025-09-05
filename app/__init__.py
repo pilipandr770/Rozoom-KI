@@ -12,6 +12,7 @@ mail = Mail()
 
 # Import here to avoid circular imports
 from app.auth import login_manager
+from app.babel import init_babel
 
 
 def setup_schema_handling(app):
@@ -74,6 +75,9 @@ def create_app():
     # Initialize Flask-Mail
     mail.init_app(app)
     
+    # Initialize Flask-Babel
+    init_babel(app)
+    
     # Configure schema handling based on DB dialect
     with app.app_context():
         try:
@@ -99,6 +103,7 @@ def create_app():
     from .routes.blog import blog
     from .routes.auth import auth_bp
     from .routes.dashboard import dashboard_bp
+    from .routes.lang import lang_bp
     
     app.register_blueprint(pages_bp)
     app.register_blueprint(api_bp)
@@ -106,6 +111,7 @@ def create_app():
     app.register_blueprint(blog)
     app.register_blueprint(auth_bp)
     app.register_blueprint(dashboard_bp)
+    app.register_blueprint(lang_bp)
     
     # Register CLI commands
     from .commands import register_commands

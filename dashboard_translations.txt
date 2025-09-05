@@ -1,0 +1,254 @@
+msgid "Welcome back"
+msgstr "Willkommen zurück"
+
+msgid "Projects Overview"
+msgstr "Projektübersicht"
+
+msgid "New Projects"
+msgstr "Neue Projekte"
+
+msgid "Completed Projects"
+msgstr "Abgeschlossene Projekte"
+
+msgid "Total Projects"
+msgstr "Gesamtprojekte"
+
+msgid "Quick Actions"
+msgstr "Schnellaktionen"
+
+msgid "New Project Request"
+msgstr "Neue Projektanfrage"
+
+msgid "Contact Support"
+msgstr "Support kontaktieren"
+
+msgid "Update Profile"
+msgstr "Profil aktualisieren"
+
+msgid "Recent Activity"
+msgstr "Letzte Aktivität"
+
+msgid "Last login"
+msgstr "Letzter Login"
+
+msgid "Never"
+msgstr "Nie"
+
+msgid "No recent activity"
+msgstr "Keine neue Aktivität"
+
+msgid "Your Projects"
+msgstr "Ihre Projekte"
+
+msgid "View All"
+msgstr "Alle anzeigen"
+
+msgid "Started"
+msgstr "Gestartet"
+
+msgid "Progress"
+msgstr "Fortschritt"
+
+msgid "View Details"
+msgstr "Details anzeigen"
+
+msgid "No projects yet"
+msgstr "Noch keine Projekte"
+
+msgid "Start by submitting a new project request"
+msgstr "Beginnen Sie mit einer neuen Projektanfrage"
+
+msgid "Request a Project"
+msgstr "Projekt anfragen"
+
+msgid "Profile Settings"
+msgstr "Profileinstellungen"
+
+msgid "Personal Information"
+msgstr "Persönliche Informationen"
+
+msgid "Full Name"
+msgstr "Vollständiger Name"
+
+msgid "Email Address"
+msgstr "E-Mail-Adresse"
+
+msgid "Email cannot be changed. Contact support if needed."
+msgstr "E-Mail kann nicht geändert werden. Kontaktieren Sie bei Bedarf den Support."
+
+msgid "Phone Number"
+msgstr "Telefonnummer"
+
+msgid "Company"
+msgstr "Unternehmen"
+
+msgid "Change Password"
+msgstr "Passwort ändern"
+
+msgid "Current Password"
+msgstr "Aktuelles Passwort"
+
+msgid "New Password"
+msgstr "Neues Passwort"
+
+msgid "Confirm New Password"
+msgstr "Neues Passwort bestätigen"
+
+msgid "Leave password fields empty if you don't want to change your password."
+msgstr "Lassen Sie die Passwortfelder leer, wenn Sie Ihr Passwort nicht ändern möchten."
+
+msgid "Save Changes"
+msgstr "Änderungen speichern"
+
+msgid "Danger Zone"
+msgstr "Gefahrenbereich"
+
+msgid "Delete Account"
+msgstr "Konto löschen"
+
+msgid "Confirm Account Deletion"
+msgstr "Kontolöschung bestätigen"
+
+msgid "Warning: This action cannot be undone."
+msgstr "Warnung: Diese Aktion kann nicht rückgängig gemacht werden."
+
+msgid "Deleting your account will remove all your personal information from our system. Your projects and associated data will still be accessible to administrators."
+msgstr "Durch das Löschen Ihres Kontos werden alle Ihre persönlichen Daten aus unserem System entfernt. Ihre Projekte und zugehörigen Daten sind für Administratoren weiterhin zugänglich."
+
+msgid "To confirm, please type \"DELETE\" in the field below:"
+msgstr "Um zu bestätigen, geben Sie bitte \"DELETE\" in das Feld unten ein:"
+
+msgid "This feature is not yet implemented. Please contact support to delete your account."
+msgstr "Diese Funktion ist noch nicht implementiert. Bitte kontaktieren Sie den Support, um Ihr Konto zu löschen."
+
+msgid "All Statuses"
+msgstr "Alle Status"
+
+msgid "New"
+msgstr "Neu"
+
+msgid "In Progress"
+msgstr "In Bearbeitung"
+
+msgid "Testing"
+msgstr "Wird getestet"
+
+msgid "Completed"
+msgstr "Abgeschlossen"
+
+msgid "Newest First"
+msgstr "Neueste zuerst"
+
+msgid "Oldest First"
+msgstr "Älteste zuerst"
+
+msgid "Name (A-Z)"
+msgstr "Name (A-Z)"
+
+msgid "Name (Z-A)"
+msgstr "Name (Z-A)"
+
+msgid "Search projects"
+msgstr "Projekte suchen"
+
+msgid "Project"
+msgstr "Projekt"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "Start Date"
+msgstr "Startdatum"
+
+msgid "Estimated End"
+msgstr "Voraussichtliches Ende"
+
+msgid "Actions"
+msgstr "Aktionen"
+
+msgid "Not started"
+msgstr "Noch nicht begonnen"
+
+msgid "Not set"
+msgstr "Nicht festgelegt"
+
+msgid "View"
+msgstr "Ansehen"
+
+msgid "No projects found"
+msgstr "Keine Projekte gefunden"
+
+msgid "Messages"
+msgstr "Nachrichten"
+
+msgid "New Message"
+msgstr "Neue Nachricht"
+
+msgid "Inbox"
+msgstr "Posteingang"
+
+msgid "Sent"
+msgstr "Gesendet"
+
+msgid "From"
+msgstr "Von"
+
+msgid "Subject"
+msgstr "Betreff"
+
+msgid "Date"
+msgstr "Datum"
+
+msgid "Close"
+msgstr "Schließen"
+
+msgid "Reply"
+msgstr "Antworten"
+
+msgid "Message"
+msgstr "Nachricht"
+
+msgid "Invoices"
+msgstr "Rechnungen"
+
+msgid "Filter"
+msgstr "Filter"
+
+msgid "Paid"
+msgstr "Bezahlt"
+
+msgid "Pending"
+msgstr "Ausstehend"
+
+msgid "Overdue"
+msgstr "Überfällig"
+
+msgid "Back to Projects"
+msgstr "Zurück zu Projekten"
+
+msgid "Project Overview"
+msgstr "Projektübersicht"
+
+msgid "Description"
+msgstr "Beschreibung"
+
+msgid "No description provided."
+msgstr "Keine Beschreibung vorhanden."
+
+msgid "Estimated Completion"
+msgstr "Voraussichtliche Fertigstellung"
+
+msgid "Complete"
+msgstr "Fertiggestellt"
+
+msgid "Project Details"
+msgstr "Projektdetails"
+
+msgid "Budget"
+msgstr "Budget"
+
+msgid "Project Created"
+msgstr "Projekt erstellt"
+
+msgid "Not started yet"
+msgstr "Noch nicht begonnen"

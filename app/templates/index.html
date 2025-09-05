@@ -5,56 +5,49 @@
 {% block content %}
 <section class="hero">
   <div class="hero-content">
-    <h1>Intelligent AI Solutions for Modern Business</h1>
-    <p class="hero-subtitle">Transform your business with our state-of-the-art AI assistants and custom solutions</p>
+    <h1>{{ _('Intelligent AI Solutions for Modern Business') }}</h1>
+    <p class="hero-subtitle">{{ _('Transform your business with our state-of-the-art AI assistants and custom solutions') }}</p>
     <div class="hero-cta">
-      <a href="/services" class="btn">Explore Services</a>
-      <a href="/contact" class="btn btn-secondary">Contact Us</a>
+      <a href="/services" class="btn">{{ _('Explore Services') }}</a>
+      <a href="/contact" class="btn btn-secondary">{{ _('Contact Us') }}</a>
       {% if not current_user.is_authenticated %}
-      <a href="{{ url_for('auth.register') }}" class="btn btn-outline-primary">Sign Up for Free</a>
+      <a href="{{ url_for('auth.register') }}" class="btn btn-outline-primary">{{ _('Sign Up for Free') }}</a>
       {% else %}
-      <a href="{{ url_for('dashboard.index') }}" class="btn btn-outline-primary">Go to Dashboard</a>
+      <a href="{{ url_for('dashboard.index') }}" class="btn btn-outline-primary">{{ _('Go to Dashboard') }}</a>
       {% endif %}
     </div>
   </div>
 </section>
 
 <section class="features">
-  <h2 class="section-title">How We Can Help</h2>
+  <h2 class="section-title">{{ _('How We Can Help') }}</h2>
   <div class="feature-grid">
     <div class="feature-card">
       <div class="feature-icon">
         <i class="fas fa-globe fa-2x"></i>
       </div>
-      <h3>Web Development</h3>
-      <p>Custom websites and web applications with AI-powered features to enhance user experience.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">
-        <i class="fas fa-mobile-alt fa-2x"></i>
-      </div>
-      <h3>Mobile Solutions</h3>
-      <p>Native and cross-platform mobile applications with intelligent features and analytics.</p>
+      <h3>{{ _('Web Development') }}</h3>
+      <p>{{ _('Custom websites and web applications with AI-powered features to enhance user experience.') }}</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">
         <i class="fas fa-brain fa-2x"></i>
       </div>
-      <h3>ML & AI Integration</h3>
-      <p>Integrate machine learning models and AI capabilities into your existing software systems.</p>
+      <h3>{{ _('ML & AI Integration') }}</h3>
+      <p>{{ _('Integrate machine learning models and AI capabilities into your existing software systems.') }}</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">
         <i class="fas fa-robot fa-2x"></i>
       </div>
-      <h3>Process Automation</h3>
-      <p>Automate repetitive tasks and workflows to increase efficiency and reduce costs.</p>
+      <h3>{{ _('Process Automation') }}</h3>
+      <p>{{ _('Streamline your business operations with intelligent automation and workflow solutions.') }}</p>
     </div>
   </div>
 </section>
 
 <section class="testimonials">
-  <h2 class="section-title">What Our Clients Say</h2>
+  <h2 class="section-title">{{ _('What Our Clients Say') }}</h2>
   <div class="testimonial-slider">
     <div class="testimonial-card">
       <div class="testimonial-content">

@@ -10,6 +10,11 @@ class Config:
     POSTGRES_SCHEMA = os.getenv('POSTGRES_SCHEMA', 'rozoom_ki_schema')
     OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
     
+    # Babel settings for internationalization
+    LANGUAGES = ['en', 'de']
+    BABEL_DEFAULT_LOCALE = 'en'
+    BABEL_DEFAULT_TIMEZONE = 'UTC'
+    
     # Mail settings
     MAIL_SERVER = os.getenv('MAIL_SERVER', 'smtp.example.com')
     MAIL_PORT = int(os.getenv('MAIL_PORT', 587))

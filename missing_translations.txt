@@ -1,0 +1,1425 @@
+msgid ""Rozoom-KI transformed our customer service with their AI assistant. Response times dropped by 60% and customer satisfaction increased dramatically.""
+msgstr ""
+
+msgid ""The machine learning integration for our inventory management has saved us thousands of euros monthly and improved our forecasting accuracy by 40%.""
+msgstr ""
+
+msgid "&copy; 2025 Rozoom-KI. All rights reserved."
+msgstr ""
+
+msgid "&laquo;"
+msgstr ""
+
+msgid "&raquo;"
+msgstr ""
+
+msgid "+49 30 123456789"
+msgstr ""
+
+msgid "..."
+msgstr ""
+
+msgid "1. Acceptance of Terms"
+msgstr ""
+
+msgid "1. Introduction"
+msgstr ""
+
+msgid "10. Contact Us"
+msgstr ""
+
+msgid "10178 Berlin, Germany"
+msgstr ""
+
+msgid "2. Description of Service"
+msgstr ""
+
+msgid "2. The Data We Collect"
+msgstr ""
+
+msgid "3. How We Use Your Data"
+msgstr ""
+
+msgid "3. User Accounts"
+msgstr ""
+
+msgid "4. Data Security"
+msgstr ""
+
+msgid "4. Payment Terms"
+msgstr ""
+
+msgid "5. Intellectual Property"
+msgstr ""
+
+msgid "5. Your Legal Rights"
+msgstr ""
+
+msgid "6. Contact Us"
+msgstr ""
+
+msgid "6. User Content"
+msgstr ""
+
+msgid "7. Limitation of Liability"
+msgstr ""
+
+msgid "8. Governing Law"
+msgstr ""
+
+msgid "9. Changes to Terms"
+msgstr ""
+
+msgid "A brief summary of the blog post"
+msgstr ""
+
+msgid "A short name for the package"
+msgstr ""
+
+msgid "About"
+msgstr ""
+
+msgid "About the author."
+msgstr ""
+
+msgid "Actions"
+msgstr ""
+
+msgid "Actions here can't be undone. Please be careful."
+msgstr ""
+
+msgid "Active"
+msgstr ""
+
+msgid "Active Projects"
+msgstr ""
+
+msgid "Additional details about what's included in the package"
+msgstr ""
+
+msgid "Admin"
+msgstr ""
+
+msgid "Admin Dashboard"
+msgstr ""
+
+msgid "Admin Login"
+msgstr ""
+
+msgid "Admin Panel"
+msgstr ""
+
+msgid "Administrator"
+msgstr ""
+
+msgid "Agile development methodology"
+msgstr ""
+
+msgid "All Invoices"
+msgstr ""
+
+msgid "All Statuses"
+msgstr ""
+
+msgid "All content, features, and functionality of our services, including but not limited to text, graphics, logos, icons, and software, are the exclusive property of Rozoom-KI or its licensors and are protected by copyright, trademark, and other intellectual property laws."
+msgstr ""
+
+msgid "Already have an account?"
+msgstr ""
+
+msgid "Already have an account? Login"
+msgstr ""
+
+msgid "Amount"
+msgstr ""
+
+msgid "Amount (Highest First)"
+msgstr ""
+
+msgid "Amount (Lowest First)"
+msgstr ""
+
+msgid "Anna Schmidt"
+msgstr ""
+
+msgid "Are you sure you want to delete the pricing package"
+msgstr ""
+
+msgid "As a service provider, we are responsible for our own content on these pages according to § 7 paragraph 1 TMG (German Telemedia Act) and general laws. According to §§ 8 to 10 TMG, however, we as a service provider are not obliged to monitor transmitted or stored external information or to investigate circumstances that indicate illegal activity."
+msgstr ""
+
+msgid "Attachments"
+msgstr ""
+
+msgid "Attachments (optional)"
+msgstr ""
+
+msgid "Automation Tool"
+msgstr ""
+
+msgid "Back to Blog"
+msgstr ""
+
+msgid "Back to Dashboard"
+msgstr ""
+
+msgid "Blog"
+msgstr ""
+
+msgid "Blog Categories"
+msgstr ""
+
+msgid "Blog Posts"
+msgstr ""
+
+msgid "Blog Tags"
+msgstr ""
+
+msgid "Brand Guidelines"
+msgstr ""
+
+msgid "Budget"
+msgstr ""
+
+msgid "By accessing or using the services of Rozoom-KI ("we", "us", "our"), you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our services."
+msgstr ""
+
+msgid "CTO, TechSolutions GmbH"
+msgstr ""
+
+msgid "Call Us"
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
+msgid "Cancelled"
+msgstr ""
+
+msgid "Categories"
+msgstr ""
+
+msgid "Category"
+msgstr ""
+
+msgid "Change Password"
+msgstr ""
+
+msgid "Check all that apply. This helps us understand what resources are available to start with."
+msgstr ""
+
+msgid "Check back soon for our latest articles and insights."
+msgstr ""
+
+msgid "Choose Your Package"
+msgstr ""
+
+msgid "Choose the category that best describes your project."
+msgstr ""
+
+msgid "Clearly define what problem your project solves or what opportunity it addresses."
+msgstr ""
+
+msgid "Close"
+msgstr ""
+
+msgid "Company"
+msgstr ""
+
+msgid "Company Name"
+msgstr ""
+
+msgid "Company:"
+msgstr ""
+
+msgid "Completed"
+msgstr ""
+
+msgid "Completed Projects"
+msgstr ""
+
+msgid "Comprehensive (Ongoing development and support)"
+msgstr ""
+
+msgid "Confirm Account Deletion"
+msgstr ""
+
+msgid "Confirm Deletion"
+msgstr ""
+
+msgid "Confirm New Password"
+msgstr ""
+
+msgid "Confirm Password *"
+msgstr ""
+
+msgid "Contact Data"
+msgstr ""
+
+msgid "Contact Information"
+msgstr ""
+
+msgid "Contact Project Manager"
+msgstr ""
+
+msgid "Contact Us"
+msgstr ""
+
+msgid "Contact our team for a free consultation and we'll help you select the perfect package for your project."
+msgstr ""
+
+msgid "Contact:"
+msgstr ""
+
+msgid "Content"
+msgstr ""
+
+msgid "Copyright"
+msgstr ""
+
+msgid "Cost per hour in Euro"
+msgstr ""
+
+msgid "Create Account"
+msgstr ""
+
+msgid "Create Blog Post"
+msgstr ""
+
+msgid "Create Category"
+msgstr ""
+
+msgid "Create New Category"
+msgstr ""
+
+msgid "Create New Post"
+msgstr ""
+
+msgid "Create New Tag"
+msgstr ""
+
+msgid "Create Package"
+msgstr ""
+
+msgid "Create Post"
+msgstr ""
+
+msgid "Create Pricing Package"
+msgstr ""
+
+msgid "Create Tag"
+msgstr ""
+
+msgid "Create Your Personal Account"
+msgstr ""
+
+msgid "Create an Account"
+msgstr ""
+
+msgid "Current Password"
+msgstr ""
+
+msgid "Custom Package"
+msgstr ""
+
+msgid "Custom development"
+msgstr ""
+
+msgid "Custom solutions"
+msgstr ""
+
+msgid "Cutting-edge technologies"
+msgstr ""
+
+msgid "DE"
+msgstr ""
+
+msgid "Danger Zone"
+msgstr ""
+
+msgid "Dashboard"
+msgstr ""
+
+msgid "Data Analysis"
+msgstr ""
+
+msgid "Data Analytics"
+msgstr ""
+
+msgid "Data Encryption"
+msgstr ""
+
+msgid "Date"
+msgstr ""
+
+msgid "Date (Newest First)"
+msgstr ""
+
+msgid "Date (Oldest First)"
+msgstr ""
+
+msgid "Dedicated support"
+msgstr ""
+
+msgid "Delete"
+msgstr ""
+
+msgid "Delete Account"
+msgstr ""
+
+msgid "Delete Package"
+msgstr ""
+
+msgid "Deleting your account will remove all your personal information from our system. Your projects and associated data will still be accessible to administrators."
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "Design Mockups"
+msgstr ""
+
+msgid "Direct messaging with our development team"
+msgstr ""
+
+msgid "Dispute Resolution"
+msgstr ""
+
+msgid "Don't have an account?"
+msgstr ""
+
+msgid "Dr. Markus Schmidt, CEO"
+msgstr ""
+
+msgid "Draft"
+msgstr ""
+
+msgid "Due Date"
+msgstr ""
+
+msgid "EN"
+msgstr ""
+
+msgid "Edit"
+msgstr ""
+
+msgid "Edit Blog Post"
+msgstr ""
+
+msgid "Edit Category"
+msgstr ""
+
+msgid "Edit Pricing Package"
+msgstr ""
+
+msgid "Edit Tag"
+msgstr ""
+
+msgid "Email"
+msgstr ""
+
+msgid "Email *"
+msgstr ""
+
+msgid "Email Address"
+msgstr ""
+
+msgid "Email Address *"
+msgstr ""
+
+msgid "Email Us"
+msgstr ""
+
+msgid "Email cannot be changed. Contact support if needed."
+msgstr ""
+
+msgid "Email or Username"
+msgstr ""
+
+msgid "Email:"
+msgstr ""
+
+msgid "Email: legal@rozoom-ki.com"
+msgstr ""
+
+msgid "Email: privacy@rozoom-ki.com"
+msgstr ""
+
+msgid "Enter your email address below and we'll send you instructions to reset your password."
+msgstr ""
+
+msgid "Enterprise solutions"
+msgstr ""
+
+msgid "Est. End Date"
+msgstr ""
+
+msgid "Estimated Completion"
+msgstr ""
+
+msgid "Estimated End"
+msgstr ""
+
+msgid "Estimated End Date"
+msgstr ""
+
+msgid "Excerpt"
+msgstr ""
+
+msgid "Existing Code"
+msgstr ""
+
+msgid "Expected Format"
+msgstr ""
+
+msgid "Expert team with proven track record"
+msgstr ""
+
+msgid "FAQ"
+msgstr ""
+
+msgid "Featured Image URL"
+msgstr ""
+
+msgid "Fees for our services are described on our website or in individual agreements. Unless otherwise specified, all fees are quoted in Euro (€) and are non-refundable. We reserve the right to change our fees at any time, with notice provided to existing customers."
+msgstr ""
+
+msgid "Fill out our project questionnaire to get a free time and budget estimate for your project. No obligations!"
+msgstr ""
+
+msgid "Flexible (6+ months)"
+msgstr ""
+
+msgid "Flexible hours"
+msgstr ""
+
+msgid "Focus on the core functionality that is absolutely necessary for your project to succeed."
+msgstr ""
+
+msgid "For example: payment gateways, CRMs, ERPs, social media platforms, etc."
+msgstr ""
+
+msgid "For example: programming languages, cloud providers, frameworks, or architecture preferences."
+msgstr ""
+
+msgid "For example: user acquisition, conversion rates, efficiency improvements, cost savings, etc."
+msgstr ""
+
+msgid "For special requirements"
+msgstr ""
+
+msgid "Forgot your password?"
+msgstr ""
+
+msgid "Free Consultation"
+msgstr ""
+
+msgid "Frequently asked questions."
+msgstr ""
+
+msgid "From"
+msgstr ""
+
+msgid "From:"
+msgstr ""
+
+msgid "Full Name"
+msgstr ""
+
+msgid "Full Name *"
+msgstr ""
+
+msgid "Fully Managed Service"
+msgstr ""
+
+msgid "GDPR Compliance"
+msgstr ""
+
+msgid "Get Started Today"
+msgstr ""
+
+msgid "Get a free 30-minute consultation with our experts to discuss your project needs."
+msgstr ""
+
+msgid "Get in Touch"
+msgstr ""
+
+msgid "Get the perfect amount of development time for your project needs"
+msgstr ""
+
+msgid "HIPAA Compliance"
+msgstr ""
+
+msgid "HTML content is allowed"
+msgstr ""
+
+msgid "Hauptstraße 15"
+msgstr ""
+
+msgid "Have a question or ready to start your next project? We're here to help!"
+msgstr ""
+
+msgid "Hours"
+msgstr ""
+
+msgid "Hours*"
+msgstr ""
+
+msgid "However, a permanent control of the contents of the linked pages is not reasonable without concrete evidence of a violation of law. If we become aware of any legal violations, we will remove such links immediately."
+msgstr ""
+
+msgid "I agree to the"
+msgstr ""
+
+msgid "ID"
+msgstr ""
+
+msgid "ISO 27001 Compliance"
+msgstr ""
+
+msgid "Identity Data"
+msgstr ""
+
+msgid "If you have any questions about these Terms, please contact us at:"
+msgstr ""
+
+msgid "If you have any questions about this privacy policy or our privacy practices, please contact us at:"
+msgstr ""
+
+msgid "Import Blog Data"
+msgstr ""
+
+msgid "Import Data"
+msgstr ""
+
+msgid "Impressum"
+msgstr ""
+
+msgid "Impressum (Legal Notice)"
+msgstr ""
+
+msgid "In Progress"
+msgstr ""
+
+msgid "Inactive"
+msgstr ""
+
+msgid "Include any considerations, challenges, or specific requirements not covered by previous questions."
+msgstr ""
+
+msgid "Information According to § 5 TMG"
+msgstr ""
+
+msgid "Insofar as the content on this site was not created by the operator, the copyrights of third parties are respected. In particular, third-party content is marked as such. Should you nevertheless become aware of a copyright infringement, please inform us accordingly. If we become aware of any infringements, we will remove such content immediately."
+msgstr ""
+
+msgid "Invoice #"
+msgstr ""
+
+msgid "Invoices"
+msgstr ""
+
+msgid "JSON File"
+msgstr ""
+
+msgid "Last Updated"
+msgstr ""
+
+msgid "Last login:"
+msgstr ""
+
+msgid "Last updated: September 1, 2025"
+msgstr ""
+
+msgid "Latest insights, news and technology updates"
+msgstr ""
+
+msgid "Leave password fields empty if you don't want to change your password."
+msgstr ""
+
+msgid "Less than €10,000"
+msgstr ""
+
+msgid "Liability for Content"
+msgstr ""
+
+msgid "Liability for Links"
+msgstr ""
+
+msgid "Login"
+msgstr ""
+
+msgid "Make sure all words are spelled correctly."
+msgstr ""
+
+msgid "Manage Categories"
+msgstr ""
+
+msgid "Manage Posts"
+msgstr ""
+
+msgid "Manage Tags"
+msgstr ""
+
+msgid "Manage Users"
+msgstr ""
+
+msgid "Message"
+msgstr ""
+
+msgid "Messages"
+msgstr ""
+
+msgid "Messages from our team will appear here"
+msgstr ""
+
+msgid "Messages you send will appear here"
+msgstr ""
+
+msgid "Michael Berger"
+msgstr ""
+
+msgid "Minimal (Bug fixes only)"
+msgstr ""
+
+msgid "Mobile Application"
+msgstr ""
+
+msgid "Mon-Fri 9:00-18:00"
+msgstr ""
+
+msgid "Most Popular"
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+msgid "Name (A-Z)"
+msgstr ""
+
+msgid "Name (Z-A)"
+msgstr ""
+
+msgid "Name *"
+msgstr ""
+
+msgid "Name:"
+msgstr ""
+
+msgid "Need Help Choosing?"
+msgstr ""
+
+msgid "New"
+msgstr ""
+
+msgid "New Message"
+msgstr ""
+
+msgid "New Password"
+msgstr ""
+
+msgid "New Projects"
+msgstr ""
+
+msgid "Newest First"
+msgstr ""
+
+msgid "Next"
+msgstr ""
+
+msgid "Next Post"
+msgstr ""
+
+msgid "No"
+msgstr ""
+
+msgid "No blog posts found."
+msgstr ""
+
+msgid "No categories found"
+msgstr ""
+
+msgid "No categories yet"
+msgstr ""
+
+msgid "No invoices available"
+msgstr ""
+
+msgid "No posts found in this category."
+msgstr ""
+
+msgid "No posts found with this tag."
+msgstr ""
+
+msgid "No posts in this category"
+msgstr ""
+
+msgid "No posts with this tag"
+msgstr ""
+
+msgid "No posts yet"
+msgstr ""
+
+msgid "No pricing packages are currently available. Please contact us for custom pricing."
+msgstr ""
+
+msgid "No pricing packages found"
+msgstr ""
+
+msgid "No projects found"
+msgstr ""
+
+msgid "No projects yet"
+msgstr ""
+
+msgid "No recent activity"
+msgstr ""
+
+msgid "No recent posts"
+msgstr ""
+
+msgid "No results found"
+msgstr ""
+
+msgid "No sent messages"
+msgstr ""
+
+msgid "No tags found"
+msgstr ""
+
+msgid "No tags yet"
+msgstr ""
+
+msgid "No tasks defined yet"
+msgstr ""
+
+msgid "No updates yet"
+msgstr ""
+
+msgid "No users found"
+msgstr ""
+
+msgid "None"
+msgstr ""
+
+msgid "None of the above"
+msgstr ""
+
+msgid "Not yet decided"
+msgstr ""
+
+msgid "Number of hours included in the package"
+msgstr ""
+
+msgid "Object to processing of your personal data."
+msgstr ""
+
+msgid "Obligations to remove or block the use of information according to general laws remain unaffected. However, liability in this respect is only possible from the time of knowledge of a specific legal violation. As soon as we become aware of such legal violations, we will remove this content immediately."
+msgstr ""
+
+msgid "Oldest First"
+msgstr ""
+
+msgid "On Hold"
+msgstr ""
+
+msgid "Ongoing support and maintenance"
+msgstr ""
+
+msgid "Online invoicing and payment processing"
+msgstr ""
+
+msgid "Only active packages are displayed on the pricing page"
+msgstr ""
+
+msgid "Operations Director, RetailPlus"
+msgstr ""
+
+msgid "Other"
+msgstr ""
+
+msgid "Our Blog"
+msgstr ""
+
+msgid "Our Office"
+msgstr ""
+
+msgid "Our offer contains links to external websites of third parties, on whose contents we have no influence. Therefore, we cannot assume any liability for these external contents. The respective provider or operator of the pages is always responsible for the content of the linked pages. The linked pages were checked for possible legal violations at the time of linking. Illegal contents were not recognizable at the time of linking."
+msgstr ""
+
+msgid "Our team of experts is ready to help you implement intelligent solutions."
+msgstr ""
+
+msgid "Overdue"
+msgstr ""
+
+msgid "PCI DSS Compliance"
+msgstr ""
+
+msgid "Package Details"
+msgstr ""
+
+msgid "Package Name*"
+msgstr ""
+
+msgid "Package Summary:"
+msgstr ""
+
+msgid "Paid"
+msgstr ""
+
+msgid "Password"
+msgstr ""
+
+msgid "Password *"
+msgstr ""
+
+msgid "Password must be at least 8 characters long"
+msgstr ""
+
+msgid "Pending"
+msgstr ""
+
+msgid "Personal Information"
+msgstr ""
+
+msgid "Personal dashboard to monitor project progress"
+msgstr ""
+
+msgid "Phone"
+msgstr ""
+
+msgid "Phone Number"
+msgstr ""
+
+msgid "Phone:"
+msgstr ""
+
+msgid "Popular Tags"
+msgstr ""
+
+msgid "Post Count"
+msgstr ""
+
+msgid "Postal address: Hauptstraße 15, 10178 Berlin, Germany"
+msgstr ""
+
+msgid "Posts by Category"
+msgstr ""
+
+msgid "Previous"
+msgstr ""
+
+msgid "Previous Post"
+msgstr ""
+
+msgid "Price per Hour (€)"
+msgstr ""
+
+msgid "Price per Hour (€)*"
+msgstr ""
+
+msgid "Pricing Packages"
+msgstr ""
+
+msgid "Priority service"
+msgstr ""
+
+msgid "Privacy Policy"
+msgstr ""
+
+msgid "Profile Settings"
+msgstr ""
+
+msgid "Progress"
+msgstr ""
+
+msgid "Project"
+msgstr ""
+
+msgid "Project Created"
+msgstr ""
+
+msgid "Project Description*"
+msgstr ""
+
+msgid "Project Details"
+msgstr ""
+
+msgid "Project Information"
+msgstr ""
+
+msgid "Project Overview"
+msgstr ""
+
+msgid "Project Title*"
+msgstr ""
+
+msgid "Project milestone tracking and updates"
+msgstr ""
+
+msgid "Project updates and milestones will appear here"
+msgstr ""
+
+msgid "Projects"
+msgstr ""
+
+msgid "Projects Overview"
+msgstr ""
+
+msgid "Publication Status"
+msgstr ""
+
+msgid "Published"
+msgstr ""
+
+msgid "Quick Actions"
+msgstr ""
+
+msgid "Read More"
+msgstr ""
+
+msgid "Ready to transform your business with AI?"
+msgstr ""
+
+msgid "Recent Activity"
+msgstr ""
+
+msgid "Recent Blog Posts"
+msgstr ""
+
+msgid "Recent Posts"
+msgstr ""
+
+msgid "Register"
+msgstr ""
+
+msgid "Register Now"
+msgstr ""
+
+msgid "Registered"
+msgstr ""
+
+msgid "Registered Users"
+msgstr ""
+
+msgid "Registered:"
+msgstr ""
+
+msgid "Registration:"
+msgstr ""
+
+msgid "Regular updates"
+msgstr ""
+
+msgid "Related Posts"
+msgstr ""
+
+msgid "Related Project (optional)"
+msgstr ""
+
+msgid "Remember me"
+msgstr ""
+
+msgid "Remember your password?"
+msgstr ""
+
+msgid "Reply"
+msgstr ""
+
+msgid "Represented by:"
+msgstr ""
+
+msgid "Request a Project"
+msgstr ""
+
+msgid "Request a Project Estimate"
+msgstr ""
+
+msgid "Request access to your personal data."
+msgstr ""
+
+msgid "Request correction of your personal data."
+msgstr ""
+
+msgid "Request erasure of your personal data."
+msgstr ""
+
+msgid "Request restriction of processing your personal data."
+msgstr ""
+
+msgid "Request transfer of your personal data."
+msgstr ""
+
+msgid "Requirements Document"
+msgstr ""
+
+msgid "Reset Password"
+msgstr ""
+
+msgid "Responsible for Content According to § 55 Abs. 2 RStV"
+msgstr ""
+
+msgid "Right to withdraw consent."
+msgstr ""
+
+msgid "Rozoom Assistant"
+msgstr ""
+
+msgid "Rozoom-KI ("we", "us", or "our") respects your privacy and is committed to protecting your personal data. This privacy policy will inform you about how we look after your personal data when you visit our website and tell you about your privacy rights and how the law protects you."
+msgstr ""
+
+msgid "Rozoom-KI provides custom software development and AI integration services as described on our website. We reserve the right to modify, suspend, or discontinue any part of our services at any time without notice."
+msgstr ""
+
+msgid "SOC 2 Compliance"
+msgstr ""
+
+msgid "Save Changes"
+msgstr ""
+
+msgid "Search"
+msgstr ""
+
+msgid "Search Results"
+msgstr ""
+
+msgid "Select Package"
+msgstr ""
+
+msgid "Select a budget range"
+msgstr ""
+
+msgid "Select a category"
+msgstr ""
+
+msgid "Select a project type"
+msgstr ""
+
+msgid "Select a timeline"
+msgstr ""
+
+msgid "Select recipient"
+msgstr ""
+
+msgid "Select support level"
+msgstr ""
+
+msgid "Send Message"
+msgstr ""
+
+msgid "Send Reply"
+msgstr ""
+
+msgid "Send Reset Link"
+msgstr ""
+
+msgid "Send Us a Message"
+msgstr ""
+
+msgid "Share this post:"
+msgstr ""
+
+msgid "Slug"
+msgstr ""
+
+msgid "Some of our services may require you to create an account. You are responsible for maintaining the confidentiality of your account information and for all activities that occur under your account. You agree to notify us immediately of any unauthorized use of your account."
+msgstr ""
+
+msgid "Specify who will be using your solution (e.g., businesses, consumers, specific industry professionals)."
+msgstr ""
+
+msgid "Standard (3-6 months)"
+msgstr ""
+
+msgid "Standard (Bug fixes and minor updates)"
+msgstr ""
+
+msgid "Start Date"
+msgstr ""
+
+msgid "Start by submitting a new project request"
+msgstr ""
+
+msgid "Status"
+msgstr ""
+
+msgid "Status*"
+msgstr ""
+
+msgid "Subject"
+msgstr ""
+
+msgid "Submit Project Request"
+msgstr ""
+
+msgid "Suggestions:"
+msgstr ""
+
+msgid "Support included"
+msgstr ""
+
+msgid "Tags"
+msgstr ""
+
+msgid "Tags:"
+msgstr ""
+
+msgid "Tailored to Your Needs"
+msgstr ""
+
+msgid "Task"
+msgstr ""
+
+msgid "Tasks will appear here once the project planning phase is complete"
+msgstr ""
+
+msgid "Technical Data"
+msgstr ""
+
+msgid "Terms of Service"
+msgstr ""
+
+msgid "Testing"
+msgstr ""
+
+msgid "The European Commission provides a platform for online dispute resolution (OS):"
+msgstr ""
+
+msgid "The content and works created by the site operators on these pages are subject to German copyright law. Duplication, processing, distribution, and any kind of exploitation outside the limits of copyright require the written consent of the respective author or creator. Downloads and copies of this site are only permitted for private, non-commercial use."
+msgstr ""
+
+msgid "These Terms shall be governed by and construed in accordance with the laws of Germany, without regard to its conflict of law provisions."
+msgstr ""
+
+msgid "These are features that could be implemented in later phases of the project."
+msgstr ""
+
+msgid "This action cannot be undone."
+msgstr ""
+
+msgid "This helps us determine the development pace and resource allocation."
+msgstr ""
+
+msgid "This helps us plan for post-launch resources and maintenance."
+msgstr ""
+
+msgid "This helps us suggest solutions that fit within your financial constraints."
+msgstr ""
+
+msgid "This helps us understand your vision and aesthetic preferences."
+msgstr ""
+
+msgid "This user doesn't have any projects yet."
+msgstr ""
+
+msgid "This will be used for login and displayed in your profile"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "To"
+msgstr ""
+
+msgid "To confirm, please type "DELETE" in the field below:"
+msgstr ""
+
+msgid "To manage our relationship with you."
+msgstr ""
+
+msgid "To process and deliver your order."
+msgstr ""
+
+msgid "To recommend products or services that may be of interest to you."
+msgstr ""
+
+msgid "To register you as a new customer."
+msgstr ""
+
+msgid "To the maximum extent permitted by law, Rozoom-KI shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of profits, data, use, or goodwill, arising out of or in connection with these terms or the use or inability to use our services."
+msgstr ""
+
+msgid "To:"
+msgstr ""
+
+msgid "Total Invoices"
+msgstr ""
+
+msgid "Total Price (€)"
+msgstr ""
+
+msgid "Total Price:"
+msgstr ""
+
+msgid "Total Projects"
+msgstr ""
+
+msgid "Track your projects, access personalized services, and collaborate with our team in real-time."
+msgstr ""
+
+msgid "Transparent pricing and process"
+msgstr ""
+
+msgid "Try different keywords."
+msgstr ""
+
+msgid "Try more general keywords."
+msgstr ""
+
+msgid "Turn your data into actionable insights with our comprehensive data analysis and visualization services."
+msgstr ""
+
+msgid "Two-factor Authentication"
+msgstr ""
+
+msgid "URL-friendly version of the name (e.g., "javascript")"
+msgstr ""
+
+msgid "URL-friendly version of the name (e.g., "web-development")"
+msgstr ""
+
+msgid "URL-friendly version of the title (e.g., "my-blog-post")"
+msgstr ""
+
+msgid "Under certain circumstances, you have rights under data protection laws in relation to your personal data, including the right to:"
+msgstr ""
+
+msgid "Update Category"
+msgstr ""
+
+msgid "Update Package"
+msgstr ""
+
+msgid "Update Post"
+msgstr ""
+
+msgid "Update Tag"
+msgstr ""
+
+msgid "Upload JSON File"
+msgstr ""
+
+msgid "Upload a JSON file containing blog data to import. This should be in the format generated by the Export Blog Data function."
+msgstr ""
+
+msgid "Urgent (1-2 months)"
+msgstr ""
+
+msgid "Usage Data"
+msgstr ""
+
+msgid "User Information"
+msgstr ""
+
+msgid "User Management"
+msgstr ""
+
+msgid "User Stories"
+msgstr ""
+
+msgid "Username"
+msgstr ""
+
+msgid "Username:"
+msgstr ""
+
+msgid "Users"
+msgstr ""
+
+msgid "VAT Identification Number:"
+msgstr ""
+
+msgid "View"
+msgstr ""
+
+msgid "View All"
+msgstr ""
+
+msgid "View All Posts"
+msgstr ""
+
+msgid "View Details"
+msgstr ""
+
+msgid "Warning:"
+msgstr ""
+
+msgid "Warning: This action cannot be undone."
+msgstr ""
+
+msgid "We are not willing or obliged to participate in dispute resolution proceedings before a consumer arbitration board."
+msgstr ""
+
+msgid "We have put in place appropriate security measures to prevent your personal data from being accidentally lost, used or accessed in an unauthorized way, altered or disclosed. We limit access to your personal data to those employees, agents, contractors and other third parties who have a business need to know."
+msgstr ""
+
+msgid "We may collect, use, store and transfer different kinds of personal data about you which we have grouped together as follows:"
+msgstr ""
+
+msgid "We reserve the right to modify these Terms at any time. We will provide notice of significant changes through our website or via email. Your continued use of our services after such modifications constitutes your acceptance of the revised Terms."
+msgstr ""
+
+msgid "We will only use your personal data when the law allows us to. Most commonly, we will use your personal data in the following circumstances:"
+msgstr ""
+
+msgid "Web Application"
+msgstr ""
+
+msgid "Why Choose Us"
+msgstr ""
+
+msgid "Wireframes"
+msgstr ""
+
+msgid "Yes"
+msgstr ""
+
+msgid "You retain ownership of any content you submit to our services. By submitting content, you grant us a worldwide, non-exclusive, royalty-free license to use, reproduce, modify, adapt, publish, translate, and distribute your content in any existing or future media."
+msgstr ""
+
+msgid "Your Message"
+msgstr ""
+
+msgid "Your Projects"
+msgstr ""
+
+msgid "Your inbox is empty"
+msgstr ""
+
+msgid "Your invoices will appear here once they are generated"
+msgstr ""
+
+msgid "Your message has been sent successfully. We'll get back to you soon!"
+msgstr ""
+
+msgid "and"
+msgstr ""
+
+msgid "includes email address and telephone numbers."
+msgstr ""
+
+msgid "includes first name, last name, username or similar identifier."
+msgstr ""
+
+msgid "includes information about how you use our website and services."
+msgstr ""
+
+msgid "includes internet protocol (IP) address, browser type and version, time zone setting and location, browser plug-in types and versions, operating system and platform, and other technology on the devices you use to access this website."
+msgstr ""
+
+msgid "info@rozoom-ki.com"
+msgstr ""
+
+msgid "support@rozoom-ki.com"
+msgstr ""
+
+msgid "€10,000 - €30,000"
+msgstr ""
+
+msgid "€100,000+"
+msgstr ""
+
+msgid "€30,000 - €100,000"
+msgstr ""
+
