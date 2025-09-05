@@ -1,0 +1,176 @@
+{% extends 'base.html' %}
+
+{% block title %}Административная панель{% endblock %}
+
+{% block head %}
+{{ super() }}
+<style>
+    .admin-sidebar {
+        background-color: #212529;
+        color: #fff;
+        height: 100%;
+        min-height: calc(100vh - 56px);
+        padding-top: 20px;
+    }
+    .admin-sidebar .nav-link {
+        color: rgba(255,255,255,.75);
+        padding: 0.5rem 1rem;
+    }
+    .admin-sidebar .nav-link:hover,
+    .admin-sidebar .nav-link.active {
+        color: #fff;
+        background-color: rgba(255,255,255,.1);
+    }
+    .admin-content {
+        padding: 20px;
+    }
+    .admin-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        grid-gap: 20px;
+        margin-bottom: 20px;
+    }
+    .admin-stat-card {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,.05);
+        padding: 20px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .admin-stat-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0,0,0,.1);
+    }
+    .admin-stat-value {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    .admin-stat-label {
+        color: #666;
+        font-size: 1rem;
+    }
+    .admin-actions {
+        margin-bottom: 20px;
+    }
+    .content-header {
+        margin-bottom: 30px;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 15px;
+    }
+    .schedule-card {
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,.05);
+        margin-bottom: 20px;
+        padding: 20px;
+        transition: transform 0.2s ease;
+    }
+    .schedule-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0,0,0,.1);
+    }
+    .schedule-card h3 {
+        margin-top: 0;
+        margin-bottom: 10px;
+        color: #333;
+    }
+    .schedule-card .badge {
+        font-size: 0.8rem;
+        margin-right: 5px;
+        padding: 5px 10px;
+    }
+    .schedule-card .topic {
+        font-style: italic;
+        color: #666;
+        margin-bottom: 10px;
+    }
+    .schedule-card .schedule-actions {
+        margin-top: 15px;
+        display: flex;
+        gap: 10px;
+    }
+    .btn-action {
+        padding: 5px 15px;
+        font-size: 0.9rem;
+    }
+    .content-card {
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,.05);
+        margin-bottom: 20px;
+        overflow: hidden;
+    }
+    .content-card .card-header {
+        background-color: #f8f9fa;
+        padding: 15px 20px;
+        border-bottom: 1px solid #eee;
+    }
+    .content-card .card-body {
+        padding: 20px;
+    }
+    .content-card .status {
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        margin-left: 10px;
+    }
+    .status-published {
+        background-color: #d4edda;
+        color: #155724;
+    }
+    .status-planned {
+        background-color: #fff3cd;
+        color: #856404;
+    }
+    .status-generating {
+        background-color: #cce5ff;
+        color: #004085;
+    }
+    .status-failed {
+        background-color: #f8d7da;
+        color: #721c24;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 col-lg-2 admin-sidebar">
+            <h5 class="mt-2 mb-4 text-center">Админ панель</h5>
+            <div class="nav flex-column">
+                <a class="nav-link {% if request.path == '/admin/' %}active{% endif %}" href="{{ url_for('admin.index') }}">
+                    <i class="fas fa-tachometer-alt"></i> Дашборд
+                </a>
+                <a class="nav-link {% if '/admin/users' in request.path %}active{% endif %}" href="{{ url_for('admin.users') }}">
+                    <i class="fas fa-users"></i> Пользователи
+                </a>
+                <a class="nav-link {% if '/admin/blog/posts' in request.path %}active{% endif %}" href="{{ url_for('blog.posts') }}">
+                    <i class="fas fa-file-alt"></i> Посты блога
+                </a>
+                <a class="nav-link {% if '/admin/blog/categories' in request.path %}active{% endif %}" href="{{ url_for('blog.categories') }}">
+                    <i class="fas fa-folder"></i> Категории блога
+                </a>
+                <a class="nav-link {% if '/admin/blog/tags' in request.path %}active{% endif %}" href="{{ url_for('blog.tags') }}">
+                    <i class="fas fa-tags"></i> Теги блога
+                </a>
+                <a class="nav-link {% if '/admin/auto-content' in request.path %}active{% endif %}" href="{{ url_for('auto_content.index') }}">
+                    <i class="fas fa-robot"></i> Авто-контент
+                </a>
+                <a class="nav-link {% if '/admin/pricing' in request.path %}active{% endif %}" href="{{ url_for('admin.pricing_packages') }}">
+                    <i class="fas fa-money-bill"></i> Цены и тарифы
+                </a>
+                <a class="nav-link" href="{{ url_for('main.index') }}">
+                    <i class="fas fa-home"></i> На главную
+                </a>
+            </div>
+        </div>
+
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+</div>
+{% endblock %}

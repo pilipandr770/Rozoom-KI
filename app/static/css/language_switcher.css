@@ -1,53 +1,82 @@
 .language-switcher {
   position: relative;
-  margin-right: 1.5rem;
+  margin-right: 1rem;
 }
 
-.language-switcher .dropdown-toggle {
+.language-buttons {
   display: flex;
   align-items: center;
-  color: white;
-  text-decoration: none;
-  padding: 0.3rem 0.8rem;
-  border-radius: var(--radius-md);
-  transition: var(--transition);
+  gap: 0.5rem;
 }
 
-.language-switcher .dropdown-toggle:hover {
+.lang-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-decoration: none;
+  padding: 0.3rem 0.6rem;
+  border-radius: var(--radius-md);
+  transition: var(--transition);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-.language-switcher .dropdown-toggle i {
-  margin-right: 5px;
-  font-size: 1.1rem;
+.lang-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
 }
 
-.language-switcher .dropdown-menu {
-  min-width: 10rem;
-  border-radius: var(--radius-md);
-  margin-top: 0.5rem;
-  box-shadow: var(--shadow-md);
-  border: 1px solid var(--border-color);
+.lang-button.clicked {
+  transform: scale(0.95);
+  transition: transform 0.2s;
 }
 
-.language-switcher .dropdown-item {
-  display: flex;
-  align-items: center;
-  padding: 0.5rem 1rem;
-}
-
-.language-switcher .dropdown-item:hover {
-  background-color: var(--light-bg);
-}
-
-.language-switcher .dropdown-item.active {
+.lang-button.active {
   background-color: var(--primary-color);
-  color: white;
+  border-color: var(--primary-color);
+  box-shadow: var(--shadow-md);
+  font-weight: bold;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.lang-code {
+  margin-left: 5px;
+  font-size: 0.85rem;
+  font-weight: 500;
 }
 
 .flag-icon {
   width: 20px;
   height: 15px;
+  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.5));
+}
+
+/* Медиа-запрос для мобильных устройств */
+@media (max-width: 768px) {
+  .language-buttons {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50px;
+    padding: 5px;
+    backdrop-filter: blur(5px);
+  }
+  
+  .lang-button {
+    padding: 0.4rem;
+    margin: 0 2px;
+  }
+}
   margin-right: 8px;
   object-fit: cover;
   border-radius: 2px;

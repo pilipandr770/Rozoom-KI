@@ -1,26 +1,14 @@
 {% macro language_switcher() %}
-<div class="language-switcher dropdown">
-  <a href="#" class="dropdown-toggle" id="language-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    <i class="fas fa-globe"></i>
-    {% if g.locale == 'en' %}
-      <span>EN</span>
-    {% elif g.locale == 'de' %}
-      <span>DE</span>
-    {% endif %}
-  </a>
-  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="language-dropdown">
-    <li>
-      <a class="dropdown-item {% if g.locale == 'en' %}active{% endif %}" href="{{ url_for('lang.set_language', lang='en', next=request.url) }}">
-        <img src="{{ url_for('static', filename='img/flags/en.png') }}" alt="English Flag" class="flag-icon">
-        English
-      </a>
-    </li>
-    <li>
-      <a class="dropdown-item {% if g.locale == 'de' %}active{% endif %}" href="{{ url_for('lang.set_language', lang='de', next=request.url) }}">
-        <img src="{{ url_for('static', filename='img/flags/de.png') }}" alt="German Flag" class="flag-icon">
-        Deutsch
-      </a>
-    </li>
-  </ul>
+<div class="language-switcher">
+  <div class="language-buttons">
+    <a class="lang-button {% if g.locale == 'en' %}active{% endif %}" href="{{ url_for('lang.set_language', lang='en', next=request.url) }}" title="English">
+      <img src="{{ url_for('static', filename='img/flags/en.png') }}" alt="English Flag" class="flag-icon">
+      <span class="lang-code">EN</span>
+    </a>
+    <a class="lang-button {% if g.locale == 'de' %}active{% endif %}" href="{{ url_for('lang.set_language', lang='de', next=request.url) }}" title="Deutsch">
+      <img src="{{ url_for('static', filename='img/flags/de.png') }}" alt="German Flag" class="flag-icon">
+      <span class="lang-code">DE</span>
+    </a>
+  </div>
 </div>
 {% endmacro %}

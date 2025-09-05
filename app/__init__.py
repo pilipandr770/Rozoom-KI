@@ -104,6 +104,7 @@ def create_app():
     from .routes.auth import auth_bp
     from .routes.dashboard import dashboard_bp
     from .routes.lang import lang_bp
+    from .routes.auto_content import auto_content
     
     app.register_blueprint(pages_bp)
     app.register_blueprint(api_bp)
@@ -112,9 +113,23 @@ def create_app():
     app.register_blueprint(auth_bp)
     app.register_blueprint(dashboard_bp)
     app.register_blueprint(lang_bp)
+    app.register_blueprint(auto_content)
     
     # Register CLI commands
     from .commands import register_commands
     register_commands(app)
+    
+    # Register template filters
+    from . import template_filters
+    template_filters.init_app(app)
+    
+    # Initialize scheduler for background tasks in production
+    if not app.debug and not app.testing:
+        try:
+            from scheduler import init_scheduler
+            scheduler = init_scheduler()
+            app.scheduler = scheduler
+        except Exception as e:
+            app.logger.error(f"Error initializing scheduler: {e}")
     
     return app

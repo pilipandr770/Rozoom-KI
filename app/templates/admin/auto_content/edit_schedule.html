@@ -1,0 +1,74 @@
+{% extends 'admin/base.html' %}
+
+{% block title %}Редактировать расписание{% endblock %}
+
+{% block content %}
+<div class="admin-content">
+  <div class="content-header">
+    <h1>Редактировать расписание</h1>
+    <p class="lead">Изменение параметров автоматической генерации контента</p>
+  </div>
+
+  <div class="content-section">
+    <div class="card">
+      <div class="card-body">
+        <form method="POST">
+          <div class="mb-3">
+            <label for="name" class="form-label">Название расписания</label>
+            <input type="text" class="form-control" id="name" name="name" value="{{ schedule.name }}" required>
+            <div class="form-text">Укажите понятное название для этого расписания</div>
+          </div>
+          
+          <div class="mb-3">
+            <label for="topic_area" class="form-label">Тематика статей</label>
+            <input type="text" class="form-control" id="topic_area" name="topic_area" value="{{ schedule.topic_area }}" required>
+            <div class="form-text">Основная тематика генерируемых статей, например "Искусственный интеллект в бизнесе"</div>
+          </div>
+          
+          <div class="mb-3">
+            <label for="description" class="form-label">Описание</label>
+            <textarea class="form-control" id="description" name="description" rows="3">{{ schedule.description }}</textarea>
+            <div class="form-text">Дополнительное описание тематики и целей этого расписания публикаций</div>
+          </div>
+          
+          <div class="mb-3">
+            <label for="keywords" class="form-label">Ключевые слова (SEO)</label>
+            <input type="text" class="form-control" id="keywords" name="keywords" value="{{ schedule.keywords }}" required>
+            <div class="form-text">Ключевые слова через запятую для SEO-оптимизации, например: "искусственный интеллект, машинное обучение, бизнес"</div>
+          </div>
+          
+          <div class="mb-3">
+            <label for="frequency" class="form-label">Частота публикации</label>
+            <select class="form-select" id="frequency" name="frequency" required>
+              {% for frequency in frequencies %}
+              <option value="{{ frequency }}" {% if schedule.frequency.value == frequency %}selected{% endif %}>{{ frequency }}</option>
+              {% endfor %}
+            </select>
+            <div class="form-text">Как часто будет генерироваться новый контент</div>
+          </div>
+          
+          <div class="mb-3">
+            <label for="category_id" class="form-label">Категория блога</label>
+            <select class="form-select" id="category_id" name="category_id" required>
+              {% for category in categories %}
+              <option value="{{ category.id }}" {% if schedule.category_id == category.id %}selected{% endif %}>{{ category.name }}</option>
+              {% endfor %}
+            </select>
+            <div class="form-text">В какой категории блога будут публиковаться сгенерированные статьи</div>
+          </div>
+          
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="enabled" name="enabled" {% if schedule.enabled %}checked{% endif %}>
+            <label class="form-check-label" for="enabled">Активировать расписание</label>
+          </div>
+          
+          <div class="d-flex justify-content-between">
+            <a href="{{ url_for('auto_content.index') }}" class="btn btn-secondary">Отмена</a>
+            <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

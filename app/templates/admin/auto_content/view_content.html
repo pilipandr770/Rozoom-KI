@@ -1,0 +1,194 @@
+{% extends 'admin/base.html' %}
+
+{% block title %}Просмотр контента{% endblock %}
+
+{% block content %}
+<div class="admin-content">
+  <div class="content-header">
+    <h1>Просмотр сгенерированного контента</h1>
+    <p class="lead">ID: {{ content.id }} | Статус: 
+      <span class="badge 
+        {% if content.status.value == 'published' %}bg-success
+        {% elif content.status.value == 'planned' %}bg-warning
+        {% elif content.status.value == 'generating' %}bg-info
+        {% else %}bg-danger{% endif %}">
+        {{ content.status.value }}
+      </span>
+    </p>
+  </div>
+
+  <div class="content-section">
+    <div class="card">
+      <div class="card-header bg-light">
+        <ul class="nav nav-tabs card-header-tabs" id="contentTabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="english-tab" data-bs-toggle="tab" data-bs-target="#english" type="button" role="tab" aria-controls="english" aria-selected="true">English</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="german-tab" data-bs-toggle="tab" data-bs-target="#german" type="button" role="tab" aria-controls="german" aria-selected="false">Deutsch</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="image-tab" data-bs-toggle="tab" data-bs-target="#image" type="button" role="tab" aria-controls="image" aria-selected="false">Изображение</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="info-tab" data-bs-toggle="tab" data-bs-target="#info" type="button" role="tab" aria-controls="info" aria-selected="false">Информация</button>
+          </li>
+        </ul>
+      </div>
+      <div class="card-body">
+        <div class="tab-content" id="contentTabsContent">
+          <div class="tab-pane fade show active" id="english" role="tabpanel" aria-labelledby="english-tab">
+            <h2>{{ content.title_en }}</h2>
+            <p class="text-muted">Meta-описание: {{ content.meta_description_en }}</p>
+            <hr>
+            <div class="content-preview markdown">
+              {{ content.content_en|markdown }}
+            </div>
+          </div>
+          
+          <div class="tab-pane fade" id="german" role="tabpanel" aria-labelledby="german-tab">
+            <h2>{{ content.title_de }}</h2>
+            <p class="text-muted">Meta-описание: {{ content.meta_description_de }}</p>
+            <hr>
+            <div class="content-preview markdown">
+              {{ content.content_de|markdown }}
+            </div>
+          </div>
+          
+          <div class="tab-pane fade" id="image" role="tabpanel" aria-labelledby="image-tab">
+            <h3>Сгенерированное изображение</h3>
+            
+            <div class="image-prompt-box p-3 my-3 bg-light">
+              <h5>Промпт для изображения:</h5>
+              <p>{{ content.image_prompt }}</p>
+            </div>
+            
+            {% if content.image_url %}
+            <div class="text-center">
+              <img src="{{ content.image_url }}" alt="Generated Image" class="img-fluid rounded my-3">
+            </div>
+            {% else %}
+            <div class="alert alert-warning">
+              Изображение не было сгенерировано.
+            </div>
+            {% endif %}
+          </div>
+          
+          <div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="info-tab">
+            <h3>Информация о генерации</h3>
+            
+            <div class="row">
+              <div class="col-md-6">
+                <dl class="row">
+                  <dt class="col-sm-4">Расписание:</dt>
+                  <dd class="col-sm-8">{{ content.schedule.name }}</dd>
+                  
+                  <dt class="col-sm-4">Тематика:</dt>
+                  <dd class="col-sm-8">{{ content.schedule.topic_area }}</dd>
+                  
+                  <dt class="col-sm-4">Ключевые слова:</dt>
+                  <dd class="col-sm-8">{{ content.keywords }}</dd>
+                  
+                  <dt class="col-sm-4">Дата создания:</dt>
+                  <dd class="col-sm-8">{{ content.created_at.strftime('%d.%m.%Y %H:%M:%S') }}</dd>
+                </dl>
+              </div>
+              
+              <div class="col-md-6">
+                <dl class="row">
+                  <dt class="col-sm-4">Дата публикации:</dt>
+                  <dd class="col-sm-8">
+                    {% if content.published_at %}
+                    {{ content.published_at.strftime('%d.%m.%Y %H:%M:%S') }}
+                    {% else %}
+                    Не опубликовано
+                    {% endif %}
+                  </dd>
+                  
+                  <dt class="col-sm-4">EN пост:</dt>
+                  <dd class="col-sm-8">
+                    {% if content.en_post %}
+                    <a href="{{ url_for('blog.post', slug=content.en_post.slug) }}" target="_blank">
+                      {{ content.en_post.title }}
+                    </a>
+                    {% else %}
+                    Нет
+                    {% endif %}
+                  </dd>
+                  
+                  <dt class="col-sm-4">DE пост:</dt>
+                  <dd class="col-sm-8">
+                    {% if content.de_post %}
+                    <a href="{{ url_for('blog.post', slug=content.de_post.slug) }}" target="_blank">
+                      {{ content.de_post.title }}
+                    </a>
+                    {% else %}
+                    Нет
+                    {% endif %}
+                  </dd>
+                </dl>
+              </div>
+            </div>
+            
+            {% if content.error_message %}
+            <div class="alert alert-danger mt-4">
+              <h5>Ошибка при генерации:</h5>
+              <pre class="error-log">{{ content.error_message }}</pre>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="d-flex justify-content-between">
+          <a href="{{ url_for('auto_content.generated_content') }}" class="btn btn-secondary">Назад к списку</a>
+          
+          {% if content.status.value != 'published' %}
+          <form method="POST" action="{{ url_for('auto_content.publish_content', id=content.id) }}">
+            <button type="submit" class="btn btn-success">Опубликовать</button>
+          </form>
+          {% else %}
+          <div>
+            {% if content.en_post %}
+            <a href="{{ url_for('blog.post', slug=content.en_post.slug) }}" target="_blank" class="btn btn-outline-primary">
+              Просмотреть EN пост
+            </a>
+            {% endif %}
+            
+            {% if content.de_post %}
+            <a href="{{ url_for('blog.post', slug=content.de_post.slug) }}" target="_blank" class="btn btn-outline-info">
+              Просмотреть DE пост
+            </a>
+            {% endif %}
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% block styles %}
+<style>
+.markdown {
+  max-height: 600px;
+  overflow-y: auto;
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border: 1px solid #e9e9e9;
+  border-radius: 0.25rem;
+}
+.error-log {
+  background-color: #f8d7da;
+  padding: 0.75rem;
+  border-radius: 0.25rem;
+  white-space: pre-wrap;
+  font-size: 0.9em;
+}
+.image-prompt-box {
+  border-radius: 0.25rem;
+  border-left: 5px solid #0d6efd;
+}
+</style>
+{% endblock %}
+{% endblock %}

@@ -3,40 +3,53 @@
 {% block title %}Rozoom-KI - AI Solutions for Your Business{% endblock %}
 
 {% block content %}
-<section class="hero">
+<section class="video-hero content-wrapper">
+  <!-- Enhanced Video Background -->
+  <div class="video-background">
+    <div class="video-overlay"></div>
+    <div class="wave-animation">
+      <div class="wave wave1"></div>
+      <div class="wave wave2"></div>
+      <div class="wave wave3"></div>
+      <div class="wave wave4"></div>
+    </div>
+    <!-- Particle background -->
+    <div class="particle-container particles-container"></div>
+  </div>
+  
   <div class="hero-content">
-    <h1>{{ _('Intelligent AI Solutions for Modern Business') }}</h1>
-    <p class="hero-subtitle">{{ _('Transform your business with our state-of-the-art AI assistants and custom solutions') }}</p>
-    <div class="hero-cta">
-      <a href="/services" class="btn">{{ _('Explore Services') }}</a>
-      <a href="/contact" class="btn btn-secondary">{{ _('Contact Us') }}</a>
+    <h1 class="should-float gradient-animation">{{ _('Intelligent AI Solutions for Modern Business') }}</h1>
+    <p class="hero-subtitle floating" style="animation-delay: 0.2s;">{{ _('Transform your business with our state-of-the-art AI assistants and custom solutions') }}</p>
+    <div class="hero-cta floating" style="animation-delay: 0.4s;">
+      <a href="/services" class="btn btn-animated">{{ _('Explore Services') }}</a>
+      <a href="/contact" class="btn btn-secondary btn-animated">{{ _('Contact Us') }}</a>
       {% if not current_user.is_authenticated %}
-      <a href="{{ url_for('auth.register') }}" class="btn btn-outline-primary">{{ _('Sign Up for Free') }}</a>
+      <a href="{{ url_for('auth.register') }}" class="btn btn-outline-primary btn-ripple">{{ _('Sign Up for Free') }}</a>
       {% else %}
-      <a href="{{ url_for('dashboard.index') }}" class="btn btn-outline-primary">{{ _('Go to Dashboard') }}</a>
+      <a href="{{ url_for('dashboard.index') }}" class="btn btn-outline-primary btn-ripple">{{ _('Go to Dashboard') }}</a>
       {% endif %}
     </div>
   </div>
 </section>
 
-<section class="features">
-  <h2 class="section-title">{{ _('How We Can Help') }}</h2>
+<section class="features content-wrapper">
+  <h2 class="section-title gradient-animation">{{ _('How We Can Help') }}</h2>
   <div class="feature-grid">
-    <div class="feature-card">
+    <div class="feature-card floating" style="animation-delay: 0s;">
       <div class="feature-icon">
         <i class="fas fa-globe fa-2x"></i>
       </div>
       <h3>{{ _('Web Development') }}</h3>
       <p>{{ _('Custom websites and web applications with AI-powered features to enhance user experience.') }}</p>
     </div>
-    <div class="feature-card">
+    <div class="feature-card floating" style="animation-delay: 0.3s;">
       <div class="feature-icon">
         <i class="fas fa-brain fa-2x"></i>
       </div>
       <h3>{{ _('ML & AI Integration') }}</h3>
       <p>{{ _('Integrate machine learning models and AI capabilities into your existing software systems.') }}</p>
     </div>
-    <div class="feature-card">
+    <div class="feature-card floating" style="animation-delay: 0.6s;">
       <div class="feature-icon">
         <i class="fas fa-robot fa-2x"></i>
       </div>
@@ -100,9 +113,9 @@
 </section>
 {% endif %}
 
-<section class="cta-section">
-  <h2>Ready to transform your business with AI?</h2>
-  <p>Our team of experts is ready to help you implement intelligent solutions.</p>
-  <a href="/contact" class="btn">Get Started Today</a>
+<section class="cta-section gradient-animation">
+  <h2>{{ _('Ready to transform your business with AI?') }}</h2>
+  <p>{{ _('Our team of experts is ready to help you implement intelligent solutions.') }}</p>
+  <a href="/contact" class="btn btn-animated">{{ _('Get Started Today') }}</a>
 </section>
 {% endblock %}
