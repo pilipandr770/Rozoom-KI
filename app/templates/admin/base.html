@@ -6,23 +6,26 @@
 {{ super() }}
 <style>
     .admin-sidebar {
-        background-color: #212529;
-        color: #fff;
+        background-color: #0f1729;
+        color: #f8fafc;
         height: 100%;
         min-height: calc(100vh - 56px);
         padding-top: 20px;
+        border-right: 1px solid #334155;
     }
     .admin-sidebar .nav-link {
-        color: rgba(255,255,255,.75);
+        color: rgba(255,255,255,.8);
         padding: 0.5rem 1rem;
     }
     .admin-sidebar .nav-link:hover,
     .admin-sidebar .nav-link.active {
         color: #fff;
-        background-color: rgba(255,255,255,.1);
+        background-color: rgba(59, 130, 246, 0.2);
     }
     .admin-content {
         padding: 20px;
+        position: relative;
+        z-index: 10;
     }
     .admin-stats {
         display: grid;
@@ -31,23 +34,26 @@
         margin-bottom: 20px;
     }
     .admin-stat-card {
-        background-color: #fff;
+        background-color: rgba(30, 41, 59, 0.8);
         border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0,0,0,.05);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         padding: 20px;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid #334155;
     }
     .admin-stat-card:hover {
         transform: translateY(-5px);
-        box-shadow: 0 5px 15px rgba(0,0,0,.1);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        border-color: #3b82f6;
     }
     .admin-stat-value {
         font-size: 2.5rem;
         font-weight: bold;
         margin-bottom: 5px;
+        color: #f8fafc;
     }
     .admin-stat-label {
-        color: #666;
+        color: #cbd5e1;
         font-size: 1rem;
     }
     .admin-actions {
@@ -55,25 +61,27 @@
     }
     .content-header {
         margin-bottom: 30px;
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid #334155;
         padding-bottom: 15px;
     }
     .schedule-card {
-        background: #fff;
+        background: rgba(30, 41, 59, 0.8);
         border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0,0,0,.05);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         margin-bottom: 20px;
         padding: 20px;
-        transition: transform 0.2s ease;
+        transition: all 0.3s ease;
+        border: 1px solid #334155;
     }
     .schedule-card:hover {
         transform: translateY(-3px);
-        box-shadow: 0 5px 15px rgba(0,0,0,.1);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        border-color: #3b82f6;
     }
     .schedule-card h3 {
         margin-top: 0;
         margin-bottom: 10px;
-        color: #333;
+        color: #f8fafc;
     }
     .schedule-card .badge {
         font-size: 0.8rem;
@@ -82,7 +90,7 @@
     }
     .schedule-card .topic {
         font-style: italic;
-        color: #666;
+        color: #cbd5e1;
         margin-bottom: 10px;
     }
     .schedule-card .schedule-actions {
@@ -95,19 +103,27 @@
         font-size: 0.9rem;
     }
     .content-card {
-        background: #fff;
+        background: rgba(30, 41, 59, 0.8);
         border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0,0,0,.05);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         margin-bottom: 20px;
         overflow: hidden;
+        border: 1px solid #334155;
+        transition: all 0.3s ease;
+    }
+    .content-card:hover {
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        border-color: #3b82f6;
     }
     .content-card .card-header {
-        background-color: #f8f9fa;
+        background-color: rgba(15, 23, 42, 0.6);
         padding: 15px 20px;
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid #334155;
+        color: #f8fafc;
     }
     .content-card .card-body {
         padding: 20px;
+        color: #f8fafc;
     }
     .content-card .status {
         display: inline-block;
@@ -117,20 +133,61 @@
         margin-left: 10px;
     }
     .status-published {
-        background-color: #d4edda;
-        color: #155724;
+        background-color: rgba(16, 185, 129, 0.3);
+        color: #10b981;
+        border: 1px solid rgba(16, 185, 129, 0.5);
     }
     .status-planned {
-        background-color: #fff3cd;
-        color: #856404;
+        background-color: rgba(234, 179, 8, 0.3);
+        color: #eab308;
+        border: 1px solid rgba(234, 179, 8, 0.5);
     }
     .status-generating {
-        background-color: #cce5ff;
-        color: #004085;
+        background-color: rgba(59, 130, 246, 0.3);
+        color: #3b82f6;
+        border: 1px solid rgba(59, 130, 246, 0.5);
     }
     .status-failed {
-        background-color: #f8d7da;
-        color: #721c24;
+        background-color: rgba(239, 68, 68, 0.3);
+        color: #ef4444;
+        border: 1px solid rgba(239, 68, 68, 0.5);
+    }
+    
+    /* Дополнительные стили для темной темы */
+    table {
+        color: #f8fafc !important;
+    }
+    
+    .table td, .table th {
+        border-color: #334155;
+    }
+    
+    .card {
+        background-color: rgba(30, 41, 59, 0.8);
+        border-color: #334155;
+    }
+    
+    .card-header {
+        background-color: rgba(15, 23, 42, 0.6);
+        border-bottom-color: #334155;
+    }
+    
+    .modal-content {
+        background-color: #1e293b;
+        color: #f8fafc;
+    }
+    
+    .close {
+        color: #f8fafc;
+    }
+    
+    .btn-secondary {
+        background-color: #475569;
+        border-color: #334155;
+    }
+    
+    .btn-secondary:hover {
+        background-color: #334155;
     }
 </style>
 {% endblock %}

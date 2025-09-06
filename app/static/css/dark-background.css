@@ -1,0 +1,282 @@
+/* Dark Background with Beautiful Animation */
+
+:root {
+  /* Переопределение цветовой схемы на темную */
+  --background: #0f172a;
+  --light-bg: #1e293b;
+  --text-color: #f8fafc;
+  --light-text: #cbd5e1;
+  --border-color: #334155;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text-color);
+}
+
+/* Улучшения для основных элементов интерфейса */
+h1, h2, h3, h4, h5, h6 {
+  color: #ffffff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+a {
+  color: #38bdf8;
+  font-weight: 500;
+}
+
+a:hover {
+  color: #7dd3fc;
+  text-decoration: underline;
+}
+
+/* Для улучшения читабельности основных контейнеров */
+.container, .container-fluid {
+  position: relative;
+  z-index: 1;
+}
+
+/* Улучшение читаемости текста */
+p, li, span, div {
+  color: #f1f5f9;
+  font-weight: 400;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  letter-spacing: 0.01em;
+}
+
+/* Стили для карточек и блоков содержимого */
+.card, .jumbotron, .container-box {
+  background-color: rgba(30, 41, 59, 0.8);
+  border: 1px solid #334155;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Стили для кнопок */
+.btn {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary {
+  background-color: #3b82f6;
+  border-color: #2563eb;
+}
+
+.btn-primary:hover {
+  background-color: #2563eb;
+  border-color: #1d4ed8;
+}
+
+/* Новая анимация фона */
+.dark-animated-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+/* Основной слой градиента */
+.gradient-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(125deg, 
+    #0f172a 0%, 
+    #1e1b4b 20%, 
+    #312e81 40%, 
+    #1e40af 60%, 
+    #0c4a6e 80%, 
+    #0f172a 100%);
+  background-size: 400% 400%;
+  opacity: 0.85;
+  animation: slow-gradient-shift 30s ease infinite;
+}
+
+/* Слой с блюром для создания эффекта глубины */
+.blur-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(150px);
+  -webkit-backdrop-filter: blur(150px);
+}
+
+/* Слой с мерцающими звездами */
+.stars-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../img/stars.png');
+  background-repeat: repeat;
+  opacity: 0.3;
+  animation: twinkling 15s linear infinite;
+}
+
+/* Слой с неоновым свечением */
+.glow-layer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  background: radial-gradient(
+    ellipse at bottom,
+    rgba(59, 130, 246, 0.2) 0%,
+    rgba(30, 64, 175, 0.1) 30%, 
+    rgba(0, 0, 0, 0) 70%
+  );
+  opacity: 0.6;
+  animation: glow-pulse 10s ease-in-out infinite;
+}
+
+/* Анимированные частицы */
+.particles-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.particle {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  animation: float-particle 40s linear infinite;
+}
+
+/* Анимация градиентного фона */
+@keyframes slow-gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Анимация мерцания звезд */
+@keyframes twinkling {
+  0% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+
+/* Анимация пульсации свечения */
+@keyframes glow-pulse {
+  0% {
+    opacity: 0.4;
+    transform: translateY(10px);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0.4;
+    transform: translateY(10px);
+  }
+}
+
+/* Плавающие частицы */
+@keyframes float-particle {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(100px, 50px) rotate(90deg);
+  }
+  50% {
+    transform: translate(200px, 0) rotate(180deg);
+  }
+  75% {
+    transform: translate(100px, -50px) rotate(270deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(360deg);
+  }
+}
+
+/* Стилизация компонентов для темного фона */
+.card, .modal-content {
+  background-color: var(--light-bg);
+  border: 1px solid var(--border-color);
+}
+
+.list-group-item {
+  background-color: var(--light-bg);
+  color: var(--text-color);
+  border-color: var(--border-color);
+}
+
+.table {
+  color: var(--text-color);
+}
+
+.form-control, .form-select {
+  background-color: rgba(15, 23, 42, 0.6);
+  border-color: var(--border-color);
+  color: var(--text-color);
+}
+
+.form-control:focus, .form-select:focus {
+  background-color: rgba(15, 23, 42, 0.8);
+  border-color: var(--primary-color);
+  color: var(--text-color);
+  box-shadow: 0 0 0 0.25rem rgba(59, 130, 246, 0.25);
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-dark);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-dark);
+}
+
+.dropdown-menu {
+  background-color: var(--light-bg);
+  border-color: var(--border-color);
+}
+
+.dropdown-item {
+  color: var(--text-color);
+}
+
+.dropdown-item:hover, .dropdown-item:focus {
+  background-color: rgba(30, 64, 175, 0.2);
+  color: var(--text-color);
+}
+
+/* Адаптивное изменение эффектов для мобильных устройств */
+@media (max-width: 768px) {
+  .gradient-layer {
+    background-size: 200% 200%;
+  }
+  
+  .blur-layer {
+    backdrop-filter: blur(80px);
+    -webkit-backdrop-filter: blur(80px);
+  }
+}

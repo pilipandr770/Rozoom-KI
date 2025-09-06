@@ -2,18 +2,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
 :root {
-  --primary-color: #2563eb;
-  --primary-dark: #1e40af;
+  --primary-color: #3b82f6;
+  --primary-dark: #2563eb;
   --secondary-color: #10b981;
   --accent-color: #8b5cf6;
-  --text-color: #1f2937;
-  --light-text: #6b7280;
-  --background: #ffffff;
-  --light-bg: #f9fafb;
-  --border-color: #e5e7eb;
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --text-color: #e2e8f0;
+  --light-text: #cbd5e1;
+  --background: #0f172a;
+  --light-bg: #1e293b;
+  --border-color: #334155;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
   --radius-sm: 0.25rem;
   --radius-md: 0.375rem;
   --radius-lg: 0.5rem;
@@ -36,6 +36,8 @@ body {
   background-color: var(--background);
   margin: 0;
   padding: 0;
+  font-weight: 400;
+  letter-spacing: 0.015em;
 }
 
 /* Layout components */
@@ -117,22 +119,31 @@ body {
   background: var(--primary-color);
   color: white;
   border: none;
-  padding: 0.6rem 1.5rem;
+  padding: 0.7rem 1.8rem;
   border-radius: var(--radius-md);
   font-weight: 500;
   cursor: pointer;
-  transition: var(--transition);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   text-decoration: none;
+  font-size: 1rem;
+  letter-spacing: 0.015em;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .btn:hover {
   background: var(--primary-dark);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 .btn-secondary {
   background: var(--secondary-color);
+  color: white;
 }
 
 .btn-secondary:hover {
@@ -147,6 +158,8 @@ input, textarea {
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
   font-family: inherit;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-color);
 }
 
 input:focus, textarea:focus {
@@ -159,18 +172,35 @@ input:focus, textarea:focus {
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
   line-height: 1.2;
+  color: #f8fafc;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
   font-size: 2.5rem;
   font-weight: 600;
   margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
 }
 
 h2 {
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 1.25rem;
+  letter-spacing: -0.015em;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease, text-decoration 0.2s ease;
+}
+
+a:hover {
+  color: #60a5fa;
+  text-decoration: underline;
+}
 }
 
 h3 {
@@ -181,7 +211,10 @@ h3 {
 
 p {
   margin-bottom: 1.5rem;
-  line-height: 1.6;
+  line-height: 1.7;
+  font-size: 1.05rem;
+  color: var(--text-color);
+  font-weight: 400;
 }
 
 /* Enhanced homepage components */
@@ -341,50 +374,70 @@ p {
 /* Testimonials */
 .testimonials {
   margin-bottom: 4rem;
+  padding: 2rem 0;
 }
 
 .testimonial-slider {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
 }
 
 .testimonial-card {
-  background: white;
+  background: rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-md);
   padding: 2rem;
   box-shadow: var(--shadow-md);
   border-left: 4px solid var(--primary-color);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
 .testimonial-content {
   font-style: italic;
   margin-bottom: 1.5rem;
+  position: relative;
+  padding-left: 1.5rem;
 }
 
 .testimonial-content:before {
   content: '"';
   font-size: 3rem;
   color: var(--primary-color);
-  opacity: 0.3;
+  opacity: 0.5;
   position: absolute;
-  top: -10px;
-  left: -15px;
+  top: -15px;
+  left: -10px;
 }
 
 .testimonial-content p {
   position: relative;
   margin-bottom: 0;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #f8fafc;
 }
 
 .testimonial-author {
   display: flex;
   flex-direction: column;
+  padding-left: 1.5rem;
+}
+
+.testimonial-author strong {
+  color: #ffffff;
+  font-weight: 600;
 }
 
 .testimonial-author span {
   font-size: 0.9rem;
-  color: var(--light-text);
+  color: #94a3b8;
 }
 
 /* Account CTA Section */
@@ -472,10 +525,11 @@ p {
 }
 
 .contact-card {
-  background: white;
+  background: var(--light-bg);
   padding: 1.5rem;
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
 }
 
 .contact-icon {
@@ -497,11 +551,12 @@ p {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: white;
+  background: var(--light-bg);
   color: var(--primary-color);
   font-size: 1.25rem;
   transition: var(--transition);
   box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
 }
 
 .social-link:hover {
@@ -512,10 +567,11 @@ p {
 }
 
 .contact-form-container {
-  background: white;
+  background: var(--light-bg);
   padding: 2rem;
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-color);
 }
 
 .contact-form {
@@ -532,6 +588,7 @@ p {
   display: block;
   margin-bottom: 0.5rem;
   font-weight: 500;
+  color: var(--text-color);
 }
 
 .form-success, .form-error {
@@ -558,7 +615,7 @@ p {
   align-items: flex-start;
   gap: 0.75rem;
   font-size: 0.9rem;
-  color: var(--light-text);
+  color: var(--text-color);
 }
 
 .checkbox-container input {
@@ -686,6 +743,7 @@ p {
   border-radius: var(--radius-md);
   overflow: hidden;
   box-shadow: var(--shadow-sm);
+  color: #333; /* Более темный цвет для текста */
 }
 
 @media (max-width: 768px) {
@@ -741,7 +799,7 @@ p {
 
 .post-meta {
   margin-bottom: 1rem;
-  color: var(--light-text);
+  color: #555; /* Более темный цвет для мета-информации */
   font-size: 0.9rem;
   display: flex;
   flex-wrap: wrap;
@@ -750,6 +808,8 @@ p {
 
 .post-excerpt {
   margin-bottom: 1.5rem;
+  color: #333; /* Более темный цвет для основного текста */
+  font-weight: 400; /* Средняя толщина шрифта для лучшей читаемости */
 }
 
 .post-content .btn {
@@ -820,7 +880,8 @@ p {
   display: flex;
   justify-content: space-between;
   padding: 0.5rem 0;
-  color: var(--text-color);
+  color: #333; /* Более темный цвет для категорий */
+  font-weight: 500; /* Чуть жирнее шрифт для лучшей читаемости */
   text-decoration: none;
   transition: color 0.2s;
 }
@@ -832,10 +893,11 @@ p {
 
 .category-list .count {
   background: var(--light-bg);
-  color: var(--light-text);
+  color: #555; /* Более темный цвет для счетчика */
   padding: 0.1rem 0.5rem;
   border-radius: var(--radius-sm);
   font-size: 0.85rem;
+  font-weight: 500;
 }
 
 /* Tags Widget */
@@ -847,10 +909,11 @@ p {
 
 .tag {
   background: var(--light-bg);
-  color: var(--light-text);
+  color: #444; /* Более темный цвет для тегов */
   padding: 0.25rem 0.75rem;
   border-radius: var(--radius-md);
   font-size: 0.85rem;
+  font-weight: 500; /* Средняя толщина шрифта */
   text-decoration: none;
   transition: all 0.2s;
 }
@@ -912,7 +975,8 @@ p {
 
 .recent-post-date {
   font-size: 0.8rem;
-  color: var(--light-text);
+  color: #555; /* Более темный цвет для даты */
+  font-weight: 500; /* Средняя толщина шрифта */
 }
 
 /* No Posts */

@@ -80,6 +80,15 @@
         <span>Operations Director, RetailPlus</span>
       </div>
     </div>
+    <div class="testimonial-card">
+      <div class="testimonial-content">
+        <p>"Their AI-powered analytics platform gave us insights we never thought possible. We've been able to identify new market opportunities and increase revenue by 25% in just six months."</p>
+      </div>
+      <div class="testimonial-author">
+        <strong>Thomas Weber</strong>
+        <span>Marketing Director, InnovateMedia</span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -88,22 +97,22 @@
   <div class="container">
     <div class="row align-items-center">
       <div class="col-md-7">
-        <h2>Create Your Personal Account</h2>
-        <p class="lead">Track your projects, access personalized services, and collaborate with our team in real-time.</p>
+        <h2>{{ _('Create Your Personal Account') }}</h2>
+        <p class="lead">{{ _('Track your projects, access personalized services, and collaborate with our team in real-time.') }}</p>
         <ul class="feature-list">
-          <li><i class="fas fa-check-circle text-success"></i> Personal dashboard to monitor project progress</li>
-          <li><i class="fas fa-check-circle text-success"></i> Direct messaging with our development team</li>
-          <li><i class="fas fa-check-circle text-success"></i> Online invoicing and payment processing</li>
-          <li><i class="fas fa-check-circle text-success"></i> Project milestone tracking and updates</li>
+          <li><i class="fas fa-check-circle text-success"></i> {{ _('Personal dashboard to monitor project progress') }}</li>
+          <li><i class="fas fa-check-circle text-success"></i> {{ _('Direct messaging with our development team') }}</li>
+          <li><i class="fas fa-check-circle text-success"></i> {{ _('Online invoicing and payment processing') }}</li>
+          <li><i class="fas fa-check-circle text-success"></i> {{ _('Project milestone tracking and updates') }}</li>
         </ul>
       </div>
       <div class="col-md-5">
         <div class="card shadow">
           <div class="card-body p-4">
-            <h3 class="card-title mb-4 text-center">Register Now</h3>
+            <h3 class="card-title mb-4 text-center">{{ _('Register Now') }}</h3>
             <div class="d-grid gap-3">
-              <a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-lg">Create Account</a>
-              <a href="{{ url_for('auth.login') }}" class="btn btn-outline-secondary">Already have an account? Login</a>
+              <a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-lg">{{ _('Create Account') }}</a>
+              <a href="{{ url_for('auth.login') }}" class="btn btn-outline-secondary">{{ _('Already have an account? Login') }}</a>
             </div>
           </div>
         </div>

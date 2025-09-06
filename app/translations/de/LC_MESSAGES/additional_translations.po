@@ -1,0 +1,115 @@
+# Дополнительные переводы для сайта Rozoom-KI
+
+# Главная страница (index.html)
+msgid "Create Your Personal Account"
+msgstr "Erstellen Sie Ihr persönliches Konto"
+
+msgid "Track your projects, access personalized services, and collaborate with our team in real-time."
+msgstr "Verfolgen Sie Ihre Projekte, greifen Sie auf personalisierte Dienste zu und arbeiten Sie in Echtzeit mit unserem Team zusammen."
+
+msgid "Personal dashboard to monitor project progress"
+msgstr "Persönliches Dashboard zur Überwachung des Projektfortschritts"
+
+msgid "Direct messaging with our development team"
+msgstr "Direkte Nachrichten mit unserem Entwicklungsteam"
+
+msgid "Online invoicing and payment processing"
+msgstr "Online-Rechnungsstellung und Zahlungsabwicklung"
+
+msgid "Project milestone tracking and updates"
+msgstr "Verfolgung von Projektmeilensteinen und Updates"
+
+msgid "Register Now"
+msgstr "Jetzt registrieren"
+
+msgid "Create Account"
+msgstr "Konto erstellen"
+
+msgid "Already have an account? Login"
+msgstr "Haben Sie bereits ein Konto? Anmelden"
+
+# Чат-виджет (base.html)
+msgid "AI Assistant"
+msgstr "KI-Assistent"
+
+msgid "Type your message..."
+msgstr "Schreiben Sie Ihre Nachricht..."
+
+# Страница цен (pricing.html)
+msgid "Choose Your Package"
+msgstr "Wählen Sie Ihr Paket"
+
+msgid "Get the perfect amount of development time for your project needs"
+msgstr "Erhalten Sie die perfekte Menge an Entwicklungszeit für Ihre Projektanforderungen"
+
+msgid "Most Popular"
+msgstr "Am beliebtesten"
+
+msgid "Hours"
+msgstr "Stunden"
+
+msgid "per hour"
+msgstr "pro Stunde"
+
+msgid "Custom Package"
+msgstr "Individuelles Paket"
+
+msgid "Tailored to Your Needs"
+msgstr "Maßgeschneidert für Ihre Bedürfnisse"
+
+msgid "For special requirements"
+msgstr "Für besondere Anforderungen"
+
+msgid "Flexible hours"
+msgstr "Flexible Stunden"
+
+msgid "Custom development"
+msgstr "Individuelles Development"
+
+msgid "Dedicated support"
+msgstr "Dedizierter Support"
+
+msgid "Priority service"
+msgstr "Prioritätsservice"
+
+msgid "Enterprise solutions"
+msgstr "Unternehmenslösungen"
+
+msgid "Get in Touch"
+msgstr "Kontakt aufnehmen"
+
+msgid "Need Help Choosing?"
+msgstr "Brauchen Sie Hilfe bei der Auswahl?"
+
+msgid "Contact our team for a free consultation and we'll help you select the perfect package for your project."
+msgstr "Kontaktieren Sie unser Team für eine kostenlose Beratung und wir helfen Ihnen, das perfekte Paket für Ihr Projekt auszuwählen."
+
+# Элементы макросов и альтернативные тексты
+msgid "English Flag"
+msgstr "Englische Flagge"
+
+msgid "German Flag"
+msgstr "Deutsche Flagge"
+
+msgid "Search posts..."
+msgstr "Beiträge suchen..."
+
+# Макросы для доступности (aria-label)
+msgid "Close"
+msgstr "Schließen"
+
+msgid "Previous"
+msgstr "Zurück"
+
+msgid "Next"
+msgstr "Weiter"
+
+msgid "Page navigation"
+msgstr "Seitennavigation"
+
+msgid "Rozoom Assistant"
+msgstr "Rozoom-Assistent"
+
+# Дополнительные элементы форм
+msgid "Choose a username or leave blank to use your email"
+msgstr "Wählen Sie einen Benutzernamen oder lassen Sie das Feld leer, um Ihre E-Mail zu verwenden"

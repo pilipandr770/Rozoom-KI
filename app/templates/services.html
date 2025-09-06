@@ -38,8 +38,8 @@
                 </div>
             </div>
             
-            <h2 class="mb-4">Request a Project Estimate</h2>
-            <p class="lead mb-4">Fill out our project questionnaire to get a free time and budget estimate for your project. No obligations!</p>
+            <h2 class="mb-4">{{ _('Request a Project Estimate') }}</h2>
+            <p class="lead mb-4">{{ _('Fill out our project questionnaire to get a free time and budget estimate for your project. No obligations!') }}</p>
             
             <div class="card">
                 <div class="card-body">
@@ -49,22 +49,22 @@
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="heading1">
                                     <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
-                                        1. What type of project are you looking to develop?
+                                        1. {{ _('What type of project are you looking to develop?') }}
                                     </button>
                                 </h2>
                                 <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#questionnaireAccordion">
                                     <div class="accordion-body">
                                         <div class="form-group">
                                             <select class="form-select" name="project_type" required>
-                                                <option value="" selected disabled>Select a project type</option>
-                                                <option value="web">Web Application</option>
-                                                <option value="mobile">Mobile Application</option>
-                                                <option value="ai">AI/ML Solution</option>
-                                                <option value="automation">Automation Tool</option>
-                                                <option value="data">Data Analytics</option>
-                                                <option value="other">Other</option>
+                                                <option value="" selected disabled>{{ _('Select a project type') }}</option>
+                                                <option value="web">{{ _('Web Application') }}</option>
+                                                <option value="mobile">{{ _('Mobile Application') }}</option>
+                                                <option value="ai">{{ _('AI/ML Solution') }}</option>
+                                                <option value="automation">{{ _('Automation Tool') }}</option>
+                                                <option value="data">{{ _('Data Analytics') }}</option>
+                                                <option value="other">{{ _('Other') }}</option>
                                             </select>
-                                            <div class="form-text">Choose the category that best describes your project.</div>
+                                            <div class="form-text">{{ _('Choose the category that best describes your project.') }}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -74,14 +74,14 @@
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="heading2">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
-                                        2. What is the primary goal of your project?
+                                        2. {{ _('What is the primary goal of your project?') }}
                                     </button>
                                 </h2>
                                 <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2" data-bs-parent="#questionnaireAccordion">
                                     <div class="accordion-body">
                                         <div class="form-group">
-                                            <textarea class="form-control" name="project_goal" rows="3" placeholder="Describe the main purpose of your project..." required></textarea>
-                                            <div class="form-text">Clearly define what problem your project solves or what opportunity it addresses.</div>
+                                            <textarea class="form-control" name="project_goal" rows="3" placeholder="{{ _('Describe the main purpose of your project...') }}" required></textarea>
+                                            <div class="form-text">{{ _('Clearly define what problem your project solves or what opportunity it addresses.') }}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -91,14 +91,14 @@
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="heading3">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
-                                        3. Who are the target users of your project?
+                                        3. {{ _('Who are the target users of your project?') }}
                                     </button>
                                 </h2>
                                 <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="heading3" data-bs-parent="#questionnaireAccordion">
                                     <div class="accordion-body">
                                         <div class="form-group">
-                                            <textarea class="form-control" name="target_users" rows="3" placeholder="Describe your target audience..." required></textarea>
-                                            <div class="form-text">Specify who will be using your solution (e.g., businesses, consumers, specific industry professionals).</div>
+                                            <textarea class="form-control" name="target_users" rows="3" placeholder="{{ _('Describe your target audience...') }}" required></textarea>
+                                            <div class="form-text">{{ _('Specify who will be using your solution (e.g., businesses, consumers, specific industry professionals).') }}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -108,14 +108,14 @@
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="heading4">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
-                                        4. What features are essential for your project?
+                                        4. {{ _('What features are essential for your project?') }}
                                     </button>
                                 </h2>
                                 <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="heading4" data-bs-parent="#questionnaireAccordion">
                                     <div class="accordion-body">
                                         <div class="form-group">
-                                            <textarea class="form-control" name="essential_features" rows="4" placeholder="List the key features your project must have..." required></textarea>
-                                            <div class="form-text">Focus on the core functionality that is absolutely necessary for your project to succeed.</div>
+                                            <textarea class="form-control" name="essential_features" rows="4" placeholder="{{ _('List the key features your project must have...') }}" required></textarea>
+                                            <div class="form-text">{{ _('Focus on the core functionality that is absolutely necessary for your project to succeed.') }}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -125,14 +125,14 @@
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="heading5">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
-                                        5. What features would be nice to have but aren't essential?
+                                        5. {{ _('What features would be nice to have but aren\'t essential?') }}
                                     </button>
                                 </h2>
                                 <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="heading5" data-bs-parent="#questionnaireAccordion">
                                     <div class="accordion-body">
                                         <div class="form-group">
-                                            <textarea class="form-control" name="nice_to_have_features" rows="4" placeholder="List any additional features that would be beneficial..."></textarea>
-                                            <div class="form-text">These are features that could be implemented in later phases of the project.</div>
+                                            <textarea class="form-control" name="nice_to_have_features" rows="4" placeholder="{{ _('List any additional features that would be beneficial...') }}"></textarea>
+                                            <div class="form-text">{{ _('These are features that could be implemented in later phases of the project.') }}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -142,20 +142,20 @@
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="heading6">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
-                                        6. Do you have a specific timeline for this project?
+                                        6. {{ _('Do you have a specific timeline for this project?') }}
                                     </button>
                                 </h2>
                                 <div id="collapse6" class="accordion-collapse collapse" aria-labelledby="heading6" data-bs-parent="#questionnaireAccordion">
                                     <div class="accordion-body">
                                         <div class="form-group">
                                             <select class="form-select" name="timeline" required>
-                                                <option value="" selected disabled>Select a timeline</option>
-                                                <option value="urgent">Urgent (1-2 months)</option>
-                                                <option value="standard">Standard (3-6 months)</option>
-                                                <option value="relaxed">Flexible (6+ months)</option>
-                                                <option value="undecided">Not yet decided</option>
+                                                <option value="" selected disabled>{{ _('Select a timeline') }}</option>
+                                                <option value="urgent">{{ _('Urgent (1-2 months)') }}</option>
+                                                <option value="standard">{{ _('Standard (3-6 months)') }}</option>
+                                                <option value="relaxed">{{ _('Flexible (6+ months)') }}</option>
+                                                <option value="undecided">{{ _('Not yet decided') }}</option>
                                             </select>
-                                            <div class="form-text">This helps us determine the development pace and resource allocation.</div>
+                                            <div class="form-text">{{ _('This helps us determine the development pace and resource allocation.') }}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -165,21 +165,21 @@
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="heading7">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse7" aria-expanded="false" aria-controls="collapse7">
-                                        7. Do you have a budget range in mind?
+                                        7. {{ _('Do you have a budget range in mind?') }}
                                     </button>
                                 </h2>
                                 <div id="collapse7" class="accordion-collapse collapse" aria-labelledby="heading7" data-bs-parent="#questionnaireAccordion">
                                     <div class="accordion-body">
                                         <div class="form-group">
                                             <select class="form-select" name="budget_range" required>
-                                                <option value="" selected disabled>Select a budget range</option>
-                                                <option value="small">Less than €10,000</option>
-                                                <option value="medium">€10,000 - €30,000</option>
-                                                <option value="large">€30,000 - €100,000</option>
-                                                <option value="enterprise">€100,000+</option>
-                                                <option value="undecided">Not yet decided</option>
+                                                <option value="" selected disabled>{{ _('Select a budget range') }}</option>
+                                                <option value="small">{{ _('Less than €10,000') }}</option>
+                                                <option value="medium">{{ _('€10,000 - €30,000') }}</option>
+                                                <option value="large">{{ _('€30,000 - €100,000') }}</option>
+                                                <option value="enterprise">{{ _('€100,000+') }}</option>
+                                                <option value="undecided">{{ _('Not yet decided') }}</option>
                                             </select>
-                                            <div class="form-text">This helps us suggest solutions that fit within your financial constraints.</div>
+                                            <div class="form-text">{{ _('This helps us suggest solutions that fit within your financial constraints.') }}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -189,14 +189,14 @@
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="heading8">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse8" aria-expanded="false" aria-controls="collapse8">
-                                        8. Are there any existing systems your project needs to integrate with?
+                                        8. {{ _('Are there any existing systems your project needs to integrate with?') }}
                                     </button>
                                 </h2>
                                 <div id="collapse8" class="accordion-collapse collapse" aria-labelledby="heading8" data-bs-parent="#questionnaireAccordion">
                                     <div class="accordion-body">
                                         <div class="form-group">
-                                            <textarea class="form-control" name="integrations" rows="3" placeholder="List any systems, APIs, or services your project needs to connect with..."></textarea>
-                                            <div class="form-text">For example: payment gateways, CRMs, ERPs, social media platforms, etc.</div>
+                                            <textarea class="form-control" name="integrations" rows="3" placeholder="{{ _('List any systems, APIs, or services your project needs to connect with...') }}"></textarea>
+                                            <div class="form-text">{{ _('For example: payment gateways, CRMs, ERPs, social media platforms, etc.') }}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -206,14 +206,14 @@
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="heading9">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse9" aria-expanded="false" aria-controls="collapse9">
-                                        9. Do you have any specific technical requirements or preferences?
+                                        9. {{ _('Do you have any specific technical requirements or preferences?') }}
                                     </button>
                                 </h2>
                                 <div id="collapse9" class="accordion-collapse collapse" aria-labelledby="heading9" data-bs-parent="#questionnaireAccordion">
                                     <div class="accordion-body">
                                         <div class="form-group">
-                                            <textarea class="form-control" name="technical_requirements" rows="3" placeholder="Specify any technologies, frameworks, or platforms you prefer..."></textarea>
-                                            <div class="form-text">For example: programming languages, cloud providers, frameworks, or architecture preferences.</div>
+                                            <textarea class="form-control" name="technical_requirements" rows="3" placeholder="{{ _('Specify any technologies, frameworks, or platforms you prefer...') }}"></textarea>
+                                            <div class="form-text">{{ _('For example: programming languages, cloud providers, frameworks, or architecture preferences.') }}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -223,14 +223,14 @@
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="heading10">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse10" aria-expanded="false" aria-controls="collapse10">
-                                        10. Do you have any examples of similar projects you admire?
+                                        10. {{ _('Do you have any examples of similar projects you admire?') }}
                                     </button>
                                 </h2>
                                 <div id="collapse10" class="accordion-collapse collapse" aria-labelledby="heading10" data-bs-parent="#questionnaireAccordion">
                                     <div class="accordion-body">
                                         <div class="form-group">
-                                            <textarea class="form-control" name="similar_projects" rows="3" placeholder="List websites, apps, or products similar to what you envision..."></textarea>
-                                            <div class="form-text">This helps us understand your vision and aesthetic preferences.</div>
+                                            <textarea class="form-control" name="similar_projects" rows="3" placeholder="{{ _('List websites, apps, or products similar to what you envision...') }}"></textarea>
+                                            <div class="form-text">{{ _('This helps us understand your vision and aesthetic preferences.') }}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -240,14 +240,14 @@
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="heading11">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse11" aria-expanded="false" aria-controls="collapse11">
-                                        11. How do you plan to measure the success of this project?
+                                        11. {{ _('How do you plan to measure the success of this project?') }}
                                     </button>
                                 </h2>
                                 <div id="collapse11" class="accordion-collapse collapse" aria-labelledby="heading11" data-bs-parent="#questionnaireAccordion">
                                     <div class="accordion-body">
                                         <div class="form-group">
-                                            <textarea class="form-control" name="success_metrics" rows="3" placeholder="Describe key performance indicators or success metrics..."></textarea>
-                                            <div class="form-text">For example: user acquisition, conversion rates, efficiency improvements, cost savings, etc.</div>
+                                            <textarea class="form-control" name="success_metrics" rows="3" placeholder="{{ _('Describe key performance indicators or success metrics...') }}"></textarea>
+                                            <div class="form-text">{{ _('For example: user acquisition, conversion rates, efficiency improvements, cost savings, etc.') }}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -257,26 +257,26 @@
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="heading12">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse12" aria-expanded="false" aria-controls="collapse12">
-                                        12. Do you have any specific security or compliance requirements?
+                                        12. {{ _('Do you have any specific security or compliance requirements?') }}
                                     </button>
                                 </h2>
                                 <div id="collapse12" class="accordion-collapse collapse" aria-labelledby="heading12" data-bs-parent="#questionnaireAccordion">
                                     <div class="accordion-body">
                                         <div class="form-group">
                                             <select class="form-select" name="security_requirements" multiple>
-                                                <option value="gdpr">GDPR Compliance</option>
-                                                <option value="hipaa">HIPAA Compliance</option>
-                                                <option value="pci">PCI DSS Compliance</option>
-                                                <option value="soc2">SOC 2 Compliance</option>
-                                                <option value="iso27001">ISO 27001 Compliance</option>
-                                                <option value="2fa">Two-factor Authentication</option>
-                                                <option value="encryption">Data Encryption</option>
-                                                <option value="other">Other</option>
+                                                <option value="gdpr">{{ _('GDPR Compliance') }}</option>
+                                                <option value="hipaa">{{ _('HIPAA Compliance') }}</option>
+                                                <option value="pci">{{ _('PCI DSS Compliance') }}</option>
+                                                <option value="soc2">{{ _('SOC 2 Compliance') }}</option>
+                                                <option value="iso27001">{{ _('ISO 27001 Compliance') }}</option>
+                                                <option value="2fa">{{ _('Two-factor Authentication') }}</option>
+                                                <option value="encryption">{{ _('Data Encryption') }}</option>
+                                                <option value="other">{{ _('Other') }}</option>
                                             </select>
-                                            <div class="form-text">Hold Ctrl/Cmd to select multiple options, or leave blank if unsure.</div>
+                                            <div class="form-text">{{ _('Hold Ctrl/Cmd to select multiple options, or leave blank if unsure.') }}</div>
                                         </div>
                                         <div class="mt-3">
-                                            <textarea class="form-control" name="other_security_requirements" rows="2" placeholder="If you selected 'Other' or have additional security requirements, please specify..."></textarea>
+                                            <textarea class="form-control" name="other_security_requirements" rows="2" placeholder="{{ _('If you selected \'Other\' or have additional security requirements, please specify...') }}"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -286,21 +286,21 @@
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="heading13">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse13" aria-expanded="false" aria-controls="collapse13">
-                                        13. What level of ongoing support will you need after launch?
+                                        13. {{ _('What level of ongoing support will you need after launch?') }}
                                     </button>
                                 </h2>
                                 <div id="collapse13" class="accordion-collapse collapse" aria-labelledby="heading13" data-bs-parent="#questionnaireAccordion">
                                     <div class="accordion-body">
                                         <div class="form-group">
                                             <select class="form-select" name="support_level" required>
-                                                <option value="" selected disabled>Select support level</option>
-                                                <option value="minimal">Minimal (Bug fixes only)</option>
-                                                <option value="standard">Standard (Bug fixes and minor updates)</option>
-                                                <option value="comprehensive">Comprehensive (Ongoing development and support)</option>
-                                                <option value="managed">Fully Managed Service</option>
-                                                <option value="undecided">Not yet decided</option>
+                                                <option value="" selected disabled>{{ _('Select support level') }}</option>
+                                                <option value="minimal">{{ _('Minimal (Bug fixes only)') }}</option>
+                                                <option value="standard">{{ _('Standard (Bug fixes and minor updates)') }}</option>
+                                                <option value="comprehensive">{{ _('Comprehensive (Ongoing development and support)') }}</option>
+                                                <option value="managed">{{ _('Fully Managed Service') }}</option>
+                                                <option value="undecided">{{ _('Not yet decided') }}</option>
                                             </select>
-                                            <div class="form-text">This helps us plan for post-launch resources and maintenance.</div>
+                                            <div class="form-text">{{ _('This helps us plan for post-launch resources and maintenance.') }}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -310,7 +310,7 @@
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="heading14">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse14" aria-expanded="false" aria-controls="collapse14">
-                                        14. Do you already have any design assets or documentation for this project?
+                                        14. {{ _('Do you already have any design assets or documentation for this project?') }}
                                     </button>
                                 </h2>
                                 <div id="collapse14" class="accordion-collapse collapse" aria-labelledby="heading14" data-bs-parent="#questionnaireAccordion">
@@ -318,33 +318,33 @@
                                         <div class="form-group">
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" name="existing_assets[]" value="wireframes" id="wireframes">
-                                                <label class="form-check-label" for="wireframes">Wireframes</label>
+                                                <label class="form-check-label" for="wireframes">{{ _('Wireframes') }}</label>
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" name="existing_assets[]" value="mockups" id="mockups">
-                                                <label class="form-check-label" for="mockups">Design Mockups</label>
+                                                <label class="form-check-label" for="mockups">{{ _('Design Mockups') }}</label>
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" name="existing_assets[]" value="brand_guidelines" id="brand_guidelines">
-                                                <label class="form-check-label" for="brand_guidelines">Brand Guidelines</label>
+                                                <label class="form-check-label" for="brand_guidelines">{{ _('Brand Guidelines') }}</label>
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" name="existing_assets[]" value="user_stories" id="user_stories">
-                                                <label class="form-check-label" for="user_stories">User Stories</label>
+                                                <label class="form-check-label" for="user_stories">{{ _('User Stories') }}</label>
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" name="existing_assets[]" value="requirements_doc" id="requirements_doc">
-                                                <label class="form-check-label" for="requirements_doc">Requirements Document</label>
+                                                <label class="form-check-label" for="requirements_doc">{{ _('Requirements Document') }}</label>
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" name="existing_assets[]" value="code" id="code">
-                                                <label class="form-check-label" for="code">Existing Code</label>
+                                                <label class="form-check-label" for="code">{{ _('Existing Code') }}</label>
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" name="existing_assets[]" value="none" id="none">
-                                                <label class="form-check-label" for="none">None of the above</label>
+                                                <label class="form-check-label" for="none">{{ _('None of the above') }}</label>
                                             </div>
-                                            <div class="form-text">Check all that apply. This helps us understand what resources are available to start with.</div>
+                                            <div class="form-text">{{ _('Check all that apply. This helps us understand what resources are available to start with.') }}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -354,14 +354,14 @@
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="heading15">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse15" aria-expanded="false" aria-controls="collapse15">
-                                        15. Any additional information you'd like to share about your project?
+                                        15. {{ _('Any additional information you\'d like to share about your project?') }}
                                     </button>
                                 </h2>
                                 <div id="collapse15" class="accordion-collapse collapse" aria-labelledby="heading15" data-bs-parent="#questionnaireAccordion">
                                     <div class="accordion-body">
                                         <div class="form-group">
-                                            <textarea class="form-control" name="additional_info" rows="5" placeholder="Share any other details that might help us understand your project better..."></textarea>
-                                            <div class="form-text">Include any considerations, challenges, or specific requirements not covered by previous questions.</div>
+                                            <textarea class="form-control" name="additional_info" rows="5" placeholder="{{ _('Share any other details that might help us understand your project better...') }}"></textarea>
+                                            <div class="form-text">{{ _('Include any considerations, challenges, or specific requirements not covered by previous questions.') }}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -370,37 +370,37 @@
                         
                         <!-- Contact Information -->
                         <div class="contact-info mt-4">
-                            <h3>Contact Information</h3>
+                            <h3>{{ _('Contact Information') }}</h3>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
-                                    <label for="contact_name" class="form-label">Name *</label>
+                                    <label for="contact_name" class="form-label">{{ _('Name *') }}</label>
                                     <input type="text" class="form-control" id="contact_name" name="contact_name" required>
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <label for="company_name" class="form-label">Company Name</label>
+                                    <label for="company_name" class="form-label">{{ _('Company Name') }}</label>
                                     <input type="text" class="form-control" id="company_name" name="company_name">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
-                                    <label for="contact_email" class="form-label">Email *</label>
+                                    <label for="contact_email" class="form-label">{{ _('Email *') }}</label>
                                     <input type="email" class="form-control" id="contact_email" name="contact_email" required>
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <label for="contact_phone" class="form-label">Phone</label>
+                                    <label for="contact_phone" class="form-label">{{ _('Phone') }}</label>
                                     <input type="tel" class="form-control" id="contact_phone" name="contact_phone">
                                 </div>
                             </div>
                             <div class="form-check mb-3">
                                 <input class="form-check-input" type="checkbox" id="consent" name="consent" required>
                                 <label class="form-check-label" for="consent">
-                                    I consent to having this website store my submitted information so they can respond to my inquiry. *
+                                    {{ _('I consent to having this website store my submitted information so they can respond to my inquiry. *') }}
                                 </label>
                             </div>
                         </div>
                         
                         <div class="text-center mt-4">
-                            <button type="submit" class="btn btn-primary btn-lg">Submit Project Request</button>
+                            <button type="submit" class="btn btn-primary btn-lg">{{ _('Submit Project Request') }}</button>
                         </div>
                     </form>
                 </div>
@@ -411,22 +411,22 @@
             <div class="sticky-top" style="top: 2rem;">
                 <div class="card mb-4">
                     <div class="card-body">
-                        <h3 class="card-title">Why Choose Us</h3>
+                        <h3 class="card-title">{{ _('Why Choose Us') }}</h3>
                         <ul class="list-unstyled">
-                            <li><i class="fas fa-check-circle text-success"></i> Expert team with proven track record</li>
-                            <li><i class="fas fa-check-circle text-success"></i> Transparent pricing and process</li>
-                            <li><i class="fas fa-check-circle text-success"></i> Agile development methodology</li>
-                            <li><i class="fas fa-check-circle text-success"></i> Ongoing support and maintenance</li>
-                            <li><i class="fas fa-check-circle text-success"></i> Cutting-edge technologies</li>
+                            <li><i class="fas fa-check-circle text-success"></i> {{ _('Expert team with proven track record') }}</li>
+                            <li><i class="fas fa-check-circle text-success"></i> {{ _('Transparent pricing and process') }}</li>
+                            <li><i class="fas fa-check-circle text-success"></i> {{ _('Agile development methodology') }}</li>
+                            <li><i class="fas fa-check-circle text-success"></i> {{ _('Ongoing support and maintenance') }}</li>
+                            <li><i class="fas fa-check-circle text-success"></i> {{ _('Cutting-edge technologies') }}</li>
                         </ul>
                     </div>
                 </div>
                 
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="card-title">Free Consultation</h3>
-                        <p>Get a free 30-minute consultation with our experts to discuss your project needs.</p>
-                        <a href="{{ url_for('pages.contact') }}" class="btn btn-outline-primary">Contact Us</a>
+                        <h3 class="card-title">{{ _('Free Consultation') }}</h3>
+                        <p>{{ _('Get a free 30-minute consultation with our experts to discuss your project needs.') }}</p>
+                        <a href="{{ url_for('pages.contact') }}" class="btn btn-outline-primary">{{ _('Contact Us') }}</a>
                     </div>
                 </div>
             </div>
@@ -446,7 +446,7 @@
             
             // Show a loading spinner or message while form submits
             const submitBtn = form.querySelector('button[type="submit"]');
-            submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Submitting...';
+            submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> {{ _("Submitting...") }}';
             submitBtn.disabled = true;
         });
         

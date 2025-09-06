@@ -1,1054 +1,734 @@
+# Файл переводов на немецкий язык для Rozoom-KI
 msgid ""
 msgstr ""
 "Project-Id-Version: Rozoom-KI 1.0\n"
 "Report-Msgid-Bugs-To: info@rozoom-ki.com\n"
-"POT-Creation-Date: 2023-09-05 12:00+0200\n"
+"POT-Creation-Date: 2025-09-06 23:10+0200\n"
 "PO-Revision-Date: 2023-09-05 13:00+0200\n"
 "Last-Translator: \n"
-"Language-Team: German\n"
 "Language: de\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Language-Team: German\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
 
-msgid "Home"
-msgstr "Startseite"
+#~ msgid "Home"
+#~ msgstr "Startseite"
 
-msgid "Services"
-msgstr "Dienstleistungen"
+#~ msgid "Services"
+#~ msgstr "Dienstleistungen"
 
-msgid "Pricing"
-msgstr "Preise"
+#~ msgid "Pricing"
+#~ msgstr "Preise"
 
-msgid "Blog"
-msgstr "Blog"
+#~ msgid "Blog"
+#~ msgstr "Blog"
 
-msgid "Contact"
-msgstr "Kontakt"
+#~ msgid "Contact"
+#~ msgstr "Kontakt"
 
-msgid "Login"
-msgstr "Anmelden"
+#~ msgid "Login"
+#~ msgstr "Anmelden"
 
-msgid "Logout"
-msgstr "Abmelden"
+#~ msgid "Logout"
+#~ msgstr "Abmelden"
 
-msgid "Register"
-msgstr "Registrieren"
+#~ msgid "Register"
+#~ msgstr "Registrieren"
 
-msgid "Dashboard"
-msgstr "Übersicht"
+#~ msgid "Dashboard"
+#~ msgstr "Übersicht"
 
-msgid "Admin Panel"
-msgstr "Administrator-Bereich"
+#~ msgid "Admin Panel"
+#~ msgstr "Administrator-Bereich"
 
-msgid "Search"
-msgstr "Suchen"
+#~ msgid "Search"
+#~ msgstr "Suchen"
 
-msgid "Submit"
-msgstr "Senden"
+#~ msgid "Submit"
+#~ msgstr "Senden"
 
-msgid "Save"
-msgstr "Speichern"
+#~ msgid "Save"
+#~ msgstr "Speichern"
 
-msgid "Cancel"
-msgstr "Abbrechen"
+#~ msgid "Cancel"
+#~ msgstr "Abbrechen"
 
-msgid "Delete"
-msgstr "Löschen"
+#~ msgid "Delete"
+#~ msgstr "Löschen"
 
-msgid "Edit"
-msgstr "Bearbeiten"
+#~ msgid "Edit"
+#~ msgstr "Bearbeiten"
 
-msgid "Create"
-msgstr "Erstellen"
+#~ msgid "Create"
+#~ msgstr "Erstellen"
 
-msgid "Users"
-msgstr "Benutzer"
+#~ msgid "Users"
+#~ msgstr "Benutzer"
 
-msgid "Projects"
-msgstr "Projekte"
+#~ msgid "Projects"
+#~ msgstr "Projekte"
 
-msgid "Settings"
-msgstr "Einstellungen"
+#~ msgid "Settings"
+#~ msgstr "Einstellungen"
 
-msgid "Profile"
-msgstr "Profil"
+#~ msgid "Profile"
+#~ msgstr "Profil"
 
-msgid "Language"
-msgstr "Sprache"
+#~ msgid "Language"
+#~ msgstr "Sprache"
 
-msgid "Name"
-msgstr "Name"
+#~ msgid "Name"
+#~ msgstr "Name"
 
-msgid "Email"
-msgstr "E-Mail"
+#~ msgid "Email"
+#~ msgstr "E-Mail"
 
-msgid "Password"
-msgstr "Passwort"
+#~ msgid "Password"
+#~ msgstr "Passwort"
 
-msgid "Confirm Password"
-msgstr "Passwort bestätigen"
+#~ msgid "Confirm Password"
+#~ msgstr "Passwort bestätigen"
 
-msgid "Required field"
-msgstr "Pflichtfeld"
+#~ msgid "Required field"
+#~ msgstr "Pflichtfeld"
 
-msgid "Invalid email format"
-msgstr "Ungültiges E-Mail-Format"
+#~ msgid "Invalid email format"
+#~ msgstr "Ungültiges E-Mail-Format"
 
-msgid "Welcome to Rozoom-KI"
-msgstr "Willkommen bei Rozoom-KI"
+#~ msgid "Welcome to Rozoom-KI"
+#~ msgstr "Willkommen bei Rozoom-KI"
 
-msgid "Intelligent AI Solutions for Modern Business"
-msgstr "Intelligente KI-Lösungen für moderne Unternehmen"
+#~ msgid "Request a Project Estimate"
+#~ msgstr "Anfrage für eine Projektschätzung"
 
-msgid "Transform your business with our state-of-the-art AI assistants and custom solutions"
-msgstr "Transformieren Sie Ihr Unternehmen mit unseren modernsten KI-Assistenten und maßgeschneiderten Lösungen"
+#~ msgid ""
+#~ "Fill out our project questionnaire to"
+#~ " get a free time and budget "
+#~ "estimate for your project. No "
+#~ "obligations!"
+#~ msgstr ""
+#~ "Füllen Sie unseren Projektfragebogen aus, "
+#~ "um eine kostenlose Zeit- und "
+#~ "Budgetschätzung für Ihr Projekt zu "
+#~ "erhalten. Keine Verpflichtungen!"
+
+#~ msgid "What type of project are you looking to develop?"
+#~ msgstr "Welche Art von Projekt möchten Sie entwickeln?"
+
+#~ msgid "Select a project type"
+#~ msgstr "Wählen Sie einen Projekttyp"
+
+#~ msgid "Web Application"
+#~ msgstr "Web-Anwendung"
+
+#~ msgid "Mobile Application"
+#~ msgstr "Mobile Anwendung"
+
+#~ msgid "AI/ML Solution"
+#~ msgstr "KI/ML-Lösung"
+
+#~ msgid "Automation Tool"
+#~ msgstr "Automatisierungswerkzeug"
+
+#~ msgid "Data Analytics"
+#~ msgstr "Datenanalyse"
+
+#~ msgid "Other"
+#~ msgstr "Andere"
+
+#~ msgid "Choose the category that best describes your project."
+#~ msgstr "Wählen Sie die Kategorie, die Ihr Projekt am besten beschreibt."
 
-msgid "Explore Services"
-msgstr "Dienstleistungen entdecken"
+#~ msgid "What is the primary goal of your project?"
+#~ msgstr "Was ist das Hauptziel Ihres Projekts?"
 
-msgid "Contact Us"
-msgstr "Kontaktieren Sie uns"
+#~ msgid "Describe the main purpose of your project..."
+#~ msgstr "Beschreiben Sie den Hauptzweck Ihres Projekts..."
 
-msgid "Sign Up for Free"
-msgstr "Kostenlos registrieren"
+#~ msgid ""
+#~ "Clearly define what problem your project"
+#~ " solves or what opportunity it "
+#~ "addresses."
+#~ msgstr ""
+#~ "Definieren Sie klar, welches Problem Ihr"
+#~ " Projekt löst oder welche Chance es"
+#~ " nutzt."
+
+#~ msgid "Who are the target users of your project?"
+#~ msgstr "Wer sind die Zielbenutzer Ihres Projekts?"
+
+#~ msgid "Describe your target audience..."
+#~ msgstr "Beschreiben Sie Ihre Zielgruppe..."
+
+#~ msgid ""
+#~ "Specify who will be using your "
+#~ "solution (e.g., businesses, consumers, "
+#~ "specific industry professionals)."
+#~ msgstr ""
+#~ "Geben Sie an, wer Ihre Lösung "
+#~ "nutzen wird (z.B. Unternehmen, Verbraucher,"
+#~ " spezifische Branchenfachleute)."
+
+#~ msgid "What features are essential for your project?"
+#~ msgstr "Welche Funktionen sind für Ihr Projekt unerlässlich?"
+
+#~ msgid "List the key features your project must have..."
+#~ msgstr ""
+#~ "Listen Sie die wichtigsten Funktionen "
+#~ "auf, die Ihr Projekt haben muss..."
+
+#~ msgid ""
+#~ "Focus on the core functionality that "
+#~ "is absolutely necessary for your project"
+#~ " to succeed."
+#~ msgstr ""
+#~ "Konzentrieren Sie sich auf die "
+#~ "Kernfunktionalität, die für den Erfolg "
+#~ "Ihres Projekts unbedingt erforderlich ist."
+
+#~ msgid "What features would be nice to have but aren't essential?"
+#~ msgstr ""
+#~ "Welche Funktionen wären schön zu haben,"
+#~ " sind aber nicht unbedingt notwendig?"
+
+#~ msgid "List any additional features that would be beneficial..."
+#~ msgstr "Listen Sie zusätzliche Funktionen auf, die vorteilhaft wären..."
+
+#~ msgid ""
+#~ "These are features that could be "
+#~ "implemented in later phases of the "
+#~ "project."
+#~ msgstr ""
+#~ "Dies sind Funktionen, die in späteren"
+#~ " Phasen des Projekts implementiert werden"
+#~ " könnten."
+
+#~ msgid "Do you have a specific timeline for this project?"
+#~ msgstr "Haben Sie einen bestimmten Zeitplan für dieses Projekt?"
+
+#~ msgid "Select a timeline"
+#~ msgstr "Wählen Sie einen Zeitplan"
+
+#~ msgid "Urgent (1-2 months)"
+#~ msgstr "Dringend (1-2 Monate)"
+
+#~ msgid "Standard (3-6 months)"
+#~ msgstr "Standard (3-6 Monate)"
+
+#~ msgid "Flexible (6+ months)"
+#~ msgstr "Flexibel (6+ Monate)"
+
+#~ msgid "Not yet decided"
+#~ msgstr "Noch nicht entschieden"
+
+#~ msgid "This helps us determine the development pace and resource allocation."
+#~ msgstr ""
+#~ "Dies hilft uns, das Entwicklungstempo "
+#~ "und die Ressourcenzuweisung zu bestimmen."
+
+#~ msgid "Do you have a budget range in mind?"
+#~ msgstr "Haben Sie eine Budgetspanne im Sinn?"
+
+#~ msgid "Select a budget range"
+#~ msgstr "Wählen Sie eine Budgetspanne"
+
+#~ msgid "Less than €10,000"
+#~ msgstr "Weniger als 10.000 €"
+
+#~ msgid "€10,000 - €30,000"
+#~ msgstr "10.000 € - 30.000 €"
+
+#~ msgid "€30,000 - €100,000"
+#~ msgstr "30.000 € - 100.000 €"
+
+#~ msgid "€100,000+"
+#~ msgstr "100.000 €+"
+
+#~ msgid ""
+#~ "This helps us suggest solutions that "
+#~ "fit within your financial constraints."
+#~ msgstr ""
+#~ "Dies hilft uns, Lösungen vorzuschlagen, "
+#~ "die Ihren finanziellen Einschränkungen "
+#~ "entsprechen."
+
+#~ msgid "Are there any existing systems your project needs to integrate with?"
+#~ msgstr ""
+#~ "Gibt es bestehende Systeme, mit denen"
+#~ " Ihr Projekt integriert werden muss?"
+
+#~ msgid ""
+#~ "List any systems, APIs, or services "
+#~ "your project needs to connect with..."
+#~ msgstr ""
+#~ "Listen Sie alle Systeme, APIs oder "
+#~ "Dienste auf, mit denen Ihr Projekt "
+#~ "verbunden werden muss..."
+
+#~ msgid "For example: payment gateways, CRMs, ERPs, social media platforms, etc."
+#~ msgstr ""
+#~ "Zum Beispiel: Zahlungsgateways, CRMs, ERPs,"
+#~ " Social-Media-Plattformen usw."
+
+#~ msgid "Do you have any specific technical requirements or preferences?"
+#~ msgstr "Haben Sie spezifische technische Anforderungen oder Vorlieben?"
+
+#~ msgid "Specify any technologies, frameworks, or platforms you prefer..."
+#~ msgstr ""
+#~ "Geben Sie Technologien, Frameworks oder "
+#~ "Plattformen an, die Sie bevorzugen..."
+
+#~ msgid ""
+#~ "For example: programming languages, cloud "
+#~ "providers, frameworks, or architecture "
+#~ "preferences."
+#~ msgstr ""
+#~ "Zum Beispiel: Programmiersprachen, Cloud-"
+#~ "Anbieter, Frameworks oder Architekturpräferenzen."
+
+#~ msgid "Do you have any examples of similar projects you admire?"
+#~ msgstr "Haben Sie Beispiele für ähnliche Projekte, die Sie bewundern?"
+
+#~ msgid "List websites, apps, or products similar to what you envision..."
+#~ msgstr ""
+#~ "Listen Sie Websites, Apps oder Produkte"
+#~ " auf, die Ihrer Vision ähnlich "
+#~ "sind..."
+
+#~ msgid "This helps us understand your vision and aesthetic preferences."
+#~ msgstr "Dies hilft uns, Ihre Vision und ästhetischen Präferenzen zu verstehen."
+
+#~ msgid "How do you plan to measure the success of this project?"
+#~ msgstr "Wie planen Sie, den Erfolg dieses Projekts zu messen?"
+
+#~ msgid "Describe key performance indicators or success metrics..."
+#~ msgstr "Beschreiben Sie wichtige Leistungsindikatoren oder Erfolgskennzahlen..."
+
+#~ msgid ""
+#~ "For example: user acquisition, conversion "
+#~ "rates, efficiency improvements, cost savings,"
+#~ " etc."
+#~ msgstr ""
+#~ "Zum Beispiel: Benutzerakquisition, Konversionsraten,"
+#~ " Effizienzverbesserungen, Kosteneinsparungen usw."
+
+#~ msgid "Do you have any specific security or compliance requirements?"
+#~ msgstr "Haben Sie spezifische Sicherheits- oder Compliance-Anforderungen?"
+
+#~ msgid "GDPR Compliance"
+#~ msgstr "DSGVO-Konformität"
+
+#~ msgid "HIPAA Compliance"
+#~ msgstr "HIPAA-Konformität"
+
+#~ msgid "PCI DSS Compliance"
+#~ msgstr "PCI DSS-Konformität"
+
+#~ msgid "SOC 2 Compliance"
+#~ msgstr "SOC 2-Konformität"
+
+#~ msgid "ISO 27001 Compliance"
+#~ msgstr "ISO 27001-Konformität"
+
+#~ msgid "Two-factor Authentication"
+#~ msgstr "Zwei-Faktor-Authentifizierung"
+
+#~ msgid "Data Encryption"
+#~ msgstr "Datenverschlüsselung"
+
+#~ msgid "Hold Ctrl/Cmd to select multiple options, or leave blank if unsure."
+#~ msgstr ""
+#~ "Halten Sie Strg/Cmd gedrückt, um mehrere"
+#~ " Optionen auszuwählen, oder lassen Sie "
+#~ "das Feld leer, wenn Sie sich nicht"
+#~ " sicher sind."
+
+#~ msgid ""
+#~ "If you selected 'Other' or have "
+#~ "additional security requirements, please "
+#~ "specify..."
+#~ msgstr ""
+#~ "Wenn Sie 'Andere' ausgewählt haben oder"
+#~ " zusätzliche Sicherheitsanforderungen haben, "
+#~ "geben Sie diese bitte an..."
+
+#~ msgid "What level of ongoing support will you need after launch?"
+#~ msgstr ""
+#~ "Welches Niveau an fortlaufender Unterstützung"
+#~ " benötigen Sie nach dem Start?"
+
+#~ msgid "Select support level"
+#~ msgstr "Unterstützungsstufe auswählen"
+
+#~ msgid "Minimal (Bug fixes only)"
+#~ msgstr "Minimal (nur Fehlerbehebungen)"
+
+#~ msgid "Standard (Bug fixes and minor updates)"
+#~ msgstr "Standard (Fehlerbehebungen und kleinere Updates)"
+
+#~ msgid "Comprehensive (Ongoing development and support)"
+#~ msgstr "Umfassend (fortlaufende Entwicklung und Unterstützung)"
+
+#~ msgid "Fully Managed Service"
+#~ msgstr "Vollständig verwalteter Service"
+
+#~ msgid "This helps us plan for post-launch resources and maintenance."
+#~ msgstr ""
+#~ "Dies hilft uns bei der Planung von"
+#~ " Ressourcen und Wartung nach dem "
+#~ "Start."
+
+#~ msgid ""
+#~ "Do you already have any design "
+#~ "assets or documentation for this "
+#~ "project?"
+#~ msgstr ""
+#~ "Haben Sie bereits Design-Assets oder "
+#~ "Dokumentationen für dieses Projekt?"
+
+#~ msgid "Wireframes"
+#~ msgstr "Wireframes"
+
+#~ msgid "Design Mockups"
+#~ msgstr "Design-Mockups"
+
+#~ msgid "Brand Guidelines"
+#~ msgstr "Markenrichtlinien"
+
+#~ msgid "User Stories"
+#~ msgstr "Benutzergeschichten"
+
+#~ msgid "Requirements Document"
+#~ msgstr "Anforderungsdokument"
+
+#~ msgid "Existing Code"
+#~ msgstr "Vorhandener Code"
+
+#~ msgid "None of the above"
+#~ msgstr "Keines der oben genannten"
+
+#~ msgid ""
+#~ "Check all that apply. This helps "
+#~ "us understand what resources are "
+#~ "available to start with."
+#~ msgstr ""
+#~ "Wählen Sie alles Zutreffende. Dies hilft"
+#~ " uns zu verstehen, welche Ressourcen "
+#~ "zu Beginn verfügbar sind."
+
+#~ msgid "Any additional information you'd like to share about your project?"
+#~ msgstr "Möchten Sie weitere Informationen über Ihr Projekt mitteilen?"
+
+#~ msgid ""
+#~ "Share any other details that might "
+#~ "help us understand your project "
+#~ "better..."
+#~ msgstr ""
+#~ "Teilen Sie weitere Details mit, die "
+#~ "uns helfen könnten, Ihr Projekt besser"
+#~ " zu verstehen..."
+
+#~ msgid ""
+#~ "Include any considerations, challenges, or "
+#~ "specific requirements not covered by "
+#~ "previous questions."
+#~ msgstr ""
+#~ "Fügen Sie alle Überlegungen, Herausforderungen"
+#~ " oder spezifischen Anforderungen ein, die"
+#~ " durch die vorherigen Fragen nicht "
+#~ "abgedeckt wurden."
+
+#~ msgid "Contact Information"
+#~ msgstr "Kontaktinformation"
+
+#~ msgid "Name *"
+#~ msgstr "Name *"
+
+#~ msgid "Company Name"
+#~ msgstr "Firmenname"
+
+#~ msgid "Email *"
+#~ msgstr "E-Mail *"
+
+#~ msgid "Phone"
+#~ msgstr "Telefon"
+
+#~ msgid ""
+#~ "I consent to having this website "
+#~ "store my submitted information so they"
+#~ " can respond to my inquiry. *"
+#~ msgstr ""
+#~ "Ich stimme zu, dass diese Website "
+#~ "meine übermittelten Informationen speichert, "
+#~ "damit sie auf meine Anfrage antworten"
+#~ " können. *"
+
+#~ msgid "Submit Project Request"
+#~ msgstr "Projektanfrage einreichen"
+
+#~ msgid "Why Choose Us"
+#~ msgstr "Warum uns wählen"
+
+#~ msgid "Expert team with proven track record"
+#~ msgstr "Expertenteam mit bewährter Erfolgsbilanz"
+
+#~ msgid "Transparent pricing and process"
+#~ msgstr "Transparente Preisgestaltung und Prozesse"
+
+#~ msgid "Agile development methodology"
+#~ msgstr "Agile Entwicklungsmethodik"
+
+#~ msgid "Ongoing support and maintenance"
+#~ msgstr "Fortlaufende Unterstützung und Wartung"
+
+#~ msgid "Cutting-edge technologies"
+#~ msgstr "Moderne Technologien"
+
+#~ msgid "Free Consultation"
+#~ msgstr "Kostenlose Beratung"
+
+#~ msgid ""
+#~ "Get a free 30-minute consultation with"
+#~ " our experts to discuss your project"
+#~ " needs."
+#~ msgstr ""
+#~ "Erhalten Sie eine kostenlose 30-minütige "
+#~ "Beratung mit unseren Experten, um Ihre"
+#~ " Projektanforderungen zu besprechen."
+
+#~ msgid "Contact Us"
+#~ msgstr "Kontaktieren Sie uns"
+
+#~ msgid "Submitting..."
+#~ msgstr "Wird gesendet..."
+
+# Главная страница (index.html)
+#~ msgid "Create Your Personal Account"
+#~ msgstr "Erstellen Sie Ihr persönliches Konto"
+
+#~ msgid ""
+#~ "Track your projects, access personalized "
+#~ "services, and collaborate with our team"
+#~ " in real-time."
+#~ msgstr ""
+#~ "Verfolgen Sie Ihre Projekte, greifen Sie"
+#~ " auf personalisierte Dienste zu und "
+#~ "arbeiten Sie in Echtzeit mit unserem "
+#~ "Team zusammen."
+
+#~ msgid "Personal dashboard to monitor project progress"
+#~ msgstr "Persönliches Dashboard zur Überwachung des Projektfortschritts"
+
+#~ msgid "Direct messaging with our development team"
+#~ msgstr "Direkte Nachrichten mit unserem Entwicklungsteam"
+
+#~ msgid "Online invoicing and payment processing"
+#~ msgstr "Online-Rechnungsstellung und Zahlungsabwicklung"
+
+#~ msgid "Project milestone tracking and updates"
+#~ msgstr "Verfolgung von Projektmeilensteinen und Updates"
+
+#~ msgid "Register Now"
+#~ msgstr "Jetzt registrieren"
+
+#~ msgid "Create Account"
+#~ msgstr "Konto erstellen"
+
+#~ msgid "Already have an account? Login"
+#~ msgstr "Haben Sie bereits ein Konto? Anmelden"
+
+# Чат-виджет (base.html)
+#~ msgid "AI Assistant"
+#~ msgstr "KI-Assistent"
+
+#~ msgid "Type your message..."
+#~ msgstr "Schreiben Sie Ihre Nachricht..."
+
+# Страница цен (pricing.html)
+#~ msgid "Choose Your Package"
+#~ msgstr "Wählen Sie Ihr Paket"
+
+#~ msgid "Get the perfect amount of development time for your project needs"
+#~ msgstr ""
+#~ "Erhalten Sie die perfekte Menge an "
+#~ "Entwicklungszeit für Ihre Projektanforderungen"
+
+#~ msgid "Most Popular"
+#~ msgstr "Am beliebtesten"
+
+#~ msgid "Hours"
+#~ msgstr "Stunden"
+
+#~ msgid "per hour"
+#~ msgstr "pro Stunde"
+
+#~ msgid "Custom Package"
+#~ msgstr "Individuelles Paket"
+
+#~ msgid "Tailored to Your Needs"
+#~ msgstr "Maßgeschneidert für Ihre Bedürfnisse"
+
+#~ msgid "For special requirements"
+#~ msgstr "Für besondere Anforderungen"
+
+#~ msgid "Flexible hours"
+#~ msgstr "Flexible Stunden"
+
+#~ msgid "Custom development"
+#~ msgstr "Individuelles Development"
+
+#~ msgid "Dedicated support"
+#~ msgstr "Dedizierter Support"
+
+#~ msgid "Priority service"
+#~ msgstr "Prioritätsservice"
+
+#~ msgid "Enterprise solutions"
+#~ msgstr "Unternehmenslösungen"
+
+#~ msgid "Get in Touch"
+#~ msgstr "Kontakt aufnehmen"
+
+#~ msgid "Need Help Choosing?"
+#~ msgstr "Brauchen Sie Hilfe bei der Auswahl?"
+
+#~ msgid ""
+#~ "Contact our team for a free "
+#~ "consultation and we'll help you select"
+#~ " the perfect package for your "
+#~ "project."
+#~ msgstr ""
+#~ "Kontaktieren Sie unser Team für eine "
+#~ "kostenlose Beratung und wir helfen "
+#~ "Ihnen, das perfekte Paket für Ihr "
+#~ "Projekt auszuwählen."
+
+# Элементы макросов и альтернативные тексты
+#~ msgid "English Flag"
+#~ msgstr "Englische Flagge"
+
+#~ msgid "German Flag"
+#~ msgstr "Deutsche Flagge"
+
+#~ msgid "Search posts..."
+#~ msgstr "Beiträge suchen..."
+
+# Макросы для доступности (aria-label)
+#~ msgid "Close"
+#~ msgstr "Schließen"
+
+#~ msgid "Previous"
+#~ msgstr "Zurück"
+
+#~ msgid "Next"
+#~ msgstr "Weiter"
+
+#~ msgid "Page navigation"
+#~ msgstr "Seitennavigation"
+
+#~ msgid "Rozoom Assistant"
+#~ msgstr "Rozoom-Assistent"
+
+# Дополнительные элементы форм
+#~ msgid "Choose a username or leave blank to use your email"
+#~ msgstr ""
+#~ "Wählen Sie einen Benutzernamen oder "
+#~ "lassen Sie das Feld leer, um Ihre"
+#~ " E-Mail zu verwenden"
+
+#~ msgid ""
+#~ "Have a question or ready to start"
+#~ " your next project? We're here to "
+#~ "help!"
+#~ msgstr ""
+#~ "Haben Sie eine Frage oder sind Sie"
+#~ " bereit, Ihr nächstes Projekt zu "
+#~ "starten? Wir sind hier, um zu "
+#~ "helfen!"
+
+#~ msgid "Address"
+#~ msgstr "Adresse"
+
+#~ msgid "Email Us"
+#~ msgstr "E-Mail"
+
+#~ msgid "Call Us"
+#~ msgstr "Rufen Sie uns an"
+
+#~ msgid "Mon-Fri 9:00-18:00"
+#~ msgstr "Mo-Fr 9:00-18:00"
+
+#~ msgid "Send Us a Message"
+#~ msgstr "Senden Sie uns eine Nachricht"
+
+#~ msgid "Your message has been sent successfully. We'll get back to you soon!"
+#~ msgstr ""
+#~ "Ihre Nachricht wurde erfolgreich gesendet. "
+#~ "Wir melden uns bald bei Ihnen!"
+
+#~ msgid "Full Name"
+#~ msgstr "Vollständiger Name"
+
+#~ msgid "Enter your full name"
+#~ msgstr "Geben Sie Ihren vollständigen Namen ein"
+
+#~ msgid "Email Address"
+#~ msgstr "E-Mail-Adresse"
+
+#~ msgid "Enter your email address"
+#~ msgstr "Geben Sie Ihre E-Mail-Adresse ein"
+
+#~ msgid "Your Message"
+#~ msgstr "Ihre Nachricht"
+
+#~ msgid "How can we help you?"
+#~ msgstr "Wie können wir Ihnen helfen?"
+
+#~ msgid ""
+#~ "I consent to having this website "
+#~ "store my submitted information so they"
+#~ " can respond to my inquiry"
+#~ msgstr ""
+#~ "Ich stimme zu, dass diese Website "
+#~ "meine übermittelten Informationen speichert, "
+#~ "damit sie auf meine Anfrage antworten"
+#~ " können"
+
+#~ msgid "Send Message"
+#~ msgstr "Nachricht senden"
+
+#~ msgid "Remote Work"
+#~ msgstr "Fernarbeit"
+
+#~ msgid ""
+#~ "We operate as a remote-first "
+#~ "company with team members working from"
+#~ " various locations. This allows us to"
+#~ " serve clients worldwide while maintaining"
+#~ " flexibility and efficiency."
+#~ msgstr ""
+#~ "Wir arbeiten als Remote-First-"
+#~ "Unternehmen mit Teammitgliedern an "
+#~ "verschiedenen Standorten. Dies ermöglicht es"
+#~ " uns, Kunden weltweit zu bedienen und"
+#~ " dabei Flexibilität und Effizienz zu "
+#~ "gewährleisten."
+
+#~ msgid "Working remotely from Germany"
+#~ msgstr "Remote-Arbeit aus Deutschland"
+
+#~ msgid "LinkedIn"
+#~ msgstr "LinkedIn"
+
+#~ msgid "Twitter"
+#~ msgstr "Twitter"
+
+#~ msgid "Facebook"
+#~ msgstr "Facebook"
+
+#~ msgid "Instagram"
+#~ msgstr "Instagram"
 
-msgid "Go to Dashboard"
-msgstr "Zum Dashboard"
-
-msgid "How We Can Help"
-msgstr "Wie wir helfen können"
-
-msgid "Web Development"
-msgstr "Webentwicklung"
-
-msgid "Custom websites and web applications with AI-powered features to enhance user experience."
-msgstr "Maßgeschneiderte Websites und Webanwendungen mit KI-gestützten Funktionen zur Verbesserung der Benutzererfahrung."
-
-msgid "ML & AI Integration"
-msgstr "ML & KI-Integration"
-
-msgid "Integrate machine learning models and AI capabilities into your existing software systems."
-msgstr "Integrieren Sie Modelle für maschinelles Lernen und KI-Funktionen in Ihre bestehenden Softwaresysteme."
-
-msgid "Process Automation"
-msgstr "Prozessautomatisierung"
-
-msgid "Streamline your business operations with intelligent automation and workflow solutions."
-msgstr "Optimieren Sie Ihre Geschäftsabläufe mit intelligenten Automatisierungs- und Workflow-Lösungen."
-
-msgid "What Our Clients Say"
-msgstr "Was unsere Kunden sagen"
-
-msgid "Create Your Personal Account"
-msgstr "Erstellen Sie Ihr persönliches Konto"
-
-msgid "Track your projects, access personalized services, and collaborate with our team in real-time."
-msgstr "Verfolgen Sie Ihre Projekte, greifen Sie auf personalisierte Dienste zu und arbeiten Sie in Echtzeit mit unserem Team zusammen."
-
-msgid "Personal dashboard to monitor project progress"
-msgstr "Persönliches Dashboard zur Überwachung des Projektfortschritts"
-
-msgid "Direct messaging with our development team"
-msgstr "Direktnachrichten mit unserem Entwicklungsteam"
-
-msgid "Online invoicing and payment processing"
-msgstr "Online-Rechnungsstellung und Zahlungsabwicklung"
-
-msgid "Project milestone tracking and updates"
-msgstr "Verfolgung von Projektmeilensteinen und Updates"
-
-msgid "Register Now"
-msgstr "Jetzt registrieren"
-
-msgid "Create Account"
-msgstr "Konto erstellen"
-
-msgid "Already have an account? Login"
-msgstr "Haben Sie bereits ein Konto? Anmelden"
-
-msgid "Ready to transform your business with AI?"
-msgstr "Bereit, Ihr Unternehmen mit KI zu transformieren?"
-
-msgid "Our team of experts is ready to help you implement intelligent solutions."
-msgstr "Unser Expertenteam steht bereit, um Ihnen bei der Implementierung intelligenter Lösungen zu helfen."
-
-msgid "Get Started Today"
-msgstr "Starten Sie noch heute"
-
-msgid "Artificial Intelligence Solutions"
-msgstr "Künstliche Intelligenz Lösungen"
-
-msgid "Learn More"
-msgstr "Mehr erfahren"
-
-msgid "Get Started"
-msgstr "Jetzt starten"
-
-msgid "Our Services"
-msgstr "Unsere Dienstleistungen"
-
-msgid "Pricing Plans"
-msgstr "Preispläne"
-
-msgid "Contact Us"
-msgstr "Kontaktieren Sie uns"
-
-msgid "About Us"
-msgstr "Über uns"
-
-msgid "&copy; 2025 Rozoom-KI. All rights reserved."
-msgstr "&copy; 2025 Rozoom-KI. Alle Rechte vorbehalten."
-
-msgid "Impressum"
-msgstr "Impressum"
-
-msgid "Privacy Policy"
-msgstr "Datenschutzerklärung"
-
-msgid "Terms of Service"
-msgstr "Nutzungsbedingungen"
-
-msgid "Type your message..."
-msgstr "Geben Sie Ihre Nachricht ein..."
-
-msgid "Rozoom Assistant"
-msgstr "Rozoom Assistent"
-
-msgid "Get in Touch"
-msgstr "Kontaktieren Sie uns"
-
-msgid "Have a question or ready to start your next project? We're here to help!"
-msgstr "Haben Sie eine Frage oder sind Sie bereit für Ihr nächstes Projekt? Wir sind für Sie da!"
-
-msgid "Our Office"
-msgstr "Unser Büro"
-
-msgid "Email Us"
-msgstr "E-Mail an uns"
-
-msgid "Call Us"
-msgstr "Rufen Sie uns an"
-
-msgid "Send Us a Message"
-msgstr "Senden Sie uns eine Nachricht"
-
-msgid "Your message has been sent successfully. We'll get back to you soon!"
-msgstr "Ihre Nachricht wurde erfolgreich gesendet. Wir werden uns in Kürze bei Ihnen melden!"
-
-msgid "Full Name"
-msgstr "Vollständiger Name"
-
-msgid "Enter your full name"
-msgstr "Geben Sie Ihren vollständigen Namen ein"
-
-msgid "Email Address"
-msgstr "E-Mail-Adresse"
-
-msgid "Enter your email address"
-msgstr "Geben Sie Ihre E-Mail-Adresse ein"
-
-msgid "Your Message"
-msgstr "Ihre Nachricht"
-
-msgid "How can we help you?"
-msgstr "Wie können wir Ihnen helfen?"
-
-msgid "I consent to having this website store my submitted information so they can respond to my inquiry"
-msgstr "Ich bin damit einverstanden, dass diese Website meine übermittelten Informationen speichert, damit sie auf meine Anfrage antworten können"
-
-msgid "Send Message"
-msgstr "Nachricht senden"
-
-msgid "AI Development"
-msgstr "KI-Entwicklung"
-
-msgid "We develop custom AI solutions for your business needs, including natural language processing, computer vision, and machine learning models."
-msgstr "Wir entwickeln maßgeschneiderte KI-Lösungen für Ihre Geschäftsanforderungen, einschließlich Verarbeitung natürlicher Sprache, Computer Vision und Machine-Learning-Modelle."
-
-msgid "Web Development"
-msgstr "Webentwicklung"
-
-msgid "Full-stack web development services using modern frameworks and technologies to create responsive, scalable web applications."
-msgstr "Full-Stack-Webentwicklungsdienste mit modernen Frameworks und Technologien zur Erstellung responsiver, skalierbarer Webanwendungen."
-
-msgid "Automation Solutions"
-msgstr "Automatisierungslösungen"
-
-msgid "Automate your business processes with custom software solutions to increase efficiency and reduce operational costs."
-msgstr "Automatisieren Sie Ihre Geschäftsprozesse mit maßgeschneiderten Softwarelösungen, um die Effizienz zu steigern und die Betriebskosten zu senken."
-
-msgid "Data Analysis"
-msgstr "Datenanalyse"
-
-msgid "Turn your data into actionable insights with our comprehensive data analysis and visualization services."
-msgstr "Verwandeln Sie Ihre Daten in umsetzbare Erkenntnisse mit unseren umfassenden Datenanalyse- und Visualisierungsdiensten."
-
-msgid "Request a Project Estimate"
-msgstr "Fordern Sie einen Projektkostenvoranschlag an"
-
-msgid "Fill out our project questionnaire to get a free time and budget estimate for your project. No obligations!"
-msgstr "Füllen Sie unseren Projektfragebogen aus, um eine kostenlose Zeit- und Budgetschätzung für Ihr Projekt zu erhalten. Keine Verpflichtungen!"
-
-msgid "Choose Your Package"
-msgstr "Wählen Sie Ihr Paket"
-
-msgid "Get the perfect amount of development time for your project needs"
-msgstr "Erhalten Sie die perfekte Entwicklungszeit für Ihre Projektanforderungen"
-
-msgid "Most Popular"
-msgstr "Am beliebtesten"
-
-msgid "Hours"
-msgstr "Stunden"
-
-msgid "per hour"
-msgstr "pro Stunde"
-
-msgid "development hours"
-msgstr "Entwicklungsstunden"
-
-msgid "Custom solutions"
-msgstr "Maßgeschneiderte Lösungen"
-
-msgid "Support included"
-msgstr "Support inklusive"
-
-msgid "Regular updates"
-msgstr "Regelmäßige Updates"
-
-msgid "Select Package"
-msgstr "Paket auswählen"
-
-msgid "No pricing packages are currently available. Please contact us for custom pricing."
-msgstr "Derzeit sind keine Preispakete verfügbar. Bitte kontaktieren Sie uns für individuelle Preise."
-
-msgid "Custom Package"
-msgstr "Individuelles Paket"
-
-msgid "Tailored to Your Needs"
-msgstr "Auf Ihre Bedürfnisse zugeschnitten"
-
-msgid "For special requirements"
-msgstr "Für besondere Anforderungen"
-
-msgid "Flexible hours"
-msgstr "Flexible Stunden"
-
-msgid "Custom development"
-msgstr "Individuelle Entwicklung"
-
-msgid "Dedicated support"
-msgstr "Dedizierter Support"
-
-msgid "Priority service"
-msgstr "Prioritätsservice"
-
-msgid "Enterprise solutions"
-msgstr "Unternehmenslösungen"
-
-msgid "Get in Touch"
-msgstr "Kontakt aufnehmen"
-
-msgid "Need Help Choosing?"
-msgstr "Brauchen Sie Hilfe bei der Auswahl?"
-
-msgid "Contact our team for a free consultation and we'll help you select the perfect package for your project."
-msgstr "Kontaktieren Sie unser Team für eine kostenlose Beratung und wir helfen Ihnen, das perfekte Paket für Ihr Projekt auszuwählen."
-
-msgid "About"
-msgstr "Über uns"
-
-msgid "About the author."
-msgstr "Über den Autor."
-
-msgid "Impressum (Legal Notice)"
-msgstr "Impressum (Rechtliche Hinweise)"
-
-msgid "Information According to § 5 TMG"
-msgstr "Angaben gemäß § 5 TMG"
-
-msgid "Represented by:"
-msgstr "Vertreten durch:"
-
-msgid "Contact:"
-msgstr "Kontakt:"
-
-msgid "Registration:"
-msgstr "Registrierung:"
-
-msgid "Registered in the Commercial Register"
-msgstr "Eingetragen im Handelsregister"
-
-msgid "Register Court:"
-msgstr "Registergericht:"
-
-msgid "Registration Number:"
-msgstr "Registernummer:"
-
-msgid "VAT Identification Number:"
-msgstr "Umsatzsteuer-Identifikationsnummer:"
-
-msgid "According to § 27 a of the German Value Added Tax Act"
-msgstr "Gemäß § 27 a Umsatzsteuergesetz"
-
-msgid "Responsible for Content According to § 55 Abs. 2 RStV"
-msgstr "Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV"
-
-msgid "Dispute Resolution"
-msgstr "Streitschlichtung"
-
-msgid "The European Commission provides a platform for online dispute resolution (OS):"
-msgstr "Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:"
-
-msgid "We are not willing or obliged to participate in dispute resolution proceedings before a consumer arbitration board."
-msgstr "Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen."
-
-msgid "Liability for Content"
-msgstr "Haftung für Inhalte"
-
-msgid "As a service provider, we are responsible for our own content on these pages according to § 7 paragraph 1 TMG (German Telemedia Act) and general laws. According to §§ 8 to 10 TMG, however, we as a service provider are not obliged to monitor transmitted or stored external information or to investigate circumstances that indicate illegal activity."
-msgstr "Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG (Telemediengesetz) für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen."
-
-msgid "Obligations to remove or block the use of information according to general laws remain unaffected. However, liability in this respect is only possible from the time of knowledge of a specific legal violation. As soon as we become aware of such legal violations, we will remove this content immediately."
-msgstr "Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen."
-
-msgid "Liability for Links"
-msgstr "Haftung für Links"
-
-msgid "Our offer contains links to external websites of third parties, on whose contents we have no influence. Therefore, we cannot assume any liability for these external contents. The respective provider or operator of the pages is always responsible for the content of the linked pages. The linked pages were checked for possible legal violations at the time of linking. Illegal contents were not recognizable at the time of linking."
-msgstr "Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar."
-
-msgid "However, a permanent control of the contents of the linked pages is not reasonable without concrete evidence of a violation of law. If we become aware of any legal violations, we will remove such links immediately."
-msgstr "Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen."
-
-msgid "Copyright"
-msgstr "Urheberrecht"
-
-msgid "The content and works created by the site operators on these pages are subject to German copyright law. Duplication, processing, distribution, and any kind of exploitation outside the limits of copyright require the written consent of the respective author or creator. Downloads and copies of this site are only permitted for private, non-commercial use."
-msgstr "Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet."
-
-msgid "Insofar as the content on this site was not created by the operator, the copyrights of third parties are respected. In particular, third-party content is marked as such. Should you nevertheless become aware of a copyright infringement, please inform us accordingly. If we become aware of any infringements, we will remove such content immediately."
-msgstr "Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen."
-
-msgid "Remote Work"
-msgstr "Fernarbeit"
-
-msgid "We operate as a remote-first company with team members working from various locations. This allows us to serve clients worldwide while maintaining flexibility and efficiency."
-msgstr "Wir arbeiten als ein Remote-First-Unternehmen mit Teammitgliedern, die von verschiedenen Standorten aus arbeiten. Dies ermöglicht es uns, Kunden weltweit zu bedienen und gleichzeitig Flexibilität und Effizienz zu gewährleisten."
-
-msgid "Working remotely from Germany"
-msgstr "Remote Arbeit aus Deutschland"
-
-msgid "Have a question or ready to start your next project? We're here to help!"
-msgstr "Haben Sie eine Frage oder sind Sie bereit, Ihr nächstes Projekt zu starten? Wir sind hier, um zu helfen!"
-
-msgid "LinkedIn"
-msgstr "LinkedIn"
-
-msgid "Twitter"
-msgstr "Twitter"
-
-msgid "Facebook"
-msgstr "Facebook"
-
-msgid "Instagram"
-msgstr "Instagram"
-
-msgid "Mon-Fri 9:00-18:00"
-msgstr "Mo-Fr 9:00-18:00"
-
-msgid "Email:"
-msgstr "E-Mail:"
-
-msgid "Our Blog"
-msgstr "Unser Blog"
-
-msgid "by"
-msgstr "von"
-
-msgid "Previous"
-msgstr "Zurück"
-
-msgid "Page"
-msgstr "Seite"
-
-msgid "of"
-msgstr "von"
-
-msgid "Next"
-msgstr "Weiter"
-
-msgid "No posts yet"
-msgstr "Noch keine Beiträge"
-
-msgid "Check back soon for our latest articles and insights."
-msgstr "Schauen Sie bald wieder vorbei für unsere neuesten Artikel und Einblicke."
-
-msgid "Search posts..."
-msgstr "Beiträge suchen..."
-
-msgid "Categories"
-msgstr "Kategorien"
-
-msgid "No categories yet"
-msgstr "Noch keine Kategorien"
-
-msgid "Recent Posts"
-msgstr "Aktuelle Beiträge"
-
-msgid "No recent posts"
-msgstr "Keine aktuellen Beiträge"
-
-msgid "Popular Tags"
-msgstr "Beliebte Tags"
-
-msgid "No tags yet"
-msgstr "Noch keine Tags"
-
-msgid "Terms of Service"
-msgstr "Nutzungsbedingungen"
-
-msgid "Privacy Policy"
-msgstr "Datenschutzrichtlinie"
-
-msgid "Intelligent AI Solutions for Modern Business"
-msgstr "Intelligente KI-Lösungen für moderne Unternehmen"
-
-msgid "Transform your business with our state-of-the-art AI assistants and custom solutions"
-msgstr "Transformieren Sie Ihr Unternehmen mit unseren hochmodernen KI-Assistenten und maßgeschneiderten Lösungen"
-
-msgid "Explore Services"
-msgstr "Dienstleistungen entdecken"
-
-msgid "Contact Us"
-msgstr "Kontakt aufnehmen"
-
-msgid "Sign Up for Free"
-msgstr "Kostenlos registrieren"
-
-msgid "Go to Dashboard"
-msgstr "Zum Dashboard"
-
-msgid "How We Can Help"
-msgstr "Wie wir helfen können"
-
-msgid "Web Development"
-msgstr "Webentwicklung"
-
-msgid "Custom websites and web applications with AI-powered features to enhance user experience."
-msgstr "Maßgeschneiderte Websites und Webanwendungen mit KI-gestützten Funktionen zur Verbesserung der Benutzererfahrung."
-
-msgid "Mobile Solutions"
-msgstr "Mobile Lösungen"
-
-msgid "Native and cross-platform mobile applications with intelligent features and analytics."
-msgstr "Native und plattformübergreifende mobile Anwendungen mit intelligenten Funktionen und Analysen."
-
-msgid "ML & AI Integration"
-msgstr "ML & KI Integration"
-
-msgid "Integrate machine learning models and AI capabilities into your existing software systems."
-msgstr "Integrieren Sie Modelle für maschinelles Lernen und KI-Funktionen in Ihre bestehenden Softwaresysteme."
-
-msgid "Process Automation"
-msgstr "Prozessautomatisierung"
-
-msgid "Streamline your business operations with intelligent automation and workflow solutions."
-msgstr "Optimieren Sie Ihre Geschäftsabläufe mit intelligenter Automatisierung und Workflow-Lösungen."
-
-msgid "AI Development"
-msgstr "KI-Entwicklung"
-
-msgid "We develop custom AI solutions for your business needs, including natural language processing, computer vision, and machine learning models."
-msgstr "Wir entwickeln maßgeschneiderte KI-Lösungen für Ihre Geschäftsanforderungen, einschließlich Verarbeitung natürlicher Sprache, Computer Vision und maschinelle Lernmodelle."
-
-msgid "Full-stack web development services using modern frameworks and technologies to create responsive, scalable web applications."
-msgstr "Full-Stack-Webentwicklungsdienste mit modernen Frameworks und Technologien zur Erstellung von responsiven, skalierbaren Webanwendungen."
-
-msgid "Automation Solutions"
-msgstr "Automatisierungslösungen"
-
-msgid "Automate your business processes with custom software solutions to increase efficiency and reduce operational costs."
-msgstr "Automatisieren Sie Ihre Geschäftsprozesse mit maßgeschneiderten Softwarelösungen, um die Effizienz zu steigern und die Betriebskosten zu senken."
-
-msgid "Our Services"
-msgstr "Unsere Dienstleistungen"
-
-msgid "Impressum"
-msgstr "Impressum"
-
-msgid "What Our Clients Say"
-msgstr "Was unsere Kunden sagen"
-
-msgid "Services"
-msgstr "Dienstleistungen"
-
-msgid "Read more"
-msgstr "Weiterlesen"
-
-msgid "Read less"
-msgstr "Weniger lesen"
-
-msgid "Success"
-msgstr "Erfolg"
-
-msgid "Error"
-msgstr "Fehler"
-
-msgid "Warning"
-msgstr "Warnung"
-
-msgid "Info"
-msgstr "Information"
-
-msgid "Yes"
-msgstr "Ja"
-
-msgid "No"
-msgstr "Nein"
-
-msgid "Please wait..."
-msgstr "Bitte warten..."
-
-msgid "Loading..."
-msgstr "Wird geladen..."
-
-msgid "Are you sure?"
-msgstr "Sind Sie sicher?"
-
-msgid "This action cannot be undone."
-msgstr "Diese Aktion kann nicht rückgängig gemacht werden."
-
-msgid "Page not found"
-msgstr "Seite nicht gefunden"
-
-msgid "Internal server error"
-msgstr "Interner Serverfehler"
-
-msgid "Unauthorized"
-msgstr "Nicht autorisiert"
-
-msgid "Forbidden"
-msgstr "Verboten"
-
-msgid "Access denied"
-msgstr "Zugriff verweigert"
-
-msgid "Please log in to continue"
-msgstr "Bitte melden Sie sich an, um fortzufahren"
-
-msgid "Your account has been created"
-msgstr "Ihr Konto wurde erstellt"
-
-msgid "Welcome back"
-msgstr "Willkommen zurück"
-
-msgid "You have been logged out"
-msgstr "Sie wurden abgemeldet"
-msgid "&copy; 2025 Rozoom-KI. All rights reserved."
-msgstr "&copy; 2025 Rozoom-KI. Alle Rechte vorbehalten."
-
-msgid "&laquo;"
-msgstr "&laquo;"
-
-msgid "&raquo;"
-msgstr "&raquo;"
-
-msgid "+49 30 123456789"
-msgstr "+49 30 123456789"
-
-msgid "..."
-msgstr "..."
-
-msgid "1. Acceptance of Terms"
-msgstr "1. Annahme der Bedingungen"
-
-msgid "1. Introduction"
-msgstr "1. Einleitung"
-
-msgid "10. Contact Us"
-msgstr "10. Kontaktieren Sie uns"
-
-msgid "10178 Berlin, Germany"
-msgstr "10178 Berlin, Deutschland"
-
-msgid "2. Description of Service"
-msgstr "2. Beschreibung des Dienstes"
-
-msgid "2. The Data We Collect"
-msgstr "2. Die Daten, die wir sammeln"
-
-msgid "3. How We Use Your Data"
-msgstr "3. Wie wir Ihre Daten verwenden"
-
-msgid "3. User Accounts"
-msgstr "3. Benutzerkonten"
-
-msgid "4. Data Security"
-msgstr ""
-
-msgid "4. Payment Terms"
-msgstr ""
-
-msgid "5. Intellectual Property"
-msgstr ""
-
-msgid "5. Your Legal Rights"
-msgstr ""
-
-msgid "6. Contact Us"
-msgstr ""
-
-msgid "6. User Content"
-msgstr ""
-
-msgid "7. Limitation of Liability"
-msgstr ""
-
-msgid "8. Governing Law"
-msgstr ""
-
-msgid "9. Changes to Terms"
-msgstr ""
-
-msgid "A brief summary of the blog post"
-msgstr ""
-
-msgid "A short name for the package"
-msgstr ""
-
-msgid "About"
-msgstr ""
-
-msgid "About the author."
-msgstr ""
-
-msgid "Actions"
-msgstr ""
-
-msgid "Actions here can't be undone. Please be careful."
-msgstr ""
-
-msgid "Active"
-msgstr ""
-
-msgid "Active Projects"
-msgstr ""
-
-msgid "Additional details about what's included in the package"
-msgstr ""
-
-msgid "Admin"
-msgstr ""
-
-msgid "Admin Dashboard"
-msgstr ""
-
-msgid "Admin Login"
-msgstr ""
-
-msgid "Administrator"
-msgstr ""
-
-msgid "Agile development methodology"
-msgstr ""
-
-msgid "All Invoices"
-msgstr ""
-
-msgid "All Statuses"
-msgstr ""
-
-msgid "All content, features, and functionality of our services, including but not limited to text, graphics, logos, icons, and software, are the exclusive property of Rozoom-KI or its licensors and are protected by copyright, trademark, and other intellectual property laws."
-msgstr ""
-
-msgid "Already have an account?"
-msgstr ""
-
-msgid "Already have an account? Login"
-msgstr ""
-
-msgid "Amount"
-msgstr ""
-
-msgid "Amount (Highest First)"
-msgstr ""
-
-msgid "Amount (Lowest First)"
-msgstr ""
-
-msgid "Anna Schmidt"
-msgstr ""
-
-msgid "Are you sure you want to delete the pricing package"
-msgstr ""
-
-msgid "As a service provider, we are responsible for our own content on these pages according to § 7 paragraph 1 TMG (German Telemedia Act) and general laws. According to §§ 8 to 10 TMG, however, we as a service provider are not obliged to monitor transmitted or stored external information or to investigate circumstances that indicate illegal activity."
-msgstr ""
-
-msgid "Attachments"
-msgstr ""
-
-msgid "Attachments (optional)"
-msgstr ""
-
-msgid "Automation Tool"
-msgstr ""
-
-
-msgid "Welcome back"
-msgstr "Willkommen zurück"
-
-msgid "Projects Overview"
-msgstr "Projektübersicht"
-
-msgid "New Projects"
-msgstr "Neue Projekte"
-
-msgid "Completed Projects"
-msgstr "Abgeschlossene Projekte"
-
-msgid "Total Projects"
-msgstr "Gesamtprojekte"
-
-msgid "Quick Actions"
-msgstr "Schnellaktionen"
-
-msgid "New Project Request"
-msgstr "Neue Projektanfrage"
-
-msgid "Contact Support"
-msgstr "Support kontaktieren"
-
-msgid "Update Profile"
-msgstr "Profil aktualisieren"
-
-msgid "Recent Activity"
-msgstr "Letzte Aktivität"
-
-msgid "Last login"
-msgstr "Letzter Login"
-
-msgid "Never"
-msgstr "Nie"
-
-msgid "No recent activity"
-msgstr "Keine neue Aktivität"
-
-msgid "Your Projects"
-msgstr "Ihre Projekte"
-
-msgid "View All"
-msgstr "Alle anzeigen"
-
-msgid "Started"
-msgstr "Gestartet"
-
-msgid "Progress"
-msgstr "Fortschritt"
-
-msgid "View Details"
-msgstr "Details anzeigen"
-
-msgid "No projects yet"
-msgstr "Noch keine Projekte"
-
-msgid "Start by submitting a new project request"
-msgstr "Beginnen Sie mit einer neuen Projektanfrage"
-
-msgid "Request a Project"
-msgstr "Projekt anfragen"
-
-msgid "Profile Settings"
-msgstr "Profileinstellungen"
-
-msgid "Personal Information"
-msgstr "Persönliche Informationen"
-
-msgid "Full Name"
-msgstr "Vollständiger Name"
-
-msgid "Email Address"
-msgstr "E-Mail-Adresse"
-
-msgid "Email cannot be changed. Contact support if needed."
-msgstr "E-Mail kann nicht geändert werden. Kontaktieren Sie bei Bedarf den Support."
-
-msgid "Phone Number"
-msgstr "Telefonnummer"
-
-msgid "Company"
-msgstr "Unternehmen"
-
-msgid "Change Password"
-msgstr "Passwort ändern"
-
-msgid "Current Password"
-msgstr "Aktuelles Passwort"
-
-msgid "New Password"
-msgstr "Neues Passwort"
-
-msgid "Confirm New Password"
-msgstr "Neues Passwort bestätigen"
-
-msgid "Leave password fields empty if you don't want to change your password."
-msgstr "Lassen Sie die Passwortfelder leer, wenn Sie Ihr Passwort nicht ändern möchten."
-
-msgid "Save Changes"
-msgstr "Änderungen speichern"
-
-msgid "Danger Zone"
-msgstr "Gefahrenbereich"
-
-msgid "Delete Account"
-msgstr "Konto löschen"
-
-msgid "Confirm Account Deletion"
-msgstr "Kontolöschung bestätigen"
-
-msgid "Warning: This action cannot be undone."
-msgstr "Warnung: Diese Aktion kann nicht rückgängig gemacht werden."
-
-msgid "Deleting your account will remove all your personal information from our system. Your projects and associated data will still be accessible to administrators."
-msgstr "Durch das Löschen Ihres Kontos werden alle Ihre persönlichen Daten aus unserem System entfernt. Ihre Projekte und zugehörigen Daten sind für Administratoren weiterhin zugänglich."
-
-msgid "To confirm, please type \"DELETE\" in the field below:"
-msgstr "Um zu bestätigen, geben Sie bitte \"DELETE\" in das Feld unten ein:"
-
-msgid "This feature is not yet implemented. Please contact support to delete your account."
-msgstr "Diese Funktion ist noch nicht implementiert. Bitte kontaktieren Sie den Support, um Ihr Konto zu löschen."
-
-msgid "All Statuses"
-msgstr "Alle Status"
-
-msgid "New"
-msgstr "Neu"
-
-msgid "In Progress"
-msgstr "In Bearbeitung"
-
-msgid "Testing"
-msgstr "Wird getestet"
-
-msgid "Completed"
-msgstr "Abgeschlossen"
-
-msgid "Newest First"
-msgstr "Neueste zuerst"
-
-msgid "Oldest First"
-msgstr "Älteste zuerst"
-
-msgid "Name (A-Z)"
-msgstr "Name (A-Z)"
-
-msgid "Name (Z-A)"
-msgstr "Name (Z-A)"
-
-msgid "Search projects"
-msgstr "Projekte suchen"
-
-msgid "Project"
-msgstr "Projekt"
-
-msgid "Status"
-msgstr "Status"
-
-msgid "Start Date"
-msgstr "Startdatum"
-
-msgid "Estimated End"
-msgstr "Voraussichtliches Ende"
-
-msgid "Actions"
-msgstr "Aktionen"
-
-msgid "Not started"
-msgstr "Noch nicht begonnen"
-
-msgid "Not set"
-msgstr "Nicht festgelegt"
-
-msgid "View"
-msgstr "Ansehen"
-
-msgid "No projects found"
-msgstr "Keine Projekte gefunden"
-
-msgid "Messages"
-msgstr "Nachrichten"
-
-msgid "New Message"
-msgstr "Neue Nachricht"
-
-msgid "Inbox"
-msgstr "Posteingang"
-
-msgid "Sent"
-msgstr "Gesendet"
-
-msgid "From"
-msgstr "Von"
-
-msgid "Subject"
-msgstr "Betreff"
-
-msgid "Date"
-msgstr "Datum"
-
-msgid "Close"
-msgstr "Schließen"
-
-msgid "Reply"
-msgstr "Antworten"
-
-msgid "Message"
-msgstr "Nachricht"
-
-msgid "Invoices"
-msgstr "Rechnungen"
-
-msgid "Filter"
-msgstr "Filter"
-
-msgid "Paid"
-msgstr "Bezahlt"
-
-msgid "Pending"
-msgstr "Ausstehend"
-
-msgid "Overdue"
-msgstr "Überfällig"
-
-msgid "Back to Projects"
-msgstr "Zurück zu Projekten"
-
-msgid "Project Overview"
-msgstr "Projektübersicht"
-
-msgid "Description"
-msgstr "Beschreibung"
-
-msgid "No description provided."
-msgstr "Keine Beschreibung vorhanden."
-
-msgid "Estimated Completion"
-msgstr "Voraussichtliche Fertigstellung"
-
-msgid "Complete"
-msgstr "Fertiggestellt"
-
-msgid "Project Details"
-msgstr "Projektdetails"
-
-msgid "Budget"
-msgstr "Budget"
-
-msgid "Project Created"
-msgstr "Projekt erstellt"
-
-msgid "Not started yet"
-msgstr "Noch nicht begonnen"

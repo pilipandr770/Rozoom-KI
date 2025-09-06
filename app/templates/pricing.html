@@ -112,8 +112,8 @@
 <section class="pricing-section">
     <div class="container">
         <div class="pricing-header">
-            <h1>Choose Your Package</h1>
-            <p class="lead">Get the perfect amount of development time for your project needs</p>
+            <h1>{{ _('Choose Your Package') }}</h1>
+            <p class="lead">{{ _('Get the perfect amount of development time for your project needs') }}</p>
         </div>
 
         <div class="row">
@@ -122,13 +122,13 @@
                     <div class="col-md-4 mb-4">
                         <div class="pricing-card {% if loop.index == 2 %}featured{% endif %}">
                             {% if loop.index == 2 %}
-                                <div class="featured-tag">Most Popular</div>
+                                <div class="featured-tag">{{ _('Most Popular') }}</div>
                             {% endif %}
                             <div class="pricing-container">
                                 <h3 class="pricing-name">{{ package.name }}</h3>
-                                <div class="pricing-hours">{{ package.hours }} Hours</div>
+                                <div class="pricing-hours">{{ package.hours }} {{ _('Hours') }}</div>
                                 <div class="pricing-price">€{{ "%.2f"|format(package.total_price) }}</div>
-                                <span class="pricing-per-hour">€{{ "%.2f"|format(package.price_per_hour) }} per hour</span>
+                                <span class="pricing-per-hour">€{{ "%.2f"|format(package.price_per_hour) }} {{ _('per hour') }}</span>
                                 
                                 <div class="pricing-description">
                                     {% if package.description %}
@@ -163,23 +163,23 @@
             <div class="col-md-4 mb-4">
                 <div class="pricing-card">
                     <div class="pricing-container">
-                        <h3 class="pricing-name">Custom Package</h3>
-                        <div class="pricing-hours">Tailored to Your Needs</div>
-                        <div class="pricing-price">Contact Us</div>
-                        <span class="pricing-per-hour">For special requirements</span>
+                        <h3 class="pricing-name">{{ _('Custom Package') }}</h3>
+                        <div class="pricing-hours">{{ _('Tailored to Your Needs') }}</div>
+                        <div class="pricing-price">{{ _('Contact Us') }}</div>
+                        <span class="pricing-per-hour">{{ _('For special requirements') }}</span>
                         
                         <div class="pricing-description">
                             <ul>
-                                <li>Flexible hours</li>
-                                <li>Custom development</li>
-                                <li>Dedicated support</li>
-                                <li>Priority service</li>
-                                <li>Enterprise solutions</li>
+                                <li>{{ _('Flexible hours') }}</li>
+                                <li>{{ _('Custom development') }}</li>
+                                <li>{{ _('Dedicated support') }}</li>
+                                <li>{{ _('Priority service') }}</li>
+                                <li>{{ _('Enterprise solutions') }}</li>
                             </ul>
                         </div>
                         
                         <div class="pricing-bottom">
-                            <a href="/contact" class="pricing-btn">Get in Touch</a>
+                            <a href="/contact" class="pricing-btn">{{ _('Get in Touch') }}</a>
                         </div>
                     </div>
                 </div>
@@ -187,9 +187,9 @@
         </div>
         
         <div class="mt-5 text-center">
-            <h2>Need Help Choosing?</h2>
-            <p>Contact our team for a free consultation and we'll help you select the perfect package for your project.</p>
-            <a href="/contact" class="btn btn-lg btn-primary">Contact Us</a>
+            <h2>{{ _('Need Help Choosing?') }}</h2>
+            <p>{{ _('Contact our team for a free consultation and we\'ll help you select the perfect package for your project.') }}</p>
+            <a href="/contact" class="btn btn-lg btn-primary">{{ _('Contact Us') }}</a>
         </div>
     </div>
 </section>

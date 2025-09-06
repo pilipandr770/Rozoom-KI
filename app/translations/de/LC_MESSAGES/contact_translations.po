@@ -1,0 +1,70 @@
+# Переводы для страницы контактов
+
+msgid "Get in Touch"
+msgstr "Kontaktieren Sie uns"
+
+msgid "Have a question or ready to start your next project? We're here to help!"
+msgstr "Haben Sie eine Frage oder sind Sie bereit, Ihr nächstes Projekt zu starten? Wir sind hier, um zu helfen!"
+
+msgid "Address"
+msgstr "Adresse"
+
+msgid "Email Us"
+msgstr "E-Mail"
+
+msgid "Call Us"
+msgstr "Rufen Sie uns an"
+
+msgid "Mon-Fri 9:00-18:00"
+msgstr "Mo-Fr 9:00-18:00"
+
+msgid "Send Us a Message"
+msgstr "Senden Sie uns eine Nachricht"
+
+msgid "Your message has been sent successfully. We'll get back to you soon!"
+msgstr "Ihre Nachricht wurde erfolgreich gesendet. Wir melden uns bald bei Ihnen!"
+
+msgid "Full Name"
+msgstr "Vollständiger Name"
+
+msgid "Enter your full name"
+msgstr "Geben Sie Ihren vollständigen Namen ein"
+
+msgid "Email Address"
+msgstr "E-Mail-Adresse"
+
+msgid "Enter your email address"
+msgstr "Geben Sie Ihre E-Mail-Adresse ein"
+
+msgid "Your Message"
+msgstr "Ihre Nachricht"
+
+msgid "How can we help you?"
+msgstr "Wie können wir Ihnen helfen?"
+
+msgid "I consent to having this website store my submitted information so they can respond to my inquiry"
+msgstr "Ich stimme zu, dass diese Website meine übermittelten Informationen speichert, damit sie auf meine Anfrage antworten können"
+
+msgid "Send Message"
+msgstr "Nachricht senden"
+
+msgid "Remote Work"
+msgstr "Fernarbeit"
+
+msgid "We operate as a remote-first company with team members working from various locations. This allows us to serve clients worldwide while maintaining flexibility and efficiency."
+msgstr "Wir arbeiten als Remote-First-Unternehmen mit Teammitgliedern an verschiedenen Standorten. Dies ermöglicht es uns, Kunden weltweit zu bedienen und dabei Flexibilität und Effizienz zu gewährleisten."
+
+msgid "Working remotely from Germany"
+msgstr "Remote-Arbeit aus Deutschland"
+
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+msgid "Twitter"
+msgstr "Twitter"
+
+msgid "Facebook"
+msgstr "Facebook"
+
+msgid "Instagram"
+msgstr "Instagram"
