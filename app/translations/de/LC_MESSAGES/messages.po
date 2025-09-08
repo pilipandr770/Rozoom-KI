@@ -473,6 +473,249 @@ msgstr "Impressum (Rechtliche Hinweise)"
 msgid "Information According to § 5 TMG"
 msgstr "Angaben gemäß § 5 TMG"
 
+msgid "Germany"
+msgstr "Deutschland"
+
+msgid "Represented by:"
+msgstr "Vertreten durch:"
+
+msgid "Contact:"
+msgstr "Kontakt:"
+
+msgid "Phone:"
+msgstr "Telefon:"
+
+msgid "Registration:"
+msgstr "Registrierung:"
+
+msgid "Registered in the Commercial Register"
+msgstr "Eingetragen im Handelsregister"
+
+msgid "Register Court:"
+msgstr "Registergericht:"
+
+msgid "Register Number:"
+msgstr "Registernummer:"
+
+msgid "VAT Identification Number:"
+msgstr "Umsatzsteuer-Identifikationsnummer:"
+
+msgid "VAT ID:"
+msgstr "USt-IdNr.:"
+
+msgid "According to § 27 a of the German Value Added Tax Act"
+msgstr "Nach § 27 a Umsatzsteuergesetz"
+
+msgid "Responsible for Content According to § 55 Abs. 2 RStV"
+msgstr "Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV"
+
+msgid "Dispute Resolution"
+msgstr "Streitschlichtung"
+
+msgid "The European Commission provides a platform for online dispute resolution (OS):"
+msgstr "Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:"
+
+msgid "We are not willing or obliged to participate in dispute resolution proceedings before a consumer arbitration board."
+msgstr "Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen."
+
+msgid "Liability for Content"
+msgstr "Haftung für Inhalte"
+
+msgid "As a service provider, we are responsible for our own content on these pages according to § 7 paragraph 1 TMG (German Telemedia Act) and general laws. According to §§ 8 to 10 TMG, however, we as a service provider are not obliged to monitor transmitted or stored external information or to investigate circumstances that indicate illegal activity."
+msgstr "Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen."
+
+msgid "Obligations to remove or block the use of information according to general laws remain unaffected. However, liability in this respect is only possible from the time of knowledge of a specific legal violation. As soon as we become aware of such legal violations, we will remove this content immediately."
+msgstr "Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen."
+
+msgid "Liability for Links"
+msgstr "Haftung für Links"
+
+msgid "Our offer contains links to external websites of third parties, on whose contents we have no influence. Therefore, we cannot assume any liability for these external contents. The respective provider or operator of the pages is always responsible for the content of the linked pages. The linked pages were checked for possible legal violations at the time of linking. Illegal contents were not recognizable at the time of linking."
+msgstr "Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar."
+
+msgid "However, a permanent control of the contents of the linked pages is not reasonable without concrete evidence of a violation of law. If we become aware of any legal violations, we will remove such links immediately."
+msgstr "Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen."
+
+msgid "Copyright"
+msgstr "Urheberrecht"
+
+msgid "The content and works created by the site operators on these pages are subject to German copyright law. Duplication, processing, distribution, and any kind of exploitation outside the limits of copyright require the written consent of the respective author or creator. Downloads and copies of this site are only permitted for private, non-commercial use."
+msgstr "Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet."
+
+msgid "Insofar as the content on this site was not created by the operator, the copyrights of third parties are respected. In particular, third-party content is marked as such. Should you nevertheless become aware of a copyright infringement, please inform us accordingly. If we become aware of any infringements, we will remove such content immediately."
+msgstr "Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen."
+
+msgid "Privacy Policy"
+msgstr "Datenschutzerklärung"
+
+msgid "Terms of Service"
+msgstr "Nutzungsbedingungen"
+
+msgid "Last updated: September 1, 2025"
+msgstr "Zuletzt aktualisiert: 1. September 2025"
+
+msgid "1. Introduction"
+msgstr "1. Einleitung"
+
+msgid "Rozoom-KI (\"we\", \"us\", or \"our\") respects your privacy and is committed to protecting your personal data. This privacy policy will inform you about how we look after your personal data when you visit our website and tell you about your privacy rights and how the law protects you."
+msgstr "Rozoom-KI („wir", „uns", oder „unser") respektiert Ihre Privatsphäre und ist bestrebt, Ihre persönlichen Daten zu schützen. Diese Datenschutzerklärung informiert Sie darüber, wie wir mit Ihren persönlichen Daten umgehen, wenn Sie unsere Website besuchen, und klärt Sie über Ihre Datenschutzrechte und darüber auf, wie das Gesetz Sie schützt."
+
+msgid "2. The Data We Collect"
+msgstr "2. Die Daten, die wir sammeln"
+
+msgid "We may collect, use, store and transfer different kinds of personal data about you which we have grouped together as follows:"
+msgstr "Wir können verschiedene Arten von personenbezogenen Daten über Sie erheben, verwenden, speichern und übertragen, die wir wie folgt zusammengefasst haben:"
+
+msgid "Identity Data"
+msgstr "Identitätsdaten"
+
+msgid "includes first name, last name, username or similar identifier."
+msgstr "umfasst Vorname, Nachname, Benutzername oder ähnliche Kennungen."
+
+msgid "Contact Data"
+msgstr "Kontaktdaten"
+
+msgid "includes email address and telephone numbers."
+msgstr "umfasst E-Mail-Adresse und Telefonnummern."
+
+msgid "Technical Data"
+msgstr "Technische Daten"
+
+msgid "includes internet protocol (IP) address, browser type and version, time zone setting and location, browser plug-in types and versions, operating system and platform, and other technology on the devices you use to access this website."
+msgstr "umfasst Internetprotokoll (IP)-Adresse, Browsertyp und -version, Zeitzoneneinstellung und Standort, Arten und Versionen von Browser-Plugins, Betriebssystem und Plattform sowie andere Technologien auf den Geräten, die Sie zum Zugriff auf diese Website verwenden."
+
+msgid "Usage Data"
+msgstr "Nutzungsdaten"
+
+msgid "includes information about how you use our website and services."
+msgstr "umfasst Informationen darüber, wie Sie unsere Website und Dienste nutzen."
+
+msgid "3. How We Use Your Data"
+msgstr "3. Wie wir Ihre Daten verwenden"
+
+msgid "We will only use your personal data when the law allows us to. Most commonly, we will use your personal data in the following circumstances:"
+msgstr "Wir verwenden Ihre personenbezogenen Daten nur, wenn das Gesetz dies zulässt. Am häufigsten werden wir Ihre personenbezogenen Daten unter den folgenden Umständen verwenden:"
+
+msgid "To register you as a new customer."
+msgstr "Um Sie als neuen Kunden zu registrieren."
+
+msgid "To process and deliver your order."
+msgstr "Um Ihren Auftrag zu bearbeiten und auszuführen."
+
+msgid "To manage our relationship with you."
+msgstr "Um unsere Beziehung zu Ihnen zu verwalten."
+
+msgid "To improve our website, products/services, marketing or customer relationships."
+msgstr "Um unsere Website, Produkte/Dienstleistungen, Marketing oder Kundenbeziehungen zu verbessern."
+
+msgid "To recommend products or services that may be of interest to you."
+msgstr "Um Produkte oder Dienstleistungen zu empfehlen, die für Sie von Interesse sein könnten."
+
+msgid "4. Data Security"
+msgstr "4. Datensicherheit"
+
+msgid "We have put in place appropriate security measures to prevent your personal data from being accidentally lost, used or accessed in an unauthorized way, altered or disclosed. We limit access to your personal data to those employees, agents, contractors and other third parties who have a business need to know."
+msgstr "Wir haben angemessene Sicherheitsmaßnahmen ergriffen, um zu verhindern, dass Ihre personenbezogenen Daten versehentlich verloren gehen, verwendet oder unbefugt zugänglich gemacht, verändert oder offengelegt werden. Wir beschränken den Zugriff auf Ihre personenbezogenen Daten auf diejenigen Mitarbeiter, Vertreter, Auftragnehmer und andere Dritte, die ein berechtigtes geschäftliches Interesse daran haben."
+
+msgid "5. Your Legal Rights"
+msgstr "5. Ihre gesetzlichen Rechte"
+
+msgid "Under certain circumstances, you have rights under data protection laws in relation to your personal data, including the right to:"
+msgstr "Unter bestimmten Umständen haben Sie gemäß den Datenschutzgesetzen Rechte in Bezug auf Ihre personenbezogenen Daten, einschließlich des Rechts auf:"
+
+msgid "Request access to your personal data."
+msgstr "Zugang zu Ihren personenbezogenen Daten anzufordern."
+
+msgid "Request correction of your personal data."
+msgstr "Korrektur Ihrer personenbezogenen Daten zu verlangen."
+
+msgid "Request erasure of your personal data."
+msgstr "Löschung Ihrer personenbezogenen Daten zu verlangen."
+
+msgid "Object to processing of your personal data."
+msgstr "Der Verarbeitung Ihrer personenbezogenen Daten zu widersprechen."
+
+msgid "Request restriction of processing your personal data."
+msgstr "Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen."
+
+msgid "Request transfer of your personal data."
+msgstr "Übertragung Ihrer personenbezogenen Daten zu verlangen."
+
+msgid "Right to withdraw consent."
+msgstr "Recht auf Widerruf der Einwilligung."
+
+msgid "6. Contact Us"
+msgstr "6. Kontaktieren Sie uns"
+
+msgid "If you have any questions about this privacy policy or our privacy practices, please contact us at:"
+msgstr "Wenn Sie Fragen zu dieser Datenschutzrichtlinie oder unseren Datenschutzpraktiken haben, kontaktieren Sie uns bitte unter:"
+
+msgid "Email:"
+msgstr "E-Mail:"
+
+msgid "1. Acceptance of Terms"
+msgstr "1. Annahme der Bedingungen"
+
+msgid "By accessing or using the services of Rozoom-KI (\"we\", \"us\", \"our\"), you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our services."
+msgstr "Durch den Zugriff auf oder die Nutzung der Dienste von Rozoom-KI („wir", „uns", „unser") erklären Sie sich damit einverstanden, an diese Nutzungsbedingungen gebunden zu sein. Wenn Sie diesen Bedingungen nicht zustimmen, nutzen Sie bitte unsere Dienste nicht."
+
+msgid "2. Description of Service"
+msgstr "2. Beschreibung der Dienstleistung"
+
+msgid "Rozoom-KI provides custom software development and AI integration services as described on our website. We reserve the right to modify, suspend, or discontinue any part of our services at any time without notice."
+msgstr "Rozoom-KI bietet individuelle Softwareentwicklungs- und KI-Integrationsdienste wie auf unserer Website beschrieben an. Wir behalten uns das Recht vor, jeden Teil unserer Dienste jederzeit ohne vorherige Ankündigung zu ändern, auszusetzen oder einzustellen."
+
+msgid "3. User Accounts"
+msgstr "3. Benutzerkonten"
+
+msgid "Some of our services may require you to create an account. You are responsible for maintaining the confidentiality of your account information and for all activities that occur under your account. You agree to notify us immediately of any unauthorized use of your account."
+msgstr "Einige unserer Dienste können erfordern, dass Sie ein Konto erstellen. Sie sind dafür verantwortlich, die Vertraulichkeit Ihrer Kontoinformationen zu wahren und für alle Aktivitäten, die unter Ihrem Konto stattfinden. Sie erklären sich damit einverstanden, uns unverzüglich über jede unbefugte Nutzung Ihres Kontos zu informieren."
+
+msgid "4. Payment Terms"
+msgstr "4. Zahlungsbedingungen"
+
+msgid "Fees for our services are described on our website or in individual agreements. Unless otherwise specified, all fees are quoted in Euro (€) and are non-refundable. We reserve the right to change our fees at any time, with notice provided to existing customers."
+msgstr "Die Gebühren für unsere Dienstleistungen sind auf unserer Website oder in individuellen Vereinbarungen beschrieben. Sofern nicht anders angegeben, werden alle Gebühren in Euro (€) angegeben und sind nicht erstattungsfähig. Wir behalten uns das Recht vor, unsere Gebühren jederzeit zu ändern, wobei bestehende Kunden benachrichtigt werden."
+
+msgid "5. Intellectual Property"
+msgstr "5. Geistiges Eigentum"
+
+msgid "All content, features, and functionality of our services, including but not limited to text, graphics, logos, icons, and software, are the exclusive property of Rozoom-KI or its licensors and are protected by copyright, trademark, and other intellectual property laws."
+msgstr "Alle Inhalte, Funktionen und Funktionalitäten unserer Dienste, einschließlich, aber nicht beschränkt auf Text, Grafiken, Logos, Symbole und Software, sind das ausschließliche Eigentum von Rozoom-KI oder seinen Lizenzgebern und sind durch Urheberrechts-, Marken- und andere Gesetze zum Schutz geistigen Eigentums geschützt."
+
+msgid "6. User Content"
+msgstr "6. Benutzerinhalte"
+
+msgid "You retain ownership of any content you submit to our services. By submitting content, you grant us a worldwide, non-exclusive, royalty-free license to use, reproduce, modify, adapt, publish, translate, and distribute your content in any existing or future media."
+msgstr "Sie behalten das Eigentum an allen Inhalten, die Sie an unsere Dienste übermitteln. Durch die Übermittlung von Inhalten gewähren Sie uns eine weltweite, nicht exklusive, gebührenfreie Lizenz zur Nutzung, Reproduktion, Änderung, Anpassung, Veröffentlichung, Übersetzung und Verbreitung Ihrer Inhalte in allen bestehenden oder zukünftigen Medien."
+
+msgid "7. Limitation of Liability"
+msgstr "7. Haftungsbeschränkung"
+
+msgid "To the maximum extent permitted by law, Rozoom-KI shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of profits, data, use, or goodwill, arising out of or in connection with these terms or the use or inability to use our services."
+msgstr "Im maximalen gesetzlich zulässigen Umfang haftet Rozoom-KI nicht für indirekte, zufällige, besondere, Folge- oder Strafschäden, einschließlich, aber nicht beschränkt auf entgangenen Gewinn, Datenverlust, Nutzungsausfall oder Verlust des Firmenwerts, die sich aus oder in Verbindung mit diesen Bedingungen oder der Nutzung oder Unmöglichkeit der Nutzung unserer Dienste ergeben."
+
+msgid "8. Governing Law"
+msgstr "8. Geltendes Recht"
+
+msgid "These Terms shall be governed by and construed in accordance with the laws of Germany, without regard to its conflict of law provisions."
+msgstr "Diese Bedingungen unterliegen dem deutschen Recht und werden in Übereinstimmung mit diesem ausgelegt, ohne Berücksichtigung von Kollisionsnormen."
+
+msgid "9. Changes to Terms"
+msgstr "9. Änderungen der Bedingungen"
+
+msgid "We reserve the right to modify these Terms at any time. We will provide notice of significant changes through our website or via email. Your continued use of our services after such modifications constitutes your acceptance of the revised Terms."
+msgstr "Wir behalten uns das Recht vor, diese Bedingungen jederzeit zu ändern. Wir werden über wesentliche Änderungen über unsere Website oder per E-Mail informieren. Ihre fortgesetzte Nutzung unserer Dienste nach solchen Änderungen stellt Ihre Annahme der überarbeiteten Bedingungen dar."
+
+msgid "10. Contact Us"
+msgstr "10. Kontaktieren Sie uns"
+
+msgid "If you have any questions about these Terms, please contact us at:"
+msgstr "Wenn Sie Fragen zu diesen Bedingungen haben, kontaktieren Sie uns bitte unter:"
+
+msgid "Information According to § 5 TMG"
+msgstr "Angaben gemäß § 5 TMG"
+
 msgid "Represented by:"
 msgstr "Vertreten durch:"
 

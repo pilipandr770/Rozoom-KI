@@ -25,6 +25,23 @@ def chat():
         import uuid
         metadata['conversation_id'] = str(uuid.uuid4())
     
+    # Определение языка пользователя
+    user_lang = metadata.get('language')
+    if not user_lang:
+        # Проверяем заголовок Accept-Language
+        accept_language = request.headers.get('Accept-Language', 'de')
+        if 'de' in accept_language:
+            user_lang = 'de'
+        elif 'ru' in accept_language:
+            user_lang = 'ru'
+        elif 'en' in accept_language:
+            user_lang = 'en'
+        else:
+            # По умолчанию используем немецкий
+            user_lang = 'de'
+        
+        metadata['language'] = user_lang
+    
     # Store previous messages in metadata if available
     if not metadata.get('history'):
         # Try to fetch previous messages from DB
@@ -68,6 +85,9 @@ def chat():
         except Exception as e:
             current_app.logger.warning(f"Could not fetch message history: {e}")
 
+    # Логируем метаданные для отладки
+    current_app.logger.info(f"Metadata before calling API: {metadata}")
+
     # Delegate routing + OpenAI call to agents.controller
     result = route_and_respond(message, metadata)
     if 'error' in result:
@@ -76,6 +96,9 @@ def chat():
     agent = result.get('agent')
     answer = result.get('answer')
     interactive = result.get('interactive', {})
+    
+    # Записываем conversation_id для отладки
+    current_app.logger.info(f"conversation_id для сохранения в БД: {metadata.get('conversation_id')}")
 
     # persist chat to DB (rozoom_ki_clients schema)
     try:
@@ -94,10 +117,22 @@ def chat():
                     content=message,
                     meta=metadata
                 )
+                
+                # Получаем или создаем conversation_id
+                conversation_id = metadata.get('conversation_id')
+                current_app.logger.info(f"Got conversation_id from request: {conversation_id}")
+                
                 # Пробуем добавить conversation_id только если он поддерживается моделью
                 if hasattr(ChatMessage, 'conversation_id'):
-                    user_msg.conversation_id = metadata.get('conversation_id')
+                    user_msg.conversation_id = conversation_id
+                    current_app.logger.info(f"Setting conversation_id: {conversation_id} for user message")
+                
                 db.session.add(user_msg)
+                
+                # Сразу делаем flush, чтобы проверить правильность сохранения
+                db.session.flush()
+                current_app.logger.info(f"User message created with ID {user_msg.id} and conversation_id {user_msg.conversation_id}")
+                
             except Exception as e:
                 current_app.logger.warning(f"Could not create user message: {e}")
                 # Делаем rollback, чтобы не блокировать следующие операции
@@ -114,13 +149,22 @@ def chat():
                 content=answer,
                 meta=bot_meta
             )
+            
+            # Получаем conversation_id из метаданных или создаем новый, если отсутствует
+            conversation_id = metadata.get('conversation_id')
+            current_app.logger.info(f"Using conversation_id: {conversation_id}")
+            
             # Пробуем добавить conversation_id только если он поддерживается моделью
             if hasattr(ChatMessage, 'conversation_id'):
-                bot_msg.conversation_id = metadata.get('conversation_id')
+                bot_msg.conversation_id = conversation_id
+            
             db.session.add(bot_msg)
             
             # Commit только если оба добавления прошли успешно
             db.session.commit()
+            
+            # Логируем успешное сохранение
+            current_app.logger.info(f"Successfully saved message with conversation_id: {conversation_id}")
         except Exception as e:
             current_app.logger.error(f'Failed to persist bot message: {e}')
             db.session.rollback()

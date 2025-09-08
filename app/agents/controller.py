@@ -2,7 +2,9 @@ from typing import Optional, Dict, List
 import json
 import re
 from . import get_agent, choose_agent_by_metadata, InteractiveButton, InteractiveResponse, list_domain_options
-from flask import current_app
+from .site_knowledge import get_site_info
+from .prompts import get_greeter_prompt, get_project_consultant_prompt, get_technical_advisor_prompt
+from flask import current_app, request
 import requests
 
 
@@ -55,12 +57,27 @@ def format_interactive_response(text: str) -> InteractiveResponse:
 def handle_greeter(metadata: Dict) -> Dict:
     """Special handler for the greeter agent that offers domain options"""
     options = list_domain_options()
-    welcome_text = (
-        "👋 Привет! Я AI-ассистент Rozoom-KI.\n\n"
-        "Я могу помочь вам составить техническое задание для вашего проекта. "
-        "В каком направлении вам нужна помощь? Вы можете выбрать одну из опций ниже или задать свой вопрос."
-        "\n\n"
-    )
+    
+    # Определяем язык пользователя (по умолчанию немецкий)
+    user_lang = metadata.get('language', 'de')
+    
+    # Приветственные тексты на разных языках
+    welcome_texts = {
+        'de': "👋 Guten Tag! Ich bin der KI-Assistent von Rozoom-KI.\n\n"
+              "Ich kann Ihnen helfen, eine technische Spezifikation für Ihr Projekt zu erstellen. "
+              "In welchem Bereich benötigen Sie Unterstützung? Sie können eine der unten stehenden Optionen wählen oder Ihre Frage stellen.",
+        
+        'ru': "👋 Привет! Я AI-ассистент Rozoom-KI.\n\n"
+              "Я могу помочь вам составить техническое задание для вашего проекта. "
+              "В каком направлении вам нужна помощь? Вы можете выбрать одну из опций ниже или задать свой вопрос.",
+        
+        'en': "👋 Hello! I'm the AI assistant of Rozoom-KI.\n\n"
+              "I can help you create a technical specification for your project. "
+              "In which area do you need assistance? You can choose one of the options below or ask your question."
+    }
+    
+    # Используем приветствие на указанном языке или по умолчанию на немецком
+    welcome_text = welcome_texts.get(user_lang, welcome_texts['de'])
     
     # Convert options to buttons
     buttons = []
@@ -97,14 +114,35 @@ def handle_domain_selection(message: str, metadata: Dict) -> Dict:
     # Update metadata to start requirements gathering flow
     metadata['gathering_requirements'] = True
     
-    # Create prompt that explains we're now collecting requirements
-    prompt_text = (
-        f"Пользователь выбрал {domain_agent.description}. "
-        f"Представься как специализированный ассистент для этой области, и начни собирать информацию для технического задания. "
-        f"Задавай по одному вопросу за раз, чтобы собрать ключевую информацию. "
-        f"После сбора достаточной информации, предложи опцию составить техническое задание. "
-        f"Начни с приветствия и представления себя."
-    )
+    # Определяем язык пользователя (по умолчанию немецкий)
+    user_lang = metadata.get('language', 'de')
+    
+    # Создаем промпт на соответствующем языке
+    prompts = {
+        'de': (
+            f"Der Benutzer hat {domain_agent.description} ausgewählt. "
+            f"Stellen Sie sich als spezialisierter Assistent für diesen Bereich vor und beginnen Sie, Informationen für die technische Spezifikation zu sammeln. "
+            f"Stellen Sie jeweils eine Frage, um wichtige Informationen zu sammeln. "
+            f"Nachdem Sie ausreichend Informationen gesammelt haben, schlagen Sie vor, eine technische Spezifikation zu erstellen. "
+            f"Beginnen Sie mit einer Begrüßung und stellen Sie sich vor."
+        ),
+        'ru': (
+            f"Пользователь выбрал {domain_agent.description}. "
+            f"Представься как специализированный ассистент для этой области, и начни собирать информацию для технического задания. "
+            f"Задавай по одному вопросу за раз, чтобы собрать ключевую информацию. "
+            f"После сбора достаточной информации, предложи опцию составить техническое задание. "
+            f"Начни с приветствия и представления себя."
+        ),
+        'en': (
+            f"The user has selected {domain_agent.description}. "
+            f"Introduce yourself as a specialized assistant for this area and begin collecting information for the technical specification. "
+            f"Ask one question at a time to gather key information. "
+            f"After collecting sufficient information, suggest the option to create a technical specification. "
+            f"Start with a greeting and introduce yourself."
+        )
+    }
+    
+    prompt_text = prompts.get(user_lang, prompts['de'])
     
     # Create a special first-time message from this agent
     return call_openai(prompt_text, metadata, domain_agent)
@@ -124,11 +162,33 @@ def call_openai(message: str, metadata: Dict, agent) -> Dict:
     if not openai_key:
         return {'error': 'OpenAI API key not configured'}
 
+    # Определяем язык пользователя (по умолчанию немецкий)
+    user_lang = metadata.get('language', 'de')
+    
+    # Получаем знания о сайте на выбранном языке
+    site_info = get_site_info(user_lang)
+    
+    # Выбираем соответствующий промпт в зависимости от роли агента
+    system_prompt = agent.system_prompt
+    if agent.name == 'greeter':
+        system_prompt = get_greeter_prompt(user_lang)
+    elif agent.name in ['requirements', 'project_consultant']:
+        system_prompt = get_project_consultant_prompt(user_lang)
+    elif agent.name in ['technical', 'tech_support']:
+        system_prompt = get_technical_advisor_prompt(user_lang)
+    
+    # Добавляем информацию о текущей странице, если она есть
+    current_page = metadata.get('page', 'home')
+    if current_page in site_info['site_structure']:
+        page_info = site_info['site_structure'][current_page]
+        page_context = f"\nUser is currently on the {page_info['title']} page: {page_info['description']}"
+        system_prompt += page_context
+
     # Extract conversation history if available
     history = metadata.get('history', [])
     
     # Build messages array with history
-    messages = [{'role': 'system', 'content': agent.system_prompt}]
+    messages = [{'role': 'system', 'content': system_prompt}]
     
     # Add history messages if available (limited to last 10)
     for h in history[-10:]:
@@ -198,6 +258,27 @@ def call_openai(message: str, metadata: Dict, agent) -> Dict:
 
 def route_and_respond(message: str, metadata: Dict) -> Dict:
     """Main routing function that delegates to appropriate handlers"""
+    # Определение языка пользователя
+    user_lang = metadata.get('language')
+    
+    # Если язык не указан, устанавливаем по умолчанию немецкий
+    if not user_lang:
+        metadata['language'] = 'de'
+    
+    # Получаем информацию о текущей странице, если она передана в метаданных
+    referer = request.headers.get('Referer', '')
+    current_page = 'home'  # По умолчанию
+    
+    # Определяем текущую страницу на основе URL
+    for page, data in get_site_info(metadata['language'])['site_structure'].items():
+        path = data['path']
+        if path != '/' and path in referer:
+            current_page = page
+            break
+    
+    # Добавляем информацию о текущей странице в метаданные
+    metadata['page'] = current_page
+    
     # For new conversations, use greeter
     if not metadata.get('conversation_id'):
         return handle_greeter(metadata)

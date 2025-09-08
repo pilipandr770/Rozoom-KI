@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}Datenschutzerklärung — Rozoom-KI{% endblock %}
+
+{% block content %}
+<div class="legal-page">
+  <h1>{{ _('Privacy Policy') }}</h1>
+  <p class="last-updated">{{ _('Last updated: September 1, 2025') }}</p>
+  
+  <div class="legal-section">
+    <h2>{{ _('1. Introduction') }}</h2>
+    <p>{{ _('Rozoom-KI ("we", "us", or "our") respects your privacy and is committed to protecting your personal data. This privacy policy will inform you about how we look after your personal data when you visit our website and tell you about your privacy rights and how the law protects you.') }}</p>
+  </div>
+  
+  <div class="legal-section">
+    <h2>{{ _('2. The Data We Collect') }}</h2>
+    <p>{{ _('We may collect, use, store and transfer different kinds of personal data about you which we have grouped together as follows:') }}</p>
+    <ul>
+      <li><strong>{{ _('Identity Data') }}</strong> {{ _('includes first name, last name, username or similar identifier.') }}</li>
+      <li><strong>{{ _('Contact Data') }}</strong> {{ _('includes email address and telephone numbers.') }}</li>
+      <li><strong>{{ _('Technical Data') }}</strong> {{ _('includes internet protocol (IP) address, browser type and version, time zone setting and location, browser plug-in types and versions, operating system and platform, and other technology on the devices you use to access this website.') }}</li>
+      <li><strong>{{ _('Usage Data') }}</strong> {{ _('includes information about how you use our website and services.') }}</li>
+    </ul>
+  </div>
+  
+  <div class="legal-section">
+    <h2>{{ _('3. How We Use Your Data') }}</h2>
+    <p>{{ _('We will only use your personal data when the law allows us to. Most commonly, we will use your personal data in the following circumstances:') }}</p>
+    <ul>
+      <li>{{ _('To register you as a new customer.') }}</li>
+      <li>{{ _('To process and deliver your order.') }}</li>
+      <li>{{ _('To manage our relationship with you.') }}</li>
+      <li>{{ _('To improve our website, products/services, marketing or customer relationships.') }}</li>
+      <li>{{ _('To recommend products or services that may be of interest to you.') }}</li>
+    </ul>
+  </div>
+  
+  <div class="legal-section">
+    <h2>{{ _('4. Data Security') }}</h2>
+    <p>{{ _('We have put in place appropriate security measures to prevent your personal data from being accidentally lost, used or accessed in an unauthorized way, altered or disclosed. We limit access to your personal data to those employees, agents, contractors and other third parties who have a business need to know.') }}</p>
+  </div>
+  
+  <div class="legal-section">
+    <h2>{{ _('5. Your Legal Rights') }}</h2>
+    <p>{{ _('Under certain circumstances, you have rights under data protection laws in relation to your personal data, including the right to:') }}</p>
+    <ul>
+      <li>{{ _('Request access to your personal data.') }}</li>
+      <li>{{ _('Request correction of your personal data.') }}</li>
+      <li>{{ _('Request erasure of your personal data.') }}</li>
+      <li>{{ _('Object to processing of your personal data.') }}</li>
+      <li>{{ _('Request restriction of processing your personal data.') }}</li>
+      <li>{{ _('Request transfer of your personal data.') }}</li>
+      <li>{{ _('Right to withdraw consent.') }}</li>
+    </ul>
+  </div>
+  
+  <div class="legal-section">
+    <h2>{{ _('6. Contact Us') }}</h2>
+    <p>{{ _('If you have any questions about this privacy policy or our privacy practices, please contact us at:') }}</p>
+    <p>{{ _('Email:') }} privacy@rozoom-ki.com</p>
+  </div>
+</div>
+{% endblock %}

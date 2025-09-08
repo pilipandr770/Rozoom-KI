@@ -23,6 +23,27 @@
   let metadata = {};
   let conversationHistory = [];
   
+  // Экспортируем интерфейс для внешнего доступа
+  window.chatWidget = {
+    getMetadata: () => metadata,
+    setMetadata: (newMetadata) => {
+      metadata = newMetadata;
+      localStorage.setItem('rozoom_metadata', JSON.stringify(metadata));
+    },
+    restartChat: () => {
+      // Clear chat history, but keep metadata like language
+      conversationHistory = [];
+      localStorage.removeItem('rozoom_history');
+      
+      // Clear the UI messages
+      const messagesEl = document.getElementById('chat-messages');
+      messagesEl.innerHTML = '';
+      
+      // Start fresh greeter
+      startGreeter();
+    }
+  };
+  
   // Ensure the chat widget is always in the bottom right corner
   function ensureFixedPosition() {
     // Refresh the position to ensure it's always in the bottom right
@@ -190,6 +211,9 @@
    */
   async function postChat(message) {
     try {
+      // Добавляем текущий URL страницы в метаданные
+      metadata.page = window.location.pathname;
+      
       const resp = await fetch('/api/chat', {
         method: 'POST', 
         headers: {'Content-Type': 'application/json'},
@@ -342,6 +366,13 @@
       if (r.error) {
         appendMessage(`Ошибка: ${r.error}`, 'bot');
       } else {
+        // Сохраняем conversation_id, если он был получен от сервера
+        if (r.conversation_id) {
+          metadata.conversation_id = r.conversation_id;
+          // Сохраняем метаданные в localStorage
+          localStorage.setItem('rozoom_metadata', JSON.stringify(metadata));
+        }
+        
         // Check if we have interactive elements
         if (r.interactive) {
           appendMessage(r.answer, 'bot', r.interactive);

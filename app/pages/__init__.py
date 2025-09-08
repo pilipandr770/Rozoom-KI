@@ -221,15 +221,36 @@ def contact():
 
 @pages_bp.route('/impressum')
 def impressum():
-    return render_template('impressum.html')
+    # Check current language and use appropriate template
+    from flask import g
+    if g.locale == 'de':
+        return render_template('de/impressum.html')
+    elif g.locale == 'ru':
+        return render_template('ru/impressum.html')
+    else:
+        return render_template('impressum.html')
 
 @pages_bp.route('/privacy')
 def privacy():
-    return render_template('privacy.html')
+    # Check current language and use appropriate template
+    from flask import g
+    if g.locale == 'de':
+        return render_template('de/privacy.html')
+    elif g.locale == 'ru':
+        return render_template('ru/privacy.html')
+    else:
+        return render_template('privacy.html')
 
 @pages_bp.route('/terms')
 def terms():
-    return render_template('terms.html')
+    # Check current language and use appropriate template
+    from flask import g
+    if g.locale == 'de':
+        return render_template('de/terms.html')
+    elif g.locale == 'ru':
+        return render_template('ru/terms.html')
+    else:
+        return render_template('terms.html')
 
 @pages_bp.route('/blog/<slug>')
 def blog_post(slug):
