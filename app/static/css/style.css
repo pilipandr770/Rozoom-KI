@@ -232,7 +232,7 @@ p {
 .video-hero {
   padding: 8rem 0;
   text-align: center;
-  background: var(--primary-color);
+  background: transparent; /* Убираем синий фон, чтобы видео было видно */
   color: white;
   border-radius: var(--radius-lg);
   margin-bottom: 3rem;

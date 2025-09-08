@@ -197,6 +197,7 @@
   z-index: 2;
   text-align: center;
   padding: 2rem;
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5); /* Добавляем тень тексту для лучшей читаемости на видео */
 }
 
 /* Animated buttons */

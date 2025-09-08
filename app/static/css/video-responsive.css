@@ -1,0 +1,77 @@
+/* Медиа-запросы для адаптивности видео на разных устройствах */
+@media (max-width: 1200px) {
+  .video-hero h1 {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .video-hero {
+    height: auto;
+    min-height: 500px;
+  }
+  
+  .video-hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .video-hero .hero-subtitle {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .video-hero {
+    min-height: 450px;
+  }
+  
+  .video-hero h1 {
+    font-size: 2rem;
+  }
+  
+  .wave-animation {
+    height: 100px;
+  }
+  
+  .wave1 {
+    background-size: 50% 60px;
+  }
+  
+  .wave2 {
+    background-size: 50% 80px;
+  }
+  
+  .wave3 {
+    background-size: 50% 60px;
+  }
+  
+  .wave4 {
+    background-size: 50% 40px;
+  }
+}
+
+@media (max-width: 576px) {
+  .video-hero {
+    min-height: 400px;
+    padding: 4rem 0;
+  }
+  
+  .video-hero h1 {
+    font-size: 1.75rem;
+  }
+  
+  .video-hero .hero-subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .video-hero .btn {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .hero-cta {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}

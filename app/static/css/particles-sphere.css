@@ -1,0 +1,126 @@
+/* Particles Sphere Animation */
+.particles-sphere-section {
+  position: relative;
+  width: 100%;
+  padding: 0;
+  margin: 3rem 0;
+  overflow: hidden;
+  color: white;
+}
+
+.particles-sphere-container {
+  background: #051c2c;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  perspective: 1000px;
+  z-index: 1;
+}
+
+.particles-sphere-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.particles-sphere-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(20,60,120,0.3) 0%, rgba(10,30,60,0.6) 70%, rgba(5,15,30,0.9) 100%);
+  z-index: -1;
+}
+
+.particles-sphere-container canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.particles-sphere-content h2 {
+  margin-bottom: 1rem;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  font-size: 2.5rem;
+}
+
+.particles-sphere-content p {
+  margin-bottom: 1.5rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.particles-sphere-content .btn {
+  padding: 0.75rem 2rem;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.particles-sphere-content .btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+}
+
+.particles-sphere {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  animation: rotate 20s infinite linear;
+  z-index: 1;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+  100% {
+    transform: rotateX(360deg) rotateY(360deg);
+  }
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #ff3300;
+  border-radius: 50%;
+  transform-style: preserve-3d;
+  animation: particle-flicker 3s infinite ease-in-out;
+}
+
+@keyframes particle-flicker {
+  0%, 100% {
+    opacity: 0.8;
+    box-shadow: 0 0 5px #ff3300;
+  }
+  50% {
+    opacity: 0.5;
+    box-shadow: 0 0 2px #ff3300;
+  }
+}
