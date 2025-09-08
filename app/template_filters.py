@@ -1,5 +1,5 @@
 import markdown
-from flask import Markup
+from markupsafe import Markup
 
 def init_app(app):
     """

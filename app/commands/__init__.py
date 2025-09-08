@@ -9,3 +9,7 @@ def register_commands(app):
     # Register category update command
     from app.commands.update_category import update_category_command
     app.cli.add_command(update_category_command)
+    
+    # Register schema update command
+    from app.commands.update_schema import update_schema_command
+    app.cli.add_command(update_schema_command)
