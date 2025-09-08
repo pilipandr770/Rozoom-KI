@@ -45,3 +45,27 @@ def strip_html(text: Optional[str]) -> str:
     # Удаляем HTML-теги
     clean = re.compile('<.*?>')
     return re.sub(clean, '', text)
+
+def clean_icons_from_content(content: Optional[str]) -> str:
+    """
+    Очищает контент от Font Awesome иконок и других нежелательных элементов
+    
+    Args:
+        content (Optional[str]): Исходный HTML-контент
+        
+    Returns:
+        str: Очищенный HTML-контент
+    """
+    if not content:
+        return ""
+    
+    # Удаляем теги <i> с классами Font Awesome
+    content = re.sub(r'<i[^>]*class=[\'"][^\'"]*(?:fa|fas|far|fab)[^\'"]*[\'"][^>]*><\/i>\s*', '', content)
+    
+    # Удаляем символы # в начале строк (заменяя их на двойные ##, чтобы сохранить заголовки Markdown)
+    content = re.sub(r'(\n|^)#\s+', r'\1## ', content)
+    
+    # Удаляем символы @ перед именами пользователей
+    content = re.sub(r'@User\d+', '', content)
+    
+    return content

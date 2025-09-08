@@ -2,11 +2,9 @@
 <div class="language-switcher">
   <div class="language-buttons">
     <a class="lang-button {% if g.locale == 'en' %}active{% endif %}" href="{{ url_for('lang.set_language', lang='en', next=request.url) }}" title="English">
-      <img src="{{ url_for('static', filename='img/flags/en.png') }}" alt="{{ _('English Flag') }}" class="flag-icon">
       <span class="lang-code">EN</span>
     </a>
     <a class="lang-button {% if g.locale == 'de' %}active{% endif %}" href="{{ url_for('lang.set_language', lang='de', next=request.url) }}" title="Deutsch">
-      <img src="{{ url_for('static', filename='img/flags/de.png') }}" alt="{{ _('German Flag') }}" class="flag-icon">
       <span class="lang-code">DE</span>
     </a>
   </div>

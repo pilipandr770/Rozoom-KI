@@ -48,7 +48,7 @@ class BlogCategory(db.Model):
     posts = relationship("BlogPost", back_populates="category")
     
     def __repr__(self):
-        return f'<BlogCategory {self.name}>'
+        return f'{self.name}'
 
 
 class BlogTag(db.Model):

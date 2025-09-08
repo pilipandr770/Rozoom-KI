@@ -10,25 +10,25 @@
             <div class="dashboard-sidebar p-3 bg-light rounded">
                 <h5 class="mb-3">{{ current_user.name }}</h5>
                 <div class="list-group mb-4">
-                    <a href="{{ url_for('dashboard.index') }}" class="list-group-item list-group-item-action">
-                        <i class="fas fa-home"></i> {{ _('Dashboard') }}
+                    <a href="{{ url_for('dashboard.index') }}" class="list-group-item list-group-item-action dashboard-nav-item">
+                        <span class="dashboard-icon">🏠</span> {{ _('Dashboard') }}
                     </a>
-                    <a href="{{ url_for('dashboard.projects') }}" class="list-group-item list-group-item-action active">
-                        <i class="fas fa-project-diagram"></i> {{ _('Projects') }}
+                    <a href="{{ url_for('dashboard.projects') }}" class="list-group-item list-group-item-action active dashboard-nav-item">
+                        <span class="dashboard-icon">📊</span> {{ _('Projects') }}
                     </a>
-                    <a href="{{ url_for('dashboard.messages') }}" class="list-group-item list-group-item-action">
-                        <i class="fas fa-envelope"></i> {{ _('Messages') }}
+                    <a href="{{ url_for('dashboard.messages') }}" class="list-group-item list-group-item-action dashboard-nav-item">
+                        <span class="dashboard-icon">✉️</span> {{ _('Messages') }}
                     </a>
-                    <a href="{{ url_for('dashboard.invoices') }}" class="list-group-item list-group-item-action">
-                        <i class="fas fa-file-invoice"></i> {{ _('Invoices') }}
+                    <a href="{{ url_for('dashboard.invoices') }}" class="list-group-item list-group-item-action dashboard-nav-item">
+                        <span class="dashboard-icon">📄</span> {{ _('Invoices') }}
                     </a>
-                    <a href="{{ url_for('dashboard.profile') }}" class="list-group-item list-group-item-action">
-                        <i class="fas fa-user-cog"></i> {{ _('Profile Settings') }}
+                    <a href="{{ url_for('dashboard.profile') }}" class="list-group-item list-group-item-action dashboard-nav-item">
+                        <span class="dashboard-icon">👤</span> {{ _('Profile Settings') }}
                     </a>
                 </div>
                 <div class="d-grid gap-2">
-                    <a href="{{ url_for('auth.logout') }}" class="btn btn-outline-danger">
-                        <i class="fas fa-sign-out-alt"></i> {{ _('Logout') }}
+                    <a href="{{ url_for('auth.logout') }}" class="btn btn-outline-danger dashboard-nav-item">
+                        <span class="dashboard-icon">🚪</span> {{ _('Logout') }}
                     </a>
                 </div>
             </div>
@@ -38,8 +38,8 @@
         <div class="col-md-9 col-lg-10">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h1 class="mb-0">{{ _('Your Projects') }}</h1>
-                <a href="{{ url_for('pages.services') }}" class="btn btn-primary">
-                    <i class="fas fa-plus"></i> {{ _('New Project Request') }}
+                <a href="{{ url_for('pages.services') }}" class="btn btn-primary button-with-icon">
+                    <span class="emoji-icon">➕</span> {{ _('New Project Request') }}
                 </a>
             </div>
             
@@ -67,8 +67,8 @@
                         <div class="col-md-4">
                             <div class="input-group">
                                 <input type="text" class="form-control" placeholder="{{ _('Search projects') }}" id="projectSearch">
-                                <button class="btn btn-outline-secondary" type="button">
-                                    <i class="fas fa-search"></i>
+                                <button class="btn btn-outline-secondary search-button" type="button">
+                                    {{ _('Search') }}
                                 </button>
                             </div>
                         </div>

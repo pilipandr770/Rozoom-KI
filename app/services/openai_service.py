@@ -45,6 +45,7 @@ class OpenAIService:
             Write a well-structured, informative blog post in {lang_prompt}.
             The content should be engaging, include real-world examples, and be SEO optimized.
             Format the content with proper Markdown headings, paragraphs, bullet points, and highlight key concepts.
+            DO NOT use any icons, Font Awesome, or HTML elements like <i class="fa..."></i> in your content.
             Include a compelling title that would attract clicks.
             Include a meta description for SEO purposes (150-160 characters).
             """
@@ -61,6 +62,8 @@ class OpenAIService:
             4. Include practical examples or case studies
             5. End with a conclusion and call-to-action
             6. Be between 800-1200 words
+            7. IMPORTANT: DO NOT use any Font Awesome icons or HTML tags for icons (like <i class="fa..."></i>)
+            8. DO NOT include any icons next to headings, titles, or author names
             
             Respond with a JSON object with the following structure:
             {{

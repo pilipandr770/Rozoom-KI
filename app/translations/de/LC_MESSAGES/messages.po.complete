@@ -1,0 +1,264 @@
+# Файл переводов на немецкий язык для Rozoom-KI
+msgid ""
+msgstr ""
+"Project-Id-Version: Rozoom-KI 1.0\n"
+"Report-Msgid-Bugs-To: info@rozoom-ki.com\n"
+"POT-Creation-Date: 2025-09-07 15:47+0200\n"
+"PO-Revision-Date: 2025-09-07 18:22+0200\n"
+"Last-Translator: \n"
+"Language: de\n"
+"Language-Team: German\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+msgid "Home"
+msgstr "Startseite"
+
+msgid "Services"
+msgstr "Dienstleistungen"
+
+msgid "Pricing"
+msgstr "Preise"
+
+msgid "Blog"
+msgstr "Blog"
+
+msgid "Contact"
+msgstr "Kontakt"
+
+msgid "Login"
+msgstr "Anmelden"
+
+msgid "Logout"
+msgstr "Abmelden"
+
+msgid "Register"
+msgstr "Registrieren"
+
+msgid "Dashboard"
+msgstr "Übersicht"
+
+msgid "Admin Panel"
+msgstr "Administrator-Bereich"
+
+msgid "Search"
+msgstr "Suchen"
+
+msgid "Submit"
+msgstr "Senden"
+
+msgid "Save"
+msgstr "Speichern"
+
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgid "Delete"
+msgstr "Löschen"
+
+msgid "Edit"
+msgstr "Bearbeiten"
+
+msgid "Create"
+msgstr "Erstellen"
+
+msgid "Users"
+msgstr "Benutzer"
+
+msgid "Projects"
+msgstr "Projekte"
+
+msgid "Settings"
+msgstr "Einstellungen"
+
+msgid "Profile"
+msgstr "Profil"
+
+msgid "Language"
+msgstr "Sprache"
+
+msgid "Name"
+msgstr "Name"
+
+msgid "Email"
+msgstr "E-Mail"
+
+msgid "Password"
+msgstr "Passwort"
+
+msgid "Confirm Password"
+msgstr "Passwort bestätigen"
+
+msgid "Required field"
+msgstr "Pflichtfeld"
+
+msgid "Invalid email format"
+msgstr "Ungültiges E-Mail-Format"
+
+msgid "Welcome to Rozoom-KI"
+msgstr "Willkommen bei Rozoom-KI"
+
+msgid "Request a Project Estimate"
+msgstr "Anfrage für eine Projektschätzung"
+
+msgid "Fill out our project questionnaire to get a free time and budget estimate for your project. No obligations!"
+msgstr "Füllen Sie unseren Projektfragebogen aus, um eine kostenlose Zeit- und Budgetschätzung für Ihr Projekt zu erhalten. Keine Verpflichtungen!"
+
+msgid "What type of project are you looking to develop?"
+msgstr "Welche Art von Projekt möchten Sie entwickeln?"
+
+msgid "Select a project type"
+msgstr "Wählen Sie einen Projekttyp"
+
+msgid "Web Application"
+msgstr "Web-Anwendung"
+
+msgid "Mobile Application"
+msgstr "Mobile Anwendung"
+
+msgid "AI/ML Solution"
+msgstr "KI/ML-Lösung"
+
+msgid "Automation Tool"
+msgstr "Automatisierungswerkzeug"
+
+msgid "Data Analytics"
+msgstr "Datenanalyse"
+
+msgid "Other"
+msgstr "Andere"
+
+msgid "Choose the category that best describes your project."
+msgstr "Wählen Sie die Kategorie, die Ihr Projekt am besten beschreibt."
+
+msgid "What is the primary goal of your project?"
+msgstr "Was ist das Hauptziel Ihres Projekts?"
+
+msgid "Describe the main purpose of your project..."
+msgstr "Beschreiben Sie den Hauptzweck Ihres Projekts..."
+
+msgid "About"
+msgstr "Über uns"
+
+msgid "About the author."
+msgstr "Über den Autor."
+
+msgid "Intelligent AI Solutions for Modern Business"
+msgstr "Intelligente KI-Lösungen für moderne Unternehmen"
+
+msgid "Transform your business with our state-of-the-art AI assistants and custom solutions"
+msgstr "Transformieren Sie Ihr Unternehmen mit unseren hochmodernen KI-Assistenten und individuellen Lösungen"
+
+msgid "Explore Services"
+msgstr "Dienstleistungen entdecken"
+
+msgid "Contact Us"
+msgstr "Kontaktieren Sie uns"
+
+msgid "Sign Up for Free"
+msgstr "Kostenlos registrieren"
+
+msgid "Go to Dashboard"
+msgstr "Zum Dashboard"
+
+msgid "How We Can Help"
+msgstr "Wie wir helfen können"
+
+msgid "Web Development"
+msgstr "Webentwicklung"
+
+msgid "Custom websites and web applications with AI-powered features to enhance user experience."
+msgstr "Maßgeschneiderte Websites und Webanwendungen mit KI-gestützten Funktionen zur Verbesserung der Benutzererfahrung."
+
+msgid "ML & AI Integration"
+msgstr "ML & KI-Integration"
+
+msgid "Integrate machine learning models and AI capabilities into your existing software systems."
+msgstr "Integrieren Sie Machine-Learning-Modelle und KI-Funktionen in Ihre bestehenden Softwaresysteme."
+
+msgid "Process Automation"
+msgstr "Prozessautomatisierung"
+
+msgid "Streamline your business operations with intelligent automation and workflow solutions."
+msgstr "Optimieren Sie Ihre Geschäftsprozesse mit intelligenter Automatisierung und Workflow-Lösungen."
+
+msgid "What Our Clients Say"
+msgstr "Was unsere Kunden sagen"
+
+msgid "Create Your Personal Account"
+msgstr "Erstellen Sie Ihr persönliches Konto"
+
+msgid "Track your projects, access personalized services, and collaborate with our team in real-time."
+msgstr "Verfolgen Sie Ihre Projekte, greifen Sie auf personalisierte Dienste zu und arbeiten Sie in Echtzeit mit unserem Team zusammen."
+
+msgid "Personal dashboard to monitor project progress"
+msgstr "Persönliches Dashboard zur Überwachung des Projektfortschritts"
+
+msgid "Direct messaging with our development team"
+msgstr "Direkte Kommunikation mit unserem Entwicklungsteam"
+
+msgid "Online invoicing and payment processing"
+msgstr "Online-Rechnungsstellung und Zahlungsabwicklung"
+
+msgid "Project milestone tracking and updates"
+msgstr "Verfolgung von Projektmeilensteinen und Updates"
+
+msgid "Register Now"
+msgstr "Jetzt registrieren"
+
+msgid "Create Account"
+msgstr "Konto erstellen"
+
+msgid "Already have an account? Login"
+msgstr "Haben Sie bereits ein Konto? Anmelden"
+
+msgid "Ready to transform your business with AI?"
+msgstr "Bereit, Ihr Unternehmen mit KI zu transformieren?"
+
+msgid "Our team of experts is ready to help you implement intelligent solutions."
+msgstr "Unser Expertenteam steht bereit, um Ihnen bei der Implementierung intelligenter Lösungen zu helfen."
+
+msgid "Get Started Today"
+msgstr "Jetzt starten"
+
+msgid "Our Services"
+msgstr "Unsere Dienstleistungen"
+
+msgid "AI Development"
+msgstr "KI-Entwicklung"
+
+msgid "We develop custom AI solutions for your business needs, including natural language processing, computer vision, and machine learning models."
+msgstr "Wir entwickeln maßgeschneiderte KI-Lösungen für Ihre Geschäftsanforderungen, einschließlich natürlicher Sprachverarbeitung, Computer Vision und maschineller Lernmodelle."
+
+msgid "Automation Solutions"
+msgstr "Automatisierungslösungen"
+
+msgid "Automate your business processes with custom software solutions to increase efficiency and reduce operational costs."
+msgstr "Automatisieren Sie Ihre Geschäftsprozesse mit maßgeschneiderten Softwarelösungen, um die Effizienz zu steigern und die Betriebskosten zu senken."
+
+msgid "Data Analysis"
+msgstr "Datenanalyse"
+
+msgid "Turn your data into actionable insights with our comprehensive data analysis and visualization services."
+msgstr "Verwandeln Sie Ihre Daten in umsetzbare Erkenntnisse mit unseren umfassenden Datenanalyse- und Visualisierungsdiensten."
+
+msgid "Rozoom-KI transformed our customer service with their AI assistant. Response times dropped by 60 percent and customer satisfaction increased dramatically."
+msgstr "Rozoom-KI hat unseren Kundenservice mit ihrem KI-Assistenten transformiert. Die Reaktionszeiten sanken um 60 Prozent und die Kundenzufriedenheit stieg dramatisch an."
+
+msgid "The machine learning integration for our inventory management has saved us thousands of euros monthly and improved our forecasting accuracy by 40 percent."
+msgstr "Die Integration des maschinellen Lernens in unser Bestandsmanagement hat uns monatlich tausende von Euro erspart und unsere Prognosegenauigkeit um 40 Prozent verbessert."
+
+msgid "Their AI-powered analytics platform gave us insights we never thought possible. We have been able to identify new market opportunities and increase revenue by 25 percent in just six months."
+msgstr "Ihre KI-gestützte Analyseplattform hat uns Einblicke ermöglicht, die wir nie für möglich gehalten hätten. Wir konnten neue Marktchancen identifizieren und den Umsatz in nur sechs Monaten um 25 Prozent steigern."
+
+msgid "CTO, TechSolutions GmbH"
+msgstr "CTO, TechSolutions GmbH"
+
+msgid "Operations Director, RetailPlus"
+msgstr "Betriebsdirektor, RetailPlus"
+
+msgid "Marketing Director, InnovateMedia"
+msgstr "Marketing-Direktor, InnovateMedia"

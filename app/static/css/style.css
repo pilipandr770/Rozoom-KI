@@ -743,7 +743,7 @@ p {
   border-radius: var(--radius-md);
   overflow: hidden;
   box-shadow: var(--shadow-sm);
-  color: #333; /* Более темный цвет для текста */
+  color: #222; /* Еще более темный цвет для текста */
 }
 
 @media (max-width: 768px) {
@@ -788,7 +788,7 @@ p {
 }
 
 .post-content h2 a {
-  color: var(--text-color);
+  color: #222; /* Более темный цвет для заголовков вместо переменной */
   text-decoration: none;
   transition: color 0.2s;
 }
@@ -799,17 +799,18 @@ p {
 
 .post-meta {
   margin-bottom: 1rem;
-  color: #555; /* Более темный цвет для мета-информации */
+  color: #222; /* Еще более темный цвет для мета-информации */
   font-size: 0.9rem;
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
+  font-weight: 500; /* Чуть жирнее шрифт */
 }
 
 .post-excerpt {
   margin-bottom: 1.5rem;
-  color: #333; /* Более темный цвет для основного текста */
-  font-weight: 400; /* Средняя толщина шрифта для лучшей читаемости */
+  color: #000000; /* Самый темный цвет - черный - для максимальной читаемости */
+  font-weight: 500; /* Увеличенная толщина шрифта для лучшей читаемости */
 }
 
 .post-content .btn {
@@ -880,8 +881,8 @@ p {
   display: flex;
   justify-content: space-between;
   padding: 0.5rem 0;
-  color: #333; /* Более темный цвет для категорий */
-  font-weight: 500; /* Чуть жирнее шрифт для лучшей читаемости */
+  color: #222; /* Еще более темный цвет для категорий */
+  font-weight: 600; /* Еще более жирный шрифт для лучшей читаемости */
   text-decoration: none;
   transition: color 0.2s;
 }
@@ -893,11 +894,11 @@ p {
 
 .category-list .count {
   background: var(--light-bg);
-  color: #555; /* Более темный цвет для счетчика */
+  color: #000000; /* Черный цвет для счетчика - максимальная читаемость */
   padding: 0.1rem 0.5rem;
   border-radius: var(--radius-sm);
   font-size: 0.85rem;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 /* Tags Widget */
@@ -909,11 +910,11 @@ p {
 
 .tag {
   background: var(--light-bg);
-  color: #444; /* Более темный цвет для тегов */
+  color: #000000; /* Черный цвет для тегов - максимальная читаемость */
   padding: 0.25rem 0.75rem;
   border-radius: var(--radius-md);
   font-size: 0.85rem;
-  font-weight: 500; /* Средняя толщина шрифта */
+  font-weight: 600; /* Более жирный шрифт для лучшей читаемости */
   text-decoration: none;
   transition: all 0.2s;
 }
@@ -941,7 +942,7 @@ p {
   display: flex;
   gap: 0.75rem;
   text-decoration: none;
-  color: var(--text-color);
+  color: #222; /* Более темный цвет для текста вместо переменной */
 }
 
 .recent-post-image {
@@ -967,6 +968,7 @@ p {
   margin-bottom: 0.25rem;
   line-height: 1.4;
   transition: color 0.2s;
+  color: #000000; /* Черный цвет для заголовка - максимальная читаемость */
 }
 
 .recent-posts li a:hover h4 {
@@ -975,8 +977,8 @@ p {
 
 .recent-post-date {
   font-size: 0.8rem;
-  color: #555; /* Более темный цвет для даты */
-  font-weight: 500; /* Средняя толщина шрифта */
+  color: #222; /* Еще более темный цвет для даты */
+  font-weight: 600; /* Более жирный шрифт */
 }
 
 /* No Posts */
@@ -1420,7 +1422,7 @@ p {
 
 .author-title {
   font-size: 0.9rem;
-  color: var(--light-text);
+  color: #444; /* Более темный цвет вместо переменной */
 }
 
 /* Blog Post Content */
@@ -1483,7 +1485,7 @@ p {
   padding: 1rem 2rem;
   border-left: 4px solid var(--primary-color);
   background: var(--light-bg);
-  color: var(--light-text);
+  color: #333; /* Более темный цвет для текста цитаты */
   font-style: italic;
 }
 

@@ -1,5 +1,5 @@
 # routes/admin.py
-from flask import Blueprint, render_template, request, redirect, url_for, flash, jsonify
+from flask import Blueprint, render_template, request, redirect, url_for, flash, jsonify, current_app
 from flask_login import login_required, current_user, login_user, logout_user
 from app import db
 from app.models import BlogPost, BlogCategory, BlogTag, User, PricePackage
@@ -169,15 +169,59 @@ def edit_post(id):
     
     return render_template('admin/edit_post.html', post=post, categories=categories, tags=tags)
 
-@admin.route('/blog/posts/delete/<int:id>', methods=['POST'])
+@admin.route('/blog/posts/delete/<int:id>', methods=['GET', 'POST'])
 @login_required
 def delete_post(id):
     """Delete a blog post."""
-    post = BlogPost.query.get_or_404(id)
-    db.session.delete(post)
-    db.session.commit()
+    # Разрешаем оба метода, но обрабатываем их по-разному
+    if request.method == 'GET':
+        flash('Для удаления поста используйте кнопку удаления на странице списка постов.', 'info')
+        return redirect(url_for('admin.blog_posts'))
     
-    flash('Blog post deleted successfully!', 'success')
+    # Отладочное сообщение
+    current_app.logger.info(f"Получен запрос на удаление поста ID {id}")
+    current_app.logger.debug(f"Form data: {request.form}")
+    
+    # Проверяем наличие CSRF токена для отладки
+    if 'csrf_token' not in request.form:
+        current_app.logger.error(f"CSRF token missing in delete request for post ID {id}")
+        flash('Ошибка безопасности: CSRF токен отсутствует в запросе.', 'danger')
+        return redirect(url_for('admin.blog_posts'))
+    
+    # Получаем пост
+    post = BlogPost.query.get_or_404(id)
+    post_title = post.title  # Запоминаем название поста для сообщения
+    
+    try:
+        # Отвязываем все связи перед удалением
+        post.tags = []
+        
+        # Чтобы избежать проблем с внешними ключами, проверяем связанные записи
+        # Если у поста есть связи с сгенерированным контентом, сначала удаляем их
+        from app.models import GeneratedContent
+        generated_content = GeneratedContent.query.filter(
+            (GeneratedContent.en_post_id == post.id) | 
+            (GeneratedContent.de_post_id == post.id)
+        ).all()
+        
+        for content in generated_content:
+            if content.en_post_id == post.id:
+                content.en_post_id = None
+            if content.de_post_id == post.id:
+                content.de_post_id = None
+                
+        db.session.commit()
+        
+        # Удаляем пост
+        db.session.delete(post)
+        db.session.commit()
+        
+        flash(f'Post "{post_title}" has been deleted successfully!', 'success')
+    except Exception as e:
+        db.session.rollback()
+        current_app.logger.error(f"Error deleting post ID {id}: {str(e)}")
+        flash(f'Error deleting post: {str(e)}', 'danger')
+    
     return redirect(url_for('admin.blog_posts'))
 
 @admin.route('/blog/categories')

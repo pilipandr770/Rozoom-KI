@@ -1,0 +1,43 @@
+/* Fix contrast issues for form elements and blog posts */
+
+/* Form elements in services.html */
+.form-check-label {
+    color: #333333 !important; /* Darker text color for checkbox labels */
+}
+
+/* Form hint text */
+.form-text {
+    color: #333333 !important; /* Darker text color for hint text */
+    font-weight: 500; /* Make it slightly bolder */
+}
+
+/* Blog post content */
+.post-body {
+    color: #333333 !important; /* Darker text color for blog content */
+}
+
+/* Make sure the accordion text is visible */
+.accordion-item {
+    background-color: rgba(255, 255, 255, 0.9) !important; /* Lighter background with opacity */
+}
+
+.accordion-button {
+    background-color: rgba(245, 245, 245, 0.95) !important; /* Slightly darker background for button */
+    color: #333333 !important; /* Dark text for better contrast */
+}
+
+.accordion-body {
+    background-color: rgba(255, 255, 255, 0.9) !important; /* Light background for content */
+}
+
+/* Make sure all form inputs have good contrast */
+.form-control, .form-select {
+    color: #333333 !important;
+    background-color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Fix checkbox appearance */
+.form-check-input:checked {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+}

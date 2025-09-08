@@ -1,112 +1,4 @@
-# Файл переводов на немецкий язык для Rozoom-KI
-
-msgid ""
-msgstr ""
-"Project-Id-Version: Rozoom-KI 1.0\n"
-"Report-Msgid-Bugs-To: info@rozoom-ki.com\n"
-"POT-Creation-Date: 2023-09-05 12:00+0200\n"
-"PO-Revision-Date: 2023-09-05 13:00+0200\n"
-"Last-Translator: \n"
-"Language-Team: German\n"
-"Language: de\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-msgid "Home"
-msgstr "Startseite"
-
-msgid "Services"
-msgstr "Dienstleistungen"
-
-msgid "Pricing"
-msgstr "Preise"
-
-msgid "Blog"
-msgstr "Blog"
-
-msgid "Contact"
-msgstr "Kontakt"
-
-msgid "Login"
-msgstr "Anmelden"
-
-msgid "Logout"
-msgstr "Abmelden"
-
-msgid "Register"
-msgstr "Registrieren"
-
-msgid "Dashboard"
-msgstr "Übersicht"
-
-msgid "Admin Panel"
-msgstr "Administrator-Bereich"
-
-msgid "Search"
-msgstr "Suchen"
-
-msgid "Submit"
-msgstr "Senden"
-
-msgid "Save"
-msgstr "Speichern"
-
-msgid "Cancel"
-msgstr "Abbrechen"
-
-msgid "Delete"
-msgstr "Löschen"
-
-msgid "Edit"
-msgstr "Bearbeiten"
-
-msgid "Create"
-msgstr "Erstellen"
-
-msgid "Users"
-msgstr "Benutzer"
-
-msgid "Projects"
-msgstr "Projekte"
-
-msgid "Settings"
-msgstr "Einstellungen"
-
-msgid "Profile"
-msgstr "Profil"
-
-msgid "Language"
-msgstr "Sprache"
-
-msgid "Name"
-msgstr "Name"
-
-msgid "Email"
-msgstr "E-Mail"
-
-msgid "Password"
-msgstr "Passwort"
-
-msgid "Confirm Password"
-msgstr "Passwort bestätigen"
-
-msgid "Required field"
-msgstr "Pflichtfeld"
-
-msgid "Invalid email format"
-msgstr "Ungültiges E-Mail-Format"
-
-msgid "Welcome to Rozoom-KI"
-msgstr "Willkommen bei Rozoom-KI"
-
-msgid "Request a Project Estimate"
-msgstr "Anfrage für eine Projektschätzung"
-
-msgid "Fill out our project questionnaire to get a free time and budget estimate for your project. No obligations!"
-msgstr "Füllen Sie unseren Projektfragebogen aus, um eine kostenlose Zeit- und Budgetschätzung für Ihr Projekt zu erhalten. Keine Verpflichtungen!"
-
+# Дополнительные переводы для формы технического задания
 msgid "What type of project are you looking to develop?"
 msgstr "Welche Art von Projekt möchten Sie entwickeln?"
 
@@ -141,7 +33,7 @@ msgid "Describe the main purpose of your project..."
 msgstr "Beschreiben Sie den Hauptzweck Ihres Projekts..."
 
 msgid "Clearly define what problem your project solves or what opportunity it addresses."
-msgstr "Definieren Sie klar, welches Problem Ihr Projekt löst oder welche Chance es nutzt."
+msgstr "Definieren Sie klar, welches Problem Ihr Projekt löst oder welche Möglichkeit es anspricht."
 
 msgid "Who are the target users of your project?"
 msgstr "Wer sind die Zielbenutzer Ihres Projekts?"
@@ -150,7 +42,7 @@ msgid "Describe your target audience..."
 msgstr "Beschreiben Sie Ihre Zielgruppe..."
 
 msgid "Specify who will be using your solution (e.g., businesses, consumers, specific industry professionals)."
-msgstr "Geben Sie an, wer Ihre Lösung nutzen wird (z.B. Unternehmen, Verbraucher, spezifische Branchenfachleute)."
+msgstr "Geben Sie an, wer Ihre Lösung nutzen wird (z.B. Unternehmen, Verbraucher, Fachleute einer bestimmten Branche)."
 
 msgid "What features are essential for your project?"
 msgstr "Welche Funktionen sind für Ihr Projekt unerlässlich?"
@@ -159,13 +51,13 @@ msgid "List the key features your project must have..."
 msgstr "Listen Sie die wichtigsten Funktionen auf, die Ihr Projekt haben muss..."
 
 msgid "Focus on the core functionality that is absolutely necessary for your project to succeed."
-msgstr "Konzentrieren Sie sich auf die Kernfunktionalität, die für den Erfolg Ihres Projekts unbedingt erforderlich ist."
+msgstr "Konzentrieren Sie sich auf die Kernfunktionalität, die für den Erfolg Ihres Projekts unbedingt notwendig ist."
 
 msgid "What features would be nice to have but aren't essential?"
 msgstr "Welche Funktionen wären schön zu haben, sind aber nicht unbedingt notwendig?"
 
 msgid "List any additional features that would be beneficial..."
-msgstr "Listen Sie zusätzliche Funktionen auf, die vorteilhaft wären..."
+msgstr "Listen Sie alle zusätzlichen Funktionen auf, die vorteilhaft wären..."
 
 msgid "These are features that could be implemented in later phases of the project."
 msgstr "Dies sind Funktionen, die in späteren Phasen des Projekts implementiert werden könnten."
@@ -174,7 +66,7 @@ msgid "Do you have a specific timeline for this project?"
 msgstr "Haben Sie einen bestimmten Zeitplan für dieses Projekt?"
 
 msgid "Select a timeline"
-msgstr "Wählen Sie einen Zeitplan"
+msgstr "Wählen Sie einen Zeitrahmen"
 
 msgid "Urgent (1-2 months)"
 msgstr "Dringend (1-2 Monate)"
@@ -198,19 +90,19 @@ msgid "Select a budget range"
 msgstr "Wählen Sie eine Budgetspanne"
 
 msgid "Less than €10,000"
-msgstr "Weniger als 10.000 €"
+msgstr "Weniger als €10.000"
 
 msgid "€10,000 - €30,000"
-msgstr "10.000 € - 30.000 €"
+msgstr "€10.000 - €30.000"
 
 msgid "€30,000 - €100,000"
-msgstr "30.000 € - 100.000 €"
+msgstr "€30.000 - €100.000"
 
 msgid "€100,000+"
-msgstr "100.000 €+"
+msgstr "€100.000+"
 
 msgid "This helps us suggest solutions that fit within your financial constraints."
-msgstr "Dies hilft uns, Lösungen vorzuschlagen, die Ihren finanziellen Einschränkungen entsprechen."
+msgstr "Dies hilft uns, Lösungen vorzuschlagen, die zu Ihren finanziellen Möglichkeiten passen."
 
 msgid "Are there any existing systems your project needs to integrate with?"
 msgstr "Gibt es bestehende Systeme, mit denen Ihr Projekt integriert werden muss?"
@@ -222,10 +114,10 @@ msgid "For example: payment gateways, CRMs, ERPs, social media platforms, etc."
 msgstr "Zum Beispiel: Zahlungsgateways, CRMs, ERPs, Social-Media-Plattformen usw."
 
 msgid "Do you have any specific technical requirements or preferences?"
-msgstr "Haben Sie spezifische technische Anforderungen oder Vorlieben?"
+msgstr "Haben Sie bestimmte technische Anforderungen oder Präferenzen?"
 
 msgid "Specify any technologies, frameworks, or platforms you prefer..."
-msgstr "Geben Sie Technologien, Frameworks oder Plattformen an, die Sie bevorzugen..."
+msgstr "Geben Sie bevorzugte Technologien, Frameworks oder Plattformen an..."
 
 msgid "For example: programming languages, cloud providers, frameworks, or architecture preferences."
 msgstr "Zum Beispiel: Programmiersprachen, Cloud-Anbieter, Frameworks oder Architekturpräferenzen."
@@ -234,22 +126,22 @@ msgid "Do you have any examples of similar projects you admire?"
 msgstr "Haben Sie Beispiele für ähnliche Projekte, die Sie bewundern?"
 
 msgid "List websites, apps, or products similar to what you envision..."
-msgstr "Listen Sie Websites, Apps oder Produkte auf, die Ihrer Vision ähnlich sind..."
+msgstr "Listen Sie Websites, Apps oder Produkte auf, die Ihrer Vision ähneln..."
 
 msgid "This helps us understand your vision and aesthetic preferences."
-msgstr "Dies hilft uns, Ihre Vision und ästhetischen Präferenzen zu verstehen."
+msgstr "Dies hilft uns, Ihre Vision und ästhetischen Vorlieben zu verstehen."
 
 msgid "How do you plan to measure the success of this project?"
 msgstr "Wie planen Sie, den Erfolg dieses Projekts zu messen?"
 
 msgid "Describe key performance indicators or success metrics..."
-msgstr "Beschreiben Sie wichtige Leistungsindikatoren oder Erfolgskennzahlen..."
+msgstr "Beschreiben Sie Kennzahlen oder Erfolgsindikatoren..."
 
 msgid "For example: user acquisition, conversion rates, efficiency improvements, cost savings, etc."
-msgstr "Zum Beispiel: Benutzerakquisition, Konversionsraten, Effizienzverbesserungen, Kosteneinsparungen usw."
+msgstr "Zum Beispiel: Benutzerakquise, Konversionsraten, Effizienzverbesserungen, Kosteneinsparungen usw."
 
 msgid "Do you have any specific security or compliance requirements?"
-msgstr "Haben Sie spezifische Sicherheits- oder Compliance-Anforderungen?"
+msgstr "Haben Sie bestimmte Sicherheits- oder Compliance-Anforderungen?"
 
 msgid "GDPR Compliance"
 msgstr "DSGVO-Konformität"
@@ -276,31 +168,31 @@ msgid "Hold Ctrl/Cmd to select multiple options, or leave blank if unsure."
 msgstr "Halten Sie Strg/Cmd gedrückt, um mehrere Optionen auszuwählen, oder lassen Sie das Feld leer, wenn Sie sich nicht sicher sind."
 
 msgid "If you selected 'Other' or have additional security requirements, please specify..."
-msgstr "Wenn Sie 'Andere' ausgewählt haben oder zusätzliche Sicherheitsanforderungen haben, geben Sie diese bitte an..."
+msgstr "Wenn Sie 'Andere' ausgewählt haben oder zusätzliche Sicherheitsanforderungen haben, bitte spezifizieren Sie..."
 
 msgid "What level of ongoing support will you need after launch?"
-msgstr "Welches Niveau an fortlaufender Unterstützung benötigen Sie nach dem Start?"
+msgstr "Welches Maß an laufender Unterstützung benötigen Sie nach dem Start?"
 
 msgid "Select support level"
-msgstr "Unterstützungsstufe auswählen"
+msgstr "Supportlevel auswählen"
 
 msgid "Minimal (Bug fixes only)"
 msgstr "Minimal (nur Fehlerbehebungen)"
 
 msgid "Standard (Bug fixes and minor updates)"
-msgstr "Standard (Fehlerbehebungen und kleinere Updates)"
+msgstr "Standard (Fehlerbehebungen und kleine Updates)"
 
 msgid "Comprehensive (Ongoing development and support)"
-msgstr "Umfassend (fortlaufende Entwicklung und Unterstützung)"
+msgstr "Umfassend (Laufende Entwicklung und Support)"
 
 msgid "Fully Managed Service"
 msgstr "Vollständig verwalteter Service"
 
 msgid "This helps us plan for post-launch resources and maintenance."
-msgstr "Dies hilft uns bei der Planung von Ressourcen und Wartung nach dem Start."
+msgstr "Dies hilft uns, die Ressourcen und Wartung nach dem Start zu planen."
 
 msgid "Do you already have any design assets or documentation for this project?"
-msgstr "Haben Sie bereits Design-Assets oder Dokumentationen für dieses Projekt?"
+msgstr "Haben Sie bereits Design-Assets oder Dokumentation für dieses Projekt?"
 
 msgid "Wireframes"
 msgstr "Wireframes"
@@ -312,31 +204,31 @@ msgid "Brand Guidelines"
 msgstr "Markenrichtlinien"
 
 msgid "User Stories"
-msgstr "Benutzergeschichten"
+msgstr "User Stories"
 
 msgid "Requirements Document"
 msgstr "Anforderungsdokument"
 
 msgid "Existing Code"
-msgstr "Vorhandener Code"
+msgstr "Bestehender Code"
 
 msgid "None of the above"
 msgstr "Keines der oben genannten"
 
 msgid "Check all that apply. This helps us understand what resources are available to start with."
-msgstr "Wählen Sie alles Zutreffende. Dies hilft uns zu verstehen, welche Ressourcen zu Beginn verfügbar sind."
+msgstr "Kreuzen Sie alles Zutreffende an. Dies hilft uns zu verstehen, welche Ressourcen zu Beginn verfügbar sind."
 
 msgid "Any additional information you'd like to share about your project?"
 msgstr "Möchten Sie weitere Informationen über Ihr Projekt mitteilen?"
 
 msgid "Share any other details that might help us understand your project better..."
-msgstr "Teilen Sie weitere Details mit, die uns helfen könnten, Ihr Projekt besser zu verstehen..."
+msgstr "Teilen Sie alle weiteren Details mit, die uns helfen könnten, Ihr Projekt besser zu verstehen..."
 
 msgid "Include any considerations, challenges, or specific requirements not covered by previous questions."
-msgstr "Fügen Sie alle Überlegungen, Herausforderungen oder spezifischen Anforderungen ein, die durch die vorherigen Fragen nicht abgedeckt wurden."
+msgstr "Fügen Sie alle Überlegungen, Herausforderungen oder spezifischen Anforderungen hinzu, die in den vorherigen Fragen nicht behandelt wurden."
 
 msgid "Contact Information"
-msgstr "Kontaktinformation"
+msgstr "Kontaktinformationen"
 
 msgid "Name *"
 msgstr "Name *"
@@ -351,16 +243,16 @@ msgid "Phone"
 msgstr "Telefon"
 
 msgid "I consent to having this website store my submitted information so they can respond to my inquiry. *"
-msgstr "Ich stimme zu, dass diese Website meine übermittelten Informationen speichert, damit sie auf meine Anfrage antworten können. *"
+msgstr "Ich bin damit einverstanden, dass diese Website meine übermittelten Informationen speichert, damit sie auf meine Anfrage antworten können. *"
 
 msgid "Submit Project Request"
-msgstr "Projektanfrage einreichen"
+msgstr "Projektanfrage absenden"
 
 msgid "Why Choose Us"
-msgstr "Warum uns wählen"
+msgstr "Warum Sie uns wählen sollten"
 
 msgid "Expert team with proven track record"
-msgstr "Expertenteam mit bewährter Erfolgsbilanz"
+msgstr "Expertenteam mit nachgewiesener Erfolgsbilanz"
 
 msgid "Transparent pricing and process"
 msgstr "Transparente Preisgestaltung und Prozesse"
@@ -369,7 +261,7 @@ msgid "Agile development methodology"
 msgstr "Agile Entwicklungsmethodik"
 
 msgid "Ongoing support and maintenance"
-msgstr "Fortlaufende Unterstützung und Wartung"
+msgstr "Fortlaufender Support und Wartung"
 
 msgid "Cutting-edge technologies"
 msgstr "Moderne Technologien"
@@ -379,9 +271,6 @@ msgstr "Kostenlose Beratung"
 
 msgid "Get a free 30-minute consultation with our experts to discuss your project needs."
 msgstr "Erhalten Sie eine kostenlose 30-minütige Beratung mit unseren Experten, um Ihre Projektanforderungen zu besprechen."
-
-msgid "Contact Us"
-msgstr "Kontaktieren Sie uns"
 
 msgid "Submitting..."
 msgstr "Wird gesendet..."

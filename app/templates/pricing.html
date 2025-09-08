@@ -125,26 +125,26 @@
                                 <div class="featured-tag">{{ _('Most Popular') }}</div>
                             {% endif %}
                             <div class="pricing-container">
-                                <h3 class="pricing-name">{{ package.name }}</h3>
+                                <h3 class="pricing-name">{{ _(package.name) }}</h3>
                                 <div class="pricing-hours">{{ package.hours }} {{ _('Hours') }}</div>
                                 <div class="pricing-price">€{{ "%.2f"|format(package.total_price) }}</div>
                                 <span class="pricing-per-hour">€{{ "%.2f"|format(package.price_per_hour) }} {{ _('per hour') }}</span>
                                 
                                 <div class="pricing-description">
                                     {% if package.description %}
-                                        <p>{{ package.description }}</p>
+                                        <p>{{ _(package.description) }}</p>
                                     {% else %}
                                         <ul>
-                                            <li>{{ package.hours }} development hours</li>
-                                            <li>Custom solutions</li>
-                                            <li>Support included</li>
-                                            <li>Regular updates</li>
+                                            <li>{{ package.hours }} {{ _('development hours') }}</li>
+                                            <li>{{ _('Custom solutions') }}</li>
+                                            <li>{{ _('Support included') }}</li>
+                                            <li>{{ _('Regular updates') }}</li>
                                         </ul>
                                     {% endif %}
                                 </div>
                                 
                                 <div class="pricing-bottom">
-                                    <a href="/contact" class="pricing-btn">Select Package</a>
+                                    <a href="/contact" class="pricing-btn">{{ _('Select Package') }}</a>
                                 </div>
                             </div>
                         </div>
@@ -153,8 +153,8 @@
             {% else %}
                 <div class="col-12 text-center">
                     <div class="alert alert-info">
-                        <p>No pricing packages are currently available. Please contact us for custom pricing.</p>
-                        <a href="/contact" class="btn btn-primary mt-3">Contact Us</a>
+                        <p>{{ _('No pricing packages are currently available. Please contact us for custom pricing.') }}</p>
+                        <a href="/contact" class="btn btn-primary mt-3">{{ _('Contact Us') }}</a>
                     </div>
                 </div>
             {% endif %}

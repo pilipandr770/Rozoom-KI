@@ -15,11 +15,13 @@
   justify-content: center;
   color: white;
   text-decoration: none;
-  padding: 0.3rem 0.6rem;
+  padding: 0.4rem 0.7rem;
   border-radius: var(--radius-md);
   transition: var(--transition);
   border: 1px solid rgba(255, 255, 255, 0.2);
   background-color: rgba(255, 255, 255, 0.1);
+  font-weight: 500;
+  letter-spacing: 0.05em;
 }
 
 .lang-button:hover {

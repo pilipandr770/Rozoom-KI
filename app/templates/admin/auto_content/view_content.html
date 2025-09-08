@@ -145,6 +145,7 @@
           
           {% if content.status.value != 'published' %}
           <form method="POST" action="{{ url_for('auto_content.publish_content', id=content.id) }}">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
             <button type="submit" class="btn btn-success">Опубликовать</button>
           </form>
           {% else %}

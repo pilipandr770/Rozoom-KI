@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% from "macros/forms.html" import csrf_field with context %}
+
+{% block title %}Confirm Delete - Admin{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-danger text-white">
+                    <h5 class="mb-0">Подтверждение удаления</h5>
+                </div>
+                <div class="card-body">
+                    <h4>Вы действительно хотите удалить {{ item_type }} "{{ item.title }}"?</h4>
+                    <p class="text-danger">Это действие нельзя отменить!</p>
+                    
+                    <div class="d-flex mt-4">
+                        <a href="{{ return_url }}" class="btn btn-secondary me-2">Отмена</a>
+                        <form action="{{ delete_url }}" method="post">
+                            {{ csrf_field() }}
+                            <button type="submit" class="btn btn-danger">Удалить</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

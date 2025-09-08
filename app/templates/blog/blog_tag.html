@@ -14,18 +14,21 @@
                 {% for post in posts.items %}
                 <div class="blog-post-card mb-4">
                     {% if post.image_url %}
-                    <div class="blog-post-image">
-                        <img src="{{ post.image_url }}" alt="{{ post.title }}" class="img-fluid">
-                    </div>
+                    <a href="{{ url_for('blog.post', slug=post.slug) }}" class="blog-post-link">
+                        <div class="blog-post-image" {% if post.category %}data-category="{{ post.category.name }}"{% endif %}>
+                            <img src="{{ post.image_url }}" alt="{{ post.title }}" class="img-fluid">
+                        </div>
+                    </a>
                     {% endif %}
                     <div class="blog-post-content">
-                        <h2 class="blog-post-title">
+                        <!-- Скрытый заголовок для SEO и доступности -->
+                        <h2 class="blog-post-title visually-hidden">
                             <a href="{{ url_for('blog.post', slug=post.slug) }}">{{ post.title }}</a>
                         </h2>
                         <div class="blog-post-meta">
                             <span class="date">{{ post.created_at.strftime('%B %d, %Y') }}</span>
                             {% if post.category %}
-                            <span class="category">
+                            <span class="category visually-hidden">
                                 <a href="{{ url_for('blog.category', slug=post.category.slug) }}">{{ post.category.name }}</a>
                             </span>
                             {% endif %}

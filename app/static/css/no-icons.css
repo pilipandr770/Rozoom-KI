@@ -1,0 +1,343 @@
+/* CSS стили для замены иконок Font Awesome на эмодзи или символы */
+.emoji-icon {
+    font-style: normal;
+    margin-right: 5px;
+    font-size: 1.1em;
+}
+
+/* Чистка от остаточных Font Awesome стилей */
+i.fas, i.fab, i.fa, i.far, i[class^="fa"], i[class*=" fa"] {
+    display: none !important;
+    visibility: hidden !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Добавляем отступы и стили для элементов списка вместо иконок */
+li.list-with-icon {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 10px;
+    list-style-type: none;
+}
+
+li.list-with-icon:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--secondary-color);
+    font-weight: bold;
+}
+
+/* Стили для кнопок без иконок */
+.button-with-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Стили для заголовков сервисов */
+.service-title {
+    display: flex;
+    align-items: center;
+}
+
+.service-icon {
+    margin-right: 10px;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+/* Стили для социальных сетей */
+.social-link-text {
+    padding: 8px 12px;
+    margin: 0 5px;
+    display: inline-block;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    text-decoration: none;
+    color: #333;
+}
+
+/* Стили для пагинации */
+.pagination-prev::before {
+    content: "←";
+    margin-right: 5px;
+}
+
+.pagination-next::after {
+    content: "→";
+    margin-left: 5px;
+}
+
+/* Стили для блога */
+.blog-icon {
+    display: inline-block;
+    margin-right: 8px;
+    font-weight: normal;
+}
+
+/* Стили для недавних постов */
+.recent-posts li {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.recent-posts li:last-child {
+    border-bottom: none;
+}
+
+.recent-post-info h4 {
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.recent-post-date {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+/* Скрытие категорий в блоге, показываем только текст */
+.blog-post-image[data-category]::before {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+/* Скрытие иконок в содержимом статей блога */
+.blog-post-content i,
+.blog-post-title i,
+.blog-post-meta i,
+.author i,
+.blog-post h1 i,
+.blog-post h2 i,
+.blog-post h3 i,
+.blog-post h4 i,
+.blog-post h5 i,
+.blog-post h6 i,
+.blog-post p i,
+.blog-post li i {
+    display: none !important;
+    visibility: hidden !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Убираем иконки у категорий */
+.category-list li i,
+.category-list li .fab,
+.category-list li .fas,
+.category-list li::before,
+.category-list li:before {
+    display: none !important;
+}
+
+.category-list li a::before,
+.category-list li a:before {
+    display: none !important;
+}
+
+/* Улучшаем стиль категорий без иконок */
+.category-list li a {
+    padding-left: 0;
+}
+
+/* Полное блокирование Font Awesome и всех иконок */
+i[class*="fa-"],
+span[class*="fa-"],
+i.fas, i.fab, i.fa, i.far, i[class^="fa-"], 
+.fas, .fab, .fa, .far, [class^="fa-"],
+i.material-icons, .material-icons,
+.icon, .fa, [class*="icon-"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
+}
+
+/* Полное решение проблемы дублирования заголовков в блоге */
+
+/* Базовые стили для карточки блога */
+.blog-post-card {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    background: #fff;
+    margin-bottom: 25px;
+}
+
+.blog-post-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Стили для изображения */
+.blog-post-image {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 200px;
+}
+
+.blog-post-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s;
+}
+
+.blog-post-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.blog-post-link:hover .blog-post-image img {
+    transform: scale(1.05);
+}
+
+/* Улучшенные стили для контента */
+.blog-post-content {
+    padding: 15px;
+}
+
+.blog-post-meta {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+/* Стили для метаданных (дата и т.д.) */
+.blog-post-meta span {
+    margin-right: 15px;
+}
+
+/* Стили для кнопки "Читать далее" */
+.blog-post-footer .read-more {
+    display: inline-block;
+    padding: 6px 15px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+.blog-post-footer .read-more:hover {
+    background-color: #0056b3;
+}
+
+/* Визуально скрытые элементы (для SEO и доступности) */
+.visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+/* Стили для категории на карточке блога */
+.blog-post-card .blog-post-image::before {
+    content: attr(data-category) !important;
+    position: absolute !important;
+    top: 10px !important;
+    right: 10px !important;
+    background: var(--primary-color) !important;
+    color: white !important;
+    padding: 5px 15px !important;
+    border-radius: 4px !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    z-index: 999 !important; /* Очень высокий z-index */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2) !important;
+    display: block !important; /* Гарантируем, что будет отображаться */
+    visibility: visible !important; /* Гарантируем видимость */
+    opacity: 1 !important; /* Полная непрозрачность */
+}
+
+/* Стили для поиска */
+.search-button::before {
+    content: "🔍";
+    margin-right: 5px;
+}
+
+/* Стили для контактной информации */
+.contact-info-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.contact-icon {
+    margin-right: 10px;
+    font-size: 1.2em;
+    min-width: 24px;
+    text-align: center;
+}
+
+/* Стили для панели навигации в дашборде */
+.dashboard-nav-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.dashboard-icon {
+    margin-right: 10px;
+    min-width: 24px;
+    text-align: center;
+}
+
+/* Стили для проектной информации */
+.project-action-icon {
+    margin-right: 5px;
+}
+
+/* Стили для списка задач и обновлений */
+.task-icon, .update-icon {
+    margin-right: 8px;
+}
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 5px;
+    margin: 0 5px;
+    font-size: 0.9em;
+    text-decoration: none;
+}
+
+.social-link-text:hover {
+    background-color: var(--primary-dark);
+}
+
+/* Стили для кнопок навигации в блоге */
+.nav-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 12px;
+    background-color: var(--light-bg);
+    color: var(--text-color);
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.nav-button:hover {
+    background-color: var(--primary-color);
+}

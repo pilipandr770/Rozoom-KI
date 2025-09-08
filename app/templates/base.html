@@ -11,11 +11,38 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/animations.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/dark-background.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/particles-bg.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/language_switcher.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/fix-contrast.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/no-icons.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/blog-fixes.css') }}">
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon.png') }}">
+    <!-- Обратите внимание: удален ненужный закрывающий тег script -->
+    <style>
+      /* Критическое CSS для блокировки всех Font Awesome иконок */
+      i.fas, i.fab, i.fa, i.far, i[class^="fa"], i[class*=" fa"],
+      .fas, .fab, .fa, .far, [class^="fa-"], [class*=" fa-"] {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        width: 0 !important;
+        height: 0 !important;
+        overflow: hidden !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      
+      /* Скрываем все дополнительные иконки в статьях */
+      .blog-post-content i, .blog-post-meta i, .blog-post-title i {
+        display: none !important;
+        visibility: hidden !important;
+      }
+    </style>
     {% endblock %}
   <body>
+    <!-- Particles.js background -->
+    <div id="particles-js"></div>
+    <div id="particles-overlay"></div>
     <!-- Dark Animated Background -->
     <div class="dark-animated-background">
       <div class="gradient-layer"></div>
@@ -32,25 +59,25 @@
       
       <nav class="nav">
         <div class="nav-left">
-          <a href="/"><i class="fas fa-home"></i> {{ _('Home') }}</a>
-          <a href="/services"><i class="fas fa-cogs"></i> {{ _('Services') }}</a>
-          <a href="/pricing"><i class="fas fa-tag"></i> {{ _('Pricing') }}</a>
-          <a href="/blog"><i class="fas fa-rss"></i> {{ _('Blog') }}</a>
-          <a href="/contact"><i class="fas fa-envelope"></i> {{ _('Contact') }}</a>
+          <a href="/">{{ _('Home') }}</a>
+          <a href="/services">{{ _('Services') }}</a>
+          <a href="/pricing">{{ _('Pricing') }}</a>
+          <a href="/blog">{{ _('Blog') }}</a>
+          <a href="/contact">{{ _('Contact') }}</a>
         </div>
         <div class="nav-right">
           {# Языковое меню #}
           {{ language_switcher() }}
 
           {% if current_user.is_authenticated %}
-            <a href="{{ url_for('dashboard.index') }}"><i class="fas fa-tachometer-alt"></i> {{ _('Dashboard') }}</a>
+            <a href="{{ url_for('dashboard.index') }}">{{ _('Dashboard') }}</a>
             {% if current_user.is_admin %}
-              <a href="{{ url_for('admin.dashboard') }}" class="admin-link"><i class="fas fa-shield-alt"></i> {{ _('Admin Panel') }}</a>
+              <a href="{{ url_for('admin.dashboard') }}" class="admin-link">{{ _('Admin Panel') }}</a>
             {% endif %}
-            <a href="{{ url_for('auth.logout') }}"><i class="fas fa-sign-out-alt"></i> {{ _('Logout') }}</a>
+            <a href="{{ url_for('auth.logout') }}">{{ _('Logout') }}</a>
           {% else %}
-            <a href="{{ url_for('auth.login') }}"><i class="fas fa-sign-in-alt"></i> {{ _('Login') }}</a>
-            <a href="{{ url_for('auth.register') }}"><i class="fas fa-user-plus"></i> {{ _('Register') }}</a>
+            <a href="{{ url_for('auth.login') }}">{{ _('Login') }}</a>
+            <a href="{{ url_for('auth.register') }}">{{ _('Register') }}</a>
           {% endif %}
         </div>
       </nav>
@@ -61,9 +88,9 @@
         {% if messages %}
           {% for category, message in messages %}
             <div class="flash-message flash-{{ category }}">
-              <i class="fas fa-{% if category == 'success' %}check-circle{% else %}exclamation-circle{% endif %}"></i>
+              <span class="emoji-icon">{% if category == 'success' %}✓{% else %}!{% endif %}</span>
               <p>{{ message }}</p>
-              <button class="flash-close"><i class="fas fa-times"></i></button>
+              <button class="flash-close">✕</button>
             </div>
           {% endfor %}
         {% endif %}
@@ -87,7 +114,7 @@
     <!-- Chat widget -->
     <div id="chat-widget" class="chat-widget">
       <div id="chat-toggle" class="chat-toggle">
-        <i class="fas fa-comment"></i>
+        <span class="emoji-icon">💬</span>
       </div>
       <div id="chat-window" class="chat-window hidden">
         <div class="chat-header">
@@ -96,7 +123,7 @@
             <span>{{ _('Rozoom Assistant') }}</span>
           </div>
           <div id="chat-close" class="chat-close">
-            <i class="fas fa-times"></i>
+            ✕
           </div>
         </div>
         <div id="chat-messages" class="chat-messages"></div>
@@ -104,7 +131,7 @@
           <div class="chat-input-wrapper">
             <input id="chat-input" placeholder="{{ _('Type your message...') }}" />
             <button id="chat-send" class="chat-send">
-              <i class="fas fa-paper-plane"></i>
+              📨
             </button>
           </div>
         </div>
@@ -112,6 +139,8 @@
     </div>
     {% block scripts %}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/particles.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/particles-init.js') }}"></script>
     <script src="{{ url_for('static', filename='js/chat_widget.js') }}"></script>
     <script src="{{ url_for('static', filename='js/animations.js') }}"></script>
     <script src="{{ url_for('static', filename='js/background-animation.js') }}"></script>
@@ -131,6 +160,53 @@
     
     <!-- Скрипты для темной анимированной темы -->
     <script src="{{ url_for('static', filename='js/dark-background.js') }}"></script>
+    
+    <!-- НЕ загружать никаких Font Awesome скриптов! -->
+    <script>
+      // Блокировщик Font Awesome и других иконочных библиотек
+      document.addEventListener('DOMContentLoaded', function() {
+        // Удаляем все подозрительные скрипты, которые могут загружать иконки
+        document.querySelectorAll('script').forEach(function(script) {
+          if (script.src && (
+              script.src.includes('fontawesome') || 
+              script.src.includes('font-awesome') ||
+              script.src.includes('icon-fallback')
+          )) {
+            script.remove();
+          }
+        });
+        
+        // Удаляем все подозрительные link-теги
+        document.querySelectorAll('link').forEach(function(link) {
+          if (link.href && (
+              link.href.includes('fontawesome') || 
+              link.href.includes('font-awesome')
+          )) {
+            link.remove();
+          }
+        });
+
+        // Инициализация модальных окон Bootstrap
+        var modals = document.querySelectorAll('.modal');
+        if (typeof bootstrap !== 'undefined' && bootstrap.Modal && modals.length > 0) {
+          modals.forEach(function(modal) {
+            new bootstrap.Modal(modal);
+          });
+        }
+        
+        // Проверка CSRF токена для форм удаления
+        document.querySelectorAll('form[action*="delete"]').forEach(function(form) {
+            form.addEventListener('submit', function(e) {
+                var csrfToken = form.querySelector('input[name="csrf_token"]');
+                if (!csrfToken || !csrfToken.value) {
+                    e.preventDefault();
+                    console.error('CSRF токен отсутствует!');
+                    alert('Ошибка безопасности: CSRF токен отсутствует');
+                }
+            });
+        });
+      });
+    </script>
     {% endblock %}
   </body>
 </html>

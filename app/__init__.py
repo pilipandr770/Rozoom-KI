@@ -4,11 +4,13 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
 from flask_mail import Mail
+from flask_wtf.csrf import CSRFProtect
 import os
 
 db = SQLAlchemy()
 migrate = Migrate()
 mail = Mail()
+csrf = CSRFProtect()
 
 # Import here to avoid circular imports
 from app.auth import login_manager
@@ -77,6 +79,23 @@ def create_app():
     
     # Initialize Flask-Babel
     init_babel(app)
+    
+    # Initialize CSRF protection
+    csrf.init_app(app)
+    
+    # Обработчик CSRF-ошибок
+    @app.errorhandler(400)
+    def handle_csrf_error(e):
+        from flask import request, redirect, url_for, flash
+        
+        error_str = str(e)
+        app.logger.error(f"400 ошибка: {error_str}")
+        
+        if 'csrf_token' in error_str or 'CSRF' in error_str:
+            app.logger.warning(f"CSRF ошибка: {error_str}, реферер: {request.referrer}")
+            flash('Ошибка безопасности: CSRF токен отсутствует или неверен. Пожалуйста, попробуйте снова.', 'danger')
+            return redirect(request.referrer or url_for('admin.dashboard'))
+        return e
     
     # Configure schema handling based on DB dialect
     with app.app_context():

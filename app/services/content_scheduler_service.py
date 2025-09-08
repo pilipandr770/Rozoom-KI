@@ -7,7 +7,7 @@ from flask import current_app
 from app import db
 from app.models import ContentSchedule, GeneratedContent, BlogPost, ContentStatus, PublishFrequency, BlogTag
 from app.services.openai_service import OpenAIService
-from app.utils.text import generate_slug, strip_html
+from app.utils.text import generate_slug, strip_html, clean_icons_from_content
 
 # Настройка логирования
 logger = logging.getLogger(__name__)
@@ -112,10 +112,11 @@ class ContentSchedulerService:
             # Обновляем запись сгенерированного контента
             generated_content.title_en = en_content['title']
             generated_content.title_de = de_content['title']
-            generated_content.content_en = en_content['content']
-            generated_content.content_de = de_content['content']
-            generated_content.meta_description_en = en_content.get('meta_description', '')
-            generated_content.meta_description_de = de_content.get('meta_description', '')
+            # Очищаем контент от иконок и других нежелательных элементов
+            generated_content.content_en = clean_icons_from_content(en_content['content'])
+            generated_content.content_de = clean_icons_from_content(de_content['content'])
+            generated_content.meta_description_en = clean_icons_from_content(en_content.get('meta_description', ''))
+            generated_content.meta_description_de = clean_icons_from_content(de_content.get('meta_description', ''))
             generated_content.image_prompt = image_prompt
             generated_content.image_url = image_url
             generated_content.keywords = schedule.keywords
@@ -158,7 +159,7 @@ class ContentSchedulerService:
             en_post = BlogPost(
                 title=generated_content.title_en,
                 slug=generate_slug(generated_content.title_en),
-                content=generated_content.content_en,
+                content=clean_icons_from_content(generated_content.content_en),
                 excerpt=strip_html(generated_content.meta_description_en),
                 image_url=generated_content.image_url,
                 published=True,
@@ -172,7 +173,7 @@ class ContentSchedulerService:
             de_post = BlogPost(
                 title=generated_content.title_de,
                 slug=generate_slug(generated_content.title_de) + "-de",
-                content=generated_content.content_de,
+                content=clean_icons_from_content(generated_content.content_de),
                 excerpt=strip_html(generated_content.meta_description_de),
                 image_url=generated_content.image_url,
                 published=True,

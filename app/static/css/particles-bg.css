@@ -1,0 +1,47 @@
+/* Particles.js Background Styling */
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background-color: #0c1322; /* Slightly darker than our previous background */
+  background-image: linear-gradient(to bottom right, #0f172a, #0f254a);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+/* Add a subtle overlay to increase contrast between background and content */
+#particles-overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: -1;
+}
+
+/* Make sure content has proper contrast against the particle background */
+main, .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Enhance readability */
+body {
+  background-color: transparent !important;
+}
+
+/* Add depth effect to containers */
+.card, .blog-post, .sidebar-widget {
+  backdrop-filter: blur(5px);
+  background-color: rgba(30, 41, 59, 0.8) !important;
+}
+
+/* Make headers stand out more */
+h1, h2, h3 {
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}

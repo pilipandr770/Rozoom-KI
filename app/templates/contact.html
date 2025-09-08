@@ -11,34 +11,40 @@
 <div class="contact-wrapper">
   <div class="contact-info">
     <div class="contact-card">
-      <div class="contact-icon">
-        <i class="fas fa-map-marker-alt"></i>
+      <div class="contact-info-item">
+        <span class="contact-icon">📍</span>
+        <div>
+          <h3>{{ _('Address') }}</h3>
+          <p>Bergmannweg 16<br>65934 Frankfurt am Main<br>Germany</p>
+        </div>
       </div>
-      <h3>{{ _('Address') }}</h3>
-      <p>Bergmannweg 16<br>65934 Frankfurt am Main<br>Germany</p>
     </div>
     
     <div class="contact-card">
-      <div class="contact-icon">
-        <i class="fas fa-envelope"></i>
+      <div class="contact-info-item">
+        <span class="contact-icon">✉️</span>
+        <div>
+          <h3>{{ _('Email Us') }}</h3>
+          <p>pilipandr79@icloud.com<br>info@rozoom-ki.com</p>
+        </div>
       </div>
-      <h3>{{ _('Email Us') }}</h3>
-      <p>pilipandr79@icloud.com<br>info@rozoom-ki.com</p>
     </div>
     
     <div class="contact-card">
-      <div class="contact-icon">
-        <i class="fas fa-phone"></i>
+      <div class="contact-info-item">
+        <span class="contact-icon">📞</span>
+        <div>
+          <h3>{{ _('Call Us') }}</h3>
+          <p>+49 160 9503 0120<br>{{ _('Mon-Fri 9:00-18:00') }}</p>
+        </div>
       </div>
-      <h3>{{ _('Call Us') }}</h3>
-      <p>+49 160 9503 0120<br>{{ _('Mon-Fri 9:00-18:00') }}</p>
     </div>
     
     <div class="social-links">
-      <a href="#" class="social-link" title="{{ _('LinkedIn') }}"><i class="fab fa-linkedin"></i></a>
-      <a href="#" class="social-link" title="{{ _('Twitter') }}"><i class="fab fa-twitter"></i></a>
-      <a href="#" class="social-link" title="{{ _('Facebook') }}"><i class="fab fa-facebook"></i></a>
-      <a href="#" class="social-link" title="{{ _('Instagram') }}"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="social-link-text" title="{{ _('LinkedIn') }}">LinkedIn</a>
+      <a href="#" class="social-link-text" title="{{ _('Twitter') }}">Twitter</a>
+      <a href="#" class="social-link-text" title="{{ _('Facebook') }}">Facebook</a>
+      <a href="#" class="social-link-text" title="{{ _('Instagram') }}">Instagram</a>
     </div>
   </div>
   
@@ -47,14 +53,14 @@
     <form method="post" action="/contact" class="contact-form">
       {% if success %}
       <div class="form-success">
-        <i class="fas fa-check-circle"></i>
+        <span class="emoji-icon">✅</span>
         <p>{{ _('Your message has been sent successfully. We\'ll get back to you soon!') }}</p>
       </div>
       {% endif %}
       
       {% if error %}
       <div class="form-error">
-        <i class="fas fa-exclamation-circle"></i>
+        <span class="emoji-icon">⚠️</span>
         <p>{{ error }}</p>
       </div>
       {% endif %}
@@ -91,7 +97,7 @@
   <div class="container text-center py-4">
     <div class="card shadow-sm">
       <div class="card-body">
-        <i class="fas fa-laptop-house fa-3x text-primary mb-3"></i>
+        <span class="emoji-icon" style="font-size: 2.5em;">🏡💻</span>
         <h3>{{ _('Remote Work') }}</h3>
         <p>{{ _('We operate as a remote-first company with team members working from various locations. This allows us to serve clients worldwide while maintaining flexibility and efficiency.') }}</p>
       </div>

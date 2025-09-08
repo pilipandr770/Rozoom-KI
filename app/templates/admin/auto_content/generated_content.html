@@ -68,6 +68,7 @@
                   {% endif %}
                 {% elif item.status.value == 'failed' %}
                 <form method="POST" action="{{ url_for('auto_content.publish_content', id=item.id) }}" style="display: inline-block;">
+                  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                   <button type="submit" class="btn btn-sm btn-outline-warning" title="Повторить публикацию">
                     <i class="fas fa-redo"></i>
                   </button>

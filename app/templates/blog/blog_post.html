@@ -97,7 +97,7 @@
                     <div class="tags-cloud">
                         {% for tag in tags %}
                         <a href="{{ url_for('blog.tag', slug=tag.slug) }}" 
-                           class="tag {% if post.tags and tag.id in [t.id for t in post.tags] %}active{% endif %}">
+                           class="tag {% if post.tags and (tag.id in post.tags|map(attribute='id')|list) %}active{% endif %}">
                             {{ tag.name }}
                         </a>
                         {% endfor %}

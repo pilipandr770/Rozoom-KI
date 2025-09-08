@@ -1,0 +1,46 @@
+/* Этот файл CSS создан для исправления проблем с отображением категорий блога */
+
+/* Полностью скрываем категорию Technology в углу изображения блога */
+.blog-post-image[data-category]::before {
+    display: none !important;
+    visibility: hidden !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    content: "" !important;
+    opacity: 0 !important;
+}
+
+/* Скрываем дублирующуюся категорию над изображениями в карточках */
+.blog-post-card .category,
+.blog-post-image .category,
+span.category {
+    display: none !important;
+}
+
+/* Удаляем пометку категории на превью изображения статьи */
+.blog-post-image[data-category="Technology"]::before,
+.blog-post-image[data-category="Технологии"]::before,
+.blog-post-image[data-category]::before {
+    content: none !important;
+    display: none !important;
+}
+
+/* Скрываем все категории в основном тексте */
+.blog-post-meta .category,
+.blog-post-meta span.category,
+.blog-post-meta a {
+    display: none !important;
+}
+
+/* Агрессивно удаляем все иконки технологий */
+[data-category="Technology"],
+[data-category="Технологии"] {
+    position: relative;
+}
+
+[data-category="Technology"]::before,
+[data-category="Технологии"]::before {
+    content: none !important;
+    display: none !important;
+}

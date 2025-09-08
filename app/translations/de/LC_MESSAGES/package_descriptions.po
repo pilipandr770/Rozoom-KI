@@ -1,0 +1,17 @@
+msgid "Perfect for small projects and quick updates."
+msgstr "Perfekt für kleine Projekte und schnelle Updates."
+
+msgid "Ideal for medium-sized projects and ongoing development."
+msgstr "Ideal für mittelgroße Projekte und laufende Entwicklung."
+
+msgid "Best value for larger projects and long-term development."
+msgstr "Bestes Preis-Leistungs-Verhältnis für größere Projekte und langfristige Entwicklung."
+
+msgid "Basic Package"
+msgstr "Basis-Paket"
+
+msgid "Standard Package"
+msgstr "Standard-Paket"
+
+msgid "Premium Package"
+msgstr "Premium-Paket"

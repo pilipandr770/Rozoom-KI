@@ -1,0 +1,65 @@
+msgid "Choose Your Package"
+msgstr "Wählen Sie Ihr Paket"
+
+msgid "Get the perfect amount of development time for your project needs"
+msgstr "Erhalten Sie die perfekte Entwicklungszeit für Ihre Projektanforderungen"
+
+msgid "Most Popular"
+msgstr "Am beliebtesten"
+
+msgid "Hours"
+msgstr "Stunden"
+
+msgid "per hour"
+msgstr "pro Stunde"
+
+msgid "development hours"
+msgstr "Entwicklungsstunden"
+
+msgid "Custom solutions"
+msgstr "Individuelle Lösungen"
+
+msgid "Support included"
+msgstr "Support inklusive"
+
+msgid "Regular updates"
+msgstr "Regelmäßige Updates"
+
+msgid "Select Package"
+msgstr "Paket auswählen"
+
+msgid "Custom Package"
+msgstr "Maßgeschneidertes Paket"
+
+msgid "Tailored to Your Needs"
+msgstr "Auf Ihre Bedürfnisse zugeschnitten"
+
+msgid "For special requirements"
+msgstr "Für spezielle Anforderungen"
+
+msgid "Flexible hours"
+msgstr "Flexible Stunden"
+
+msgid "Custom development"
+msgstr "Individuelle Entwicklung"
+
+msgid "Dedicated support"
+msgstr "Dedizierter Support"
+
+msgid "Priority service"
+msgstr "Prioritäts-Service"
+
+msgid "Enterprise solutions"
+msgstr "Unternehmenslösungen"
+
+msgid "Get in Touch"
+msgstr "Kontakt aufnehmen"
+
+msgid "Need Help Choosing?"
+msgstr "Brauchen Sie Hilfe bei der Auswahl?"
+
+msgid "Contact our team for a free consultation and we'll help you select the perfect package for your project."
+msgstr "Kontaktieren Sie unser Team für eine kostenlose Beratung und wir helfen Ihnen, das perfekte Paket für Ihr Projekt auszuwählen."
+
+msgid "No pricing packages are currently available. Please contact us for custom pricing."
+msgstr "Derzeit sind keine Preispakete verfügbar. Bitte kontaktieren Sie uns für individuelle Preisgestaltung."

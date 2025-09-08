@@ -41,7 +41,7 @@
         <div class="pagination">
           {% if pagination.has_prev %}
             <a href="{{ url_for('pages.blog', page=pagination.prev_num) }}" class="pagination-prev">
-              <i class="fas fa-chevron-left"></i> {{ _('Previous') }}
+              {{ _('Previous') }}
             </a>
           {% endif %}
           
@@ -49,14 +49,14 @@
           
           {% if pagination.has_next %}
             <a href="{{ url_for('pages.blog', page=pagination.next_num) }}" class="pagination-next">
-              {{ _('Next') }} <i class="fas fa-chevron-right"></i>
+              {{ _('Next') }}
             </a>
           {% endif %}
         </div>
       {% endif %}
     {% else %}
       <div class="no-posts">
-        <i class="fas fa-pen-nib"></i>
+        <span class="blog-icon">✏️</span>
         <h2>{{ _('No posts yet') }}</h2>
         <p>{{ _('Check back soon for our latest articles and insights.') }}</p>
       </div>
@@ -69,8 +69,8 @@
       <form action="{{ url_for('pages.blog_search') }}" method="GET">
         <div class="search-input">
           <input type="text" name="q" placeholder="{{ _('Search posts...') }}" required>
-          <button type="submit">
-            <i class="fas fa-search"></i>
+          <button type="submit" class="search-button">
+            {{ _('Search') }}
           </button>
         </div>
       </form>
@@ -101,13 +101,6 @@
           {% for post in recent_posts %}
             <li>
               <a href="{{ url_for('pages.blog_post', slug=post.slug) }}">
-                <div class="recent-post-image">
-                  {% if post.image_url %}
-                    <img src="{{ post.image_url }}" alt="{{ post.title }}">
-                  {% else %}
-                    <img src="{{ url_for('static', filename='img/blog/default-post.jpg') }}" alt="{{ post.title }}">
-                  {% endif %}
-                </div>
                 <div class="recent-post-info">
                   <h4>{{ post.title }}</h4>
                   <span class="recent-post-date">{{ post.created_at.strftime('%B %d, %Y') }}</span>

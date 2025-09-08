@@ -12,7 +12,7 @@ class Config:
     
     # Babel settings for internationalization
     LANGUAGES = ['en', 'de']
-    BABEL_DEFAULT_LOCALE = 'en'
+    BABEL_DEFAULT_LOCALE = 'de'
     BABEL_DEFAULT_TIMEZONE = 'UTC'
     
     # Mail settings

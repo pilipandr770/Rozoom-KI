@@ -1,18 +1,18 @@
 {% extends 'base.html' %}
 
-{% block title %}Search Results: {{ query }} — Rozoom-KI Blog{% endblock %}
+{% block title %}{{ _('Search Results') }}: {{ query }} — Rozoom-KI Blog{% endblock %}
 
 {% block content %}
 <div class="blog-header">
-  <h1>Search Results</h1>
-  <p class="lead">Showing results for "{{ query }}"</p>
+  <h1>{{ _('Search Results') }}</h1>
+  <p class="lead">{{ _('Showing results for') }} "{{ query }}"</p>
 </div>
 
 <div class="blog-container">
   <main class="blog-main">
     {% if posts %}
       <div class="search-results-count">
-        Found {{ pagination.total }} result{% if pagination.total != 1 %}s{% endif %}
+        {{ _('Found') }} {{ pagination.total }} {{ _('result') }}{% if pagination.total != 1 %}{{ _('s') }}{% endif %}
       </div>
       
       {% for post in posts %}
@@ -45,33 +45,33 @@
         <div class="pagination">
           {% if pagination.has_prev %}
             <a href="{{ url_for('pages.blog_search', q=query, page=pagination.prev_num) }}" class="pagination-prev">
-              <i class="fas fa-chevron-left"></i> Previous
+              {{ _('Previous') }}
             </a>
           {% endif %}
           
-          <span class="pagination-info">Page {{ pagination.page }} of {{ pagination.pages }}</span>
+          <span class="pagination-info">{{ _('Page') }} {{ pagination.page }} {{ _('of') }} {{ pagination.pages }}</span>
           
           {% if pagination.has_next %}
             <a href="{{ url_for('pages.blog_search', q=query, page=pagination.next_num) }}" class="pagination-next">
-              Next <i class="fas fa-chevron-right"></i>
+              {{ _('Next') }}
             </a>
           {% endif %}
         </div>
       {% endif %}
     {% else %}
       <div class="no-posts">
-        <i class="fas fa-search"></i>
-        <h2>No results found</h2>
-        <p>Your search "{{ query }}" did not match any articles.</p>
+        <span class="blog-icon">🔍</span>
+        <h2>{{ _('No results found') }}</h2>
+        <p>{{ _('Your search') }} "{{ query }}" {{ _('did not match any articles') }}.</p>
         <div class="search-suggestions">
-          <h3>Suggestions:</h3>
+          <h3>{{ _('Suggestions') }}:</h3>
           <ul>
-            <li>Make sure all words are spelled correctly.</li>
-            <li>Try different keywords.</li>
-            <li>Try more general keywords.</li>
+            <li>{{ _('Make sure all words are spelled correctly.') }}</li>
+            <li>{{ _('Try different keywords.') }}</li>
+            <li>{{ _('Try more general keywords.') }}</li>
           </ul>
         </div>
-        <a href="{{ url_for('pages.blog') }}" class="btn">Back to Blog</a>
+        <a href="{{ url_for('pages.blog') }}" class="btn">{{ _('Back to Blog') }}</a>
       </div>
     {% endif %}
   </main>
@@ -82,8 +82,8 @@
       <form action="{{ url_for('pages.blog_search') }}" method="GET">
         <div class="search-input">
           <input type="text" name="q" placeholder="Search posts..." value="{{ query }}" required>
-          <button type="submit">
-            <i class="fas fa-search"></i>
+          <button type="submit" class="search-button">
+            {{ _('Search') }}
           </button>
         </div>
       </form>
@@ -129,13 +129,6 @@
           {% for post in recent_posts %}
             <li>
               <a href="{{ url_for('pages.blog_post', slug=post.slug) }}">
-                <div class="recent-post-image">
-                  {% if post.image_url %}
-                    <img src="{{ post.image_url }}" alt="{{ post.title }}">
-                  {% else %}
-                    <img src="{{ url_for('static', filename='img/blog/default-post.jpg') }}" alt="{{ post.title }}">
-                  {% endif %}
-                </div>
                 <div class="recent-post-info">
                   <h4>{{ post.title }}</h4>
                   <span class="recent-post-date">{{ post.created_at.strftime('%B %d, %Y') }}</span>

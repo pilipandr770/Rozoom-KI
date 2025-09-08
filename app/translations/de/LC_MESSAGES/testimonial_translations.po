@@ -1,0 +1,17 @@
+msgid "Rozoom-KI transformed our customer service with their AI assistant. Response times dropped by 60% and customer satisfaction increased dramatically."
+msgstr "Rozoom-KI hat unseren Kundenservice mit ihrem KI-Assistenten transformiert. Die Reaktionszeiten sanken um 60% und die Kundenzufriedenheit stieg dramatisch an."
+
+msgid "The machine learning integration for our inventory management has saved us thousands of euros monthly and improved our forecasting accuracy by 40%."
+msgstr "Die Integration des maschinellen Lernens in unser Bestandsmanagement hat uns monatlich tausende von Euro erspart und unsere Prognosegenauigkeit um 40% verbessert."
+
+msgid "Their AI-powered analytics platform gave us insights we never thought possible. We've been able to identify new market opportunities and increase revenue by 25% in just six months."
+msgstr "Ihre KI-gestützte Analyseplattform hat uns Einblicke ermöglicht, die wir nie für möglich gehalten hätten. Wir konnten neue Marktchancen identifizieren und den Umsatz in nur sechs Monaten um 25% steigern."
+
+msgid "CTO, TechSolutions GmbH"
+msgstr "CTO, TechSolutions GmbH"
+
+msgid "Operations Director, RetailPlus"
+msgstr "Betriebsdirektor, RetailPlus"
+
+msgid "Marketing Director, InnovateMedia"
+msgstr "Marketing-Direktor, InnovateMedia"

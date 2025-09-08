@@ -52,14 +52,14 @@
     <div class="post-share">
       <h3>{{ _('Share this post') }}:</h3>
       <div class="share-buttons">
-        <a href="https://twitter.com/intent/tweet?url={{ request.url }}&text={{ post.title }}" target="_blank" class="share-button twitter">
-          <i class="fab fa-twitter"></i>
+        <a href="https://twitter.com/intent/tweet?url={{ request.url }}&text={{ post.title }}" target="_blank" class="social-link-text">
+          Twitter
         </a>
-        <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.url }}" target="_blank" class="share-button facebook">
-          <i class="fab fa-facebook-f"></i>
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.url }}" target="_blank" class="social-link-text">
+          Facebook
         </a>
-        <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.url }}&title={{ post.title }}" target="_blank" class="share-button linkedin">
-          <i class="fab fa-linkedin-in"></i>
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.url }}&title={{ post.title }}" target="_blank" class="social-link-text">
+          LinkedIn
         </a>
       </div>
     </div>
@@ -91,7 +91,7 @@
   <div class="post-navigation">
     {% if prev_post %}
       <a href="{{ url_for('pages.blog_post', slug=prev_post.slug) }}" class="post-nav prev-post">
-        <i class="fas fa-arrow-left"></i>
+        <span class="pagination-prev"></span>
         <div class="post-nav-info">
           <span>{{ _('Previous Post') }}</span>
           <h4>{{ prev_post.title }}</h4>
@@ -105,7 +105,7 @@
           <span>{{ _('Next Post') }}</span>
           <h4>{{ next_post.title }}</h4>
         </div>
-        <i class="fas fa-arrow-right"></i>
+        <span class="pagination-next"></span>
       </a>
     {% endif %}
   </div>

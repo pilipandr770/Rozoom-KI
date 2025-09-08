@@ -117,13 +117,6 @@
           {% for post in recent_posts %}
             <li>
               <a href="{{ url_for('pages.blog_post', slug=post.slug) }}">
-                <div class="recent-post-image">
-                  {% if post.image_url %}
-                    <img src="{{ post.image_url }}" alt="{{ post.title }}">
-                  {% else %}
-                    <img src="{{ url_for('static', filename='img/blog/default-post.jpg') }}" alt="{{ post.title }}">
-                  {% endif %}
-                </div>
                 <div class="recent-post-info">
                   <h4>{{ post.title }}</h4>
                   <span class="recent-post-date">{{ post.created_at.strftime('%B %d, %Y') }}</span>
