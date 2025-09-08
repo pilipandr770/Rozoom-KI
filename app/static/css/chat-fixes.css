@@ -1,0 +1,119 @@
+/* Updated specific styles for Rozoom chat messages */
+.chat-window {
+  background: #1e2538 !important; /* Dark blue background */
+  border: none !important;
+}
+
+.chat-messages {
+  background: #1e2538 !important; /* Dark blue background matching window */
+}
+
+/* Специальный высококонтрастный класс для сообщений бота */
+.chat-msg.bot.high-contrast {
+  background-color: #3498db !important; /* Яркий синий фон */
+  color: #ffffff !important; /* Белый текст */
+  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2) !important; /* Тень для лучшей читаемости */
+  font-size: 16px !important; /* Больший размер шрифта */
+  line-height: 1.5 !important; /* Увеличенная высота строки */
+  letter-spacing: 0.015em !important; /* Слегка увеличенный интервал между буквами */
+}
+
+/* Bot message style */
+.chat-msg.bot {
+  background-color: #3498db !important; /* Яркий синий фон */
+  color: #ffffff !important; /* Белый текст для контраста */
+  border-radius: 12px !important;
+  border-bottom-left-radius: 2px !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2) !important;
+  font-weight: 500 !important;
+}
+
+/* User message style */
+.chat-msg.user {
+  background-color: #2ecc71 !important; /* Яркий зеленый */
+  color: #ffffff !important;
+  border-radius: 12px !important;
+  border-bottom-right-radius: 2px !important;
+  font-weight: 500 !important;
+  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2) !important; /* Тень для лучшей читаемости */
+  font-size: 16px !important; /* Больший размер шрифта */
+}
+
+/* Chat options styling */
+.chat-options {
+  margin-top: 10px !important;
+}
+
+.chat-options button {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  color: #333333 !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.chat-options button:hover {
+  background-color: #ffffff !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Fix other elements to ensure visibility */
+.chat-header {
+  background-color: #4285f4 !important; /* Google blue */
+}
+
+.chat-header-title {
+  color: #ffffff !important;
+}
+
+.chat-input-wrapper {
+  background-color: #ffffff !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Fix restart button */
+.restart-button {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+  color: #333333 !important;
+}
+
+/* Ensure readability of chat input */
+#chat-input {
+  background-color: #ffffff !important;
+  color: #333333 !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Fix thinking indicator */
+.thinking-dot {
+  background-color: #ffffff !important;
+  width: 10px !important;
+  height: 10px !important;
+  opacity: 0.9 !important;
+}
+
+/* Анимация индикатора печати */
+@keyframes dot-pulse {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0.6;
+  }
+}
+
+.thinking-dot:nth-child(1) {
+  animation: dot-pulse 1.2s infinite ease-in-out;
+}
+
+.thinking-dot:nth-child(2) {
+  animation: dot-pulse 1.2s infinite ease-in-out 0.4s;
+}
+
+.thinking-dot:nth-child(3) {
+  animation: dot-pulse 1.2s infinite ease-in-out 0.8s;
+}

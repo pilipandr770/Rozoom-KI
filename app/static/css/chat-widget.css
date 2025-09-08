@@ -1,0 +1,180 @@
+/**
+ * Enhanced Rozoom Chat Widget Styles
+ * Features:
+ * - Interactive buttons
+ * - Animated elements
+ * - Responsive design
+ * - Light/dark mode compatible
+ * 
+ * These styles take precedence over the basic styles in style.css
+ */
+
+/* Override basic styles to ensure readability */
+.chat-window {
+  background-color: #1e2538 !important;
+  border: none !important;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Make sure chat messages are clearly visible */
+
+/* Chat options container */
+.chat-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px 0;
+}
+
+/* Chat option buttons */
+.chat-options button {
+  background: rgba(52, 152, 219, 0.2);
+  border: 1px solid rgba(52, 152, 219, 0.5);
+  border-radius: 16px;
+  padding: 10px 18px;
+  margin: 5px 3px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #ffffff;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.chat-options button:hover {
+  background: rgba(52, 152, 219, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Restart button */
+.restart-button {
+  display: inline-block;
+  margin: 15px 0;
+  padding: 8px 16px;
+  background: rgba(231, 76, 60, 0.15);
+  border: 1px solid rgba(231, 76, 60, 0.4);
+  border-radius: 20px;
+  color: #ffffff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.restart-button:hover {
+  background: rgba(108, 117, 125, 0.2);
+  transform: translateY(-1px);
+}
+
+/* Thinking animation with dots */
+.thinking {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 24px;
+  padding: 0 15px;
+}
+
+.thinking-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #007bff;
+  margin: 0 3px;
+  opacity: 0.6;
+  animation: dot-flashing 1s infinite alternate;
+}
+
+.thinking-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.thinking-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes dot-flashing {
+  0% {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 0.8;
+    transform: scale(1.2);
+  }
+}
+
+/* Make chat messages stand out better */
+.chat-msg {
+  padding: 12px 15px;
+  border-radius: 18px;
+  margin: 8px;
+  max-width: 85%;
+  line-height: 1.5;
+  position: relative;
+  animation: fadeIn 0.3s ease;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.chat-msg.bot {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-top-left-radius: 4px;
+  align-self: flex-start;
+  color: #333;
+  font-weight: 500;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.chat-msg.user {
+  background-color: rgba(0, 123, 255, 0.9);
+  border-top-right-radius: 4px;
+  align-self: flex-end;
+  margin-left: auto;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+/* Icons in buttons */
+.chat-options button i, .restart-button i {
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  width: auto !important;
+  height: auto !important;
+  overflow: visible !important;
+  margin-right: 5px !important;
+  padding: 0 !important;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile responsiveness adjustments */
+@media (max-width: 480px) {
+  .chat-options {
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .chat-options button {
+    width: 100%;
+    padding: 10px;
+  }
+  
+  .chat-msg {
+    max-width: 90%;
+    margin: 5px;
+    font-size: 14px;
+  }
+}

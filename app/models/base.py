@@ -66,4 +66,6 @@ class ChatMessage(db.Model):
     role = db.Column(db.String(32))
     content = db.Column(db.Text)
     meta = db.Column(db.JSON)
+    conversation_id = db.Column(db.String(36), index=True)  # UUID for grouping messages
+    timestamp = db.Column(db.DateTime, server_default=db.func.now())
     created_at = db.Column(db.DateTime, server_default=db.func.now())

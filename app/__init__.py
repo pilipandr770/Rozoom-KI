@@ -83,6 +83,14 @@ def create_app():
     # Initialize CSRF protection
     csrf.init_app(app)
     
+    # Исключить API чата из CSRF защиты
+    @csrf.exempt
+    def exempt_chat_api():
+        from flask import request
+        if request.path.startswith('/api/chat'):
+            return True
+        return False
+    
     # Обработчик CSRF-ошибок
     @app.errorhandler(400)
     def handle_csrf_error(e):

@@ -56,9 +56,10 @@
   /**
    * Creates and appends a message to the chat window
    */
-  function appendMessage(text, cls = 'bot') {
+  function appendMessage(text, cls = 'bot', interactive = null) {
     const div = document.createElement('div');
-    div.className = 'chat-msg ' + cls;
+    // Add high-contrast class to improve readability for bot messages
+    div.className = cls === 'bot' ? 'chat-msg ' + cls + ' high-contrast' : 'chat-msg ' + cls;
     
     // Handle markdown-like formatting
     const formattedText = text
@@ -68,11 +69,99 @@
       .replace(/\n/g, '<br>');
     
     div.innerHTML = formattedText;
+    
+    // Добавляем проверку контраста текста для сообщений бота
+    if (cls === 'bot') {
+      // Добавляем дополнительный класс для улучшения читаемости
+      div.classList.add('high-contrast');
+    }
+    
     messagesEl.appendChild(div);
     messagesEl.scrollTop = messagesEl.scrollHeight;
     
+    // Add interactive elements if provided
+    if (interactive) {
+      // Add buttons if available
+      if (interactive.buttons && interactive.buttons.length) {
+        const buttonContainer = document.createElement('div');
+        buttonContainer.className = 'chat-options';
+        
+        interactive.buttons.forEach(btn => {
+          const button = document.createElement('button');
+          
+          // Add icon if available
+          if (btn.icon) {
+            button.innerHTML = `<i class="fas fa-${btn.icon}"></i> `;
+          }
+          
+          button.innerHTML += btn.label;
+          
+          // Add tooltip if available
+          if (btn.description) {
+            button.title = btn.description;
+          }
+          
+          button.onclick = () => {
+            // Add selection to chat
+            appendMessage(`${btn.label}`, 'user');
+            
+            // Update metadata with selection
+            metadata.selected_agent = btn.key;
+            
+            // Send "silent" message to switch agent
+            postChat(btn.label);
+          };
+          
+          buttonContainer.appendChild(button);
+        });
+        
+        messagesEl.appendChild(buttonContainer);
+      }
+      
+      // Всегда разрешаем пользователю вводить текст, но показываем подсказку о доступных опциях
+      if (interactive.requires_input !== undefined) {
+        // Никогда не блокируем поле ввода полностью
+        input.disabled = false;
+        send.disabled = false;
+        
+        if (!interactive.requires_input) {
+          input.placeholder = "Вы можете выбрать опцию выше или задать свой вопрос...";
+        } else {
+          input.placeholder = "Введите сообщение...";
+        }
+      }
+      
+      // Add restart button as a normal option
+      if (interactive.show_restart) {
+        if (!document.querySelector('.restart-button')) { // Добавляем только если еще нет
+          const buttonContainer = document.createElement('div');
+          buttonContainer.className = 'chat-options';
+          
+          const restartBtn = document.createElement('button');
+          restartBtn.className = 'restart-button';
+          restartBtn.innerHTML = '<i class="fas fa-redo"></i> Начать сначала';
+          restartBtn.onclick = () => {
+            // Clear chat history and metadata
+            conversationHistory = [];
+            metadata = {};
+            localStorage.removeItem('rozoom_history');
+            localStorage.removeItem('rozoom_metadata');
+            
+            // Clear the UI
+            messagesEl.innerHTML = '';
+            
+            // Start fresh
+            startGreeter();
+          };
+          
+          buttonContainer.appendChild(restartBtn);
+          messagesEl.appendChild(buttonContainer);
+        }
+      }
+    }
+    
     // Save to history
-    conversationHistory.push({ text, type: cls });
+    conversationHistory.push({ text, type: cls, interactive });
     saveSession();
     
     return div;
@@ -108,10 +197,29 @@
       });
       
       if (!resp.ok) {
+        // Если произошла ошибка 400 или 302 (перенаправление из-за CSRF), 
+        // перезагрузим страницу чтобы обновить CSRF токен
+        if (resp.status === 400 || resp.status === 302) {
+          console.log('Ошибка CSRF, пробуем заново загрузить чат...');
+          // Не перезагружаем полностью, просто инициализируем чат заново через 1 секунду
+          setTimeout(() => {
+            // Очистим сообщения и начнем заново
+            messagesEl.innerHTML = '';
+            startGreeter();
+          }, 1000);
+          return { error: 'Проблема безопасности, перезагружаем чат...' };
+        }
         throw new Error(`Server responded with ${resp.status}`);
       }
       
-      return resp.json();
+      const result = await resp.json();
+      
+      // Update conversation ID if provided
+      if (result.conversation_id) {
+        metadata.conversation_id = result.conversation_id;
+      }
+      
+      return result;
     } catch (error) {
       console.error('Chat API error:', error);
       return { error: error.message || 'Failed to connect to chat service' };
@@ -129,40 +237,46 @@
       // Remove typing indicator
       indicator.remove();
       
-      const responseText = r.message || r.answer || 'Hello! How can I assist you today?';
-      appendMessage(responseText, 'bot');
+      const responseText = r.answer || 'Здравствуйте! Чем я могу вам помочь?';
       
-      // Show options if available
-      if (r.options && r.options.length) {
-        const opts = document.createElement('div');
-        opts.className = 'chat-options';
+      // Check if we have interactive elements
+      if (r.interactive) {
+        appendMessage(responseText, 'bot', r.interactive);
+      } else {
+        appendMessage(responseText, 'bot');
         
-        r.options.forEach(o => {
-          const btn = document.createElement('button');
-          btn.innerHTML = `<i class="fas fa-${o.icon || 'comment'}"></i> ${o.label}`;
+        // Fallback for older API format
+        if (r.options && r.options.length) {
+          const opts = document.createElement('div');
+          opts.className = 'chat-options';
           
-          btn.onclick = () => {
-            metadata.selected_domain = o.key;
-            appendMessage(`I'd like to discuss ${o.label}`, 'user');
+          r.options.forEach(o => {
+            const btn = document.createElement('button');
+            btn.innerHTML = `<i class="fas fa-${o.icon || 'comment'}"></i> ${o.label}`;
             
-            const loadingIndicator = showTypingIndicator();
+            btn.onclick = () => {
+              metadata.selected_domain = o.key;
+              appendMessage(`Мне нужна помощь с ${o.label}`, 'user');
+              
+              const loadingIndicator = showTypingIndicator();
+              
+              // Short timeout to simulate agent switching
+              setTimeout(() => {
+                loadingIndicator.remove();
+                appendMessage(`Отлично! Я специализируюсь на ${o.label}. Как я могу вам помочь?`, 'bot');
+                saveSession();
+              }, 800);
+            };
             
-            // Short timeout to simulate agent switching
-            setTimeout(() => {
-              loadingIndicator.remove();
-              appendMessage(`Great! I'm now in ${o.label} mode and ready to assist you. How can I help?`, 'bot');
-              saveSession();
-            }, 800);
-          };
+            opts.appendChild(btn);
+          });
           
-          opts.appendChild(btn);
-        });
-        
-        messagesEl.appendChild(opts);
+          messagesEl.appendChild(opts);
+        }
       }
     } catch (error) {
       console.error('Error starting chat:', error);
-      appendMessage('Sorry, I had trouble connecting. Please try again later.', 'bot');
+      appendMessage('Извините, возникла проблема с подключением. Пожалуйста, попробуйте позже.', 'bot');
     }
   }
 
@@ -226,16 +340,31 @@
       
       // Show response
       if (r.error) {
-        appendMessage(`Error: ${r.error}`, 'bot');
+        appendMessage(`Ошибка: ${r.error}`, 'bot');
       } else {
-        appendMessage(r.answer || JSON.stringify(r), 'bot');
+        // Check if we have interactive elements
+        if (r.interactive) {
+          appendMessage(r.answer, 'bot', r.interactive);
+          
+          // Store agent information in metadata
+          if (r.agent) {
+            metadata.current_agent = r.agent;
+          }
+          
+          // Store any additional metadata
+          if (r.interactive.meta) {
+            Object.assign(metadata, r.interactive.meta);
+          }
+        } else {
+          appendMessage(r.answer || JSON.stringify(r), 'bot');
+        }
       }
     } catch (error) {
       console.error('Error sending message:', error);
       indicator.remove();
-      appendMessage('Sorry, something went wrong. Please try again.', 'bot');
+      appendMessage('Извините, что-то пошло не так. Пожалуйста, попробуйте еще раз.', 'bot');
     } finally {
-      // Re-enable input
+      // Всегда активируем поле ввода для обеспечения возможности продолжать общение
       input.disabled = false;
       send.disabled = false;
       input.focus();

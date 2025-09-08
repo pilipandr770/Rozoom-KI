@@ -20,7 +20,31 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/fix-contrast.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/no-icons.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/blog-fixes.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/chat-widget.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/chat-fixes.css') }}">
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon.png') }}">
+    <!-- Inline styles for ensuring high contrast in chat -->
+    <style>
+      /* Critical inline styles for chatbot */
+      .chat-msg.bot {
+        background-color: #2980b9 !important; /* Deeper blue for better contrast */
+        color: #ffffff !important;
+        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2) !important;
+      }
+      
+      .chat-msg.user {
+        background-color: #2ecc71 !important;
+        color: #ffffff !important;
+      }
+      
+      .chat-window {
+        background: #1e2732 !important;
+      }
+      
+      .chat-messages {
+        background: #1e2732 !important;
+      }
+    </style>
     <!-- Обратите внимание: удален ненужный закрывающий тег script -->
     <style>
       /* Критическое CSS для блокировки всех Font Awesome иконок */
@@ -116,7 +140,7 @@
     </footer>
     
     <!-- Chat widget -->
-    <div id="chat-widget" class="chat-widget">
+    <div id="chat-widget" class="chat-widget high-contrast">
       <div id="chat-toggle" class="chat-toggle">
         <span class="emoji-icon">💬</span>
       </div>
@@ -130,7 +154,7 @@
             ✕
           </div>
         </div>
-        <div id="chat-messages" class="chat-messages"></div>
+        <div id="chat-messages" class="chat-messages high-contrast"></div>
         <div id="chat-controls" class="chat-controls">
           <div class="chat-input-wrapper">
             <input id="chat-input" placeholder="{{ _('Type your message...') }}" />
@@ -145,6 +169,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ url_for('static', filename='js/particles.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/particles-init.js') }}"></script>
+    <!-- Font Awesome для чат-виджета -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <script src="{{ url_for('static', filename='js/chat_widget.js') }}"></script>
     <script src="{{ url_for('static', filename='js/animations.js') }}"></script>
     <script src="{{ url_for('static', filename='js/background-animation.js') }}"></script>
