@@ -222,3 +222,10 @@ def init_database_schema(app):
                     app.logger.info("Created project_updates table")
             except Exception as e:
                 app.logger.error(f"Failed to create project_updates table: {str(e)}")
+                
+# Для возможности запуска как отдельный скрипт
+if __name__ == "__main__":
+    from app import create_app
+    app = create_app()
+    init_database_schema(app)
+    print("База данных успешно инициализирована.")

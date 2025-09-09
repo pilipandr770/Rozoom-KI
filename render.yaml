@@ -6,7 +6,7 @@ services:
     env: python
     plan: starter # Используйте соответствующий тарифный план
     buildCommand: pip install -r requirements.txt
-    startCommand: bash render_start.sh
+    startCommand: bash render_start.sh || bash direct_start.sh
     envVars:
       - key: FLASK_APP
         value: run.py
