@@ -20,7 +20,11 @@ def update_schema_command(force):
 
 def update_schema(force=False):
     """Update database schema with necessary changes."""
-    engine = db.get_engine()
+    # use session bind to be compatible with newer Flask-SQLAlchemy
+    try:
+        engine = db.session.get_bind()
+    except Exception:
+        engine = db.get_engine()
     inspector = inspect(engine)
     
     # Check if chat_messages table exists
@@ -35,7 +39,7 @@ def update_schema(force=False):
     if 'conversation_id' not in columns or force:
         try:
             with engine.begin() as conn:
-                conn.execute(text("ALTER TABLE chat_messages ADD COLUMN conversation_id VARCHAR(36)"))
+                conn.execute(text("ALTER TABLE chat_messages ADD COLUMN IF NOT EXISTS conversation_id VARCHAR(36)"))
                 conn.execute(text("CREATE INDEX IF NOT EXISTS ix_chat_messages_conversation_id ON chat_messages (conversation_id)"))
                 click.echo('Added conversation_id column to chat_messages table')
         except Exception as e:
@@ -48,7 +52,7 @@ def update_schema(force=False):
     if 'timestamp' not in columns or force:
         try:
             with engine.begin() as conn:
-                conn.execute(text("ALTER TABLE chat_messages ADD COLUMN timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP"))
+                conn.execute(text("ALTER TABLE chat_messages ADD COLUMN IF NOT EXISTS timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP"))
                 conn.execute(text("CREATE INDEX IF NOT EXISTS ix_chat_messages_timestamp ON chat_messages (timestamp)"))
                 click.echo('Added timestamp column to chat_messages table')
         except Exception as e:

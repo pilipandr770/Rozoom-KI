@@ -47,9 +47,9 @@ def fix_duplicate_columns():
             
             # Проверяем и добавляем столбцы, только если они не существуют
             columns_to_check = [
-                {"name": "data", "sql": "ALTER TABLE leads ADD COLUMN data TEXT"},
-                {"name": "source", "sql": "ALTER TABLE leads ADD COLUMN source VARCHAR(100)"},
-                {"name": "status", "sql": "ALTER TABLE leads ADD COLUMN status VARCHAR(50) DEFAULT 'new'"}
+                {"name": "data", "sql": "ALTER TABLE leads ADD COLUMN IF NOT EXISTS data TEXT"},
+                {"name": "source", "sql": "ALTER TABLE leads ADD COLUMN IF NOT EXISTS source VARCHAR(100)"},
+                {"name": "status", "sql": "ALTER TABLE leads ADD COLUMN IF NOT EXISTS status VARCHAR(50) DEFAULT 'new'"}
             ]
             
             for column in columns_to_check:

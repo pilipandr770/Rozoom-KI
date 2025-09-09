@@ -10,7 +10,10 @@ def add_timestamp_to_chat_messages():
     """
     app = create_app()
     with app.app_context():
-        engine = db.get_engine(app)
+        try:
+            engine = db.session.get_bind()
+        except Exception:
+            engine = db.get_engine(app)
         inspector = inspect(engine)
         
         if 'chat_messages' in inspector.get_table_names():
@@ -20,7 +23,7 @@ def add_timestamp_to_chat_messages():
                 try:
                     with engine.begin() as conn:
                         # Добавляем столбец timestamp
-                        conn.execute(text("ALTER TABLE chat_messages ADD COLUMN timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP"))
+                        conn.execute(text("ALTER TABLE chat_messages ADD COLUMN IF NOT EXISTS timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP"))
                         
                         # Создаем индекс для timestamp
                         conn.execute(text("CREATE INDEX IF NOT EXISTS ix_chat_messages_timestamp ON chat_messages (timestamp)"))

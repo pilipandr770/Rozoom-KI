@@ -22,22 +22,25 @@ sys.path.insert(0, str(ROOT))
 load_dotenv()
 
 def main():
-    # force sqlite for local dev 
-    os.environ['DATABASE_URL'] = 'sqlite:///app/dev.db'
+  # force sqlite for local dev
+  os.environ['DATABASE_URL'] = 'sqlite:///app/dev.db'
 
-    # import app after we ensured DATABASE_URL points to sqlite
-    from app import create_app, db
+  # import app after we ensured DATABASE_URL points to sqlite
+  from app import create_app, db
 
-    app = create_app()
+  app = create_app()
+  try:
+    engine = db.session.get_bind()
+  except Exception:
     engine = db.get_engine(app)
 
-    with app.app_context():
-        # Drop all tables first to ensure clean slate
-        db.drop_all()
-        
-        # Create all tables fresh
-        db.create_all()
-        print('Created tables on', engine.url)
+  with app.app_context():
+    # Drop all tables first to ensure clean slate
+    db.drop_all()
+
+    # Create all tables fresh
+    db.create_all()
+    print('Created tables on', engine.url)
 
 if __name__ == '__main__':
     main()

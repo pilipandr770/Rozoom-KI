@@ -25,8 +25,11 @@ def setup_schema_handling(app):
     """
     from sqlalchemy import text, event
     
-    # Get database info
-    engine = db.get_engine(app)
+    # Get database info (compatible with Flask-SQLAlchemy >=3)
+    try:
+        engine = db.session.get_bind()
+    except Exception:
+        engine = db.get_engine(app)
     dialect = engine.dialect.name
     schema = app.config.get('POSTGRES_SCHEMA')
     
