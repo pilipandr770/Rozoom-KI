@@ -9,6 +9,10 @@ if [ -z "$DATABASE_URL" ]; then
     exit 1
 fi
 
+# Сначала исправляем проблему с ревизией 'ac4cda9e7cef'
+echo "0. Исправление проблемы с ревизией 'ac4cda9e7cef'"
+python fix_migration_issue.py
+
 echo "Фиксация проблем с миграциями на Render.com"
 echo "================================================="
 
