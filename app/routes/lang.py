@@ -1,8 +1,8 @@
-from flask import Blueprint, request, redirect, make_response, url_for, jsonify
+from flask import Blueprint, g, request, current_app, session, redirect, jsonify, url_for
 
-lang_bp = Blueprint('lang', __name__, url_prefix='/lang')
+lang_bp = Blueprint('lang', __name__)
 
-@lang_bp.route('/set/<lang>')
+@lang_bp.route('/set-language/<lang>', methods=['GET'])
 def set_language(lang):
     """
     Устанавливает язык интерфейса и сохраняет его в cookie

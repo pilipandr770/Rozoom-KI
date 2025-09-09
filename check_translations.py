@@ -1,10 +1,61 @@
 """
-Скрипт для проверки статуса переводов в приложении
+Скрипт для проверки статуса переводов в приложении и автоматической компиляции при необходимости
 """
 
 import os
 import sys
 from pathlib import Path
+import subprocess
+
+def compile_translations():
+    """Компилирует файлы переводов .po -> .mo"""
+    try:
+        from babel.messages.mofile import write_mo
+        from babel.messages.pofile import read_po
+        
+        base_dir = Path(__file__).parent.absolute()
+        translations_dir = base_dir / 'app' / 'translations'
+        
+        if not translations_dir.exists():
+            print(f"Директория переводов не найдена: {translations_dir}")
+            return False
+            
+        compiled_count = 0
+        
+        for lang_dir in translations_dir.iterdir():
+            if not lang_dir.is_dir() or lang_dir.name == '__pycache__':
+                continue
+                
+            messages_dir = lang_dir / 'LC_MESSAGES'
+            if not messages_dir.exists():
+                continue
+                
+            for po_file in messages_dir.glob('*.po'):
+                mo_file = po_file.with_suffix('.mo')
+                try:
+                    print(f"Компиляция: {po_file.name} -> {mo_file.name}")
+                    with open(po_file, 'rb') as f:
+                        catalog = read_po(f)
+                    with open(mo_file, 'wb') as f:
+                        write_mo(f, catalog)
+                    compiled_count += 1
+                except Exception as e:
+                    print(f"Ошибка компиляции {po_file}: {str(e)}")
+                    
+        print(f"Скомпилировано файлов: {compiled_count}")
+        return compiled_count > 0
+    except ImportError:
+        print("Babel не установлен. Используем pybabel командой CLI")
+        try:
+            subprocess.run(['pybabel', 'compile', '-d', 'app/translations'], 
+                           check=True, text=True, capture_output=True)
+            return True
+        except subprocess.CalledProcessError as e:
+            print(f"Ошибка выполнения pybabel: {e.stderr}")
+            return False
+        except Exception as e:
+            print(f"Ошибка: {str(e)}")
+            return False
 
 def check_translations():
     """Проверяет доступные переводы и их статус"""
@@ -13,7 +64,7 @@ def check_translations():
     
     if not translations_dir.exists():
         print(f"Директория переводов не найдена: {translations_dir}")
-        return
+        return False
     
     print("=== Статус переводов ===")
     print(f"Директория переводов: {translations_dir}")
@@ -43,6 +94,21 @@ def check_translations():
         # Проверка основного файла перевода
         main_po = messages_dir / 'messages.po'
         main_mo = messages_dir / 'messages.mo'
+        
+        # Проверка отсутствующих .mo файлов и автоматическая компиляция
+        missing_mo = []
+        for po_file in po_files:
+            mo_file = po_file.with_suffix('.mo')
+            if not mo_file.exists():
+                missing_mo.append(po_file.name)
+                
+        if missing_mo:
+            print(f"  Отсутствуют .mo файлы: {missing_mo}")
+            print("  > Запуск автоматической компиляции...")
+            if compile_translations():
+                print("  > Компиляция успешно завершена")
+            else:
+                print("  > Ошибка компиляции")
         
         if main_po.exists():
             # Подсчет строк для перевода
@@ -79,4 +145,30 @@ def check_translations():
     print("5. Проверьте, что все строки в шаблонах обернуты в функцию {{ _('строка') }}")
 
 if __name__ == "__main__":
-    check_translations()
+    # Если передан аргумент --compile, просто компилируем переводы
+    if len(sys.argv) > 1 and sys.argv[1] == '--compile':
+        print("Запуск компиляции переводов...")
+        success = compile_translations()
+        sys.exit(0 if success else 1)
+    else:
+        check_translations()
+        # Проверяем отсутствие .mo файлов
+        base_dir = Path(__file__).parent.absolute()
+        translations_dir = base_dir / 'app' / 'translations'
+        
+        missing = False
+        for lang_dir in translations_dir.iterdir():
+            if not lang_dir.is_dir() or lang_dir.name == '__pycache__':
+                continue
+            messages_dir = lang_dir / 'LC_MESSAGES'
+            if not messages_dir.exists():
+                continue
+                
+            for po_file in messages_dir.glob('*.po'):
+                mo_file = po_file.with_suffix('.mo')
+                if not mo_file.exists():
+                    missing = True
+                    
+        if missing:
+            print("\n! Обнаружены отсутствующие .mo файлы. Запуск компиляции...")
+            compile_translations()

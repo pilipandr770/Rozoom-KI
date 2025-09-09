@@ -8,6 +8,34 @@ echo "Текущая дата: $(date)"
 echo "Python версия: $(python --version)"
 echo "Pip версия: $(pip --version)"
 
+# ВАЖНО: Компилируем переводы в самом начале, чтобы убедиться, что они доступны
+echo "Компиляция файлов переводов (.po -> .mo)..."
+if python check_translations.py --compile; then
+    echo "✅ Файлы переводов успешно скомпилированы"
+else
+    echo "⚠️ Ошибка компиляции переводов, пробуем альтернативный метод..."
+    if pybabel compile -d app/translations; then
+        echo "✅ Файлы переводов скомпилированы через pybabel"
+    else 
+        echo "⚠️ Пробуем еще один метод компиляции..."
+        python -c "
+import os, glob
+from babel.messages.mofile import write_mo
+from babel.messages.pofile import read_po
+
+for po_file in glob.glob('app/translations/**/LC_MESSAGES/*.po', recursive=True):
+    mo_file = po_file[:-3] + '.mo'
+    print(f'Компиляция {po_file} -> {mo_file}')
+    with open(po_file, 'rb') as f_in:
+        catalog = read_po(f_in)
+    with open(mo_file, 'wb') as f_out:
+        write_mo(f_out, catalog)
+print('Компиляция завершена')
+"
+        echo "✅ Файлы переводов скомпилированы через python"
+    fi
+fi
+
 # Настраиваем хранилище для изображений с использованием скрипта
 echo "Настраиваем хранилище для изображений..."
 if python setup_render_storage.py; then
@@ -36,6 +64,54 @@ if [ ! -f "gunicorn_config.py" ]; then
 fi
 
 echo "Все необходимые файлы найдены."
+
+# Компилируем файлы переводов (.po -> .mo)
+echo "Компиляция файлов переводов..."
+if python compile_translations.py; then
+    echo "✅ Файлы переводов успешно скомпилированы"
+else
+    echo "⚠️ Ошибка компиляции переводов, пытаемся использовать альтернативный метод..."
+    # Используем pybabel напрямую если доступен
+    if command -v pybabel > /dev/null; then
+        echo "Используем pybabel для компиляции переводов..."
+        pybabel compile -d app/translations
+        echo "✅ Компиляция с помощью pybabel завершена"
+    else
+        echo "⚠️ pybabel не доступен, используем интеграцию с Flask-Babel..."
+        # Создаем временный скрипт для компиляции через Flask-Babel
+        cat > compile_mo.py << 'EOF'
+import os
+from babel.messages.mofile import write_mo
+from babel.messages.pofile import read_po
+
+def compile_all():
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    translations_dir = os.path.join(base_dir, 'app', 'translations')
+    
+    for lang in os.listdir(translations_dir):
+        lang_path = os.path.join(translations_dir, lang)
+        if os.path.isdir(lang_path):
+            lc_path = os.path.join(lang_path, 'LC_MESSAGES')
+            if os.path.isdir(lc_path):
+                for file in os.listdir(lc_path):
+                    if file.endswith('.po'):
+                        po_path = os.path.join(lc_path, file)
+                        mo_path = os.path.join(lc_path, file[:-3] + '.mo')
+                        try:
+                            with open(po_path, 'rb') as po_file:
+                                catalog = read_po(po_file)
+                            with open(mo_path, 'wb') as mo_file:
+                                write_mo(mo_file, catalog)
+                            print(f"Compiled: {po_path} -> {mo_path}")
+                        except Exception as e:
+                            print(f"Error compiling {po_path}: {e}")
+
+compile_all()
+EOF
+        python compile_mo.py
+        echo "✅ Компиляция переводов через временный скрипт завершена"
+    fi
+fi
 
 # Оптимизированная инициализация базы данных - объединяем операции для экономии памяти
 echo "Инициализация базы данных и исправление проблем..."
