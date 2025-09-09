@@ -19,39 +19,44 @@ from app.babel import init_babel
 
 def setup_schema_handling(app):
     """Configure schema handling based on the database dialect.
-    
+
     For Postgres: Set search_path to use schema
     For SQLite: Remove schema from all table definitions
     """
     from sqlalchemy import text, event
-    
+
     # Get database info (compatible with Flask-SQLAlchemy >=3)
     try:
         engine = db.session.get_bind()
     except Exception:
-        engine = db.get_engine(app)
+        try:
+            engine = db.get_engine(app)
+        except Exception:
+            app.logger.warning("Database engine not available yet, deferring schema setup")
+            return
+
     dialect = engine.dialect.name
     schema = app.config.get('POSTGRES_SCHEMA')
-    
+
     # For SQLite: Remove schema from all tables at runtime
     if dialect == 'sqlite':
         # Inspect all tables and remove schema
         for table in db.metadata.tables.values():
             table.schema = None
-        
+
         # Listen for table creation to ensure no schema is used
         @event.listens_for(db.metadata, 'after_create')
         def after_create(target, connection, **kw):
             for table in target.tables.values():
                 if table.schema:
                     table.schema = None
-    
+
     # For Postgres: Set search_path
     elif dialect in ('postgresql', 'postgres') and schema:
         try:
             with engine.connect() as conn:
                 conn.execute(text(f"SET search_path TO {schema}, public"))
-                
+
             # Ensure every new connection sets the search path
             @event.listens_for(engine, "connect")
             def connect(dbapi_connection, connection_record):

@@ -32,14 +32,26 @@ class AdminUser(UserMixin, db.Model):
 @login_manager.user_loader
 def load_user(user_id):
     """Load user by ID for Flask-Login"""
-    # Try to load regular user first
-    from app.models import User
-    user = User.query.get(int(user_id))
-    if user:
-        return user
-    
-    # If not found, try admin user
-    return AdminUser.query.get(int(user_id))
+    from flask import current_app
+    from app import db
+
+    try:
+        # Ensure we have an application context
+        if not current_app:
+            return None
+
+        with current_app.app_context():
+            # Try to load regular user first
+            from app.models import User
+            user = User.query.get(int(user_id))
+            if user:
+                return user
+
+            # If not found, try admin user
+            return AdminUser.query.get(int(user_id))
+    except Exception as e:
+        current_app.logger.error(f"Error loading user {user_id}: {str(e)}")
+        return None
 
 # Function to create admin user for initial setup
 def create_admin_user(app):

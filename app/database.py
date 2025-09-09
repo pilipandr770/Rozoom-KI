@@ -8,7 +8,12 @@ def init_database_schema(app):
     """Initialize or update database schema manually when needed"""
     with app.app_context():
         # use session bind instead of deprecated db.get_engine(app)
-        engine = db.session.get_bind()
+        try:
+            engine = db.session.get_bind()
+        except Exception:
+            app.logger.warning("Database session not available yet, deferring schema init")
+            return
+
         inspector = inspect(engine)
         
         # Create all tables if they don't exist
