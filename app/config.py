@@ -14,6 +14,13 @@ class Config:
     if database_url and database_url.startswith('postgres://'):
         database_url = database_url.replace('postgres://', 'postgresql://', 1)
     
+    # Add SSL parameters for PostgreSQL connections (required for Render.com)
+    if database_url and 'postgresql://' in database_url:
+        if '?' not in database_url:
+            database_url += '?sslmode=require'
+        else:
+            database_url += '&sslmode=require'
+    
     SQLALCHEMY_DATABASE_URI = database_url or 'sqlite:///dev.db'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     POSTGRES_SCHEMA = os.getenv('POSTGRES_SCHEMA', 'rozoom_ki_schema')
