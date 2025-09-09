@@ -44,11 +44,19 @@ def init_migrations():
             
             # Устанавливаем модифицированный env.py с поддержкой CASCADE
             print("Настройка поддержки CASCADE для миграций...")
-            setup_script = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'setup_cascade_migrations.py')
-            if os.path.exists(setup_script):
-                subprocess.run([sys.executable, setup_script], check=True)
-            else:
-                print("Предупреждение: скрипт setup_cascade_migrations.py не найден")
+            try:
+                # Копируем модифицированный шаблон env.py напрямую
+                template_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 
+                                           'migration_templates', 'modified_env.py.template')
+                env_path = os.path.join(migrations_dir, 'env.py')
+                
+                if os.path.exists(template_path):
+                    shutil.copy2(template_path, env_path)
+                    print(f"Модифицированный env.py успешно установлен: {env_path}")
+                else:
+                    print("Предупреждение: шаблон modified_env.py.template не найден")
+            except Exception as e:
+                print(f"Ошибка при установке modified_env.py: {str(e)}")
             
             # Создаем первоначальную миграцию на основе моделей
             print("Создание первоначальной миграции...")
