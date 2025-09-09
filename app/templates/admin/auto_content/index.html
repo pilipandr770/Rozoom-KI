@@ -60,6 +60,9 @@
     <div class="section-header">
       <h2>Расписания публикаций</h2>
       <div class="header-actions">
+        <a href="{{ url_for('auto_content.system_status') }}" class="btn btn-warning">
+          <i class="fas fa-cogs"></i> Статус системы
+        </a>
         <a href="{{ url_for('auto_content.test_openai') }}" class="btn btn-info">
           <i class="fas fa-plug"></i> Тест OpenAI
         </a>

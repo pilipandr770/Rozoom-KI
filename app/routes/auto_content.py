@@ -245,16 +245,85 @@ def test_openai():
         logger.info("OpenAI service created successfully")
 
         # Тестируем подключение
-        connection_ok = openai_service.test_connection()
-        logger.info(f"OpenAI connection test result: {connection_ok}")
+        connection_ok, message = openai_service.test_connection()
+        logger.info(f"OpenAI connection test result: {connection_ok}, message: {message}")
 
         if connection_ok:
-            flash('✅ Подключение к OpenAI API работает корректно', 'success')
+            flash(f'✅ {message}', 'success')
         else:
-            flash('❌ Подключение к OpenAI API не работает', 'danger')
+            flash(f'❌ {message}', 'danger')
 
     except Exception as e:
         logger.error(f"Error testing OpenAI API: {str(e)}")
         flash(f'❌ Ошибка при тестировании OpenAI API: {str(e)}', 'danger')
 
     return redirect(url_for('auto_content.index'))
+
+@auto_content.route('/system-status', methods=['GET'])
+@login_required
+def system_status():
+    """Показывает статус системы и переменных окружения"""
+    # Проверяем, является ли пользователь администратором
+    if not current_user.is_admin:
+        flash('У вас нет доступа к этой странице', 'danger')
+        return redirect(url_for('main.index'))
+
+    import os
+    from app.services.openai_service import OpenAIService
+
+    status_info = {
+        'environment': {},
+        'database': {},
+        'openai': {},
+        'mail': {},
+        'app_config': {}
+    }
+
+    # Переменные окружения
+    status_info['environment'] = {
+        'FLASK_ENV': os.getenv('FLASK_ENV', 'не установлена'),
+        'FLASK_APP': os.getenv('FLASK_APP', 'не установлена'),
+    }
+
+    # База данных
+    database_url = os.getenv('DATABASE_URL', 'не установлена')
+    status_info['database'] = {
+        'DATABASE_URL': database_url[:50] + '...' if database_url != 'не установлена' else database_url,
+        'SSL_MODE': 'sslmode' in database_url if database_url != 'не установлена' else False
+    }
+
+    # OpenAI
+    openai_key = os.getenv('OPENAI_API_KEY', 'не установлена')
+    status_info['openai'] = {
+        'API_KEY_SET': openai_key != 'не установлена',
+        'API_KEY_LENGTH': len(openai_key) if openai_key != 'не установлена' else 0,
+        'API_KEY_FORMAT': 'sk-proj-' if openai_key.startswith('sk-proj-') else 'sk-' if openai_key.startswith('sk-') else 'неизвестный' if openai_key != 'не установлена' else 'не установлен'
+    }
+
+    # Почта
+    status_info['mail'] = {
+        'MAIL_SERVER': 'установлен' if os.getenv('MAIL_SERVER') else 'не установлен',
+        'MAIL_PORT': os.getenv('MAIL_PORT', 'не установлен'),
+        'MAIL_USERNAME': 'установлен' if os.getenv('MAIL_USERNAME') else 'не установлен',
+    }
+
+    # Конфигурация приложения
+    status_info['app_config'] = {
+        'SECRET_KEY': 'установлен' if current_app.config.get('SECRET_KEY') else 'не установлен',
+        'DATABASE_URI': 'установлен' if current_app.config.get('SQLALCHEMY_DATABASE_URI') else 'не установлен',
+        'OPENAI_API_KEY': 'установлен' if current_app.config.get('OPENAI_API_KEY') else 'не установлен'
+    }
+
+    # Тест OpenAI
+    openai_test = {'success': False, 'message': 'API ключ не доступен'}
+    if current_app.config.get('OPENAI_API_KEY'):
+        try:
+            service = OpenAIService()
+            success, message = service.test_connection()
+            openai_test = {'success': success, 'message': message}
+        except Exception as e:
+            openai_test = {'success': False, 'message': f'Ошибка: {str(e)}'}
+
+    return render_template('admin/auto_content/system_status.html',
+                          status_info=status_info,
+                          openai_test=openai_test)

@@ -31,46 +31,63 @@ class OpenAIService:
         
         openai.api_key = self.api_key
     
-    def test_connection(self) -> bool:
+    def test_connection(self) -> tuple[bool, str]:
         """
-        Тестирует подключение к OpenAI API с помощью простого запроса
+        Тестирует подключение к OpenAI API с детальной диагностикой
         
         Returns:
-            bool: True если подключение работает, False в противном случае
+            tuple: (успех, сообщение с деталями)
         """
         try:
-            logger.info("Testing OpenAI API connection...")
+            logger.info("Testing OpenAI API connection with detailed diagnostics...")
+            
+            # Проверяем конфигурацию
+            if not self.api_key:
+                return False, "API ключ не настроен"
+            
+            if not self.api_key.startswith('sk-'):
+                return False, "API ключ имеет неправильный формат"
+            
+            logger.info(f"API key format: OK (length: {len(self.api_key)})")
+            
+            # Проверяем базовое подключение
+            logger.info("Testing basic connectivity to OpenAI API...")
             
             # Простой тестовый запрос - получение списка моделей
             response = openai.models.list()
             
             if response.data:
-                logger.info(f"OpenAI API connection successful. Available models: {len(response.data)}")
-                return True
+                model_count = len(response.data)
+                logger.info(f"OpenAI API connection successful. Available models: {model_count}")
+                return True, f"Подключение успешно. Доступно моделей: {model_count}"
             else:
                 logger.warning("OpenAI API connection test returned empty response")
-                return False
+                return False, "API вернул пустой ответ"
                 
         except APIConnectionError as e:
-            logger.error(f"OpenAI API connection error: {str(e)}")
+            error_msg = f"Ошибка сетевого подключения: {str(e)}"
+            logger.error(f"OpenAI API connection error: {error_msg}")
             logger.error(f"Error type: {type(e)}")
             logger.error(f"Error details: {e.__dict__ if hasattr(e, '__dict__') else 'No details'}")
-            return False
+            return False, error_msg
         except AuthenticationError as e:
-            logger.error(f"OpenAI API authentication error: {str(e)}")
+            error_msg = f"Ошибка аутентификации: {str(e)}"
+            logger.error(f"OpenAI API authentication error: {error_msg}")
             logger.error(f"Error type: {type(e)}")
             logger.error(f"Error details: {e.__dict__ if hasattr(e, '__dict__') else 'No details'}")
-            return False
+            return False, error_msg
         except RateLimitError as e:
-            logger.error(f"OpenAI API rate limit error: {str(e)}")
+            error_msg = f"Превышен лимит запросов: {str(e)}"
+            logger.error(f"OpenAI API rate limit error: {error_msg}")
             logger.error(f"Error type: {type(e)}")
             logger.error(f"Error details: {e.__dict__ if hasattr(e, '__dict__') else 'No details'}")
-            return False
+            return False, error_msg
         except Exception as e:
-            logger.error(f"Unexpected error testing OpenAI connection: {str(e)}")
+            error_msg = f"Неожиданная ошибка: {str(e)}"
+            logger.error(f"Unexpected error testing OpenAI connection: {error_msg}")
             logger.error(f"Error type: {type(e)}")
             logger.error(f"Error details: {e.__dict__ if hasattr(e, '__dict__') else 'No details'}")
-            return False
+            return False, error_msg
     
     def generate_blog_content(self, topic: str, keywords: str, language: str) -> Dict:
         """
@@ -88,8 +105,9 @@ class OpenAIService:
             logger.info(f"Starting blog content generation for topic: {topic}, language: {language}")
             
             # Тестируем подключение перед генерацией
-            if not self.test_connection():
-                raise Exception("Failed to connect to OpenAI API")
+            connection_ok, connection_message = self.test_connection()
+            if not connection_ok:
+                raise Exception(f"Failed to connect to OpenAI API: {connection_message}")
             
             lang_prompt = "English" if language == "en" else "German"
             

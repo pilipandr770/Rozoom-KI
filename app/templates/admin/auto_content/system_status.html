@@ -1,0 +1,175 @@
+{% extends 'admin/base.html' %}
+
+{% block title %}Статус системы{% endblock %}
+
+{% block content %}
+<div class="admin-content">
+  <div class="content-header">
+    <h1>Статус системы</h1>
+    <p class="lead">Диагностика конфигурации и подключений</p>
+  </div>
+
+  <div class="row">
+    <!-- Переменные окружения -->
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title">🌍 Переменные окружения</h5>
+        </div>
+        <div class="card-body">
+          <table class="table table-sm">
+            <tbody>
+              {% for key, value in status_info.environment.items() %}
+              <tr>
+                <td><strong>{{ key }}</strong></td>
+                <td>{{ value }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- База данных -->
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title">🗄️ База данных</h5>
+        </div>
+        <div class="card-body">
+          <table class="table table-sm">
+            <tbody>
+              {% for key, value in status_info.database.items() %}
+              <tr>
+                <td><strong>{{ key }}</strong></td>
+                <td>
+                  {% if value == True %}
+                    <span class="badge bg-success">Да</span>
+                  {% elif value == False %}
+                    <span class="badge bg-danger">Нет</span>
+                  {% else %}
+                    {{ value }}
+                  {% endif %}
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <!-- OpenAI -->
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title">🤖 OpenAI API</h5>
+        </div>
+        <div class="card-body">
+          <table class="table table-sm">
+            <tbody>
+              {% for key, value in status_info.openai.items() %}
+              <tr>
+                <td><strong>{{ key }}</strong></td>
+                <td>
+                  {% if value == True %}
+                    <span class="badge bg-success">Да</span>
+                  {% elif value == False %}
+                    <span class="badge bg-danger">Нет</span>
+                  {% else %}
+                    {{ value }}
+                  {% endif %}
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+          <hr>
+          <h6>Тест подключения:</h6>
+          {% if openai_test.success %}
+            <div class="alert alert-success">
+              <strong>✅ {{ openai_test.message }}</strong>
+            </div>
+          {% else %}
+            <div class="alert alert-danger">
+              <strong>❌ {{ openai_test.message }}</strong>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <!-- Почта -->
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title">📧 Почта</h5>
+        </div>
+        <div class="card-body">
+          <table class="table table-sm">
+            <tbody>
+              {% for key, value in status_info.mail.items() %}
+              <tr>
+                <td><strong>{{ key }}</strong></td>
+                <td>{{ value }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <!-- Конфигурация приложения -->
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title">⚙️ Конфигурация приложения</h5>
+        </div>
+        <div class="card-body">
+          <table class="table table-sm">
+            <tbody>
+              {% for key, value in status_info.app_config.items() %}
+              <tr>
+                <td><strong>{{ key }}</strong></td>
+                <td>
+                  {% if value == 'установлен' %}
+                    <span class="badge bg-success">{{ value }}</span>
+                  {% else %}
+                    <span class="badge bg-danger">{{ value }}</span>
+                  {% endif %}
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <h5>🔧 Действия</h5>
+          <div class="btn-group">
+            <a href="{{ url_for('auto_content.test_openai') }}" class="btn btn-info">
+              <i class="fas fa-plug"></i> Тест OpenAI
+            </a>
+            <a href="{{ url_for('auto_content.index') }}" class="btn btn-secondary">
+              <i class="fas fa-arrow-left"></i> Назад
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
