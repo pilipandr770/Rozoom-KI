@@ -104,6 +104,7 @@
                     </div>
                     <div class="card-body">
                         <form method="post" action="{{ url_for('admin.edit_pricing_package', id=package.id) }}">
+                            {{ csrf_field() }}
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-3">
