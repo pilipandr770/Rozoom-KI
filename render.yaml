@@ -3,7 +3,7 @@ services:
   # Основной веб-сервис
   - type: web
     name: rozoom-ki
-    env: python
+    runtime: python
     plan: starter # Используйте соответствующий тарифный план
     buildCommand: pip install -r requirements.txt
     startCommand: bash render_start.sh || bash direct_start.sh
@@ -37,7 +37,7 @@ services:
       - key: OPENAI_MODEL_FALLBACK
         value: gpt-4o-mini
       - key: USE_CHAT_COMPLETION
-        value: true
+        value: "true"
       - key: TELEGRAM_BOT_TOKEN
         sync: false # Sensitive - must be set manually in Render dashboard
       - key: TELEGRAM_CHAT_ID
