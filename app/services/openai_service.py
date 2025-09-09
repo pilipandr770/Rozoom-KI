@@ -24,7 +24,53 @@ class OpenAIService:
         if not self.api_key:
             raise ValueError("OpenAI API key is not set. Please set OPENAI_API_KEY environment variable.")
         
+        # Логируем информацию о ключе (без самого ключа)
+        logger.info(f"OpenAI API key configured: {'Yes' if self.api_key else 'No'}")
+        logger.info(f"OpenAI API key length: {len(self.api_key) if self.api_key else 0}")
+        logger.info(f"OpenAI API key starts with: {self.api_key[:10] if self.api_key else 'None'}...")
+        
         openai.api_key = self.api_key
+    
+    def test_connection(self) -> bool:
+        """
+        Тестирует подключение к OpenAI API с помощью простого запроса
+        
+        Returns:
+            bool: True если подключение работает, False в противном случае
+        """
+        try:
+            logger.info("Testing OpenAI API connection...")
+            
+            # Простой тестовый запрос - получение списка моделей
+            response = openai.models.list()
+            
+            if response.data:
+                logger.info(f"OpenAI API connection successful. Available models: {len(response.data)}")
+                return True
+            else:
+                logger.warning("OpenAI API connection test returned empty response")
+                return False
+                
+        except APIConnectionError as e:
+            logger.error(f"OpenAI API connection error: {str(e)}")
+            logger.error(f"Error type: {type(e)}")
+            logger.error(f"Error details: {e.__dict__ if hasattr(e, '__dict__') else 'No details'}")
+            return False
+        except AuthenticationError as e:
+            logger.error(f"OpenAI API authentication error: {str(e)}")
+            logger.error(f"Error type: {type(e)}")
+            logger.error(f"Error details: {e.__dict__ if hasattr(e, '__dict__') else 'No details'}")
+            return False
+        except RateLimitError as e:
+            logger.error(f"OpenAI API rate limit error: {str(e)}")
+            logger.error(f"Error type: {type(e)}")
+            logger.error(f"Error details: {e.__dict__ if hasattr(e, '__dict__') else 'No details'}")
+            return False
+        except Exception as e:
+            logger.error(f"Unexpected error testing OpenAI connection: {str(e)}")
+            logger.error(f"Error type: {type(e)}")
+            logger.error(f"Error details: {e.__dict__ if hasattr(e, '__dict__') else 'No details'}")
+            return False
     
     def generate_blog_content(self, topic: str, keywords: str, language: str) -> Dict:
         """
@@ -39,6 +85,12 @@ class OpenAIService:
             Dict: Словарь с заголовком, содержанием и метаописанием
         """
         try:
+            logger.info(f"Starting blog content generation for topic: {topic}, language: {language}")
+            
+            # Тестируем подключение перед генерацией
+            if not self.test_connection():
+                raise Exception("Failed to connect to OpenAI API")
+            
             lang_prompt = "English" if language == "en" else "German"
             
             system_prompt = f"""
@@ -93,20 +145,30 @@ class OpenAIService:
             
             return blog_data
             
+        except APIConnectionError as e:
+            logger.error(f"OpenAI API connection error: {str(e)}")
+            logger.error(f"Error type: {type(e)}")
+            logger.error(f"Error details: {e.__dict__ if hasattr(e, '__dict__') else 'No details'}")
+            raise Exception("Ошибка подключения к OpenAI API")
+        except AuthenticationError as e:
+            logger.error(f"OpenAI API authentication error: {str(e)}")
+            logger.error(f"Error type: {type(e)}")
+            logger.error(f"Error details: {e.__dict__ if hasattr(e, '__dict__') else 'No details'}")
+            raise Exception("Ошибка аутентификации OpenAI API")
+        except RateLimitError as e:
+            logger.error(f"OpenAI API rate limit error: {str(e)}")
+            logger.error(f"Error type: {type(e)}")
+            logger.error(f"Error details: {e.__dict__ if hasattr(e, '__dict__') else 'No details'}")
+            raise Exception("Превышен лимит запросов к OpenAI API")
         except APIError as e:
             logger.error(f"OpenAI API error: {str(e)}")
+            logger.error(f"Error type: {type(e)}")
+            logger.error(f"Error details: {e.__dict__ if hasattr(e, '__dict__') else 'No details'}")
             raise Exception(f"Ошибка API OpenAI: {str(e)}")
-        except APIConnectionError as e:
-            logger.error(f"OpenAI connection error: {str(e)}")
-            raise Exception("Ошибка подключения к OpenAI API")
-        except RateLimitError as e:
-            logger.error(f"OpenAI rate limit error: {str(e)}")
-            raise Exception("Превышен лимит запросов к OpenAI API")
-        except AuthenticationError as e:
-            logger.error(f"OpenAI authentication error: {str(e)}")
-            raise Exception("Ошибка аутентификации OpenAI API")
         except Exception as e:
             logger.error(f"Error generating blog content: {str(e)}")
+            logger.error(f"Error type: {type(e)}")
+            logger.error(f"Error details: {e.__dict__ if hasattr(e, '__dict__') else 'No details'}")
             raise Exception(f"Ошибка генерации содержимого блога: {str(e)}")
     
     def generate_image(self, prompt: str) -> Optional[str]:

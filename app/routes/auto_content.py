@@ -222,3 +222,39 @@ def publish_content(id):
         flash('Произошла ошибка при публикации контента', 'danger')
     
     return redirect(url_for('auto_content.generated_content'))
+
+@auto_content.route('/test-openai', methods=['GET'])
+@login_required
+def test_openai():
+    """Тестирует подключение к OpenAI API"""
+    # Проверяем, является ли пользователь администратором
+    if not current_user.is_admin:
+        flash('У вас нет доступа к этой странице', 'danger')
+        return redirect(url_for('main.index'))
+
+    from app.services.openai_service import OpenAIService
+    import logging
+
+    logger = logging.getLogger(__name__)
+
+    try:
+        logger.info("Starting OpenAI API test from web interface")
+
+        # Создаем сервис
+        openai_service = OpenAIService()
+        logger.info("OpenAI service created successfully")
+
+        # Тестируем подключение
+        connection_ok = openai_service.test_connection()
+        logger.info(f"OpenAI connection test result: {connection_ok}")
+
+        if connection_ok:
+            flash('✅ Подключение к OpenAI API работает корректно', 'success')
+        else:
+            flash('❌ Подключение к OpenAI API не работает', 'danger')
+
+    except Exception as e:
+        logger.error(f"Error testing OpenAI API: {str(e)}")
+        flash(f'❌ Ошибка при тестировании OpenAI API: {str(e)}', 'danger')
+
+    return redirect(url_for('auto_content.index'))
