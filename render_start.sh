@@ -1,5 +1,5 @@
 #!/bin/bash
-# render_start.sh - Скрипт для запуска приложения на Render.com
+# render_start.sh - Оптимизированный скрипт для запуска приложения на Render.com
 
 set -e  # Выход при любой ошибке
 
@@ -22,33 +22,57 @@ fi
 
 echo "Все необходимые файлы найдены."
 
-echo "Инициализация схем PostgreSQL..."
-if python init_postgres_schemas.py; then
-    echo "✅ Схемы PostgreSQL успешно инициализированы"
+# Оптимизированная инициализация базы данных - объединяем операции для экономии памяти
+echo "Инициализация базы данных и исправление проблем..."
+if python -c "
+import sys
+import gc
+import os
+os.environ['PYTHONPATH'] = '.'
+
+try:
+    # Инициализация схем
+    print('Инициализация схем PostgreSQL...')
+    import init_postgres_schemas
+    print('✅ Схемы PostgreSQL инициализированы')
+    
+    # Очистка памяти
+    gc.collect()
+    
+    # Исправление проблем с database.py
+    print('Исправление проблем с app/database.py...')
+    import fix_app_database
+    print('✅ app/database.py исправлен')
+    
+    # Очистка памяти
+    gc.collect()
+    
+    # Исправление дублирующихся столбцов
+    print('Исправление дублирующихся столбцов...')
+    import fix_duplicate_columns
+    print('✅ Дублирующиеся столбцы исправлены')
+    
+    # Очистка памяти
+    gc.collect()
+    
+    # Исправление ревизии миграции
+    print('Исправление проблем с ревизией миграции...')
+    import fix_revision_issue
+    print('✅ Проблемы с ревизией миграции исправлены')
+    
+    print('✅ Все исправления выполнены успешно')
+    
+except Exception as e:
+    print(f'⚠️  Предупреждение: {e}, продолжаем...')
+" 2>/dev/null; then
+    echo "✅ База данных подготовлена"
 else
-    echo "⚠️  Предупреждение: проблемы с инициализацией схем, продолжаем..."
+    echo "⚠️  Предупреждение: проблемы с подготовкой базы данных, продолжаем..."
 fi
 
-echo "Исправление проблем с app/database.py..."
-if python fix_app_database.py; then
-    echo "✅ app/database.py успешно исправлен"
-else
-    echo "⚠️  Предупреждение: проблемы с fix_app_database.py, продолжаем..."
-fi
-
-echo "Исправление проблем с дублирующимися столбцами..."
-if python fix_duplicate_columns.py; then
-    echo "✅ Дублирующиеся столбцы исправлены"
-else
-    echo "⚠️  Предупреждение: проблемы с fix_duplicate_columns.py, продолжаем..."
-fi
-
-echo "Исправление проблем с ревизией миграции..."
-if python fix_revision_issue.py; then
-    echo "✅ Проблемы с ревизией миграции исправлены"
-else
-    echo "⚠️  Предупреждение: проблемы с fix_revision_issue.py, продолжаем..."
-fi
+# Очистка памяти перед запуском миграций
+echo "Очистка памяти..."
+python -c "import gc; gc.collect()"
 
 echo "Проверка и инициализация миграций базы данных..."
 
@@ -76,17 +100,31 @@ else
     fi
 fi
 
-echo "Инициализация таблиц базы данных..."
-if python -m app.database; then
-    echo "✅ Таблицы базы данных инициализированы"
-else
-    echo "⚠️  Предупреждение: проблемы с инициализацией таблиц, продолжаем..."
-fi
+# Финальная очистка памяти
+echo "Финальная очистка памяти перед запуском приложения..."
+python -c "import gc; gc.collect()"
 
 echo "Запуск Gunicorn с конфигурационным файлом..."
 echo "=== ЗАПУСК ПРИЛОЖЕНИЯ ==="
 echo "Время запуска: $(date)"
 echo "Команда: gunicorn -c gunicorn_config.py run:app"
 
+# Проверяем использование памяти перед запуском
+echo "Проверка доступной памяти..."
+if command -v free >/dev/null 2>&1; then
+    free -h
+elif python -c "import psutil; print(f'Доступно памяти: {psutil.virtual_memory().available / 1024 / 1024:.1f} MB')"; then
+    echo "✅ Проверка памяти выполнена"
+else
+    echo "⚠️  Не удалось проверить память, продолжаем..."
+fi
+
 # Запускаем Gunicorn
-exec gunicorn -c gunicorn_config.py run:app
+echo "Попытка запуска с оптимизированной конфигурацией..."
+if exec gunicorn -c gunicorn_config.py run:app; then
+    echo "✅ Приложение запущено успешно"
+else
+    echo "⚠️  Оптимизированная конфигурация не удалась, пробуем облегченную..."
+    echo "Команда: gunicorn -c gunicorn_config_light.py run:app"
+    exec gunicorn -c gunicorn_config_light.py run:app
+fi
