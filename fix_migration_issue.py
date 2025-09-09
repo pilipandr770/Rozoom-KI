@@ -33,27 +33,40 @@ def fix_migration_issue():
         engine = create_engine(database_url)
         
         with engine.connect() as conn:
-            # Проверяем существование таблицы alembic_version
-            result = conn.execute(text("SELECT EXISTS (SELECT FROM information_schema.tables WHERE table_name = 'alembic_version')"))
-            if not result.scalar():
-                print("Таблица alembic_version не найдена, создаем её...")
-                conn.execute(text("CREATE TABLE IF NOT EXISTS alembic_version (version_num VARCHAR(32) NOT NULL)"))
-                conn.commit()
-                print("Таблица alembic_version создана")
-            else:
-                # Удаляем все записи из таблицы alembic_version
-                print("Очистка таблицы alembic_version...")
-                conn.execute(text("DELETE FROM alembic_version"))
-                conn.commit()
-                print("Таблица alembic_version очищена")
+            try:
+                # Проверяем существование таблицы alembic_version
+                result = conn.execute(text("SELECT EXISTS (SELECT FROM information_schema.tables WHERE table_name = 'alembic_version')"))
+                if not result.scalar():
+                    print("Таблица alembic_version не найдена, создаем её...")
+                    conn.execute(text("CREATE TABLE IF NOT EXISTS alembic_version (version_num VARCHAR(32) NOT NULL)"))
+                    conn.commit()
+                    print("Таблица alembic_version создана")
+                else:
+                    # Удаляем все записи из таблицы alembic_version
+                    print("Очистка таблицы alembic_version...")
+                    conn.execute(text("DELETE FROM alembic_version"))
+                    conn.commit()
+                    print("Таблица alembic_version очищена")
+                    
+                # Проверяем, что таблица пуста
+                result = conn.execute(text("SELECT COUNT(*) FROM alembic_version"))
+                count = result.scalar()
+                if count == 0:
+                    print("Таблица alembic_version успешно очищена!")
+                else:
+                    print(f"ВНИМАНИЕ: В таблице alembic_version остались {count} записей")
+                    
+            except Exception as e:
+                print(f"Ошибка при работе с таблицей alembic_version: {str(e)}")
+                print("Пробуем альтернативный способ - удаление таблицы alembic_version...")
                 
-            # Проверяем, что таблица пуста
-            result = conn.execute(text("SELECT COUNT(*) FROM alembic_version"))
-            count = result.scalar()
-            if count == 0:
-                print("Таблица alembic_version успешно очищена!")
-            else:
-                print(f"ВНИМАНИЕ: В таблице alembic_version остались {count} записей")
+                try:
+                    conn.execute(text("DROP TABLE IF EXISTS alembic_version"))
+                    conn.commit()
+                    print("Таблица alembic_version удалена")
+                except Exception as e2:
+                    print(f"Ошибка при удалении таблицы alembic_version: {str(e2)}")
+                    return False
                 
         print("Миграционная проблема исправлена!")
         return True

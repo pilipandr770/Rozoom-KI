@@ -88,8 +88,8 @@ def run_migrations_online():
     )
 
     with connectable.connect() as connection:
-        # Отключаем ограничения внешних ключей во время миграции
-        connection.execute(text("SET session_replication_role = 'replica';"))
+        # Отключение внешних ключей не используется, т.к. требует прав superuser
+        # Вместо этого используем опцию CASCADE при удалении таблиц
         
         context.configure(
             connection=connection,
@@ -102,8 +102,8 @@ def run_migrations_online():
             with context.begin_transaction():
                 context.run_migrations()
         finally:
-            # Восстанавливаем ограничения внешних ключей
-            connection.execute(text("SET session_replication_role = 'origin';"))
+            # Здесь не нужно восстанавливать ограничения
+            pass
 
 
 if context.is_offline_mode():

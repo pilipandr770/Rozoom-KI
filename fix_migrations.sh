@@ -19,8 +19,8 @@ echo "================================================="
 echo "1. Инициализация схем PostgreSQL"
 python init_postgres_schemas.py
 
-echo "2. Безопасное удаление всех таблиц с CASCADE"
-python drop_all_tables.py
+echo "2. Попытка безопасного удаления всех таблиц с CASCADE"
+python drop_all_tables.py || echo "Продолжаем, несмотря на ошибки при удалении таблиц"
 
 echo "3. Очистка таблицы alembic_version"
 python fix_migration_issue.py

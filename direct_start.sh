@@ -7,12 +7,19 @@ set -e
 # Инициализируем схемы
 python init_postgres_schemas.py
 
-# Удаляем все существующие таблицы с CASCADE для чистого старта
-echo "Удаление всех существующих таблиц с CASCADE..."
-python drop_all_tables.py
+# Пытаемся удалить таблицы, но продолжаем даже при ошибке
+echo "Попытка удаления существующих таблиц с CASCADE..."
+python drop_all_tables.py || echo "Продолжаем, несмотря на ошибки при удалении таблиц"
 
-# Создаем таблицы напрямую
-python setup_postgres_tables.py
+# Создаем таблицы напрямую сначала упрощенным способом
+echo "Создание таблиц упрощенным способом..."
+python simple_create_tables.py
+
+# Если упрощенный способ не сработал, пробуем более сложный
+if [ $? -ne 0 ]; then
+    echo "Упрощенное создание таблиц не удалось. Используем расширенный метод..."
+    python setup_postgres_tables.py
+fi
 
 # Запускаем приложение
 gunicorn -c gunicorn_config.py run:app
