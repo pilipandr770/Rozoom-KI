@@ -16,10 +16,26 @@ class Config:
     
     # Add SSL parameters for PostgreSQL connections (required for Render.com)
     if database_url and 'postgresql://' in database_url:
-        if '?' not in database_url:
-            database_url += '?sslmode=require'
+        # Parse the URL to properly add SSL parameters
+        if '?' in database_url:
+            # URL already has parameters, add sslmode=require
+            if 'sslmode=' not in database_url:
+                database_url += '&sslmode=require'
         else:
-            database_url += '&sslmode=require'
+            # URL has no parameters, add sslmode=require
+            database_url += '?sslmode=require'
+        
+        # Also ensure other SSL parameters are set for better compatibility
+        ssl_params = ['sslmode=require']
+        if '&' in database_url:
+            existing_params = database_url.split('?')[1].split('&')
+            for param in existing_params:
+                if param.startswith('ssl'):
+                    ssl_params.append(param)
+        
+        # Reconstruct URL with proper SSL parameters
+        base_url = database_url.split('?')[0]
+        database_url = base_url + '?' + '&'.join(ssl_params)
     
     SQLALCHEMY_DATABASE_URI = database_url or 'sqlite:///dev.db'
     SQLALCHEMY_TRACK_MODIFICATIONS = False

@@ -6,6 +6,7 @@ import time
 from flask import current_app
 from datetime import datetime
 from typing import Tuple, Dict, List, Optional
+from openai import APIError, APIConnectionError, RateLimitError, AuthenticationError
 
 # Настройка логирования
 logger = logging.getLogger(__name__)
@@ -21,7 +22,7 @@ class OpenAIService:
         """
         self.api_key = api_key or current_app.config.get('OPENAI_API_KEY')
         if not self.api_key:
-            raise ValueError("OpenAI API key is not set")
+            raise ValueError("OpenAI API key is not set. Please set OPENAI_API_KEY environment variable.")
         
         openai.api_key = self.api_key
     
@@ -79,7 +80,8 @@ class OpenAIService:
                     {"role": "system", "content": system_prompt},
                     {"role": "user", "content": user_prompt}
                 ],
-                response_format={"type": "json_object"}
+                response_format={"type": "json_object"},
+                timeout=60  # Добавляем таймаут 60 секунд
             )
             
             # Получаем содержимое ответа
@@ -91,9 +93,21 @@ class OpenAIService:
             
             return blog_data
             
+        except APIError as e:
+            logger.error(f"OpenAI API error: {str(e)}")
+            raise Exception(f"Ошибка API OpenAI: {str(e)}")
+        except APIConnectionError as e:
+            logger.error(f"OpenAI connection error: {str(e)}")
+            raise Exception("Ошибка подключения к OpenAI API")
+        except RateLimitError as e:
+            logger.error(f"OpenAI rate limit error: {str(e)}")
+            raise Exception("Превышен лимит запросов к OpenAI API")
+        except AuthenticationError as e:
+            logger.error(f"OpenAI authentication error: {str(e)}")
+            raise Exception("Ошибка аутентификации OpenAI API")
         except Exception as e:
             logger.error(f"Error generating blog content: {str(e)}")
-            raise
+            raise Exception(f"Ошибка генерации содержимого блога: {str(e)}")
     
     def generate_image(self, prompt: str) -> Optional[str]:
         """
@@ -119,6 +133,15 @@ class OpenAIService:
             
             return image_url
             
+        except APIConnectionError as e:
+            logger.error(f"OpenAI connection error during image generation: {str(e)}")
+            return None
+        except RateLimitError as e:
+            logger.error(f"OpenAI rate limit error during image generation: {str(e)}")
+            return None
+        except AuthenticationError as e:
+            logger.error(f"OpenAI authentication error during image generation: {str(e)}")
+            return None
         except Exception as e:
             logger.error(f"Error generating image: {str(e)}")
             return None
