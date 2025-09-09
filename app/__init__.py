@@ -105,7 +105,8 @@ def create_app():
         if 'csrf_token' in error_str or 'CSRF' in error_str:
             app.logger.warning(f"CSRF ошибка: {error_str}, реферер: {request.referrer}")
             flash('Ошибка безопасности: CSRF токен отсутствует или неверен. Пожалуйста, попробуйте снова.', 'danger')
-            return redirect(request.referrer or url_for('admin.dashboard'))
+            # Перенаправляем на страницу входа вместо admin.dashboard
+            return redirect(url_for('auth.login'))
         return e
     
     # Configure schema handling based on DB dialect

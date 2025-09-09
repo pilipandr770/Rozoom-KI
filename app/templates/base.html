@@ -1,6 +1,8 @@
 <!doctype html>
 {# Импортируем функции перевода #}
 {% from "macros/translations.html" import language_switcher with context %}
+{# Импортируем CSRF макрос #}
+{% from "macros/forms.html" import csrf_field with context %}
 <html lang="{{ g.locale }}">
   <head>
     <meta charset="utf-8">

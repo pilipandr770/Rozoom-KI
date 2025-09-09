@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash, current_app
 from flask_login import login_user, logout_user, login_required, current_user
 from app.models import User, Project, ProjectTask, ProjectUpdate
+from app.auth import AdminUser  # Добавляем импорт AdminUser
 from app import db
 from datetime import datetime
 import json
@@ -18,10 +19,19 @@ def login():
         password = request.form.get('password')
         remember = 'remember' in request.form
         
-        # Try to find user by email first
-        user = User.query.filter_by(email=login_id).first()
+        # Сначала пробуем найти AdminUser
+        admin = AdminUser.query.filter_by(email=login_id).first()
+        if not admin:
+            admin = AdminUser.query.filter_by(username=login_id).first()
         
-        # If not found by email, try username
+        if admin and admin.check_password(password):
+            login_user(admin, remember=remember)
+            flash('Вход выполнен успешно!', 'success')
+            next_page = request.args.get('next')
+            return redirect(next_page or url_for('admin.dashboard'))
+        
+        # Если AdminUser не найден, пробуем обычного User
+        user = User.query.filter_by(email=login_id).first()
         if not user:
             user = User.query.filter_by(username=login_id).first()
         
@@ -33,7 +43,7 @@ def login():
             next_page = request.args.get('next')
             return redirect(next_page or url_for('dashboard.index'))
         else:
-            flash('Invalid login credentials', 'danger')
+            flash('Неверные учетные данные', 'danger')
     
     return render_template('auth/login.html')
 
