@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for, flash, current_app
+from flask import Blueprint, render_template, request, redirect, url_for, flash, current_app, jsonify
 from ..models import Lead
 from ..auth import AdminUser
 from .. import db
@@ -13,6 +13,11 @@ pages_bp = Blueprint('pages', __name__)
 @pages_bp.route('/')
 def index():
     return render_template('index.html')
+
+@pages_bp.route('/health')
+def health_check():
+    """Health check endpoint для мониторинга сервиса на Render.com"""
+    return jsonify({"status": "ok", "service": "rozoom-ki"}), 200
 
 @pages_bp.route('/services')
 def services():

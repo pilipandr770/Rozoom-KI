@@ -1,0 +1,65 @@
+# render.yaml
+services:
+  # Основной веб-сервис
+  - type: web
+    name: rozoom-ki
+    env: python
+    plan: starter # Используйте соответствующий тарифный план
+    buildCommand: pip install -r requirements.txt
+    startCommand: bash render_start.sh
+    envVars:
+      - key: FLASK_APP
+        value: run.py
+      - key: FLASK_ENV
+        value: production
+      - key: ENVIRONMENT
+        value: production
+      - key: PYTHON_VERSION
+        value: 3.10.0
+      - key: DATABASE_URL
+        fromDatabase:
+          name: rozoom-ki-db
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: POSTGRES_SCHEMA
+        value: rozoom_ki_schema
+      - key: POSTGRES_SCHEMA_CLIENTS
+        value: rozoom_ki_clients
+      - key: POSTGRES_SCHEMA_SHOP
+        value: rozoom_ki_shop
+      - key: POSTGRES_SCHEMA_PROJECTS
+        value: rozoom_ki_projects
+      - key: OPENAI_API_KEY
+        sync: false # Sensitive - must be set manually in Render dashboard
+      - key: OPENAI_MODEL
+        value: gpt-5-nano
+      - key: OPENAI_MODEL_FALLBACK
+        value: gpt-4o-mini
+      - key: USE_CHAT_COMPLETION
+        value: true
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false # Sensitive - must be set manually in Render dashboard
+      - key: TELEGRAM_CHAT_ID
+        sync: false # Sensitive - must be set manually in Render dashboard
+      - key: STRIPE_SECRET_KEY
+        sync: false # Sensitive - must be set manually in Render dashboard
+      - key: STRIPE_PUBLISHABLE_KEY
+        sync: false # Sensitive - must be set manually in Render dashboard
+      - key: STRIPE_WEBHOOK_SECRET
+        sync: false # Sensitive - must be set manually in Render dashboard
+      - key: STRIPE_TEST_PRICE_ID
+        sync: false # Sensitive - must be set manually in Render dashboard
+      - key: CALENDAR_API_KEY
+        sync: false # Sensitive - must be set manually in Render dashboard
+    healthCheckPath: /health
+
+# База данных PostgreSQL
+databases:
+  - name: rozoom-ki-db
+    plan: starter # Используйте соответствующий тарифный план
+    databaseName: rozoom_ki_database
+    user: rozoom_ki_user
+    ipAllowList: # Опционально - ограничение доступа по IP
+      - source: 0.0.0.0/0
+        description: everywhere

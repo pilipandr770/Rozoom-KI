@@ -5,9 +5,21 @@ load_dotenv()
 
 class Config:
     SECRET_KEY = os.getenv('SECRET_KEY', 'dev')
-    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL') or 'sqlite:///dev.db'
+    
+    # SQLAlchemy настройки с поддержкой для SQLite (локально) и PostgreSQL (продакшен)
+    database_url = os.getenv('DATABASE_URL')
+    
+    # Исправляем URL для PostgreSQL, если он начинается с "postgres://" вместо "postgresql://"
+    # (Render.com иногда предоставляет такой формат)
+    if database_url and database_url.startswith('postgres://'):
+        database_url = database_url.replace('postgres://', 'postgresql://', 1)
+    
+    SQLALCHEMY_DATABASE_URI = database_url or 'sqlite:///dev.db'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     POSTGRES_SCHEMA = os.getenv('POSTGRES_SCHEMA', 'rozoom_ki_schema')
+    POSTGRES_SCHEMA_CLIENTS = os.getenv('POSTGRES_SCHEMA_CLIENTS', 'rozoom_ki_clients')
+    POSTGRES_SCHEMA_SHOP = os.getenv('POSTGRES_SCHEMA_SHOP', 'rozoom_ki_shop')
+    POSTGRES_SCHEMA_PROJECTS = os.getenv('POSTGRES_SCHEMA_PROJECTS', 'rozoom_ki_projects')
     OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
     
     # Babel settings for internationalization
