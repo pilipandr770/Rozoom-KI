@@ -11,6 +11,14 @@ python init_postgres_schemas.py
 echo "Исправление проблем с app/database.py..."
 python fix_app_database.py || echo "Продолжаем несмотря на ошибки в fix_app_database.py"
 
+# Исправляем проблемы с дублирующимися столбцами
+echo "Исправление проблем с дублирующимися столбцами..."
+python fix_duplicate_columns.py || echo "Продолжаем несмотря на ошибки в fix_duplicate_columns.py"
+
+# Исправляем проблемы с ревизией миграции
+echo "Исправление проблем с ревизией миграции..."
+python fix_revision_issue.py || echo "Продолжаем несмотря на ошибки в fix_revision_issue.py"
+
 # Используем прямую инициализацию базы данных
 echo "Прямая инициализация базы данных..."
 python direct_db_init.py
