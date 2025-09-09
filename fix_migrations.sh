@@ -19,10 +19,16 @@ echo "================================================="
 echo "1. Инициализация схем PostgreSQL"
 python init_postgres_schemas.py
 
-echo "2. Инициализация миграций с нуля"
+echo "2. Безопасное удаление всех таблиц с CASCADE"
+python drop_all_tables.py
+
+echo "3. Очистка таблицы alembic_version"
+python fix_migration_issue.py
+
+echo "4. Инициализация миграций с нуля"
 python init_migrations.py
 
-echo "3. Создание таблиц напрямую"
+echo "5. Создание таблиц напрямую (если миграции не сработали)"
 python setup_postgres_tables.py
 
 echo "4. Проверка состояния базы данных"

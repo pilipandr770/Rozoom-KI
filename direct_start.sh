@@ -7,6 +7,10 @@ set -e
 # Инициализируем схемы
 python init_postgres_schemas.py
 
+# Удаляем все существующие таблицы с CASCADE для чистого старта
+echo "Удаление всех существующих таблиц с CASCADE..."
+python drop_all_tables.py
+
 # Создаем таблицы напрямую
 python setup_postgres_tables.py
 
