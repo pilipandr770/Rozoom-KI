@@ -2,33 +2,32 @@
 import multiprocessing
 import os
 
-# Основные настройки
-bind = "0.0.0.0:10000"  # Render автоматически переназначает порт через $PORT, но здесь указываем дефолтный
-
-# Оптимизация для Render (512 MB памяти)
-# Используем минимальное количество воркеров для экономии памяти
+# Базові настройки
+bind = "0.0.0.0:10000"  # Render сам підставить PORT
 cpu_count = multiprocessing.cpu_count()
-workers = min(2, cpu_count)  # Максимум 2 воркера для экономии памяти
 
-worker_class = "gevent"  # Используем gevent для асинхронной обработки запросов
-timeout = 120  # Увеличиваем таймаут для долгих операций с API OpenAI
+# Воркер на потоках замість gevent, щоб уникнути проблем із SSL monkey-patch
+worker_class = "gthread"
+workers = min(2, cpu_count)         # небагато воркерів для економії пам'яті
+threads = 4                         # пара потоків на воркер — достатньо
+timeout = 120                       # щоб не обривати повільні запити до OpenAI
 keepalive = 5
 
-# Логирование
-accesslog = "-"  # Вывод логов в stdout для Render
+# Логування
+accesslog = "-"
 errorlog = "-"
 loglevel = "info"
 
-# Настройки для повышения производительности с учетом ограничений памяти
-worker_connections = 500  # Уменьшаем для экономии памяти
-max_requests = 500  # Уменьшаем для предотвращения утечек памяти
-max_requests_jitter = 25  # Предотвращение одновременного перезапуска всех воркеров
+# Ліміти/стабільність
+worker_connections = 100
+max_requests = 500
+max_requests_jitter = 25
 
-# Настройки безопасности
+# Безпека
 limit_request_line = 4096
 limit_request_fields = 100
 limit_request_field_size = 8190
 
-# Дополнительные настройки для экономии памяти
-preload_app = True  # Предварительная загрузка приложения для экономии памяти
-worker_tmp_dir = "/tmp"  # Использование tmp для временных файлов
+# ВАЖЛИВО: не pre-load з gthread це не критично, але краще лишити False для передбачуваності
+preload_app = False
+worker_tmp_dir = "/tmp"
