@@ -68,6 +68,13 @@ def test_database_connection():
         # Исправляем URL для PostgreSQL
         if database_url.startswith('postgres://'):
             database_url = database_url.replace('postgres://', 'postgresql://', 1)
+        
+        # Add SSL parameters for PostgreSQL connections (required for Render.com)
+        if 'postgresql://' in database_url:
+            if '?' not in database_url:
+                database_url += '?sslmode=require'
+            else:
+                database_url += '&sslmode=require'
 
         engine = create_engine(database_url)
         with engine.connect() as conn:

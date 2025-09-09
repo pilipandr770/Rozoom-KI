@@ -28,6 +28,13 @@ def init_postgres_schemas():
     if database_url.startswith('postgres://'):
         database_url = database_url.replace('postgres://', 'postgresql://', 1)
     
+    # Add SSL parameters for PostgreSQL connections (required for Render.com)
+    if 'postgresql://' in database_url:
+        if '?' not in database_url:
+            database_url += '?sslmode=require'
+        else:
+            database_url += '&sslmode=require'
+    
     print(f"Подключение к базе данных...")
     
     # Создаем движок SQLAlchemy

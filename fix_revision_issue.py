@@ -77,6 +77,17 @@ def clean_alembic_version():
             print("Ошибка: Переменная окружения DATABASE_URL не найдена")
             return False
         
+        # Исправляем URL для PostgreSQL, если он начинается с "postgres://" вместо "postgresql://"
+        if database_url.startswith('postgres://'):
+            database_url = database_url.replace('postgres://', 'postgresql://', 1)
+        
+        # Add SSL parameters for PostgreSQL connections (required for Render.com)
+        if 'postgresql://' in database_url:
+            if '?' not in database_url:
+                database_url += '?sslmode=require'
+            else:
+                database_url += '&sslmode=require'
+        
         # Создаем подключение к базе данных
         print("Подключение к базе данных...")
         engine = create_engine(database_url)
