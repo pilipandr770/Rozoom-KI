@@ -297,7 +297,8 @@ def system_status():
     status_info['openai'] = {
         'API_KEY_SET': openai_key != 'не установлена',
         'API_KEY_LENGTH': len(openai_key) if openai_key != 'не установлена' else 0,
-        'API_KEY_FORMAT': 'sk-proj-' if openai_key.startswith('sk-proj-') else 'sk-' if openai_key.startswith('sk-') else 'неизвестный' if openai_key != 'не установлена' else 'не установлен'
+        'API_KEY_FORMAT': 'sk-proj-' if openai_key.startswith('sk-proj-') else 'sk-' if openai_key.startswith('sk-') else 'неизвестный' if openai_key != 'не установлена' else 'не установлен',
+        'FALLBACK_ENABLED': os.getenv('OPENAI_FALLBACK_ENABLED', 'true').lower() in ('true', 'yes', '1')
     }
 
     # Почта

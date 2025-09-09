@@ -82,12 +82,104 @@ class OpenAIService:
             logger.error(f"Error type: {type(e)}")
             logger.error(f"Error details: {e.__dict__ if hasattr(e, '__dict__') else 'No details'}")
             return False, error_msg
+    def test_connection_with_proxy(self) -> tuple[bool, str]:
+        """
+        Тестирует подключение к OpenAI API через прокси (если настроен)
+        
+        Returns:
+            tuple: (успех, сообщение с деталями)
+        """
+        try:
+            import requests
+            
+            # Проверяем, есть ли прокси в переменных окружения
+            proxies = {}
+            if os.getenv('HTTP_PROXY'):
+                proxies['http'] = os.getenv('HTTP_PROXY')
+            if os.getenv('HTTPS_PROXY'):
+                proxies['https'] = os.getenv('HTTPS_PROXY')
+            
+            if not proxies:
+                return False, "Прокси не настроен"
+            
+            logger.info(f"Testing OpenAI API connection via proxy: {proxies}")
+            
+            # Тестируем подключение через requests с прокси
+            test_url = "https://api.openai.com/v1/models"
+            headers = {
+                "Authorization": f"Bearer {self.api_key}",
+                "Content-Type": "application/json"
+            }
+            
+            response = requests.get(test_url, headers=headers, proxies=proxies, timeout=10)
+            
+            if response.status_code == 200:
+                data = response.json()
+                model_count = len(data.get('data', []))
+                return True, f"Подключение через прокси успешно. Доступно моделей: {model_count}"
+            else:
+                return False, f"Ошибка HTTP {response.status_code}: {response.text[:100]}"
+                
         except Exception as e:
-            error_msg = f"Неожиданная ошибка: {str(e)}"
-            logger.error(f"Unexpected error testing OpenAI connection: {error_msg}")
-            logger.error(f"Error type: {type(e)}")
-            logger.error(f"Error details: {e.__dict__ if hasattr(e, '__dict__') else 'No details'}")
-            return False, error_msg
+            logger.error(f"Proxy connection test failed: {str(e)}")
+    def generate_blog_content_fallback(self, topic: str, keywords: str, language: str) -> Dict:
+        """
+        Fallback метод генерации контента без OpenAI API
+        
+        Args:
+            topic (str): Основная тема блога
+            keywords (str): Ключевые слова для SEO
+            language (str): Язык генерации ('en' или 'de')
+            
+        Returns:
+            Dict: Словарь с заголовком, содержанием и метаописанием
+        """
+        logger.warning(f"Using fallback content generation for topic: {topic}")
+        
+        lang_suffix = "English" if language == "en" else "German"
+        
+        # Генерируем простой контент
+        title = f"The Future of {topic} in {lang_suffix}"
+        content = f"""
+# {title}
+
+## Introduction
+
+{topic} is becoming increasingly important in today's digital landscape. With the rapid advancement of technology, understanding {keywords.replace(',', ' and ')} has never been more crucial.
+
+## Key Benefits
+
+Here are some key benefits of {topic}:
+
+- Improved efficiency and productivity
+- Better decision making with data-driven insights
+- Enhanced user experience and satisfaction
+- Cost optimization and resource management
+
+## Future Trends
+
+The future of {topic} looks promising with several emerging trends:
+
+1. **Artificial Intelligence Integration**: AI will play a crucial role in automating and optimizing {topic} processes.
+
+2. **Data Analytics**: Advanced analytics will provide deeper insights into {topic} performance and opportunities.
+
+3. **Cloud Computing**: Cloud-based solutions will make {topic} more accessible and scalable.
+
+## Conclusion
+
+{topic} represents a significant opportunity for businesses and individuals alike. By embracing these technologies and staying informed about the latest developments, you can position yourself for success in the digital age.
+
+*Keywords: {keywords}*
+"""
+        
+        meta_description = f"Learn about {topic} and how {keywords.replace(',', ' and ')} are transforming the industry. Discover key benefits and future trends."
+        
+        return {
+            "title": title,
+            "content": content,
+            "meta_description": meta_description
+        }
     
     def generate_blog_content(self, topic: str, keywords: str, language: str) -> Dict:
         """
@@ -107,7 +199,16 @@ class OpenAIService:
             # Тестируем подключение перед генерацией
             connection_ok, connection_message = self.test_connection()
             if not connection_ok:
-                raise Exception(f"Failed to connect to OpenAI API: {connection_message}")
+                logger.warning(f"OpenAI connection failed: {connection_message}")
+                
+                # Проверяем, включен ли fallback режим
+                use_fallback = os.getenv('OPENAI_FALLBACK_ENABLED', 'true').lower() in ('true', 'yes', '1')
+                
+                if use_fallback:
+                    logger.info("Switching to fallback content generation")
+                    return self.generate_blog_content_fallback(topic, keywords, language)
+                else:
+                    raise Exception(f"Failed to connect to OpenAI API: {connection_message}")
             
             lang_prompt = "English" if language == "en" else "German"
             
