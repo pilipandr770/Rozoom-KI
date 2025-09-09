@@ -51,6 +51,25 @@ def create_schedule():
         frequency = request.form.get('frequency')
         category_id = request.form.get('category_id', type=int)
         
+        # Определяем автора - если это AdminUser, найдем соответствующего User
+        from app.auth import AdminUser
+        from app.models import User
+        
+        if isinstance(current_user, AdminUser):
+            # Ищем User с таким же email как у AdminUser
+            author = User.query.filter_by(email=current_user.email).first()
+            if not author:
+                # Создаем User на основе AdminUser
+                author = User(
+                    email=current_user.email,
+                    name=current_user.username,
+                    is_admin=True
+                )
+                db.session.add(author)
+                db.session.flush()  # Получаем ID без коммита
+        else:
+            author = current_user
+        
         # Создаем новое расписание
         schedule = ContentSchedule(
             name=name,
@@ -59,7 +78,7 @@ def create_schedule():
             keywords=keywords,
             frequency=PublishFrequency(frequency),
             category_id=category_id,
-            author_id=current_user.id,
+            author_id=author.id,
             next_generation_date=datetime.utcnow()  # Установим текущую дату, чтобы первая генерация произошла сразу
         )
         
