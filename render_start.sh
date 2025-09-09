@@ -6,6 +6,9 @@ set -e  # Выход при любой ошибке
 echo "Инициализация схем PostgreSQL..."
 python init_postgres_schemas.py
 
+echo "Исправление проблем с app/database.py..."
+python fix_app_database.py || echo "Продолжаем несмотря на ошибки в fix_app_database.py"
+
 echo "Проверка и инициализация миграций базы данных..."
 
 # Пытаемся сначала инициализировать миграции с нуля
@@ -15,8 +18,18 @@ if ! python init_migrations.py; then
     python simple_create_tables.py
     
     if [ $? -ne 0 ]; then
-        echo "КРИТИЧЕСКАЯ ОШИБКА: Не удалось создать таблицы!"
-        exit 1
+        echo "Попытка использования альтернативного метода инициализации базы данных..."
+        python direct_db_init.py
+        
+        if [ $? -ne 0 ]; then
+            echo "Попытка исправления проблем с инициализацией базы данных..."
+            python fix_db_init.py
+            
+            if [ $? -ne 0 ]; then
+                echo "КРИТИЧЕСКАЯ ОШИБКА: Не удалось создать таблицы!"
+                exit 1
+            fi
+        fi
     fi
 fi
 

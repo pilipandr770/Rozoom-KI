@@ -7,6 +7,10 @@ set -e
 # Инициализируем схемы
 python init_postgres_schemas.py
 
+# Исправляем проблемы с app/database.py
+echo "Исправление проблем с app/database.py..."
+python fix_app_database.py || echo "Продолжаем несмотря на ошибки в fix_app_database.py"
+
 # Используем прямую инициализацию базы данных
 echo "Прямая инициализация базы данных..."
 python direct_db_init.py

@@ -64,16 +64,24 @@ def include_object(object, name, type_, reflected, compare_to):
 
 
 def process_revision_directives(context, revision, directives):
-    """Настраивает генерацию скриптов миграции, включая опцию CASCADE"""
+    """Настраивает генерацию скриптов миграции, включая опцию CASCADE и обработку ENUM типов"""
     # Для каждой операции DROP TABLE добавляем опцию cascade=True
     if directives and len(directives) > 0:
         script = directives[0]
         if hasattr(script, 'ops'):
-            for op in script.ops:
+            # Создаем список операций для удаления
+            ops_to_remove = []
+            
+            for i, op in enumerate(script.ops):
                 # Проверяем, является ли операция DropTableOp
                 if hasattr(op, 'table_name') and op.__class__.__name__ == 'DropTableOp':
                     # Добавляем опцию CASCADE
                     op.kw['cascade'] = True
+                    
+                # Проверяем операции создания ENUM типов для предотвращения дублирования
+                if getattr(op, '__class__', None) and op.__class__.__name__ == 'CreateEnumOp':
+                    # Добавляем проверку if not exists для ENUM типов
+                    op.kw['if_not_exists'] = True
 
 
 def run_migrations_online():
