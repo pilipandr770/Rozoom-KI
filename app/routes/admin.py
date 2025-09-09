@@ -41,6 +41,11 @@ def logout():
 @login_required
 def dashboard():
     """Admin dashboard."""
+    # Check if user is admin
+    if not current_user.is_admin:
+        flash('Access denied. Admin privileges required.', 'danger')
+        return redirect(url_for('main.index'))
+        
     from sqlalchemy import func
     
     # Basic counts
@@ -87,6 +92,11 @@ def dashboard():
 @login_required
 def blog_posts():
     """List all blog posts."""
+    # Check if user is admin
+    if not current_user.is_admin:
+        flash('Access denied. Admin privileges required.', 'danger')
+        return redirect(url_for('admin.dashboard'))
+        
     page = request.args.get('page', 1, type=int)
     posts = BlogPost.query.order_by(BlogPost.created_at.desc()).paginate(
         page=page, per_page=10, error_out=False
@@ -97,6 +107,11 @@ def blog_posts():
 @login_required
 def create_post():
     """Create a new blog post."""
+    # Check if user is admin
+    if not current_user.is_admin:
+        flash('Access denied. Admin privileges required.', 'danger')
+        return redirect(url_for('admin.dashboard'))
+        
     if request.method == 'POST':
         title = request.form.get('title')
         content = request.form.get('content')
@@ -141,6 +156,11 @@ def create_post():
 @login_required
 def edit_post(id):
     """Edit a blog post."""
+    # Check if user is admin
+    if not current_user.is_admin:
+        flash('Access denied. Admin privileges required.', 'danger')
+        return redirect(url_for('admin.dashboard'))
+        
     post = BlogPost.query.get_or_404(id)
     
     if request.method == 'POST':
@@ -173,6 +193,11 @@ def edit_post(id):
 @login_required
 def delete_post(id):
     """Delete a blog post."""
+    # Check if user is admin
+    if not current_user.is_admin:
+        flash('Access denied. Admin privileges required.', 'danger')
+        return redirect(url_for('admin.dashboard'))
+        
     # Разрешаем оба метода, но обрабатываем их по-разному
     if request.method == 'GET':
         flash('Для удаления поста используйте кнопку удаления на странице списка постов.', 'info')
@@ -228,6 +253,11 @@ def delete_post(id):
 @login_required
 def blog_categories():
     """List all blog categories."""
+    # Check if user is admin
+    if not current_user.is_admin:
+        flash('Access denied. Admin privileges required.', 'danger')
+        return redirect(url_for('admin.dashboard'))
+        
     categories = BlogCategory.query.all()
     return render_template('admin/blog_categories.html', categories=categories)
 
@@ -235,6 +265,11 @@ def blog_categories():
 @login_required
 def create_category():
     """Create a new blog category."""
+    # Check if user is admin
+    if not current_user.is_admin:
+        flash('Access denied. Admin privileges required.', 'danger')
+        return redirect(url_for('admin.dashboard'))
+        
     if request.method == 'POST':
         name = request.form.get('name')
         slug = request.form.get('slug')
@@ -253,6 +288,11 @@ def create_category():
 @login_required
 def edit_category(id):
     """Edit a blog category."""
+    # Check if user is admin
+    if not current_user.is_admin:
+        flash('Access denied. Admin privileges required.', 'danger')
+        return redirect(url_for('admin.dashboard'))
+        
     category = BlogCategory.query.get_or_404(id)
     
     if request.method == 'POST':
@@ -271,6 +311,11 @@ def edit_category(id):
 @login_required
 def blog_tags():
     """List all blog tags."""
+    # Check if user is admin
+    if not current_user.is_admin:
+        flash('Access denied. Admin privileges required.', 'danger')
+        return redirect(url_for('admin.dashboard'))
+        
     tags = BlogTag.query.all()
     return render_template('admin/blog_tags.html', tags=tags)
 
@@ -278,6 +323,11 @@ def blog_tags():
 @login_required
 def create_tag():
     """Create a new blog tag."""
+    # Check if user is admin
+    if not current_user.is_admin:
+        flash('Access denied. Admin privileges required.', 'danger')
+        return redirect(url_for('admin.dashboard'))
+        
     if request.method == 'POST':
         name = request.form.get('name')
         slug = request.form.get('slug')
@@ -295,6 +345,11 @@ def create_tag():
 @login_required
 def export_blog_json():
     """Export blog data as JSON."""
+    # Check if user is admin
+    if not current_user.is_admin:
+        flash('Access denied. Admin privileges required.', 'danger')
+        return redirect(url_for('admin.dashboard'))
+        
     # Custom JSON serializer for datetime objects
     def json_serial(obj):
         if isinstance(obj, datetime):
@@ -349,6 +404,11 @@ def export_blog_json():
 @login_required
 def import_blog_json():
     """Import blog data from JSON."""
+    # Check if user is admin
+    if not current_user.is_admin:
+        flash('Access denied. Admin privileges required.', 'danger')
+        return redirect(url_for('admin.dashboard'))
+        
     if request.method == 'POST':
         # Check if a file was uploaded
         if 'import_file' not in request.files:
@@ -438,6 +498,11 @@ def import_blog_json():
 @login_required
 def edit_tag(id):
     """Edit a blog tag."""
+    # Check if user is admin
+    if not current_user.is_admin:
+        flash('Access denied. Admin privileges required.', 'danger')
+        return redirect(url_for('admin.dashboard'))
+        
     tag = BlogTag.query.get_or_404(id)
     
     if request.method == 'POST':
@@ -455,6 +520,11 @@ def edit_tag(id):
 @login_required
 def delete_tag(id):
     """Delete a blog tag."""
+    # Check if user is admin
+    if not current_user.is_admin:
+        flash('Access denied. Admin privileges required.', 'danger')
+        return redirect(url_for('admin.dashboard'))
+        
     tag = BlogTag.query.get_or_404(id)
     db.session.delete(tag)
     db.session.commit()
