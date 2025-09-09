@@ -106,8 +106,37 @@ class ContentSchedulerService:
                 topic=schedule.topic_area
             )
             
-            # Генерируем изображение
-            image_url = openai_service.generate_image(image_prompt)
+            # Генерируем изображение (получаем временный URL от OpenAI или уже локальный путь)
+            image_path = openai_service.generate_image(image_prompt)
+            local_image_path = None
+            original_url = None
+            
+            if image_path:
+                # Проверяем, если путь начинается с http, значит это URL от OpenAI
+                if image_path.startswith('http'):
+                    original_url = image_path  # Запоминаем оригинальный URL
+                    
+                    # Если у нас уже есть ID для generated_content, используем его для именования файла
+                    from app.utils.image_utils import download_and_save_image
+                    
+                    # Нужно сохранить запись, чтобы получить ID для именования файла
+                    db.session.flush()  # Flush, чтобы получить ID, но не коммитим пока
+                    
+                    # Загружаем изображение с ID контента
+                    success, local_path, error_msg = download_and_save_image(
+                        image_url=image_path,
+                        entity_id=generated_content.id,
+                        entity_type='content',
+                        delete_old=True  # Удаляем старые изображения для этого контента
+                    )
+                    
+                    if success:
+                        local_image_path = local_path
+                    else:
+                        logger.error(f"Failed to save image: {error_msg}")
+                else:
+                    # Если путь не начинается с http, значит это уже локальный путь
+                    local_image_path = image_path
             
             # Обновляем запись сгенерированного контента
             generated_content.title_en = en_content['title']
@@ -118,11 +147,12 @@ class ContentSchedulerService:
             generated_content.meta_description_en = clean_icons_from_content(en_content.get('meta_description', ''))
             generated_content.meta_description_de = clean_icons_from_content(de_content.get('meta_description', ''))
             generated_content.image_prompt = image_prompt
-            generated_content.image_url = image_url
+            generated_content.image_url = local_image_path  # Сохраняем локальный путь к изображению
+            generated_content.original_image_url = original_url  # Сохраняем оригинальный URL (если был)
             generated_content.keywords = schedule.keywords
-            generated_content.status = ContentStatus.PUBLISHED if image_url else ContentStatus.FAILED
-            if not image_url:
-                generated_content.error_message = "Failed to generate image"
+            generated_content.status = ContentStatus.PUBLISHED if local_image_path else ContentStatus.FAILED
+            if not local_image_path:
+                generated_content.error_message = "Failed to generate or save image"
             
             db.session.commit()
             

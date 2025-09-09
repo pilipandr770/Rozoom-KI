@@ -154,6 +154,43 @@
     </div>
   </div>
 
+  <!-- Раздел с изображениями -->
+  <div class="row mt-3">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h5 class="card-title mb-0">🖼️ Сохраненные изображения</h5>
+          {% if status_info.images %}
+            <span class="badge bg-primary">{{ status_info.images.count }}</span>
+          {% endif %}
+        </div>
+        <div class="card-body">
+          {% if status_info.images and status_info.images.files %}
+            <div class="row">
+              {% for img in status_info.images.files %}
+              <div class="col-md-3 mb-4">
+                <div class="card h-100">
+                  <img src="{{ img.path }}" class="card-img-top" alt="Сохраненное изображение">
+                  <div class="card-body small">
+                    <p class="card-text mb-1"><small>Имя файла: {{ img.name }}</small></p>
+                    <p class="card-text mb-1"><small>Размер: {{ img.size }}</small></p>
+                    <p class="card-text mb-1"><small>Дата: {{ img.date }}</small></p>
+                    {% if img.entity_info %}
+                    <p class="card-text text-muted"><small>{{ img.entity_info }}</small></p>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          {% else %}
+            <div class="alert alert-info">Нет сохраненных изображений</div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="row mt-3">
     <div class="col-md-12">
       <div class="card">

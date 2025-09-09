@@ -1,10 +1,10 @@
 {% macro language_switcher() %}
 <div class="language-switcher">
   <div class="language-buttons">
-    <a class="lang-button {% if g.locale == 'en' %}active{% endif %}" href="{{ url_for('lang.set_language', lang='en', next=request.url) }}" title="English">
+    <a class="lang-button {% if g.locale == 'en' %}active{% endif %}" href="{{ url_for('lang.set_language', lang='en', next=request.url) }}" title="English" data-lang="en">
       <span class="lang-code">EN</span>
     </a>
-    <a class="lang-button {% if g.locale == 'de' %}active{% endif %}" href="{{ url_for('lang.set_language', lang='de', next=request.url) }}" title="Deutsch">
+    <a class="lang-button {% if g.locale == 'de' %}active{% endif %}" href="{{ url_for('lang.set_language', lang='de', next=request.url) }}" title="Deutsch" data-lang="de">
       <span class="lang-code">DE</span>
     </a>
   </div>

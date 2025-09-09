@@ -19,7 +19,8 @@ class BlogPost(db.Model):
     slug = db.Column(db.String(255), unique=True, nullable=False)
     content = db.Column(db.Text)
     excerpt = db.Column(db.Text)
-    image_url = db.Column(db.String(500))
+    image_url = db.Column(db.String(500))  # Локальный путь к сохраненному изображению
+    original_image_url = db.Column(db.String(500))  # Оригинальный URL от OpenAI (временный)
     published = db.Column(db.Boolean, default=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)

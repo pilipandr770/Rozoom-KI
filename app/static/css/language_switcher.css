@@ -84,6 +84,22 @@
   border-radius: 2px;
 }
 
+/* Стили для переключения языков контента */
+.lang-en, .lang-de {
+  display: inline-block;
+  transition: opacity 0.3s ease-in-out;
+}
+
+html[lang="en"] .lang-de,
+[data-lang="en"] .lang-de {
+  display: none;
+}
+
+html[lang="de"] .lang-en,
+[data-lang="de"] .lang-en {
+  display: none;
+}
+
 /* Responsive adjustments */
 @media (max-width: 767px) {
   .language-switcher {

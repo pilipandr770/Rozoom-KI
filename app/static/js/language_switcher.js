@@ -40,6 +40,11 @@ function initLanguageSwitcher() {
                     langButtons.forEach(btn => btn.classList.remove('active'));
                     this.classList.add('active');
                     
+                    // Устанавливаем атрибут data-lang на html элементе
+                    const lang = this.getAttribute('data-lang') || 'en';
+                    document.documentElement.setAttribute('data-lang', lang);
+                    document.documentElement.setAttribute('lang', lang);
+                    
                     // Перезагружаем страницу для применения изменений
                     location.reload();
                 }

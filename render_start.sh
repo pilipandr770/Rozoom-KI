@@ -8,6 +8,21 @@ echo "Текущая дата: $(date)"
 echo "Python версия: $(python --version)"
 echo "Pip версия: $(pip --version)"
 
+# Настраиваем хранилище для изображений с использованием скрипта
+echo "Настраиваем хранилище для изображений..."
+if python setup_render_storage.py; then
+    echo "✅ Хранилище изображений настроено"
+else
+    echo "⚠️ Ошибка при настройке хранилища изображений. Создаем базовые директории..."
+    if [ -n "$RENDER_PERSISTENT_DIR" ]; then
+        mkdir -p "$RENDER_PERSISTENT_DIR/static/img/blog"
+        echo "✅ Хранилище изображений создано в: $RENDER_PERSISTENT_DIR/static/img"
+    else
+        mkdir -p "app/static/img/blog"
+        echo "⚠️ RENDER_PERSISTENT_DIR не установлен. Изображения будут храниться во временной файловой системе."
+    fi
+fi
+
 # Проверяем наличие необходимых файлов
 echo "Проверка наличия необходимых файлов..."
 if [ ! -f "run.py" ]; then
@@ -75,6 +90,59 @@ echo "Очистка памяти..."
 python -c "import gc; gc.collect()"
 
 echo "Проверка и инициализация миграций базы данных..."
+
+# Проверяем и запускаем миграцию для обновления структуры БД с новыми полями для хранения оригинальных URL изображений
+echo "Проверка миграции для изображений блога..."
+if python -c "
+import sys
+try:
+    # Проверяем наличие колонок для хранения оригинальных URL изображений
+    import os
+    from app.models.blog import BlogPost
+    from app.models.content_generation import GeneratedContent
+    from sqlalchemy import inspect, create_engine
+    from sqlalchemy.orm import sessionmaker
+    
+    # Получаем URL базы данных из переменной окружения
+    database_url = os.environ.get('DATABASE_URL')
+    
+    # Исправляем URL для PostgreSQL, если необходимо
+    if database_url and database_url.startswith('postgres://'):
+        database_url = database_url.replace('postgres://', 'postgresql://', 1)
+    
+    # Используем SQLite, если нет PostgreSQL URL
+    database_url = database_url or 'sqlite:///app/dev.db'
+    
+    # Создаем соединение с базой данных
+    engine = create_engine(database_url)
+    inspector = inspect(engine)
+    
+    # Проверяем наличие колонки original_image_url в таблицах
+    blog_columns = [col['name'] for col in inspector.get_columns('blog_posts')]
+    content_columns = [col['name'] for col in inspector.get_columns('generated_content')]
+    
+    has_blog_original = 'original_image_url' in blog_columns
+    has_content_original = 'original_image_url' in content_columns
+    
+    if not has_blog_original or not has_content_original:
+        print(f'✅ Требуется миграция. blog_posts: {has_blog_original}, generated_content: {has_content_original}')
+        sys.exit(1)
+    else:
+        print('✅ Колонки для хранения оригинальных URL изображений уже существуют.')
+        sys.exit(0)
+except Exception as e:
+    print(f'⚠️ Ошибка при проверке колонок: {str(e)}')
+    sys.exit(1)
+"; then
+    echo "✅ Структура БД для изображений актуальна"
+else
+    echo "⚠️ Запускаем миграцию для обновления структуры БД..."
+    if python migrate_images.py; then
+        echo "✅ Миграция изображений успешно выполнена"
+    else
+        echo "⚠️ Ошибка при миграции изображений, продолжаем..."
+    fi
+fi
 
 # Пытаемся сначала инициализировать миграции с нуля
 echo "Инициализация миграций с поддержкой CASCADE..."

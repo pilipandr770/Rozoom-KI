@@ -292,13 +292,14 @@ The future of {topic} looks promising with several emerging trends:
     
     def generate_image(self, prompt: str) -> Optional[str]:
         """
-        Генерирует изображение на основе промпта с использованием DALL-E
+        Генерирует изображение на основе промпта с использованием DALL-E,
+        загружает его и сохраняет локально
         
         Args:
             prompt (str): Описание для генерации изображения
             
         Returns:
-            Optional[str]: URL сгенерированного изображения или None при ошибке
+            Optional[str]: Локальный путь к сохраненному изображению или None при ошибке
         """
         try:
             response = openai.images.generate(
@@ -309,10 +310,26 @@ The future of {topic} looks promising with several emerging trends:
                 n=1
             )
             
-            # Получаем URL изображения
-            image_url = response.data[0].url
+            # Получаем временный URL изображения от OpenAI
+            temp_image_url = response.data[0].url
             
-            return image_url
+            # Импортируем здесь, чтобы избежать циклических импортов
+            from app.utils.image_utils import download_and_save_image
+            
+            # Загружаем и сохраняем изображение локально
+            # Здесь entity_id и entity_type будут None, так как мы еще не знаем,
+            # для какой сущности генерируется изображение
+            success, local_path, error_msg = download_and_save_image(
+                image_url=temp_image_url,
+                delete_old=False  # Не удаляем старые изображения при создании нового
+            )
+            
+            if success:
+                logger.info(f"Image successfully saved at {local_path}")
+                return local_path
+            else:
+                logger.error(f"Failed to save image: {error_msg}")
+                return None
             
         except APIConnectionError as e:
             logger.error(f"OpenAI connection error during image generation: {str(e)}")
