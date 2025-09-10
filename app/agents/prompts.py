@@ -454,7 +454,7 @@ Your answers should be technically sound, but still understandable for non-techn
     
     return prompts.get(lang, prompts['de'])
 
-# Определяем функцию get_system_prompt
+# Определяем недостающие функции
 def get_system_prompt(lang='de'):
     """
     Возвращает системный промпт
@@ -469,6 +469,40 @@ def get_system_prompt(lang='de'):
         'de': """Du bist ein KI-Assistent für die Rozoom-KI Website. Deine Hauptaufgabe ist es, Besuchern zu helfen, Fragen zu beantworten und sie durch die Website zu führen.""",
         'ru': """Ты ИИ-ассистент для сайта Rozoom-KI. Твоя основная задача - помогать посетителям, отвечать на вопросы и направлять их по сайту.""",
         'en': """You are an AI assistant for the Rozoom-KI website. Your main task is to help visitors, answer questions, and guide them through the website."""
+    }
+    return prompts.get(lang, prompts['de'])
+
+def get_completion_prompt(lang='de'):
+    """
+    Возвращает промпт для завершающего ассистента
+    
+    Args:
+        lang: Код языка ('de', 'ru', 'en')
+        
+    Returns:
+        str: Промпт на указанном языке
+    """
+    prompts = {
+        'de': """Du bist ein Abschlussassistent für die Rozoom-KI Website. Deine Aufgabe ist es, Besuchern zu helfen, den Prozess abzuschließen.""",
+        'ru': """Ты ассистент по завершению для сайта Rozoom-KI. Твоя задача - помогать посетителям завершать процесс.""",
+        'en': """You are a completion assistant for the Rozoom-KI website. Your task is to help visitors complete the process."""
+    }
+    return prompts.get(lang, prompts['de'])
+
+def get_portfolio_prompt(lang='de'):
+    """
+    Возвращает промпт для ассистента по портфолио
+    
+    Args:
+        lang: Код языка ('de', 'ru', 'en')
+        
+    Returns:
+        str: Промпт на указанном языке
+    """
+    prompts = {
+        'de': """Du bist ein Portfolio-Assistent für die Rozoom-KI Website. Deine Aufgabe ist es, Besuchern Informationen über unsere früheren Projekte zu geben.""",
+        'ru': """Ты ассистент по портфолио для сайта Rozoom-KI. Твоя задача - предоставлять посетителям информацию о наших предыдущих проектах.""",
+        'en': """You are a portfolio assistant for the Rozoom-KI website. Your task is to provide visitors with information about our previous projects."""
     }
     return prompts.get(lang, prompts['de'])
 
