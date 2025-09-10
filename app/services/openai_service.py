@@ -138,16 +138,16 @@ class OpenAIService:
         
         lang_suffix = "English" if language == "en" else "German"
         
-        # Генерируем простой контент
+        # Генерируем простой контент в человеческом стиле (без Markdown)
         title = f"The Future of {topic} in {lang_suffix}"
         content = f"""
-# {title}
+The Future of {topic} in {lang_suffix}
 
-## Introduction
+Introduction
 
 {topic} is becoming increasingly important in today's digital landscape. With the rapid advancement of technology, understanding {keywords.replace(',', ' and ')} has never been more crucial.
 
-## Key Benefits
+Key Benefits
 
 Here are some key benefits of {topic}:
 
@@ -156,21 +156,21 @@ Here are some key benefits of {topic}:
 - Enhanced user experience and satisfaction
 - Cost optimization and resource management
 
-## Future Trends
+Future Trends
 
 The future of {topic} looks promising with several emerging trends:
 
-1. **Artificial Intelligence Integration**: AI will play a crucial role in automating and optimizing {topic} processes.
+1. Artificial Intelligence Integration: AI will play a crucial role in automating and optimizing {topic} processes.
 
-2. **Data Analytics**: Advanced analytics will provide deeper insights into {topic} performance and opportunities.
+2. Data Analytics: Advanced analytics will provide deeper insights into {topic} performance and opportunities.
 
-3. **Cloud Computing**: Cloud-based solutions will make {topic} more accessible and scalable.
+3. Cloud Computing: Cloud-based solutions will make {topic} more accessible and scalable.
 
-## Conclusion
+Conclusion
 
 {topic} represents a significant opportunity for businesses and individuals alike. By embracing these technologies and staying informed about the latest developments, you can position yourself for success in the digital age.
 
-*Keywords: {keywords}*
+Keywords: {keywords}
 """
         
         meta_description = f"Learn about {topic} and how {keywords.replace(',', ' and ')} are transforming the industry. Discover key benefits and future trends."
@@ -216,8 +216,14 @@ The future of {topic} looks promising with several emerging trends:
             You are a professional blog writer for a tech company focusing on AI solutions. 
             Write a well-structured, informative blog post in {lang_prompt}.
             The content should be engaging, include real-world examples, and be SEO optimized.
-            Format the content with proper Markdown headings, paragraphs, bullet points, and highlight key concepts.
-            DO NOT use any icons, Font Awesome, or HTML elements like <i class="fa..."></i> in your content.
+            
+            IMPORTANT FORMATTING REQUIREMENTS:
+            1. DO NOT use Markdown formatting like ## for headings or ** for bold text
+            2. Write headings as plain text followed by a line break
+            3. Use simple paragraphs with line breaks between them
+            4. For lists, use simple dashes (-) or plain numbering (1. 2. etc.) without emphasis
+            5. DO NOT use any icons, Font Awesome, or HTML elements
+            
             Include a compelling title that would attract clicks.
             Include a meta description for SEO purposes (150-160 characters).
             """
@@ -230,17 +236,23 @@ The future of {topic} looks promising with several emerging trends:
             The blog post should:
             1. Have a catchy, SEO-friendly title
             2. Include an introduction that engages the reader
-            3. Have 3-5 main sections with headings
+            3. Have 3-5 main sections with headings (written as plain text, NOT with ## or other Markdown)
             4. Include practical examples or case studies
             5. End with a conclusion and call-to-action
             6. Be between 800-1200 words
-            7. IMPORTANT: DO NOT use any Font Awesome icons or HTML tags for icons (like <i class="fa..."></i>)
-            8. DO NOT include any icons next to headings, titles, or author names
+            
+            CRITICAL FORMATTING INSTRUCTIONS:
+            - Write in a natural, human-like style
+            - DO NOT use Markdown formatting like ## for headings or ** for bold text
+            - Format headings as plain text followed by a line break
+            - Separate paragraphs with a single line break
+            - For lists, use simple dashes (-) or numbers without any special formatting
+            - DO NOT use any Font Awesome icons or HTML tags
             
             Respond with a JSON object with the following structure:
             {{
                 "title": "Your generated title here",
-                "content": "The full blog post content in Markdown",
+                "content": "The full blog post content in plain text with line breaks for paragraphs",
                 "meta_description": "SEO-optimized meta description"
             }}
             """

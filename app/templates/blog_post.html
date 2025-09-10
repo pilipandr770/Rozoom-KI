@@ -12,19 +12,7 @@
       <span class="post-date">{{ post.created_at.strftime('%B %d, %Y') }}</span>
     </div>
     <h1 class="post-title">{{ post.title }}</h1>
-    <div class="post-author">
-      {% if post.author_image %}
-        <img src="{{ post.author_image }}" alt="{{ post.author }}" class="author-image">
-      {% else %}
-        <img src="{{ url_for('static', filename='img/blog/default-author.jpg') }}" alt="{{ post.author }}" class="author-image">
-      {% endif %}
-      <div class="author-info">
-        <span class="author-name">{{ post.author }}</span>
-        {% if post.author_title %}
-          <span class="author-title">{{ post.author_title }}</span>
-        {% endif %}
-      </div>
-    </div>
+    <!-- Информация об авторе удалена для лучшего вида страницы -->
   </div>
   
   <div class="blog-post-content">
