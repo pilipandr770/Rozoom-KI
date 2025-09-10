@@ -406,10 +406,9 @@ def route_and_respond(message: str, metadata: Dict) -> Dict:
                     'phone': user_phone
                 }
                 
-                # Generate the message but queue it instead of sending directly
-                message_content = send_tech_spec_notification(tech_spec_data, contact_info, return_message_only=True)
-                queue_telegram_message(message_content)
-                current_app.logger.info(f"Technical specification notification queued for {user_email}")
+                # Send notification directly instead of queuing
+                send_tech_spec_notification(tech_spec_data, contact_info)
+                current_app.logger.info(f"Technical specification notification SENT for {user_email}")
             except Exception as e:
                 current_app.logger.error(f"Failed to send Telegram notification: {str(e)}")
             
