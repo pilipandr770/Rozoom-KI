@@ -454,6 +454,24 @@ Your answers should be technically sound, but still understandable for non-techn
     
     return prompts.get(lang, prompts['de'])
 
+# Определяем функцию get_system_prompt
+def get_system_prompt(lang='de'):
+    """
+    Возвращает системный промпт
+    
+    Args:
+        lang: Код языка ('de', 'ru', 'en')
+        
+    Returns:
+        str: Системный промпт на указанном языке
+    """
+    prompts = {
+        'de': """Du bist ein KI-Assistent für die Rozoom-KI Website. Deine Hauptaufgabe ist es, Besuchern zu helfen, Fragen zu beantworten und sie durch die Website zu führen.""",
+        'ru': """Ты ИИ-ассистент для сайта Rozoom-KI. Твоя основная задача - помогать посетителям, отвечать на вопросы и направлять их по сайту.""",
+        'en': """You are an AI assistant for the Rozoom-KI website. Your main task is to help visitors, answer questions, and guide them through the website."""
+    }
+    return prompts.get(lang, prompts['de'])
+
 # Алиасы для обеспечения обратной совместимости
 # controller.py использует create_* вместо get_*
 create_system_prompt = get_system_prompt
