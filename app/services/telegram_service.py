@@ -119,16 +119,17 @@ def send_telegram_message(message: str, max_retries: int = 3) -> bool:
     
     return False
 
-def send_tech_spec_notification(tech_spec_data: Dict[str, Any], contact_info: Optional[Dict[str, str]] = None) -> bool:
+def send_tech_spec_notification(tech_spec_data: Dict[str, Any], contact_info: Optional[Dict[str, str]] = None, return_message_only: bool = False) -> bool:
     """
     Send a notification about a new technical specification submission.
     
     Args:
         tech_spec_data (Dict[str, Any]): The technical specification data
         contact_info (Optional[Dict[str, str]]): Dictionary containing name, email, and phone
+        return_message_only (bool): If True, returns the message string instead of sending it
         
     Returns:
-        bool: True if the message was sent successfully, False otherwise
+        bool or str: True if the message was sent successfully, or the message content if return_message_only=True
     """
     # Format the technical specification data into a readable message
     message = "<b>🔔 New Technical Specification Submitted</b>\n\n"
@@ -192,6 +193,11 @@ def send_tech_spec_notification(tech_spec_data: Dict[str, Any], contact_info: Op
     message += f"<b>═════════════════════════════════════════</b>\n"
     message += f"<i>Submitted at: {timestamp}</i>"
     
+    # If only returning the message content, do so now
+    if return_message_only:
+        return message
+        
+    # Otherwise send the message
     return send_telegram_message(message)
 
 def send_contact_form_notification(form_data: Dict[str, str]) -> bool:

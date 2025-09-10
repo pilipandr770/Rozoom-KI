@@ -360,7 +360,9 @@ def route_and_respond(message: str, metadata: Dict) -> Dict:
             
             # Send notification via Telegram
             try:
-                from ..services import send_tech_spec_notification
+                # Use the queue system for tech spec notifications
+                from app.utils.telegram_queue import queue_telegram_message
+                from app.services.telegram_service import send_tech_spec_notification
                 
                 # Prepare data for notification
                 tech_spec_data = {
@@ -404,8 +406,10 @@ def route_and_respond(message: str, metadata: Dict) -> Dict:
                     'phone': user_phone
                 }
                 
-                # Send the notification
-                send_tech_spec_notification(tech_spec_data, contact_info)
+                # Generate the message but queue it instead of sending directly
+                message_content = send_tech_spec_notification(tech_spec_data, contact_info, return_message_only=True)
+                queue_telegram_message(message_content)
+                current_app.logger.info(f"Technical specification notification queued for {user_email}")
             except Exception as e:
                 current_app.logger.error(f"Failed to send Telegram notification: {str(e)}")
             
