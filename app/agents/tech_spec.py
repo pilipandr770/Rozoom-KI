@@ -42,6 +42,14 @@ class TechSpecTemplate:
                         'Do you have a specific budget range in mind?',
                         'Are there any critical deadlines we should be aware of?'
                     ]
+                },
+                {
+                    'title': 'Contact Information',
+                    'questions': [
+                        'What is your name?',
+                        'What is your email address?',
+                        'What is your phone number? (optional)'
+                    ]
                 }
             ],
             'de': [
@@ -75,6 +83,14 @@ class TechSpecTemplate:
                         'Was ist Ihr erwarteter Zeitrahmen für dieses Projekt?',
                         'Haben Sie einen bestimmten Budgetrahmen im Sinn?',
                         'Gibt es kritische Fristen, die wir beachten sollten?'
+                    ]
+                },
+                {
+                    'title': 'Kontaktinformationen',
+                    'questions': [
+                        'Wie heißen Sie?',
+                        'Wie lautet Ihre E-Mail-Adresse?',
+                        'Wie ist Ihre Telefonnummer? (optional)'
                     ]
                 }
             ]

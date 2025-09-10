@@ -51,6 +51,7 @@
   <div class="contact-form-container">
     <h2>{{ _('Send Us a Message') }}</h2>
     <form method="post" action="/contact" class="contact-form">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
       {% if success %}
       <div class="form-success">
         <span class="emoji-icon">✅</span>

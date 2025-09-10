@@ -358,12 +358,60 @@ def route_and_respond(message: str, metadata: Dict) -> Dict:
             if metadata.get('language') == 'de':
                 thank_message = "Vielen Dank für Ihre Anfrage! Unser Team wird Ihre Anforderungen prüfen und sich in Kürze bei Ihnen melden."
             
+            # Send notification via Telegram
+            try:
+                from ..services import send_tech_spec_notification
+                
+                # Prepare data for notification
+                tech_spec_data = {
+                    'answers': []
+                }
+                
+                # Format each question-answer pair
+                template = TechSpecTemplate(metadata.get('language', 'en'))
+                answers = metadata.get('tech_spec_answers', [])
+                
+                # Extract contact information from the answers
+                user_name = None
+                user_email = None
+                user_phone = None
+                
+                # Last section should be Contact Information
+                contact_section_index = len(template.sections) - 1
+                if contact_section_index < len(answers):
+                    contact_info = answers[contact_section_index].split('\n')
+                    if len(contact_info) >= 2:
+                        user_name = contact_info[0].strip()
+                        user_email = contact_info[1].strip()
+                        if len(contact_info) >= 3:
+                            user_phone = contact_info[2].strip()
+                
+                # Add all sections to the tech spec data
+                for i, section in enumerate(template.sections):
+                    if i < len(answers):
+                        tech_spec_data['answers'].append({
+                            'question': section['title'],
+                            'answer': answers[i]
+                        })
+                
+                # Add language information for proper template loading
+                tech_spec_data['language'] = metadata.get('language', 'en')
+                
+                # Prepare contact information for the notification
+                contact_info = {
+                    'name': user_name,
+                    'email': user_email,
+                    'phone': user_phone
+                }
+                
+                # Send the notification
+                send_tech_spec_notification(tech_spec_data, contact_info)
+            except Exception as e:
+                current_app.logger.error(f"Failed to send Telegram notification: {str(e)}")
+            
             # Очищаем метаданные технического задания
             metadata.pop('tech_spec_started', None)
             metadata.pop('tech_spec_section', None)
-            
-            # Сохраняем ответы для дальнейшей обработки
-            # Тут можно добавить код для отправки запроса в CRM или на почту
             
             return {
                 'agent': 'requirements',

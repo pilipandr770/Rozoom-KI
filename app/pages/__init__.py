@@ -216,6 +216,20 @@ def contact():
                 lead = Lead(name=name, email=email, message=message)
                 db.session.add(lead)
                 db.session.commit()
+                
+                # Send notification via Telegram
+                try:
+                    from app.services import send_contact_form_notification
+                    form_data = {
+                        'name': name,
+                        'email': email,
+                        'message': message
+                    }
+                    send_contact_form_notification(form_data)
+                except Exception as e:
+                    # Log the error but don't disrupt the user experience
+                    print(f"Failed to send Telegram notification: {str(e)}")
+                
                 success = True
             except Exception as e:
                 db.session.rollback()
