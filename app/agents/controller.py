@@ -420,7 +420,7 @@ def route_and_respond(message: str, metadata: Dict) -> Dict:
                         from app.utils.telegram_queue import queue_telegram_message
                         queue_telegram_message(message_content)
                         current_app.logger.info(f"Technical specification notification QUEUED for {user_email} (direct send failed)")
-            except Exception as e:
+                except Exception as e:
                 current_app.logger.error(f"Failed to send Telegram notification: {str(e)}")
             
             # Очищаем метаданные технического задания

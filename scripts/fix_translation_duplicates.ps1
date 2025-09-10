@@ -58,7 +58,6 @@ $newContent = @()
 $currentMsgid = ""
 $currentEntry = @()
 $inHeader = $true
-$skipCurrent = $false
 
 # Process the file line by line
 foreach ($line in $lines) {
