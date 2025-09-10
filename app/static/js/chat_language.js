@@ -1,5 +1,6 @@
 /**
  * Функционал переключения языка для чат-виджета
+ * Поддерживаемые языки: DE и EN
  */
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -7,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const languageSelector = document.querySelector('.language-selector');
     if (!languageSelector) return;
     
-    // Находим все кнопки переключения языка
+    // Находим все кнопки переключения языка (только DE и EN)
     const langButtons = languageSelector.querySelectorAll('.lang-button');
     
     // Проверяем, инициализирован ли чат
