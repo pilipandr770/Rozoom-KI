@@ -5,6 +5,7 @@ from flask_migrate import Migrate
 from flask_login import LoginManager
 from flask_mail import Mail
 from flask_wtf.csrf import CSRFProtect
+from sqlalchemy import text
 import os
 
 db = SQLAlchemy()
@@ -67,6 +68,73 @@ def setup_schema_handling(app):
             app.logger.error(f"Error setting up Postgres schema: {e}")
 
 
+def test_database_connection(app):
+    """Test database connection and handle SSL issues gracefully"""
+    try:
+        # Try to connect to the database
+        db.session.execute(text('SELECT 1'))
+        app.logger.info("Database connection successful")
+    except Exception as e:
+        error_msg = str(e).lower()
+        
+        # Check if it's an SSL-related error
+        if 'ssl' in error_msg or 'decryption failed' in error_msg or 'bad record mac' in error_msg:
+            app.logger.warning(f"SSL connection error detected: {e}")
+            
+            # Try to disable SSL and reconnect
+            if 'postgresql://' in app.config['SQLALCHEMY_DATABASE_URI']:
+                app.logger.info("Attempting to disable SSL for database connection...")
+                
+                # Remove SSL parameters from the database URL
+                db_url = app.config['SQLALCHEMY_DATABASE_URI']
+                if '?' in db_url:
+                    base_url = db_url.split('?')[0]
+                    params = db_url.split('?')[1].split('&')
+                    # Remove SSL-related parameters
+                    non_ssl_params = [p for p in params if not p.startswith('ssl')]
+                    
+                    if non_ssl_params:
+                        new_db_url = base_url + '?' + '&'.join(non_ssl_params)
+                    else:
+                        new_db_url = base_url
+                    
+                    app.config['SQLALCHEMY_DATABASE_URI'] = new_db_url
+                    app.logger.info(f"SSL parameters removed from database URL: {new_db_url}")
+                    
+                    # Forcefully disable SSL by setting environment variable
+                    import os
+                    os.environ['DISABLE_POSTGRES_SSL'] = 'true'
+                    
+                    # Reinitialize database with new URL
+                    db.init_app(app)
+                    
+                    # Try connecting again
+                    try:
+                        db.session.execute(text('SELECT 1'))
+                        app.logger.info("Database connection successful after disabling SSL")
+                    except Exception as retry_error:
+                        app.logger.error(f"Database connection failed even after disabling SSL: {retry_error}")
+                        # Try one more time with completely clean URL
+                        clean_url = new_db_url.split('?')[0] if '?' in new_db_url else new_db_url
+                        app.config['SQLALCHEMY_DATABASE_URI'] = clean_url
+                        db.init_app(app)
+                        try:
+                            db.session.execute(text('SELECT 1'))
+                            app.logger.info("Database connection successful with clean URL")
+                        except Exception as final_error:
+                            app.logger.error(f"Final database connection attempt failed: {final_error}")
+                            raise final_error
+                else:
+                    app.logger.error(f"SSL error on non-PostgreSQL database: {e}")
+                    raise e
+            else:
+                app.logger.error(f"SSL error on non-PostgreSQL database: {e}")
+                raise e
+        else:
+            app.logger.error(f"Database connection error: {e}")
+            raise e
+
+
 def create_app():
     app = Flask(__name__, static_folder='static', template_folder='templates')
     app.config.from_object(Config)
@@ -78,6 +146,10 @@ def create_app():
     # Initialize database
     db.init_app(app)
     migrate.init_app(app, db)
+    
+    # Test database connection and handle SSL issues
+    with app.app_context():
+        test_database_connection(app)
     
     # Initialize Flask-Login
     login_manager.init_app(app)

@@ -61,6 +61,70 @@ def submit_questionnaire():
         except Exception as e:
             current_app.logger.error(f"Failed to send notification email: {str(e)}")
             
+        # Send notification via Telegram
+        try:
+            from app.services.telegram_service import send_tech_spec_notification
+            
+            # Prepare data for Telegram notification
+            tech_spec_data = {
+                'answers': []
+            }
+            
+            # Format each question-answer pair from the form data
+            # The form sends data with specific field names
+            tech_spec_data['answers'].append({
+                'question': 'Project Type',
+                'answer': form_data.get('project_type', 'Not specified')
+            })
+            tech_spec_data['answers'].append({
+                'question': 'Project Goal',
+                'answer': form_data.get('project_goal', 'Not specified')
+            })
+            tech_spec_data['answers'].append({
+                'question': 'Target Users',
+                'answer': form_data.get('target_users', 'Not specified')
+            })
+            tech_spec_data['answers'].append({
+                'question': 'Timeline',
+                'answer': form_data.get('timeline', 'Not specified')
+            })
+            tech_spec_data['answers'].append({
+                'question': 'Budget Range',
+                'answer': form_data.get('budget_range', 'Not specified')
+            })
+            
+            # Add language information
+            tech_spec_data['language'] = 'en'  # Default to English
+            
+            # Prepare contact information
+            contact_info = {
+                'name': form_data.get('contact_name', 'Not provided'),
+                'email': form_data.get('contact_email', 'Not provided'),
+                'phone': form_data.get('contact_phone', 'Not provided')
+            }
+            
+            # Try to send via Telegram
+            success = send_tech_spec_notification(tech_spec_data, contact_info)
+            if success:
+                current_app.logger.info("Tech spec notification sent to Telegram successfully")
+            else:
+                current_app.logger.warning("Failed to send tech spec notification to Telegram")
+                # Try to send via email as fallback
+                try:
+                    send_tech_spec_email_notification(tech_spec_data, contact_info)
+                    current_app.logger.info("Tech spec notification sent via email as fallback")
+                except Exception as email_error:
+                    current_app.logger.error(f"Failed to send email fallback notification: {str(email_error)}")
+                
+        except Exception as e:
+            current_app.logger.error(f"Failed to send Telegram notification: {str(e)}")
+            # Try to send via email as fallback
+            try:
+                send_tech_spec_email_notification(tech_spec_data, contact_info)
+                current_app.logger.info("Tech spec notification sent via email as fallback")
+            except Exception as email_error:
+                current_app.logger.error(f"Failed to send email fallback notification: {str(email_error)}")
+            
         flash('Your project questionnaire has been submitted successfully! We will contact you soon with a time and budget estimate.', 'success')
     except Exception as e:
         current_app.logger.error(f"Error in questionnaire submission: {str(e)}")
@@ -116,6 +180,60 @@ def send_questionnaire_notification(form_data):
         current_app.logger.info(f"Questionnaire notification sent to {admin.email}")
     except Exception as e:
         current_app.logger.error(f"Failed to send questionnaire notification: {str(e)}")
+        raise
+
+def send_tech_spec_email_notification(tech_spec_data: dict, contact_info: dict):
+    """Send email notification about technical specification submission."""
+    try:
+        mail = Mail(current_app)
+        
+        # Get admin email
+        admin = AdminUser.query.first()
+        if not admin or not admin.email:
+            current_app.logger.warning("No admin email found for tech spec notification")
+            return
+            
+        # Format the email content
+        subject = f"New Technical Specification: {contact_info.get('name', 'Unknown')}"
+        
+        html_content = f"""
+        <h1>New Technical Specification Submission</h1>
+        <p><strong>Submitted on:</strong> {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')} UTC</p>
+        
+        <h2>Contact Information</h2>
+        <ul>
+            <li><strong>Name:</strong> {contact_info.get('name', 'Not provided')}</li>
+            <li><strong>Email:</strong> {contact_info.get('email', 'Not provided')}</li>
+            <li><strong>Phone:</strong> {contact_info.get('phone', 'Not provided')}</li>
+        </ul>
+        
+        <h2>Technical Specification Details</h2>
+        """
+        
+        # Add each answer
+        for i, answer in enumerate(tech_spec_data.get('answers', [])):
+            html_content += f"""
+            <h3>{i+1}. {answer.get('question', 'Question')}</h3>
+            <p>{answer.get('answer', 'No answer')}</p>
+            """
+        
+        html_content += """
+        <p>Please review the technical specification and contact the client as soon as possible.</p>
+        <p>Login to the admin dashboard to view the full details.</p>
+        """
+        
+        msg = Message(
+            subject=subject,
+            recipients=[admin.email],
+            html=html_content,
+            sender=current_app.config.get('MAIL_DEFAULT_SENDER', 'noreply@rozoom-ki.com')
+        )
+        
+        mail.send(msg)
+        current_app.logger.info(f"Tech spec email notification sent to {admin.email}")
+        
+    except Exception as e:
+        current_app.logger.error(f"Failed to send tech spec email notification: {str(e)}")
         raise
 
 @pages_bp.route('/pricing')
