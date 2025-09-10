@@ -1,47 +1,123 @@
 import os
 import requests
 import logging
+import socket
+import time
 from typing import Dict, Any, Optional
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 
 logger = logging.getLogger(__name__)
 
-def send_telegram_message(message: str) -> bool:
+def get_telegram_config() -> tuple:
     """
-    Send a message to Telegram using the bot token and chat ID from environment variables.
+    Get Telegram configuration from environment variables.
     
-    Args:
-        message (str): The message to send
-        
     Returns:
-        bool: True if the message was sent successfully, False otherwise
+        tuple: (bot_token, chat_id, is_valid)
     """
     bot_token = os.environ.get('TELEGRAM_BOT_TOKEN')
     chat_id = os.environ.get('TELEGRAM_CHAT_ID')
     
     if not bot_token or not chat_id:
         logger.error("Telegram bot token or chat ID not found in environment variables")
+        return None, None, False
+    
+    return bot_token, chat_id, True
+
+def create_resilient_session() -> requests.Session:
+    """
+    Create a requests session with retry mechanism for better network resilience.
+    
+    Returns:
+        requests.Session: Session with retry configuration
+    """
+    session = requests.Session()
+    
+    # Configure retry strategy
+    retry_strategy = Retry(
+        total=3,  # Total number of retries
+        status_forcelist=[429, 500, 502, 503, 504],  # Status codes to retry on
+        allowed_methods=["GET", "POST"],  # Methods to retry
+        backoff_factor=1  # Backoff factor for exponential backoff
+    )
+    
+    adapter = HTTPAdapter(max_retries=retry_strategy)
+    session.mount("https://", adapter)
+    session.mount("http://", adapter)
+    
+    return session
+
+def send_telegram_message(message: str, max_retries: int = 3) -> bool:
+    """
+    Send a message to Telegram using the bot token and chat ID from environment variables.
+    Includes retry mechanism and better error handling.
+    
+    Args:
+        message (str): The message to send
+        max_retries (int): Maximum number of retries
+        
+    Returns:
+        bool: True if the message was sent successfully, False otherwise
+    """
+    bot_token, chat_id, is_valid = get_telegram_config()
+    
+    if not is_valid:
         return False
     
-    try:
-        url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
-        payload = {
-            'chat_id': chat_id,
-            'text': message,
-            'parse_mode': 'HTML'  # Support HTML formatting
-        }
-        
-        response = requests.post(url, data=payload)
-        
-        if response.status_code == 200:
-            logger.info(f"Message sent to Telegram successfully")
-            return True
-        else:
-            logger.error(f"Failed to send message to Telegram. Status code: {response.status_code}, Response: {response.text}")
-            return False
+    # Set DNS cache timeout to 0 to force new DNS resolution
+    socket.setdefaulttimeout(15)  # 15 seconds timeout
+    
+    session = create_resilient_session()
+    
+    for attempt in range(max_retries):
+        try:
+            url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
+            payload = {
+                'chat_id': chat_id,
+                'text': message,
+                'parse_mode': 'HTML'  # Support HTML formatting
+            }
             
-    except Exception as e:
-        logger.error(f"Error sending message to Telegram: {str(e)}")
-        return False
+            response = session.post(url, data=payload, timeout=(5, 15))  # Connect timeout, Read timeout
+            
+            if response.status_code == 200:
+                logger.info(f"Message sent to Telegram successfully")
+                return True
+            else:
+                logger.error(f"Failed to send message to Telegram. Status code: {response.status_code}, Response: {response.text}")
+                
+                if attempt < max_retries - 1:
+                    # Wait before retrying (exponential backoff)
+                    wait_time = 2 ** attempt
+                    logger.info(f"Retrying in {wait_time} seconds... (attempt {attempt+1}/{max_retries})")
+                    time.sleep(wait_time)
+                    continue
+                return False
+                
+        except requests.exceptions.ConnectionError as e:
+            logger.error(f"Connection error sending message to Telegram: {str(e)}")
+            if "getaddrinfo failed" in str(e) and attempt < max_retries - 1:
+                # DNS resolution issue, retry after a delay
+                wait_time = 2 ** attempt
+                logger.info(f"DNS resolution issue, retrying in {wait_time} seconds... (attempt {attempt+1}/{max_retries})")
+                time.sleep(wait_time)
+            elif attempt < max_retries - 1:
+                wait_time = 2 ** attempt
+                logger.info(f"Connection error, retrying in {wait_time} seconds... (attempt {attempt+1}/{max_retries})")
+                time.sleep(wait_time)
+            else:
+                return False
+        except Exception as e:
+            logger.error(f"Error sending message to Telegram: {str(e)}")
+            if attempt < max_retries - 1:
+                wait_time = 2 ** attempt
+                logger.info(f"Retrying in {wait_time} seconds... (attempt {attempt+1}/{max_retries})")
+                time.sleep(wait_time)
+            else:
+                return False
+    
+    return False
 
 def send_tech_spec_notification(tech_spec_data: Dict[str, Any], contact_info: Optional[Dict[str, str]] = None) -> bool:
     """
