@@ -453,3 +453,10 @@ Your answers should be technically sound, but still understandable for non-techn
     }
     
     return prompts.get(lang, prompts['de'])
+
+# Алиасы для обеспечения обратной совместимости
+# controller.py использует create_* вместо get_*
+create_system_prompt = get_system_prompt
+create_greeter_prompt = get_greeter_prompt
+create_completion_prompt = get_completion_prompt
+create_portfolio_prompt = get_portfolio_prompt
