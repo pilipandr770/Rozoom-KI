@@ -406,9 +406,20 @@ def route_and_respond(message: str, metadata: Dict) -> Dict:
                     'phone': user_phone
                 }
                 
-                # Send notification directly instead of queuing
-                send_tech_spec_notification(tech_spec_data, contact_info)
-                current_app.logger.info(f"Technical specification notification SENT for {user_email}")
+                # Гибридный подход: пытаемся отправить напрямую, в случае неудачи используем очередь
+                from app.utils.telegram_queue import send_telegram_message_with_retry
+                
+                try:
+                    # Сначала попробуем отправить напрямую
+                    success = send_tech_spec_notification(tech_spec_data, contact_info)
+                    if success:
+                        current_app.logger.info(f"Technical specification notification SENT directly for {user_email}")
+                    else:
+                        # Если не удалось отправить напрямую, помещаем в очередь
+                        message_content = send_tech_spec_notification(tech_spec_data, contact_info, return_message_only=True)
+                        from app.utils.telegram_queue import queue_telegram_message
+                        queue_telegram_message(message_content)
+                        current_app.logger.info(f"Technical specification notification QUEUED for {user_email} (direct send failed)")
             except Exception as e:
                 current_app.logger.error(f"Failed to send Telegram notification: {str(e)}")
             

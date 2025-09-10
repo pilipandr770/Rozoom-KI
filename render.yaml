@@ -1,5 +1,24 @@
 # render.yaml
 services:
+  # Cron job для обработки очереди Telegram сообщений
+  - type: cron
+    name: telegram-queue-processor
+    runtime: python
+    schedule: "*/5 * * * *"  # Запуск каждые 5 минут
+    buildCommand: pip install -r requirements.txt
+    startCommand: python scripts/process_telegram_queue.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.13"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: rozoom-ki-db
+          property: connectionString
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false # Sensitive - must be set manually in Render dashboard
+      - key: TELEGRAM_CHAT_ID
+        sync: false # Sensitive - must be set manually in Render dashboard
+      
   # Основной веб-сервис
   - type: web
     name: rozoom-ki

@@ -52,6 +52,7 @@ def send_telegram_message(message: str, max_retries: int = 3) -> bool:
     """
     Send a message to Telegram using the bot token and chat ID from environment variables.
     Includes retry mechanism and better error handling.
+    If domain resolution fails, falls back to direct IP address connections.
     
     Args:
         message (str): The message to send
@@ -72,6 +73,10 @@ def send_telegram_message(message: str, max_retries: int = 3) -> bool:
     # Use our resilient session with retries
     session = create_resilient_session()
     
+    # Flag to track if we need to try IP-based fallback
+    dns_failed = False
+    
+    # First try standard domain-based approach
     for attempt in range(max_retries):
         try:
             url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
@@ -82,8 +87,7 @@ def send_telegram_message(message: str, max_retries: int = 3) -> bool:
             }
             
             # Use a direct requests call to bypass any potential database operations
-            # This is particularly important when database connections are failing
-            logger.info(f"Sending Telegram message (attempt {attempt+1}/{max_retries})")
+            logger.info(f"Sending Telegram message via domain (attempt {attempt+1}/{max_retries})")
             response = session.post(url, data=payload, timeout=(5, 15))  # Connect timeout, Read timeout
             
             if response.status_code == 200:
@@ -98,21 +102,24 @@ def send_telegram_message(message: str, max_retries: int = 3) -> bool:
                     logger.info(f"Retrying in {wait_time} seconds... (attempt {attempt+1}/{max_retries})")
                     time.sleep(wait_time)
                     continue
-                return False
+                # If all attempts failed with domain, try IP-based approach
+                dns_failed = True
+                break
                 
         except requests.exceptions.ConnectionError as e:
             logger.error(f"Connection error sending message to Telegram: {str(e)}")
-            if "getaddrinfo failed" in str(e) and attempt < max_retries - 1:
-                # DNS resolution issue, retry after a delay
-                wait_time = 2 ** attempt
-                logger.info(f"DNS resolution issue, retrying in {wait_time} seconds... (attempt {attempt+1}/{max_retries})")
-                time.sleep(wait_time)
+            if "getaddrinfo failed" in str(e):
+                # DNS resolution issue, mark for IP fallback
+                logger.info("DNS resolution failed, will try direct IP connection")
+                dns_failed = True
+                break
             elif attempt < max_retries - 1:
                 wait_time = 2 ** attempt
                 logger.info(f"Connection error, retrying in {wait_time} seconds... (attempt {attempt+1}/{max_retries})")
                 time.sleep(wait_time)
             else:
-                return False
+                dns_failed = True
+                break
         except Exception as e:
             logger.error(f"Error sending message to Telegram: {str(e)}")
             if attempt < max_retries - 1:
@@ -120,7 +127,18 @@ def send_telegram_message(message: str, max_retries: int = 3) -> bool:
                 logger.info(f"Retrying in {wait_time} seconds... (attempt {attempt+1}/{max_retries})")
                 time.sleep(wait_time)
             else:
-                return False
+                dns_failed = True
+                break
+    
+    # If domain-based approach failed and DNS issues were detected, try IP-based approach
+    if dns_failed:
+        logger.info("Trying IP-based fallback for Telegram API...")
+        try:
+            from app.services.telegram_ip_service import send_via_ip_addresses
+            return send_via_ip_addresses(message, max_retries=2)
+        except Exception as e:
+            logger.error(f"IP-based fallback also failed: {str(e)}")
+            return False
     
     return False
 
