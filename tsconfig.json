@@ -1,5 +1,20 @@
 {
+  "compilerOptions": {
+    "target": "ES2018",
+    "module": "CommonJS",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./dist",
+    "allowJs": true,
+    "checkJs": false
+  },
+  "include": [
+    "app/static/ts/**/*"
+  ],
   "exclude": [
-    "app/templates/admin/dashboard_charts.js"
+    "app/templates/admin/dashboard_charts.js",
+    "node_modules"
   ]
 }
