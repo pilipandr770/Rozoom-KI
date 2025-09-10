@@ -1,0 +1,66 @@
+/**
+ * Agent transition animations and styles
+ */
+
+/* Chat transfer indicator */
+.chat-transfer-indicator {
+  display: flex;
+  align-items: center;
+  margin: 12px auto;
+  padding: 8px 16px;
+  background: rgba(52, 152, 219, 0.15);
+  border-radius: 16px;
+  color: #ffffff;
+  font-size: 14px;
+  max-width: 80%;
+  justify-content: center;
+}
+
+.transfer-animation {
+  width: 24px;
+  height: 24px;
+  border: 2px solid rgba(52, 152, 219, 0.8);
+  border-top-color: transparent;
+  border-radius: 50%;
+  margin-right: 10px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Стили для сообщений разных агентов */
+.chat-msg.bot.greeter {
+  background-color: #2980b9 !important;
+}
+
+.chat-msg.bot.technical {
+  background-color: #27ae60 !important;
+}
+
+.chat-msg.bot.sales {
+  background-color: #8e44ad !important;
+}
+
+.chat-msg.bot.billing {
+  background-color: #d35400 !important;
+}
+
+/* Индикатор текущего агента */
+.chat-agent-indicator {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  font-size: 12px;
+  padding: 3px 8px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  opacity: 0.7;
+}

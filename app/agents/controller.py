@@ -4,6 +4,8 @@ import re
 from . import get_agent, choose_agent_by_metadata, InteractiveButton, InteractiveResponse, list_domain_options
 from .site_knowledge import get_site_info
 from .prompts import get_greeter_prompt, get_project_consultant_prompt, get_technical_advisor_prompt
+from .tech_spec import get_tech_spec_prompt, TechSpecTemplate
+from .tech_spec_handler import handle_tech_spec_creation, generate_tech_spec_summary
 from flask import current_app, request
 import requests
 
@@ -55,37 +57,61 @@ def format_interactive_response(text: str) -> InteractiveResponse:
 
 
 def handle_greeter(metadata: Dict) -> Dict:
-    """Special handler for the greeter agent that offers domain options"""
-    options = list_domain_options()
-    
-    # Определяем язык пользователя (по умолчанию немецкий)
-    user_lang = metadata.get('language', 'de')
+    """Special handler for the greeter agent that offers team specialist options"""
+    # Определяем язык пользователя (по умолчанию английский)
+    user_lang = metadata.get('language', 'en')
     
     # Приветственные тексты на разных языках
     welcome_texts = {
-        'de': "👋 Guten Tag! Ich bin der KI-Assistent von Rozoom-KI.\n\n"
-              "Ich kann Ihnen helfen, eine technische Spezifikation für Ihr Projekt zu erstellen. "
-              "In welchem Bereich benötigen Sie Unterstützung? Sie können eine der unten stehenden Optionen wählen oder Ihre Frage stellen.",
+        'de': "👋 Guten Tag! Ich bin der AI-Assistent von Rozoom-KI.\n\n"
+              "Ich kann Ihnen helfen, ein technisches Lastenheft für Ihr Projekt zu erstellen - völlig kostenlos und unverbindlich. "
+              "Mit welchem unserer Spezialisten möchten Sie sprechen? "
+              "Oder möchten Sie direkt mit der Erstellung eines technischen Lastenhefts beginnen?",
         
-        'ru': "👋 Привет! Я AI-ассистент Rozoom-KI.\n\n"
-              "Я могу помочь вам составить техническое задание для вашего проекта. "
-              "В каком направлении вам нужна помощь? Вы можете выбрать одну из опций ниже или задать свой вопрос.",
-        
-        'en': "👋 Hello! I'm the AI assistant of Rozoom-KI.\n\n"
-              "I can help you create a technical specification for your project. "
-              "In which area do you need assistance? You can choose one of the options below or ask your question."
+        'en': "👋 Hello! I'm the AI assistant at Rozoom-KI.\n\n"
+              "I can help you create a technical specification for your project - completely free and with no obligations. "
+              "Which of our specialists would you like to speak with? "
+              "Or would you like to start creating a technical specification right away?"
     }
     
-    # Используем приветствие на указанном языке или по умолчанию на немецком
-    welcome_text = welcome_texts.get(user_lang, welcome_texts['de'])
+    # Используем приветствие на указанном языке или по умолчанию на английском
+    welcome_text = welcome_texts.get(user_lang, welcome_texts['en'])
     
-    # Convert options to buttons
+    # Создаем специалистов для команды
+    specialists = [
+        {
+            'key': 'tech_support',
+            'label': 'Technical Advisor' if user_lang == 'en' else 'Technischer Berater',
+            'icon': 'cogs',
+            'description': 'For architecture and technology questions' if user_lang == 'en' else 'Für Architektur- und Technologiefragen'
+        },
+        {
+            'key': 'requirements',
+            'label': 'Create Technical Specification' if user_lang == 'en' else 'Technisches Lastenheft erstellen',
+            'icon': 'file-alt',
+            'description': 'Free assessment of your project' if user_lang == 'en' else 'Kostenlose Bewertung Ihres Projekts'
+        },
+        {
+            'key': 'sales',
+            'label': 'Pricing & Timelines' if user_lang == 'en' else 'Preise & Zeitpläne',
+            'icon': 'money-bill-wave',
+            'description': 'Budget and timeline questions' if user_lang == 'en' else 'Fragen zu Budget und Zeitplan'
+        },
+        {
+            'key': 'general',
+            'label': 'General Questions' if user_lang == 'en' else 'Allgemeine Fragen',
+            'icon': 'question-circle',
+            'description': 'Any other questions about our services' if user_lang == 'en' else 'Weitere Fragen zu unseren Dienstleistungen'
+        }
+    ]
+    
+    # Convert specialists to buttons
     buttons = []
-    for option in options:
+    for specialist in specialists:
         buttons.append(InteractiveButton(
-            key=option['key'],
-            label=option['label'],
-            icon=option.get('icon', 'code')
+            key=specialist['key'],
+            label=specialist['label'],
+            icon=specialist.get('icon', 'user')
         ))
     
     return {
@@ -96,56 +122,77 @@ def handle_greeter(metadata: Dict) -> Dict:
             'buttons': [b.__dict__ for b in buttons],
             'requires_input': True,  # Всегда разрешаем ввод
             'show_restart': False,
-            'meta': {'action': 'select_domain'}
+            'meta': {'action': 'select_specialist', 'language': user_lang}
         }
     }
 
 
-def handle_domain_selection(message: str, metadata: Dict) -> Dict:
-    """Handle when user selects a domain from the greeter options"""
-    selected_domain = metadata.get('selected_domain')
-    if not selected_domain:
+def handle_specialist_selection(message: str, metadata: Dict) -> Dict:
+    """Handle when user selects a specialist from the greeter options"""
+    selected_specialist = metadata.get('selected_agent')
+    current_app.logger.info(f"Handle specialist selection with: {selected_specialist}")
+    
+    if not selected_specialist:
+        current_app.logger.warning("No selected_agent found in metadata")
         return route_to_default_agent(message, metadata)
     
-    domain_agent = get_agent(selected_domain)
-    if not domain_agent:
+    # Специальный обработчик для создания технического задания
+    if selected_specialist == 'requirements':
+        return handle_tech_spec_creation(message, metadata)
+    
+    # Map specialist keys to actual agent names
+    specialist_map = {
+        'technical': 'tech_support',
+        'development': 'general',
+        'sales': 'sales',
+        # Добавляем прямое сопоставление, если ключи уже совпадают с именами агентов
+        'tech_support': 'tech_support',
+        'general': 'general',
+        'sales': 'sales',
+        'greeter': 'greeter',
+        'billing': 'billing'
+    }
+    
+    # Get the appropriate agent
+    agent_name = specialist_map.get(selected_specialist, 'general')
+    specialist_agent = get_agent(agent_name)
+    
+    current_app.logger.info(f"Mapped to agent: {agent_name}, found: {specialist_agent is not None}")
+    
+    if not specialist_agent:
+        current_app.logger.warning(f"Could not find agent: {agent_name}")
         return route_to_default_agent(message, metadata)
     
-    # Update metadata to start requirements gathering flow
-    metadata['gathering_requirements'] = True
+    # Update metadata with the active specialist
+    metadata['active_specialist'] = agent_name
     
-    # Определяем язык пользователя (по умолчанию немецкий)
-    user_lang = metadata.get('language', 'de')
+    # Определяем язык пользователя (по умолчанию английский)
+    user_lang = metadata.get('language', 'en')
     
     # Создаем промпт на соответствующем языке
     prompts = {
         'de': (
-            f"Der Benutzer hat {domain_agent.description} ausgewählt. "
-            f"Stellen Sie sich als spezialisierter Assistent für diesen Bereich vor und beginnen Sie, Informationen für die technische Spezifikation zu sammeln. "
-            f"Stellen Sie jeweils eine Frage, um wichtige Informationen zu sammeln. "
-            f"Nachdem Sie ausreichend Informationen gesammelt haben, schlagen Sie vor, eine technische Spezifikation zu erstellen. "
-            f"Beginnen Sie mit einer Begrüßung und stellen Sie sich vor."
-        ),
-        'ru': (
-            f"Пользователь выбрал {domain_agent.description}. "
-            f"Представься как специализированный ассистент для этой области, и начни собирать информацию для технического задания. "
-            f"Задавай по одному вопросу за раз, чтобы собрать ключевую информацию. "
-            f"После сбора достаточной информации, предложи опцию составить техническое задание. "
-            f"Начни с приветствия и представления себя."
+            f"Der Benutzer möchte mit einem {specialist_agent.description} Spezialisten sprechen. "
+            f"Stellen Sie sich als spezialisierter Assistent für diesen Bereich vor und beginnen Sie ein Gespräch, um die Bedürfnisse des Benutzers zu verstehen. "
+            f"Verwenden Sie einen herzlichen, professionellen Ton. "
+            f"Beginnen Sie mit einer Begrüßung und stellen Sie sich vor. "
+            f"Stellen Sie spezifische Fragen zu ihrem Anliegen und geben Sie konkrete Hilfestellung. "
+            f"Verwenden Sie die Sprache, die der Benutzer bevorzugt (Sprache: {user_lang})."
         ),
         'en': (
-            f"The user has selected {domain_agent.description}. "
-            f"Introduce yourself as a specialized assistant for this area and begin collecting information for the technical specification. "
-            f"Ask one question at a time to gather key information. "
-            f"After collecting sufficient information, suggest the option to create a technical specification. "
-            f"Start with a greeting and introduce yourself."
+            f"The user wants to speak with a {specialist_agent.description} specialist. "
+            f"Introduce yourself as a specialized assistant for this area and begin a conversation to understand the user's needs. "
+            f"Use a warm, professional tone. "
+            f"Start with a greeting and introduce yourself. "
+            f"Ask specific questions about their inquiry and provide concrete assistance. "
+            f"Use the language preferred by the user (language: {user_lang})."
         )
     }
     
-    prompt_text = prompts.get(user_lang, prompts['de'])
+    prompt_text = prompts.get(user_lang, prompts['en'])
     
     # Create a special first-time message from this agent
-    return call_openai(prompt_text, metadata, domain_agent)
+    return call_openai(prompt_text, metadata, specialist_agent)
 
 
 def route_to_default_agent(message: str, metadata: Dict) -> Dict:
@@ -162,20 +209,24 @@ def call_openai(message: str, metadata: Dict, agent) -> Dict:
     if not openai_key:
         return {'error': 'OpenAI API key not configured'}
 
-    # Определяем язык пользователя (по умолчанию немецкий)
-    user_lang = metadata.get('language', 'de')
+    # Определяем язык пользователя (по умолчанию английский)
+    user_lang = metadata.get('language', 'en')
     
     # Получаем знания о сайте на выбранном языке
     site_info = get_site_info(user_lang)
     
+    # Добавляем информацию о языке в системный промпт
+    language_info = f"\nIMPORTANT: The user's preferred language is {user_lang}. Please respond in this language."
+    
     # Выбираем соответствующий промпт в зависимости от роли агента
-    system_prompt = agent.system_prompt
+    system_prompt = agent.system_prompt + language_info
+    
     if agent.name == 'greeter':
-        system_prompt = get_greeter_prompt(user_lang)
+        system_prompt = get_greeter_prompt(user_lang) + language_info
     elif agent.name in ['requirements', 'project_consultant']:
-        system_prompt = get_project_consultant_prompt(user_lang)
+        system_prompt = get_project_consultant_prompt(user_lang) + language_info
     elif agent.name in ['technical', 'tech_support']:
-        system_prompt = get_technical_advisor_prompt(user_lang)
+        system_prompt = get_technical_advisor_prompt(user_lang) + language_info
     
     # Добавляем информацию о текущей странице, если она есть
     current_page = metadata.get('page', 'home')
@@ -261,9 +312,9 @@ def route_and_respond(message: str, metadata: Dict) -> Dict:
     # Определение языка пользователя
     user_lang = metadata.get('language')
     
-    # Если язык не указан, устанавливаем по умолчанию немецкий
+    # Если язык не указан, устанавливаем по умолчанию английский
     if not user_lang:
-        metadata['language'] = 'de'
+        metadata['language'] = 'en'
     
     # Получаем информацию о текущей странице, если она передана в метаданных
     referer = request.headers.get('Referer', '')
@@ -283,12 +334,67 @@ def route_and_respond(message: str, metadata: Dict) -> Dict:
     if not metadata.get('conversation_id'):
         return handle_greeter(metadata)
     
-    # Check if this is a domain selection from the greeter
-    if metadata.get('selected_domain') and not metadata.get('gathering_requirements'):
-        return handle_domain_selection(message, metadata)
+    # Check if we're handling an agent transition (from button click)
+    if metadata.get('selected_agent'):
+        # Log detailed info for debugging
+        current_app.logger.info(f"Agent transition detected: {metadata.get('selected_agent')}, transition flag: {metadata.get('agent_transition')}")
+        
+        # Reset transition flag after logging
+        metadata['agent_transition'] = False
+        
+        # Handle the specialist selection
+        return handle_specialist_selection(message, metadata)
+        
+    # Проверяем, находимся ли мы в процессе создания технического задания
+    if metadata.get('tech_spec_started'):
+        # Проверяем специальные команды
+        if message.lower() in ['edit requirements', 'anforderungen bearbeiten']:
+            # Начинаем процесс заново
+            metadata['tech_spec_section'] = 0
+            return handle_tech_spec_creation(message, metadata)
+        elif message.lower() in ['send request', 'anfrage senden']:
+            # Отправляем запрос
+            thank_message = "Thank you for submitting your request! Our team will review your requirements and get back to you shortly."
+            if metadata.get('language') == 'de':
+                thank_message = "Vielen Dank für Ihre Anfrage! Unser Team wird Ihre Anforderungen prüfen und sich in Kürze bei Ihnen melden."
+            
+            # Очищаем метаданные технического задания
+            metadata.pop('tech_spec_started', None)
+            metadata.pop('tech_spec_section', None)
+            
+            # Сохраняем ответы для дальнейшей обработки
+            # Тут можно добавить код для отправки запроса в CRM или на почту
+            
+            return {
+                'agent': 'requirements',
+                'answer': thank_message,
+                'interactive': {
+                    'text': thank_message,
+                    'buttons': [],
+                    'requires_input': True,
+                    'show_restart': True,
+                    'meta': {'agent': 'requirements'}
+                }
+            }
+        
+        # Продолжаем процесс создания технического задания
+        return handle_tech_spec_creation(message, metadata)
     
-    # Otherwise, route based on agent selection logic
-    agent = choose_agent_by_metadata(metadata)
+    # Handle when user wants to return to greeter
+    if message and message.lower() in ['start over', 'restart', 'начать сначала', 'neu starten']:
+        # Clear specialist selection
+        metadata.pop('selected_agent', None)
+        metadata.pop('active_specialist', None)
+        return handle_greeter(metadata)
+    
+    # Check if we have an active specialist
+    if metadata.get('active_specialist'):
+        agent = get_agent(metadata.get('active_specialist'))
+    else:
+        # Otherwise, route based on agent selection logic
+        agent = choose_agent_by_metadata(metadata)
+    
+    # Fallback if no agent found
     if not agent:
         agent = get_agent('general')
     

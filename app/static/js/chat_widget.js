@@ -82,6 +82,11 @@
     // Add high-contrast class to improve readability for bot messages
     div.className = cls === 'bot' ? 'chat-msg ' + cls + ' high-contrast' : 'chat-msg ' + cls;
     
+    // Add agent-specific class if available in metadata
+    if (cls === 'bot' && metadata.current_agent) {
+      div.classList.add(metadata.current_agent);
+    }
+    
     // Handle markdown-like formatting
     const formattedText = text
       .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
@@ -95,6 +100,14 @@
     if (cls === 'bot') {
       // Добавляем дополнительный класс для улучшения читаемости
       div.classList.add('high-contrast');
+      
+      // Добавляем индикатор текущего агента (только для первого сообщения после переключения)
+      if (interactive && metadata.agent_transition) {
+        const agentIndicator = document.createElement('span');
+        agentIndicator.className = 'chat-agent-indicator';
+        agentIndicator.textContent = metadata.current_agent || 'assistant';
+        div.appendChild(agentIndicator);
+      }
     }
     
     messagesEl.appendChild(div);
@@ -126,11 +139,25 @@
             // Add selection to chat
             appendMessage(`${btn.label}`, 'user');
             
-            // Update metadata with selection
+            // Update metadata with selection and transition info
             metadata.selected_agent = btn.key;
+            metadata.agent_transition = true;
             
-            // Send "silent" message to switch agent
-            postChat(btn.label);
+            // Показываем индикатор переключения на нового агента
+            const transferIndicator = document.createElement('div');
+            transferIndicator.className = 'chat-transfer-indicator';
+            transferIndicator.innerHTML = `<div class="transfer-animation"></div><span>Переключение на специалиста...</span>`;
+            messagesEl.appendChild(transferIndicator);
+            messagesEl.scrollTop = messagesEl.scrollHeight;
+            
+            // Небольшая задержка для улучшения пользовательского опыта
+            setTimeout(() => {
+              // Удаляем индикатор переключения
+              transferIndicator.remove();
+              
+              // Send "silent" message to switch agent
+              postChat(btn.label);
+            }, 1200);
           };
           
           buttonContainer.appendChild(button);
@@ -213,6 +240,9 @@
     try {
       // Добавляем текущий URL страницы в метаданные
       metadata.page = window.location.pathname;
+      
+      // Для отладки выведем метаданные перед отправкой запроса
+      console.log("Sending chat with metadata:", JSON.stringify(metadata));
       
       const resp = await fetch('/api/chat', {
         method: 'POST', 
@@ -380,15 +410,20 @@
           // Store agent information in metadata
           if (r.agent) {
             metadata.current_agent = r.agent;
+            console.log("Updated current agent to:", r.agent);
           }
           
           // Store any additional metadata
           if (r.interactive.meta) {
+            console.log("Received additional metadata:", JSON.stringify(r.interactive.meta));
             Object.assign(metadata, r.interactive.meta);
           }
         } else {
           appendMessage(r.answer || JSON.stringify(r), 'bot');
         }
+        
+        // Сохраняем обновленные метаданные
+        saveSession();
       }
     } catch (error) {
       console.error('Error sending message:', error);
