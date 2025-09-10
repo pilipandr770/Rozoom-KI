@@ -63,11 +63,13 @@ def send_telegram_message(message: str, max_retries: int = 3) -> bool:
     bot_token, chat_id, is_valid = get_telegram_config()
     
     if not is_valid:
+        logger.error("Invalid Telegram configuration - missing bot token or chat ID")
         return False
     
     # Set DNS cache timeout to 0 to force new DNS resolution
     socket.setdefaulttimeout(15)  # 15 seconds timeout
     
+    # Use our resilient session with retries
     session = create_resilient_session()
     
     for attempt in range(max_retries):
@@ -79,6 +81,9 @@ def send_telegram_message(message: str, max_retries: int = 3) -> bool:
                 'parse_mode': 'HTML'  # Support HTML formatting
             }
             
+            # Use a direct requests call to bypass any potential database operations
+            # This is particularly important when database connections are failing
+            logger.info(f"Sending Telegram message (attempt {attempt+1}/{max_retries})")
             response = session.post(url, data=payload, timeout=(5, 15))  # Connect timeout, Read timeout
             
             if response.status_code == 200:
