@@ -124,3 +124,45 @@
     box-shadow: 0 0 2px #ff3300;
   }
 }
+
+/* Мобильная оптимизация сферических частиц */
+@media (max-width: 768px) {
+  .particles-sphere {
+    animation-duration: 25s; /* Увеличиваем длительность для меньшей нагрузки */
+  }
+  
+  .particle {
+    width: 3px; /* Уменьшаем размер частиц */
+    height: 3px;
+    animation-duration: 4s; /* Увеличиваем длительность анимации */
+  }
+  
+  /* Уменьшаем количество видимых частиц на планшетах */
+  .particles-sphere-content {
+    opacity: 0.9;
+  }
+}
+
+@media (max-width: 480px) {
+  .particles-sphere {
+    animation-duration: 30s; /* Еще больше увеличиваем длительность */
+  }
+  
+  .particle {
+    width: 2px; /* Еще больше уменьшаем размер */
+    height: 2px;
+    animation-duration: 5s;
+    opacity: 0.7; /* Уменьшаем opacity для меньшей нагрузки */
+  }
+  
+  /* Скрываем сферические частицы на очень маленьких экранах для производительности */
+  .particles-sphere {
+    display: none;
+  }
+  
+  .particles-sphere-content {
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    padding: 1.5rem;
+  }
+}

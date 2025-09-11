@@ -82,3 +82,47 @@
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
+
+/* Мобильная оптимизация видео-фона */
+@media (max-width: 768px) {
+  .video-background-section {
+    padding: 3rem 1rem; /* Уменьшаем padding на планшетах */
+  }
+  
+  .video-background-section h1 {
+    font-size: 2rem; /* Уменьшаем размер заголовка */
+  }
+  
+  .video-background-section p {
+    font-size: 1rem;
+    max-width: 500px; /* Уменьшаем максимальную ширину текста */
+  }
+  
+  .video-background-section .btn {
+    padding: 0.875rem 2rem; /* Увеличиваем кнопки для лучшего touch target */
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .video-background-section {
+    padding: 2rem 0.75rem; /* Еще больше уменьшаем padding */
+    text-align: center; /* Центрируем контент */
+  }
+  
+  .video-background-section h1 {
+    font-size: 1.75rem;
+  }
+  
+  .video-background-section p {
+    font-size: 0.95rem;
+    max-width: 100%; /* Полная ширина на маленьких экранах */
+  }
+  
+  .video-background-section .btn {
+    width: 100%; /* Полная ширина кнопки */
+    max-width: 300px;
+    padding: 1rem 2rem;
+    font-size: 1.15rem;
+  }
+}

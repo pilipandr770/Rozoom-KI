@@ -114,3 +114,64 @@
     transform: translateX(-50%) translateZ(0);
   }
 }
+
+/* Мобильная оптимизация видео-героя */
+@media (max-width: 768px) {
+  .video-hero {
+    padding: 4rem 1rem; /* Уменьшаем padding на планшетах */
+  }
+  
+  .video-hero h1 {
+    font-size: 2.5rem; /* Уменьшаем размер заголовка */
+  }
+  
+  .video-hero p {
+    font-size: 1.1rem;
+    max-width: 500px; /* Уменьшаем максимальную ширину текста */
+  }
+  
+  .video-hero .btn {
+    padding: 0.875rem 2rem; /* Увеличиваем кнопки для лучшего touch target */
+    font-size: 1.1rem;
+  }
+  
+  /* Оптимизируем волновые анимации */
+  .wave1,
+  .wave2,
+  .wave3,
+  .wave4 {
+    animation-duration: 20s; /* Увеличиваем длительность для меньшей нагрузки */
+  }
+}
+
+@media (max-width: 480px) {
+  .video-hero {
+    padding: 3rem 0.75rem; /* Еще больше уменьшаем padding */
+    text-align: center; /* Центрируем контент */
+  }
+  
+  .video-hero h1 {
+    font-size: 2rem;
+  }
+  
+  .video-hero p {
+    font-size: 1rem;
+    max-width: 100%; /* Полная ширина на маленьких экранах */
+  }
+  
+  .video-hero .btn {
+    width: 100%; /* Полная ширина кнопки */
+    max-width: 300px;
+    padding: 1rem 2rem;
+    font-size: 1.15rem;
+  }
+  
+  /* Еще больше упрощаем анимации на маленьких экранах */
+  .wave1,
+  .wave2,
+  .wave3,
+  .wave4 {
+    animation-duration: 25s;
+    opacity: 0.3; /* Уменьшаем opacity для меньшей нагрузки */
+  }
+}

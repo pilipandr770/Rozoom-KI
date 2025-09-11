@@ -78,3 +78,56 @@
 .chat-options button:hover::after {
   opacity: 1;
 }
+
+/* Мобильная оптимизация технических спецификаций */
+@media (max-width: 768px) {
+  .tech-spec-container {
+    margin: 8px 0;
+    padding: 12px; /* Увеличиваем padding для лучшего touch target */
+    border-left-width: 4px; /* Увеличиваем ширину границы */
+  }
+  
+  .tech-spec-buttons {
+    gap: 10px; /* Увеличиваем gap между кнопками */
+  }
+  
+  .tech-spec-buttons button {
+    padding: 12px 24px; /* Увеличиваем padding кнопок */
+    font-size: 1rem; /* Увеличиваем размер шрифта */
+    min-height: 44px; /* Минимальная высота для touch */
+    flex: 1; /* Кнопки равной ширины */
+  }
+  
+  .progress-indicator {
+    margin: 16px 0; /* Увеличиваем margin */
+  }
+  
+  .progress-dot {
+    width: 10px; /* Увеличиваем размер точек прогресса */
+    height: 10px;
+    margin: 0 6px; /* Увеличиваем margin */
+  }
+}
+
+@media (max-width: 480px) {
+  .tech-spec-container {
+    padding: 16px; /* Еще больше увеличиваем padding */
+  }
+  
+  .tech-spec-buttons {
+    flex-direction: column; /* Кнопки в столбик на маленьких экранах */
+    gap: 12px;
+  }
+  
+  .tech-spec-buttons button {
+    width: 100%; /* Полная ширина кнопок */
+    padding: 14px 20px;
+    font-size: 1.1rem;
+  }
+  
+  .progress-dot {
+    width: 12px; /* Еще больше увеличиваем точки прогресса */
+    height: 12px;
+    margin: 0 8px;
+  }
+}

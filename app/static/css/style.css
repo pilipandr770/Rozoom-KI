@@ -1730,3 +1730,52 @@ p {
 .search-suggestions li {
   margin-bottom: 0.5rem;
 }
+
+/* Touch-friendly размеры для кнопок на мобильных устройствах */
+@media (max-width: 768px) {
+  .btn {
+    min-height: 44px; /* Минимальная высота для удобного нажатия пальцем */
+    min-width: 44px;  /* Минимальная ширина для удобного нажатия пальцем */
+    padding: 0.875rem 2rem; /* Увеличиваем padding для лучшего touch target */
+    font-size: 1.1rem; /* Немного увеличиваем размер шрифта */
+    border-radius: 8px; /* Более округлые углы для лучшего восприятия */
+  }
+  
+  .btn:hover {
+    transform: translateY(-2px); /* Уменьшаем подъем при hover на мобильных */
+  }
+  
+  .btn:active {
+    transform: translateY(0); /* Убираем подъем при нажатии для лучшей обратной связи */
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Специальные стили для CTA кнопок */
+  .hero-cta .btn,
+  .cta-section .btn {
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+    min-height: 50px;
+  }
+  
+  /* Увеличиваем кнопки в формах */
+  .form-group .btn {
+    width: 100%; /* Полная ширина для мобильных форм */
+    margin-top: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn {
+    min-height: 48px; /* Еще больше увеличиваем для очень маленьких экранов */
+    padding: 1rem 2.25rem;
+    font-size: 1.15rem;
+  }
+  
+  .hero-cta .btn,
+  .cta-section .btn {
+    padding: 1.125rem 2.75rem;
+    font-size: 1.25rem;
+    min-height: 52px;
+  }
+}

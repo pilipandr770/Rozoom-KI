@@ -245,3 +245,67 @@
   width: 300%;
   height: 300%;
 }
+
+/* Мобильная оптимизация анимаций */
+@media (max-width: 768px) {
+  /* Ускоряем анимации на мобильных для лучшей производительности */
+  .wave.wave1 {
+    animation-duration: 20s;
+  }
+  
+  .wave.wave2 {
+    animation-duration: 10s;
+  }
+  
+  .wave.wave3 {
+    animation-duration: 20s;
+  }
+  
+  .wave.wave4 {
+    animation-duration: 3s;
+  }
+  
+  /* Уменьшаем сложность анимаций на мобильных */
+  .floating {
+    animation-duration: 4s;
+  }
+  
+  .gradient-animation {
+    animation-duration: 20s;
+  }
+  
+  /* Оптимизируем ripple эффект для touch устройств */
+  .btn-ripple:hover:before {
+    width: 200%;
+    height: 200%;
+  }
+  
+  /* Уменьшаем количество частиц на мобильных */
+  .particles-container .particle {
+    animation-duration: 15s;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Еще больше упрощаем анимации на маленьких экранах */
+  .wave.wave1,
+  .wave.wave2,
+  .wave.wave3,
+  .wave.wave4 {
+    animation-duration: 15s;
+  }
+  
+  .floating {
+    animation-duration: 6s;
+  }
+  
+  .gradient-animation {
+    animation-duration: 25s;
+  }
+  
+  /* Отключаем некоторые эффекты на очень маленьких экранах для производительности */
+  .btn-ripple:hover:before {
+    width: 150%;
+    height: 150%;
+  }
+}

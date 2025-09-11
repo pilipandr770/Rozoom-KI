@@ -151,3 +151,44 @@
   height: 100vh;
   z-index: -1;
 }
+
+/* Мобильная оптимизация фоновых анимаций */
+@media (max-width: 768px) {
+  /* Уменьшаем количество частиц на мобильных для производительности */
+  .particles-container .particle {
+    animation-duration: 25s; /* Увеличиваем длительность для меньшей нагрузки */
+  }
+  
+  /* Упрощаем волновые анимации */
+  .wave-layer-1,
+  .wave-layer-2 {
+    animation-duration: 25s;
+  }
+  
+  /* Оптимизируем эффекты размытия для мобильных */
+  .content-wrapper {
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+  }
+}
+
+@media (max-width: 480px) {
+  /* Еще больше упрощаем анимации на маленьких экранах */
+  .particles-container .particle {
+    animation-duration: 30s;
+    opacity: 0.3; /* Уменьшаем opacity для меньшей нагрузки */
+  }
+  
+  .wave-layer-1,
+  .wave-layer-2 {
+    animation-duration: 30s;
+    opacity: 0.5;
+  }
+  
+  /* Отключаем сложные эффекты на очень маленьких экранах */
+  .content-wrapper {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background-color: rgba(255, 255, 255, 0.95);
+  }
+}
