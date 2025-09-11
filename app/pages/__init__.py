@@ -427,6 +427,8 @@ def impressum():
         return render_template('de/impressum.html')
     elif g.locale == 'ru':
         return render_template('ru/impressum.html')
+    elif g.locale == 'uk':
+        return render_template('uk/impressum.html')
     else:
         return render_template('impressum.html')
 
@@ -438,6 +440,8 @@ def privacy():
         return render_template('de/privacy.html')
     elif g.locale == 'ru':
         return render_template('ru/privacy.html')
+    elif g.locale == 'uk':
+        return render_template('uk/privacy.html')
     else:
         return render_template('privacy.html')
 
@@ -449,6 +453,8 @@ def terms():
         return render_template('de/terms.html')
     elif g.locale == 'ru':
         return render_template('ru/terms.html')
+    elif g.locale == 'uk':
+        return render_template('uk/terms.html')
     else:
         return render_template('terms.html')
 

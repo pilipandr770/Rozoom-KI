@@ -7,6 +7,9 @@
     <a class="lang-button {% if g.locale == 'de' %}active{% endif %}" href="{{ url_for('lang.set_language', lang='de', next=request.url) }}" title="Deutsch" data-lang="de">
       <span class="lang-code">DE</span>
     </a>
+    <a class="lang-button {% if g.locale == 'uk' %}active{% endif %}" href="{{ url_for('lang.set_language', lang='uk', next=request.url) }}" title="Українська" data-lang="uk">
+      <span class="lang-code">UK</span>
+    </a>
   </div>
 </div>
 {% endmacro %}

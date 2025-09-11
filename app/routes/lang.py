@@ -1,4 +1,4 @@
-from flask import Blueprint, g, request, current_app, session, redirect, jsonify, url_for
+from flask import Blueprint, g, request, current_app, session, redirect, jsonify, url_for, make_response
 
 lang_bp = Blueprint('lang', __name__)
 
@@ -8,13 +8,13 @@ def set_language(lang):
     Устанавливает язык интерфейса и сохраняет его в cookie
     
     Args:
-        lang: Код языка ('en' или 'de')
+        lang: Код языка ('en', 'de' или 'uk')
         
     Returns:
         Редирект на предыдущую страницу с установленным cookie
     """
     # Проверяем, что язык поддерживается
-    if lang not in ['en', 'de']:
+    if lang not in ['en', 'de', 'uk']:
         lang = 'de'  # По умолчанию немецкий
     
     # Получаем URL страницы, с которой пришел запрос

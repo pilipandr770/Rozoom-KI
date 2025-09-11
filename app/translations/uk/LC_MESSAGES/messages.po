@@ -1,0 +1,887 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Rozoom-KI 1.0\n"
+"Report-Msgid-Bugs-To: info@rozoom-ki.com\n"
+"POT-Creation-Date: 2025-09-11 11:35+0200\n"
+"PO-Revision-Date: 2025-09-11 11:35+0200\n"
+"Last-Translator: \n"
+"Language: uk\n"
+"Language-Team: Ukrainian\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+msgid "Home"
+msgstr "Головна"
+
+msgid "Services"
+msgstr "Послуги"
+
+msgid "Pricing"
+msgstr "Ціни"
+
+msgid "Blog"
+msgstr "Блог"
+
+msgid "Contact"
+msgstr "Контакти"
+
+msgid "Login"
+msgstr "Увійти"
+
+msgid "Logout"
+msgstr "Вийти"
+
+msgid "Register"
+msgstr "Зареєструватися"
+
+msgid "Dashboard"
+msgstr "Панель керування"
+
+msgid "Admin Panel"
+msgstr "Панель адміністратора"
+
+msgid "Search"
+msgstr "Пошук"
+
+msgid "Submit"
+msgstr "Надіслати"
+
+msgid "Save"
+msgstr "Зберегти"
+
+msgid "Cancel"
+msgstr "Скасувати"
+
+msgid "Delete"
+msgstr "Видалити"
+
+msgid "Edit"
+msgstr "Редагувати"
+
+msgid "Create"
+msgstr "Створити"
+
+msgid "Users"
+msgstr "Користувачі"
+
+msgid "Projects"
+msgstr "Проекти"
+
+msgid "Settings"
+msgstr "Налаштування"
+
+msgid "Profile"
+msgstr "Профіль"
+
+msgid "Language"
+msgstr "Мова"
+
+msgid "Name"
+msgstr "Ім'я"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Password"
+msgstr "Пароль"
+
+msgid "Confirm Password"
+msgstr "Підтвердити пароль"
+
+msgid "Required field"
+msgstr "Обов'язкове поле"
+
+msgid "Invalid email format"
+msgstr "Невірний формат email"
+
+msgid "Welcome to Rozoom-KI"
+msgstr "Ласкаво просимо до Rozoom-KI"
+
+msgid "Request a Project Estimate"
+msgstr "Замовити оцінку проекту"
+
+msgid "Fill out our project questionnaire to get a free time and budget estimate for your project. No obligations!"
+msgstr "Заповніть нашу анкету проекту, щоб отримати безкоштовну оцінку часу та бюджету для вашого проекту. Без зобов'язань!"
+
+msgid "What type of project are you looking to develop?"
+msgstr "Який тип проекту ви хочете розробити?"
+
+msgid "Select a project type"
+msgstr "Виберіть тип проекту"
+
+msgid "Web Application"
+msgstr "Веб-додаток"
+
+msgid "Mobile Application"
+msgstr "Мобільний додаток"
+
+msgid "AI/ML Solution"
+msgstr "Рішення ШІ/ML"
+
+msgid "Automation Tool"
+msgstr "Інструмент автоматизації"
+
+msgid "Data Analytics"
+msgstr "Аналітика даних"
+
+msgid "Other"
+msgstr "Інше"
+
+msgid "Choose the category that best describes your project."
+msgstr "Виберіть категорію, яка найкраще описує ваш проект."
+
+msgid "What is the primary goal of your project?"
+msgstr "Яка основна мета вашого проекту?"
+
+msgid "Describe the main purpose of your project..."
+msgstr "Опишіть основну мету вашого проекту..."
+
+msgid "About"
+msgstr "Про нас"
+
+msgid "About the author."
+msgstr "Про автора."
+
+msgid "Intelligent AI Solutions for Modern Business"
+msgstr "Інтелектуальні рішення ШІ для сучасного бізнесу"
+
+msgid "Transform your business with our state-of-the-art AI assistants and custom solutions"
+msgstr "Трансформуйте свій бізнес за допомогою наших передових асистентів ШІ та індивідуальних рішень"
+
+msgid "Explore Services"
+msgstr "Дослідити послуги"
+
+msgid "Contact Us"
+msgstr "Зв'язатися з нами"
+
+msgid "Sign Up for Free"
+msgstr "Зареєструватися безкоштовно"
+
+msgid "Go to Dashboard"
+msgstr "Перейти до панелі керування"
+
+msgid "How We Can Help"
+msgstr "Як ми можемо допомогти"
+
+msgid "Web Development"
+msgstr "Веб-розробка"
+
+msgid "Custom websites and web applications with AI-powered features to enhance user experience."
+msgstr "Індивідуальні веб-сайти та веб-додатки з функціями на основі ШІ для покращення користувацького досвіду."
+
+msgid "ML & AI Integration"
+msgstr "Інтеграція ML та ШІ"
+
+msgid "Integrate machine learning models and AI capabilities into your existing software systems."
+msgstr "Інтегруйте моделі машинного навчання та можливості ШІ у ваші існуючі програмні системи."
+
+msgid "Process Automation"
+msgstr "Автоматизація процесів"
+
+msgid "Streamline your business operations with intelligent automation and workflow solutions."
+msgstr "Оптимізуйте бізнес-процеси за допомогою інтелектуальної автоматизації та рішень для робочих процесів."
+
+msgid "What Our Clients Say"
+msgstr "Що кажуть наші клієнти"
+
+msgid "Create Your Personal Account"
+msgstr "Створіть свій особистий обліковий запис"
+
+msgid "Track your projects, access personalized services, and collaborate with our team in real-time."
+msgstr "Відстежуйте свої проекти, отримуйте доступ до персоналізованих послуг та співпрацюйте з нашою командою в режимі реального часу."
+
+msgid "Personal dashboard to monitor project progress"
+msgstr "Особиста панель керування для моніторингу прогресу проекту"
+
+msgid "Direct messaging with our development team"
+msgstr "Пряме спілкування з нашою командою розробки"
+
+msgid "Online invoicing and payment processing"
+msgstr "Онлайн виставлення рахунків та обробка платежів"
+
+msgid "Project milestone tracking and updates"
+msgstr "Відстеження етапів проекту та оновлення"
+
+msgid "Register Now"
+msgstr "Зареєструватися зараз"
+
+msgid "Create Account"
+msgstr "Створити обліковий запис"
+
+msgid "Already have an account? Login"
+msgstr "Вже маєте обліковий запис? Увійдіть"
+
+msgid "Ready to transform your business with AI?"
+msgstr "Готові трансформувати свій бізнес за допомогою ШІ?"
+
+msgid "Our team of experts is ready to help you implement intelligent solutions."
+msgstr "Наша команда експертів готова допомогти вам впровадити інтелектуальні рішення."
+
+msgid "Get Started Today"
+msgstr "Почати сьогодні"
+
+msgid "Our Services"
+msgstr "Наші послуги"
+
+msgid "AI Development"
+msgstr "Розробка ШІ"
+
+msgid "We develop custom AI solutions for your business needs, including natural language processing, computer vision, and machine learning models."
+msgstr "Ми розробляємо індивідуальні рішення ШІ для ваших бізнес-потреб, включаючи обробку природної мови, комп'ютерний зір та моделі машинного навчання."
+
+msgid "Automation Solutions"
+msgstr "Рішення автоматизації"
+
+msgid "Automate your business processes with custom software solutions to increase efficiency and reduce operational costs."
+msgstr "Автоматизуйте бізнес-процеси за допомогою індивідуальних програмних рішень для підвищення ефективності та зниження операційних витрат."
+
+msgid "Data Analysis"
+msgstr "Аналіз даних"
+
+msgid "Turn your data into actionable insights with our comprehensive data analysis and visualization services."
+msgstr "Перетворіть ваші дані на практичні висновки за допомогою наших комплексних послуг аналізу даних та візуалізації."
+
+msgid "Rozoom-KI transformed our customer service with their AI assistant. Response times dropped by 60 percent and customer satisfaction increased dramatically."
+msgstr "Rozoom-KI трансформувала наш клієнтський сервіс за допомогою їхнього асистента ШІ. Час відповіді зменшився на 60 відсотків, а задоволеність клієнтів значно зросла."
+
+msgid "The machine learning integration for our inventory management has saved us thousands of euros monthly and improved our forecasting accuracy by 40 percent."
+msgstr "Інтеграція машинного навчання для управління запасами заощадила нам тисячі євро щомісяця та покращила точність прогнозування на 40 відсотків."
+
+msgid "Their AI-powered analytics platform gave us insights we never thought possible. We have been able to identify new market opportunities and increase revenue by 25 percent in just six months."
+msgstr "Їхня платформа аналітики на основі ШІ надала нам висновки, про які ми ніколи не думали як про можливі. Ми змогли ідентифікувати нові ринкові можливості та збільшити дохід на 25 відсотків всього за шість місяців."
+
+msgid "CTO, TechSolutions GmbH"
+msgstr "CTO, TechSolutions GmbH"
+
+msgid "Operations Director, RetailPlus"
+msgstr "Директор з операцій, RetailPlus"
+
+msgid "Marketing Director, InnovateMedia"
+msgstr "Директор з маркетингу, InnovateMedia"
+
+msgid "Describe your target audience..."
+msgstr "Опишіть вашу цільову аудиторію..."
+
+msgid "Specify who will be using your solution (e.g., businesses, consumers, specific industry professionals)."
+msgstr "Вкажіть, хто буде використовувати ваше рішення (наприклад, бізнеси, споживачі, фахівці конкретної галузі)."
+
+msgid "List the key features your project must have..."
+msgstr "Перелічіть ключові функції, які повинен мати ваш проект..."
+
+msgid "Focus on the core functionality that is absolutely necessary for your project to succeed."
+msgstr "Зосередьтеся на основній функціональності, яка абсолютно необхідна для успіху вашого проекту."
+
+msgid "List any additional features that would be beneficial..."
+msgstr "Перелічіть будь-які додаткові функції, які будуть корисними..."
+
+msgid "These are features that could be implemented in later phases of the project."
+msgstr "Це функції, які можуть бути реалізовані в пізніших фазах проекту."
+
+msgid "Select a timeline"
+msgstr "Виберіть терміни"
+
+msgid "Urgent (1-2 months)"
+msgstr "Терміново (1-2 місяці)"
+
+msgid "Standard (3-6 months)"
+msgstr "Стандартно (3-6 місяців)"
+
+msgid "Flexible (6+ months)"
+msgstr "Гнучко (6+ місяців)"
+
+msgid "Not yet decided"
+msgstr "Ще не вирішено"
+
+msgid "This helps us determine the development pace and resource allocation."
+msgstr "Це допомагає нам визначити темп розробки та розподіл ресурсів."
+
+msgid "Select a budget range"
+msgstr "Виберіть діапазон бюджету"
+
+msgid "Less than €10,000"
+msgstr "Менше €10,000"
+
+msgid "€10,000 - €30,000"
+msgstr "€10,000 - €30,000"
+
+msgid "€30,000 - €100,000"
+msgstr "€30,000 - €100,000"
+
+msgid "€100,000+"
+msgstr "€100,000+"
+
+msgid "This helps us suggest solutions that fit within your financial constraints."
+msgstr "Це допомагає нам запропонувати рішення, які підходять до ваших фінансових можливостей."
+
+msgid "List any systems, APIs, or services your project needs to connect with..."
+msgstr "Перелічіть будь-які системи, API або послуги, з якими повинен підключатися ваш проект..."
+
+msgid "For example: payment gateways, CRMs, ERPs, social media platforms, etc."
+msgstr "Наприклад: платіжні шлюзи, CRM, ERP, платформи соціальних мереж тощо."
+
+msgid "Specify any technologies, frameworks, or platforms you prefer..."
+msgstr "Вкажіть будь-які технології, фреймворки або платформи, які ви віддаєте перевагу..."
+
+msgid "For example: programming languages, cloud providers, frameworks, or architecture preferences."
+msgstr "Наприклад: мови програмування, хмарні провайдери, фреймворки або архітектурні вподобання."
+
+msgid "List websites, apps, or products similar to what you envision..."
+msgstr "Перелічіть веб-сайти, додатки або продукти, подібні до того, що ви уявляєте..."
+
+msgid "This helps us understand your vision and aesthetic preferences."
+msgstr "Це допомагає нам зрозуміти ваше бачення та естетичні вподобання."
+
+msgid "Describe key performance indicators or success metrics..."
+msgstr "Опишіть ключові показники ефективності або метрики успіху..."
+
+msgid "For example: user acquisition, conversion rates, efficiency improvements, cost savings, etc."
+msgstr "Наприклад: залучення користувачів, коефіцієнти конверсії, покращення ефективності, економія витрат тощо."
+
+msgid "GDPR Compliance"
+msgstr "Відповідність GDPR"
+
+msgid "HIPAA Compliance"
+msgstr "Відповідність HIPAA"
+
+msgid "PCI DSS Compliance"
+msgstr "Відповідність PCI DSS"
+
+msgid "SOC 2 Compliance"
+msgstr "Відповідність SOC 2"
+
+msgid "ISO 27001 Compliance"
+msgstr "Відповідність ISO 27001"
+
+msgid "Two-factor Authentication"
+msgstr "Двофакторна аутентифікація"
+
+msgid "Data Encryption"
+msgstr "Шифрування даних"
+
+msgid "Hold Ctrl/Cmd to select multiple options, or leave blank if unsure."
+msgstr "Утримуйте Ctrl/Cmd для вибору кількох варіантів, або залиште порожнім, якщо не впевнені."
+
+msgid "If you selected 'Other' or have additional security requirements, please specify..."
+msgstr "Якщо ви вибрали 'Інше' або маєте додаткові вимоги до безпеки, будь ласка, уточніть..."
+
+msgid "Select support level"
+msgstr "Виберіть рівень підтримки"
+
+msgid "Minimal (Bug fixes only)"
+msgstr "Мінімальний (тільки виправлення помилок)"
+
+msgid "Standard (Bug fixes and minor updates)"
+msgstr "Стандартний (виправлення помилок та невеликі оновлення)"
+
+msgid "Comprehensive (Ongoing development and support)"
+msgstr "Комплексний (постійна розробка та підтримка)"
+
+msgid "Fully Managed Service"
+msgstr "Повністю керована послуга"
+
+msgid "This helps us plan for post-launch resources and maintenance."
+msgstr "Це допомагає нам планувати ресурси та обслуговування після запуску."
+
+msgid "Wireframes"
+msgstr "Вайрфрейми"
+
+msgid "Design Mockups"
+msgstr "Дизайн-макети"
+
+msgid "Brand Guidelines"
+msgstr "Брендбук"
+
+msgid "User Stories"
+msgstr "Користувацькі історії"
+
+msgid "Requirements Document"
+msgstr "Документ вимог"
+
+msgid "Existing Code"
+msgstr "Існуючий код"
+
+msgid "None of the above"
+msgstr "Жодного з вищевказаних"
+
+msgid "Check all that apply. This helps us understand what resources are available to start with."
+msgstr "Позначте все, що підходить. Це допомагає нам зрозуміти, які ресурси доступні для початку."
+
+msgid "Share any other details that might help us understand your project better..."
+msgstr "Поділіться будь-якими іншими деталями, які можуть допомогти нам краще зрозуміти ваш проект..."
+
+msgid "Include any considerations, challenges, or specific requirements not covered by previous questions."
+msgstr "Включіть будь-які міркування, виклики або специфічні вимоги, не охоплені попередніми питаннями."
+
+msgid "Contact Information"
+msgstr "Контактна інформація"
+
+msgid "Name *"
+msgstr "Ім'я *"
+
+msgid "Company Name"
+msgstr "Назва компанії"
+
+msgid "Email *"
+msgstr "Email *"
+
+msgid "Phone"
+msgstr "Телефон"
+
+msgid "I consent to having this website store my submitted information so they can respond to my inquiry. *"
+msgstr "Я даю згоду на зберігання цим веб-сайтом наданої мною інформації, щоб вони могли відповісти на мій запит. *"
+
+msgid "Submit Project Request"
+msgstr "Надіслати запит на проект"
+
+msgid "Why Choose Us"
+msgstr "Чому обрати нас"
+
+msgid "Expert team with proven track record"
+msgstr "Команда експертів з перевіреним досвідом"
+
+msgid "Transparent pricing and process"
+msgstr "Прозора цінова політика та процес"
+
+msgid "Agile development methodology"
+msgstr "Agile методологія розробки"
+
+msgid "Ongoing support and maintenance"
+msgstr "Постійна підтримка та обслуговування"
+
+msgid "Cutting-edge technologies"
+msgstr "Найсучасніші технології"
+
+msgid "Free Consultation"
+msgstr "Безкоштовна консультація"
+
+msgid "Get a free 30-minute consultation with our experts to discuss your project needs."
+msgstr "Отримайте безкоштовну 30-хвилинну консультацію з нашими експертами для обговорення потреб вашого проекту."
+
+msgid "Submitting..."
+msgstr "Надсилається..."
+
+msgid "Impressum"
+msgstr "Імпрессум"
+
+msgid "Impressum (Legal Notice)"
+msgstr "Імпрессум (Юридична інформація)"
+
+msgid "Information According to § 5 TMG"
+msgstr "Інформація відповідно до § 5 TMG"
+
+msgid "Germany"
+msgstr "Німеччина"
+
+msgid "Represented by:"
+msgstr "Представлено:"
+
+msgid "Contact:"
+msgstr "Контакти:"
+
+msgid "Phone:"
+msgstr "Телефон:"
+
+msgid "Registration:"
+msgstr "Реєстрація:"
+
+msgid "Registered in the Commercial Register"
+msgstr "Зареєстровано в торговому реєстрі"
+
+msgid "Register Court:"
+msgstr "Суд реєстрації:"
+
+msgid "Register Number:"
+msgstr "Реєстраційний номер:"
+
+msgid "VAT Identification Number:"
+msgstr "Ідентифікаційний номер ПДВ:"
+
+msgid "VAT ID:"
+msgstr "ІПН:"
+
+msgid "According to § 27 a of the German Value Added Tax Act"
+msgstr "Відповідно до § 27 a Закону Німеччини про податок на додану вартість"
+
+msgid "Responsible for Content According to § 55 Abs. 2 RStV"
+msgstr "Відповідальний за зміст відповідно до § 55 Abs. 2 RStV"
+
+msgid "Dispute Resolution"
+msgstr "Вирішення спорів"
+
+msgid "The European Commission provides a platform for online dispute resolution (OS):"
+msgstr "Європейська Комісія надає платформу для онлайн вирішення спорів (OS):"
+
+msgid "We are not willing or obliged to participate in dispute resolution proceedings before a consumer arbitration board."
+msgstr "Ми не бажаємо та не зобов'язані брати участь у процедурах вирішення спорів перед арбітражною комісією споживачів."
+
+msgid "Liability for Content"
+msgstr "Відповідальність за зміст"
+
+msgid "As a service provider, we are responsible for our own content on these pages according to § 7 paragraph 1 TMG (German Telemedia Act) and general laws. According to §§ 8 to 10 TMG, however, we as a service provider are not obliged to monitor transmitted or stored external information or to investigate circumstances that indicate illegal activity."
+msgstr "Як постачальник послуг, ми несемо відповідальність за власний зміст на цих сторінках відповідно до § 7 абзацу 1 TMG (Німецький закон про телемедіа) та загальних законів. Відповідно до §§ 8-10 TMG, однак, ми як постачальник послуг не зобов'язані контролювати передані або збережені зовнішні відомості або досліджувати обставини, які вказують на незаконну діяльність."
+
+msgid "Obligations to remove or block the use of information according to general laws remain unaffected. However, liability in this respect is only possible from the time of knowledge of a specific legal violation. As soon as we become aware of such legal violations, we will remove this content immediately."
+msgstr "Зобов'язання щодо видалення або блокування використання інформації відповідно до загальних законів залишаються незмінними. Однак відповідальність у цьому відношенні можлива лише з моменту отримання знань про конкретне порушення закону. Як тільки ми дізнаємося про такі порушення закону, ми негайно видалимо цей зміст."
+
+msgid "Liability for Links"
+msgstr "Відповідальність за посилання"
+
+msgid "Our offer contains links to external websites of third parties, on whose contents we have no influence. Therefore, we cannot assume any liability for these external contents. The respective provider or operator of the pages is always responsible for the content of the linked pages. The linked pages were checked for possible legal violations at the time of linking. Illegal contents were not recognizable at the time of linking."
+msgstr "Наша пропозиція містить посилання на зовнішні веб-сайти третіх сторін, на зміст яких ми не маємо впливу. Тому ми не можемо брати на себе відповідальність за цей зовнішній зміст. Відповідальний за зміст пов'язаних сторінок завжди є відповідний постачальник або оператор сторінок. Пов'язані сторінки були перевірені на можливі порушення закону на момент встановлення посилання. Незаконний зміст не був розпізнаний на момент встановлення посилання."
+
+msgid "However, a permanent control of the contents of the linked pages is not reasonable without concrete evidence of a violation of law. If we become aware of any legal violations, we will remove such links immediately."
+msgstr "Однак постійний контроль змісту пов'язаних сторінок не є розумним без конкретних доказів порушення закону. Якщо ми дізнаємося про будь-які порушення закону, ми негайно видалимо такі посилання."
+
+msgid "Copyright"
+msgstr "Авторське право"
+
+msgid "The content and works created by the site operators on these pages are subject to German copyright law. Duplication, processing, distribution, and any kind of exploitation outside the limits of copyright require the written consent of the respective author or creator. Downloads and copies of this site are only permitted for private, non-commercial use."
+msgstr "Зміст та роботи, створені операторами сайту на цих сторінках, підлягають німецькому закону про авторське право. Дублювання, обробка, розповсюдження та будь-який вид використання поза межами авторського права вимагають письмової згоди відповідного автора або творця. Завантаження та копії цього сайту дозволені лише для приватного, некомерційного використання."
+
+msgid "Insofar as the content on this site was not created by the operator, the copyrights of third parties are respected. In particular, third-party content is marked as such. Should you nevertheless become aware of a copyright infringement, please inform us accordingly. If we become aware of any infringements, we will remove such content immediately."
+msgstr "Оскільки зміст цього сайту не був створений оператором, поважаються авторські права третіх сторін. Зокрема, зміст третіх сторін позначений як такий. Якщо ви все ж таки помітите порушення авторських прав, будь ласка, повідомте нас про це. Якщо ми дізнаємося про будь-які порушення, ми негайно видалимо такий зміст."
+
+msgid "Privacy Policy"
+msgstr "Політика конфіденційності"
+
+msgid "Terms of Service"
+msgstr "Умови обслуговування"
+
+msgid "Last updated: September 1, 2025"
+msgstr "Останнє оновлення: 1 вересня 2025"
+
+msgid "1. Introduction"
+msgstr "1. Вступ"
+
+msgid "Rozoom-KI (\"we\", \"us\", or \"our\") respects your privacy and is committed to protecting your personal data. This privacy policy will inform you about how we look after your personal data when you visit our website and tell you about your privacy rights and how the law protects you."
+msgstr "Rozoom-KI (\"ми\", \"нас\" або \"наш\") поважає вашу конфіденційність та прагне захищати ваші персональні дані. Ця політика конфіденційності повідомить вас про те, як ми піклуємося про ваші персональні дані, коли ви відвідуєте наш веб-сайт, і розповість про ваші права на конфіденційність та про те, як закон вас захищає."
+
+msgid "2. The Data We Collect"
+msgstr "2. Дані, які ми збираємо"
+
+msgid "We may collect, use, store and transfer different kinds of personal data about you which we have grouped together as follows:"
+msgstr "Ми можемо збирати, використовувати, зберігати та передавати різні види персональних даних про вас, які ми згрупували наступним чином:"
+
+msgid "Identity Data"
+msgstr "Дані ідентифікації"
+
+msgid "includes first name, last name, username or similar identifier."
+msgstr "включає ім'я, прізвище, ім'я користувача або подібний ідентифікатор."
+
+msgid "Contact Data"
+msgstr "Контактні дані"
+
+msgid "includes email address and telephone numbers."
+msgstr "включає адресу електронної пошти та номери телефонів."
+
+msgid "Technical Data"
+msgstr "Технічні дані"
+
+msgid "includes internet protocol (IP) address, browser type and version, time zone setting and location, browser plug-in types and versions, operating system and platform, and other technology on the devices you use to access this website."
+msgstr "включає адресу інтернет-протоколу (IP), тип та версію браузера, налаштування часового поясу та місцезнаходження, типи та версії плагінів браузера, операційну систему та платформу, а також інші технології на пристроях, які ви використовуєте для доступу до цього веб-сайту."
+
+msgid "Usage Data"
+msgstr "Дані використання"
+
+msgid "includes information about how you use our website and services."
+msgstr "включає інформацію про те, як ви використовуєте наш веб-сайт та послуги."
+
+msgid "3. How We Use Your Data"
+msgstr "3. Як ми використовуємо ваші дані"
+
+msgid "We will only use your personal data when the law allows us to. Most commonly, we will use your personal data in the following circumstances:"
+msgstr "Ми будемо використовувати ваші персональні дані лише тоді, коли закон дозволяє нам це робити. Найчастіше ми будемо використовувати ваші персональні дані в наступних обставинах:"
+
+msgid "To register you as a new customer."
+msgstr "Для реєстрації вас як нового клієнта."
+
+msgid "To process and deliver your order."
+msgstr "Для обробки та виконання вашого замовлення."
+
+msgid "To manage our relationship with you."
+msgstr "Для управління нашими відносинами з вами."
+
+msgid "To improve our website, products/services, marketing or customer relationships."
+msgstr "Для покращення нашого веб-сайту, продуктів/послуг, маркетингу або відносин з клієнтами."
+
+msgid "To recommend products or services that may be of interest to you."
+msgstr "Для рекомендації продуктів або послуг, які можуть вас зацікавити."
+
+msgid "4. Data Security"
+msgstr "4. Безпека даних"
+
+msgid "We have put in place appropriate security measures to prevent your personal data from being accidentally lost, used or accessed in an unauthorized way, altered or disclosed. We limit access to your personal data to those employees, agents, contractors and other third parties who have a business need to know."
+msgstr "Ми запровадили відповідні заходи безпеки для запобігання випадковій втраті, використанню або несанкціонованому доступу до ваших персональних даних, їх зміні або розголошенню. Ми обмежуємо доступ до ваших персональних даних тими співробітниками, агентами, підрядниками та іншими третіми сторонами, які мають ділову необхідність знати."
+
+msgid "5. Your Legal Rights"
+msgstr "5. Ваші законні права"
+
+msgid "Under certain circumstances, you have rights under data protection laws in relation to your personal data, including the right to:"
+msgstr "За певних обставин ви маєте права відповідно до законів про захист даних щодо ваших персональних даних, включаючи право на:"
+
+msgid "Request access to your personal data."
+msgstr "Запит доступу до ваших персональних даних."
+
+msgid "Request correction of your personal data."
+msgstr "Запит виправлення ваших персональних даних."
+
+msgid "Request erasure of your personal data."
+msgstr "Запит видалення ваших персональних даних."
+
+msgid "Object to processing of your personal data."
+msgstr "Заперечення проти обробки ваших персональних даних."
+
+msgid "Request restriction of processing your personal data."
+msgstr "Запит обмеження обробки ваших персональних даних."
+
+msgid "Request transfer of your personal data."
+msgstr "Запит передачі ваших персональних даних."
+
+msgid "Right to withdraw consent."
+msgstr "Право відкликати згоду."
+
+msgid "6. Contact Us"
+msgstr "6. Зв'яжіться з нами"
+
+msgid "If you have any questions about this privacy policy or our privacy practices, please contact us at:"
+msgstr "Якщо у вас є питання щодо цієї політики конфіденційності або наших практик конфіденційності, будь ласка, зв'яжіться з нами за адресою:"
+
+msgid "Email:"
+msgstr "Email:"
+
+msgid "1. Acceptance of Terms"
+msgstr "1. Прийняття умов"
+
+msgid "By accessing or using the services of Rozoom-KI (\"we\", \"us\", \"our\"), you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our services."
+msgstr "Доступаючись до послуг Rozoom-KI або використовуючи їх (\"ми\", \"нас\", \"наш\"), ви погоджуєтеся дотримуватися цих Умов обслуговування. Якщо ви не погоджуєтеся з цими умовами, будь ласка, не використовуйте наші послуги."
+
+msgid "2. Description of Service"
+msgstr "2. Опис послуги"
+
+msgid "Rozoom-KI provides custom software development and AI integration services as described on our website. We reserve the right to modify, suspend, or discontinue any part of our services at any time without notice."
+msgstr "Rozoom-KI надає послуги індивідуальної розробки програмного забезпечення та інтеграції ШІ, як описано на нашому веб-сайті. Ми залишаємо за собою право змінювати, призупиняти або припиняти будь-яку частину наших послуг у будь-який час без попередження."
+
+msgid "3. User Accounts"
+msgstr "3. Облікові записи користувачів"
+
+msgid "Some of our services may require you to create an account. You are responsible for maintaining the confidentiality of your account information and for all activities that occur under your account. You agree to notify us immediately of any unauthorized use of your account."
+msgstr "Деякі з наших послуг можуть вимагати створення облікового запису. Ви несете відповідальність за збереження конфіденційності інформації вашого облікового запису та за всі дії, що відбуваються під вашим обліковим записом. Ви погоджуєтеся негайно повідомити нас про будь-яке несанкціоноване використання вашого облікового запису."
+
+msgid "4. Payment Terms"
+msgstr "4. Умови оплати"
+
+msgid "Fees for our services are described on our website or in individual agreements. Unless otherwise specified, all fees are quoted in Euro (€) and are non-refundable. We reserve the right to change our fees at any time, with notice provided to existing customers."
+msgstr "Плата за наші послуги описана на нашому веб-сайті або в окремих угодах. Якщо не вказано інше, вся плата вказана в євро (€) та не підлягає поверненню. Ми залишаємо за собою право змінювати нашу плату у будь-який час, повідомивши існуючих клієнтів."
+
+msgid "5. Intellectual Property"
+msgstr "5. Інтелектуальна власність"
+
+msgid "All content, features, and functionality of our services, including but not limited to text, graphics, logos, icons, and software, are the exclusive property of Rozoom-KI or its licensors and are protected by copyright, trademark, and other intellectual property laws."
+msgstr "Весь зміст, функції та функціональність наших послуг, включаючи, але не обмежуючись текстом, графікою, логотипами, іконками та програмним забезпеченням, є виключною власністю Rozoom-KI або його ліцензіарів та захищені законами про авторське право, товарні знаки та іншу інтелектуальну власність."
+
+msgid "6. User Content"
+msgstr "6. Зміст користувача"
+
+msgid "You retain ownership of any content you submit to our services. By submitting content, you grant us a worldwide, non-exclusive, royalty-free license to use, reproduce, modify, adapt, publish, translate, and distribute your content in any existing or future media."
+msgstr "Ви зберігаєте право власності на будь-який зміст, який ви надсилаєте до наших послуг. Надсилаючи зміст, ви надаєте нам всесвітню, неексклюзивну, безоплатну ліцензію на використання, відтворення, модифікацію, адаптацію, публікацію, переклад та розповсюдження вашого змісту в будь-яких існуючих або майбутніх засобах масової інформації."
+
+msgid "7. Limitation of Liability"
+msgstr "7. Обмеження відповідальності"
+
+msgid "To the maximum extent permitted by law, Rozoom-KI shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of profits, data, use, or goodwill, arising out of or in connection with these terms or the use or inability to use our services."
+msgstr "У максимально дозволеному законом обсязі Rozoom-KI не несе відповідальності за будь-які непрямі, випадкові, особливі, наслідкові або штрафні збитки, включаючи, але не обмежуючись втратою прибутку, даних, використання або доброї волі, що виникають у зв'язку з цими умовами або використанням чи неможливістю використання наших послуг."
+
+msgid "8. Governing Law"
+msgstr "8. Застосовне право"
+
+msgid "These Terms shall be governed by and construed in accordance with the laws of Germany, without regard to its conflict of law provisions."
+msgstr "Ці Умови регулюються та тлумачаться відповідно до законів Німеччини, без урахування положень про колізію законів."
+
+msgid "9. Changes to Terms"
+msgstr "9. Зміни умов"
+
+msgid "We reserve the right to modify these Terms at any time. We will provide notice of significant changes through our website or via email. Your continued use of our services after such modifications constitutes your acceptance of the revised Terms."
+msgstr "Ми залишаємо за собою право змінювати ці Умови у будь-який час. Ми надамо повідомлення про значні зміни через наш веб-сайт або електронною поштою. Ваше продовження використання наших послуг після таких змін становить вашу згоду з переглянутими Умовами."
+
+msgid "10. Contact Us"
+msgstr "10. Зв'яжіться з нами"
+
+msgid "If you have any questions about these Terms, please contact us at:"
+msgstr "Якщо у вас є питання щодо цих Умов, будь ласка, зв'яжіться з нами за адресою:"
+
+msgid "Clearly define what problem your project solves or what opportunity it addresses."
+msgstr "Чітко визначте, яку проблему вирішує ваш проект або яку можливість він розглядає."
+
+msgid "Who are the target users of your project?"
+msgstr "Хто є цільовими користувачами вашого проекту?"
+
+msgid "What features are essential for your project?"
+msgstr "Які функції є необхідними для вашого проекту?"
+
+msgid "What features would be nice to have but aren't essential?"
+msgstr "Які функції було б добре мати, але вони не є необхідними?"
+
+msgid "Do you have a specific timeline for this project?"
+msgstr "Чи маєте ви конкретний термін для цього проекту?"
+
+msgid "Do you have a budget range in mind?"
+msgstr "Чи маєте ви на увазі діапазон бюджету?"
+
+msgid "Are there any existing systems your project needs to integrate with?"
+msgstr "Чи є існуючі системи, з якими повинен інтегруватися ваш проект?"
+
+msgid "Do you have any specific technical requirements or preferences?"
+msgstr "Чи маєте ви будь-які конкретні технічні вимоги або вподобання?"
+
+msgid "Do you have any examples of similar projects you admire?"
+msgstr "Чи маєте ви приклади подібних проектів, які ви захоплюєтеся?"
+
+msgid "How do you plan to measure the success of this project?"
+msgstr "Як ви плануєте вимірювати успіх цього проекту?"
+
+msgid "Do you have any specific security or compliance requirements?"
+msgstr "Чи маєте ви будь-які конкретні вимоги до безпеки або відповідності?"
+
+msgid "What level of ongoing support will you need after launch?"
+msgstr "Який рівень постійної підтримки вам знадобиться після запуску?"
+
+msgid "Do you already have any design assets or documentation for this project?"
+msgstr "Чи маєте ви вже будь-які дизайн-ресурси або документацію для цього проекту?"
+
+msgid "Any additional information you'd like to share about your project?"
+msgstr "Будь-яка додаткова інформація, яку ви хотіли б поділитися про ваш проект?"
+
+msgid "Choose Your Package"
+msgstr "Виберіть свій пакет"
+
+msgid "Get the perfect amount of development time for your project needs"
+msgstr "Отримайте ідеальну кількість часу розробки для потреб вашого проекту"
+
+msgid "Most Popular"
+msgstr "Найпопулярніший"
+
+msgid "Hours"
+msgstr "Години"
+
+msgid "per hour"
+msgstr "за годину"
+
+msgid "development hours"
+msgstr "годин розробки"
+
+msgid "Custom solutions"
+msgstr "Індивідуальні рішення"
+
+msgid "Support included"
+msgstr "Підтримка включена"
+
+msgid "Regular updates"
+msgstr "Регулярні оновлення"
+
+msgid "Select Package"
+msgstr "Виберіть пакет"
+
+msgid "Custom Package"
+msgstr "Індивідуальний пакет"
+
+msgid "Tailored to Your Needs"
+msgstr "Адаптовано до ваших потреб"
+
+msgid "For special requirements"
+msgstr "Для особливих вимог"
+
+msgid "Flexible hours"
+msgstr "Гнучкі години"
+
+msgid "Custom development"
+msgstr "Індивідуальна розробка"
+
+msgid "Dedicated support"
+msgstr "Спеціалізована підтримка"
+
+msgid "Priority service"
+msgstr "Пріоритетне обслуговування"
+
+msgid "Enterprise solutions"
+msgstr "Корпоративні рішення"
+
+msgid "Get in Touch"
+msgstr "Зв'язатися"
+
+msgid "Need Help Choosing?"
+msgstr "Потрібна допомога у виборі?"
+
+msgid "Contact our team for a free consultation and we'll help you select the perfect package for your project."
+msgstr "Зв'яжіться з нашою командою для безкоштовної консультації, і ми допоможемо вам вибрати ідеальний пакет для вашого проекту."
+
+msgid "No pricing packages are currently available. Please contact us for custom pricing."
+msgstr "Наразі немає доступних пакетів цін. Будь ласка, зв'яжіться з нами для індивідуального ціноутворення."
+
+msgid "Have a question or ready to start your next project? We're here to help!"
+msgstr "Маєте питання або готові розпочати свій наступний проект? Ми тут, щоб допомогти!"
+
+msgid "Address"
+msgstr "Адреса"
+
+msgid "Email Us"
+msgstr "Напишіть нам"
+
+msgid "Call Us"
+msgstr "Зателефонуйте нам"
+
+msgid "Mon-Fri 9:00-18:00"
+msgstr "Пн-Пт 9:00-18:00"
+
+msgid "Send Us a Message"
+msgstr "Надішліть нам повідомлення"
+
+msgid "Your message has been sent successfully. We'll get back to you soon!"
+msgstr "Ваше повідомлення успішно надіслано. Ми скоро зв'яжемося з вами!"
+
+msgid "Full Name"
+msgstr "Повне ім'я"
+
+msgid "Enter your full name"
+msgstr "Введіть ваше повне ім'я"
+
+msgid "Email Address"
+msgstr "Адреса електронної пошти"
+
+msgid "Enter your email address"
+msgstr "Введіть вашу адресу електронної пошти"
+
+msgid "Your Message"
+msgstr "Ваше повідомлення"
+
+msgid "How can we help you?"
+msgstr "Чим ми можемо вам допомогти?"
+
+msgid "I consent to having this website store my submitted information so they can respond to my inquiry"
+msgstr "Я даю згоду на зберігання цим веб-сайтом наданої мною інформації, щоб вони могли відповісти на мій запит"
+
+msgid "Send Message"
+msgstr "Надіслати повідомлення"
+
+msgid "Remote Work"
+msgstr "Віддалена робота"
+
+msgid "We operate as a remote-first company with team members working from various locations. This allows us to serve clients worldwide while maintaining flexibility and efficiency."
+msgstr "Ми працюємо як компанія, орієнтована на віддалену роботу, з членами команди, які працюють з різних місць. Це дозволяє нам обслуговувати клієнтів по всьому світу, зберігаючи гнучкість та ефективність."
+
+msgid "Working remotely from Germany"
+msgstr "Віддалена робота з Німеччини"
+
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+msgid "Twitter"
+msgstr "Twitter"
+
+msgid "Facebook"
+msgstr "Facebook"
+
+msgid "Instagram"
+msgstr "Instagram"

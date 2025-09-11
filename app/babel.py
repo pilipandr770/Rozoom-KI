@@ -15,16 +15,16 @@ def get_locale():
     """
     # Проверяем параметр URL
     lang = request.args.get('lang')
-    if lang in ['en', 'de', 'ru']:
+    if lang in ['en', 'de', 'ru', 'uk']:
         return lang
     
     # Проверяем cookie
     lang = request.cookies.get('lang')
-    if lang in ['en', 'de', 'ru']:
+    if lang in ['en', 'de', 'ru', 'uk']:
         return lang
     
     # Проверяем заголовок Accept-Language
-    best_match = request.accept_languages.best_match(['en', 'de', 'ru'])
+    best_match = request.accept_languages.best_match(['en', 'de', 'ru', 'uk'])
     if best_match:
         return best_match
     

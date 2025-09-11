@@ -1,0 +1,75 @@
+# Дополнительные переводы для форм
+msgid ""
+msgstr ""
+"Project-Id-Version: Rozoom-KI 1.0\n"
+"Report-Msgid-Bugs-To: info@rozoom-ki.com\n"
+"POT-Creation-Date: 2025-09-11 12:00+0200\n"
+"PO-Revision-Date: 2025-09-11 12:00+0200\n"
+"Last-Translator: \n"
+"Language: uk\n"
+"Language-Team: Ukrainian\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+msgid "Technical Specification Form"
+msgstr "Форма технічного завдання"
+
+msgid "Project Requirements"
+msgstr "Вимоги до проекту"
+
+msgid "Please fill out this form to help us understand your project needs better."
+msgstr "Будь ласка, заповніть цю форму, щоб допомогти нам краще зрозуміти потреби вашого проекту."
+
+msgid "Project Type Selection"
+msgstr "Вибір типу проекту"
+
+msgid "Please select the type of project you are interested in:"
+msgstr "Будь ласка, виберіть тип проекту, який вас цікавить:"
+
+msgid "Timeline Preferences"
+msgstr "Вподобання щодо термінів"
+
+msgid "Budget Considerations"
+msgstr "Бюджетні міркування"
+
+msgid "Integration Requirements"
+msgstr "Вимоги до інтеграції"
+
+msgid "Technical Preferences"
+msgstr "Технічні вподобання"
+
+msgid "Design Inspiration"
+msgstr "Дизайн натхнення"
+
+msgid "Success Metrics"
+msgstr "Метрики успіху"
+
+msgid "Security & Compliance"
+msgstr "Безпека та відповідність"
+
+msgid "Support Requirements"
+msgstr "Вимоги до підтримки"
+
+msgid "Additional Resources"
+msgstr "Додаткові ресурси"
+
+msgid "Contact Details"
+msgstr "Контактні дані"
+
+msgid "Form submitted successfully!"
+msgstr "Форму успішно надіслано!"
+
+msgid "Thank you for your submission. We will review your requirements and get back to you within 24 hours."
+msgstr "Дякуємо за вашу заявку. Ми розглянемо ваші вимоги та зв'яжемося з вами протягом 24 годин."
+
+msgid "There was an error submitting your form. Please try again."
+msgstr "Сталася помилка при надсиланні форми. Будь ласка, спробуйте ще раз."
+
+msgid "All fields marked with * are required."
+msgstr "Всі поля, позначені *, є обов'язковими."
+
+msgid "Please provide as much detail as possible to help us give you an accurate estimate."
+msgstr "Будь ласка, надайте якомога більше деталей, щоб допомогти нам дати вам точну оцінку."

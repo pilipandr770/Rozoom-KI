@@ -1,0 +1,264 @@
+# Переводы для формы услуг
+msgid ""
+msgstr ""
+"Project-Id-Version: Rozoom-KI 1.0\n"
+"Report-Msgid-Bugs-To: info@rozoom-ki.com\n"
+"POT-Creation-Date: 2025-09-11 12:15+0200\n"
+"PO-Revision-Date: 2025-09-11 12:15+0200\n"
+"Last-Translator: \n"
+"Language: uk\n"
+"Language-Team: Ukrainian\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+msgid "What type of project are you looking to develop?"
+msgstr "Який тип проекту ви хочете розробити?"
+
+msgid "Select a project type"
+msgstr "Виберіть тип проекту"
+
+msgid "Web Application"
+msgstr "Веб-додаток"
+
+msgid "Mobile Application"
+msgstr "Мобільний додаток"
+
+msgid "AI/ML Solution"
+msgstr "Рішення ШІ/ML"
+
+msgid "Automation Tool"
+msgstr "Інструмент автоматизації"
+
+msgid "Data Analytics"
+msgstr "Аналітика даних"
+
+msgid "Other"
+msgstr "Інше"
+
+msgid "Choose the category that best describes your project."
+msgstr "Виберіть категорію, яка найкраще описує ваш проект."
+
+msgid "What is the primary goal of your project?"
+msgstr "Яка основна мета вашого проекту?"
+
+msgid "Describe the main purpose of your project..."
+msgstr "Опишіть основну мету вашого проекту..."
+
+msgid "Clearly define what problem your project solves or what opportunity it addresses."
+msgstr "Чітко визначте, яку проблему вирішує ваш проект або яку можливість він розглядає."
+
+msgid "Who are the target users of your project?"
+msgstr "Хто є цільовими користувачами вашого проекту?"
+
+msgid "Describe your target audience..."
+msgstr "Опишіть вашу цільову аудиторію..."
+
+msgid "Specify who will be using your solution (e.g., businesses, consumers, specific industry professionals)."
+msgstr "Вкажіть, хто буде використовувати ваше рішення (наприклад, бізнеси, споживачі, фахівці конкретної галузі)."
+
+msgid "What features are essential for your project?"
+msgstr "Які функції є необхідними для вашого проекту?"
+
+msgid "List the key features your project must have..."
+msgstr "Перелічіть ключові функції, які повинен мати ваш проект..."
+
+msgid "Focus on the core functionality that is absolutely necessary for your project to succeed."
+msgstr "Зосередьтеся на основній функціональності, яка абсолютно необхідна для успіху вашого проекту."
+
+msgid "What features would be nice to have but aren't essential?"
+msgstr "Які функції було б добре мати, але вони не є необхідними?"
+
+msgid "List any additional features that would be beneficial..."
+msgstr "Перелічіть будь-які додаткові функції, які будуть корисними..."
+
+msgid "These are features that could be implemented in later phases of the project."
+msgstr "Це функції, які можуть бути реалізовані в пізніших фазах проекту."
+
+msgid "Do you have a specific timeline for this project?"
+msgstr "Чи маєте ви конкретний термін для цього проекту?"
+
+msgid "Select a timeline"
+msgstr "Виберіть терміни"
+
+msgid "Urgent (1-2 months)"
+msgstr "Терміново (1-2 місяці)"
+
+msgid "Standard (3-6 months)"
+msgstr "Стандартно (3-6 місяців)"
+
+msgid "Flexible (6+ months)"
+msgstr "Гнучко (6+ місяців)"
+
+msgid "Not yet decided"
+msgstr "Ще не вирішено"
+
+msgid "This helps us determine the development pace and resource allocation."
+msgstr "Це допомагає нам визначити темп розробки та розподіл ресурсів."
+
+msgid "Do you have a budget range in mind?"
+msgstr "Чи маєте ви на увазі діапазон бюджету?"
+
+msgid "Select a budget range"
+msgstr "Виберіть діапазон бюджету"
+
+msgid "Less than €10,000"
+msgstr "Менше €10,000"
+
+msgid "€10,000 - €30,000"
+msgstr "€10,000 - €30,000"
+
+msgid "€30,000 - €100,000"
+msgstr "€30,000 - €100,000"
+
+msgid "€100,000+"
+msgstr "€100,000+"
+
+msgid "This helps us suggest solutions that fit within your financial constraints."
+msgstr "Це допомагає нам запропонувати рішення, які підходять до ваших фінансових можливостей."
+
+msgid "Are there any existing systems your project needs to integrate with?"
+msgstr "Чи є існуючі системи, з якими повинен інтегруватися ваш проект?"
+
+msgid "List any systems, APIs, or services your project needs to connect with..."
+msgstr "Перелічіть будь-які системи, API або послуги, з якими повинен підключатися ваш проект..."
+
+msgid "For example: payment gateways, CRMs, ERPs, social media platforms, etc."
+msgstr "Наприклад: платіжні шлюзи, CRM, ERP, платформи соціальних мереж тощо."
+
+msgid "Do you have any specific technical requirements or preferences?"
+msgstr "Чи маєте ви будь-які конкретні технічні вимоги або вподобання?"
+
+msgid "Specify any technologies, frameworks, or platforms you prefer..."
+msgstr "Вкажіть будь-які технології, фреймворки або платформи, які ви віддаєте перевагу..."
+
+msgid "For example: programming languages, cloud providers, frameworks, or architecture preferences."
+msgstr "Наприклад: мови програмування, хмарні провайдери, фреймворки або архітектурні вподобання."
+
+msgid "Do you have any examples of similar projects you admire?"
+msgstr "Чи маєте ви приклади подібних проектів, які ви захоплюєтеся?"
+
+msgid "List websites, apps, or products similar to what you envision..."
+msgstr "Перелічіть веб-сайти, додатки або продукти, подібні до того, що ви уявляєте..."
+
+msgid "This helps us understand your vision and aesthetic preferences."
+msgstr "Це допомагає нам зрозуміти ваше бачення та естетичні вподобання."
+
+msgid "How do you plan to measure the success of this project?"
+msgstr "Як ви плануєте вимірювати успіх цього проекту?"
+
+msgid "Describe key performance indicators or success metrics..."
+msgstr "Опишіть ключові показники ефективності або метрики успіху..."
+
+msgid "For example: user acquisition, conversion rates, efficiency improvements, cost savings, etc."
+msgstr "Наприклад: залучення користувачів, коефіцієнти конверсії, покращення ефективності, економія витрат тощо."
+
+msgid "Do you have any specific security or compliance requirements?"
+msgstr "Чи маєте ви будь-які конкретні вимоги до безпеки або відповідності?"
+
+msgid "GDPR Compliance"
+msgstr "Відповідність GDPR"
+
+msgid "HIPAA Compliance"
+msgstr "Відповідність HIPAA"
+
+msgid "PCI DSS Compliance"
+msgstr "Відповідність PCI DSS"
+
+msgid "SOC 2 Compliance"
+msgstr "Відповідність SOC 2"
+
+msgid "ISO 27001 Compliance"
+msgstr "Відповідність ISO 27001"
+
+msgid "Two-factor Authentication"
+msgstr "Двофакторна аутентифікація"
+
+msgid "Data Encryption"
+msgstr "Шифрування даних"
+
+msgid "Hold Ctrl/Cmd to select multiple options, or leave blank if unsure."
+msgstr "Утримуйте Ctrl/Cmd для вибору кількох варіантів, або залиште порожнім, якщо не впевнені."
+
+msgid "If you selected 'Other' or have additional security requirements, please specify..."
+msgstr "Якщо ви вибрали 'Інше' або маєте додаткові вимоги до безпеки, будь ласка, уточніть..."
+
+msgid "What level of ongoing support will you need after launch?"
+msgstr "Який рівень постійної підтримки вам знадобиться після запуску?"
+
+msgid "Select support level"
+msgstr "Виберіть рівень підтримки"
+
+msgid "Minimal (Bug fixes only)"
+msgstr "Мінімальний (тільки виправлення помилок)"
+
+msgid "Standard (Bug fixes and minor updates)"
+msgstr "Стандартний (виправлення помилок та невеликі оновлення)"
+
+msgid "Comprehensive (Ongoing development and support)"
+msgstr "Комплексний (постійна розробка та підтримка)"
+
+msgid "Fully Managed Service"
+msgstr "Повністю керована послуга"
+
+msgid "This helps us plan for post-launch resources and maintenance."
+msgstr "Це допомагає нам планувати ресурси та обслуговування після запуску."
+
+msgid "Do you already have any design assets or documentation for this project?"
+msgstr "Чи маєте ви вже будь-які дизайн-ресурси або документацію для цього проекту?"
+
+msgid "Wireframes"
+msgstr "Вайрфрейми"
+
+msgid "Design Mockups"
+msgstr "Дизайн-макети"
+
+msgid "Brand Guidelines"
+msgstr "Брендбук"
+
+msgid "User Stories"
+msgstr "Користувацькі історії"
+
+msgid "Requirements Document"
+msgstr "Документ вимог"
+
+msgid "Existing Code"
+msgstr "Існуючий код"
+
+msgid "None of the above"
+msgstr "Жодного з вищевказаних"
+
+msgid "Check all that apply. This helps us understand what resources are available to start with."
+msgstr "Позначте все, що підходить. Це допомагає нам зрозуміти, які ресурси доступні для початку."
+
+msgid "Any additional information you'd like to share about your project?"
+msgstr "Будь-яка додаткова інформація, яку ви хотіли б поділитися про ваш проект?"
+
+msgid "Share any other details that might help us understand your project better..."
+msgstr "Поділіться будь-якими іншими деталями, які можуть допомогти нам краще зрозуміти ваш проект..."
+
+msgid "Include any considerations, challenges, or specific requirements not covered by previous questions."
+msgstr "Включіть будь-які міркування, виклики або специфічні вимоги, не охоплені попередніми питаннями."
+
+msgid "Contact Information"
+msgstr "Контактна інформація"
+
+msgid "Name *"
+msgstr "Ім'я *"
+
+msgid "Company Name"
+msgstr "Назва компанії"
+
+msgid "Email *"
+msgstr "Email *"
+
+msgid "Phone"
+msgstr "Телефон"
+
+msgid "I consent to having this website store my submitted information so they can respond to my inquiry. *"
+msgstr "Я даю згоду на зберігання цим веб-сайтом наданої мною інформації, щоб вони могли відповісти на мій запит. *"
+
+msgid "Submit Project Request"
+msgstr "Надіслати запит на проект"

@@ -1,0 +1,87 @@
+# Переводы для страницы контактов
+msgid ""
+msgstr ""
+"Project-Id-Version: Rozoom-KI 1.0\n"
+"Report-Msgid-Bugs-To: info@rozoom-ki.com\n"
+"POT-Creation-Date: 2025-09-11 12:05+0200\n"
+"PO-Revision-Date: 2025-09-11 12:05+0200\n"
+"Last-Translator: \n"
+"Language: uk\n"
+"Language-Team: Ukrainian\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+msgid "Get in Touch"
+msgstr "Зв'язатися"
+
+msgid "Have a question or ready to start your next project? We're here to help!"
+msgstr "Маєте питання або готові розпочати свій наступний проект? Ми тут, щоб допомогти!"
+
+msgid "Address"
+msgstr "Адреса"
+
+msgid "Email Us"
+msgstr "Напишіть нам"
+
+msgid "Call Us"
+msgstr "Зателефонуйте нам"
+
+msgid "Mon-Fri 9:00-18:00"
+msgstr "Пн-Пт 9:00-18:00"
+
+msgid "Send Us a Message"
+msgstr "Надішліть нам повідомлення"
+
+msgid "Your message has been sent successfully. We'll get back to you soon!"
+msgstr "Ваше повідомлення успішно надіслано. Ми скоро зв'яжемося з вами!"
+
+msgid "Full Name"
+msgstr "Повне ім'я"
+
+msgid "Enter your full name"
+msgstr "Введіть ваше повне ім'я"
+
+msgid "Email Address"
+msgstr "Адреса електронної пошти"
+
+msgid "Enter your email address"
+msgstr "Введіть вашу адресу електронної пошти"
+
+msgid "Your Message"
+msgstr "Ваше повідомлення"
+
+msgid "How can we help you?"
+msgstr "Чим ми можемо вам допомогти?"
+
+msgid "I consent to having this website store my submitted information so they can respond to my inquiry"
+msgstr "Я даю згоду на зберігання цим веб-сайтом наданої мною інформації, щоб вони могли відповісти на мій запит"
+
+msgid "Send Message"
+msgstr "Надіслати повідомлення"
+
+msgid "Contact Form"
+msgstr "Контактна форма"
+
+msgid "Business Hours"
+msgstr "Робочі години"
+
+msgid "Phone Support"
+msgstr "Телефонна підтримка"
+
+msgid "Email Support"
+msgstr "Email підтримка"
+
+msgid "Response Time"
+msgstr "Час відповіді"
+
+msgid "We typically respond within 24 hours"
+msgstr "Зазвичай ми відповідаємо протягом 24 годин"
+
+msgid "Emergency Support"
+msgstr "Екстрена підтримка"
+
+msgid "For urgent issues outside business hours"
+msgstr "Для термінових питань поза робочими годинами"

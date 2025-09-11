@@ -1,0 +1,99 @@
+# Переводы для страницы цен
+msgid ""
+msgstr ""
+"Project-Id-Version: Rozoom-KI 1.0\n"
+"Report-Msgid-Bugs-To: info@rozoom-ki.com\n"
+"POT-Creation-Date: 2025-09-11 12:10+0200\n"
+"PO-Revision-Date: 2025-09-11 12:10+0200\n"
+"Last-Translator: \n"
+"Language: uk\n"
+"Language-Team: Ukrainian\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+msgid "Choose Your Package"
+msgstr "Виберіть свій пакет"
+
+msgid "Get the perfect amount of development time for your project needs"
+msgstr "Отримайте ідеальну кількість часу розробки для потреб вашого проекту"
+
+msgid "Most Popular"
+msgstr "Найпопулярніший"
+
+msgid "Hours"
+msgstr "Години"
+
+msgid "per hour"
+msgstr "за годину"
+
+msgid "development hours"
+msgstr "годин розробки"
+
+msgid "Custom solutions"
+msgstr "Індивідуальні рішення"
+
+msgid "Support included"
+msgstr "Підтримка включена"
+
+msgid "Regular updates"
+msgstr "Регулярні оновлення"
+
+msgid "Select Package"
+msgstr "Виберіть пакет"
+
+msgid "Custom Package"
+msgstr "Індивідуальний пакет"
+
+msgid "Tailored to Your Needs"
+msgstr "Адаптовано до ваших потреб"
+
+msgid "For special requirements"
+msgstr "Для особливих вимог"
+
+msgid "Flexible hours"
+msgstr "Гнучкі години"
+
+msgid "Custom development"
+msgstr "Індивідуальна розробка"
+
+msgid "Dedicated support"
+msgstr "Спеціалізована підтримка"
+
+msgid "Priority service"
+msgstr "Пріоритетне обслуговування"
+
+msgid "Enterprise solutions"
+msgstr "Корпоративні рішення"
+
+msgid "Get in Touch"
+msgstr "Зв'язатися"
+
+msgid "Need Help Choosing?"
+msgstr "Потрібна допомога у виборі?"
+
+msgid "Contact our team for a free consultation and we'll help you select the perfect package for your project."
+msgstr "Зв'яжіться з нашою командою для безкоштовної консультації, і ми допоможемо вам вибрати ідеальний пакет для вашого проекту."
+
+msgid "No pricing packages are currently available. Please contact us for custom pricing."
+msgstr "Наразі немає доступних пакетів цін. Будь ласка, зв'яжіться з нами для індивідуального ціноутворення."
+
+msgid "Pricing Plans"
+msgstr "Тарифні плани"
+
+msgid "All prices are in Euro (€) and exclude VAT"
+msgstr "Всі ціни в євро (€) без ПДВ"
+
+msgid "Monthly billing available"
+msgstr "Доступне щомісячне виставлення рахунків"
+
+msgid "Annual discount available"
+msgstr "Доступна річна знижка"
+
+msgid "Free setup included"
+msgstr "Безкоштовне налаштування включено"
+
+msgid "Money-back guarantee"
+msgstr "Гарантія повернення грошей"
