@@ -887,6 +887,120 @@ msgstr "Ми працюємо як компанія, орієнтована на
 msgid "Working remotely from Germany"
 msgstr "Віддалена робота з Німеччини"
 
+msgid "Welcome back"
+msgstr "Ласкаво просимо назад"
+
+msgid "Projects Overview"
+msgstr "Огляд проектів"
+
+msgid "Active Projects"
+msgstr "Активні проекти"
+
+msgid "Completed Projects"
+msgstr "Завершені проекти"
+
+msgid "New Projects"
+msgstr "Нові проекти"
+
+msgid "Total Projects"
+msgstr "Загальна кількість проектів"
+
+msgid "Quick Actions"
+msgstr "Швидкі дії"
+
+msgid "New Project Request"
+msgstr "Новий запит на проект"
+
+msgid "Contact Support"
+msgstr "Зв'язатися з підтримкою"
+
+msgid "Update Profile"
+msgstr "Оновити профіль"
+
+msgid "Recent Activity"
+msgstr "Недавня активність"
+
+msgid "Last login"
+msgstr "Останній вхід"
+
+msgid "Never"
+msgstr "Ніколи"
+
+msgid "No recent activity"
+msgstr "Немає недавньої активності"
+
+msgid "Profile Settings"
+msgstr "Налаштування профілю"
+
+msgid "Personal Information"
+msgstr "Особиста інформація"
+
+msgid "Phone Number"
+msgstr "Номер телефону"
+
+msgid "Change Password"
+msgstr "Змінити пароль"
+
+msgid "Current Password"
+msgstr "Поточний пароль"
+
+msgid "New Password"
+msgstr "Новий пароль"
+
+msgid "Confirm New Password"
+msgstr "Підтвердити новий пароль"
+
+msgid "Leave password fields empty if you don't want to change your password."
+msgstr "Залиште поля пароля порожніми, якщо ви не хочете змінювати пароль."
+
+msgid "Save Changes"
+msgstr "Зберегти зміни"
+
+msgid "Danger Zone"
+msgstr "Небезпечна зона"
+
+msgid "Actions here can't be undone. Please be careful."
+msgstr "Дії тут не можна скасувати. Будь ласка, будьте обережні."
+
+msgid "Your Projects"
+msgstr "Ваші проекти"
+
+msgid "All Statuses"
+msgstr "Всі статуси"
+
+msgid "New"
+msgstr "Новий"
+
+msgid "In Progress"
+msgstr "В роботі"
+
+msgid "Testing"
+msgstr "Тестування"
+
+msgid "Completed"
+msgstr "Завершено"
+
+msgid "Newest First"
+msgstr "Спочатку найновіші"
+
+msgid "Oldest First"
+msgstr "Спочатку найстаріші"
+
+msgid "Name (A-Z)"
+msgstr "Назва (А-Я)"
+
+msgid "Name (Z-A)"
+msgstr "Назва (Я-А)"
+
+msgid "Search projects"
+msgstr "Пошук проектів"
+
+msgid "Project"
+msgstr "Проект"
+
+msgid "Status"
+msgstr "Статус"
+
 msgid "LinkedIn"
 msgstr "LinkedIn"
 
@@ -898,3 +1012,54 @@ msgstr "Facebook"
 
 msgid "Instagram"
 msgstr "Instagram"
+
+msgid "Tags:"
+msgstr "Теги:"
+
+msgid "Back to Blog"
+msgstr "Повернутися до блогу"
+
+msgid "Related Posts"
+msgstr "Пов'язані пости"
+
+msgid "Categories"
+msgstr "Категорії"
+
+msgid "Tags"
+msgstr "Теги"
+
+msgid "Search blog..."
+msgstr "Пошук у блозі..."
+
+msgid "Category:"
+msgstr "Категорія:"
+
+msgid "Read More"
+msgstr "Читати далі"
+
+msgid "No posts found in this category."
+msgstr "У цій категорії не знайдено постів."
+
+msgid "Back to All Posts"
+msgstr "Повернутися до всіх постів"
+
+msgid "Tag:"
+msgstr "Тег:"
+
+msgid "No posts found with this tag."
+msgstr "Не знайдено постів з цим тегом."
+
+msgid "Search Results for"
+msgstr "Результати пошуку для"
+
+msgid "Found"
+msgstr "Знайдено"
+
+msgid "results"
+msgstr "результатів"
+
+msgid "No results found for"
+msgstr "Не знайдено результатів для"
+
+msgid "Try another search..."
+msgstr "Спробуйте інший пошук..."

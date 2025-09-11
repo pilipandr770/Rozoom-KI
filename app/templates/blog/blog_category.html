@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-md-8">
             <div class="category-header mb-4">
-                <h1>Category: {{ category.name }}</h1>
+                <h1>{{ _('Category:') }} {{ category.name }}</h1>
                 {% if category.description %}
                 <p class="lead">{{ category.description }}</p>
                 {% endif %}
@@ -35,7 +35,7 @@
                         <p class="blog-post-excerpt">{{ post.excerpt }}</p>
                         {% endif %}
                         <div class="blog-post-footer">
-                            <a href="{{ url_for('blog.post', slug=post.slug) }}" class="read-more">Read More</a>
+                            <a href="{{ url_for('blog.post', slug=post.slug) }}" class="read-more">{{ _('Read More') }}</a>
                             {% if post.tags %}
                             <div class="tags">
                                 {% for tag in post.tags %}
@@ -47,7 +47,7 @@
                     </div>
                 </div>
                 {% else %}
-                <div class="alert alert-info">No posts found in this category.</div>
+                <div class="alert alert-info">{{ _('No posts found in this category.') }}</div>
                 {% endfor %}
             </div>
             
@@ -93,7 +93,7 @@
             
             <div class="mt-4">
                 <a href="{{ url_for('blog.index') }}" class="btn btn-outline-primary">
-                    <i class="fas fa-arrow-left"></i> Back to All Posts
+                    <i class="fas fa-arrow-left"></i> {{ _('Back to All Posts') }}
                 </a>
             </div>
         </div>
@@ -101,7 +101,7 @@
         <div class="col-md-4">
             <div class="sidebar">
                 <div class="sidebar-section">
-                    <h4>Categories</h4>
+                    <h4>{{ _('Categories') }}</h4>
                     <ul class="categories-list">
                         {% for cat in categories %}
                         <li {% if cat.id == category.id %}class="active"{% endif %}>
@@ -112,7 +112,7 @@
                 </div>
                 
                 <div class="sidebar-section">
-                    <h4>Tags</h4>
+                    <h4>{{ _('Tags') }}</h4>
                     <div class="tags-cloud">
                         {% for tag in tags %}
                         <a href="{{ url_for('blog.tag', slug=tag.slug) }}" class="tag">
@@ -123,10 +123,10 @@
                 </div>
                 
                 <div class="sidebar-section">
-                    <h4>Search</h4>
+                    <h4>{{ _('Search') }}</h4>
                     <form action="{{ url_for('blog.search') }}" method="get">
                         <div class="input-group">
-                            <input type="text" name="q" class="form-control" placeholder="Search blog..." required>
+                            <input type="text" name="q" class="form-control" placeholder="{{ _('Search blog...') }}" required>
                             <button class="btn btn-primary" type="submit">
                                 <i class="fas fa-search"></i>
                             </button>
