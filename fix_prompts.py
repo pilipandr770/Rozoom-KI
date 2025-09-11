@@ -1,4 +1,9 @@
 """
+This is a helper script to fix the prompts.py file.
+"""
+
+with open('app/agents/prompts.py', 'w', encoding='utf-8') as f:
+    f.write('''"""
 Модуль содержит системные промпты для различных агентов ассистентов
 """
 
@@ -127,3 +132,4 @@ create_greeter_prompt = get_greeter_prompt
 create_completion_prompt = get_completion_prompt
 create_portfolio_prompt = get_portfolio_prompt
 create_consultation_prompt = get_consultation_prompt
+''')

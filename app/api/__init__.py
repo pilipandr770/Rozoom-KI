@@ -34,6 +34,8 @@ def chat():
             user_lang = 'de'
         elif 'ru' in accept_language:
             user_lang = 'ru'
+        elif 'uk' in accept_language:
+            user_lang = 'uk'
         elif 'en' in accept_language:
             user_lang = 'en'
         else:
@@ -42,8 +44,9 @@ def chat():
         
         metadata['language'] = user_lang
     
-    # Store previous messages in metadata if available
-    if not metadata.get('history'):
+    # Always try to fetch and update previous messages from DB
+    # Only skip if history is explicitly provided in the request
+    if not metadata.get('history') or metadata.get('refresh_history', False):
         # Try to fetch previous messages from DB
         try:
             conversation_id = metadata.get('conversation_id')
@@ -52,6 +55,7 @@ def chat():
                 if hasattr(ChatMessage, 'conversation_id'):
                     try:
                         # Используем conversation_id для фильтрации
+                        # Get all messages for this conversation to maintain full history across specialists
                         prev_messages = ChatMessage.query.filter_by(
                             conversation_id=conversation_id
                         ).order_by(ChatMessage.timestamp).all()
@@ -61,6 +65,9 @@ def chat():
                                 {'role': msg.role, 'content': msg.content}
                                 for msg in prev_messages
                             ]
+                            
+                            # Log the conversation history being used
+                            current_app.logger.info(f"Loaded {len(prev_messages)} messages from history for conversation {conversation_id}")
                     except Exception as e:
                         current_app.logger.warning(f"Error fetching messages with conversation_id: {e}")
                 else:
@@ -69,10 +76,10 @@ def chat():
                     
                     # Безопасное чтение последних сообщений для поддержания контекста
                     try:
-                        # Используем временную метку для сортировки, получаем последние 10 сообщений
+                        # Увеличиваем количество сообщений для лучшего сохранения контекста
                         prev_messages = ChatMessage.query.order_by(
                             ChatMessage.created_at.desc()
-                        ).limit(10).all()
+                        ).limit(20).all()
                         
                         if prev_messages:
                             # Реверсируем, чтобы получить правильный порядок
@@ -80,6 +87,8 @@ def chat():
                                 {'role': msg.role, 'content': msg.content}
                                 for msg in reversed(prev_messages)
                             ]
+                            
+                            current_app.logger.info(f"Loaded {len(prev_messages)} recent messages without conversation ID")
                     except Exception as e:
                         current_app.logger.warning(f"Error fetching recent messages: {e}")
         except Exception as e:
@@ -103,7 +112,7 @@ def chat():
     # persist chat to DB (rozoom_ki_clients schema)
     try:
         # Проверим сначала, есть ли сессия транзакции в ошибочном состоянии, и закроем её
-        if db.session.is_active and hasattr(db.session, 'is_modified') and db.session.is_modified():
+        if db.session.is_active:
             try:
                 db.session.rollback()
             except:

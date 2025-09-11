@@ -120,7 +120,7 @@
         const buttonContainer = document.createElement('div');
         buttonContainer.className = 'chat-options';
         
-        interactive.buttons.forEach(btn => {
+          interactive.buttons.forEach(btn => {
           const button = document.createElement('button');
           
           // Add icon if available
@@ -128,14 +128,77 @@
             button.innerHTML = `<i class="fas fa-${btn.icon}"></i> `;
           }
           
+          // Fix issues with missing or undefined labels for Ukrainian language
+          const isUkrainian = metadata.language === "uk";
+          
+          // Handle migration from text to label property
+          if (!btn.label && btn.text) {
+            btn.label = btn.text;
+          }
+          
+          // Handle undefined labels in Ukrainian
+          if ((btn.label === "undefined" || !btn.label) && isUkrainian) {
+            console.log("Found undefined button label, attempting translation for key:", btn.key);
+            
+            // Map of Ukrainian translations for specialist buttons
+            const ukrLabels = {
+              "greeter": "Привітання",
+              "consultation": "Консультація",
+              "completion": "Консультація",
+              "portfolio": "Портфоліо",
+              "design": "Дизайн",
+              "development": "Розробка",
+              "marketing": "Маркетинг",
+              "requirements": "Технічне завдання",
+              "quiz": "Калькулятор вартості"
+            };
+            
+            // Check if we have a translation for this key
+            if (ukrLabels[btn.key]) {
+              btn.label = ukrLabels[btn.key];
+            } else if (btn.key && btn.key.includes("back")) {
+              btn.label = "Назад";
+            } else {
+              // Fallback for unknown keys
+              btn.label = btn.key || "Опція";
+            }
+          }
+          
           button.innerHTML += btn.label;
           
           // Add tooltip if available
           if (btn.description) {
+            const isUkrainian = metadata.language === "uk";
+            
+            // Handle undefined descriptions in Ukrainian
+            if ((btn.description === "undefined" || !btn.description) && isUkrainian) {
+              console.log("Found undefined description, attempting translation for key:", btn.key);
+              
+              // Map of Ukrainian translations for specialist descriptions
+              const ukrDescriptions = {
+                "greeter": "Повернутися до початку розмови",
+                "consultation": "Консультація зі спеціалістом",
+                "completion": "Отримати консультацію з питань проекту",
+                "portfolio": "Перегляд портфоліо проектів",
+                "design": "Питання з веб-дизайну, UI/UX та графічного дизайну",
+                "development": "Питання з веб-розробки та програмування",
+                "marketing": "Питання з цифрового маркетингу та SEO",
+                "requirements": "Створення технічного завдання для вашого проекту",
+                "quiz": "Розрахунок приблизної вартості вашого веб-сайту"
+              };
+              
+              // Check if we have a translation for this key
+              if (ukrDescriptions[btn.key]) {
+                btn.description = ukrDescriptions[btn.key];
+              } else if (btn.key && btn.key.includes("back")) {
+                btn.description = "Повернутися назад";
+              } else {
+                // Fallback for unknown keys
+                btn.description = btn.label || "Опція";
+              }
+            }
             button.title = btn.description;
-          }
-          
-          button.onclick = () => {
+          }          button.onclick = () => {
             // Add selection to chat
             appendMessage(`${btn.label}`, 'user');
             
@@ -146,7 +209,8 @@
             // Показываем индикатор переключения на нового агента
             const transferIndicator = document.createElement('div');
             transferIndicator.className = 'chat-transfer-indicator';
-            transferIndicator.innerHTML = `<div class="transfer-animation"></div><span>Переключение на специалиста...</span>`;
+            const switchingText = window.translateChat ? window.translateChat('switchingToSpecialist') : 'Переключение на специалиста...';
+            transferIndicator.innerHTML = `<div class="transfer-animation"></div><span>${switchingText}</span>`;
             messagesEl.appendChild(transferIndicator);
             messagesEl.scrollTop = messagesEl.scrollHeight;
             
@@ -173,9 +237,11 @@
         send.disabled = false;
         
         if (!interactive.requires_input) {
-          input.placeholder = "Вы можете выбрать опцию выше или задать свой вопрос...";
+          // Используем локализованный плейсхолдер
+          input.placeholder = window.translateChat ? window.translateChat('optionsPlaceholder') : "Вы можете выбрать опцию выше или задать свой вопрос...";
         } else {
-          input.placeholder = "Введите сообщение...";
+          // Используем локализованный плейсхолдер
+          input.placeholder = window.translateChat ? window.translateChat('inputPlaceholder') : "Введите сообщение...";
         }
       }
       
@@ -187,7 +253,26 @@
           
           const restartBtn = document.createElement('button');
           restartBtn.className = 'restart-button';
-          restartBtn.innerHTML = '<i class="fas fa-redo"></i> Начать сначала';
+          
+          // Используем локализованный текст для кнопки
+          let startOverText = 'Начать сначала';
+          
+          if (window.translateChat) {
+            startOverText = window.translateChat('startOver');
+          } else {
+            // Fallback if translations aren't loaded yet
+            if (metadata.language === 'en') {
+              startOverText = 'Start over';
+            } else if (metadata.language === 'de') {
+              startOverText = 'Neustart';
+            } else if (metadata.language === 'uk') {
+              startOverText = 'Почати знову';
+            } else if (metadata.language === 'ru') {
+              startOverText = 'Начать сначала';
+            }
+          }
+          
+          restartBtn.innerHTML = '<i class="fas fa-redo"></i> ' + startOverText;
           restartBtn.onclick = () => {
             // Clear chat history and metadata
             conversationHistory = [];
@@ -330,7 +415,8 @@
       }
     } catch (error) {
       console.error('Error starting chat:', error);
-      appendMessage('Извините, возникла проблема с подключением. Пожалуйста, попробуйте позже.', 'bot');
+      const errorMsg = window.translateChat ? window.translateChat('connectionError') : 'Извините, возникла проблема с подключением. Пожалуйста, попробуйте позже.';
+      appendMessage(errorMsg, 'bot');
     }
   }
 
@@ -428,7 +514,8 @@
     } catch (error) {
       console.error('Error sending message:', error);
       indicator.remove();
-      appendMessage('Извините, что-то пошло не так. Пожалуйста, попробуйте еще раз.', 'bot');
+      const errorMsg = window.translateChat ? window.translateChat('somethingWentWrong') : 'Извините, что-то пошло не так. Пожалуйста, попробуйте еще раз.';
+      appendMessage(errorMsg, 'bot');
     } finally {
       // Всегда активируем поле ввода для обеспечения возможности продолжать общение
       input.disabled = false;

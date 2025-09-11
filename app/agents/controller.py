@@ -1,6 +1,7 @@
 from flask import current_app, Blueprint, request, session
 import json
 import os
+import logging
 from app.agents.schemas import AgentMessage, QuizChoice
 from app.agents.prompts import (
     create_system_prompt, 
@@ -11,6 +12,7 @@ from app.agents.prompts import (
 from app.models.language import detect_language, get_text_by_key
 from app.models.tech_spec import TechSpecTemplate
 from app.services.logger import logger
+from app.services.chat_service import get_chat_response
 
 # Agents configuration
 agent_bp = Blueprint('agent', __name__, url_prefix='/api/agent')
@@ -22,12 +24,14 @@ SPECIALISTS = {
         'title': {
             'en': 'Greeter',
             'ru': 'Приветствующий',
-            'de': 'Greeter'
+            'de': 'Greeter',
+            'uk': 'Вітаючий'
         },
         'description': {
             'en': 'I can help you choose the right specialist or service.',
             'ru': 'Я помогу вам выбрать подходящего специалиста или услугу.',
-            'de': 'Ich kann Ihnen helfen, den richtigen Spezialisten oder Dienst zu wählen.'
+            'de': 'Ich kann Ihnen helfen, den richtigen Spezialisten oder Dienst zu wählen.',
+            'uk': 'Я допоможу вам обрати відповідного спеціаліста або послугу.'
         },
         'avatar': '/static/img/agents/greeter.png'
     },
@@ -36,12 +40,14 @@ SPECIALISTS = {
         'title': {
             'en': 'Designer',
             'ru': 'Дизайнер',
-            'de': 'Designer'
+            'de': 'Designer',
+            'uk': 'Дизайнер'
         },
         'description': {
             'en': 'I can help with web design questions, UI/UX, and graphic design.',
             'ru': 'Я могу помочь с вопросами веб-дизайна, UI/UX и графического дизайна.',
-            'de': 'Ich kann bei Fragen zu Webdesign, UI/UX und Grafikdesign helfen.'
+            'de': 'Ich kann bei Fragen zu Webdesign, UI/UX und Grafikdesign helfen.',
+            'uk': 'Я можу допомогти з питаннями веб-дизайну, UI/UX та графічного дизайну.'
         },
         'avatar': '/static/img/agents/design.png'
     },
@@ -50,12 +56,14 @@ SPECIALISTS = {
         'title': {
             'en': 'Developer',
             'ru': 'Разработчик',
-            'de': 'Entwickler'
+            'de': 'Entwickler',
+            'uk': 'Розробник'
         },
         'description': {
             'en': 'I specialize in web development, programming and technical questions.',
             'ru': 'Я специализируюсь на веб-разработке, программировании и технических вопросах.',
-            'de': 'Ich bin spezialisiert auf Webentwicklung, Programmierung und technische Fragen.'
+            'de': 'Ich bin spezialisiert auf Webentwicklung, Programmierung und technische Fragen.',
+            'uk': 'Я спеціалізуюсь на веб-розробці, програмуванні та технічних питаннях.'
         },
         'avatar': '/static/img/agents/development.png'
     },
@@ -64,12 +72,14 @@ SPECIALISTS = {
         'title': {
             'en': 'Marketing Expert',
             'ru': 'Маркетолог',
-            'de': 'Marketing-Experte'
+            'de': 'Marketing-Experte',
+            'uk': 'Маркетолог'
         },
         'description': {
             'en': 'I can help with digital marketing, SEO, and promotion strategies.',
             'ru': 'Я помогу с цифровым маркетингом, SEO и стратегиями продвижения.',
-            'de': 'Ich kann bei digitalem Marketing, SEO und Werbestrategien helfen.'
+            'de': 'Ich kann bei digitalem Marketing, SEO und Werbestrategien helfen.',
+            'uk': 'Я допоможу з цифровим маркетингом, SEO та стратегіями просування.'
         },
         'avatar': '/static/img/agents/marketing.png'
     },
@@ -78,12 +88,14 @@ SPECIALISTS = {
         'title': {
             'en': 'Portfolio Navigator',
             'ru': 'Навигатор портфолио',
-            'de': 'Portfolio-Navigator'
+            'de': 'Portfolio-Navigator',
+            'uk': 'Навігатор портфоліо'
         },
         'description': {
             'en': 'I can show you our works, projects and case studies.',
             'ru': 'Я могу показать наши работы, проекты и кейсы.',
-            'de': 'Ich kann Ihnen unsere Arbeiten, Projekte und Fallstudien zeigen.'
+            'de': 'Ich kann Ihnen unsere Arbeiten, Projekte und Fallstudien zeigen.',
+            'uk': 'Я можу показати наші роботи, проекти та кейси.'
         },
         'avatar': '/static/img/agents/portfolio.png'
     },
@@ -92,12 +104,14 @@ SPECIALISTS = {
         'title': {
             'en': 'Technical Specification Assistant',
             'ru': 'Помощник по техническому заданию',
-            'de': 'Technischer Spezifikationsassistent'
+            'de': 'Technischer Spezifikationsassistent',
+            'uk': 'Помічник з технічного завдання'
         },
         'description': {
             'en': 'I can help create a technical specification for your project.',
             'ru': 'Я помогу составить техническое задание для вашего проекта.',
-            'de': 'Ich kann bei der Erstellung einer technischen Spezifikation für Ihr Projekt helfen.'
+            'de': 'Ich kann bei der Erstellung einer technischen Spezifikation für Ihr Projekt helfen.',
+            'uk': 'Я допоможу скласти технічне завдання для вашого проекту.'
         },
         'avatar': '/static/img/agents/requirements.png'
     },
@@ -106,14 +120,32 @@ SPECIALISTS = {
         'title': {
             'en': 'Website Cost Calculator',
             'ru': 'Калькулятор стоимости сайта',
-            'de': 'Website-Kostenrechner'
+            'de': 'Website-Kostenrechner',
+            'uk': 'Калькулятор вартості веб-сайту'
         },
         'description': {
             'en': 'I can help you calculate an approximate cost of your website.',
             'ru': 'Я помогу рассчитать примерную стоимость вашего сайта.',
-            'de': 'Ich kann Ihnen helfen, die ungefähren Kosten Ihrer Website zu berechnen.'
+            'de': 'Ich kann Ihnen helfen, die ungefähren Kosten Ihrer Website zu berechnen.',
+            'uk': 'Я допоможу розрахувати приблизну вартість вашого веб-сайту.'
         },
         'avatar': '/static/img/agents/quiz.png'
+    },
+    'consultation': {
+        'name': 'consultation',
+        'title': {
+            'en': 'Consultant',
+            'ru': 'Консультант',
+            'de': 'Berater',
+            'uk': 'Консультант'
+        },
+        'description': {
+            'en': 'I can provide consultation on your project requirements.',
+            'ru': 'Я могу проконсультировать вас по требованиям к вашему проекту.',
+            'de': 'Ich kann Sie zu Ihren Projektanforderungen beraten.',
+            'uk': 'Я можу проконсультувати вас щодо вимог вашого проекту.'
+        },
+        'avatar': '/static/img/agents/consult.png'
     }
 }
 
@@ -211,24 +243,51 @@ def handle_greeter(metadata):
     language = metadata.get('language', 'en')
     
     # Create specialized prompt for the greeter
-    system_prompt = create_system_prompt('greeter', language)
-    user_prompt = create_greeter_prompt(language, SPECIALISTS)
+    system_prompt = create_system_prompt(language)
+    user_prompt = create_greeter_prompt(language)
     
-    # Get response from AI model
-    response_text = "Hello! I'm the Rozoom AI assistant. How can I help you today?"
-    if language == 'ru':
-        response_text = "Привет! Я AI-ассистент Rozoom. Как я могу вам помочь сегодня?"
-    elif language == 'de':
-        response_text = "Hallo! Ich bin der Rozoom KI-Assistent. Wie kann ich Ihnen heute helfen?"
+    # Prepare messages for the OpenAI API
+    messages = [
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": user_prompt}
+    ]
+    
+    # Add history if available - this is crucial for context preservation
+    if 'history' in metadata and isinstance(metadata['history'], list):
+        # Filter history to only include relevant messages
+        # Keep enough context but trim to avoid token limits
+        history_messages = metadata['history']
+        # Take the last 10 messages to maintain context but avoid token limits
+        trimmed_history = history_messages[-10:] if len(history_messages) > 10 else history_messages
+        
+        if trimmed_history:
+            # Insert history messages between system prompt and current user message
+            messages = [messages[0]] + trimmed_history
+    
+    # Get response from AI model using our chat service
+    try:
+        response_text = get_chat_response(messages, language)
+    except Exception as e:
+        current_app.logger.error(f"Error getting AI response: {str(e)}")
+        # Fallback to hardcoded responses if API call fails
+        response_text = "Hello! I'm the Rozoom AI assistant. How can I help you today?"
+        if language == 'ru':
+            response_text = "Привет! Я AI-ассистент Rozoom. Как я могу вам помочь сегодня?"
+        elif language == 'de':
+            response_text = "Hallo! Ich bin der Rozoom KI-Assistent. Wie kann ich Ihnen heute helfen?"
+        elif language == 'uk':
+            response_text = "Вітаю! Я AI-асистент Rozoom. Як я можу допомогти вам сьогодні?"
     
     # Create buttons for each specialist
     buttons = []
     for i, (key, specialist) in enumerate(SPECIALISTS.items()):
         buttons.append({
-            'text': specialist['title'].get(language, specialist['title']['en']),
+            'key': key,  # Add the key for each specialist
+            'label': specialist['title'].get(language, specialist['title']['en']),  # Use 'label' instead of 'text'
             'value': str(i+1),
             'description': specialist['description'].get(language, specialist['description']['en']),
-            'avatar': specialist['avatar']
+            'avatar': specialist['avatar'],
+            'icon': 'user-circle'  # Add a default icon
         })
     
     return {
@@ -247,6 +306,28 @@ def handle_specialist_selection(specialist_key, metadata):
     # Store the selected agent in the metadata
     metadata['selected_agent'] = specialist_key
     
+    # Add a system message to the history indicating a specialist change
+    language = metadata.get('language', 'en')
+    
+    # Get specialist name in the user's language
+    specialist_title = SPECIALISTS.get(specialist_key, {}).get('title', {}).get(language, specialist_key)
+    
+    # Create a transition message to preserve conversation context
+    transition_text = {
+        'en': f"Switching to {specialist_title} specialist to better assist you.",
+        'ru': f"Переключаюсь на специалиста по {specialist_title} для лучшей помощи.",
+        'de': f"Wechsle zum {specialist_title}-Spezialisten, um Ihnen besser zu helfen.",
+        'uk': f"Перемикаюсь на спеціаліста з {specialist_title} для кращої допомоги."
+    }.get(language, f"Switching to {specialist_title} specialist.")
+    
+    # Add transition message to history if history exists
+    if 'history' in metadata and isinstance(metadata['history'], list):
+        # Add a system message about the transition
+        metadata['history'].append({
+            "role": "system",
+            "content": transition_text
+        })
+    
     # Route back to the main handler with the updated metadata
     return route_and_respond(None, metadata)
 
@@ -255,23 +336,50 @@ def handle_generic_agent(message, agent_name, metadata):
     language = metadata.get('language', 'en')
     
     # Create specialized prompt for the agent
-    system_prompt = create_system_prompt(agent_name, language)
-    user_prompt = message or get_text_by_key(f"{agent_name}_greeting", language)
+    system_prompt = create_system_prompt(language)
     
-    # Get response from AI model
-    response_text = f"I'm your {SPECIALISTS[agent_name]['title']['en']} assistant. How can I help with your {agent_name} needs?"
-    if language == 'ru':
-        response_text = f"Я ваш ассистент по {SPECIALISTS[agent_name]['title']['ru']}. Как я могу помочь с вашими вопросами о {agent_name}?"
-    elif language == 'de':
-        response_text = f"Ich bin Ihr {SPECIALISTS[agent_name]['title']['de']} Assistent. Wie kann ich Ihnen bei Ihren {agent_name}-Anforderungen helfen?"
+    # Use a greeting if no message is provided
+    if not message:
+        user_prompt = get_text_by_key(f"{agent_name}_greeting", language)
+    else:
+        user_prompt = message
+    
+    # Prepare messages for the OpenAI API
+    messages = [
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": user_prompt}
+    ]
+    
+    # Add history if available
+    if 'history' in metadata and isinstance(metadata['history'], list):
+        # Insert history messages before the current user message
+        # but after the system message
+        history_messages = metadata['history']
+        if history_messages:
+            messages = [messages[0]] + history_messages + [messages[-1]]
+    
+    # Get response from the OpenAI API
+    response_text = get_chat_response(messages, language)
+    
+    # Fallback if API fails
+    if not response_text:
+        if language == 'ru':
+            response_text = f"Я ваш ассистент по {SPECIALISTS[agent_name]['title']['ru']}. Как я могу помочь с вашими вопросами о {agent_name}?"
+        elif language == 'de':
+            response_text = f"Ich bin Ihr {SPECIALISTS[agent_name]['title']['de']}-Assistent. Wie kann ich Ihnen mit Ihren {agent_name}-Anfragen helfen?"
+        elif language == 'uk':
+            response_text = f"Я ваш асистент з {SPECIALISTS[agent_name]['title']['uk']}. Як я можу допомогти з вашими питаннями щодо {agent_name}?"
+        else:
+            response_text = f"I'm your {SPECIALISTS[agent_name]['title']['en']} assistant. How can I help with your {agent_name} needs?"
     
     # Only include a back button
     buttons = [{
-        'text': 'Back' if language == 'en' else ('Назад' if language == 'ru' else 'Zurück'),
+        'text': 'Back' if language == 'en' else ('Назад' if language == 'ru' or language == 'uk' else 'Zurück'),
         'value': 'back',
         'description': 'Return to specialist selection' if language == 'en' else 
                       ('Вернуться к выбору специалиста' if language == 'ru' else 
-                       'Zurück zur Spezialistenauswahl')
+                       ('Повернутися до вибору спеціаліста' if language == 'uk' else
+                        'Zurück zur Spezialistenauswahl'))
     }]
     
     return {
@@ -290,17 +398,40 @@ def handle_portfolio(message, metadata):
     language = metadata.get('language', 'en')
     
     # Create specialized prompt for the portfolio agent
-    system_prompt = create_system_prompt('portfolio', language)
+    system_prompt = create_system_prompt(language)
     user_prompt = create_portfolio_prompt(language)
+    
+    # Prepare messages for the OpenAI API
+    messages = [
+        {"role": "system", "content": system_prompt}
+    ]
+    
+    # Add history if available - this is crucial for context preservation
+    if 'history' in metadata and isinstance(metadata['history'], list):
+        history_messages = metadata['history']
+        # Take the last 15 messages to maintain context but avoid token limits
+        trimmed_history = history_messages[-15:] if len(history_messages) > 15 else history_messages
+        if trimmed_history:
+            messages.extend(trimmed_history)
     
     # If this is the initial message (no user query yet)
     if not message:
-        # Initial portfolio greeting
-        greeting = "Here's our portfolio of recent projects. What kind of projects are you interested in seeing?"
-        if language == 'ru':
-            greeting = "Вот наше портфолио недавних проектов. Какие типы проектов вас интересуют?"
-        elif language == 'de':
-            greeting = "Hier ist unser Portfolio der neuesten Projekte. An welcher Art von Projekten sind Sie interessiert?"
+        # Add a prompt message to generate initial greeting
+        messages.append({"role": "user", "content": user_prompt})
+        
+        try:
+            # Get response from AI model using our chat service
+            greeting = get_chat_response(messages, language)
+        except Exception as e:
+            current_app.logger.error(f"Error getting AI response for portfolio: {str(e)}")
+            # Fallback to hardcoded responses if API call fails
+            greeting = "Here's our portfolio of recent projects. What kind of projects are you interested in seeing?"
+            if language == 'ru':
+                greeting = "Вот наше портфолио недавних проектов. Какие типы проектов вас интересуют?"
+            elif language == 'de':
+                greeting = "Hier ist unser Portfolio der neuesten Projekte. An welcher Art von Projekten sind Sie interessiert?"
+            elif language == 'uk':
+                greeting = "Ось наше портфоліо нещодавніх проектів. Які типи проектів вас цікавлять?"
         
         # Sample portfolio categories as buttons
         buttons = [
@@ -326,11 +457,12 @@ def handle_portfolio(message, metadata):
                                'Interaktive webbasierte Software')
             },
             {
-                'text': 'Back' if language == 'en' else ('Назад' if language == 'ru' else 'Zurück'),
+                'text': 'Back' if language == 'en' else ('Назад' if language == 'ru' or language == 'uk' else 'Zurück'),
                 'value': 'back',
                 'description': 'Return to specialist selection' if language == 'en' else 
                               ('Вернуться к выбору специалиста' if language == 'ru' else 
-                               'Zurück zur Spezialistenauswahl')
+                               ('Повернутися до вибору спеціаліста' if language == 'uk' else
+                                'Zurück zur Spezialistenauswahl'))
             }
         ]
         
@@ -350,26 +482,63 @@ def handle_portfolio(message, metadata):
         # Show specific portfolio examples based on selection
         portfolio_type = message.lower()
         
-        # Map of portfolio responses by type and language
-        portfolio_responses = {
+        # Add the user's selection to the messages
+        messages.append({"role": "user", "content": message})
+        
+        # Add context about the selected category
+        category_prompts = {
             'ecommerce': {
-                'en': "Here are our e-commerce projects examples...",
-                'ru': "Вот примеры наших проектов интернет-магазинов...",
-                'de': "Hier sind unsere E-Commerce-Projektbeispiele..."
+                'en': "The user selected e-commerce projects. Describe our e-commerce portfolio with examples of online stores, marketplaces, and shopping platforms we've created.",
+                'ru': "Пользователь выбрал проекты интернет-магазинов. Опишите наше портфолио e-commerce с примерами онлайн-магазинов, маркетплейсов и торговых платформ, которые мы создали.",
+                'de': "Der Benutzer hat E-Commerce-Projekte ausgewählt. Beschreiben Sie unser E-Commerce-Portfolio mit Beispielen für Online-Shops, Marktplätze und Handelsplattformen, die wir entwickelt haben.",
+                'uk': "Користувач вибрав проекти інтернет-магазинів. Опишіть наше портфоліо e-commerce з прикладами онлайн-магазинів, маркетплейсів та торгових платформ, які ми створили."
             },
             'corporate': {
-                'en': "Here are our corporate website examples...",
-                'ru': "Вот примеры наших корпоративных сайтов...",
-                'de': "Hier sind unsere Beispiele für Unternehmenswebsites..."
+                'en': "The user selected corporate website projects. Describe our corporate website portfolio with examples of business sites, company presentations, and corporate platforms we've created.",
+                'ru': "Пользователь выбрал корпоративные веб-сайты. Опишите наше портфолио корпоративных сайтов с примерами бизнес-сайтов, корпоративных презентаций и платформ, которые мы создали.",
+                'de': "Der Benutzer hat Unternehmenswebsite-Projekte ausgewählt. Beschreiben Sie unser Portfolio an Unternehmenswebsites mit Beispielen für Geschäftswebsites, Unternehmenspräsentationen und Unternehmensplattformen, die wir erstellt haben.",
+                'uk': "Користувач вибрав корпоративні веб-сайти. Опишіть наше портфоліо корпоративних сайтів з прикладами бізнес-сайтів, корпоративних презентацій і платформ, які ми створили."
             },
             'webapp': {
-                'en': "Here are our web application projects...",
-                'ru': "Вот наши проекты веб-приложений...",
-                'de': "Hier sind unsere Webapplikationsprojekte..."
+                'en': "The user selected web application projects. Describe our web application portfolio with examples of interactive platforms, SaaS products, and custom web software we've developed.",
+                'ru': "Пользователь выбрал проекты веб-приложений. Опишите наше портфолио веб-приложений с примерами интерактивных платформ, SaaS-продуктов и заказного веб-ПО, которые мы разработали.",
+                'de': "Der Benutzer hat Webanwendungsprojekte ausgewählt. Beschreiben Sie unser Portfolio an Webanwendungen mit Beispielen für interaktive Plattformen, SaaS-Produkte und maßgeschneiderte Websoftware, die wir entwickelt haben.",
+                'uk': "Користувач вибрав проекти веб-додатків. Опишіть наше портфоліо веб-додатків з прикладами інтерактивних платформ, SaaS-продуктів та замовного веб-ПЗ, які ми розробили."
             }
         }
         
-        response_text = portfolio_responses[portfolio_type].get(language, portfolio_responses[portfolio_type]['en'])
+        # Add appropriate context prompt based on portfolio type
+        context_prompt = category_prompts.get(portfolio_type, {}).get(language)
+        if context_prompt:
+            messages.append({"role": "system", "content": context_prompt})
+        
+        try:
+            # Get AI-generated response about the portfolio category
+            response_text = get_chat_response(messages, language)
+        except Exception as e:
+            current_app.logger.error(f"Error getting AI response for portfolio category: {str(e)}")
+            # Fallback to hardcoded responses if API call fails
+            portfolio_responses = {
+                'ecommerce': {
+                    'en': "Here are our e-commerce projects examples...",
+                    'ru': "Вот примеры наших проектов интернет-магазинов...",
+                    'de': "Hier sind unsere E-Commerce-Projektbeispiele...",
+                    'uk': "Ось приклади наших проектів інтернет-магазинів..."
+                },
+                'corporate': {
+                    'en': "Here are our corporate website examples...",
+                    'ru': "Вот примеры наших корпоративных сайтов...",
+                    'de': "Hier sind unsere Beispiele für Unternehmenswebsites...",
+                    'uk': "Ось приклади наших корпоративних сайтів..."
+                },
+                'webapp': {
+                    'en': "Here are our web application projects...",
+                    'ru': "Вот наши проекты веб-приложений...",
+                    'de': "Hier sind unsere Webapplikationsprojekte...",
+                    'uk': "Ось наші проекти веб-додатків..."
+                }
+            }
+            response_text = portfolio_responses[portfolio_type].get(language, portfolio_responses[portfolio_type]['en'])
         
         # Only include a back button
         buttons = [{
@@ -399,11 +568,22 @@ def handle_portfolio(message, metadata):
         return handle_portfolio(None, metadata)
     
     # Default case: respond to a general portfolio inquiry
-    response_text = "I can show you our portfolio of projects. What type are you interested in seeing?"
-    if language == 'ru':
-        response_text = "Я могу показать вам наше портфолио проектов. Какой тип вас интересует?"
-    elif language == 'de':
-        response_text = "Ich kann Ihnen unser Projektportfolio zeigen. Welchen Typ möchten Sie sehen?"
+    # Add the user message to the conversation
+    messages.append({"role": "user", "content": message})
+    
+    try:
+        # Get AI response for the portfolio inquiry
+        response_text = get_chat_response(messages, language)
+    except Exception as e:
+        current_app.logger.error(f"Error getting AI response for portfolio inquiry: {str(e)}")
+        # Fallback to hardcoded responses if API call fails
+        response_text = "I can show you our portfolio of projects. What type are you interested in seeing?"
+        if language == 'ru':
+            response_text = "Я могу показать вам наше портфолио проектов. Какой тип вас интересует?"
+        elif language == 'de':
+            response_text = "Ich kann Ihnen unser Projektportfolio zeigen. Welchen Typ möchten Sie sehen?"
+        elif language == 'uk':
+            response_text = "Я можу показати вам наше портфоліо проектів. Який тип вас цікавить?"
     
     # Include portfolio category buttons again
     buttons = [
@@ -429,11 +609,12 @@ def handle_portfolio(message, metadata):
                            'Interaktive webbasierte Software')
         },
         {
-            'text': 'Back' if language == 'en' else ('Назад' if language == 'ru' else 'Zurück'),
+            'text': 'Back' if language == 'en' else ('Назад' if language == 'ru' or language == 'uk' else 'Zurück'),
             'value': 'back',
             'description': 'Return to specialist selection' if language == 'en' else 
                           ('Вернуться к выбору специалиста' if language == 'ru' else 
-                           'Zurück zur Spezialistenauswahl')
+                           ('Повернутися до вибору спеціаліста' if language == 'uk' else
+                            'Zurück zur Spezialistenauswahl'))
         }
     ]
     
