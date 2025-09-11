@@ -41,3 +41,146 @@
     background-color: var(--primary-color) !important;
     border-color: var(--primary-color) !important;
 }
+
+/* Fix placeholder text color for better readability - Cross-browser support */
+input::placeholder,
+textarea::placeholder,
+.form-control::placeholder,
+.form-select::placeholder {
+    color: #666666 !important; /* Dark gray for placeholder text */
+    opacity: 0.8 !important; /* Slightly transparent but still readable */
+}
+
+/* Webkit browsers (Chrome, Safari, Edge) */
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder,
+.form-control::-webkit-input-placeholder,
+.form-select::-webkit-input-placeholder {
+    color: #666666 !important;
+    opacity: 0.8 !important;
+}
+
+/* Firefox */
+input::-moz-placeholder,
+textarea::-moz-placeholder,
+.form-control::-moz-placeholder,
+.form-select::-moz-placeholder {
+    color: #666666 !important;
+    opacity: 0.8 !important;
+}
+
+/* Microsoft Edge */
+input::-ms-input-placeholder,
+textarea::-ms-input-placeholder,
+.form-control::-ms-input-placeholder,
+.form-select::-ms-input-placeholder {
+    color: #666666 !important;
+    opacity: 0.8 !important;
+}
+
+/* Fix hint text and help text for forms */
+.form-text,
+.help-text,
+.text-muted {
+    color: #333333 !important; /* Dark text for hints */
+    font-weight: 500 !important; /* Make it slightly bolder */
+}
+
+/* Keep confirmation messages at bottom with light text */
+.form-confirmation,
+.confirmation-text,
+.data-save-notice,
+.save-confirmation {
+    color: #f8fafc !important; /* Light text for confirmation messages */
+    background-color: rgba(0, 0, 0, 0.7) !important; /* Dark background for contrast */
+    padding: 0.75rem !important;
+    border-radius: 4px !important;
+    margin-top: 1rem !important;
+}
+
+/* Ensure form labels are readable */
+.form-label,
+label {
+    color: #333333 !important; /* Dark text for labels */
+    font-weight: 600 !important; /* Make labels bolder */
+}
+
+/* Override background for form inputs to ensure placeholder readability */
+input,
+textarea,
+.form-control,
+.form-select {
+    background-color: rgba(255, 255, 255, 0.95) !important; /* More opaque background */
+    border: 1px solid #ddd !important; /* Visible border */
+}
+
+/* Specific styles for tech-spec forms */
+.tech-spec-container input,
+.tech-spec-container textarea,
+.tech-spec-container .form-control {
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    color: #333333 !important;
+    border: 1px solid #ccc !important;
+}
+
+/* Ensure tech-spec form labels are dark */
+.tech-spec-container label,
+.tech-spec-container .form-label {
+    color: #333333 !important;
+    font-weight: 600 !important;
+}
+
+/* Tech-spec hint text should be dark */
+.tech-spec-container .form-text,
+.tech-spec-container .help-text {
+    color: #333333 !important;
+    font-weight: 500 !important;
+}
+
+/* Tech-spec confirmation messages should be light */
+.tech-spec-container .confirmation-text,
+.tech-spec-container .data-save-notice,
+.tech-spec-container .save-confirmation {
+    color: #f8fafc !important;
+    background-color: rgba(0, 0, 0, 0.8) !important;
+    padding: 0.75rem !important;
+    border-radius: 4px !important;
+    margin-top: 1rem !important;
+}
+
+/* Additional form elements that might need contrast fixes */
+.form-floating input::placeholder,
+.form-floating textarea::placeholder {
+    color: #666666 !important;
+    opacity: 0.8 !important;
+}
+
+.form-floating label {
+    color: #333333 !important;
+}
+
+/* Success and error messages */
+.alert-success {
+    color: #155724 !important;
+    background-color: #d4edda !important;
+    border-color: #c3e6cb !important;
+}
+
+.alert-danger,
+.alert-error {
+    color: #721c24 !important;
+    background-color: #f8d7da !important;
+    border-color: #f5c6cb !important;
+}
+
+.alert-info {
+    color: #0c5460 !important;
+    background-color: #d1ecf1 !important;
+    border-color: #bee5eb !important;
+}
+
+.alert-warning {
+    color: #856404 !important;
+    background-color: #fff3cd !important;
+    border-color: #ffeaa7 !important;
+}
