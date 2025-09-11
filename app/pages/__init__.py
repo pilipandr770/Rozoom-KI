@@ -25,113 +25,176 @@ def services():
     
 @pages_bp.route('/submit-questionnaire', methods=['POST'])
 def submit_questionnaire():
-    """Handle project questionnaire submissions."""
+    """Handle project questionnaire submissions (ALL 15 fields)."""
     try:
-        # Get form data
-        form_data = request.form.to_dict()
-        
-        # Handle multiple select and checkboxes
-        if 'security_requirements' in request.form:
-            form_data['security_requirements'] = request.form.getlist('security_requirements')
-            
-        if 'existing_assets[]' in request.form:
-            form_data['existing_assets'] = request.form.getlist('existing_assets[]')
-            
-        # Save to database - you could create a model for this
-        questionnaire_data = json.dumps(form_data)
-        
-        # Create a lead
-        lead = Lead(
-            name=form_data.get('contact_name', ''),
-            email=form_data.get('contact_email', ''),
-            phone=form_data.get('contact_phone', ''),
-            company=form_data.get('company_name', ''),
-            message=f"Project Questionnaire: {form_data.get('project_type', '')}",
-            data=questionnaire_data,
-            source='project_questionnaire',
-            created_at=datetime.utcnow()
+        from app.services.telegram_service import send_tech_spec_notification
+        from app.utils.telegram_queue import send_telegram_message_with_retry
+
+        # 1) Сирі дані форми
+        form_data = request.form.to_dict(flat=True)
+
+        # Масиви (чекбокси/мультивибір)
+        security_requirements = request.form.getlist('security_requirements')
+        existing_assets = request.form.getlist('existing_assets[]')
+
+        # 2) Підготовка «відповідей» — додаємо УСІ 15 полів
+        answers = []
+
+        # 1
+        answers.append({
+            'question': 'Project Type',
+            'answer': form_data.get('project_type', 'Not specified')
+        })
+        # 2
+        answers.append({
+            'question': 'Main Goal',
+            'answer': form_data.get('project_goal', 'Not specified')
+        })
+        # 3
+        answers.append({
+            'question': 'Target Users',
+            'answer': form_data.get('target_users', 'Not specified')
+        })
+        # 4
+        answers.append({
+            'question': 'Essential Features',
+            'answer': form_data.get('essential_features', 'Not specified')
+        })
+        # 5
+        answers.append({
+            'question': 'Nice-to-have Features',
+            'answer': form_data.get('nice_to_have_features', 'Not specified')
+        })
+        # 6
+        answers.append({
+            'question': 'Timeline',
+            'answer': form_data.get('timeline', 'Not specified')
+        })
+        # 7
+        answers.append({
+            'question': 'Budget Range',
+            'answer': form_data.get('budget_range', 'Not specified')
+        })
+        # 8
+        answers.append({
+            'question': 'Integrations (existing systems to integrate)',
+            'answer': form_data.get('integrations', 'Not specified')
+        })
+        # 9
+        answers.append({
+            'question': 'Technical Requirements / Preferences',
+            'answer': form_data.get('technical_requirements', 'Not specified')
+        })
+        # 10
+        answers.append({
+            'question': 'Similar Projects (examples/inspiration)',
+            'answer': form_data.get('similar_projects', 'Not specified')
+        })
+        # 11
+        answers.append({
+            'question': 'Success Metrics (KPIs)',
+            'answer': form_data.get('success_metrics', 'Not specified')
+        })
+        # 12
+        sr = ', '.join(security_requirements) if security_requirements else 'Not specified'
+        if form_data.get('other_security_requirements'):
+            sr = (sr + '; Other: ' + form_data['other_security_requirements']).strip('; ')
+        answers.append({
+            'question': 'Security / Compliance Requirements',
+            'answer': sr
+        })
+        # 13
+        answers.append({
+            'question': 'Required Ongoing Support After Launch',
+            'answer': form_data.get('support_level', 'Not specified')
+        })
+        # 14
+        assets = ', '.join(existing_assets) if existing_assets else 'None'
+        answers.append({
+            'question': 'Existing Design Assets / Docs',
+            'answer': assets
+        })
+        # 15
+        answers.append({
+            'question': 'Additional Info',
+            'answer': form_data.get('additional_info', 'Not provided')
+        })
+
+        tech_spec_data = {
+            'answers': answers,
+            # Можеш зберігати мову, якщо треба
+            'language': 'en'
+        }
+
+        # Контакти замовника
+        contact_info = {
+            'name': form_data.get('contact_name', 'Not provided'),
+            'email': form_data.get('contact_email', 'Not provided'),
+            'phone': form_data.get('contact_phone', 'Not provided'),
+            'company': form_data.get('company_name', '')
+        }
+
+        # 3) Надсилання у Telegram з безпечним розбиттям
+        #    (враховує ліміт 4096 символів)
+        full_message = send_tech_spec_notification(
+            tech_spec_data,
+            contact_info=contact_info,
+            return_message_only=True  # Отримуємо текст без відправки
         )
-        
-        db.session.add(lead)
-        db.session.commit()
-        
-        # Send email to admin
-        try:
-            send_questionnaire_notification(form_data)
-        except Exception as e:
-            current_app.logger.error(f"Failed to send notification email: {str(e)}")
-            
-        # Send notification via Telegram
-        try:
-            from app.services.telegram_service import send_tech_spec_notification
-            
-            # Prepare data for Telegram notification
-            tech_spec_data = {
-                'answers': []
-            }
-            
-            # Format each question-answer pair from the form data
-            # The form sends data with specific field names
-            tech_spec_data['answers'].append({
-                'question': 'Project Type',
-                'answer': form_data.get('project_type', 'Not specified')
-            })
-            tech_spec_data['answers'].append({
-                'question': 'Project Goal',
-                'answer': form_data.get('project_goal', 'Not specified')
-            })
-            tech_spec_data['answers'].append({
-                'question': 'Target Users',
-                'answer': form_data.get('target_users', 'Not specified')
-            })
-            tech_spec_data['answers'].append({
-                'question': 'Timeline',
-                'answer': form_data.get('timeline', 'Not specified')
-            })
-            tech_spec_data['answers'].append({
-                'question': 'Budget Range',
-                'answer': form_data.get('budget_range', 'Not specified')
-            })
-            
-            # Add language information
-            tech_spec_data['language'] = 'en'  # Default to English
-            
-            # Prepare contact information
-            contact_info = {
-                'name': form_data.get('contact_name', 'Not provided'),
-                'email': form_data.get('contact_email', 'Not provided'),
-                'phone': form_data.get('contact_phone', 'Not provided')
-            }
-            
-            # Try to send via Telegram
-            success = send_tech_spec_notification(tech_spec_data, contact_info)
-            if success:
-                current_app.logger.info("Tech spec notification sent to Telegram successfully")
-            else:
-                current_app.logger.warning("Failed to send tech spec notification to Telegram")
-                # Try to send via email as fallback
-                try:
-                    send_tech_spec_email_notification(tech_spec_data, contact_info)
-                    current_app.logger.info("Tech spec notification sent via email as fallback")
-                except Exception as email_error:
-                    current_app.logger.error(f"Failed to send email fallback notification: {str(email_error)}")
-                
-        except Exception as e:
-            current_app.logger.error(f"Failed to send Telegram notification: {str(e)}")
-            # Try to send via email as fallback
-            try:
-                send_tech_spec_email_notification(tech_spec_data, contact_info)
-                current_app.logger.info("Tech spec notification sent via email as fallback")
-            except Exception as email_error:
-                current_app.logger.error(f"Failed to send email fallback notification: {str(email_error)}")
-            
-        flash('Your project questionnaire has been submitted successfully! We will contact you soon with a time and budget estimate.', 'success')
+
+        def _send_long_message_in_chunks(msg: str, chunk_size: int = 3500):
+            # Розбиваємо за пустими рядками, потім сліпаємо куски, щоб не рвати слова
+            import textwrap
+            parts = []
+            buf = ""
+            for para in msg.split("\n\n"):
+                if len(buf) + len(para) + 2 <= chunk_size:
+                    buf = (buf + "\n\n" + para) if buf else para
+                else:
+                    if buf:
+                        parts.append(buf)
+                    # якщо абзац дуже довгий — нарізаємо
+                    if len(para) > chunk_size:
+                        for sub in textwrap.wrap(para, chunk_size):
+                            parts.append(sub)
+                        buf = ""
+                    else:
+                        buf = para
+            if buf:
+                parts.append(buf)
+
+            sent_ok = True
+            for part in parts:
+                if not send_telegram_message_with_retry(part):
+                    sent_ok = False
+            return sent_ok
+
+        sent = _send_long_message_in_chunks(full_message)
+
+        if not sent:
+            current_app.logger.warning("Failed to send full tech spec to Telegram (queued or partially sent).")
+
+        # 4) Опціонально — зберегти ліда (якщо у тебе є модель/таблиця)
+        # try:
+        #     lead = Lead(
+        #         name=contact_info['name'],
+        #         email=contact_info['email'],
+        #         phone=contact_info['phone'],
+        #         payload=json.dumps({'questionnaire': form_data}, ensure_ascii=False),
+        #         created_at=datetime.utcnow(),
+        #     )
+        #     db.session.add(lead)
+        #     db.session.commit()
+        # except Exception as db_err:
+        #     current_app.logger.error(f"Lead save failed: {db_err}")
+
+        flash('Your request has been submitted successfully. We will contact you soon.', 'success')
+        return redirect(url_for('pages.services'))
+
     except Exception as e:
-        current_app.logger.error(f"Error in questionnaire submission: {str(e)}")
-        db.session.rollback()
-        flash('There was an error processing your submission. Please try again.', 'danger')
-        
-    return redirect(url_for('pages.services'))
+        current_app.logger.exception(f"Questionnaire submit error: {e}")
+        flash('Something went wrong while submitting the form. Please try again later.', 'danger')
+        return redirect(url_for('pages.services'))
     
 def send_questionnaire_notification(form_data):
     """Send email notification to admin about new questionnaire submission."""
