@@ -43,6 +43,14 @@
             
             <div class="card">
                 <div class="card-body">
+                    <style>
+                        #project-questionnaire .form-text {
+                            color: white !important;
+                        }
+                        #project-questionnaire .form-check-label {
+                            color: white !important;
+                        }
+                    </style>
                     <form id="project-questionnaire" method="post" action="{{ url_for('pages.submit_questionnaire') }}">
                         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                         <div class="accordion" id="questionnaireAccordion">
