@@ -97,3 +97,48 @@ msgstr "Безкоштовне налаштування включено"
 
 msgid "Money-back guarantee"
 msgstr "Гарантія повернення грошей"
+
+msgid "Choose Your Package"
+msgstr "Виберіть свій пакет"
+
+msgid "Get the perfect amount of development time for your project needs"
+msgstr "Отримайте ідеальну кількість часу розробки для потреб вашого проекту"
+
+msgid "Most Popular"
+msgstr "Найпопулярніший"
+
+msgid "Hours"
+msgstr "Години"
+
+msgid "per hour"
+msgstr "за годину"
+
+msgid "development hours"
+msgstr "годин розробки"
+
+msgid "Custom solutions"
+msgstr "Індивідуальні рішення"
+
+msgid "Support included"
+msgstr "Підтримка включена"
+
+msgid "Regular updates"
+msgstr "Регулярні оновлення"
+
+msgid "Select Package"
+msgstr "Виберіть пакет"
+
+msgid "Tailored to Your Needs"
+msgstr "Адаптовано до ваших потреб"
+
+msgid "For special requirements"
+msgstr "Для особливих вимог"
+
+msgid "Flexible hours"
+msgstr "Гнучкі години"
+
+msgid "Custom development"
+msgstr "Індивідуальна розробка"
+
+msgid "Dedicated support"
+msgstr "Спеціалізована підтримка"

@@ -85,3 +85,15 @@ msgstr "Екстрена підтримка"
 
 msgid "For urgent issues outside business hours"
 msgstr "Для термінових питань поза робочими годинами"
+
+msgid "Remote Work"
+msgstr "Віддалена робота"
+
+msgid "We operate as a remote-first company with team members working from various locations. This allows us to serve clients worldwide while maintaining flexibility and efficiency."
+msgstr "Ми працюємо як компанія, орієнтована на віддалену роботу, з членами команди, які працюють з різних місць. Це дозволяє нам обслуговувати клієнтів по всьому світу, зберігаючи гнучкість та ефективність."
+
+msgid "Working remotely from Germany"
+msgstr "Віддалена робота з Німеччини"
+
+msgid "For urgent issues outside business hours"
+msgstr "Для термінових питань поза робочими годинами"
