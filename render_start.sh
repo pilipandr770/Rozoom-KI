@@ -10,15 +10,11 @@ echo "Pip версия: $(pip --version)"
 
 # ВАЖНО: Компилируем переводы в самом начале, чтобы убедиться, что они доступны
 echo "Компиляция файлов переводов (.po -> .mo)..."
-if python check_translations.py --compile; then
+if pybabel compile -d app/translations; then
     echo "✅ Файлы переводов успешно скомпилированы"
 else
     echo "⚠️ Ошибка компиляции переводов, пробуем альтернативный метод..."
-    if pybabel compile -d app/translations; then
-        echo "✅ Файлы переводов скомпилированы через pybabel"
-    else 
-        echo "⚠️ Пробуем еще один метод компиляции..."
-        python -c "
+    python -c "
 import os, glob
 from babel.messages.mofile import write_mo
 from babel.messages.pofile import read_po
@@ -26,29 +22,26 @@ from babel.messages.pofile import read_po
 for po_file in glob.glob('app/translations/**/LC_MESSAGES/*.po', recursive=True):
     mo_file = po_file[:-3] + '.mo'
     print(f'Компиляция {po_file} -> {mo_file}')
-    with open(po_file, 'rb') as f_in:
-        catalog = read_po(f_in)
-    with open(mo_file, 'wb') as f_out:
-        write_mo(f_out, catalog)
+    try:
+        with open(po_file, 'rb') as f_in:
+            catalog = read_po(f_in)
+        with open(mo_file, 'wb') as f_out:
+            write_mo(f_out, catalog)
+    except Exception as e:
+        print(f'Ошибка компиляции {po_file}: {e}')
 print('Компиляция завершена')
 "
-        echo "✅ Файлы переводов скомпилированы через python"
-    fi
+    echo "✅ Файлы переводов скомпилированы через python"
 fi
 
-# Настраиваем хранилище для изображений с использованием скрипта
+# Настраиваем хранилище для изображений
 echo "Настраиваем хранилище для изображений..."
-if python setup_render_storage.py; then
-    echo "✅ Хранилище изображений настроено"
+if [ -n "$RENDER_PERSISTENT_DIR" ]; then
+    mkdir -p "$RENDER_PERSISTENT_DIR/static/img/blog"
+    echo "✅ Хранилище изображений создано в: $RENDER_PERSISTENT_DIR/static/img"
 else
-    echo "⚠️ Ошибка при настройке хранилища изображений. Создаем базовые директории..."
-    if [ -n "$RENDER_PERSISTENT_DIR" ]; then
-        mkdir -p "$RENDER_PERSISTENT_DIR/static/img/blog"
-        echo "✅ Хранилище изображений создано в: $RENDER_PERSISTENT_DIR/static/img"
-    else
-        mkdir -p "app/static/img/blog"
-        echo "⚠️ RENDER_PERSISTENT_DIR не установлен. Изображения будут храниться во временной файловой системе."
-    fi
+    mkdir -p "app/static/img/blog"
+    echo "⚠️ RENDER_PERSISTENT_DIR не установлен. Изображения будут храниться во временной файловой системе."
 fi
 
 # Проверяем наличие необходимых файлов
@@ -67,50 +60,28 @@ echo "Все необходимые файлы найдены."
 
 # Компилируем файлы переводов (.po -> .mo)
 echo "Компиляция файлов переводов..."
-if python compile_translations.py; then
+if pybabel compile -d app/translations; then
     echo "✅ Файлы переводов успешно скомпилированы"
 else
     echo "⚠️ Ошибка компиляции переводов, пытаемся использовать альтернативный метод..."
-    # Используем pybabel напрямую если доступен
-    if command -v pybabel > /dev/null; then
-        echo "Используем pybabel для компиляции переводов..."
-        pybabel compile -d app/translations
-        echo "✅ Компиляция с помощью pybabel завершена"
-    else
-        echo "⚠️ pybabel не доступен, используем интеграцию с Flask-Babel..."
-        # Создаем временный скрипт для компиляции через Flask-Babel
-        cat > compile_mo.py << 'EOF'
-import os
+    python -c "
+import os, glob
 from babel.messages.mofile import write_mo
 from babel.messages.pofile import read_po
 
-def compile_all():
-    base_dir = os.path.dirname(os.path.abspath(__file__))
-    translations_dir = os.path.join(base_dir, 'app', 'translations')
-    
-    for lang in os.listdir(translations_dir):
-        lang_path = os.path.join(translations_dir, lang)
-        if os.path.isdir(lang_path):
-            lc_path = os.path.join(lang_path, 'LC_MESSAGES')
-            if os.path.isdir(lc_path):
-                for file in os.listdir(lc_path):
-                    if file.endswith('.po'):
-                        po_path = os.path.join(lc_path, file)
-                        mo_path = os.path.join(lc_path, file[:-3] + '.mo')
-                        try:
-                            with open(po_path, 'rb') as po_file:
-                                catalog = read_po(po_file)
-                            with open(mo_path, 'wb') as mo_file:
-                                write_mo(mo_file, catalog)
-                            print(f"Compiled: {po_path} -> {mo_path}")
-                        except Exception as e:
-                            print(f"Error compiling {po_path}: {e}")
-
-compile_all()
-EOF
-        python compile_mo.py
-        echo "✅ Компиляция переводов через временный скрипт завершена"
-    fi
+for po_file in glob.glob('app/translations/**/LC_MESSAGES/*.po', recursive=True):
+    mo_file = po_file[:-3] + '.mo'
+    print(f'Компиляция {po_file} -> {mo_file}')
+    try:
+        with open(po_file, 'rb') as f_in:
+            catalog = read_po(f_in)
+        with open(mo_file, 'wb') as f_out:
+            write_mo(f_out, catalog)
+    except Exception as e:
+        print(f'Ошибка компиляции {po_file}: {e}')
+print('Компиляция завершена')
+"
+    echo "✅ Компиляция переводов через временный скрипт завершена"
 fi
 
 # Оптимизированная инициализация базы данных - объединяем операции для экономии памяти
@@ -213,7 +184,67 @@ except Exception as e:
     echo "✅ Структура БД для изображений актуальна"
 else
     echo "⚠️ Запускаем миграцию для обновления структуры БД..."
-    if python migrate_images.py; then
+    if python -c "
+import sys
+import os
+from sqlalchemy import inspect, create_engine, Column, String, text
+from sqlalchemy.orm import sessionmaker
+
+try:
+    # Получаем URL базы данных из переменной окружения
+    database_url = os.environ.get('DATABASE_URL')
+    
+    # Исправляем URL для PostgreSQL, если необходимо
+    if database_url and database_url.startswith('postgres://'):
+        database_url = database_url.replace('postgres://', 'postgresql://', 1)
+    
+    # Используем SQLite, если нет PostgreSQL URL
+    database_url = database_url or 'sqlite:///app/dev.db'
+    
+    # Создаем соединение с базой данных
+    engine = create_engine(database_url)
+    inspector = inspect(engine)
+    
+    # Проверяем и добавляем колонки для хранения оригинальных URL изображений
+    with engine.connect() as conn:
+        # Проверяем таблицу blog_posts
+        if not inspector.has_table('blog_posts'):
+            print('Таблица blog_posts не существует, пропускаем миграцию изображений')
+        else:
+            columns = [col['name'] for col in inspector.get_columns('blog_posts')]
+            if 'original_image_url' not in columns:
+                print('Добавляем original_image_url в blog_posts...')
+                conn.execute(text('ALTER TABLE blog_posts ADD COLUMN original_image_url VARCHAR(500)'))
+                print('✅ Колонка original_image_url добавлена в blog_posts')
+            
+            if 'image_url' not in columns:
+                print('Добавляем image_url в blog_posts...')
+                conn.execute(text('ALTER TABLE blog_posts ADD COLUMN image_url VARCHAR(500)'))
+                print('✅ Колонка image_url добавлена в blog_posts')
+        
+        # Проверяем таблицу generated_content
+        if not inspector.has_table('generated_content'):
+            print('Таблица generated_content не существует, пропускаем миграцию изображений')
+        else:
+            columns = [col['name'] for col in inspector.get_columns('generated_content')]
+            if 'original_image_url' not in columns:
+                print('Добавляем original_image_url в generated_content...')
+                conn.execute(text('ALTER TABLE generated_content ADD COLUMN original_image_url VARCHAR(500)'))
+                print('✅ Колонка original_image_url добавлена в generated_content')
+            
+            if 'image_url' not in columns:
+                print('Добавляем image_url в generated_content...')
+                conn.execute(text('ALTER TABLE generated_content ADD COLUMN image_url VARCHAR(500)'))
+                print('✅ Колонка image_url добавлена в generated_content')
+        
+        conn.commit()
+    
+    print('✅ Миграция изображений выполнена успешно')
+    
+except Exception as e:
+    print(f'⚠️ Ошибка при миграции изображений: {e}')
+    sys.exit(1)
+"; then
         echo "✅ Миграция изображений успешно выполнена"
     else
         echo "⚠️ Ошибка при миграции изображений, продолжаем..."
@@ -222,20 +253,234 @@ fi
 
 # Пытаемся сначала инициализировать миграции с нуля
 echo "Инициализация миграций с поддержкой CASCADE..."
-if python init_migrations.py; then
+if python -c "
+import sys
+import os
+from flask import Flask
+from flask_migrate import Migrate
+from sqlalchemy import text
+
+try:
+    # Создаем Flask приложение для работы с миграциями
+    app = Flask(__name__)
+    
+    # Настраиваем базу данных
+    database_url = os.environ.get('DATABASE_URL')
+    if database_url and database_url.startswith('postgres://'):
+        database_url = database_url.replace('postgres://', 'postgresql://', 1)
+    database_url = database_url or 'sqlite:///app/dev.db'
+    
+    app.config['SQLALCHEMY_DATABASE_URI'] = database_url
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    
+    # Импортируем модели
+    from app.models import db
+    db.init_app(app)
+    
+    # Инициализируем миграции
+    migrate = Migrate(app, db)
+    
+    with app.app_context():
+        # Создаем все таблицы
+        db.create_all()
+        
+        # Включаем поддержку CASCADE для внешних ключей
+        if 'postgresql' in database_url:
+            db.session.execute(text('SET CONSTRAINTS ALL DEFERRED'))
+        
+        print('✅ Миграции инициализированы успешно')
+        
+except Exception as e:
+    print(f'⚠️ Ошибка при инициализации миграций: {e}')
+    sys.exit(1)
+"; then
     echo "✅ Миграции успешно инициализированы"
 else
     echo "⚠️  Ошибка при инициализации миграций. Используем прямое создание таблиц..."
-    if python simple_create_tables.py; then
-        echo "✅ Таблицы созданы через simple_create_tables.py"
+    if python -c "
+import sys
+import os
+from flask import Flask
+from sqlalchemy import text
+
+try:
+    # Создаем Flask приложение
+    app = Flask(__name__)
+    
+    # Настраиваем базу данных
+    database_url = os.environ.get('DATABASE_URL')
+    if database_url and database_url.startswith('postgres://'):
+        database_url = database_url.replace('postgres://', 'postgresql://', 1)
+    database_url = database_url or 'sqlite:///app/dev.db'
+    
+    app.config['SQLALCHEMY_DATABASE_URI'] = database_url
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    
+    # Импортируем модели
+    from app.models import db
+    db.init_app(app)
+    
+    with app.app_context():
+        # Создаем все таблицы
+        db.create_all()
+        print('✅ Все таблицы созданы успешно')
+        
+except Exception as e:
+    print(f'⚠️ Ошибка при создании таблиц: {e}')
+    sys.exit(1)
+"; then
+        echo "✅ Таблицы созданы через inline код"
     else
         echo "⚠️  Попытка использования альтернативного метода инициализации базы данных..."
-        if python direct_db_init.py; then
-            echo "✅ База данных инициализирована через direct_db_init.py"
+        if python -c "
+import sys
+import os
+from flask import Flask
+from sqlalchemy import text, inspect
+
+try:
+    # Создаем Flask приложение
+    app = Flask(__name__)
+    
+    # Настраиваем базу данных
+    database_url = os.environ.get('DATABASE_URL')
+    if database_url and database_url.startswith('postgres://'):
+        database_url = database_url.replace('postgres://', 'postgresql://', 1)
+    database_url = database_url or 'sqlite:///app/dev.db'
+    
+    app.config['SQLALCHEMY_DATABASE_URI'] = database_url
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    
+    # Импортируем модели
+    from app.models import db
+    db.init_app(app)
+    
+    with app.app_context():
+        # Проверяем существование таблиц
+        inspector = inspect(db.engine)
+        existing_tables = inspector.get_table_names()
+        
+        # Создаем таблицы, которые отсутствуют
+        if 'users' not in existing_tables:
+            db.session.execute(text('''
+                CREATE TABLE users (
+                    id SERIAL PRIMARY KEY,
+                    username VARCHAR(80) UNIQUE NOT NULL,
+                    email VARCHAR(120) UNIQUE NOT NULL,
+                    password_hash VARCHAR(128),
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                )
+            '''))
+        
+        if 'blog_posts' not in existing_tables:
+            db.session.execute(text('''
+                CREATE TABLE blog_posts (
+                    id SERIAL PRIMARY KEY,
+                    title VARCHAR(200) NOT NULL,
+                    content TEXT,
+                    image_url VARCHAR(500),
+                    original_image_url VARCHAR(500),
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                )
+            '''))
+        
+        if 'generated_content' not in existing_tables:
+            db.session.execute(text('''
+                CREATE TABLE generated_content (
+                    id SERIAL PRIMARY KEY,
+                    title VARCHAR(200),
+                    content TEXT,
+                    image_url VARCHAR(500),
+                    original_image_url VARCHAR(500),
+                    content_type VARCHAR(50),
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                )
+            '''))
+        
+        db.session.commit()
+        print('✅ База данных инициализирована успешно')
+        
+except Exception as e:
+    print(f'⚠️ Ошибка при прямой инициализации БД: {e}')
+    sys.exit(1)
+"; then
+            echo "✅ База данных инициализирована через inline код"
         else
             echo "⚠️  Попытка исправления проблем с инициализацией базы данных..."
-            if python fix_db_init.py; then
-                echo "✅ Проблемы с инициализацией исправлены через fix_db_init.py"
+            if python -c "
+import sys
+import os
+from flask import Flask
+from sqlalchemy import text, inspect
+
+try:
+    # Создаем Flask приложение
+    app = Flask(__name__)
+    
+    # Настраиваем базу данных
+    database_url = os.environ.get('DATABASE_URL')
+    if database_url and database_url.startswith('postgres://'):
+        database_url = database_url.replace('postgres://', 'postgresql://', 1)
+    database_url = database_url or 'sqlite:///app/dev.db'
+    
+    app.config['SQLALCHEMY_DATABASE_URI'] = database_url
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    
+    # Импортируем модели
+    from app.models import db
+    db.init_app(app)
+    
+    with app.app_context():
+        # Проверяем и исправляем структуру таблиц
+        inspector = inspect(db.engine)
+        
+        # Исправляем таблицу users
+        if inspector.has_table('users'):
+            columns = [col['name'] for col in inspector.get_columns('users')]
+            if 'id' not in columns:
+                db.session.execute(text('ALTER TABLE users ADD COLUMN id SERIAL PRIMARY KEY'))
+            if 'username' not in columns:
+                db.session.execute(text('ALTER TABLE users ADD COLUMN username VARCHAR(80) UNIQUE'))
+            if 'email' not in columns:
+                db.session.execute(text('ALTER TABLE users ADD COLUMN email VARCHAR(120) UNIQUE'))
+        
+        # Исправляем таблицу blog_posts
+        if inspector.has_table('blog_posts'):
+            columns = [col['name'] for col in inspector.get_columns('blog_posts')]
+            if 'id' not in columns:
+                db.session.execute(text('ALTER TABLE blog_posts ADD COLUMN id SERIAL PRIMARY KEY'))
+            if 'title' not in columns:
+                db.session.execute(text('ALTER TABLE blog_posts ADD COLUMN title VARCHAR(200)'))
+            if 'content' not in columns:
+                db.session.execute(text('ALTER TABLE blog_posts ADD COLUMN content TEXT'))
+            if 'image_url' not in columns:
+                db.session.execute(text('ALTER TABLE blog_posts ADD COLUMN image_url VARCHAR(500)'))
+            if 'original_image_url' not in columns:
+                db.session.execute(text('ALTER TABLE blog_posts ADD COLUMN original_image_url VARCHAR(500)'))
+        
+        # Исправляем таблицу generated_content
+        if inspector.has_table('generated_content'):
+            columns = [col['name'] for col in inspector.get_columns('generated_content')]
+            if 'id' not in columns:
+                db.session.execute(text('ALTER TABLE generated_content ADD COLUMN id SERIAL PRIMARY KEY'))
+            if 'title' not in columns:
+                db.session.execute(text('ALTER TABLE generated_content ADD COLUMN title VARCHAR(200)'))
+            if 'content' not in columns:
+                db.session.execute(text('ALTER TABLE generated_content ADD COLUMN content TEXT'))
+            if 'image_url' not in columns:
+                db.session.execute(text('ALTER TABLE generated_content ADD COLUMN image_url VARCHAR(500)'))
+            if 'original_image_url' not in columns:
+                db.session.execute(text('ALTER TABLE generated_content ADD COLUMN original_image_url VARCHAR(500)'))
+        
+        db.session.commit()
+        print('✅ Проблемы с инициализацией исправлены')
+        
+except Exception as e:
+    print(f'❌ КРИТИЧЕСКАЯ ОШИБКА: {e}')
+    sys.exit(1)
+"; then
+                echo "✅ Проблемы с инициализацией исправлены через inline код"
             else
                 echo "❌ КРИТИЧЕСКАЯ ОШИБКА: Не удалось создать таблицы!"
                 exit 1
