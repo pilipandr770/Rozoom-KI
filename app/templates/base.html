@@ -180,16 +180,16 @@
     <!-- Font Awesome для чат-виджета -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="{{ url_for('static', filename='js/chat_translations.js') }}"></script>
-    <!-- Replaced multiple chat scripts with a single ultimate fix -->
-    <script src="{{ url_for('static', filename='js/ultimate_chat_fix.js') }}"></script>
+  <!-- Production chat widget (clean) -->
+  <script src="{{ url_for('static', filename='js/chat_widget_prod.js') }}"></script>
     <!-- Мова визначається автоматично -->
-    <script src="{{ url_for('static', filename='js/animations.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/background-animation.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/particles-sphere.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/language_switcher.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/footer-fix.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/csrf_handler.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/animations.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/background-animation.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/particles-sphere.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/language_switcher.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/footer-fix.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/csrf_handler.js') }}"></script>
     <script>
       // Initialize Bootstrap tooltips and popovers
       document.addEventListener('DOMContentLoaded', function() {

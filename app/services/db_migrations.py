@@ -50,6 +50,30 @@ def ensure_chat_message_model():
     except Exception as e:
         current_app.logger.error(f"Error checking/updating database schema: {e}")
 
+def ensure_assistant_thread_model():
+    """
+    Ensure assistant_threads table exists (for Assistants API threads).
+    """
+    try:
+        try:
+            db.session.rollback()
+        except Exception:
+            pass
+        db.session.execute(text('SELECT 1'))
+
+        inspector = inspect(db.engine)
+        if not inspector.has_table('assistant_threads'):
+            current_app.logger.info("Creating assistant_threads table...")
+            # Create via SQLAlchemy Table metadata if available
+            from app.models.assistant_thread import AssistantThread
+            AssistantThread.__table__.create(db.engine)
+            current_app.logger.info("assistant_threads table created successfully")
+        else:
+            # Table exists
+            pass
+    except Exception as e:
+        current_app.logger.error(f"Error ensuring assistant_threads table: {e}")
+
 # Initialize the database migration
 def initialize_db_migrations(app=None):
     """
@@ -68,6 +92,7 @@ def initialize_db_migrations(app=None):
         with app.app_context():
             try:
                 ensure_chat_message_model()
+                ensure_assistant_thread_model()
                 app.logger.info("Chat database schema initialized successfully")
                 return True
             except Exception as e:
@@ -77,6 +102,7 @@ def initialize_db_migrations(app=None):
         # Fallback to standard logging if no app provided
         try:
             ensure_chat_message_model()
+            ensure_assistant_thread_model()
             logging.info("Chat database schema initialized successfully")
             return True
         except Exception as e:

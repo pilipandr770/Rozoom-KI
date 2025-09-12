@@ -1,28 +1,14 @@
 # app/agents/controller.py
 from __future__ import annotations
 import logging
-from typing import Tuple, Dict, Any
+from typing import Dict, Any
 
-from flask import current_app, Blueprint, request, session
+from flask import current_app, Blueprint, request
 import json
-import os
 from app.models.language import detect_language, get_text_by_key
 from app.models.tech_spec import TechSpecTemplate
 from app.services.logger import logger
-
-# Включаем расширенное логирование для отладки чата
-DEBUG_CHAT = True
-from app.services.chat_service import get_chat_response
-# New imports for assistants API
-from app.services.assistants_service import (
-    get_or_create_thread,
-    add_user_message,
-    run_with_assistant
-)
-from app.agents.prompts import (
-    create_system_prompt,
-    create_greeter_prompt
-)
+from app.services.responses_service import respond as responses_respond
 
 # Agents configuration
 agent_bp = Blueprint('agent', __name__, url_prefix='/api/agent')
@@ -220,172 +206,51 @@ def route_and_respond(message, metadata=None):
     """
     if metadata is None:
         metadata = {}
-        
-    # ===== NEW ASSISTANTS API IMPLEMENTATION =====
-    # First try using the new Assistants API if proper metadata is present
-    if metadata.get(META_USER) and metadata.get(META_LANG):
-        try:
-            _ensure_defaults(metadata)
-    
-            language = metadata.get(META_LANG, 'uk')
-            conversation_id = metadata.get(META_CONV) or "anon"
-            user_id = metadata.get(META_USER) or "anon"
-    
-            # 1) Єдиний thread на всю розмову
-            thread_id = get_or_create_thread(conversation_id=conversation_id, user_id=user_id, language=language)
-    
-            # 2) Якщо прийшов текст — додаємо як user message
-            if message and message.strip():
-                add_user_message(thread_id, message)
-    
-            # 3) Вибір агента: якщо користувач вказав selected_agent — беремо його, інакше активний
-            agent = metadata.get(META_SELECTED) or metadata.get(META_ACTIVE) or "greeter"
-            if agent not in VALID_AGENTS:
-                agent = "greeter"
-    
-            suppress = bool(metadata.get(META_SUPPRESS, False))
-    
-            # 4) Запускаємо потрібного асиста на ТОМУ Ж thread'і
-            answer = run_with_assistant(
-                thread_id=thread_id,
-                assistant_kind=agent if agent in VALID_AGENTS else "greeter",
-                language=language,
-                suppress_greeting=suppress
-            )
-            
-            # 5) Повертаємо відповідь; conversation_id для стабільного тред-менеджменту
-            metadata[META_CONV] = conversation_id  # Ensure the conversation_id is in the metadata
-            metadata[META_ACTIVE] = agent  # Update active agent
-            
-            return {
-                'agent': agent,
-                'answer': answer,
-                'interactive': None,
-                'conversation_id': conversation_id
-            }
-        except Exception as e:
-            logger.exception(f"Error using Assistants API: {e}")
-            # Fall back to legacy system if Assistants API fails
-            logger.info("Falling back to legacy chat system")
-    
-    # LEGACY SYSTEM - Will gradually be deprecated
-    logger.info("Using legacy chat system")
-    
-    # If we're in a quiz session, always use the quiz agent
-    if metadata.get('quiz_started'):
-        return handle_quiz(message, metadata)
-    
-    # If we're in a tech spec creation session, use the requirements agent
-    if metadata.get('tech_spec_started'):
-        return handle_tech_spec_creation(message, metadata)
-        
-    # If a user selects a specific agent by digit (old format)
-    if message and message.isdigit() and int(message) > 0 and int(message) <= len(SPECIALISTS):
-        # Convert 1-based index from the UI to 0-based index for the list
-        specialist_idx = int(message) - 1
-        specialist_key = list(SPECIALISTS.keys())[specialist_idx]
-        return handle_specialist_selection(specialist_key, metadata)
-    
-    # If we're using the old format with active_specialist
-    active_specialist = metadata.get('active_specialist')
-    if active_specialist:
-        # Check if the user is trying to go back to the greeter
-        if message and message.lower() in ['back', 'назад', 'zurück']:
-            # Clear specialist selection
-            metadata.pop('selected_agent', None)
-            metadata.pop('active_specialist', None)
-            return handle_greeter(metadata)
-            
-        # Otherwise, forward to the appropriate specialist handler (old format)
-        if active_specialist == 'portfolio':
-            return handle_portfolio(message, metadata)
-        elif active_specialist == 'quiz':
-            return handle_quiz(message, metadata)
-        elif active_specialist == 'requirements':
-            return handle_tech_spec_creation(message, metadata)
-        else:
-            return handle_generic_agent(message, active_specialist, metadata)
-    
-    # If a specific agent is selected but not yet activated
-    if selected_agent:
-        # Activate the selected specialist
-        metadata['active_specialist'] = selected_agent
-        
-        if selected_agent == 'greeter':
-            return handle_greeter(metadata)
-        elif selected_agent == 'portfolio':
-            return handle_portfolio(None, metadata)
-        elif selected_agent == 'quiz':
-            return handle_quiz(None, metadata)
-        elif selected_agent == 'requirements':
-            return handle_tech_spec_creation(None, metadata)
-        else:
-            return handle_generic_agent(None, selected_agent, metadata)
-    
-    # Default case: use the greeter
-    return handle_greeter(metadata)
 
-def handle_greeter(metadata):
-    """Handle messages for the greeter agent"""
-    language = metadata.get('language', 'en')
-    
-    # Create specialized prompt for the greeter
-    system_prompt = create_system_prompt(language)
-    user_prompt = create_greeter_prompt(language)
-    
-    # Prepare messages for the OpenAI API
-    messages = [
-        {"role": "system", "content": system_prompt},
-        {"role": "user", "content": user_prompt}
-    ]
-    
-    # Add history if available - this is crucial for context preservation
-    if 'history' in metadata and isinstance(metadata['history'], list):
-        # Filter history to only include relevant messages
-        # Keep enough context but trim to avoid token limits
-        history_messages = metadata['history']
-        # Take the last 10 messages to maintain context but avoid token limits
-        trimmed_history = history_messages[-10:] if len(history_messages) > 10 else history_messages
-        
-        if trimmed_history:
-            # Insert history messages between system prompt and current user message
-            messages = [messages[0]] + trimmed_history
-    
-    # Get response from AI model using our chat service
+    # Determine language early
+    language = metadata.get('language') or detect_language(message or '') or 'uk'
+    metadata['language'] = language
+
+    # Fast-path to tech-spec intent: switch to requirements/spec agent
     try:
-        response_text = get_chat_response(messages, language)
-    except Exception as e:
-        current_app.logger.error(f"Error getting AI response: {str(e)}")
-        # Fallback to hardcoded responses if API call fails
-        response_text = "Hello! I'm the Rozoom AI assistant. How can I help you today?"
-        if language == 'ru':
-            response_text = "Привет! Я AI-ассистент Rozoom. Как я могу вам помочь сегодня?"
-        elif language == 'de':
-            response_text = "Hallo! Ich bin der Rozoom KI-Assistent. Wie kann ich Ihnen heute helfen?"
-        elif language == 'uk':
-            response_text = "Вітаю! Я AI-асистент Rozoom. Як я можу допомогти вам сьогодні?"
-    
-    # Create buttons for each specialist
-    buttons = []
-    for i, (key, specialist) in enumerate(SPECIALISTS.items()):
-        buttons.append({
-            'key': key,  # Add the key for each specialist
-            'label': specialist['title'].get(language, specialist['title']['en']),  # Use 'label' instead of 'text'
-            'value': str(i+1),
-            'description': specialist['description'].get(language, specialist['description']['en']),
-            'avatar': specialist['avatar'],
-            'icon': 'user-circle'  # Add a default icon
-        })
-    
+        text = (message or '').lower()
+        tech_spec_triggers = (
+            'тз', 'тех завдан', 'техзавдан', 'техніч', 'технічне завдан', 'техзадани', 'техзад',
+            'техническ', 'техзадан', 'тех задани', 'тех задание', 'техзадание',
+            'спец', 'спеціаліст', 'специалист', 'експерт',
+            'tech spec', 'technical spec', 'specification', 'requirements'
+        )
+        if any(k in text for k in tech_spec_triggers):
+            metadata['selected_agent'] = 'requirements'
+            metadata['active_specialist'] = 'requirements'
+    except Exception:
+        pass
+
+    # Normalize selected agent to our trio for Responses service
+    selected = (metadata.get('selected_agent') or metadata.get('active_specialist') or 'greeter').lower()
+    agent = 'spec' if selected in ('requirements', 'spec') else ('pm' if selected == 'pm' else 'greeter')
+
+    conversation_id = metadata.get('conversation_id') or 'anon'
+    context = metadata.get('context')
+
+    result = responses_respond(
+        user_text=message or '',
+        agent=agent,
+        conversation_id=conversation_id,
+        language=language,
+        context=context,
+        structured=False,
+    )
+
+    ui_agent = 'requirements' if result.get('agent') == 'spec' else result.get('agent')
+    # Keep UI state coherent
+    metadata['active_specialist'] = ui_agent
+
     return {
-        'agent': 'greeter',
-        'answer': response_text,
-        'interactive': {
-            'text': response_text,
-            'buttons': buttons,
-            'requires_input': True,
-            'meta': {'agent': 'greeter'}
-        }
+        'agent': ui_agent,
+        'answer': result.get('answer'),
+        'interactive': None,
+        'conversation_id': result.get('conversation_id', conversation_id),
     }
 
 def handle_specialist_selection(specialist_key, metadata):

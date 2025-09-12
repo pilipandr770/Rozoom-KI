@@ -19,7 +19,7 @@
   
   // Make sure the DOM is fully loaded
   function initChatWidget() {
-    console.log('Initializing chat widget...');
+  // Production: silent init
 
     // DOM Elements
     const toggle = document.getElementById('chat-toggle');
@@ -556,7 +556,7 @@
     
     if (!txt) return;
     
-    console.log('Sending message (original):', txt);
+  //
     
     // Clear input and disable while processing
     input.value = '';
@@ -568,9 +568,7 @@
     
     try {
       // Send to API
-      console.log('Calling postChat with text:', txt);
-      const result = await postChat(txt);
-      console.log('PostChat result:', result);
+  const result = await postChat(txt);
       
     } catch (error) {
       console.error('Error sending message:', error);
@@ -636,9 +634,7 @@
   
   // Enter key to send
   input.addEventListener('keypress', (e) => {
-    console.log('Key pressed in chat input:', e.key);
     if (e.key === 'Enter') {
-      console.log('Enter key pressed, sending message');
       e.preventDefault();
       handleSendMessage();
     }
@@ -646,8 +642,7 @@
   
   // Also handle keydown for better browser support
   input.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
-      console.log('Enter keydown detected, sending message');
+  if (e.key === 'Enter') {
       e.preventDefault();
       handleSendMessage();
     }
