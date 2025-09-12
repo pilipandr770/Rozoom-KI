@@ -149,6 +149,11 @@ def create_app():
     
     # Test database connection and handle SSL issues
     with app.app_context():
+        # Ensure all models are imported before creating tables
+        try:
+            from app import models  # noqa: F401
+        except Exception as e:
+            app.logger.warning(f"Could not import models before schema init: {e}")
         test_database_connection(app)
     
     # Initialize Flask-Login
@@ -248,6 +253,7 @@ def create_app():
     app.register_blueprint(admin)
     app.register_blueprint(blog)
     app.register_blueprint(auth_bp)
+    # Do not register test/dev-only blueprints in production app
     app.register_blueprint(dashboard_bp)
     app.register_blueprint(lang_bp)
     app.register_blueprint(auto_content)
@@ -259,6 +265,13 @@ def create_app():
     # Register template filters
     from . import template_filters
     template_filters.init_app(app)
+    
+    # Initialize database schema for chat messages
+    try:
+        from app.services.db_migrations import initialize_db_migrations
+        initialize_db_migrations(app)
+    except Exception as e:
+        app.logger.error(f"Failed to initialize chat database schema: {e}")
     
     # Initialize scheduler for background tasks in production
     if not app.debug and not app.testing:

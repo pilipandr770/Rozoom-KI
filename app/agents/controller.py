@@ -1,18 +1,28 @@
+# app/agents/controller.py
+from __future__ import annotations
+import logging
+from typing import Tuple, Dict, Any
+
 from flask import current_app, Blueprint, request, session
 import json
 import os
-import logging
-from app.agents.schemas import AgentMessage, QuizChoice
-from app.agents.prompts import (
-    create_system_prompt, 
-    create_greeter_prompt, 
-    create_completion_prompt,
-    create_portfolio_prompt
-)
 from app.models.language import detect_language, get_text_by_key
 from app.models.tech_spec import TechSpecTemplate
 from app.services.logger import logger
+
+# Включаем расширенное логирование для отладки чата
+DEBUG_CHAT = True
 from app.services.chat_service import get_chat_response
+# New imports for assistants API
+from app.services.assistants_service import (
+    get_or_create_thread,
+    add_user_message,
+    run_with_assistant
+)
+from app.agents.prompts import (
+    create_system_prompt,
+    create_greeter_prompt
+)
 
 # Agents configuration
 agent_bp = Blueprint('agent', __name__, url_prefix='/api/agent')
@@ -173,17 +183,93 @@ def agent_message():
     # Convert to JSON and return
     return json.dumps(response)
 
+"""
+Єдиний роутер:
+- greeter: привітання, виявлення потреби, пропозиції → може переключити на spec або pm
+- spec: допомога у формуванні ТЗ
+- pm: статуси поточних проєктів (використовує дані з БД — робимо це в іншому шарі логіки; тут лише діалог)
+"""
+
+# Ключі для metadata
+META_LANG = "language"
+META_CONV = "conversation_id"
+META_USER = "user_id"
+META_SELECTED = "selected_agent"      # 'greeter' | 'spec' | 'pm'
+META_ACTIVE = "active_specialist"     # поточний агент (те саме)
+META_SUPPRESS = "suppress_greeting"   # bool
+
+VALID_AGENTS = ("greeter", "spec", "pm")
+
+def _ensure_defaults(metadata: Dict[str, Any]) -> None:
+    if META_LANG not in metadata or not metadata[META_LANG]:
+        metadata[META_LANG] = "uk"
+    if META_SELECTED not in metadata or metadata[META_SELECTED] not in VALID_AGENTS:
+        metadata[META_SELECTED] = "greeter"
+    if META_ACTIVE not in metadata or metadata[META_ACTIVE] not in VALID_AGENTS:
+        metadata[META_ACTIVE] = metadata[META_SELECTED]
+
 def route_and_respond(message, metadata=None):
-    """Route the message to the appropriate agent and get a response"""
+    """
+    Повертає словник з результатами виклику асиста:
+    {
+        'agent': agent_key,
+        'answer': assistant_response,
+        'interactive': optional_ui_elements,
+        'conversation_id': conversation_id # Unique ID for the conversation
+    }
+    """
     if metadata is None:
         metadata = {}
+        
+    # ===== NEW ASSISTANTS API IMPLEMENTATION =====
+    # First try using the new Assistants API if proper metadata is present
+    if metadata.get(META_USER) and metadata.get(META_LANG):
+        try:
+            _ensure_defaults(metadata)
     
-    # Get the language from metadata or default to English
-    language = metadata.get('language', 'en')
+            language = metadata.get(META_LANG, 'uk')
+            conversation_id = metadata.get(META_CONV) or "anon"
+            user_id = metadata.get(META_USER) or "anon"
     
-    # Check if a specific agent is already selected or active
-    active_specialist = metadata.get('active_specialist')
-    selected_agent = metadata.get('selected_agent')
+            # 1) Єдиний thread на всю розмову
+            thread_id = get_or_create_thread(conversation_id=conversation_id, user_id=user_id, language=language)
+    
+            # 2) Якщо прийшов текст — додаємо як user message
+            if message and message.strip():
+                add_user_message(thread_id, message)
+    
+            # 3) Вибір агента: якщо користувач вказав selected_agent — беремо його, інакше активний
+            agent = metadata.get(META_SELECTED) or metadata.get(META_ACTIVE) or "greeter"
+            if agent not in VALID_AGENTS:
+                agent = "greeter"
+    
+            suppress = bool(metadata.get(META_SUPPRESS, False))
+    
+            # 4) Запускаємо потрібного асиста на ТОМУ Ж thread'і
+            answer = run_with_assistant(
+                thread_id=thread_id,
+                assistant_kind=agent if agent in VALID_AGENTS else "greeter",
+                language=language,
+                suppress_greeting=suppress
+            )
+            
+            # 5) Повертаємо відповідь; conversation_id для стабільного тред-менеджменту
+            metadata[META_CONV] = conversation_id  # Ensure the conversation_id is in the metadata
+            metadata[META_ACTIVE] = agent  # Update active agent
+            
+            return {
+                'agent': agent,
+                'answer': answer,
+                'interactive': None,
+                'conversation_id': conversation_id
+            }
+        except Exception as e:
+            logger.exception(f"Error using Assistants API: {e}")
+            # Fall back to legacy system if Assistants API fails
+            logger.info("Falling back to legacy chat system")
+    
+    # LEGACY SYSTEM - Will gradually be deprecated
+    logger.info("Using legacy chat system")
     
     # If we're in a quiz session, always use the quiz agent
     if metadata.get('quiz_started'):
@@ -193,14 +279,15 @@ def route_and_respond(message, metadata=None):
     if metadata.get('tech_spec_started'):
         return handle_tech_spec_creation(message, metadata)
         
-    # If a user selects a specific agent
+    # If a user selects a specific agent by digit (old format)
     if message and message.isdigit() and int(message) > 0 and int(message) <= len(SPECIALISTS):
         # Convert 1-based index from the UI to 0-based index for the list
         specialist_idx = int(message) - 1
         specialist_key = list(SPECIALISTS.keys())[specialist_idx]
         return handle_specialist_selection(specialist_key, metadata)
     
-    # If a specialist is already active
+    # If we're using the old format with active_specialist
+    active_specialist = metadata.get('active_specialist')
     if active_specialist:
         # Check if the user is trying to go back to the greeter
         if message and message.lower() in ['back', 'назад', 'zurück']:
@@ -208,8 +295,8 @@ def route_and_respond(message, metadata=None):
             metadata.pop('selected_agent', None)
             metadata.pop('active_specialist', None)
             return handle_greeter(metadata)
-        
-        # Otherwise, forward to the appropriate specialist handler
+            
+        # Otherwise, forward to the appropriate specialist handler (old format)
         if active_specialist == 'portfolio':
             return handle_portfolio(message, metadata)
         elif active_specialist == 'quiz':

@@ -1,0 +1,37 @@
+/**
+ * Additional CSS fixes for the chat widget
+ * Ensures the toggle button is always clickable
+ */
+
+#chat-toggle {
+  /* Critical properties to ensure the button is clickable */
+  position: fixed !important;
+  z-index: 10000 !important; /* Higher than anything else */
+  cursor: pointer !important;
+  pointer-events: auto !important;
+  /* Make sure it's visible */
+  opacity: 1 !important;
+  /* Better visual appearance */
+  box-shadow: 0 6px 24px rgba(0,0,0,0.3) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+#chat-toggle:hover {
+  transform: scale(1.05) !important;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.4) !important;
+}
+
+/* Ensure parent container doesn't block clicks */
+#chat-widget {
+  pointer-events: none !important;
+}
+
+/* But allow pointer events on children */
+#chat-widget > * {
+  pointer-events: auto !important;
+}
+
+/* Make sure chat window is above other content */
+#chat-window {
+  z-index: 9999 !important;
+}

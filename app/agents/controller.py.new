@@ -1,0 +1,95 @@
+# app/agents/controller.py
+from __future__ import annotations
+import logging
+from typing import Tuple, Dict, Any
+
+from flask import current_app
+
+from app.services.assistants_service import (
+    get_or_create_thread,
+    add_user_message,
+    run_with_assistant
+)
+
+logger = logging.getLogger(__name__)
+
+"""
+Єдиний роутер:
+- greeter: привітання, виявлення потреби, пропозиції → може переключити на spec або pm
+- spec: допомога у формуванні ТЗ
+- pm: статуси поточних проєктів (використовує дані з БД — робимо це в іншому шарі логіки; тут лише діалог)
+"""
+
+# Ключі для metadata
+META_LANG = "language"
+META_CONV = "conversation_id"
+META_USER = "user_id"
+META_SELECTED = "selected_agent"      # 'greeter' | 'spec' | 'pm'
+META_ACTIVE = "active_specialist"     # поточний агент (те саме)
+META_SUPPRESS = "suppress_greeting"   # bool
+
+VALID_AGENTS = ("greeter", "spec", "pm")
+
+def _ensure_defaults(metadata: Dict[str, Any]) -> None:
+    if META_LANG not in metadata or not metadata[META_LANG]:
+        metadata[META_LANG] = "uk"
+    if META_SELECTED not in metadata or metadata[META_SELECTED] not in VALID_AGENTS:
+        metadata[META_SELECTED] = "greeter"
+    if META_ACTIVE not in metadata or metadata[META_ACTIVE] not in VALID_AGENTS:
+        metadata[META_ACTIVE] = metadata[META_SELECTED]
+
+def route_and_respond(message: str, metadata: Dict[str, Any] | None = None) -> Dict[str, Any]:
+    """
+    Повертає словник з результатами виклику асиста:
+    {
+        'agent': agent_key,
+        'answer': assistant_response,
+        'interactive': optional_ui_elements
+    }
+    """
+    if metadata is None:
+        metadata = {}
+
+    _ensure_defaults(metadata)
+
+    language = metadata[META_LANG]
+    conversation_id = metadata.get(META_CONV) or "anon"
+    user_id = metadata.get(META_USER) or "anon"
+
+    # 1) Єдиний thread на всю розмову
+    thread_id = get_or_create_thread(conversation_id=conversation_id, user_id=user_id, language=language)
+
+    # 2) Якщо прийшов текст — додаємо як user message
+    if message:
+        add_user_message(thread_id, message)
+
+    # 3) Вибір агента: якщо користувач вказав selected_agent — беремо його, інакше активний
+    agent = metadata.get(META_SELECTED) or metadata.get(META_ACTIVE) or "greeter"
+    if agent not in VALID_AGENTS:
+        agent = "greeter"
+
+    suppress = bool(metadata.get(META_SUPPRESS, False))
+
+    # 4) Запускаємо потрібного асиста на ТОМУ Ж thread'і
+    try:
+        answer = run_with_assistant(
+            thread_id=thread_id,
+            assistant_kind=agent if agent in VALID_AGENTS else "greeter",
+            language=language,
+            suppress_greeting=suppress
+        )
+        
+        # 5) Повертаємо відповідь; interactive поки як None (кнопки за потреби додамо пізніше)
+        return {
+            'agent': agent,
+            'answer': answer,
+            'interactive': None
+        }
+    except Exception as e:
+        logger.exception(f"Error running assistant: {e}")
+        return {
+            'agent': agent,
+            'answer': f"Вибачте, сталася помилка при виклику асистента: {str(e)}",
+            'error': str(e),
+            'interactive': None
+        }

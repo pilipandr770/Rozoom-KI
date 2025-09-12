@@ -2,25 +2,109 @@
  * Enhanced Rozoom Chat Widget
  * Features:
  * - Animated loading indicators
- * - Session persistence
+ * - Session persistence with stable user_id
  * - UI enhancements
  * - Input handling & validation
  * - Keyboard support (Enter to send)
  * - Fixed positioning during scroll
  * - Responsive design
+ * - Direct OpenAI API integration
  */
 (() => {
-  // DOM Elements
-  const toggle = document.getElementById('chat-toggle');
-  const closeBtn = document.getElementById('chat-close');
-  const windowEl = document.getElementById('chat-window');
-  const messagesEl = document.getElementById('chat-messages');
-  const input = document.getElementById('chat-input');
-  const send = document.getElementById('chat-send');
-  const chatWidget = document.getElementById('chat-widget');
+  // Check for essential elements right away
+  if (!document.getElementById('chat-widget')) {
+    console.error('Element #chat-widget not found! Chat widget initialization failed.');
+    return;
+  }
+  
+  // Make sure the DOM is fully loaded
+  function initChatWidget() {
+    console.log('Initializing chat widget...');
 
-  // State management
-  let metadata = {};
+    // DOM Elements
+    const toggle = document.getElementById('chat-toggle');
+    const closeBtn = document.getElementById('chat-close');
+    const windowEl = document.getElementById('chat-window');
+    const messagesEl = document.getElementById('chat-messages');
+    const input = document.getElementById('chat-input');
+    const send = document.getElementById('chat-send');
+    const chatWidget = document.getElementById('chat-widget');
+    
+    // Make global references available for debugging and emergency fixes
+    window.chatElements = {toggle, closeBtn, windowEl, messagesEl, input, send, chatWidget};
+    
+    // Verify that all required elements exist
+    const requiredElements = {toggle, closeBtn, windowEl, messagesEl, input, send};
+    const missingElements = Object.entries(requiredElements)
+      .filter(([name, el]) => !el)
+      .map(([name]) => name);
+    
+    if (missingElements.length > 0) {
+      console.error(`Missing required chat elements: ${missingElements.join(', ')}`);
+      console.log({toggle, closeBtn, windowEl, messagesEl, input, send});
+      return; // Don't initialize if essential elements are missing
+    }
+    
+    // Make absolutely sure the toggle button is clickable
+    toggle.style.position = 'fixed';
+    toggle.style.zIndex = '9999';
+    toggle.style.cursor = 'pointer';
+    toggle.style.pointerEvents = 'auto';
+    
+    // Make sure the send button is properly clickable too
+    send.style.cursor = 'pointer';
+    send.style.pointerEvents = 'auto';
+
+  // === Стабільний user_id у localStorage ===
+  function getStableUserId() {
+    const KEY = 'rozoom_user_id';
+    let uid = localStorage.getItem(KEY);
+    if (!uid) {
+      uid = crypto.randomUUID ? crypto.randomUUID() : 
+            ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
+              (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+            );
+      localStorage.setItem(KEY, uid);
+    }
+    return uid;
+  }
+
+  // === Мова користувача з перемикача або браузера ===
+  function detectLanguage() {
+    // Спочатку перевіряємо мову сторінки через тег html
+    const htmlLang = document.documentElement.lang;
+    if (htmlLang) {
+      const pageLang = htmlLang.toLowerCase();
+      if (pageLang.includes('uk')) return 'uk';
+      if (pageLang.includes('ru')) return 'ru';
+      if (pageLang.includes('de')) return 'de';
+      if (pageLang.includes('en')) return 'en';
+    }
+    
+    // Перевіряємо активну кнопку мови
+    const activeBtn = document.querySelector('.lang-button.active');
+    if (activeBtn) {
+      const btnLang = activeBtn.getAttribute('data-lang');
+      if (btnLang) return btnLang.toLowerCase();
+    }
+    
+    // Fallback на мову браузера
+    const lang = (navigator.language || navigator.userLanguage || 'uk').toLowerCase();
+    if (lang.includes('uk') || lang === 'ua') return 'uk';
+    if (lang.includes('ru')) return 'ru';
+    if (lang.includes('de')) return 'de';
+    if (lang.includes('en')) return 'en';
+    
+    // Дефолт - українська
+    return 'uk';
+  }
+
+  // State management with enhanced metadata
+  let metadata = JSON.parse(localStorage.getItem('rozoom_metadata') || '{}');
+  metadata.language = metadata.language || detectLanguage();
+  metadata.user_id = metadata.user_id || getStableUserId();
+  metadata.suppress_greeting = false;
+  
   let conversationHistory = [];
   
   // Экспортируем интерфейс для внешнего доступа
@@ -41,22 +125,39 @@
       
       // Start fresh greeter
       startGreeter();
+    },
+    // New method for switching between assistants
+    switchAssistant: (agentKey) => {
+      if (agentKey && ['greeter', 'spec', 'pm'].includes(agentKey)) {
+        metadata.selected_agent = agentKey;
+        metadata.suppress_greeting = true; // щоб асистент не вітався, а продовжив по суті
+        localStorage.setItem('rozoom_metadata', JSON.stringify(metadata));
+        // Пошлемо "тихий" запит без тексту — асистент підхопить контекст і продовжить
+        postChat('');
+      } else {
+        console.error('Invalid assistant key:', agentKey);
+      }
     }
   };
   
-  // Ensure the chat widget is always in the bottom right corner
-  function ensureFixedPosition() {
-    // Refresh the position to ensure it's always in the bottom right
-    toggle.style.position = 'fixed';
-    toggle.style.right = window.innerWidth <= 480 ? '15px' : '30px';
-    toggle.style.bottom = window.innerWidth <= 480 ? '15px' : '30px';
-    toggle.style.zIndex = '9999';
-  }
+  // For backwards compatibility
+  window.chatWidgetSwitch = function(agentKey) {
+    window.chatWidget.switchAssistant(agentKey);
+  };
   
-  // Run on load and resize
-  ensureFixedPosition();
-  window.addEventListener('resize', ensureFixedPosition);
-  window.addEventListener('scroll', ensureFixedPosition);
+    // Ensure the chat widget is always in the bottom right corner
+    function ensureFixedPosition() {
+      toggle.style.position = 'fixed';
+      toggle.style.right = window.innerWidth <= 480 ? '15px' : '30px';
+      toggle.style.bottom = window.innerWidth <= 480 ? '15px' : '30px';
+      toggle.style.zIndex = '9999';
+      toggle.style.pointerEvents = 'auto'; // Always ensure it's clickable
+    }
+    
+    // Run on load and resize
+    ensureFixedPosition();
+    window.addEventListener('resize', ensureFixedPosition);
+    window.addEventListener('scroll', ensureFixedPosition);
   
   // Check for saved session
   try {
@@ -326,14 +427,32 @@
       // Добавляем текущий URL страницы в метаданные
       metadata.page = window.location.pathname;
       
+      // Always detect language from browser
+      metadata.language = detectLanguage();
+      
       // Для отладки выведем метаданные перед отправкой запроса
       console.log("Sending chat with metadata:", JSON.stringify(metadata));
+      
+      // Show typing indicator
+      const thinking = showTypingIndicator();
       
       const resp = await fetch('/api/chat', {
         method: 'POST', 
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({message, metadata})
+        body: JSON.stringify({
+          message, 
+          metadata: {
+            ...metadata,
+            // Ensure these keys are always present for API
+            user_id: metadata.user_id || getStableUserId(),
+            language: metadata.language || detectLanguage(),
+            suppress_greeting: !!metadata.suppress_greeting
+          }
+        })
       });
+      
+      // Remove typing indicator
+      if (thinking) thinking.remove();
       
       if (!resp.ok) {
         // Если произошла ошибка 400 или 302 (перенаправление из-за CSRF), 
@@ -358,9 +477,20 @@
         metadata.conversation_id = result.conversation_id;
       }
       
+      if (result.answer) {
+        appendMessage(result.answer, 'bot');
+      } else {
+        appendMessage('Вибачте, сталася помилка. Спробуйте ще раз.', 'bot');
+      }
+
+      // Reset suppress_greeting after one request
+      metadata.suppress_greeting = false;
+      localStorage.setItem('rozoom_metadata', JSON.stringify(metadata));
+      
       return result;
     } catch (error) {
       console.error('Chat API error:', error);
+      appendMessage('Проблема зі з'єднанням. Спробуйте пізніше.', 'bot');
       return { error: error.message || 'Failed to connect to chat service' };
     }
   }
@@ -368,56 +498,22 @@
   /**
    * Initialize chat with greeting message
    */
-  async function startGreeter() {
-    const indicator = showTypingIndicator();
+  function startGreeter() {
+    // Use active agent from metadata or default to greeter
+    const agent = metadata.active_agent || 'greeter';
     
-    try {
-      const r = await postChat('hello');
-      // Remove typing indicator
-      indicator.remove();
-      
-      const responseText = r.answer || 'Здравствуйте! Чем я могу вам помочь?';
-      
-      // Check if we have interactive elements
-      if (r.interactive) {
-        appendMessage(responseText, 'bot', r.interactive);
-      } else {
-        appendMessage(responseText, 'bot');
-        
-        // Fallback for older API format
-        if (r.options && r.options.length) {
-          const opts = document.createElement('div');
-          opts.className = 'chat-options';
-          
-          r.options.forEach(o => {
-            const btn = document.createElement('button');
-            btn.innerHTML = `<i class="fas fa-${o.icon || 'comment'}"></i> ${o.label}`;
-            
-            btn.onclick = () => {
-              metadata.selected_domain = o.key;
-              appendMessage(`Мне нужна помощь с ${o.label}`, 'user');
-              
-              const loadingIndicator = showTypingIndicator();
-              
-              // Short timeout to simulate agent switching
-              setTimeout(() => {
-                loadingIndicator.remove();
-                appendMessage(`Отлично! Я специализируюсь на ${o.label}. Как я могу вам помочь?`, 'bot');
-                saveSession();
-              }, 800);
-            };
-            
-            opts.appendChild(btn);
-          });
-          
-          messagesEl.appendChild(opts);
-        }
-      }
-    } catch (error) {
-      console.error('Error starting chat:', error);
-      const errorMsg = window.translateChat ? window.translateChat('connectionError') : 'Извините, возникла проблема с подключением. Пожалуйста, попробуйте позже.';
-      appendMessage(errorMsg, 'bot');
-    }
+    // Show typing indicator first
+    const thinking = showTypingIndicator();
+    
+    // Clear greeting suppression flag
+    metadata.suppress_greeting = false;
+    localStorage.setItem('rozoom_metadata', JSON.stringify(metadata));
+    
+    // Make the API call with empty message to trigger greeting
+    setTimeout(async () => {
+      thinking && thinking.remove();
+      await postChat('');
+    }, 700);  // Short delay for visual effect
   }
 
   /**
@@ -460,6 +556,8 @@
     
     if (!txt) return;
     
+    console.log('Sending message (original):', txt);
+    
     // Clear input and disable while processing
     input.value = '';
     input.disabled = true;
@@ -468,54 +566,15 @@
     // Show user message
     appendMessage(txt, 'user');
     
-    // Show typing indicator
-    const indicator = showTypingIndicator();
-    
     try {
       // Send to API
-      const r = await postChat(txt);
+      console.log('Calling postChat with text:', txt);
+      const result = await postChat(txt);
+      console.log('PostChat result:', result);
       
-      // Remove indicator
-      indicator.remove();
-      
-      // Show response
-      if (r.error) {
-        appendMessage(`Ошибка: ${r.error}`, 'bot');
-      } else {
-        // Сохраняем conversation_id, если он был получен от сервера
-        if (r.conversation_id) {
-          metadata.conversation_id = r.conversation_id;
-          // Сохраняем метаданные в localStorage
-          localStorage.setItem('rozoom_metadata', JSON.stringify(metadata));
-        }
-        
-        // Check if we have interactive elements
-        if (r.interactive) {
-          appendMessage(r.answer, 'bot', r.interactive);
-          
-          // Store agent information in metadata
-          if (r.agent) {
-            metadata.current_agent = r.agent;
-            console.log("Updated current agent to:", r.agent);
-          }
-          
-          // Store any additional metadata
-          if (r.interactive.meta) {
-            console.log("Received additional metadata:", JSON.stringify(r.interactive.meta));
-            Object.assign(metadata, r.interactive.meta);
-          }
-        } else {
-          appendMessage(r.answer || JSON.stringify(r), 'bot');
-        }
-        
-        // Сохраняем обновленные метаданные
-        saveSession();
-      }
     } catch (error) {
       console.error('Error sending message:', error);
-      indicator.remove();
-      const errorMsg = window.translateChat ? window.translateChat('somethingWentWrong') : 'Извините, что-то пошло не так. Пожалуйста, попробуйте еще раз.';
-      appendMessage(errorMsg, 'bot');
+      appendMessage('Вибачте, сталася помилка. Спробуйте ще раз.', 'bot');
     } finally {
       // Всегда активируем поле ввода для обеспечения возможности продолжать общение
       input.disabled = false;
@@ -523,6 +582,9 @@
       input.focus();
     }
   }
+  
+  // Make sure global function is available 
+  window.handleSendMessage = handleSendMessage;
 
   // Event Listeners
   toggle.addEventListener('click', () => {
@@ -574,7 +636,18 @@
   
   // Enter key to send
   input.addEventListener('keypress', (e) => {
+    console.log('Key pressed in chat input:', e.key);
     if (e.key === 'Enter') {
+      console.log('Enter key pressed, sending message');
+      e.preventDefault();
+      handleSendMessage();
+    }
+  });
+  
+  // Also handle keydown for better browser support
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      console.log('Enter keydown detected, sending message');
       e.preventDefault();
       handleSendMessage();
     }
@@ -598,4 +671,7 @@
   
   // Store user session on unload
   window.addEventListener('beforeunload', saveSession);
+  
+  // Export the handleSendMessage function globally for emergency usage
+  window.handleSendMessage = handleSendMessage;
 })();
