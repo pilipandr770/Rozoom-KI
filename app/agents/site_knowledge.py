@@ -168,6 +168,139 @@ SITE_STRUCTURE = {
     }
 }
 
+# Структура формы ТЗ на странице «Услуги» (/services)
+# Локализованные поля и краткие подсказки для ассистента-специфікатора
+SERVICES_TZ_FORM = {
+    "en": {
+        "form_title": "Technical Specification (TZ) form",
+        "path": "/services",
+        "intro": "On the Services page you can fill a concise brief to kick off your tech spec.",
+        "sections": [
+            {
+                "title": "Contact details",
+                "fields": ["Name", "Email", "Phone (optional)"]
+            },
+            {
+                "title": "Project basics",
+                "fields": [
+                    "Type (Website, Web App, Mobile App, Bot, Integration)",
+                    "Main goal / business outcome",
+                    "Target audience / users"
+                ]
+            },
+            {
+                "title": "Scope & features",
+                "fields": [
+                    "Key features (MVP)",
+                    "Integrations (payments, CRM, AI, messengers)",
+                    "Content/data specifics (languages, GDPR, PII)"
+                ]
+            },
+            {
+                "title": "Constraints",
+                "fields": ["Budget range", "Timeline / milestones", "Tech preferences (if any)"]
+            }
+        ],
+        "cta": "Open the Services page (/services), I’ll guide you step-by-step and prefill answers where possible."
+    },
+    "ru": {
+        "form_title": "Форма технического задания (ТЗ)",
+        "path": "/services",
+        "intro": "На странице «Услуги» можно заполнить краткий бриф для старта ТЗ.",
+        "sections": [
+            {
+                "title": "Контакты",
+                "fields": ["Имя", "Email", "Телефон (необязательно)"]
+            },
+            {
+                "title": "Базовая информация о проекте",
+                "fields": [
+                    "Тип (сайт, веб‑приложение, мобильное, бот, интеграции)",
+                    "Главная цель / бизнес‑результат",
+                    "Целевая аудитория / пользователи"
+                ]
+            },
+            {
+                "title": "Объем и функциональность",
+                "fields": [
+                    "Ключевые функции (MVP)",
+                    "Интеграции (платежи, CRM, AI, мессенджеры)",
+                    "Контент/данные (языки, GDPR, персональные данные)"
+                ]
+            },
+            {
+                "title": "Ограничения",
+                "fields": ["Бюджет", "Сроки / этапы", "Технологические предпочтения (если есть)"]
+            }
+        ],
+        "cta": "Откройте страницу /services — я помогу пройти форму и заполню черновик ТЗ."
+    },
+    "uk": {
+        "form_title": "Форма технічного завдання (ТЗ)",
+        "path": "/services",
+        "intro": "На сторінці «Сервіси» можна заповнити короткий бриф для старту ТЗ.",
+        "sections": [
+            {
+                "title": "Контакти",
+                "fields": ["Ім’я", "Email", "Телефон (необов’язково)"]
+            },
+            {
+                "title": "Базова інформація про проєкт",
+                "fields": [
+                    "Тип (сайт, веб‑додаток, мобільний, бот, інтеграції)",
+                    "Головна ціль / бізнес‑результат",
+                    "Цільова аудиторія / користувачі"
+                ]
+            },
+            {
+                "title": "Обсяг і функціональність",
+                "fields": [
+                    "Ключові функції (MVP)",
+                    "Інтеграції (платежі, CRM, AI, месенджери)",
+                    "Контент/дані (мови, GDPR, персональні дані)"
+                ]
+            },
+            {
+                "title": "Обмеження",
+                "fields": ["Бюджет", "Терміни / етапи", "Технологічні вподобання (якщо є)"]
+            }
+        ],
+        "cta": "Відкрийте сторінку /services — я проведу по формі та підготую чорновик ТЗ."
+    },
+    "de": {
+        "form_title": "Technisches Aufgabenblatt (TZ) – Formular",
+        "path": "/services",
+        "intro": "Auf der Seite Dienstleistungen können Sie ein kurzes Briefing für das TZ ausfüllen.",
+        "sections": [
+            {
+                "title": "Kontaktdaten",
+                "fields": ["Name", "E‑Mail", "Telefon (optional)"]
+            },
+            {
+                "title": "Projektgrundlagen",
+                "fields": [
+                    "Typ (Website, Web‑App, Mobile, Bot, Integrationen)",
+                    "Hauptziel / Business‑Outcome",
+                    "Zielgruppe / Nutzer"
+                ]
+            },
+            {
+                "title": "Umfang & Features",
+                "fields": [
+                    "Schlüsselfunktionen (MVP)",
+                    "Integrationen (Zahlungen, CRM, KI, Messenger)",
+                    "Inhalt/Daten (Sprachen, DSGVO, personenbezogene Daten)"
+                ]
+            },
+            {
+                "title": "Rahmenbedingungen",
+                "fields": ["Budget", "Zeitplan / Meilensteine", "Tech‑Präferenzen (falls vorhanden)"]
+            }
+        ],
+        "cta": "Öffnen Sie /services – ich führe Sie durch das Formular und erstelle einen TZ‑Entwurf."
+    }
+}
+
 # Подробности о технических заданиях и форме бриф-запроса
 BRIEF_FORM_INFO = {
     "de": {
@@ -399,14 +532,57 @@ ASSISTANT_ROLES = {
     }
 }
 
-def get_site_info(lang='de'):
-    """Возвращает информацию о сайте на указанном языке"""
-    if lang not in ['de', 'ru', 'en']:
-        lang = 'de'  # По умолчанию немецкий
-        
+def _pick_lang(d: dict, lang: str, fallbacks=("uk", "de", "en", "ru")):
+    """Безопасно выбирает локализацию: сначала lang, затем по порядку из fallbacks."""
+    if lang in d:
+        return d[lang]
+    for fb in fallbacks:
+        if fb in d:
+            return d[fb]
+    # как последний вариант — берем любой
+    return next(iter(d.values()))
+
+
+def get_site_info(lang='en'):
+    """Возвращает сводную информацию о сайте и бриф-формах для ассистентов."""
+    site_structure = {page: _pick_lang(data, lang) for page, data in SITE_STRUCTURE.items()}
+    brief_form = _pick_lang(BRIEF_FORM_INFO, lang)
+    company_info = _pick_lang(COMPANY_INFO, lang)
+    assistant_roles = _pick_lang(ASSISTANT_ROLES, lang)
+    services_form = _pick_lang(SERVICES_TZ_FORM, lang)
+
     return {
-        "site_structure": {page: data[lang] for page, data in SITE_STRUCTURE.items()},
-        "brief_form": BRIEF_FORM_INFO[lang],
-        "company_info": COMPANY_INFO[lang],
-        "assistant_roles": ASSISTANT_ROLES[lang]
+        "site_structure": site_structure,
+        "brief_form": brief_form,
+        "company_info": company_info,
+        "assistant_roles": assistant_roles,
+        "services_tz_form": services_form,
     }
+
+
+def get_services_form_info(lang='en'):
+    """Отдает структуру формы ТЗ на странице /services для указанного языка (с безопасным фолбэком)."""
+    return _pick_lang(SERVICES_TZ_FORM, lang)
+
+
+def spec_agent_context(lang='en') -> str:
+    """Короткий текст-контекст для ассистента SPEC: где форма ТЗ и что в ней заполнять."""
+    info = get_services_form_info(lang)
+    title = info.get("form_title")
+    path = info.get("path", "/services")
+    intro = info.get("intro")
+    sections = info.get("sections", [])
+    lines = []
+    lines.append(f"{title} — {path}.")
+    if intro:
+        lines.append(intro)
+    lines.append("")
+    for sec in sections:
+        lines.append(f"• {sec.get('title')}:")
+        for f in sec.get('fields', []):
+            lines.append(f"  – {f}")
+    cta = info.get("cta")
+    if cta:
+        lines.append("")
+        lines.append(cta)
+    return "\n".join(lines)

@@ -232,6 +232,17 @@ def route_and_respond(message, metadata=None):
 
     conversation_id = metadata.get('conversation_id') or 'anon'
     context = metadata.get('context')
+    # If SPEC agent is chosen, enrich context with Services TZ form schema/CTA
+    if agent == 'spec':
+        try:
+            from app.agents.site_knowledge import spec_agent_context
+            spec_ctx = spec_agent_context(language)
+            if context:
+                context = f"{context}\n\n---\n{spec_ctx}"
+            else:
+                context = spec_ctx
+        except Exception:
+            pass
 
     result = responses_respond(
         user_text=message or '',
