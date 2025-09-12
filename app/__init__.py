@@ -174,15 +174,33 @@ def create_app():
     # Обработчик CSRF-ошибок
     @app.errorhandler(400)
     def handle_csrf_error(e):
-        from flask import request, redirect, url_for, flash
+        from flask import request, redirect, url_for, flash, session
         
         error_str = str(e)
         app.logger.error(f"400 ошибка: {error_str}")
         
         if 'csrf_token' in error_str or 'CSRF' in error_str:
             app.logger.warning(f"CSRF ошибка: {error_str}, реферер: {request.referrer}")
-            flash('Ошибка безопасности: CSRF токен отсутствует или неверен. Пожалуйста, попробуйте снова.', 'danger')
-            # Перенаправляем на страницу входа вместо admin.dashboard
+            
+            # Check if token expired
+            if 'истек' in error_str or 'expired' in error_str:
+                flash('Срок действия сессии истек. Пожалуйста, попробуйте снова.', 'warning')
+                # Regenerate CSRF token
+                session.pop('_csrf_token', None)
+                # If this is a form submission from contact page, redirect back there
+                if request.referrer and 'contact' in request.referrer:
+                    return redirect(url_for('pages.contact'))
+            else:
+                flash('Ошибка безопасности: CSRF токен отсутствует или неверен. Пожалуйста, попробуйте снова.', 'danger')
+            
+            # Determine where to redirect based on the referrer URL
+            if request.referrer:
+                if 'login' in request.referrer:
+                    return redirect(url_for('auth.login'))
+                elif 'contact' in request.referrer:
+                    return redirect(url_for('pages.contact'))
+            
+            # Default fallback - redirect to login
             return redirect(url_for('auth.login'))
         return e
     
@@ -192,6 +210,17 @@ def create_app():
             setup_schema_handling(app)
         except Exception as e:
             app.logger.warning(f"Schema setup deferred: {e}")
+    
+    # Add route to refresh CSRF token via AJAX
+    @app.route('/refresh-csrf-token')
+    def refresh_csrf_token():
+        from flask import jsonify, session
+        from flask_wtf.csrf import generate_csrf
+        
+        # Generate a fresh CSRF token
+        token = generate_csrf()
+        
+        return jsonify({'csrf_token': token})
     
     # Initialize or update database schema manually
     from .database import init_database_schema

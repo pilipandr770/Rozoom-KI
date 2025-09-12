@@ -6,6 +6,11 @@ load_dotenv()
 class Config:
     SECRET_KEY = os.getenv('SECRET_KEY', 'dev')
     
+    # CSRF Protection settings
+    # Increase CSRF token validity to 1 day (86400 seconds) instead of the default 1 hour
+    WTF_CSRF_TIME_LIMIT = 86400
+    WTF_CSRF_SSL_STRICT = False  # Don't enforce HTTPS for CSRF tokens
+    
     # SQLAlchemy настройки с поддержкой для SQLite (локально) и PostgreSQL (продакшен)
     database_url = os.getenv('DATABASE_URL')
     
