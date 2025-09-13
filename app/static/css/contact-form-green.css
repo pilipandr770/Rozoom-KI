@@ -1,0 +1,76 @@
+/* 
+* Green styling for form labels and hints on the contact page
+* Ensures consistent green styling for labels, placeholders, and help text
+*/
+
+/* Style the form labels */
+.contact-form label {
+    color: #00cc00 !important;
+    font-weight: 600 !important;
+    text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.3);
+    padding: 2px 4px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+}
+
+/* Style the form placeholders */
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: #00cc00 !important;
+    opacity: 0.8 !important;
+    font-weight: 500 !important;
+    font-style: italic;
+}
+
+/* Style the input and textarea text */
+.contact-form input,
+.contact-form textarea {
+    color: #00cc00 !important;
+    font-weight: 500 !important;
+}
+
+/* Style the form headings */
+.contact-form-container h2 {
+    color: #00cc00 !important;
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.4);
+    margin-bottom: 1.5rem;
+}
+
+/* Style the checkbox consent text */
+.contact-form .checkbox-container {
+    color: #00cc00 !important;
+    font-weight: 500 !important;
+}
+
+/* Style the contact section headers */
+.contact-info h3 {
+    color: #00cc00 !important;
+    text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.3);
+    margin-bottom: 0.5rem;
+}
+
+/* Style the "Get in Touch" title and subtitle */
+.contact-header h1 {
+    color: #00cc00 !important;
+    text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+}
+
+.contact-subtitle {
+    color: #00cc00 !important;
+    font-weight: 500 !important;
+}
+
+/* Style the remote work text */
+.remote-work-text {
+    color: #00cc00 !important;
+    font-weight: 500 !important;
+}
+
+/* Style the remote work heading */
+.remote-work-notice h3 {
+    color: #00cc00 !important;
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.4);
+    margin-bottom: 1rem;
+}

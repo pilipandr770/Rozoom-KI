@@ -1,0 +1,54 @@
+/* 
+* Checkbox labels enhancement for better readability
+* Makes all checkbox-related text bright green
+*/
+
+/* Main checkbox labels */
+#project-questionnaire .form-check-label {
+    color: #00cc00 !important;
+    font-weight: 600 !important;
+    opacity: 1 !important;
+    text-shadow: 0px 0px 1px rgba(255, 255, 255, 0.3); /* Add subtle text shadow for better readability */
+}
+
+/* Help text below checkboxes */
+#project-questionnaire .form-check + .form-text,
+#project-questionnaire .form-check-label + .form-text,
+#project-questionnaire .form-check ~ .form-text {
+    color: #00cc00 !important;
+    font-weight: 500 !important;
+}
+
+/* Any descriptive text near checkboxes */
+#project-questionnaire .form-check + p,
+#project-questionnaire .form-check ~ p,
+#project-questionnaire .form-check-group + p,
+#project-questionnaire .form-check-inline + p {
+    color: #00cc00 !important;
+    font-weight: 500 !important;
+}
+
+/* Ensure all text within checkbox sections is green */
+#project-questionnaire .form-check-group p,
+#project-questionnaire .form-check-group div,
+#project-questionnaire .form-check-group span,
+#project-questionnaire .accordion-collapse p {
+    color: #00cc00 !important;
+}
+
+/* Question 14 specific - design assets checkboxes */
+#heading14 + .accordion-collapse .form-check-label,
+#heading14 + .accordion-collapse .form-check + div,
+#heading14 + .accordion-collapse .form-text,
+#collapse14 .form-check-label {
+    color: #00cc00 !important;
+    font-weight: 500 !important;
+}
+
+/* Contact form placeholder text and labels */
+#project-questionnaire input[type="text"]::placeholder,
+#project-questionnaire input[type="email"]::placeholder,
+#project-questionnaire input[type="tel"]::placeholder {
+    color: #00cc00 !important;
+    opacity: 1 !important;
+}

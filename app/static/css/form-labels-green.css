@@ -1,0 +1,42 @@
+/* 
+* Green styling for form labels in the services contact section
+* Ensures consistent green styling for form labels like Name, Email, Company Name, etc.
+*/
+
+/* Style the form labels in the contact information section */
+#project-questionnaire .contact-info .form-label {
+    color: #00cc00 !important;
+    font-weight: 600 !important;
+    text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.3);
+    padding: 2px 4px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+}
+
+/* Style the Contact Information heading */
+#project-questionnaire .contact-info h3 {
+    color: #00cc00 !important;
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.4);
+    margin-bottom: 1rem;
+}
+
+/* Style the form help text for better visibility */
+#project-questionnaire .contact-info .form-text {
+    color: #00cc00 !important;
+    font-weight: 500 !important;
+    margin-top: 0.25rem;
+}
+
+/* Style for the required asterisk */
+#project-questionnaire .contact-info .form-label:after {
+    content: " *";
+    color: #ff6b6b;
+}
+
+/* Remove asterisk from non-required fields */
+#project-questionnaire label[for="company_name"]:after,
+#project-questionnaire label[for="contact_phone"]:after {
+    display: none;
+}

@@ -1,0 +1,65 @@
+/* Direct targeting of checkbox help text */
+
+/* Target all form-text divs under project-questionnaire */
+#project-questionnaire .form-text {
+    color: #00cc00 !important;
+    font-weight: 500 !important;
+}
+
+/* Make checkbox labels green and more readable with enhanced styling */
+#project-questionnaire .form-check-label {
+    color: #00cc00 !important;
+    font-weight: 600 !important; /* Bolder for better readability */
+    text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.3); /* Subtle text shadow for better contrast */
+    padding: 2px 4px;
+    background-color: rgba(0, 0, 0, 0.2); /* Subtle dark background for better contrast */
+    border-radius: 3px;
+    display: inline-block; /* Ensures the background only covers the text */
+    margin-left: 5px;
+}
+
+/* Ensure the background styling doesn't affect checkbox alignment */
+#project-questionnaire .form-check {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+}
+
+#project-questionnaire .form-check-input {
+    margin-top: 0.4rem;
+}
+
+/* Specifically target the form-text that follows the last checkbox */
+#project-questionnaire .form-check:last-of-type + .form-text,
+#project-questionnaire div.form-check ~ div.form-text {
+    color: #00cc00 !important; 
+    font-weight: 600 !important;
+    opacity: 1 !important;
+}
+
+/* Contact form placeholders */
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: #00cc00 !important;
+    opacity: 1 !important;
+    font-weight: 500 !important;
+}
+
+/* Cross-browser support for contact form */
+.contact-form input::-webkit-input-placeholder,
+.contact-form textarea::-webkit-input-placeholder {
+    color: #00cc00 !important;
+    opacity: 1 !important;
+}
+
+.contact-form input::-moz-placeholder,
+.contact-form textarea::-moz-placeholder {
+    color: #00cc00 !important;
+    opacity: 1 !important;
+}
+
+.contact-form input::-ms-input-placeholder,
+.contact-form textarea::-ms-input-placeholder {
+    color: #00cc00 !important;
+    opacity: 1 !important;
+}

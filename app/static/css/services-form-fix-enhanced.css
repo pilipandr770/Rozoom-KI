@@ -1,6 +1,6 @@
 /* 
-* Services form placeholder text fix
-* Changes the placeholder text color to bright green for better readability
+* Services form placeholder and help text fix
+* Changes the text color to bright green for better readability
 * on light backgrounds
 */
 
@@ -41,62 +41,23 @@
     opacity: 1 !important;
 }
 
-/* Form help text color improvement */
-#project-questionnaire .form-text {
-    color: #00cc00 !important; /* Bright green to match placeholders */
-    font-weight: 500 !important; /* Slightly bolder */
-}
-
-/* Make ALL form-related text hints bright green */
-#project-questionnaire .accordion-body p,
-#project-questionnaire .form-check-label + p,
+/* Form help text color improvement - Make ALL form-related help text bright green */
 #project-questionnaire .form-text,
-#project-questionnaire small,
 #project-questionnaire .help-text,
-#project-questionnaire .hint-text,
-#project-questionnaire .form-group > p {
+#project-questionnaire small:not(.form-check-label),
+#project-questionnaire .accordion-body .form-text,
+#project-questionnaire .accordion-body > .form-group > div.form-text {
     color: #00cc00 !important; /* Bright green */
-    opacity: 1 !important;
-    font-weight: 500 !important;
-}
-
-/* Specifically target checkbox help text */
-#project-questionnaire .form-check + p,
-#project-questionnaire .form-check ~ p,
-#project-questionnaire .form-check-label ~ small {
-    color: #00cc00 !important;
-    font-weight: 500 !important;
-}
-
-/* Target the "Check all that apply" text and other instructional text */
-#project-questionnaire .form-text,
-#project-questionnaire .form-group div + p,
-#project-questionnaire label + div.form-text,
-#project-questionnaire .accordion-body .form-text {
-    color: #00cc00 !important;
-    font-weight: 500 !important;
+    font-weight: 500 !important; /* Slightly bolder */
     font-size: 0.95rem !important;
 }
-#project-questionnaire p,
-#project-questionnaire small,
-#project-questionnaire .help-text,
-#project-questionnaire .form-text,
-#project-questionnaire .text-muted,
-.accordion-body .form-text {
-    color: #00cc00 !important;
-    font-weight: 500 !important;
-    opacity: 1 !important;
-    text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.3); /* Subtle text shadow for better readability */
-}
 
-/* Ensure the help text is bright green and clearly visible */
-.accordion-item .form-text,
-.accordion-collapse .form-text,
+/* Specifically target checkbox help text shown in the screenshot */
 #project-questionnaire div.form-text {
     color: #00cc00 !important;
     font-weight: 500 !important;
-    margin-top: 5px !important;
-    font-size: 0.9rem !important;
+    margin-top: 0.25rem;
+    line-height: 1.4;
 }
 
 /* Improve focus states for better accessibility */
@@ -106,4 +67,28 @@
 #project-questionnaire .form-select:focus {
     border-color: #00cc00 !important;
     box-shadow: 0 0 0 0.25rem rgba(0, 204, 0, 0.25) !important;
+}
+
+/* Make sure we catch all possible variations of help text */
+.accordion-collapse p:not(.form-check-label),
+.accordion-body div + p,
+.form-group > div.form-text,
+#project-questionnaire [class*="form-"] ~ p,
+#project-questionnaire div.form-check + div.form-text {
+    color: #00cc00 !important;
+    font-weight: 500 !important;
+}
+
+/* Target specifically the "Check all that apply" text */
+#project-questionnaire div.form-check + div.form-text,
+#project-questionnaire .form-check:last-of-type + .form-text {
+    color: #00cc00 !important;
+    font-weight: 600 !important;
+    margin-top: 8px !important;
+}
+
+/* Explicitly style all form-check-label elements to be bright green */
+#project-questionnaire .form-check-label {
+    color: #00cc00 !important;
+    font-weight: 600 !important;
 }

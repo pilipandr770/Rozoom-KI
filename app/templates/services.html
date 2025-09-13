@@ -45,10 +45,14 @@
                 <div class="card-body">
                     <style>
                         #project-questionnaire .form-check-label {
-                            color: white !important;
+                            color: #00cc00 !important;
+                            font-weight: 500 !important;
                         }
                     </style>
-                    <link rel="stylesheet" href="{{ url_for('static', filename='css/services-form-fix.css') }}">
+                    <link rel="stylesheet" href="{{ url_for('static', filename='css/services-form-fix-enhanced.css') }}">
+                    <link rel="stylesheet" href="{{ url_for('static', filename='css/checkbox-text-fix.css') }}">
+                    <link rel="stylesheet" href="{{ url_for('static', filename='css/checkbox-labels-fix.css') }}">
+                    <link rel="stylesheet" href="{{ url_for('static', filename='css/form-labels-green.css') }}">
                     <form id="project-questionnaire" method="post" action="{{ url_for('pages.submit_questionnaire') }}">
                         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                         <div class="accordion" id="questionnaireAccordion">
@@ -329,27 +333,27 @@
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" name="existing_assets[]" value="mockups" id="mockups">
-                                                <label class="form-check-label" for="mockups">{{ _('Design Mockups') }}</label>
+                                                <label class="form-check-label" for="mockups" style="color: #00cc00 !important; font-weight: 500 !important;">{{ _('Design Mockups') }}</label>
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" name="existing_assets[]" value="brand_guidelines" id="brand_guidelines">
-                                                <label class="form-check-label" for="brand_guidelines">{{ _('Brand Guidelines') }}</label>
+                                                <label class="form-check-label" for="brand_guidelines" style="color: #00cc00 !important; font-weight: 500 !important;">{{ _('Brand Guidelines') }}</label>
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" name="existing_assets[]" value="user_stories" id="user_stories">
-                                                <label class="form-check-label" for="user_stories">{{ _('User Stories') }}</label>
+                                                <label class="form-check-label" for="user_stories" style="color: #00cc00 !important; font-weight: 500 !important;">{{ _('User Stories') }}</label>
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" name="existing_assets[]" value="requirements_doc" id="requirements_doc">
-                                                <label class="form-check-label" for="requirements_doc">{{ _('Requirements Document') }}</label>
+                                                <label class="form-check-label" for="requirements_doc" style="color: #00cc00 !important; font-weight: 500 !important;">{{ _('Requirements Document') }}</label>
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" name="existing_assets[]" value="code" id="code">
-                                                <label class="form-check-label" for="code">{{ _('Existing Code') }}</label>
+                                                <label class="form-check-label" for="code" style="color: #00cc00 !important; font-weight: 500 !important;">{{ _('Existing Code') }}</label>
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" name="existing_assets[]" value="none" id="none">
-                                                <label class="form-check-label" for="none">{{ _('None of the above') }}</label>
+                                                <label class="form-check-label" for="none" style="color: #00cc00 !important; font-weight: 500 !important;">{{ _('None of the above') }}</label>
                                             </div>
                                             <div class="form-text">{{ _('Check all that apply. This helps us understand what resources are available to start with.') }}</div>
                                         </div>

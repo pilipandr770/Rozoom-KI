@@ -50,6 +50,7 @@
   
   <div class="contact-form-container">
     <h2>{{ _('Send Us a Message') }}</h2>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/contact-form-green.css') }}">
     <form method="post" action="/contact" class="contact-form">
       <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
       {% if success %}
@@ -100,7 +101,7 @@
       <div class="card-body">
         <span class="emoji-icon" style="font-size: 2.5em;">🏡💻</span>
         <h3>{{ _('Remote Work') }}</h3>
-        <p>{{ _('We operate as a remote-first company with team members working from various locations. This allows us to serve clients worldwide while maintaining flexibility and efficiency.') }}</p>
+        <p class="remote-work-text">{{ _('We operate as a remote-first company with team members working from various locations. This allows us to serve clients worldwide while maintaining flexibility and efficiency.') }}</p>
       </div>
     </div>
   </div>
