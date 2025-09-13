@@ -1,6 +1,9 @@
 from dataclasses import dataclass
 from typing import Dict, List, Optional, Union
 
+# Импортируем контроллер агентов, чтобы он был доступен при запуске приложения
+from app.agents.controller import agent_bp
+
 
 @dataclass
 class InteractiveButton:

@@ -29,6 +29,10 @@ def submit_questionnaire():
     try:
         from app.services.telegram_service import send_tech_spec_notification
         from app.utils.telegram_queue import send_telegram_message_with_retry
+        from datetime import datetime
+        import json
+        from app.models.base import Lead
+        from app import db
 
         # 1) Сирі дані форми
         form_data = request.form.to_dict(flat=True)
@@ -174,19 +178,65 @@ def submit_questionnaire():
         if not sent:
             current_app.logger.warning("Failed to send full tech spec to Telegram (queued or partially sent).")
 
-        # 4) Опціонально — зберегти ліда (якщо у тебе є модель/таблиця)
-        # try:
-        #     lead = Lead(
-        #         name=contact_info['name'],
-        #         email=contact_info['email'],
-        #         phone=contact_info['phone'],
-        #         payload=json.dumps({'questionnaire': form_data}, ensure_ascii=False),
-        #         created_at=datetime.utcnow(),
-        #     )
-        #     db.session.add(lead)
-        #     db.session.commit()
-        # except Exception as db_err:
-        #     current_app.logger.error(f"Lead save failed: {db_err}")
+        # 4) Сохраняем данные формы в базу данных
+        try:
+            from app.models.tech_spec_submission import TechSpecSubmission
+            
+            # Собираем security_requirements в строку
+            security_reqs = ', '.join(security_requirements) if security_requirements else ''
+            if form_data.get('other_security_requirements'):
+                security_reqs = (security_reqs + '; Other: ' + form_data['other_security_requirements']).strip('; ')
+            
+            # Создаем запись ТЗ
+            tech_spec = TechSpecSubmission(
+                project_type=form_data.get('project_type'),
+                project_goal=form_data.get('project_goal'),
+                target_users=form_data.get('target_users'),
+                essential_features=form_data.get('essential_features'),
+                nice_to_have_features=form_data.get('nice_to_have_features'),
+                timeline=form_data.get('timeline'),
+                budget_range=form_data.get('budget_range'),
+                integrations=form_data.get('integrations'),
+                technical_requirements=form_data.get('technical_requirements'),
+                similar_projects=form_data.get('similar_projects'),
+                success_metrics=form_data.get('success_metrics'),
+                security_requirements=security_reqs,
+                support_level=form_data.get('support_level'),
+                existing_assets=','.join(existing_assets) if existing_assets else '',
+                additional_info=form_data.get('additional_info'),
+                
+                # Контактная информация
+                contact_name=form_data.get('contact_name'),
+                contact_email=form_data.get('contact_email'),
+                company_name=form_data.get('company_name'),
+                contact_phone=form_data.get('contact_phone')
+            )
+            
+            # Если пользователь авторизован, связываем ТЗ с ним
+            from flask_login import current_user
+            if current_user and current_user.is_authenticated:
+                tech_spec.client_id = current_user.id
+            
+            db.session.add(tech_spec)
+            db.session.commit()
+            
+            # Также сохраняем лид для совместимости с существующим кодом
+            lead = Lead(
+                name=contact_info['name'],
+                email=contact_info['email'],
+                phone=contact_info['phone'],
+                company=form_data.get('company_name'),
+                message='Tech spec submission',
+                data=json.dumps({'questionnaire': form_data}, ensure_ascii=False),
+                source='services_form',
+                created_at=datetime.utcnow()
+            )
+            db.session.add(lead)
+            db.session.commit()
+            
+            current_app.logger.info(f"Tech spec saved to database with ID {tech_spec.id}")
+        except Exception as db_err:
+            current_app.logger.error(f"Tech spec save failed: {db_err}")
 
         flash('Your request has been submitted successfully. We will contact you soon.', 'success')
         return redirect(url_for('pages.services'))

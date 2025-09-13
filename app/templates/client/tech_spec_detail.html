@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _('Technical Specification') }} - {{ submission.project_name }}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url_for('client.dashboard') }}">{{ _('My Projects') }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ _('Technical Specification') }}</li>
+        </ol>
+    </nav>
+
+    <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">{{ submission.project_name }}</h3>
+        </div>
+        <div class="card-body">
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <p><strong>{{ _('Submitted on') }}:</strong> {{ submission.created_at.strftime('%d.%m.%Y %H:%M') }}</p>
+                    <p><strong>{{ _('Status') }}:</strong> <span class="badge bg-info">{{ _('Under Review') }}</span></p>
+                </div>
+                <div class="col-md-6">
+                    <p><strong>{{ _('Contact Name') }}:</strong> {{ submission.contact_name }}</p>
+                    <p><strong>{{ _('Contact Email') }}:</strong> {{ submission.contact_email }}</p>
+                    {% if submission.contact_phone %}
+                        <p><strong>{{ _('Contact Phone') }}:</strong> {{ submission.contact_phone }}</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <h4 class="mb-3">{{ _('Technical Specification Details') }}</h4>
+            
+            <div class="tech-spec-sections">
+                <!-- Section 1: Project Overview -->
+                <div class="card mb-3">
+                    <div class="card-header bg-light">
+                        {{ _('Project Overview') }}
+                    </div>
+                    <div class="card-body">
+                        <dl class="row">
+                            <dt class="col-sm-4">{{ _('Project Goal') }}</dt>
+                            <dd class="col-sm-8">{{ submission.project_goal }}</dd>
+                            
+                            <dt class="col-sm-4">{{ _('Project Type') }}</dt>
+                            <dd class="col-sm-8">{{ submission.project_type }}</dd>
+                            
+                            <dt class="col-sm-4">{{ _('Target Audience') }}</dt>
+                            <dd class="col-sm-8">{{ submission.target_audience }}</dd>
+                        </dl>
+                    </div>
+                </div>
+                
+                <!-- Section 2: Functionality -->
+                <div class="card mb-3">
+                    <div class="card-header bg-light">
+                        {{ _('Functionality') }}
+                    </div>
+                    <div class="card-body">
+                        <dl class="row">
+                            <dt class="col-sm-4">{{ _('Key Features') }}</dt>
+                            <dd class="col-sm-8">{{ submission.key_features|nl2br }}</dd>
+                            
+                            <dt class="col-sm-4">{{ _('User Roles') }}</dt>
+                            <dd class="col-sm-8">{{ submission.user_roles|nl2br }}</dd>
+                        </dl>
+                    </div>
+                </div>
+                
+                <!-- Section 3: Design & Technical -->
+                <div class="card mb-3">
+                    <div class="card-header bg-light">
+                        {{ _('Design & Technical Requirements') }}
+                    </div>
+                    <div class="card-body">
+                        <dl class="row">
+                            <dt class="col-sm-4">{{ _('Design Preferences') }}</dt>
+                            <dd class="col-sm-8">{{ submission.design_preferences }}</dd>
+                            
+                            {% if submission.similar_sites %}
+                            <dt class="col-sm-4">{{ _('Similar Sites') }}</dt>
+                            <dd class="col-sm-8">{{ submission.similar_sites }}</dd>
+                            {% endif %}
+                            
+                            {% if submission.technical_requirements %}
+                            <dt class="col-sm-4">{{ _('Technical Requirements') }}</dt>
+                            <dd class="col-sm-8">{{ submission.technical_requirements|nl2br }}</dd>
+                            {% endif %}
+                            
+                            {% if submission.integrations %}
+                            <dt class="col-sm-4">{{ _('Integrations') }}</dt>
+                            <dd class="col-sm-8">{{ submission.integrations|nl2br }}</dd>
+                            {% endif %}
+                        </dl>
+                    </div>
+                </div>
+                
+                <!-- Section 4: Business & Timeline -->
+                <div class="card mb-3">
+                    <div class="card-header bg-light">
+                        {{ _('Business & Timeline') }}
+                    </div>
+                    <div class="card-body">
+                        <dl class="row">
+                            <dt class="col-sm-4">{{ _('Budget Range') }}</dt>
+                            <dd class="col-sm-8">{{ submission.budget_range }}</dd>
+                            
+                            <dt class="col-sm-4">{{ _('Timeline') }}</dt>
+                            <dd class="col-sm-8">{{ submission.timeline }}</dd>
+                            
+                            {% if submission.additional_info %}
+                            <dt class="col-sm-4">{{ _('Additional Information') }}</dt>
+                            <dd class="col-sm-8">{{ submission.additional_info|nl2br }}</dd>
+                            {% endif %}
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-primary chat-with-pm">
+                {{ _('Discuss This Specification') }}
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const chatWithPmBtn = document.querySelector('.chat-with-pm');
+    if (chatWithPmBtn) {
+        chatWithPmBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            // Открываем чат и устанавливаем PM агента активным
+            if (window.openChat && typeof window.openChat === 'function') {
+                window.openChat('pm', 'I would like to discuss my technical specification for "{{ submission.project_name }}"');
+            }
+        });
+    }
+});
+</script>
+{% endblock %}

@@ -3,9 +3,12 @@ from flask import Blueprint, render_template, request, redirect, url_for, flash,
 from flask_login import login_required, current_user, login_user, logout_user
 from app import db
 from app.models import BlogPost, BlogCategory, BlogTag, User, PricePackage
-from app.models.project import Project
+from app.models.project import Project, ProjectTask, ProjectUpdate
+from app.models.tech_spec_submission import TechSpecSubmission
 from app.auth import AdminUser
 import json
+import string
+import random
 from datetime import datetime
 
 admin = Blueprint('admin', __name__, url_prefix='/admin')
@@ -737,5 +740,179 @@ def add_user_project(user_id):
         
         flash(f'Project "{title}" added to user {user.name or user.email}!', 'success')
         return redirect(url_for('admin.user_detail', user_id=user_id))
+
+# --------- Новые маршруты для работы с техническими заданиями ----------
+
+@admin.route('/tech-specs')
+@login_required
+def tech_specs():
+    """Список всех технических заданий"""
+    if not current_user.is_admin:
+        flash('Access denied. Admin privileges required.', 'danger')
+        return redirect(url_for('admin.dashboard'))
+    
+    submissions = TechSpecSubmission.query.order_by(TechSpecSubmission.created_at.desc()).all()
+    return render_template('admin/tech_specs.html', submissions=submissions)
+
+@admin.route('/tech-spec/<int:spec_id>', methods=['GET', 'POST'])
+@login_required
+def tech_spec_detail(spec_id):
+    """Просмотр и обработка технического задания"""
+    if not current_user.is_admin:
+        flash('Access denied. Admin privileges required.', 'danger')
+        return redirect(url_for('admin.dashboard'))
+    
+    submission = TechSpecSubmission.query.get_or_404(spec_id)
+    
+    if request.method == 'POST':
+        action = request.form.get('action')
+        
+        if action == 'estimate':
+            submission.status = 'estimated'
+            submission.estimated_hours = float(request.form.get('estimated_hours', 0))
+            submission.estimated_cost = float(request.form.get('estimated_cost', 0))
+            submission.estimated_timeline = request.form.get('estimated_timeline')
+            db.session.commit()
+            
+            # Отправка уведомления клиенту о готовой оценке
+            try:
+                send_estimate_notification(submission)
+            except Exception as e:
+                current_app.logger.error(f"Failed to send estimate notification: {e}")
+            
+            flash('Estimate saved successfully.', 'success')
+        
+        elif action == 'convert':
+            # Создаем нового пользователя если email не существует
+            user = User.query.filter_by(email=submission.contact_email).first()
+            if not user:
+                # Генерация временного пароля
+                temp_password = ''.join(random.choices(string.ascii_letters + string.digits, k=12))
+                
+                user = User(
+                    email=submission.contact_email,
+                    name=submission.contact_name,
+                    phone=submission.contact_phone,
+                    company=submission.company_name,
+                    is_admin=False
+                )
+                user.set_password(temp_password)
+                db.session.add(user)
+                db.session.flush()  # Получаем ID пользователя
+                
+                # Отправка пароля клиенту
+                try:
+                    send_welcome_email(user, temp_password)
+                except Exception as e:
+                    current_app.logger.error(f"Failed to send welcome email: {e}")
+            
+            # Создаем проект на основе ТЗ
+            new_project = Project(
+                title=f"{submission.project_type}: {submission.project_goal[:50]}...",
+                description=submission.project_goal,
+                status='new',
+                budget=submission.estimated_cost,
+                client_id=user.id,
+                start_date=datetime.utcnow()
+            )
+            db.session.add(new_project)
+            db.session.flush()  # Получаем ID проекта
+            
+            # Связываем ТЗ с проектом
+            submission.project_id = new_project.id
+            submission.status = 'approved'
+            submission.client_id = user.id
+            
+            db.session.commit()
+            flash('Project created successfully.', 'success')
+            
+            return redirect(url_for('admin.project_detail', project_id=new_project.id))
+    
+    return render_template('admin/tech_spec_detail.html', submission=submission)
+
+@admin.route('/project-details/<int:project_id>', methods=['GET', 'POST'])
+@login_required
+def project_detail(project_id):
+    """Подробная информация о проекте с возможностью редактирования"""
+    if not current_user.is_admin:
+        flash('Access denied. Admin privileges required.', 'danger')
+        return redirect(url_for('admin.dashboard'))
+    
+    project = Project.query.get_or_404(project_id)
+    
+    if request.method == 'POST':
+        action = request.form.get('action')
+        
+        if action == 'update_status':
+            project.status = request.form.get('status')
+            db.session.commit()
+            flash('Project status updated.', 'success')
+            
+        elif action == 'add_task':
+            new_task = ProjectTask(
+                title=request.form.get('title'),
+                description=request.form.get('description'),
+                status='pending',
+                project_id=project.id
+            )
+            if request.form.get('due_date'):
+                try:
+                    new_task.due_date = datetime.strptime(request.form.get('due_date'), '%Y-%m-%d')
+                except ValueError:
+                    pass
+                
+            db.session.add(new_task)
+            db.session.commit()
+            flash('Task added.', 'success')
+            
+        elif action == 'update_task':
+            task_id = request.form.get('task_id')
+            task = ProjectTask.query.get(task_id)
+            if task:
+                task.status = request.form.get('task_status')
+                db.session.commit()
+                flash('Task updated.', 'success')
+                
+        elif action == 'add_update':
+            new_update = ProjectUpdate(
+                title=request.form.get('title'),
+                content=request.form.get('content'),
+                is_milestone=request.form.get('is_milestone', 'off') == 'on',
+                project_id=project.id
+            )
+            db.session.add(new_update)
+            db.session.commit()
+            
+            # Отправка уведомления клиенту
+            try:
+                send_project_update_notification(project, new_update)
+            except Exception as e:
+                current_app.logger.error(f"Failed to send project update notification: {e}")
+            
+            flash('Update added.', 'success')
+    
+    tasks = ProjectTask.query.filter_by(project_id=project_id).all()
+    updates = ProjectUpdate.query.filter_by(project_id=project_id).order_by(ProjectUpdate.created_at.desc()).all()
+    
+    return render_template('admin/project_detail.html', 
+                           project=project, 
+                           tasks=tasks, 
+                           updates=updates)
+
+# Вспомогательные функции для отправки уведомлений
+def send_estimate_notification(submission):
+    """Отправка уведомления клиенту о готовой оценке"""
+    # Здесь можно реализовать отправку email
+    current_app.logger.info(f"Estimate notification would be sent to {submission.contact_email}")
+
+def send_welcome_email(user, temp_password):
+    """Отправка приветственного письма с временным паролем"""
+    # Здесь можно реализовать отправку email
+    current_app.logger.info(f"Welcome email with temporary password would be sent to {user.email}")
+
+def send_project_update_notification(project, update):
+    """Отправка уведомления об обновлении проекта"""
+    # Здесь можно реализовать отправку email
+    current_app.logger.info(f"Project update notification would be sent to client {project.client.email if project.client else 'unknown'}")
     
     return render_template('admin/add_user_project.html', user=user)

@@ -1,0 +1,196 @@
+{% extends "base.html" %}
+
+{% block title %}{{ project.title }} - Project Details{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url_for('client.dashboard') }}">{{ _('My Projects') }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ project.title }}</li>
+        </ol>
+    </nav>
+
+    <div class="project-header d-flex justify-content-between align-items-center">
+        <h1 class="mb-4">{{ project.title }}</h1>
+        <div class="project-status">
+            <span class="badge {{ project.status_badge_class }}">{{ project.status_display }}</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card mb-4">
+                <div class="card-header">
+                    {{ _('Project Description') }}
+                </div>
+                <div class="card-body">
+                    <p>{{ project.description }}</p>
+                    
+                    <div class="progress mt-4 mb-2">
+                        <div class="progress-bar" role="progressbar" style="width: {{ project.progress }}%;" 
+                             aria-valuenow="{{ project.progress }}" aria-valuemin="0" aria-valuemax="100">
+                            {{ project.progress }}%
+                        </div>
+                    </div>
+                    <small class="text-muted">{{ _('Project Progress') }}</small>
+                    
+                    <hr class="my-4">
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>{{ _('Start Date') }}</h5>
+                            <p>{{ project.start_date.strftime('%d.%m.%Y') if project.start_date else _('Not set') }}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>{{ _('Estimated Completion') }}</h5>
+                            <p>{{ project.estimated_completion_date.strftime('%d.%m.%Y') if project.estimated_completion_date else _('To be determined') }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    {{ _('Project Updates') }}
+                </div>
+                <div class="card-body">
+                    {% if project.updates %}
+                        <div class="timeline">
+                            {% for update in project.updates|sort(attribute='created_at', reverse=True) %}
+                                <div class="timeline-item">
+                                    <div class="timeline-date">
+                                        {{ update.created_at.strftime('%d.%m.%Y %H:%M') }}
+                                    </div>
+                                    <div class="timeline-content">
+                                        <h5>{{ update.title }}</h5>
+                                        <p>{{ update.message }}</p>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <p class="text-muted">{{ _('No updates yet.') }}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-header">
+                    {{ _('Project Tasks') }}
+                </div>
+                <div class="card-body">
+                    {% if project.tasks %}
+                        <ul class="list-group">
+                            {% for task in project.tasks|sort(attribute='status_order') %}
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    {{ task.title }}
+                                    <span class="badge {{ task.status_badge_class }}">{{ task.status_display }}</span>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p class="text-muted">{{ _('No tasks created yet.') }}</p>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="card mb-4">
+                <div class="card-header">
+                    {{ _('Project Team') }}
+                </div>
+                <div class="card-body">
+                    {% if project.team_members %}
+                        <ul class="list-group">
+                            {% for member in project.team_members %}
+                                <li class="list-group-item">
+                                    <div class="d-flex align-items-center">
+                                        <div class="team-member-avatar me-3">
+                                            <img src="{{ member.avatar_url or url_for('static', filename='img/default-avatar.png') }}" 
+                                                 alt="{{ member.name }}" class="rounded-circle" width="40" height="40">
+                                        </div>
+                                        <div>
+                                            <div>{{ member.name }}</div>
+                                            <small class="text-muted">{{ member.role }}</small>
+                                        </div>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p class="text-muted">{{ _('No team members assigned yet.') }}</p>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    {{ _('Need Help?') }}
+                </div>
+                <div class="card-body">
+                    <p>{{ _('Have questions about your project?') }}</p>
+                    <a href="#" class="btn btn-primary chat-with-pm">
+                        {{ _('Chat with Project Manager') }}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.timeline {
+    position: relative;
+    padding-left: 30px;
+}
+.timeline:before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #e9ecef;
+}
+.timeline-item {
+    position: relative;
+    margin-bottom: 25px;
+}
+.timeline-date {
+    font-size: 0.875rem;
+    color: #6c757d;
+    margin-bottom: 5px;
+}
+.timeline-item:before {
+    content: '';
+    position: absolute;
+    left: -30px;
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+}
+.team-member-avatar img {
+    object-fit: cover;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const chatWithPmBtn = document.querySelector('.chat-with-pm');
+    if (chatWithPmBtn) {
+        chatWithPmBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            // Открываем чат и устанавливаем PM агента активным
+            if (window.openChat && typeof window.openChat === 'function') {
+                window.openChat('pm', 'How is my project {{ project.title }} going?');
+            }
+        });
+    }
+});
+</script>
+{% endblock %}

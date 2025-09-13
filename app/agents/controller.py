@@ -9,6 +9,7 @@ from app.models.language import detect_language, get_text_by_key
 from app.models.tech_spec import TechSpecTemplate
 from app.services.logger import logger
 from app.services.responses_service import respond as responses_respond
+from app.agents.project_manager_handler import handle_pm_request
 
 # Agents configuration
 agent_bp = Blueprint('agent', __name__, url_prefix='/api/agent')
@@ -30,6 +31,22 @@ SPECIALISTS = {
             'uk': 'Я допоможу вам обрати відповідного спеціаліста або послугу.'
         },
         'avatar': '/static/img/agents/greeter.png'
+    },
+    'pm': {
+        'name': 'pm',
+        'title': {
+            'en': 'Project Manager',
+            'ru': 'Проектный менеджер',
+            'de': 'Projektmanager',
+            'uk': 'Проектний менеджер'
+        },
+        'description': {
+            'en': 'I can help you track the status of your projects and provide updates.',
+            'ru': 'Я могу помочь вам отслеживать статус ваших проектов и предоставлять обновления.',
+            'de': 'Ich kann Ihnen helfen, den Status Ihrer Projekte zu verfolgen und Updates zu liefern.',
+            'uk': 'Я можу допомогти вам відстежувати статус ваших проектів та надавати оновлення.'
+        },
+        'avatar': '/static/img/agents/pm.png'
     },
     'design': {
         'name': 'design',
@@ -232,6 +249,23 @@ def route_and_respond(message, metadata=None):
 
     conversation_id = metadata.get('conversation_id') or 'anon'
     context = metadata.get('context')
+    
+    # Если выбран PM агент, используем наш специальный обработчик
+    if agent == 'pm':
+        try:
+            result = handle_pm_request(message or '', metadata)
+            result['conversation_id'] = conversation_id
+            return {
+                'agent': 'pm',
+                'answer': result.get('answer'),
+                'interactive': None,
+                'conversation_id': conversation_id,
+            }
+        except Exception as e:
+            logger.error(f"Error in PM agent handler: {e}")
+            # В случае ошибки возвращаемся к стандартному обработчику
+            pass
+    
     # If SPEC agent is chosen, enrich context with Services TZ form schema/CTA
     if agent == 'spec':
         try:

@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _('My Projects') }}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">{{ _('My Projects') }}</h1>
+    
+    {% if projects %}
+        <div class="row">
+            {% for project in projects %}
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <span>{{ project.title }}</span>
+                            <span class="badge {{ project.status_badge_class }}">{{ project.status_display }}</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text text-truncate mb-3">{{ project.description }}</p>
+                            
+                            <div class="progress mb-2">
+                                <div class="progress-bar" role="progressbar" style="width: {{ project.progress }}%;" 
+                                     aria-valuenow="{{ project.progress }}" aria-valuemin="0" aria-valuemax="100">
+                                    {{ project.progress }}%
+                                </div>
+                            </div>
+                            <small class="text-muted">{{ _('Project Progress') }}</small>
+                            
+                            <div class="mt-3 d-flex justify-content-between">
+                                <small class="text-muted">
+                                    {% if project.estimated_completion_date %}
+                                        {{ _('Est. completion') }}: {{ project.estimated_completion_date.strftime('%d.%m.%Y') }}
+                                    {% else %}
+                                        {{ _('Start date') }}: {{ project.start_date.strftime('%d.%m.%Y') if project.start_date else _('TBD') }}
+                                    {% endif %}
+                                </small>
+                                
+                                {% if project.updates %}
+                                    <small class="text-muted">
+                                        {{ _('Last update') }}: {{ project.updates|sort(attribute='created_at', reverse=True)|first.created_at.strftime('%d.%m.%Y') }}
+                                    </small>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <a href="{{ url_for('client.project_detail', project_id=project.id) }}" class="btn btn-sm btn-outline-primary">{{ _('View Details') }}</a>
+                            <button class="btn btn-sm btn-outline-secondary float-end chat-with-pm" data-project="{{ project.title }}">
+                                <i class="bi bi-chat-dots"></i> {{ _('Ask PM') }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-info">
+            <h4 class="alert-heading">{{ _('No Projects Yet!') }}</h4>
+            <p>{{ _('You don\'t have any active projects at the moment.') }}</p>
+            {% if tech_spec_submissions %}
+                <hr>
+                <p class="mb-0">{{ _('You have submitted technical specifications that are under review. Our team will contact you soon.') }}</p>
+            {% else %}
+                <hr>
+                <p class="mb-0">{{ _('Would you like to start a new project?') }}</p>
+                <a href="{{ url_for('pages.tech_spec_form') }}" class="btn btn-primary mt-3">{{ _('Create Technical Specification') }}</a>
+            {% endif %}
+        </div>
+        
+        {% if tech_spec_submissions %}
+            <h2 class="my-4">{{ _('Your Technical Specifications') }}</h2>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>{{ _('Date Submitted') }}</th>
+                            <th>{{ _('Project Name') }}</th>
+                            <th>{{ _('Status') }}</th>
+                            <th>{{ _('Actions') }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for submission in tech_spec_submissions %}
+                            <tr>
+                                <td>{{ submission.created_at.strftime('%d.%m.%Y %H:%M') }}</td>
+                                <td>{{ submission.project_name }}</td>
+                                <td>
+                                    <span class="badge bg-info">{{ _('Under Review') }}</span>
+                                </td>
+                                <td>
+                                    <a href="{{ url_for('client.tech_spec_detail', submission_id=submission.id) }}" class="btn btn-sm btn-outline-primary">
+                                        {{ _('View') }}
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endif %}
+    {% endif %}
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const chatWithPmBtns = document.querySelectorAll('.chat-with-pm');
+    chatWithPmBtns.forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const projectName = btn.dataset.project || '';
+            // Открываем чат и устанавливаем PM агента активным
+            if (window.openChat && typeof window.openChat === 'function') {
+                let message = 'I want to check my project status';
+                if (projectName) {
+                    message = `How is my project "${projectName}" going?`;
+                }
+                window.openChat('pm', message);
+            }
+        });
+    });
+});
+</script>
+{% endblock %}

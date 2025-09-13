@@ -1,0 +1,132 @@
+/* PM Agent Chat Styles */
+.chat-pm-agent .message.agent {
+    background-color: #e6f3ff; /* Light blue background for PM agent */
+    border-left: 3px solid #0078d4;
+}
+
+.chat-pm-agent .agent-avatar {
+    border: 2px solid #0078d4;
+}
+
+/* Project status badges */
+.badge.bg-info {
+    background-color: #17a2b8;
+}
+
+.badge.bg-primary {
+    background-color: #007bff;
+}
+
+.badge.bg-warning {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+.badge.bg-secondary {
+    background-color: #6c757d;
+}
+
+.badge.bg-success {
+    background-color: #28a745;
+}
+
+.badge.bg-danger {
+    background-color: #dc3545;
+}
+
+/* Project timeline styles */
+.timeline {
+    position: relative;
+    padding-left: 30px;
+}
+
+.timeline:before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #e9ecef;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.timeline-date {
+    font-size: 0.875rem;
+    color: #6c757d;
+    margin-bottom: 5px;
+}
+
+.timeline-item:before {
+    content: '';
+    position: absolute;
+    left: -30px;
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+}
+
+/* Progress bar styling */
+.progress {
+    height: 10px;
+    border-radius: 5px;
+    background-color: #e9ecef;
+}
+
+.progress-bar {
+    background-color: #28a745;
+    border-radius: 5px;
+}
+
+/* Button to chat with PM */
+.chat-with-pm {
+    background-color: #0078d4;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+.chat-with-pm:hover {
+    background-color: #005a9e;
+    color: white;
+}
+
+/* Client dashboard styling */
+.card {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.card:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.card-header {
+    font-weight: 600;
+}
+
+/* Team member styling */
+.team-member-avatar img {
+    object-fit: cover;
+    border: 2px solid #e9ecef;
+}
+
+/* Tech spec styling */
+.tech-spec-sections .card-header {
+    font-weight: 600;
+}
+
+.tech-spec-sections dt {
+    font-weight: 600;
+    color: #495057;
+}
+
+.tech-spec-sections dd {
+    margin-bottom: 1rem;
+}
