@@ -43,7 +43,31 @@
 
 /* Form help text color improvement */
 #project-questionnaire .form-text {
-    color: #f8f8f8 !important; /* Make form help text more visible */
+    color: #00cc00 !important; /* Bright green to match placeholders */
+    font-weight: 500 !important; /* Slightly bolder */
+}
+
+/* Make ALL form-related text hints bright green */
+#project-questionnaire p,
+#project-questionnaire small,
+#project-questionnaire .help-text,
+#project-questionnaire .form-text,
+#project-questionnaire .text-muted,
+.accordion-body .form-text {
+    color: #00cc00 !important;
+    font-weight: 500 !important;
+    opacity: 1 !important;
+    text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.3); /* Subtle text shadow for better readability */
+}
+
+/* Ensure the help text is bright green and clearly visible */
+.accordion-item .form-text,
+.accordion-collapse .form-text,
+#project-questionnaire div.form-text {
+    color: #00cc00 !important;
+    font-weight: 500 !important;
+    margin-top: 5px !important;
+    font-size: 0.9rem !important;
 }
 
 /* Improve focus states for better accessibility */
