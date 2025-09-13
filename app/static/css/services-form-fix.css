@@ -1,0 +1,56 @@
+/* 
+* Services form placeholder text fix
+* Changes the placeholder text color to bright green for better readability
+* on light backgrounds
+*/
+
+/* Target specifically the service form textareas and inputs */
+#project-questionnaire input::placeholder,
+#project-questionnaire textarea::placeholder,
+#project-questionnaire .form-control::placeholder,
+#project-questionnaire .form-select::placeholder {
+    color: #00cc00 !important; /* Bright green */
+    opacity: 1 !important; /* Full opacity for better visibility */
+    font-weight: 500 !important; /* Slightly bolder */
+}
+
+/* Webkit browsers (Chrome, Safari, Edge) */
+#project-questionnaire input::-webkit-input-placeholder,
+#project-questionnaire textarea::-webkit-input-placeholder,
+#project-questionnaire .form-control::-webkit-input-placeholder,
+#project-questionnaire .form-select::-webkit-input-placeholder {
+    color: #00cc00 !important;
+    opacity: 1 !important;
+}
+
+/* Firefox */
+#project-questionnaire input::-moz-placeholder,
+#project-questionnaire textarea::-moz-placeholder,
+#project-questionnaire .form-control::-moz-placeholder,
+#project-questionnaire .form-select::-moz-placeholder {
+    color: #00cc00 !important;
+    opacity: 1 !important;
+}
+
+/* Microsoft Edge and IE */
+#project-questionnaire input::-ms-input-placeholder,
+#project-questionnaire textarea::-ms-input-placeholder,
+#project-questionnaire .form-control::-ms-input-placeholder,
+#project-questionnaire .form-select::-ms-input-placeholder {
+    color: #00cc00 !important;
+    opacity: 1 !important;
+}
+
+/* Form help text color improvement */
+#project-questionnaire .form-text {
+    color: #f8f8f8 !important; /* Make form help text more visible */
+}
+
+/* Improve focus states for better accessibility */
+#project-questionnaire input:focus,
+#project-questionnaire textarea:focus,
+#project-questionnaire .form-control:focus,
+#project-questionnaire .form-select:focus {
+    border-color: #00cc00 !important;
+    box-shadow: 0 0 0 0.25rem rgba(0, 204, 0, 0.25) !important;
+}

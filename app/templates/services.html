@@ -51,6 +51,7 @@
                             color: white !important;
                         }
                     </style>
+                    <link rel="stylesheet" href="{{ url_for('static', filename='css/services-form-fix.css') }}">
                     <form id="project-questionnaire" method="post" action="{{ url_for('pages.submit_questionnaire') }}">
                         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                         <div class="accordion" id="questionnaireAccordion">
