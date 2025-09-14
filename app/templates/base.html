@@ -167,6 +167,11 @@
         </div>
         <div id="chat-messages" class="chat-messages high-contrast"></div>
         <div id="chat-controls" class="chat-controls">
+          <div class="agent-toggle" role="group" aria-label="Agent selector">
+            <button id="agent-btn-greeter" class="agent-btn" data-agent="greeter" title="Main assistant">Main</button>
+            <button id="agent-btn-spec" class="agent-btn" data-agent="spec" title="Technical specification assistant">SPEC</button>
+            <button id="agent-btn-pm" class="agent-btn" data-agent="pm" title="Project manager assistant">PM</button>
+          </div>
           <div class="chat-input-wrapper">
             <input id="chat-input" placeholder="{{ _('Type your message...') }}" />
             <button id="chat-send" class="chat-send">

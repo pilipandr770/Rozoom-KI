@@ -1332,6 +1332,35 @@ p {
   border-top: 1px solid var(--border-color);
 }
 
+.agent-toggle {
+  display: flex;
+  gap: 0.5rem;
+  margin-right: 0.75rem;
+  align-items: center;
+}
+
+.agent-btn {
+  padding: 0.45rem 0.65rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background: #f7f7f9;
+  color: var(--text-color);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.agent-btn:hover {
+  background: #fff;
+  border-color: var(--primary-color);
+}
+
+.agent-btn.active {
+  background: var(--primary-color);
+  color: #fff;
+  border-color: var(--primary-color);
+}
+
 .chat-input-wrapper {
   position: relative;
   flex: 1;
