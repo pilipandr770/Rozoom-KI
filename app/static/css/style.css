@@ -1330,6 +1330,9 @@ p {
   padding: 1rem;
   background: white;
   border-top: 1px solid var(--border-color);
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap; /* allow wrapping when space is tight */
 }
 
 .agent-toggle {
@@ -1337,6 +1340,7 @@ p {
   gap: 0.5rem;
   margin-right: 0.75rem;
   align-items: center;
+  flex: 0 0 auto; /* don't shrink too small */
 }
 
 .agent-btn {
@@ -1363,7 +1367,7 @@ p {
 
 .chat-input-wrapper {
   position: relative;
-  flex: 1;
+  flex: 1 1 320px; /* grow, allow wrapping when below ~320px */
 }
 
 .chat-controls input {
@@ -1395,6 +1399,24 @@ p {
 
 .chat-send:hover {
   background: var(--primary-dark);
+}
+
+/* Stack agent buttons above input on small screens */
+@media (max-width: 640px) {
+  .chat-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .agent-toggle {
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+  .chat-input-wrapper {
+    flex: 1 1 auto;
+    width: 100%;
+  }
 }
 /* Blog Post Page Styles */
 .blog-post-page {

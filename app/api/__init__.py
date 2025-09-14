@@ -1,4 +1,5 @@
 from flask import Blueprint, request, jsonify, current_app, session
+from flask_login import current_user
 import os
 import requests
 from .. import db, csrf
@@ -58,6 +59,16 @@ def chat():
         db.session.rollback()
     except Exception as e:
         current_app.logger.warning(f"Rollback before processing failed: {e}")
+
+    # If user is authenticated, bind metadata.user_id to the logged-in user's id
+    try:
+        if getattr(current_user, 'is_authenticated', False) and hasattr(current_user, 'id'):
+            metadata['user_id'] = current_user.id
+            # Optional: include user email for downstream context
+            if hasattr(current_user, 'email'):
+                metadata.setdefault('user_email', current_user.email)
+    except Exception as e:
+        current_app.logger.warning(f"Unable to bind session user to chat metadata: {e}")
 
     # Main flow: use controller route_and_respond (Assistants/legacy pipeline)
     try:
