@@ -21,6 +21,35 @@ def dashboard():
     # Получаем все проекты клиента
     projects = Project.query.filter_by(client_id=current_user.id).all()
     
+    # Добавляем вспомогательные свойства для отображения бейджей статуса
+    status_map = {
+        'planning': 'bg-info',
+        'development': 'bg-primary',
+        'testing': 'bg-warning',
+        'review': 'bg-secondary',
+        'completed': 'bg-success',
+        'on_hold': 'bg-danger',
+        'new': 'bg-info',
+        'in_progress': 'bg-primary',
+        'blocked': 'bg-danger',
+        'archived': 'bg-secondary'
+    }
+    status_display = {
+        'planning': 'Planning',
+        'development': 'Development',
+        'testing': 'Testing',
+        'review': 'Review',
+        'completed': 'Completed',
+        'on_hold': 'On Hold',
+        'new': 'New',
+        'in_progress': 'In Progress',
+        'blocked': 'Blocked',
+        'archived': 'Archived'
+    }
+    for p in projects:
+        p.status_badge_class = status_map.get(p.status, 'bg-secondary')
+        p.status_display = status_display.get(p.status, p.status.title() if p.status else '—')
+    
     # Получаем все заявки клиента
     submissions = TechSpecSubmission.query.filter_by(client_id=current_user.id).all()
     

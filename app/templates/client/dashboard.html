@@ -13,7 +13,7 @@
                     <div class="card h-100">
                         <div class="card-header d-flex justify-content-between align-items-center">
                             <span>{{ project.title }}</span>
-                            <span class="badge {{ project.status_badge_class }}">{{ project.status_display }}</span>
+                            <span class="badge {{ project.status_badge_class or 'bg-secondary' }}">{{ project.status_display or project.status }}</span>
                         </div>
                         <div class="card-body">
                             <p class="card-text text-truncate mb-3">{{ project.description }}</p>
@@ -56,7 +56,7 @@
         <div class="alert alert-info">
             <h4 class="alert-heading">{{ _('No Projects Yet!') }}</h4>
             <p>{{ _('You don\'t have any active projects at the moment.') }}</p>
-            {% if tech_spec_submissions %}
+            {% if submissions %}
                 <hr>
                 <p class="mb-0">{{ _('You have submitted technical specifications that are under review. Our team will contact you soon.') }}</p>
             {% else %}
@@ -65,38 +65,46 @@
                 <a href="{{ url_for('pages.tech_spec_form') }}" class="btn btn-primary mt-3">{{ _('Create Technical Specification') }}</a>
             {% endif %}
         </div>
-        
-        {% if tech_spec_submissions %}
-            <h2 class="my-4">{{ _('Your Technical Specifications') }}</h2>
-            <div class="table-responsive">
-                <table class="table table-hover">
-                    <thead>
+    {% endif %}
+
+    {% if submissions %}
+        <h2 class="my-4">{{ _('Your Technical Specifications') }}</h2>
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>{{ _('Date Submitted') }}</th>
+                        <th>{{ _('Project Type') }}</th>
+                        <th>{{ _('Goal') }}</th>
+                        <th>{{ _('Status') }}</th>
+                        <th>{{ _('Actions') }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for submission in submissions %}
                         <tr>
-                            <th>{{ _('Date Submitted') }}</th>
-                            <th>{{ _('Project Name') }}</th>
-                            <th>{{ _('Status') }}</th>
-                            <th>{{ _('Actions') }}</th>
+                            <td>{{ submission.created_at.strftime('%d.%m.%Y %H:%M') if submission.created_at else '' }}</td>
+                            <td>{{ submission.project_type or '—' }}</td>
+                            <td>{{ submission.project_goal[:60] ~ ('…' if submission.project_goal and submission.project_goal|length > 60 else '') }}</td>
+                            <td>
+                                {% set badge = {'new':'secondary','reviewed':'info','estimated':'warning','approved':'success','rejected':'danger'}.get(submission.status or 'new','secondary') %}
+                                <span class="badge bg-{{ badge }}">{{ submission.status or _('Under Review') }}</span>
+                            </td>
+                            <td>
+                                <a href="{{ url_for('client.view_submission', submission_id=submission.id) }}" class="btn btn-sm btn-outline-primary">
+                                    {{ _('View') }}
+                                </a>
+                                {% if submission.project_id %}
+                                <a href="{{ url_for('client.project_detail', project_id=submission.project_id) }}" class="btn btn-sm btn-outline-success ms-1">
+                                    {{ _('Go to Project') }}
+                                </a>
+                                {% endif %}
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        {% for submission in tech_spec_submissions %}
-                            <tr>
-                                <td>{{ submission.created_at.strftime('%d.%m.%Y %H:%M') }}</td>
-                                <td>{{ submission.project_name }}</td>
-                                <td>
-                                    <span class="badge bg-info">{{ _('Under Review') }}</span>
-                                </td>
-                                <td>
-                                    <a href="{{ url_for('client.tech_spec_detail', submission_id=submission.id) }}" class="btn btn-sm btn-outline-primary">
-                                        {{ _('View') }}
-                                    </a>
-                                </td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     {% endif %}
 </div>
 

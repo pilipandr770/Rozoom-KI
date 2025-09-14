@@ -78,6 +78,13 @@ def dashboard():
     published_posts = BlogPost.query.filter_by(published=True).count()
     draft_posts = post_count - published_posts
     
+    # Tech spec submissions stats
+    from app.models.tech_spec_submission import TechSpecSubmission
+    techspec_total = TechSpecSubmission.query.count()
+    techspec_new = TechSpecSubmission.query.filter_by(status='new').count()
+    techspec_estimated = TechSpecSubmission.query.filter_by(status='estimated').count()
+    recent_specs = TechSpecSubmission.query.order_by(TechSpecSubmission.created_at.desc()).limit(5).all()
+    
     return render_template(
         'admin/dashboard.html', 
         recent_posts=recent_posts, 
@@ -88,7 +95,11 @@ def dashboard():
         posts_by_category=posts_by_category,
         popular_tags=popular_tags,
         published_posts=published_posts,
-        draft_posts=draft_posts
+        draft_posts=draft_posts,
+        techspec_total=techspec_total,
+        techspec_new=techspec_new,
+        techspec_estimated=techspec_estimated,
+        recent_specs=recent_specs
     )
 
 @admin.route('/blog/posts')

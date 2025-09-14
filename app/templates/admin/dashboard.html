@@ -152,6 +152,21 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-3 mt-3 mt-md-0">
+            <div class="card bg-dark text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Tech Specs</h5>
+                    <div class="d-flex align-items-baseline gap-3">
+                        <p class="display-6 mb-0">{{ techspec_total or 0 }}</p>
+                        <div class="small">
+                            <div><span class="badge bg-secondary">New</span> {{ techspec_new or 0 }}</div>
+                            <div><span class="badge bg-warning text-dark">Estimated</span> {{ techspec_estimated or 0 }}</div>
+                        </div>
+                    </div>
+                    <a href="{{ url_for('admin.tech_specs') }}" class="btn btn-light mt-2">View Tech Specs</a>
+                </div>
+            </div>
+        </div>
     </div>
     
     <div class="row mb-4">
@@ -238,6 +253,50 @@
                         </tbody>
                     </table>
                     <a href="{{ url_for('admin.blog_posts') }}" class="btn btn-outline-primary">View All Posts</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 mt-4">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Recent Tech Specs</h5>
+                    <a href="{{ url_for('admin.tech_specs') }}" class="btn btn-outline-primary">All Tech Specs</a>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Date</th>
+                                    <th>Contact</th>
+                                    <th>Project Type</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for s in recent_specs %}
+                                <tr>
+                                    <td>#{{ s.id }}</td>
+                                    <td>{{ s.created_at.strftime('%Y-%m-%d %H:%M') if s.created_at else '' }}</td>
+                                    <td>{{ s.contact_name or '—' }}<br><small class="text-muted">{{ s.contact_email or '' }}</small></td>
+                                    <td>{{ s.project_type or '—' }}</td>
+                                    <td>
+                                        {% set badge = {'new':'secondary','reviewed':'info','estimated':'warning','approved':'success','rejected':'danger'}.get(s.status or 'new','secondary') %}
+                                        <span class="badge bg-{{ badge }}">{{ s.status or 'new' }}</span>
+                                    </td>
+                                    <td>
+                                        <a href="{{ url_for('admin.tech_spec_detail', spec_id=s.id) }}" class="btn btn-sm btn-outline-primary">Open</a>
+                                    </td>
+                                </tr>
+                                {% else %}
+                                <tr><td colspan="6" class="text-center text-muted">No submissions yet</td></tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
