@@ -17,26 +17,88 @@
 <div class="row g-3">
   <div class="col-lg-8">
     <div class="content-card">
-      <div class="card-header">
-        Ответы клиента (15 вопросов)
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <span>Ответы клиента (15 вопросов)</span>
+        <span class="badge bg-secondary">Редактируемо</span>
       </div>
       <div class="card-body">
-        <dl class="row">
-          <dt class="col-sm-4">Тип проекта</dt><dd class="col-sm-8">{{ submission.project_type or '—' }}</dd>
-          <dt class="col-sm-4">Цель проекта</dt><dd class="col-sm-8">{{ submission.project_goal or '—' }}</dd>
-          <dt class="col-sm-4">Целевая аудитория</dt><dd class="col-sm-8">{{ submission.target_users or '—' }}</dd>
-          <dt class="col-sm-4">Функциональность</dt><dd class="col-sm-8">{{ submission.features or '—' }}</dd>
-          <dt class="col-sm-4">Сроки</dt><dd class="col-sm-8">{{ submission.timeline or '—' }}</dd>
-          <dt class="col-sm-4">Бюджет</dt><dd class="col-sm-8">{{ submission.budget_range or '—' }}</dd>
-          <dt class="col-sm-4">Интеграции</dt><dd class="col-sm-8">{{ submission.integrations or '—' }}</dd>
-          <dt class="col-sm-4">Тех. требования</dt><dd class="col-sm-8">{{ submission.technical_requirements or '—' }}</dd>
-          <dt class="col-sm-4">Аналоги</dt><dd class="col-sm-8">{{ submission.similar_projects or '—' }}</dd>
-          <dt class="col-sm-4">Метрики успеха</dt><dd class="col-sm-8">{{ submission.success_metrics or '—' }}</dd>
-          <dt class="col-sm-4">Безопасность</dt><dd class="col-sm-8">{{ submission.security_requirements or '—' }}</dd>
-          <dt class="col-sm-4">Поддержка</dt><dd class="col-sm-8">{{ submission.support_level or '—' }}</dd>
-          <dt class="col-sm-4">Наличие активов</dt><dd class="col-sm-8">{{ submission.existing_assets or '—' }}</dd>
-          <dt class="col-sm-4">Доп. информация</dt><dd class="col-sm-8">{{ submission.additional_info or '—' }}</dd>
-        </dl>
+        <form method="post">
+          <input type="hidden" name="action" value="update" />
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">Тип проекта</label>
+              <input class="form-control" name="project_type" value="{{ submission.project_type or '' }}" />
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Статус ТЗ</label>
+              {% set statuses = ['new','reviewed','estimated','approved','rejected'] %}
+              <select class="form-select" name="status">
+                {% for s in statuses %}
+                  <option value="{{ s }}" {% if (submission.status or 'new')==s %}selected{% endif %}>{{ s }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="col-12">
+              <label class="form-label">Цель проекта</label>
+              <textarea class="form-control" rows="3" name="project_goal">{{ submission.project_goal or '' }}</textarea>
+            </div>
+            <div class="col-12">
+              <label class="form-label">Целевая аудитория</label>
+              <textarea class="form-control" rows="2" name="target_users">{{ submission.target_users or '' }}</textarea>
+            </div>
+            <div class="col-12">
+              <label class="form-label">Обязательная функциональность</label>
+              <textarea class="form-control" rows="3" name="essential_features">{{ submission.essential_features or '' }}</textarea>
+            </div>
+            <div class="col-12">
+              <label class="form-label">Желательная функциональность</label>
+              <textarea class="form-control" rows="3" name="nice_to_have_features">{{ submission.nice_to_have_features or '' }}</textarea>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Сроки</label>
+              <input class="form-control" name="timeline" value="{{ submission.timeline or '' }}" />
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Бюджет</label>
+              <input class="form-control" name="budget_range" value="{{ submission.budget_range or '' }}" />
+            </div>
+            <div class="col-12">
+              <label class="form-label">Интеграции</label>
+              <textarea class="form-control" rows="2" name="integrations">{{ submission.integrations or '' }}</textarea>
+            </div>
+            <div class="col-12">
+              <label class="form-label">Технические требования</label>
+              <textarea class="form-control" rows="3" name="technical_requirements">{{ submission.technical_requirements or '' }}</textarea>
+            </div>
+            <div class="col-12">
+              <label class="form-label">Похожие проекты</label>
+              <textarea class="form-control" rows="2" name="similar_projects">{{ submission.similar_projects or '' }}</textarea>
+            </div>
+            <div class="col-12">
+              <label class="form-label">Метрики успеха</label>
+              <textarea class="form-control" rows="2" name="success_metrics">{{ submission.success_metrics or '' }}</textarea>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Требования безопасности</label>
+              <textarea class="form-control" rows="2" name="security_requirements">{{ submission.security_requirements or '' }}</textarea>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Уровень поддержки</label>
+              <input class="form-control" name="support_level" value="{{ submission.support_level or '' }}" />
+            </div>
+            <div class="col-12">
+              <label class="form-label">Имеющиеся активы</label>
+              <textarea class="form-control" rows="2" name="existing_assets">{{ submission.existing_assets or '' }}</textarea>
+            </div>
+            <div class="col-12">
+              <label class="form-label">Доп. информация</label>
+              <textarea class="form-control" rows="2" name="additional_info">{{ submission.additional_info or '' }}</textarea>
+            </div>
+          </div>
+          <div class="text-end mt-3">
+            <button class="btn btn-primary" type="submit">Сохранить изменения</button>
+          </div>
+        </form>
       </div>
     </div>
 
@@ -54,10 +116,26 @@
     <div class="content-card">
       <div class="card-header">Контактные данные</div>
       <div class="card-body">
-        <div class="mb-2"><strong>Имя:</strong> {{ submission.contact_name or '—' }}</div>
-        <div class="mb-2"><strong>Email:</strong> <a href="mailto:{{ submission.contact_email }}">{{ submission.contact_email or '—' }}</a></div>
-        <div class="mb-2"><strong>Компания:</strong> {{ submission.company_name or '—' }}</div>
-        <div class="mb-2"><strong>Телефон:</strong> {{ submission.contact_phone or '—' }}</div>
+        <form method="post">
+          <input type="hidden" name="action" value="update" />
+          <div class="mb-2">
+            <label class="form-label">Имя</label>
+            <input class="form-control" name="contact_name" value="{{ submission.contact_name or '' }}" />
+          </div>
+          <div class="mb-2">
+            <label class="form-label">Email</label>
+            <input class="form-control" type="email" name="contact_email" value="{{ submission.contact_email or '' }}" />
+          </div>
+          <div class="mb-2">
+            <label class="form-label">Компания</label>
+            <input class="form-control" name="company_name" value="{{ submission.company_name or '' }}" />
+          </div>
+          <div class="mb-2">
+            <label class="form-label">Телефон</label>
+            <input class="form-control" name="contact_phone" value="{{ submission.contact_phone or '' }}" />
+          </div>
+          <button class="btn btn-outline-light w-100" type="submit">Сохранить контакты</button>
+        </form>
         {% if submission.client_id %}
         <div class="mt-3">
           <a class="btn btn-outline-light" href="{{ url_for('admin.user_detail', user_id=submission.client_id) }}">Профиль клиента</a>

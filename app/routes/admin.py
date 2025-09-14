@@ -793,6 +793,20 @@ def tech_spec_detail(spec_id):
             
             flash('Estimate saved successfully.', 'success')
         
+        elif action == 'update':
+            # Обновление всех полей ТЗ и контактов
+            fields = [
+                'project_type','project_goal','target_users','essential_features','nice_to_have_features',
+                'timeline','budget_range','integrations','technical_requirements','similar_projects',
+                'success_metrics','security_requirements','support_level','existing_assets','additional_info',
+                'contact_name','contact_email','company_name','contact_phone','status'
+            ]
+            for f in fields:
+                if f in request.form:
+                    setattr(submission, f, request.form.get(f))
+            db.session.commit()
+            flash('Tech spec updated.', 'success')
+        
         elif action == 'convert':
             # Создаем нового пользователя если email не существует
             user = User.query.filter_by(email=submission.contact_email).first()
@@ -894,11 +908,12 @@ def project_detail(project_id):
             db.session.add(new_update)
             db.session.commit()
             
-            # Отправка уведомления клиенту
-            try:
-                send_project_update_notification(project, new_update)
-            except Exception as e:
-                current_app.logger.error(f"Failed to send project update notification: {e}")
+            # Отправка уведомления клиенту (по выбору)
+            if request.form.get('notify_client', 'off') == 'on':
+                try:
+                    send_project_update_notification(project, new_update)
+                except Exception as e:
+                    current_app.logger.error(f"Failed to send project update notification: {e}")
             
             flash('Update added.', 'success')
     
