@@ -1,0 +1,84 @@
+{% extends 'admin/base.html' %}
+
+{% block title %}Технические задания — Админ{% endblock %}
+
+{% block content %}
+<div class="content-header d-flex justify-content-between align-items-center">
+  <h2 class="mb-0">Технические задания</h2>
+  <span class="badge bg-primary">Всего: {{ submissions|length }}</span>
+  
+  <form class="d-none" method="get"></form>
+  <!-- Можно добавить фильтры позже -->
+  
+  <div></div>
+</div>
+
+<div class="content-card">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <span>Список поданных брифов (15 вопросов)</span>
+  </div>
+  <div class="card-body p-0">
+    <div class="table-responsive">
+      <table class="table table-hover mb-0 align-middle">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Создано</th>
+            <th>Статус</th>
+            <th>Контакт</th>
+            <th>Компания</th>
+            <th>Email</th>
+            <th>Тип проекта</th>
+            <th>Цель</th>
+            <th>Проект</th>
+            <th>Клиент</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for s in submissions %}
+          <tr>
+            <td>#{{ s.id }}</td>
+            <td>{{ s.created_at or s.updated_at }}</td>
+            <td>
+              {% set badge = {
+                'new':'secondary', 'review':'info', 'estimated':'warning', 'approved':'success', 'rejected':'danger'
+              }.get(s.status or 'new', 'secondary') %}
+              <span class="badge bg-{{ badge }}">{{ s.status or 'new' }}</span>
+            </td>
+            <td>{{ s.contact_name or '—' }}</td>
+            <td>{{ s.company_name or '—' }}</td>
+            <td><a href="mailto:{{ s.contact_email }}">{{ s.contact_email }}</a></td>
+            <td>{{ s.project_type or '—' }}</td>
+            <td title="{{ s.project_goal }}">{{ (s.project_goal or '—')[:40] }}{% if s.project_goal and s.project_goal|length > 40 %}…{% endif %}</td>
+            <td>
+              {% if s.project_id %}
+              <a class="btn btn-sm btn-outline-primary" href="{{ url_for('admin.project_detail', project_id=s.project_id) }}">Открыть</a>
+              {% else %}
+              —
+              {% endif %}
+            </td>
+            <td>
+              {% if s.client_id %}
+              <a class="btn btn-sm btn-outline-light" href="{{ url_for('admin.user_detail', user_id=s.client_id) }}">Клиент</a>
+              {% else %}
+              —
+              {% endif %}
+            </td>
+            <td class="text-end">
+              <a class="btn btn-sm btn-primary" href="{{ url_for('admin.tech_spec_detail', spec_id=s.id) }}">Подробнее</a>
+            </td>
+          </tr>
+          {% else %}
+          <tr><td colspan="11" class="text-center text-muted py-4">Пока нет заявок</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  <div class="card-body">
+    <p class="text-muted small mb-0">Поддерживаются действия: оценка, конвертация в проект, привязка к клиенту. Откройте запись, чтобы продолжить.</p>
+  </div>
+</div>
+{% endblock %}

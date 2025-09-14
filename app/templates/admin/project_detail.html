@@ -1,0 +1,149 @@
+{% extends 'admin/base.html' %}
+
+{% block title %}Проект: {{ project.title }} — Админ{% endblock %}
+
+{% block content %}
+<div class="content-header d-flex justify-content-between align-items-center">
+  <div>
+    <h2 class="mb-1">Проект: {{ project.title }}</h2>
+    <div class="text-muted small">Клиент: {{ project.client.name or project.client.email if project.client else '—' }}</div>
+  </div>
+  <div>
+    <a class="btn btn-outline-light" href="{{ url_for('admin.users') }}">К пользователям</a>
+  </div>
+</div>
+
+<div class="row g-3">
+  <div class="col-xl-4">
+    <div class="content-card">
+      <div class="card-header">Статус проекта</div>
+      <div class="card-body">
+        <form method="post" class="d-flex gap-2 align-items-end">
+          <input type="hidden" name="action" value="update_status">
+          <div class="flex-grow-1">
+            <label class="form-label">Статус</label>
+            <select name="status" class="form-select">
+              {% set statuses = ['new','in_progress','testing','blocked','completed','archived'] %}
+              {% for s in statuses %}
+                <option value="{{ s }}" {% if project.status==s %}selected{% endif %}>{{ s }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">Обновить</button>
+        </form>
+        <div class="mt-3 small text-muted">Прогресс по задачам: {{ project.progress }}%</div>
+      </div>
+    </div>
+
+    <div class="content-card">
+      <div class="card-header">Добавить обновление</div>
+      <div class="card-body">
+        <form method="post">
+          <input type="hidden" name="action" value="add_update">
+          <div class="mb-2">
+            <label class="form-label">Заголовок</label>
+            <input class="form-control" name="title" required>
+          </div>
+          <div class="mb-2">
+            <label class="form-label">Содержание</label>
+            <textarea class="form-control" rows="4" name="content" required></textarea>
+          </div>
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" id="is_milestone" name="is_milestone">
+            <label class="form-check-label" for="is_milestone">Это веха (milestone)</label>
+          </div>
+          <button class="btn btn-success w-100" type="submit">Добавить обновление</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-8">
+    <div class="content-card">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <span>Задачи</span>
+        <span class="badge bg-secondary">{{ tasks|length }}</span>
+      </div>
+      <div class="card-body">
+        <form method="post" class="row g-2 mb-3">
+          <input type="hidden" name="action" value="add_task">
+          <div class="col-md-4">
+            <label class="form-label">Название</label>
+            <input class="form-control" name="title" required>
+          </div>
+          <div class="col-md-5">
+            <label class="form-label">Описание</label>
+            <input class="form-control" name="description">
+          </div>
+          <div class="col-md-3">
+            <label class="form-label">Дедлайн</label>
+            <input class="form-control" type="date" name="due_date">
+          </div>
+          <div class="col-12 text-end">
+            <button class="btn btn-primary">Добавить задачу</button>
+          </div>
+        </form>
+        
+        <div class="table-responsive">
+          <table class="table table-hover align-middle">
+            <thead>
+              <tr>
+                <th>Название</th>
+                <th>Статус</th>
+                <th>Дедлайн</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for t in tasks %}
+              <tr>
+                <td>
+                  <div class="fw-semibold">{{ t.title }}</div>
+                  <div class="text-muted small">{{ t.description or '' }}</div>
+                </td>
+                <td>
+                  <form method="post" class="d-flex gap-2 align-items-center">
+                    <input type="hidden" name="action" value="update_task">
+                    <input type="hidden" name="task_id" value="{{ t.id }}">
+                    <select class="form-select form-select-sm" name="task_status">
+                      {% for s in ['pending','in_progress','completed'] %}
+                        <option value="{{ s }}" {% if t.status==s %}selected{% endif %}>{{ s }}</option>
+                      {% endfor %}
+                    </select>
+                    <button class="btn btn-sm btn-outline-primary" type="submit">Сохранить</button>
+                  </form>
+                </td>
+                <td class="small">{{ t.due_date.date() if t.due_date else '—' }}</td>
+                <td class="text-end"></td>
+              </tr>
+              {% else %}
+              <tr><td colspan="4" class="text-center text-muted">Пока нет задач</td></tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-card">
+      <div class="card-header">Обновления проекта</div>
+      <div class="card-body">
+        {% for u in updates %}
+          <div class="mb-3 p-3" style="background: rgba(148,163,184,.1); border-radius: 6px;">
+            <div class="d-flex justify-content-between">
+              <div class="fw-semibold">
+                {{ u.title }}
+                {% if u.is_milestone %}<span class="badge bg-success ms-2">Milestone</span>{% endif %}
+              </div>
+              <div class="text-muted small">{{ u.created_at }}</div>
+            </div>
+            <div class="mt-1">{{ u.content }}</div>
+          </div>
+        {% else %}
+          <div class="text-muted">Пока нет обновлений</div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

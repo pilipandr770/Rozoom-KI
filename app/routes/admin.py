@@ -914,5 +914,4 @@ def send_project_update_notification(project, update):
     """Отправка уведомления об обновлении проекта"""
     # Здесь можно реализовать отправку email
     current_app.logger.info(f"Project update notification would be sent to client {project.client.email if project.client else 'unknown'}")
-    
-    return render_template('admin/add_user_project.html', user=user)
+    # Intentionally no return; this is a side-effect function.

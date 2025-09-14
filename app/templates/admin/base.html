@@ -198,7 +198,7 @@
         <div class="col-md-3 col-lg-2 admin-sidebar">
             <h5 class="mt-2 mb-4 text-center">Админ панель</h5>
             <div class="nav flex-column">
-                <a class="nav-link {% if request.path == '/admin/' %}active{% endif %}" href="{{ url_for('admin.index') }}">
+                <a class="nav-link {% if request.path == '/admin/' %}active{% endif %}" href="{{ url_for('admin.dashboard') }}">
                     <i class="fas fa-tachometer-alt"></i> Дашборд
                 </a>
                 <a class="nav-link {% if '/admin/users' in request.path %}active{% endif %}" href="{{ url_for('admin.users') }}">
@@ -212,6 +212,9 @@
                 </a>
                 <a class="nav-link {% if '/admin/blog/tags' in request.path %}active{% endif %}" href="{{ url_for('blog.tags') }}">
                     <i class="fas fa-tags"></i> Теги блога
+                </a>
+                <a class="nav-link {% if '/admin/tech-specs' in request.path %}active{% endif %}" href="{{ url_for('admin.tech_specs') }}">
+                    <i class="fas fa-clipboard-list"></i> Тех. задания
                 </a>
                 <a class="nav-link {% if '/admin/auto-content' in request.path %}active{% endif %}" href="{{ url_for('auto_content.index') }}">
                     <i class="fas fa-robot"></i> Авто-контент
