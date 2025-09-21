@@ -38,8 +38,9 @@ def init_babel(app):
     """Инициализация Flask-Babel"""
     babel.init_app(app, locale_selector=get_locale)
     
-    # Регистрируем дополнительные домены
-    payment_domain.init_app(app, locale_selector=get_locale)
+    # В некоторых версиях Flask-Babel Domain не имеет метода init_app
+    # Домен уже настроен при создании
+    # payment_domain.init_app(app, locale_selector=get_locale)
     
     # Доступ к текущей локали из шаблонов
     @app.before_request
