@@ -1,7 +1,10 @@
 from flask import request, g
-from flask_babel import Babel
+from flask_babel import Babel, Domain
 
 babel = Babel()
+
+# Определяем дополнительные домены для переводов
+payment_domain = Domain(domain='payment_translations')
 
 def get_locale():
     """
@@ -34,6 +37,9 @@ def get_locale():
 def init_babel(app):
     """Инициализация Flask-Babel"""
     babel.init_app(app, locale_selector=get_locale)
+    
+    # Регистрируем дополнительные домены
+    payment_domain.init_app(app, locale_selector=get_locale)
     
     # Доступ к текущей локали из шаблонов
     @app.before_request

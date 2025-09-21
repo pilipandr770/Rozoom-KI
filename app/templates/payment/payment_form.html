@@ -122,8 +122,8 @@
 <section class="payment-form-section">
     <div class="container">
         <div class="payment-form-header">
-            <h1>{{ _('Buy Development Hours') }}</h1>
-            <p class="lead">{{ _('Choose the number of development hours you need for your project') }}</p>
+            <h1>{{ _('Buy Development Hours', domain='payment_translations') }}</h1>
+            <p class="lead">{{ _('Choose the number of development hours you need for your project', domain='payment_translations') }}</p>
         </div>
 
         <div class="row justify-content-center">
@@ -133,12 +133,12 @@
                         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                         
                         <div class="hours-selector">
-                            <h3>{{ _('Select Hours') }}</h3>
-                            <p>{{ _('Drag the slider to select how many development hours you wish to purchase') }}</p>
+                            <h3>{{ _('Select Hours', domain='payment_translations') }}</h3>
+                            <p>{{ _('Drag the slider to select how many development hours you wish to purchase', domain='payment_translations') }}</p>
                             
                             <div class="range-container">
                                 <div class="hours-display">
-                                    <span id="hours-value">10</span> {{ _('hours') }}
+                                    <span id="hours-value">10</span> {{ _('hours', domain='payment_translations') }}
                                 </div>
                                 <input type="range" id="hours-range" name="hours" min="5" max="100" value="10" step="1">
                                 <div class="slider-labels">
@@ -149,31 +149,31 @@
                             </div>
                             
                             <div class="pricing-tiers">
-                                <p>{{ _('Pricing tiers:') }}</p>
+                                <p>{{ _('Pricing tiers:', domain='payment_translations') }}</p>
                                 <ul>
                                     {% for package in packages %}
-                                    <li>{{ package.hours }}+ {{ _('hours') }}: €{{ "%.2f"|format(package.price_per_hour) }} {{ _('per hour') }}</li>
+                                    <li>{{ package.hours }}+ {{ _('hours', domain='payment_translations') }}: €{{ "%.2f"|format(package.price_per_hour) }} {{ _('per hour', domain='payment_translations') }}</li>
                                     {% endfor %}
                                 </ul>
                             </div>
                             
                             <div class="price-display">
-                                <div>{{ _('Total Price') }}</div>
+                                <div>{{ _('Total Price', domain='payment_translations') }}</div>
                                 <div class="total-price">€<span id="total-price">0</span></div>
                                 <div class="price-per-hour">
-                                    €<span id="price-per-hour">0</span> {{ _('per hour') }}
+                                    €<span id="price-per-hour">0</span> {{ _('per hour', domain='payment_translations') }}
                                 </div>
                             </div>
                             
                             <button type="submit" class="checkout-btn">
-                                {{ _('Proceed to Checkout') }}
+                                {{ _('Proceed to Checkout', domain='payment_translations') }}
                             </button>
                         </div>
                     </form>
                 </div>
                 
                 <div class="text-center mt-4">
-                    <p>{{ _('Need a custom solution?') }} <a href="{{ url_for('pages.contact') }}">{{ _('Contact us') }}</a></p>
+                    <p>{{ _('Need a custom solution?', domain='payment_translations') }} <a href="{{ url_for('pages.contact') }}">{{ _('Contact us', domain='payment_translations') }}</a></p>
                 </div>
             </div>
         </div>

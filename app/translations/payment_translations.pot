@@ -1,0 +1,125 @@
+# Payment translations.
+# Copyright (C) 2025 Rozoom-KI
+# This file is distributed under the same license as the Rozoom-KI project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Rozoom-KI 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-09-21 10:00+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+# Payment form page
+msgid "Buy Development Hours"
+msgstr ""
+
+msgid "Choose the number of development hours you need for your project"
+msgstr ""
+
+msgid "Select Hours"
+msgstr ""
+
+msgid "Drag the slider to select how many development hours you wish to purchase"
+msgstr ""
+
+msgid "hours"
+msgstr ""
+
+msgid "Pricing tiers:"
+msgstr ""
+
+msgid "per hour"
+msgstr ""
+
+msgid "Total Price"
+msgstr ""
+
+msgid "Proceed to Checkout"
+msgstr ""
+
+msgid "Need a custom solution?"
+msgstr ""
+
+msgid "Contact us"
+msgstr ""
+
+# Success page
+msgid "Payment Successful"
+msgstr ""
+
+msgid "Thank you for your purchase!"
+msgstr ""
+
+msgid "Your payment has been processed successfully."
+msgstr ""
+
+msgid "Order Details"
+msgstr ""
+
+msgid "Hours Purchased"
+msgstr ""
+
+msgid "Rate"
+msgstr ""
+
+msgid "Total Amount"
+msgstr ""
+
+msgid "Transaction ID"
+msgstr ""
+
+msgid "Date"
+msgstr ""
+
+msgid "Back to Home"
+msgstr ""
+
+# Cancel page
+msgid "Payment Cancelled"
+msgstr ""
+
+msgid "Your payment has been cancelled."
+msgstr ""
+
+msgid "No charges have been made to your account."
+msgstr ""
+
+msgid "Return to Payment Form"
+msgstr ""
+
+# Flash messages
+msgid "Payment successful! Thank you for your purchase."
+msgstr ""
+
+msgid "No pricing packages are currently available. Please contact us for custom pricing."
+msgstr ""
+
+msgid "An error occurred while processing your payment. Please try again later."
+msgstr ""
+
+msgid "Payment is being processed. We will update you when it completes."
+msgstr ""
+
+msgid "Payment information not found."
+msgstr ""
+
+msgid "An error occurred while processing your payment information."
+msgstr ""
+
+# Development hours product description
+msgid "Development Hours"
+msgstr ""
+
+msgid "Purchase of"
+msgstr ""
+
+msgid "development hours at"
+msgstr ""

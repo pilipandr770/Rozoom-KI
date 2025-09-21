@@ -1,0 +1,125 @@
+# Payment translations for German.
+# Copyright (C) 2025 Rozoom-KI
+# This file is distributed under the same license as the Rozoom-KI project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Rozoom-KI 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-09-21 10:00+0200\n"
+"PO-Revision-Date: 2025-09-21 10:00+0200\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: German\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+# Payment form page
+msgid "Buy Development Hours"
+msgstr "Entwicklungsstunden kaufen"
+
+msgid "Choose the number of development hours you need for your project"
+msgstr "Wählen Sie die Anzahl der Entwicklungsstunden, die Sie für Ihr Projekt benötigen"
+
+msgid "Select Hours"
+msgstr "Stunden auswählen"
+
+msgid "Drag the slider to select how many development hours you wish to purchase"
+msgstr "Ziehen Sie den Schieberegler, um auszuwählen, wie viele Entwicklungsstunden Sie kaufen möchten"
+
+msgid "hours"
+msgstr "Stunden"
+
+msgid "Pricing tiers:"
+msgstr "Preisstufen:"
+
+msgid "per hour"
+msgstr "pro Stunde"
+
+msgid "Total Price"
+msgstr "Gesamtpreis"
+
+msgid "Proceed to Checkout"
+msgstr "Zur Kasse gehen"
+
+msgid "Need a custom solution?"
+msgstr "Benötigen Sie eine individuelle Lösung?"
+
+msgid "Contact us"
+msgstr "Kontaktieren Sie uns"
+
+# Success page
+msgid "Payment Successful"
+msgstr "Zahlung erfolgreich"
+
+msgid "Thank you for your purchase!"
+msgstr "Vielen Dank für Ihren Einkauf!"
+
+msgid "Your payment has been processed successfully."
+msgstr "Ihre Zahlung wurde erfolgreich verarbeitet."
+
+msgid "Order Details"
+msgstr "Bestelldetails"
+
+msgid "Hours Purchased"
+msgstr "Gekaufte Stunden"
+
+msgid "Rate"
+msgstr "Preis"
+
+msgid "Total Amount"
+msgstr "Gesamtbetrag"
+
+msgid "Transaction ID"
+msgstr "Transaktions-ID"
+
+msgid "Date"
+msgstr "Datum"
+
+msgid "Back to Home"
+msgstr "Zurück zur Startseite"
+
+# Cancel page
+msgid "Payment Cancelled"
+msgstr "Zahlung abgebrochen"
+
+msgid "Your payment has been cancelled."
+msgstr "Ihre Zahlung wurde abgebrochen."
+
+msgid "No charges have been made to your account."
+msgstr "Es wurden keine Gebühren von Ihrem Konto abgebucht."
+
+msgid "Return to Payment Form"
+msgstr "Zurück zum Zahlungsformular"
+
+# Flash messages
+msgid "Payment successful! Thank you for your purchase."
+msgstr "Zahlung erfolgreich! Vielen Dank für Ihren Einkauf."
+
+msgid "No pricing packages are currently available. Please contact us for custom pricing."
+msgstr "Derzeit sind keine Preispakete verfügbar. Bitte kontaktieren Sie uns für individuelle Preise."
+
+msgid "An error occurred while processing your payment. Please try again later."
+msgstr "Bei der Verarbeitung Ihrer Zahlung ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut."
+
+msgid "Payment is being processed. We will update you when it completes."
+msgstr "Die Zahlung wird bearbeitet. Wir informieren Sie, wenn sie abgeschlossen ist."
+
+msgid "Payment information not found."
+msgstr "Zahlungsinformationen nicht gefunden."
+
+msgid "An error occurred while processing your payment information."
+msgstr "Bei der Verarbeitung Ihrer Zahlungsinformationen ist ein Fehler aufgetreten."
+
+# Development hours product description
+msgid "Development Hours"
+msgstr "Entwicklungsstunden"
+
+msgid "Purchase of"
+msgstr "Kauf von"
+
+msgid "development hours at"
+msgstr "Entwicklungsstunden zu"

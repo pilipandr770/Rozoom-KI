@@ -1,10 +1,17 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash, current_app, jsonify
 from flask_login import current_user
+from flask_babel import gettext as _
 from app.models import PricePackage, StripePayment
 from app import db
 import stripe
 import os
 from datetime import datetime
+
+# Импортируем функции для использования специального домена переводов
+from flask_babel import Domain
+payment_domain = Domain(domain='payment_translations')
+# Создаем функцию перевода для домена payment_translations
+_ = payment_domain.gettext
 
 payment_bp = Blueprint('payment', __name__, url_prefix='/payment')
 
@@ -20,7 +27,7 @@ def payment_form():
     package_objs = PricePackage.query.filter_by(is_active=True).order_by(PricePackage.hours.asc()).all()
     
     if not package_objs:
-        flash('No pricing packages are currently available. Please contact us for custom pricing.', 'warning')
+        flash(_('No pricing packages are currently available. Please contact us for custom pricing.'), 'warning')
         return redirect(url_for('pages.contact'))
     
     # Convert PricePackage objects to dictionaries for JSON serialization
@@ -50,7 +57,7 @@ def create_checkout():
         package_objs = PricePackage.query.filter_by(is_active=True).order_by(PricePackage.hours.asc()).all()
         
         if not package_objs:
-            flash('No pricing packages are currently available. Please contact us for custom pricing.', 'warning')
+            flash(_('No pricing packages are currently available. Please contact us for custom pricing.'), 'warning')
             return redirect(url_for('pages.contact'))
         
         # Find applicable package (default to first/smallest package)
@@ -83,6 +90,10 @@ def create_checkout():
         db.session.add(payment)
         db.session.commit()
         
+        # Переводим описание продукта
+        product_name = _('Development Hours')
+        product_description = f"{_('Purchase of')} {hours} {_('development hours at')} €{hourly_rate:.2f}/{_('per hour')}"
+        
         # Create Stripe checkout session
         checkout_session = stripe.checkout.Session.create(
             payment_method_types=['card'],
@@ -91,8 +102,8 @@ def create_checkout():
                     'price_data': {
                         'currency': 'eur',
                         'product_data': {
-                            'name': f'Development Hours ({hours} hours)',
-                            'description': f'Purchase of {hours} development hours at €{hourly_rate:.2f}/hour'
+                            'name': f'{product_name} ({hours} {_("hours")})',
+                            'description': product_description
                         },
                         'unit_amount': int(hourly_rate * 100),  # Stripe needs amounts in cents
                     },
@@ -125,7 +136,7 @@ def create_checkout():
     
     except Exception as e:
         current_app.logger.error(f"Error creating checkout session: {str(e)}")
-        flash('An error occurred while processing your payment. Please try again later.', 'error')
+        flash(_('An error occurred while processing your payment. Please try again later.'), 'error')
         return redirect(url_for('payment.payment_form'))
 
 @payment_bp.route('/success', methods=['GET'])
@@ -141,7 +152,7 @@ def success():
         payment = StripePayment.query.filter_by(checkout_session_id=session_id).first()
         
         if not payment:
-            flash('Payment information not found.', 'warning')
+            flash(_('Payment information not found.'), 'warning')
             return redirect(url_for('pages.index'))
         
         # If payment status is still pending, update it
@@ -167,15 +178,15 @@ def success():
                 # Send notification to admin (optional)
                 # send_payment_notification(payment)
                 
-                flash('Payment successful! Thank you for your purchase.', 'success')
+                flash(_('Payment successful! Thank you for your purchase.'), 'success')
             else:
-                flash('Payment is being processed. We will update you when it completes.', 'info')
+                flash(_('Payment is being processed. We will update you when it completes.'), 'info')
         
         return render_template('payment/success.html', payment=payment)
     
     except Exception as e:
         current_app.logger.error(f"Error processing successful payment: {str(e)}")
-        flash('An error occurred while processing your payment information.', 'error')
+        flash(_('An error occurred while processing your payment information.'), 'error')
         return redirect(url_for('pages.index'))
 
 @payment_bp.route('/cancel', methods=['GET'])
