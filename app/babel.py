@@ -1,10 +1,8 @@
 from flask import request, g
 from flask_babel import Babel, Domain
+from .i18n_patch import domain_manager, payment_domain
 
 babel = Babel()
-
-# Определяем дополнительные домены для переводов
-payment_domain = Domain(domain='payment_translations')
 
 def get_locale():
     """
@@ -36,11 +34,15 @@ def get_locale():
 
 def init_babel(app):
     """Инициализация Flask-Babel"""
+    # Инициализируем основной экземпляр Babel
     babel.init_app(app, locale_selector=get_locale)
     
-    # В некоторых версиях Flask-Babel Domain не имеет метода init_app
-    # Домен уже настроен при создании
-    # payment_domain.init_app(app, locale_selector=get_locale)
+    # Инициализируем наши дополнительные домены
+    domain_manager.init_domains(app)
+    
+    # Делаем домены доступными в шаблонах
+    app.jinja_env.globals['payment_gettext'] = payment_domain.gettext
+    app.jinja_env.globals['payment_ngettext'] = payment_domain.ngettext
     
     # Доступ к текущей локали из шаблонов
     @app.before_request

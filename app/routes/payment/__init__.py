@@ -1,6 +1,5 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash, current_app, jsonify
 from flask_login import current_user
-from flask_babel import gettext as _
 from app.models import PricePackage, StripePayment
 from app import db
 import stripe
@@ -8,8 +7,7 @@ import os
 from datetime import datetime
 
 # Импортируем функции для использования специального домена переводов
-from flask_babel import Domain
-payment_domain = Domain(domain='payment_translations')
+from app.i18n_patch import payment_domain
 # Создаем функцию перевода для домена payment_translations
 _ = payment_domain.gettext
 

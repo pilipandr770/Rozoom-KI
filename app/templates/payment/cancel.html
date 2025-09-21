@@ -60,21 +60,21 @@
                 <i class="fas fa-times-circle"></i>
             </div>
             
-            <h1>{{ _('Payment Cancelled', domain='payment_translations') }}</h1>
+            <h1>{{ payment_gettext('Payment Cancelled') }}</h1>
             
             <div class="cancel-message">
-                <p>{{ _('Your payment has been cancelled.', domain='payment_translations') }}</p>
-                <p>{{ _('No charges have been made to your account.', domain='payment_translations') }}</p>
+                <p>{{ payment_gettext('Your payment has been cancelled.') }}</p>
+                <p>{{ payment_gettext('No charges have been made to your account.') }}</p>
             </div>
             
             <div class="action-buttons">
-                <a href="{{ url_for('payment.payment_form') }}" class="btn-try-again">{{ _('Return to Payment Form', domain='payment_translations') }}</a>
-                <a href="{{ url_for('pages.index') }}" class="btn btn-outline-primary">{{ _('Back to Home', domain='payment_translations') }}</a>
+                <a href="{{ url_for('payment.payment_form') }}" class="btn-try-again">{{ payment_gettext('Return to Payment Form') }}</a>
+                <a href="{{ url_for('pages.index') }}" class="btn btn-outline-primary">{{ payment_gettext('Back to Home') }}</a>
             </div>
             
             <div class="mt-4">
-                <p>{{ _('Having issues with payment?', domain='payment_translations') }}</p>
-                <a href="{{ url_for('pages.contact') }}">{{ _('Contact us', domain='payment_translations') }}</a>
+                <p>{{ payment_gettext('Having issues with payment?') }}</p>
+                <a href="{{ url_for('pages.contact') }}">{{ payment_gettext('Contact us') }}</a>
             </div>
         </div>
     </div>

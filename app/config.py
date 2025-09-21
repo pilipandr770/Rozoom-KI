@@ -84,7 +84,7 @@ class Config:
     OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
     
     # Babel settings for internationalization
-    LANGUAGES = ['en', 'de']
+    LANGUAGES = ['en', 'de', 'ru', 'uk']
     BABEL_DEFAULT_LOCALE = 'de'
     BABEL_DEFAULT_TIMEZONE = 'UTC'
     

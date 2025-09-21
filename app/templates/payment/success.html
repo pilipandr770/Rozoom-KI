@@ -84,30 +84,30 @@
                 <i class="fas fa-check-circle"></i>
             </div>
             
-            <h1>{{ _('Payment Successful', domain='payment_translations') }}</h1>
+            <h1>{{ payment_gettext('Payment Successful') }}</h1>
             
             <div class="success-message">
-                <p>{{ _('Thank you for your purchase!', domain='payment_translations') }} {{ _('Your payment has been processed successfully.', domain='payment_translations') }}</p>
-                <p>{{ _('We have sent a confirmation email to', domain='payment_translations') }} <strong>{{ payment.customer_email }}</strong></p>
+                <p>{{ payment_gettext('Thank you for your purchase!') }} {{ payment_gettext('Your payment has been processed successfully.') }}</p>
+                <p>{{ payment_gettext('We have sent a confirmation email to') }} <strong>{{ payment.customer_email }}</strong></p>
             </div>
             
             {% if payment %}
             <div class="payment-details">
-                <h3>{{ _('Order Details', domain='payment_translations') }}</h3>
+                <h3>{{ payment_gettext('Order Details') }}</h3>
                 <dl>
-                    <dt>{{ _('Transaction ID', domain='payment_translations') }}</dt>
+                    <dt>{{ payment_gettext('Transaction ID') }}</dt>
                     <dd>{{ payment.id }}</dd>
                     
-                    <dt>{{ _('Hours Purchased', domain='payment_translations') }}</dt>
+                    <dt>{{ payment_gettext('Hours Purchased') }}</dt>
                     <dd>{{ payment.hours_purchased }}</dd>
                     
-                    <dt>{{ _('Total Amount', domain='payment_translations') }}</dt>
+                    <dt>{{ payment_gettext('Total Amount') }}</dt>
                     <dd>€{{ "%.2f"|format(payment.amount) }}</dd>
                     
-                    <dt>{{ _('Rate', domain='payment_translations') }}</dt>
-                    <dd>€{{ "%.2f"|format(payment.hourly_rate) }}/{{ _('per hour', domain='payment_translations') }}</dd>
+                    <dt>{{ payment_gettext('Rate') }}</dt>
+                    <dd>€{{ "%.2f"|format(payment.hourly_rate) }}/{{ payment_gettext('per hour') }}</dd>
                     
-                    <dt>{{ _('Date', domain='payment_translations') }}</dt>
+                    <dt>{{ payment_gettext('Date') }}</dt>
                     <dd>{{ payment.completed_at.strftime('%d-%m-%Y %H:%M') if payment.completed_at else payment.updated_at.strftime('%d-%m-%Y %H:%M') }}</dd>
                 </dl>
             </div>
@@ -115,9 +115,9 @@
             
             <div class="action-buttons">
                 {% if current_user.is_authenticated %}
-                <a href="{{ url_for('dashboard.index') }}" class="btn-dashboard">{{ _('Go to Dashboard', domain='payment_translations') }}</a>
+                <a href="{{ url_for('dashboard.index') }}" class="btn-dashboard">{{ payment_gettext('Go to Dashboard') }}</a>
                 {% endif %}
-                <a href="{{ url_for('pages.index') }}" class="btn btn-outline-primary">{{ _('Back to Home', domain='payment_translations') }}</a>
+                <a href="{{ url_for('pages.index') }}" class="btn btn-outline-primary">{{ payment_gettext('Back to Home') }}</a>
             </div>
         </div>
     </div>
