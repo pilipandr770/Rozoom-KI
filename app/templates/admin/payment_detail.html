@@ -135,10 +135,10 @@
                         </div>
                     </div>
                     
-                    {% if payment.metadata %}
+                    {% if payment.stripe_metadata %}
                     <div class="mt-4">
                         <h5>Additional Metadata</h5>
-                        <pre class="bg-light p-3 rounded">{{ payment.metadata|tojson(indent=2) }}</pre>
+                        <pre class="bg-light p-3 rounded">{{ payment.stripe_metadata|tojson(indent=2) }}</pre>
                     </div>
                     {% endif %}
                 </div>

@@ -35,7 +35,7 @@ class StripePayment(db.Model):
     completed_at = db.Column(db.DateTime, nullable=True)
     
     # Additional metadata
-    metadata = db.Column(db.JSON, nullable=True)  # For storing any additional Stripe metadata
+    stripe_metadata = db.Column(db.JSON, nullable=True)  # For storing any additional Stripe metadata
     
     def __repr__(self):
         return f'<StripePayment {self.payment_intent_id} ({self.status})>'
