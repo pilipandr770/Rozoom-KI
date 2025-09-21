@@ -17,11 +17,22 @@ def setup_stripe():
 def payment_form():
     """Display payment form for purchasing development hours"""
     # Get all active pricing packages
-    packages = PricePackage.query.filter_by(is_active=True).order_by(PricePackage.hours.asc()).all()
+    package_objs = PricePackage.query.filter_by(is_active=True).order_by(PricePackage.hours.asc()).all()
     
-    if not packages:
+    if not package_objs:
         flash('No pricing packages are currently available. Please contact us for custom pricing.', 'warning')
         return redirect(url_for('pages.contact'))
+    
+    # Convert PricePackage objects to dictionaries for JSON serialization
+    packages = []
+    for pkg in package_objs:
+        packages.append({
+            'id': pkg.id,
+            'name': pkg.name,
+            'hours': pkg.hours,
+            'price_per_hour': pkg.price_per_hour,
+            'description': pkg.description if hasattr(pkg, 'description') else None
+        })
     
     return render_template('payment/payment_form.html', packages=packages)
 
@@ -36,17 +47,17 @@ def create_checkout():
             hours = 5  # Minimum hours
         
         # Get all active pricing packages
-        packages = PricePackage.query.filter_by(is_active=True).order_by(PricePackage.hours.asc()).all()
+        package_objs = PricePackage.query.filter_by(is_active=True).order_by(PricePackage.hours.asc()).all()
         
-        if not packages:
+        if not package_objs:
             flash('No pricing packages are currently available. Please contact us for custom pricing.', 'warning')
             return redirect(url_for('pages.contact'))
         
         # Find applicable package (default to first/smallest package)
-        applicable_package = packages[0]
+        applicable_package = package_objs[0]
         
         # Find the largest package that applies to the selected hours
-        for package in packages:
+        for package in package_objs:
             if hours >= package.hours:
                 applicable_package = package
             else:
