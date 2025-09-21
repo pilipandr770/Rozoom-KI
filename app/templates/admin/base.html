@@ -222,6 +222,9 @@
                 <a class="nav-link {% if '/admin/pricing' in request.path %}active{% endif %}" href="{{ url_for('admin.pricing_packages') }}">
                     <i class="fas fa-money-bill"></i> Цены и тарифы
                 </a>
+                <a class="nav-link {% if '/admin/payments' in request.path %}active{% endif %}" href="{{ url_for('admin.payments') }}">
+                    <i class="fas fa-credit-card"></i> Платежи
+                </a>
                 <a class="nav-link" href="{{ url_for('main.index') }}">
                     <i class="fas fa-home"></i> На главную
                 </a>

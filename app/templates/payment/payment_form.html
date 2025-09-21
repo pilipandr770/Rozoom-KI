@@ -1,0 +1,237 @@
+{% extends 'base.html' %}
+
+{% block title %}Buy Development Hours — Rozoom-KI{% endblock %}
+
+{% block head %}
+{{ super() }}
+<style>
+    .payment-form-section {
+        padding: 60px 0;
+    }
+    
+    .payment-form-header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    
+    .payment-card {
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        padding: 30px;
+        margin-bottom: 30px;
+    }
+    
+    .hours-selector {
+        margin: 40px 0;
+    }
+    
+    .range-container {
+        margin: 30px 0;
+    }
+    
+    .slider-labels {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+        color: var(--light-text);
+    }
+    
+    .price-display {
+        margin: 30px 0;
+        text-align: center;
+        font-size: 24px;
+    }
+    
+    .total-price {
+        font-size: 36px;
+        font-weight: 700;
+        color: var(--primary-dark);
+        margin: 10px 0;
+    }
+    
+    .price-per-hour {
+        font-size: 18px;
+        color: var(--light-text);
+    }
+    
+    .checkout-btn {
+        display: block;
+        width: 100%;
+        padding: 12px;
+        background-color: var(--primary-color);
+        color: white;
+        text-decoration: none;
+        border: none;
+        border-radius: 4px;
+        font-size: 18px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin-top: 20px;
+    }
+    
+    .checkout-btn:hover {
+        background-color: var(--primary-dark);
+    }
+    
+    .pricing-tiers {
+        margin: 30px 0;
+        font-size: 14px;
+        color: var(--light-text);
+    }
+    
+    /* Custom range slider styling */
+    input[type="range"] {
+        -webkit-appearance: none;
+        width: 100%;
+        height: 10px;
+        border-radius: 5px;
+        background: #e5e7eb;
+        outline: none;
+    }
+    
+    input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: var(--primary-color);
+        cursor: pointer;
+    }
+    
+    input[type="range"]::-moz-range-thumb {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: var(--primary-color);
+        cursor: pointer;
+    }
+    
+    .hours-display {
+        font-size: 18px;
+        font-weight: 500;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="payment-form-section">
+    <div class="container">
+        <div class="payment-form-header">
+            <h1>{{ _('Buy Development Hours') }}</h1>
+            <p class="lead">{{ _('Choose the number of development hours you need for your project') }}</p>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="payment-card">
+                    <form id="payment-form" method="POST" action="{{ url_for('payment.create_checkout') }}">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                        
+                        <div class="hours-selector">
+                            <h3>{{ _('Select Hours') }}</h3>
+                            <p>{{ _('Drag the slider to select how many development hours you wish to purchase') }}</p>
+                            
+                            <div class="range-container">
+                                <div class="hours-display">
+                                    <span id="hours-value">10</span> {{ _('hours') }}
+                                </div>
+                                <input type="range" id="hours-range" name="hours" min="5" max="100" value="10" step="1">
+                                <div class="slider-labels">
+                                    <span>5</span>
+                                    <span>50</span>
+                                    <span>100</span>
+                                </div>
+                            </div>
+                            
+                            <div class="pricing-tiers">
+                                <p>{{ _('Pricing tiers:') }}</p>
+                                <ul>
+                                    {% for package in packages %}
+                                    <li>{{ package.hours }}+ {{ _('hours') }}: €{{ "%.2f"|format(package.price_per_hour) }} {{ _('per hour') }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            
+                            <div class="price-display">
+                                <div>{{ _('Total Price') }}</div>
+                                <div class="total-price">€<span id="total-price">0</span></div>
+                                <div class="price-per-hour">
+                                    €<span id="price-per-hour">0</span> {{ _('per hour') }}
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="checkout-btn">
+                                {{ _('Proceed to Checkout') }}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="text-center mt-4">
+                    <p>{{ _('Need a custom solution?') }} <a href="{{ url_for('pages.contact') }}">{{ _('Contact us') }}</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const hoursRange = document.getElementById('hours-range');
+    const hoursValue = document.getElementById('hours-value');
+    const totalPrice = document.getElementById('total-price');
+    const pricePerHour = document.getElementById('price-per-hour');
+    
+    // Get pricing packages from the server
+    const packagesData = '{{ packages|tojson }}';
+    const packages = JSON.parse(packagesData).map(pkg => ({
+        hours: pkg.hours,
+        pricePerHour: pkg.price_per_hour
+    }));
+    
+    // Sort packages by hours (ascending)
+    packages.sort((a, b) => a.hours - b.hours);
+    
+    // Function to calculate price based on hours
+    function calculatePrice(hours) {
+        // Find applicable package (default to the first/smallest package)
+        let applicablePackage = packages[0];
+        
+        // Find the largest package that applies to the selected hours
+        for (const pkg of packages) {
+            if (hours >= pkg.hours) {
+                applicablePackage = pkg;
+            } else {
+                break;
+            }
+        }
+        
+        const hourlyRate = applicablePackage.pricePerHour;
+        const total = hours * hourlyRate;
+        
+        return {
+            total: total,
+            hourlyRate: hourlyRate
+        };
+    }
+    
+    // Update display when slider changes
+    hoursRange.addEventListener('input', function() {
+        const hours = parseInt(this.value);
+        hoursValue.textContent = hours;
+        
+        const price = calculatePrice(hours);
+        totalPrice.textContent = price.total.toFixed(2);
+        pricePerHour.textContent = price.hourlyRate.toFixed(2);
+    });
+    
+    // Initialize with default value
+    hoursRange.dispatchEvent(new Event('input'));
+});
+</script>
+{% endblock %}

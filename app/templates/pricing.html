@@ -144,7 +144,7 @@
                                 </div>
                                 
                                 <div class="pricing-bottom">
-                                    <a href="/contact" class="pricing-btn">{{ _('Select Package') }}</a>
+                                    <a href="{{ url_for('payment.payment_form') }}" class="pricing-btn">{{ _('Buy Hours') }}</a>
                                 </div>
                             </div>
                         </div>
@@ -179,7 +179,7 @@
                         </div>
                         
                         <div class="pricing-bottom">
-                            <a href="/contact" class="pricing-btn">{{ _('Get in Touch') }}</a>
+                            <a href="{{ url_for('pages.contact') }}" class="pricing-btn">{{ _('Get in Touch') }}</a>
                         </div>
                     </div>
                 </div>
@@ -189,7 +189,7 @@
         <div class="mt-5 text-center">
             <h2>{{ _('Need Help Choosing?') }}</h2>
             <p>{{ _('Contact our team for a free consultation and we\'ll help you select the perfect package for your project.') }}</p>
-            <a href="/contact" class="btn btn-lg btn-primary">{{ _('Contact Us') }}</a>
+            <a href="{{ url_for('pages.contact') }}" class="btn btn-lg btn-primary">{{ _('Contact Us') }}</a>
         </div>
     </div>
 </section>

@@ -1,0 +1,215 @@
+{% extends 'admin/base.html' %}
+
+{% block title %}Payment Details - Admin{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-4">
+    <h1 class="mt-4">Payment Details</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a href="{{ url_for('admin.dashboard') }}">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="{{ url_for('admin.payments') }}">Payments</a></li>
+        <li class="breadcrumb-item active">Payment #{{ payment.id }}</li>
+    </ol>
+    
+    <!-- Payment Status Card -->
+    <div class="row mb-4">
+        <div class="col-xl-12">
+            <div class="card {% if payment.status == 'succeeded' %}border-success{% elif payment.status == 'pending' %}border-warning{% elif payment.status == 'cancelled' %}border-secondary{% else %}border-danger{% endif %}">
+                <div class="card-header {% if payment.status == 'succeeded' %}bg-success{% elif payment.status == 'pending' %}bg-warning{% elif payment.status == 'cancelled' %}bg-secondary{% else %}bg-danger{% endif %} text-white">
+                    <h5 class="mb-0">
+                        Payment Status: {{ payment.status|upper }}
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h2 class="display-4">€{{ "%.2f"|format(payment.amount) }}</h2>
+                            <p class="text-muted">
+                                {{ payment.hours_purchased }} hours @ €{{ "%.2f"|format(payment.hourly_rate) }}/hour
+                            </p>
+                            {% if payment.status == 'succeeded' %}
+                            <p class="text-success">
+                                <i class="fas fa-check-circle"></i> 
+                                Payment completed on {{ payment.completed_at.strftime('%d-%m-%Y %H:%M') if payment.completed_at else payment.updated_at.strftime('%d-%m-%Y %H:%M') }}
+                            </p>
+                            {% elif payment.status == 'pending' %}
+                            <p class="text-warning">
+                                <i class="fas fa-clock"></i> 
+                                Payment pending since {{ payment.created_at.strftime('%d-%m-%Y %H:%M') }}
+                            </p>
+                            {% elif payment.status == 'cancelled' %}
+                            <p class="text-secondary">
+                                <i class="fas fa-ban"></i> 
+                                Payment cancelled on {{ payment.updated_at.strftime('%d-%m-%Y %H:%M') }}
+                            </p>
+                            {% else %}
+                            <p class="text-danger">
+                                <i class="fas fa-exclamation-circle"></i> 
+                                Payment failed on {{ payment.updated_at.strftime('%d-%m-%Y %H:%M') }}
+                            </p>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6 text-md-end">
+                            <h3>{{ payment.customer_name or 'Anonymous Customer' }}</h3>
+                            <p>
+                                <a href="mailto:{{ payment.customer_email }}">{{ payment.customer_email }}</a>
+                            </p>
+                            {% if payment.user %}
+                            <p>
+                                <span class="badge bg-info">Registered User</span>
+                                <a href="{{ url_for('admin.user_detail', user_id=payment.user.id) }}">View User Profile</a>
+                            </p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Payment Details Card -->
+    <div class="row mb-4">
+        <div class="col-xl-12">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-receipt"></i>
+                    Payment Details
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Payment Information</h5>
+                            <table class="table table-borderless">
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Payment ID:</th>
+                                        <td>{{ payment.id }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Stripe Session ID:</th>
+                                        <td>{{ payment.checkout_session_id or 'N/A' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Stripe Payment Intent:</th>
+                                        <td>{{ payment.payment_intent_id or 'N/A' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Package:</th>
+                                        <td>
+                                            {% if payment.price_package_id %}
+                                            <a href="{{ url_for('admin.price_package_detail', package_id=payment.price_package_id) }}">
+                                                {{ payment.price_package.name }}
+                                            </a>
+                                            {% else %}
+                                            Custom Package
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Timestamps</h5>
+                            <table class="table table-borderless">
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Created:</th>
+                                        <td>{{ payment.created_at.strftime('%d-%m-%Y %H:%M:%S') }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Last Updated:</th>
+                                        <td>{{ payment.updated_at.strftime('%d-%m-%Y %H:%M:%S') }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Completed:</th>
+                                        <td>
+                                            {% if payment.completed_at %}
+                                            {{ payment.completed_at.strftime('%d-%m-%Y %H:%M:%S') }}
+                                            {% else %}
+                                            N/A
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    {% if payment.metadata %}
+                    <div class="mt-4">
+                        <h5>Additional Metadata</h5>
+                        <pre class="bg-light p-3 rounded">{{ payment.metadata|tojson(indent=2) }}</pre>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Actions -->
+    <div class="row mb-4">
+        <div class="col-xl-12">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-cogs"></i>
+                    Actions
+                </div>
+                <div class="card-body">
+                    <a href="{{ url_for('admin.payments') }}" class="btn btn-primary me-2">
+                        <i class="fas fa-arrow-left"></i> Back to All Payments
+                    </a>
+                    
+                    {% if payment.status == 'pending' %}
+                    <button type="button" class="btn btn-warning me-2" data-bs-toggle="modal" data-bs-target="#checkStatusModal">
+                        <i class="fas fa-sync"></i> Check Status
+                    </button>
+                    {% endif %}
+                    
+                    {% if payment.status == 'succeeded' %}
+                    <a href="#" class="btn btn-info me-2">
+                        <i class="fas fa-envelope"></i> Send Receipt
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if payment.status == 'pending' %}
+<!-- Check Status Modal -->
+<div class="modal fade" id="checkStatusModal" tabindex="-1" aria-labelledby="checkStatusModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="checkStatusModalLabel">Check Payment Status</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Would you like to check the current status of this payment with Stripe?</p>
+                <p>This will query the Stripe API and update the payment status in our database.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="checkStatusBtn">Check Status</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const checkStatusBtn = document.getElementById('checkStatusBtn');
+    
+    if (checkStatusBtn) {
+        checkStatusBtn.addEventListener('click', function() {
+            // You can implement AJAX call to check payment status here
+            alert('This functionality would check the payment status via Stripe API');
+            // Redirect or reload the page after checking
+            window.location.reload();
+        });
+    }
+});
+</script>
+{% endif %}
+{% endblock %}

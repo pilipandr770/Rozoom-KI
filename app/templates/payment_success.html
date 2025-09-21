@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block title %}Payment Successful — Rozoom-KI{% endblock %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-body text-center p-5">
+                    <div class="mb-4">
+                        <span class="display-1 text-success">✓</span>
+                    </div>
+                    <h1 class="card-title mb-4">{{ _('Payment Successful!') }}</h1>
+                    <p class="card-text lead mb-4">{{ _('Thank you for your purchase. We\'ve received your payment.') }}</p>
+                    
+                    {% if payment %}
+                    <div class="payment-details mt-4 mb-4 p-4 bg-light rounded">
+                        <h3 class="mb-3">{{ _('Order Summary') }}</h3>
+                        <table class="table table-borderless">
+                            <tr>
+                                <td class="text-start"><strong>{{ _('Hours Purchased') }}:</strong></td>
+                                <td class="text-end">{{ payment.hours_purchased }}</td>
+                            </tr>
+                            <tr>
+                                <td class="text-start"><strong>{{ _('Rate per Hour') }}:</strong></td>
+                                <td class="text-end">€{{ "%.2f"|format(payment.hourly_rate) }}</td>
+                            </tr>
+                            <tr class="border-top">
+                                <td class="text-start"><strong>{{ _('Total Amount') }}:</strong></td>
+                                <td class="text-end"><strong>€{{ "%.2f"|format(payment.amount) }}</strong></td>
+                            </tr>
+                        </table>
+                    </div>
+                    {% endif %}
+                    
+                    <p class="mb-4">{{ _('We\'ve sent a receipt to your email address. Our team will be in touch shortly to discuss the next steps for your project.') }}</p>
+                    
+                    <div class="mt-4">
+                        <a href="{{ url_for('pages.index') }}" class="btn btn-outline-primary me-2">{{ _('Return Home') }}</a>
+                        {% if current_user.is_authenticated %}
+                        <a href="{{ url_for('client.dashboard') }}" class="btn btn-primary">{{ _('Go to Dashboard') }}</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card mt-4 shadow-sm">
+                <div class="card-body p-4">
+                    <h3>{{ _('What\'s Next?') }}</h3>
+                    <ol class="mt-3">
+                        <li>{{ _('Our project manager will contact you within 24 hours') }}</li>
+                        <li>{{ _('We\'ll discuss your project requirements and timeline') }}</li>
+                        <li>{{ _('Development work will begin according to the agreed schedule') }}</li>
+                        <li>{{ _('You\'ll receive regular updates on your project') }}</li>
+                    </ol>
+                    
+                    <p class="mt-3">
+                        {{ _('If you have any questions, please ') }} 
+                        <a href="{{ url_for('pages.contact') }}">{{ _('contact us') }}</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+
+{% block title %}Payment Successful — Rozoom-KI{% endblock %}
+
+{% block head %}
+{{ super() }}
+<style>
+    .success-section {
+        padding: 60px 0;
+        text-align: center;
+    }
+    
+    .success-card {
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        padding: 40px;
+        margin: 0 auto;
+        max-width: 600px;
+    }
+    
+    .success-icon {
+        font-size: 60px;
+        color: #10b981;
+        margin-bottom: 20px;
+    }
+    
+    .success-message {
+        margin-bottom: 30px;
+    }
+    
+    .payment-details {
+        background-color: #f9fafb;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 30px 0;
+        text-align: left;
+    }
+    
+    .payment-details dl {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+    
+    .payment-details dt {
+        color: var(--light-text);
+        font-weight: normal;
+    }
+    
+    .payment-details dd {
+        font-weight: 500;
+        margin: 0;
+    }
+    
+    .action-buttons {
+        margin-top: 30px;
+    }
+    
+    .btn-dashboard {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 4px;
+        text-decoration: none;
+        display: inline-block;
+        margin-right: 10px;
+        transition: background-color 0.3s;
+    }
+    
+    .btn-dashboard:hover {
+        background-color: var(--primary-dark);
+        text-decoration: none;
+        color: white;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="success-section">
+    <div class="container">
+        <div class="success-card">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            
+            <h1>{{ _('Payment Successful!') }}</h1>
+            
+            <div class="success-message">
+                <p>{{ _('Thank you for your purchase! Your payment has been processed successfully.') }}</p>
+                <p>{{ _('We have sent a confirmation email to') }} <strong>{{ payment.customer_email }}</strong></p>
+            </div>
+            
+            {% if payment %}
+            <div class="payment-details">
+                <h3>{{ _('Order Details') }}</h3>
+                <dl>
+                    <dt>{{ _('Order ID') }}</dt>
+                    <dd>{{ payment.id }}</dd>
+                    
+                    <dt>{{ _('Hours Purchased') }}</dt>
+                    <dd>{{ payment.hours_purchased }}</dd>
+                    
+                    <dt>{{ _('Amount Paid') }}</dt>
+                    <dd>€{{ "%.2f"|format(payment.amount) }}</dd>
+                    
+                    <dt>{{ _('Rate') }}</dt>
+                    <dd>€{{ "%.2f"|format(payment.hourly_rate) }}/hour</dd>
+                    
+                    <dt>{{ _('Date') }}</dt>
+                    <dd>{{ payment.completed_at.strftime('%d-%m-%Y %H:%M') if payment.completed_at else payment.updated_at.strftime('%d-%m-%Y %H:%M') }}</dd>
+                </dl>
+            </div>
+            {% endif %}
+            
+            <div class="action-buttons">
+                {% if current_user.is_authenticated %}
+                <a href="{{ url_for('dashboard.index') }}" class="btn-dashboard">{{ _('Go to Dashboard') }}</a>
+                {% endif %}
+                <a href="{{ url_for('pages.index') }}" class="btn btn-outline-primary">{{ _('Back to Homepage') }}</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

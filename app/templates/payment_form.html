@@ -1,0 +1,394 @@
+{% extends 'base.html' %}
+
+{% block title %}Purchase Development Hours — Rozoom-KI{% endblock %}
+
+{% block head %}
+{{ super() }}
+<script src="https://js.stripe.com/v3/"></script>
+<style>
+    .payment-section {
+        padding: 60px 0;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    
+    .payment-header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    
+    .payment-form-container {
+        background-color: white;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    .hour-selector {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+    
+    .range-container {
+        position: relative;
+    }
+    
+    .range-input {
+        width: 100%;
+        margin: 15px 0;
+    }
+    
+    .price-display {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #f8fafc;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 20px 0;
+        border: 1px solid #e5e7eb;
+    }
+    
+    .price-breakdown {
+        flex: 1;
+    }
+    
+    .price-total {
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--primary-dark);
+    }
+    
+    .hour-display {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    
+    .rate-display {
+        color: #6b7280;
+        font-size: 16px;
+    }
+    
+    .package-selector {
+        margin-bottom: 30px;
+    }
+    
+    .package-options {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        margin-top: 15px;
+    }
+    
+    .package-option {
+        border: 2px solid #e5e7eb;
+        border-radius: 8px;
+        padding: 15px;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-align: center;
+    }
+    
+    .package-option:hover {
+        border-color: var(--primary-color);
+    }
+    
+    .package-option.selected {
+        border-color: var(--primary-color);
+        background-color: rgba(37, 99, 235, 0.05);
+    }
+    
+    .package-hours {
+        font-weight: 700;
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+    
+    .package-price {
+        color: var(--primary-dark);
+    }
+    
+    .custom-range {
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px solid #e5e7eb;
+    }
+    
+    .checkout-btn {
+        display: block;
+        width: 100%;
+        padding: 12px;
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    
+    .checkout-btn:hover {
+        background-color: var(--primary-dark);
+    }
+    
+    .checkout-btn:disabled {
+        background-color: #9ca3af;
+        cursor: not-allowed;
+    }
+    
+    .hour-markers {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 5px;
+        font-size: 14px;
+        color: #6b7280;
+    }
+    
+    .loading {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: white;
+        animation: spin 1s ease-in-out infinite;
+    }
+    
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+    
+    .info-section {
+        margin-top: 40px;
+    }
+    
+    .info-title {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+    
+    .info-list {
+        list-style-type: none;
+        padding-left: 0;
+    }
+    
+    .info-list li {
+        position: relative;
+        padding-left: 30px;
+        margin-bottom: 10px;
+    }
+    
+    .info-list li:before {
+        content: "✓";
+        color: var(--primary-color);
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="payment-section">
+    <div class="payment-header">
+        <h1>{{ _('Purchase Development Hours') }}</h1>
+        <p class="lead">{{ _('Select the number of development hours you need') }}</p>
+    </div>
+
+    <div class="payment-form-container">
+        {% if error %}
+        <div class="alert alert-danger">
+            {{ error }}
+        </div>
+        {% endif %}
+        
+        <form id="payment-form" action="/payment/create-checkout" method="POST">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <input type="hidden" id="selected-hours" name="hours" value="10">
+            <input type="hidden" id="hourly-rate" name="hourly_rate" value="">
+            <input type="hidden" id="total-amount" name="amount" value="">
+            
+            <div class="package-selector">
+                <h3>{{ _('Choose a Package') }}</h3>
+                <div class="package-options">
+                    {% for package in packages %}
+                    <div class="package-option" data-hours="{{ package.hours }}" data-rate="{{ package.price_per_hour }}" data-id="{{ package.id }}">
+                        <div class="package-hours">{{ package.hours }} {{ _('Hours') }}</div>
+                        <div class="package-price">€{{ "%.2f"|format(package.total_price) }}</div>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+                <div class="custom-range">
+                    <h3>{{ _('Or Customize Your Hours') }}</h3>
+                    <div class="range-container">
+                        <input type="range" id="hour-range" class="range-input" min="5" max="100" step="5" value="10">
+                        <div class="hour-markers">
+                            <span>5 {{ _('hrs') }}</span>
+                            <span>50 {{ _('hrs') }}</span>
+                            <span>100 {{ _('hrs') }}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="price-display">
+                        <div class="price-breakdown">
+                            <div class="hour-display"><span id="hour-value">10</span> {{ _('Hours') }}</div>
+                            <div class="rate-display">{{ _('Rate') }}: €<span id="rate-value">85.00</span>/{{ _('hour') }}</div>
+                        </div>
+                        <div class="price-total">€<span id="total-price">850.00</span></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-info">
+                <h3>{{ _('Contact Information') }}</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="name">{{ _('Full Name') }}</label>
+                            <input type="text" id="name" name="name" class="form-control" required 
+                                   {% if current_user.is_authenticated %}value="{{ current_user.name }}"{% endif %}>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="email">{{ _('Email Address') }}</label>
+                            <input type="email" id="email" name="email" class="form-control" required
+                                  {% if current_user.is_authenticated %}value="{{ current_user.email }}"{% endif %}>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <button type="submit" id="checkout-button" class="checkout-btn">
+                <span id="button-text">{{ _('Proceed to Payment') }}</span>
+                <span id="button-loading" class="loading" style="display: none;"></span>
+            </button>
+        </form>
+    </div>
+    
+    <div class="info-section">
+        <h3 class="info-title">{{ _('What\'s Included') }}</h3>
+        <ul class="info-list">
+            <li>{{ _('Professional development work per your requirements') }}</li>
+            <li>{{ _('Regular updates on progress') }}</li>
+            <li>{{ _('Code and documentation delivered via secure channels') }}</li>
+            <li>{{ _('Free minor revisions') }}</li>
+            <li>{{ _('Access to our project management system') }}</li>
+        </ul>
+        
+        <p class="mt-4">
+            {{ _('Need help choosing the right number of hours? ') }}
+            <a href="/contact">{{ _('Contact our team') }}</a> {{ _('for a custom quote or consultation.') }}
+        </p>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize pricing data from packages
+        const priceTiersData = '{{ packages|tojson }}';
+        const priceTiers = JSON.parse(priceTiersData).map(pkg => ({
+            hours: pkg.hours,
+            rate: pkg.price_per_hour,
+            id: pkg.id
+        }));
+        
+        // Add default fallback rate for custom hours
+        priceTiers.push({ hours: 999, rate: 95 });
+        
+        // Sort by hours ascending
+        priceTiers.sort((a, b) => a.hours - b.hours);
+        
+        const hourRange = document.getElementById('hour-range');
+        const hourValue = document.getElementById('hour-value');
+        const rateValue = document.getElementById('rate-value');
+        const totalPrice = document.getElementById('total-price');
+        const selectedHours = document.getElementById('selected-hours');
+        const hourlyRate = document.getElementById('hourly-rate');
+        const totalAmount = document.getElementById('total-amount');
+        const packageOptions = document.querySelectorAll('.package-option');
+        const checkoutButton = document.getElementById('checkout-button');
+        const paymentForm = document.getElementById('payment-form');
+        
+        // Function to find the appropriate rate for given hours
+        function findRate(hours) {
+            let rate = 95; // Default highest rate
+            let packageId = null;
+            
+            for (let i = priceTiers.length - 1; i >= 0; i--) {
+                if (hours >= priceTiers[i].hours) {
+                    rate = priceTiers[i].rate;
+                    packageId = priceTiers[i].id || null;
+                    break;
+                }
+            }
+            
+            return { rate, packageId };
+        }
+        
+        // Update display and hidden fields
+        function updatePricing(hours) {
+            const { rate, packageId } = findRate(hours);
+            
+            hourValue.textContent = hours;
+            rateValue.textContent = rate.toFixed(2);
+            
+            const total = hours * rate;
+            totalPrice.textContent = total.toFixed(2);
+            
+            // Update hidden form fields
+            selectedHours.value = hours;
+            hourlyRate.value = rate;
+            totalAmount.value = total;
+            
+            // Update package selection
+            packageOptions.forEach(pkg => {
+                pkg.classList.remove('selected');
+                const pkgHours = parseInt(pkg.dataset.hours);
+                if (pkgHours === hours) {
+                    pkg.classList.add('selected');
+                }
+            });
+            
+            // Set range input value
+            hourRange.value = hours;
+        }
+        
+        // Handle range input changes
+        hourRange.addEventListener('input', function() {
+            updatePricing(parseInt(this.value));
+        });
+        
+        // Handle package option clicks
+        packageOptions.forEach(pkg => {
+            pkg.addEventListener('click', function() {
+                const hours = parseInt(this.dataset.hours);
+                updatePricing(hours);
+            });
+        });
+        
+        // Handle form submission
+        paymentForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const buttonText = document.getElementById('button-text');
+            const buttonLoading = document.getElementById('button-loading');
+            
+            // Show loading state
+            buttonText.style.display = 'none';
+            buttonLoading.style.display = 'inline-block';
+            checkoutButton.disabled = true;
+            
+            // Submit the form
+            this.submit();
+        });
+        
+        // Initialize with default values
+        updatePricing(10);
+    });
+</script>
+{% endblock %}
