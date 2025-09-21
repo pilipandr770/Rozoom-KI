@@ -8,30 +8,35 @@ echo "Текущая дата: $(date)"
 echo "Python версия: $(python --version)"
 echo "Pip версия: $(pip --version)"
 
-# ВАЖНО: Компилируем переводы в самом начале, чтобы убедиться, что они доступны
-echo "Компиляция файлов переводов (.po -> .mo)..."
-if pybabel compile -d app/translations; then
-    echo "✅ Файлы переводов успешно скомпилированы"
+# ВАЖНО: Компилируем все переводы в самом начале, включая доменные переводы
+echo "Компиляция всех файлов переводов (.po -> .mo)..."
+if python compile_all_translations.py; then
+    echo "✅ Все файлы переводов успешно скомпилированы"
 else
-    echo "⚠️ Ошибка компиляции переводов, пробуем альтернативный метод..."
-    python -c "
-import os, glob
-from babel.messages.mofile import write_mo
-from babel.messages.pofile import read_po
-
-for po_file in glob.glob('app/translations/**/LC_MESSAGES/*.po', recursive=True):
-    mo_file = po_file[:-3] + '.mo'
-    print(f'Компиляция {po_file} -> {mo_file}')
-    try:
-        with open(po_file, 'rb') as f_in:
-            catalog = read_po(f_in)
-        with open(mo_file, 'wb') as f_out:
-            write_mo(f_out, catalog)
-    except Exception as e:
-        print(f'Ошибка компиляции {po_file}: {e}')
-print('Компиляция завершена')
-"
-    echo "✅ Файлы переводов скомпилированы через python"
+    echo "⚠️ Ошибка при выполнении скрипта компиляции переводов, пробуем резервный метод..."
+    
+    # Компилируем основные файлы переводов
+    if pybabel compile -d app/translations; then
+        echo "✅ Основные файлы переводов успешно скомпилированы"
+    else
+        echo "⚠️ Ошибка компиляции основных переводов"
+    fi
+    
+    # Компилируем доменные файлы переводов
+    if pybabel compile -d app/translations -D payment_translations -f; then
+        echo "✅ Файлы переводов платежей успешно скомпилированы"
+    else
+        echo "⚠️ Ошибка компиляции файлов переводов платежей"
+    fi
+    
+    # Другие важные домены
+    for domain in "form_translations" "contact_translations" "pricing_translations"; do
+        if pybabel compile -d app/translations -D $domain -f; then
+            echo "✅ Домен $domain успешно скомпилирован"
+        else
+            echo "⚠️ Ошибка компиляции домена $domain"
+        fi
+    done
 fi
 
 # Настраиваем хранилище для изображений
@@ -58,31 +63,8 @@ fi
 
 echo "Все необходимые файлы найдены."
 
-# Компилируем файлы переводов (.po -> .mo)
-echo "Компиляция файлов переводов..."
-if pybabel compile -d app/translations; then
-    echo "✅ Файлы переводов успешно скомпилированы"
-else
-    echo "⚠️ Ошибка компиляции переводов, пытаемся использовать альтернативный метод..."
-    python -c "
-import os, glob
-from babel.messages.mofile import write_mo
-from babel.messages.pofile import read_po
-
-for po_file in glob.glob('app/translations/**/LC_MESSAGES/*.po', recursive=True):
-    mo_file = po_file[:-3] + '.mo'
-    print(f'Компиляция {po_file} -> {mo_file}')
-    try:
-        with open(po_file, 'rb') as f_in:
-            catalog = read_po(f_in)
-        with open(mo_file, 'wb') as f_out:
-            write_mo(f_out, catalog)
-    except Exception as e:
-        print(f'Ошибка компиляции {po_file}: {e}')
-print('Компиляция завершена')
-"
-    echo "✅ Компиляция переводов через временный скрипт завершена"
-fi
+# Переводы уже были скомпилированы в начале скрипта
+echo "Пропуск повторной компиляции файлов переводов..."
 
 # Оптимизированная инициализация базы данных - объединяем операции для экономии памяти
 echo "Инициализация базы данных и исправление проблем..."
