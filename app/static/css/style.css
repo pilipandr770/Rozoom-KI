@@ -367,7 +367,8 @@ p {
 }
 
 .feature-card p {
-  color: var(--light-text);
+  color: #333; /* Dark text for readability on white background */
+}
   font-size: 0.95rem;
 }
 
@@ -445,17 +446,19 @@ p {
   padding: 5rem 0;
   background-color: #f8f9fa;
   margin-top: 4rem;
+  color: #333; /* Dark text color for readability on light background */
 }
 
-.account-cta .feature-list {
-  list-style: none;
-  padding: 0;
-  margin: 2rem 0;
+.account-cta h2 {
+  color: #333;
+}
+
+.account-cta .lead {
+  color: #555;
 }
 
 .account-cta .feature-list li {
-  margin-bottom: 1rem;
-  font-size: 1.1rem;
+  color: #333;
 }
 
 .account-cta .feature-list li i {
