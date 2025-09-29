@@ -269,6 +269,13 @@ def create_app():
     # Register template filters
     from . import template_filters
     template_filters.init_app(app)
+
+    # Initialize SEO context processor and defaults
+    try:
+        from . import seo
+        seo.init_app(app)
+    except Exception as e:
+        app.logger.warning(f"Failed to initialize SEO helpers: {e}")
     
     # Initialize database schema for chat messages
     try:

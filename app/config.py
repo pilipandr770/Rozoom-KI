@@ -82,6 +82,12 @@ class Config:
     POSTGRES_SCHEMA_SHOP = os.getenv('POSTGRES_SCHEMA_SHOP', 'rozoom_ki_shop')
     POSTGRES_SCHEMA_PROJECTS = os.getenv('POSTGRES_SCHEMA_PROJECTS', 'rozoom_ki_projects')
     OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
+
+    # SEO defaults
+    SITE_NAME = os.getenv('SITE_NAME', 'Rozoom-KI')
+    SITE_DESCRIPTION = os.getenv('SITE_DESCRIPTION', 'AI solutions, chatbots and automation for your business')
+    # Can be absolute URL or path relative to static/ (e.g. 'img/og-default.svg' or '/static/img/og-default.svg')
+    SITE_IMAGE = os.getenv('SITE_IMAGE', 'img/og-default.svg')
     
     # Babel settings for internationalization
     LANGUAGES = ['en', 'de', 'ru', 'uk']

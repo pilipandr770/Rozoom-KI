@@ -20,7 +20,8 @@ def upgrade():
     # Create chat_messages table with checkfirst option
     # This will skip creation if table already exists
     try:
-        op.create_table('chat_messages',
+        op.create_table(
+            'chat_messages',
             sa.Column('id', sa.Integer(), nullable=False),
             sa.Column('conversation_id', sa.String(length=64), nullable=False),
             sa.Column('thread_id', sa.String(length=64), nullable=True),  # Make nullable
@@ -29,21 +30,20 @@ def upgrade():
             sa.Column('meta', sa.JSON(), nullable=True),  # Add meta column
             sa.Column('created_at', sa.DateTime(), nullable=True),
             sa.PrimaryKeyConstraint('id'),
-            # Добавляем специальный аргумент для SQLAlchemy
-            keep_existing=True,  # Не выдавать ошибку, если таблица уже существует
-            checkfirst=True      # Проверять существование таблицы перед созданием
         )
-        
-        # Create indexes - также пробуем создавать с проверкой существования
+
+        # Create indexes - also try creating with try/except
         try:
             op.create_index(op.f('ix_chat_messages_conversation_id'), 'chat_messages', ['conversation_id'], unique=False)
         except Exception as e:
             print(f"Индекс на conversation_id уже существует или возникла ошибка: {e}")
-            
+
         try:
             op.create_index(op.f('ix_chat_messages_thread_id'), 'chat_messages', ['thread_id'], unique=False)
         except Exception as e:
             print(f"Индекс на thread_id уже существует или возникла ошибка: {e}")
+    except Exception as e:
+        print(f"Ошибка при создании таблицы chat_messages: {e}")
 
 
 def downgrade():
@@ -63,5 +63,4 @@ def downgrade():
         op.drop_table('chat_messages')
     except Exception as e:
         print(f"Не удалось удалить таблицу chat_messages: {e}")
-    # Drop table
-    op.drop_table('chat_messages')
+    # Table drop attempted above; nothing further to do
