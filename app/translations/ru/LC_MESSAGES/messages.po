@@ -113,6 +113,30 @@ msgstr "Приоритетная поддержка и более быстрые
 msgid "Custom project recommendations based on your needs"
 msgstr "Персональные рекомендации проектов на основе ваших потребностей"
 
+msgid "Your Account Benefits"
+msgstr "Преимущества вашего аккаунта"
+
+msgid "Welcome back"
+msgstr "Добро пожаловать обратно"
+
+msgid "Dashboard"
+msgstr "Панель управления"
+
+msgid "Projects"
+msgstr "Проекты"
+
+msgid "Messages"
+msgstr "Сообщения"
+
+msgid "Invoices"
+msgstr "Счета"
+
+msgid "Profile Settings"
+msgstr "Настройки профиля"
+
+msgid "Logout"
+msgstr "Выход"
+
 msgid "Ready to transform your business with AI?"
 msgstr "Готовы преобразовать свой бизнес с помощью ИИ?"
 
