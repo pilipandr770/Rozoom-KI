@@ -73,3 +73,48 @@ msgstr "Помощник Rozoom"
 
 msgid "AI Assistant"
 msgstr "ИИ-ассистент"
+
+msgid "Create Your Personal Account"
+msgstr "Создайте свой личный кабинет"
+
+msgid "Track your projects, access personalized services, and collaborate with our team in real-time."
+msgstr "Отслеживайте свои проекты, получайте доступ к персонализированным услугам и сотрудничайте с нашей командой в режиме реального времени."
+
+msgid "Personal dashboard to monitor project progress"
+msgstr "Личный кабинет для контроля хода выполнения проекта"
+
+msgid "Direct messaging with our development team"
+msgstr "Прямая коммуникация с нашей командой разработчиков"
+
+msgid "Online invoicing and payment processing"
+msgstr "Онлайн-выставление счетов и обработка платежей"
+
+msgid "Project milestone tracking and updates"
+msgstr "Отслеживание вех и обновлений проекта"
+
+msgid "Register Now"
+msgstr "Зарегистрироваться сейчас"
+
+msgid "Create Account"
+msgstr "Создать аккаунт"
+
+msgid "Already have an account? Login"
+msgstr "Уже есть аккаунт? Войти"
+
+msgid "What you get with a personal account:"
+msgstr "Что вы получаете с личным аккаунтом:"
+
+msgid "Access to exclusive AI tools and resources"
+msgstr "Доступ к эксклюзивным ИИ-инструментам и ресурсам"
+
+msgid "Priority support and faster response times"
+msgstr "Приоритетная поддержка и более быстрые сроки ответа"
+
+msgid "Custom project recommendations based on your needs"
+msgstr "Персональные рекомендации проектов на основе ваших потребностей"
+
+msgid "Ready to transform your business with AI?"
+msgstr "Готовы преобразовать свой бизнес с помощью ИИ?"
+
+msgid "Join thousands of satisfied clients who trust Rozoom-KI for their digital transformation needs."
+msgstr "Присоединяйтесь к тысячам довольных клиентов, которые доверяют Rozoom-KI свои потребности в цифровой трансформации."
