@@ -16,9 +16,9 @@
   </div>
   
   <div class="blog-post-content">
-    {% if post.image_url %}
+    {% if post.image_data or post.image_url %}
       <div class="post-featured-image">
-        <img src="{{ post.image_url }}" alt="{{ post.title }}">
+        <img src="{% if post.image_data %}{{ url_for('blog.get_image', post_id=post.id) }}{% else %}{{ post.image_url }}{% endif %}" alt="{{ post.title }}">
       </div>
     {% endif %}
     

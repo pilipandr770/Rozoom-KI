@@ -18,8 +18,8 @@
       {% for post in posts %}
         <article class="blog-post">
           <div class="post-image">
-            {% if post.image_url %}
-              <img src="{{ post.image_url }}" alt="{{ post.title }}">
+            {% if post.image_data or post.image_url %}
+              <img src="{% if post.image_data %}{{ url_for('blog.get_image', post_id=post.id) }}{% else %}{{ post.image_url }}{% endif %}" alt="{{ post.title }}">
             {% else %}
               <img src="{{ url_for('static', filename='img/blog/default-post.jpg') }}" alt="{{ post.title }}">
             {% endif %}
