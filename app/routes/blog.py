@@ -130,3 +130,21 @@ def search():
         current_category=None,
         current_tag=None
     )
+
+@blog.route('/image/<int:post_id>')
+def get_image(post_id):
+    """Serve blog post image from database."""
+    from flask import send_file, make_response
+    import io
+    
+    post = BlogPost.query.get_or_404(post_id)
+    
+    if not post.image_data:
+        abort(404)
+    
+    # Create response with image data
+    response = make_response(post.image_data)
+    response.headers.set('Content-Type', 'image/png')  # Assuming PNG format
+    response.headers.set('Cache-Control', 'public, max-age=31536000')  # Cache for 1 year
+    
+    return response

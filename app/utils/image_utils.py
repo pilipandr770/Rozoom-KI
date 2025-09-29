@@ -14,7 +14,7 @@ logger = logging.getLogger(__name__)
 
 def download_and_save_image(image_url: str, entity_id: int = None, 
                            entity_type: str = 'blog', subdirectory: str = 'blog',
-                           delete_old: bool = True) -> Tuple[bool, Optional[str], Optional[str]]:
+                           delete_old: bool = True, save_to_db: bool = False) -> Tuple[bool, Optional[str], Optional[bytes], Optional[str]]:
     """
     Downloads an image from a URL, saves it to the static/img directory, and optionally deletes old images
     
@@ -24,11 +24,13 @@ def download_and_save_image(image_url: str, entity_id: int = None,
         entity_type (str): Type of entity (blog, content)
         subdirectory (str): Subdirectory within static/img to save the image (default: 'blog')
         delete_old (bool): Whether to delete old images for this entity
+        save_to_db (bool): Whether to return image data for database storage instead of saving to file
         
     Returns:
-        Tuple[bool, Optional[str], Optional[str]]: 
+        Tuple[bool, Optional[str], Optional[bytes], Optional[str]]: 
             - Success status
-            - Local path to saved image or None if failed
+            - Local path to saved image or None if failed (or if save_to_db=True)
+            - Binary image data if save_to_db=True, None otherwise
             - Error message if failed, None if successful
     """
     if not image_url:
@@ -69,21 +71,28 @@ def download_and_save_image(image_url: str, entity_id: int = None,
         response = requests.get(image_url, timeout=10)
         response.raise_for_status()  # Raise an exception for HTTP errors
         
-        # Save the image to file
-        with open(file_path, 'wb') as f:
-            f.write(response.content)
+        image_data = response.content
         
-        # Return the relative path to be used in templates/database
-        relative_path = f'/static/img/{subdirectory}/{filename}'
-        
-        logger.info(f"Image successfully downloaded and saved to {relative_path}")
-        return True, relative_path, None
+        if save_to_db:
+            # Return binary data for database storage
+            logger.info(f"Image successfully downloaded for database storage ({len(image_data)} bytes)")
+            return True, None, image_data, None
+        else:
+            # Save the image to file
+            with open(file_path, 'wb') as f:
+                f.write(image_data)
+            
+            # Return the relative path to be used in templates/database
+            relative_path = f'/static/img/{subdirectory}/{filename}'
+            
+            logger.info(f"Image successfully downloaded and saved to {relative_path}")
+            return True, relative_path, None, None
         
     except requests.RequestException as e:
         error_msg = f"Failed to download image: {str(e)}"
         logger.error(error_msg)
-        return False, None, error_msg
+        return False, None, None, error_msg
     except Exception as e:
         error_msg = f"Error saving image: {str(e)}"
         logger.error(error_msg)
-        return False, None, error_msg
+        return False, None, None, error_msg

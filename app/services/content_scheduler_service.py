@@ -122,12 +122,13 @@ class ContentSchedulerService:
                     # Нужно сохранить запись, чтобы получить ID для именования файла
                     db.session.flush()  # Flush, чтобы получить ID, но не коммитим пока
                     
-                    # Загружаем изображение с ID контента
-                    success, local_path, error_msg = download_and_save_image(
+                    # Загружаем изображение с ID контента и сохраняем в базу данных
+                    success, local_path, image_data, error_msg = download_and_save_image(
                         image_url=image_path,
                         entity_id=generated_content.id,
                         entity_type='content',
-                        delete_old=True  # Удаляем старые изображения для этого контента
+                        save_to_db=True,  # Сохраняем в базу данных вместо файла
+                        delete_old=True
                     )
                     
                     if success:
@@ -147,7 +148,8 @@ class ContentSchedulerService:
             generated_content.meta_description_en = clean_icons_from_content(en_content.get('meta_description', ''))
             generated_content.meta_description_de = clean_icons_from_content(de_content.get('meta_description', ''))
             generated_content.image_prompt = image_prompt
-            generated_content.image_url = local_image_path  # Сохраняем локальный путь к изображению
+            generated_content.image_url = local_image_path  # Сохраняем локальный путь (если есть)
+            generated_content.image_data = image_data  # Сохраняем бинарные данные изображения
             generated_content.original_image_url = original_url  # Сохраняем оригинальный URL (если был)
             generated_content.keywords = schedule.keywords
             generated_content.status = ContentStatus.PUBLISHED if local_image_path else ContentStatus.FAILED
@@ -192,6 +194,7 @@ class ContentSchedulerService:
                 content=clean_icons_from_content(generated_content.content_en),
                 excerpt=strip_html(generated_content.meta_description_en),
                 image_url=generated_content.image_url,
+                image_data=generated_content.image_data,  # Сохраняем бинарные данные
                 published=True,
                 author_id=generated_content.schedule.author_id,
                 category_id=generated_content.schedule.category_id,
@@ -206,6 +209,7 @@ class ContentSchedulerService:
                 content=clean_icons_from_content(generated_content.content_de),
                 excerpt=strip_html(generated_content.meta_description_de),
                 image_url=generated_content.image_url,
+                image_data=generated_content.image_data,  # Сохраняем бинарные данные
                 published=True,
                 author_id=generated_content.schedule.author_id,
                 category_id=generated_content.schedule.category_id,

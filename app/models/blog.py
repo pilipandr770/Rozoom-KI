@@ -21,6 +21,7 @@ class BlogPost(db.Model):
     excerpt = db.Column(db.Text)
     image_url = db.Column(db.String(500))  # Локальный путь к сохраненному изображению
     original_image_url = db.Column(db.String(500))  # Оригинальный URL от OpenAI (временный)
+    image_data = db.Column(db.LargeBinary)  # Бинарные данные изображения для хранения в БД
     published = db.Column(db.Boolean, default=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)

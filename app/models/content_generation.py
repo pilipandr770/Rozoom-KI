@@ -65,6 +65,7 @@ class GeneratedContent(db.Model):
     image_prompt = db.Column(db.Text)  # Промпт для генерации изображения
     image_url = db.Column(db.String(500))  # Локальный путь к сохраненному изображению
     original_image_url = db.Column(db.String(500))  # Оригинальный URL от OpenAI (временный)
+    image_data = db.Column(db.LargeBinary)  # Бинарные данные изображения для хранения в БД
     meta_description_en = db.Column(db.Text)  # SEO-описание на английском
     meta_description_de = db.Column(db.Text)  # SEO-описание на немецком
     keywords = db.Column(db.Text)  # SEO-ключевые слова
