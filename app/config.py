@@ -93,8 +93,9 @@ class Config:
     LANGUAGES = ['en', 'de', 'uk']
     LANGUAGE_ALIASES = {'en': 'en', 'de': 'de', 'uk': 'uk', 'ukr': 'uk', 'ua': 'uk'}
     LANGUAGE_LABELS = {'en': 'EN', 'de': 'DE', 'uk': 'UKR'}
-    BABEL_DEFAULT_LOCALE = 'de'
+    BABEL_DEFAULT_LOCALE = 'en'
     BABEL_DEFAULT_TIMEZONE = 'UTC'
+    BABEL_TRANSLATION_DIRECTORIES = 'translations'
     
     # Mail settings
     MAIL_SERVER = os.getenv('MAIL_SERVER', 'smtp.example.com')

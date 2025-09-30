@@ -32,17 +32,17 @@ def get_locale():
     if from_cookie:
         return from_cookie
 
-    # 3. Accept-Language header best match
-    best_match = request.accept_languages.best_match(languages)
-    normalized_best = _resolve_alias(best_match)
-    if normalized_best:
-        return normalized_best
-
-    # 4. Fallback to configured default
+    # 3. Fallback to configured default (check this before Accept-Language)
     default_locale = current_app.config.get('BABEL_DEFAULT_LOCALE', languages[0] if languages else 'en')
     normalized_default = _resolve_alias(default_locale)
     if normalized_default:
         return normalized_default
+
+    # 4. Accept-Language header best match
+    best_match = request.accept_languages.best_match(languages)
+    normalized_best = _resolve_alias(best_match)
+    if normalized_best:
+        return normalized_best
 
     return languages[0] if languages else 'en'
 
