@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for, flash, current_app, jsonify
+﻿from flask import Blueprint, render_template, request, redirect, url_for, flash, current_app, jsonify
 from ..models import Lead
 from ..auth import AdminUser
 from .. import db
@@ -16,7 +16,7 @@ def index():
 
 @pages_bp.route('/health')
 def health_check():
-    """Health check endpoint для мониторинга сервиса на Render.com"""
+    """Health check endpoint РґР»СЏ РјРѕРЅРёС‚РѕСЂРёРЅРіР° СЃРµСЂРІРёСЃР° РЅР° Render.com"""
     return jsonify({"status": "ok", "service": "rozoom-ki"}), 200
 
 @pages_bp.route('/services')
@@ -34,14 +34,14 @@ def submit_questionnaire():
         from app.models.base import Lead
         from app import db
 
-        # 1) Сирі дані форми
+        # 1) РЎРёСЂС– РґР°РЅС– С„РѕСЂРјРё
         form_data = request.form.to_dict(flat=True)
 
-        # Масиви (чекбокси/мультивибір)
+        # РњР°СЃРёРІРё (С‡РµРєР±РѕРєСЃРё/РјСѓР»СЊС‚РёРІРёР±С–СЂ)
         security_requirements = request.form.getlist('security_requirements')
         existing_assets = request.form.getlist('existing_assets[]')
 
-        # 2) Підготовка «відповідей» — додаємо УСІ 15 полів
+        # 2) РџС–РґРіРѕС‚РѕРІРєР° В«РІС–РґРїРѕРІС–РґРµР№В» вЂ” РґРѕРґР°С”РјРѕ РЈРЎР† 15 РїРѕР»С–РІ
         answers = []
 
         # 1
@@ -126,11 +126,11 @@ def submit_questionnaire():
 
         tech_spec_data = {
             'answers': answers,
-            # Можеш зберігати мову, якщо треба
+            # РњРѕР¶РµС€ Р·Р±РµСЂС–РіР°С‚Рё РјРѕРІСѓ, СЏРєС‰Рѕ С‚СЂРµР±Р°
             'language': 'en'
         }
 
-        # Контакти замовника
+        # РљРѕРЅС‚Р°РєС‚Рё Р·Р°РјРѕРІРЅРёРєР°
         contact_info = {
             'name': form_data.get('contact_name', 'Not provided'),
             'email': form_data.get('contact_email', 'Not provided'),
@@ -138,16 +138,16 @@ def submit_questionnaire():
             'company': form_data.get('company_name', '')
         }
 
-        # 3) Надсилання у Telegram з безпечним розбиттям
-        #    (враховує ліміт 4096 символів)
+        # 3) РќР°РґСЃРёР»Р°РЅРЅСЏ Сѓ Telegram Р· Р±РµР·РїРµС‡РЅРёРј СЂРѕР·Р±РёС‚С‚СЏРј
+        #    (РІСЂР°С…РѕРІСѓС” Р»С–РјС–С‚ 4096 СЃРёРјРІРѕР»С–РІ)
         full_message = send_tech_spec_notification(
             tech_spec_data,
             contact_info=contact_info,
-            return_message_only=True  # Отримуємо текст без відправки
+            return_message_only=True  # РћС‚СЂРёРјСѓС”РјРѕ С‚РµРєСЃС‚ Р±РµР· РІС–РґРїСЂР°РІРєРё
         )
 
         def _send_long_message_in_chunks(msg: str, chunk_size: int = 3500):
-            # Розбиваємо за пустими рядками, потім сліпаємо куски, щоб не рвати слова
+            # Р РѕР·Р±РёРІР°С”РјРѕ Р·Р° РїСѓСЃС‚РёРјРё СЂСЏРґРєР°РјРё, РїРѕС‚С–Рј СЃР»С–РїР°С”РјРѕ РєСѓСЃРєРё, С‰РѕР± РЅРµ СЂРІР°С‚Рё СЃР»РѕРІР°
             import textwrap
             parts = []
             buf = ""
@@ -157,7 +157,7 @@ def submit_questionnaire():
                 else:
                     if buf:
                         parts.append(buf)
-                    # якщо абзац дуже довгий — нарізаємо
+                    # СЏРєС‰Рѕ Р°Р±Р·Р°С† РґСѓР¶Рµ РґРѕРІРіРёР№ вЂ” РЅР°СЂС–Р·Р°С”РјРѕ
                     if len(para) > chunk_size:
                         for sub in textwrap.wrap(para, chunk_size):
                             parts.append(sub)
@@ -178,16 +178,16 @@ def submit_questionnaire():
         if not sent:
             current_app.logger.warning("Failed to send full tech spec to Telegram (queued or partially sent).")
 
-        # 4) Сохраняем данные формы в базу данных
+        # 4) РЎРѕС…СЂР°РЅСЏРµРј РґР°РЅРЅС‹Рµ С„РѕСЂРјС‹ РІ Р±Р°Р·Сѓ РґР°РЅРЅС‹С…
         try:
             from app.models.tech_spec_submission import TechSpecSubmission
             
-            # Собираем security_requirements в строку
+            # РЎРѕР±РёСЂР°РµРј security_requirements РІ СЃС‚СЂРѕРєСѓ
             security_reqs = ', '.join(security_requirements) if security_requirements else ''
             if form_data.get('other_security_requirements'):
                 security_reqs = (security_reqs + '; Other: ' + form_data['other_security_requirements']).strip('; ')
             
-            # Создаем запись ТЗ
+            # РЎРѕР·РґР°РµРј Р·Р°РїРёСЃСЊ РўР—
             tech_spec = TechSpecSubmission(
                 project_type=form_data.get('project_type'),
                 project_goal=form_data.get('project_goal'),
@@ -205,14 +205,14 @@ def submit_questionnaire():
                 existing_assets=','.join(existing_assets) if existing_assets else '',
                 additional_info=form_data.get('additional_info'),
                 
-                # Контактная информация
+                # РљРѕРЅС‚Р°РєС‚РЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ
                 contact_name=form_data.get('contact_name'),
                 contact_email=form_data.get('contact_email'),
                 company_name=form_data.get('company_name'),
                 contact_phone=form_data.get('contact_phone')
             )
             
-            # Если пользователь авторизован, связываем ТЗ с ним
+            # Р•СЃР»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ Р°РІС‚РѕСЂРёР·РѕРІР°РЅ, СЃРІСЏР·С‹РІР°РµРј РўР— СЃ РЅРёРј
             from flask_login import current_user
             if current_user and current_user.is_authenticated:
                 tech_spec.client_id = current_user.id
@@ -220,7 +220,7 @@ def submit_questionnaire():
             db.session.add(tech_spec)
             db.session.commit()
             
-            # Также сохраняем лид для совместимости с существующим кодом
+            # РўР°РєР¶Рµ СЃРѕС…СЂР°РЅСЏРµРј Р»РёРґ РґР»СЏ СЃРѕРІРјРµСЃС‚РёРјРѕСЃС‚Рё СЃ СЃСѓС‰РµСЃС‚РІСѓСЋС‰РёРј РєРѕРґРѕРј
             lead = Lead(
                 name=contact_info['name'],
                 email=contact_info['email'],
@@ -475,8 +475,6 @@ def impressum():
     from flask import g
     if g.locale == 'de':
         return render_template('de/impressum.html')
-    elif g.locale == 'ru':
-        return render_template('ru/impressum.html')
     elif g.locale == 'uk':
         return render_template('uk/impressum.html')
     else:
@@ -488,8 +486,6 @@ def privacy():
     from flask import g
     if g.locale == 'de':
         return render_template('de/privacy.html')
-    elif g.locale == 'ru':
-        return render_template('ru/privacy.html')
     elif g.locale == 'uk':
         return render_template('uk/privacy.html')
     else:
@@ -501,8 +497,6 @@ def terms():
     from flask import g
     if g.locale == 'de':
         return render_template('de/terms.html')
-    elif g.locale == 'ru':
-        return render_template('ru/terms.html')
     elif g.locale == 'uk':
         return render_template('uk/terms.html')
     else:
@@ -783,3 +777,4 @@ def blog_search():
         tags=formatted_tags,
         recent_posts=recent_posts
     )
+

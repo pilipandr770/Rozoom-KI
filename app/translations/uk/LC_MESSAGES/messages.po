@@ -1063,3 +1063,88 @@ msgstr "Не знайдено результатів для"
 
 msgid "Try another search..."
 msgstr "Спробуйте інший пошук..."
+
+msgid "Build Your Workspace with Rozoom-KI"
+msgstr "Створіть свій робочий простір з Rozoom-KI"
+
+msgid "Registration unlocks a tailored workspace where you collaborate with our team and track every automation we build for you."
+msgstr "Реєстрація відкриває персональний робочий простір, де ви співпрацюєте з нашою командою та відстежуєте кожну автоматизацію, яку ми створюємо для вас."
+
+msgid "Why create an account"
+msgstr "Навіщо створювати акаунт"
+
+msgid "Personal command center"
+msgstr "Персональний центр керування"
+
+msgid "Monitor proposals, agreements and delivery status in one dashboard with real-time notifications from our team."
+msgstr "Відстежуйте пропозиції, угоди й статус виконання в одній панелі з миттєвими сповіщеннями від нашої команди."
+
+msgid "Faster onboarding every time"
+msgstr "Швидший онбординг щоразу"
+
+msgid "Answer guided discovery questions once and we pre-fill future briefs, saving you time on each new initiative."
+msgstr "Відповідайте на навідні запитання лише один раз, і ми попередньо заповнимо бриф для наступних ініціатив."
+
+msgid "Integrated billing and approvals"
+msgstr "Інтегровані рахунки та затвердження"
+
+msgid "Approve estimates, sign milestones and handle payments securely without leaving the platform."
+msgstr "Затверджуйте кошториси, підтверджуйте етапи й оплачуйте безпечно, не залишаючи платформу."
+
+msgid "What happens after you create a project"
+msgstr "Що відбувається після створення проєкту"
+
+msgid "Share the vision"
+msgstr "Поділіться баченням"
+
+msgid "Describe goals, audience and constraints once; our assistants convert it into a structured brief."
+msgstr "Опишіть цілі, аудиторію та обмеження один раз — наші асистенти перетворять це на структурований бриф."
+
+msgid "Receive a roadmap"
+msgstr "Отримайте дорожню карту"
+
+msgid "We design architecture, timelines and budget options you can approve or adjust with a click."
+msgstr "Ми розробимо архітектуру, графік і варіанти бюджету, які ви зможете затвердити або змінити в один клік."
+
+msgid "Track delivery in real time"
+msgstr "Відстежуйте виконання в режимі реального часу"
+
+msgid "Milestones, test results and launch tasks update automatically inside your dashboard."
+msgstr "Етапи, результати тестів і завдання запуску автоматично оновлюються у вашій панелі."
+
+msgid "Your account keeps every conversation, document and approval in sync so nothing slows the launch."
+msgstr "Ваш акаунт синхронізує всі розмови, документи та затвердження, щоб запуск нічого не гальмував."
+
+msgid "How our project chatbot supports you"
+msgstr "Як наш проєктний чат-бот підтримує вас"
+
+msgid "The embedded widget combines three specialized AI agents so you always get the right guidance at every stage."
+msgstr "Вбудований віджет об'єднує трьох спеціалізованих AI-агентів, щоб на кожному етапі ви отримували потрібну підтримку."
+
+msgid "Available 24/7 inside your dashboard and on every project page."
+msgstr "Доступний 24/7 у вашій панелі та на кожній сторінці проєкту."
+
+msgid "Switch between agents at any time to match the task you are solving."
+msgstr "Перемикайтеся між агентами будь-коли, підлаштовуючись під завдання."
+
+msgid "Conversations sync with your project timeline and notify the human team when escalation is required."
+msgstr "Розмови синхронізуються з таймлайном проєкту та сповіщають команду, коли потрібна ескалація."
+
+msgid "Discovery Guide"
+msgstr "Агент-навігатор"
+
+msgid "Answers general questions about our services, explains pricing scenarios and helps you decide which solution fits your business."
+msgstr "Відповідає на загальні питання про наші послуги, пояснює сценарії ціноутворення та допомагає обрати рішення для вашого бізнесу."
+
+msgid "Brief Architect"
+msgstr "Агент технічного завдання"
+
+msgid "Leads you through writing a detailed technical assignment, gathers requirements and prepares structured specifications for our engineers."
+msgstr "Проводить вас через підготовку детального технічного завдання, збирає вимоги та формує структуровані специфікації для наших інженерів."
+
+msgid "Project Steward"
+msgstr "Агент супроводу проєкту"
+
+msgid "Stays with you after kickoff, summarises sprint progress, reminds you about approvals and reports on upcoming milestones."
+msgstr "Залишається з вами після старту, підсумовує прогрес спринтів, нагадує про затвердження та повідомляє про майбутні етапи."
+

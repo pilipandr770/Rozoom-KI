@@ -366,11 +366,6 @@ p {
   margin-bottom: 1rem;
 }
 
-.feature-card p {
-  color: #333; /* Dark text for readability on white background */
-}
-  font-size: 0.95rem;
-}
 
 /* Testimonials */
 .testimonials {
@@ -1851,4 +1846,171 @@ p {
     font-size: 1.25rem;
     min-height: 52px;
   }
+}
+/* Homepage CTAs */
+.account-benefits {
+  margin-bottom: 2rem;
+}
+
+.account-benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.benefit-card {
+  background: #f8fafc;
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  color: #0f172a;
+  height: 100%;
+}
+
+.benefit-card h5 {
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.benefit-card p {
+  margin-bottom: 0;
+  color: #334155;
+  font-size: 0.95rem;
+}
+
+.project-journey {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 0;
+}
+
+.project-journey li {
+  background: #f1f5f9;
+  border-radius: var(--radius-md);
+  padding: 0.85rem 1rem;
+  margin-bottom: 0.75rem;
+  color: #0f172a;
+  box-shadow: var(--shadow-sm);
+}
+
+.project-journey strong {
+  color: #0f172a;
+}
+
+.chatbot-widget-section {
+  background: #f8fafc;
+  padding: 4rem 0;
+  color: #0f172a;
+}
+
+.chatbot-widget-section .lead {
+  color: #334155;
+  margin-bottom: 1.5rem;
+}
+
+.widget-benefits {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem;
+}
+
+.widget-benefits li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  color: #334155;
+}
+
+.widget-benefits li::before {
+  content: "\2022";
+  color: var(--primary-color);
+  font-weight: 700;
+  margin-right: 0.25rem;
+  line-height: 1.3;
+}
+
+.agent-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.agent-card {
+  background: #ffffff;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  padding: 1.75rem 1.5rem;
+  color: #0f172a;
+  position: relative;
+  overflow: hidden;
+}
+
+.agent-number {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: rgba(59, 130, 246, 0.15);
+}
+
+.agent-card h3 {
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.agent-card p {
+  margin-bottom: 0;
+  color: #334155;
+}
+
+@media (max-width: 768px) {
+  .chatbot-widget-section {
+    padding: 3rem 0;
+  }
+
+  .agent-number {
+    font-size: 2rem;
+  }
+}
+
+/* Homepage readability overrides */
+.features,
+.features p,
+.features h2,
+.features h3 {
+  color: #1f2937;
+}
+
+.feature-card {
+  color: #0f172a;
+}
+
+.feature-card h3 {
+  color: #0f172a;
+}
+
+.feature-card p {
+  color: #1f2937;
+  font-size: 0.95rem;
+}
+
+.feature-card .feature-icon {
+  color: var(--primary-color);
+}
+
+.account-cta,
+.account-cta p,
+.account-cta li,
+.account-cta h2,
+.account-cta h3,
+.account-cta h4 {
+  color: #1f2937;
+}
+
+.account-cta .account-highlight {
+  color: #1f2937;
 }

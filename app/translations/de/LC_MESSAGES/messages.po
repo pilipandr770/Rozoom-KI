@@ -885,3 +885,88 @@ msgstr "Facebook"
 
 msgid "Instagram"
 msgstr "Instagram"
+
+msgid "Build Your Workspace with Rozoom-KI"
+msgstr "Bauen Sie Ihren Arbeitsbereich mit Rozoom-KI auf"
+
+msgid "Registration unlocks a tailored workspace where you collaborate with our team and track every automation we build for you."
+msgstr "Die Registrierung schaltet einen maßgeschneiderten Arbeitsbereich frei, in dem Sie mit unserem Team zusammenarbeiten und jede Automatisierung verfolgen, die wir für Sie erstellen."
+
+msgid "Why create an account"
+msgstr "Warum ein Konto erstellen"
+
+msgid "Personal command center"
+msgstr "Persönliches Kontrollzentrum"
+
+msgid "Monitor proposals, agreements and delivery status in one dashboard with real-time notifications from our team."
+msgstr "Überwachen Sie Angebote, Vereinbarungen und Lieferstatus in einem Dashboard mit Echtzeitbenachrichtigungen unseres Teams."
+
+msgid "Faster onboarding every time"
+msgstr "Schnelleres Onboarding bei jedem Projekt"
+
+msgid "Answer guided discovery questions once and we pre-fill future briefs, saving you time on each new initiative."
+msgstr "Beantworten Sie geführte Fragen nur einmal und wir füllen künftige Briefings vor, sodass Sie bei jeder neuen Initiative Zeit sparen."
+
+msgid "Integrated billing and approvals"
+msgstr "Integrierte Abrechnung und Freigaben"
+
+msgid "Approve estimates, sign milestones and handle payments securely without leaving the platform."
+msgstr "Genehmigen Sie Kostenschätzungen, bestätigen Sie Meilensteine und wickeln Sie Zahlungen sicher ab, ohne die Plattform zu verlassen."
+
+msgid "What happens after you create a project"
+msgstr "Was passiert, nachdem Sie ein Projekt erstellt haben"
+
+msgid "Share the vision"
+msgstr "Teilen Sie die Vision"
+
+msgid "Describe goals, audience and constraints once; our assistants convert it into a structured brief."
+msgstr "Beschreiben Sie Ziele, Zielgruppe und Einschränkungen einmal, unsere Assistenten wandeln dies in ein strukturiertes Briefing um."
+
+msgid "Receive a roadmap"
+msgstr "Erhalten Sie einen Fahrplan"
+
+msgid "We design architecture, timelines and budget options you can approve or adjust with a click."
+msgstr "Wir entwerfen Architektur, Zeitpläne und Budgetoptionen, die Sie mit einem Klick freigeben oder anpassen können."
+
+msgid "Track delivery in real time"
+msgstr "Verfolgen Sie die Umsetzung in Echtzeit"
+
+msgid "Milestones, test results and launch tasks update automatically inside your dashboard."
+msgstr "Meilensteine, Testergebnisse und Launch-Aufgaben werden automatisch in Ihrem Dashboard aktualisiert."
+
+msgid "Your account keeps every conversation, document and approval in sync so nothing slows the launch."
+msgstr "Ihr Konto hält alle Unterhaltungen, Dokumente und Freigaben synchron, damit der Launch nicht ins Stocken gerät."
+
+msgid "How our project chatbot supports you"
+msgstr "Wie unser Projekt-Chatbot Sie unterstützt"
+
+msgid "The embedded widget combines three specialized AI agents so you always get the right guidance at every stage."
+msgstr "Das eingebettete Widget vereint drei spezialisierte KI-Agenten, damit Sie in jeder Phase die passende Unterstützung erhalten."
+
+msgid "Available 24/7 inside your dashboard and on every project page."
+msgstr "Rund um die Uhr in Ihrem Dashboard und auf jeder Projektseite verfügbar."
+
+msgid "Switch between agents at any time to match the task you are solving."
+msgstr "Wechseln Sie jederzeit zwischen den Agenten, um zur aktuellen Aufgabe zu passen."
+
+msgid "Conversations sync with your project timeline and notify the human team when escalation is required."
+msgstr "Unterhaltungen werden mit Ihrem Projektzeitplan synchronisiert und benachrichtigen das Team, wenn eine Eskalation nötig ist."
+
+msgid "Discovery Guide"
+msgstr "Discovery Guide"
+
+msgid "Answers general questions about our services, explains pricing scenarios and helps you decide which solution fits your business."
+msgstr "Beantwortet allgemeine Fragen zu unseren Leistungen, erklärt Preisszenarien und hilft Ihnen, die passende Lösung für Ihr Unternehmen zu wählen."
+
+msgid "Brief Architect"
+msgstr "Brief-Architekt"
+
+msgid "Leads you through writing a detailed technical assignment, gathers requirements and prepares structured specifications for our engineers."
+msgstr "Führt Sie durch das Schreiben eines detaillierten technischen Auftrags, sammelt Anforderungen und erstellt strukturierte Spezifikationen für unsere Ingenieure."
+
+msgid "Project Steward"
+msgstr "Projektbetreuer"
+
+msgid "Stays with you after kickoff, summarises sprint progress, reminds you about approvals and reports on upcoming milestones."
+msgstr "Bleibt nach dem Kick-off an Ihrer Seite, fasst Sprintfortschritte zusammen, erinnert an Freigaben und berichtet über anstehende Meilensteine."
+

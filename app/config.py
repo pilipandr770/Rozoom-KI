@@ -1,4 +1,4 @@
-import os
+﻿import os
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -11,11 +11,11 @@ class Config:
     WTF_CSRF_TIME_LIMIT = 86400
     WTF_CSRF_SSL_STRICT = False  # Don't enforce HTTPS for CSRF tokens
     
-    # SQLAlchemy настройки с поддержкой для SQLite (локально) и PostgreSQL (продакшен)
+    # SQLAlchemy РЅР°СЃС‚СЂРѕР№РєРё СЃ РїРѕРґРґРµСЂР¶РєРѕР№ РґР»СЏ SQLite (Р»РѕРєР°Р»СЊРЅРѕ) Рё PostgreSQL (РїСЂРѕРґР°РєС€РµРЅ)
     database_url = os.getenv('DATABASE_URL')
     
-    # Исправляем URL для PostgreSQL, если он начинается с "postgres://" вместо "postgresql://"
-    # (Render.com иногда предоставляет такой формат)
+    # РСЃРїСЂР°РІР»СЏРµРј URL РґР»СЏ PostgreSQL, РµСЃР»Рё РѕРЅ РЅР°С‡РёРЅР°РµС‚СЃСЏ СЃ "postgres://" РІРјРµСЃС‚Рѕ "postgresql://"
+    # (Render.com РёРЅРѕРіРґР° РїСЂРµРґРѕСЃС‚Р°РІР»СЏРµС‚ С‚Р°РєРѕР№ С„РѕСЂРјР°С‚)
     if database_url and database_url.startswith('postgres://'):
         database_url = database_url.replace('postgres://', 'postgresql://', 1)
     
@@ -90,7 +90,9 @@ class Config:
     SITE_IMAGE = os.getenv('SITE_IMAGE', 'img/og-default.svg')
     
     # Babel settings for internationalization
-    LANGUAGES = ['en', 'de', 'ru', 'uk']
+    LANGUAGES = ['en', 'de', 'uk']
+    LANGUAGE_ALIASES = {'en': 'en', 'de': 'de', 'uk': 'uk', 'ukr': 'uk', 'ua': 'uk'}
+    LANGUAGE_LABELS = {'en': 'EN', 'de': 'DE', 'uk': 'UKR'}
     BABEL_DEFAULT_LOCALE = 'de'
     BABEL_DEFAULT_TIMEZONE = 'UTC'
     
@@ -102,3 +104,6 @@ class Config:
     MAIL_USERNAME = os.getenv('MAIL_USERNAME')
     MAIL_PASSWORD = os.getenv('MAIL_PASSWORD')
     MAIL_DEFAULT_SENDER = os.getenv('MAIL_DEFAULT_SENDER', 'noreply@rozoom-ki.com')
+
+
+

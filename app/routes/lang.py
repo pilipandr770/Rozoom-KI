@@ -1,38 +1,46 @@
-from flask import Blueprint, g, request, current_app, session, redirect, jsonify, url_for, make_response
+﻿from flask import Blueprint, request, current_app, jsonify, make_response, redirect
 
 lang_bp = Blueprint('lang', __name__)
 
+
+def _resolve_language(requested: str | None):
+    if not requested:
+        return None, None
+    requested = requested.lower()
+    aliases = current_app.config.get('LANGUAGE_ALIASES', {})
+    normalized = aliases.get(requested, requested)
+    languages = [lang.lower() for lang in current_app.config.get('LANGUAGES', ['en', 'de', 'uk'])]
+    if normalized in languages:
+        return normalized, requested
+    return None, None
+
+
+def _default_language():
+    languages = [lang.lower() for lang in current_app.config.get('LANGUAGES', ['en', 'de', 'uk'])]
+    default_locale = current_app.config.get('BABEL_DEFAULT_LOCALE', languages[0] if languages else 'en')
+    normalized, _ = _resolve_language(default_locale)
+    if normalized:
+        return normalized
+    return languages[0] if languages else 'en'
+
+
 @lang_bp.route('/set-language/<lang>', methods=['GET'])
 def set_language(lang):
-    """
-    Устанавливает язык интерфейса и сохраняет его в cookie
-    
-    Args:
-        lang: Код языка ('en', 'de' или 'uk')
-        
-    Returns:
-        Редирект на предыдущую страницу с установленным cookie
-    """
-    # Проверяем, что язык поддерживается
-    if lang not in ['en', 'de', 'uk']:
-        lang = 'de'  # По умолчанию немецкий
-    
-    # Получаем URL страницы, с которой пришел запрос
+    """Persist preferred language via cookie or JSON response."""
+    normalized, cookie_value = _resolve_language(lang)
+    if not normalized:
+        normalized = _default_language()
+        cookie_value = normalized
+
     next_url = request.args.get('next') or request.referrer or '/'
-    
-    # Проверяем, был ли запрос AJAX (если добавлен заголовок X-Requested-With)
     is_ajax = request.headers.get('X-Requested-With') == 'XMLHttpRequest'
-    
-    # Устанавливаем cookie для языка (срок действия 365 дней)
-    max_age = 365 * 24 * 60 * 60  # 1 год в секундах
-    
+    max_age = 365 * 24 * 60 * 60
+
     if is_ajax:
-        # Для AJAX запросов возвращаем JSON
-        response = jsonify({'success': True, 'language': lang})
-        response.set_cookie('lang', lang, max_age=max_age, path='/')
+        response = jsonify({'success': True, 'language': normalized})
+        response.set_cookie('lang', cookie_value, max_age=max_age, path='/')
         return response
-    else:
-        # Для обычных запросов создаем ответ с редиректом
-        response = make_response(redirect(next_url))
-        response.set_cookie('lang', lang, max_age=max_age, path='/')
-        return response
+
+    response = make_response(redirect(next_url))
+    response.set_cookie('lang', cookie_value, max_age=max_age, path='/')
+    return response

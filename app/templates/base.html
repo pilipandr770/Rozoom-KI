@@ -7,26 +7,52 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% block title %}Rozoom-KI{% endblock %}</title>
+  <title>{% block title %}{{ seo_meta.title or site_name }}{% endblock %}</title>
 
   {# --- SEO / Meta defaults (overridable) --- #}
-  {# Per-page templates can override these blocks: meta_description, meta_extra, og_tags, canonical_url #}
-  <meta name="description" content="{% block meta_description %}{{ default_description }}{% endblock %}">
-  <link rel="canonical" href="{% block canonical_url %}{{ canonical_url }}{% endblock %}">
+  <meta name="description" content="{% block meta_description %}{{ seo_meta.description or default_description }}{% endblock %}">
+  {% if seo_meta.keywords %}
+  <meta name="keywords" content="{% block meta_keywords %}{{ seo_meta.keywords }}{% endblock %}">
+  {% endif %}
+  <meta name="robots" content="{% block meta_robots %}{{ seo_meta.robots or 'index,follow' }}{% endblock %}">
+  <link rel="canonical" href="{% block canonical_url %}{{ seo_meta.canonical or canonical_url }}{% endblock %}">
+  {% if alternate_hreflangs %}
+  {% for alt in alternate_hreflangs %}
+  <link rel="alternate" href="{{ alt.href }}" hreflang="{{ alt.lang }}">
+  {% endfor %}
+  {% endif %}
+  {% block meta_extra %}{% endblock %}
 
   <!-- Open Graph defaults -->
   <meta property="og:site_name" content="{{ site_name }}">
-  <meta property="og:title" content="{% block og_title %}{{ self.title() }}{% endblock %}">
-  <meta property="og:description" content="{% block og_description %}{{ default_description }}{% endblock %}">
-  <meta property="og:image" content="{% block og_image %}{{ default_image }}{% endblock %}">
-  <meta property="og:url" content="{{ canonical_url }}">
-  <meta property="og:type" content="website">
+  {% if seo_meta.og_locale %}
+  <meta property="og:locale" content="{{ seo_meta.og_locale }}">
+  {% for alt_locale in seo_meta.og_locale_alternates %}
+  <meta property="og:locale:alternate" content="{{ alt_locale }}">
+  {% endfor %}
+  {% endif %}
+  <meta property="og:title" content="{% block og_title %}{{ seo_meta.og_title or seo_meta.title or self.title() }}{% endblock %}">
+  <meta property="og:description" content="{% block og_description %}{{ seo_meta.og_description or seo_meta.description or default_description }}{% endblock %}">
+  <meta property="og:image" content="{% block og_image %}{{ seo_meta.image or default_image }}{% endblock %}">
+  {% if seo_meta.image_alt %}
+  <meta property="og:image:alt" content="{{ seo_meta.image_alt }}">
+  {% endif %}
+  <meta property="og:url" content="{% block og_url %}{{ seo_meta.canonical or canonical_url }}{% endblock %}">
+  <meta property="og:type" content="{{ seo_meta.og_type or 'website' }}">
 
   <!-- Twitter card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{% block twitter_title %}{{ self.title() }}{% endblock %}">
-  <meta name="twitter:description" content="{% block twitter_description %}{{ default_description }}{% endblock %}">
-  <meta name="twitter:image" content="{% block twitter_image %}{{ default_image }}{% endblock %}">
+  <meta name="twitter:card" content="{{ seo_meta.twitter_card or 'summary_large_image' }}">
+  {% if seo_meta.twitter_site %}
+  <meta name="twitter:site" content="{{ seo_meta.twitter_site }}">
+  {% endif %}
+  <meta name="twitter:title" content="{% block twitter_title %}{{ seo_meta.twitter_title or seo_meta.title or self.title() }}{% endblock %}">
+  <meta name="twitter:description" content="{% block twitter_description %}{{ seo_meta.twitter_description or seo_meta.description or default_description }}{% endblock %}">
+  <meta name="twitter:image" content="{% block twitter_image %}{{ seo_meta.twitter_image or seo_meta.image or default_image }}{% endblock %}">
+  {% if seo_meta.structured_data %}
+  {% for item in seo_meta.structured_data %}
+  <script type="application/ld+json">{{ item | tojson(indent=2) }}</script>
+  {% endfor %}
+  {% endif %}
 
   {% block head %}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
