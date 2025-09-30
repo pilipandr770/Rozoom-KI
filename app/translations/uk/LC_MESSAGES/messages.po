@@ -21,58 +21,60 @@ msgid ""
 "No pricing packages are currently available. Please contact us for custom"
 " pricing."
 msgstr ""
+"Наразі немає доступних пакетів цін. Будь ласка, зв'яжіться з нами для "
+"індивідуальних цін."
 
 #: app/routes/payment/__init__.py:92
 msgid "Development Hours"
-msgstr ""
+msgstr "Години розробки"
 
 #: app/routes/payment/__init__.py:137
 msgid "An error occurred while processing your payment. Please try again later."
-msgstr ""
+msgstr "Під час обробки вашого платежу сталася помилка. Спробуйте ще раз пізніше."
 
 #: app/routes/payment/__init__.py:153
 msgid "Payment information not found."
-msgstr ""
+msgstr "Інформацію про платіж не знайдено."
 
 #: app/routes/payment/__init__.py:179
 msgid "Payment successful! Thank you for your purchase."
-msgstr ""
+msgstr "Платіж успішний! Дякуємо за покупку."
 
 #: app/routes/payment/__init__.py:181
 msgid "Payment is being processed. We will update you when it completes."
-msgstr ""
+msgstr "Платіж обробляється. Ми повідомимо вас, коли він завершиться."
 
 #: app/routes/payment/__init__.py:187
 msgid "An error occurred while processing your payment information."
-msgstr ""
+msgstr "Під час обробки інформації про ваш платіж сталася помилка."
 
 #: app/templates/about.html:3 app/templates/about.html:6
 msgid "About"
-msgstr ""
+msgstr "Про нас"
 
 #: app/templates/about.html:7
 msgid "About the author."
-msgstr ""
+msgstr "Про автора."
 
 #: app/templates/base.html:146
 msgid "Home"
-msgstr ""
+msgstr "Головна"
 
 #: app/templates/base.html:147 app/templates/services.html:3
 msgid "Services"
-msgstr ""
+msgstr "Послуги"
 
 #: app/templates/base.html:148
 msgid "Pricing"
-msgstr ""
+msgstr "Ціни"
 
 #: app/templates/base.html:149 app/templates/blog/blog.html:9
 msgid "Blog"
-msgstr ""
+msgstr "Блог"
 
 #: app/templates/base.html:150
 msgid "Contact"
-msgstr ""
+msgstr "Контакт"
 
 #: app/templates/base.html:157 app/templates/dashboard/index.html:34
 #: app/templates/dashboard/index.html:60
@@ -82,11 +84,11 @@ msgstr ""
 #: app/templates/dashboard/project_detail.html:14
 #: app/templates/dashboard/projects.html:14
 msgid "Dashboard"
-msgstr ""
+msgstr "Панель керування"
 
 #: app/templates/base.html:159
 msgid "Admin Panel"
-msgstr ""
+msgstr "Панель адміністратора"
 
 #: app/templates/base.html:161 app/templates/dashboard/index.html:51
 #: app/templates/dashboard/invoices.html:31
@@ -95,88 +97,88 @@ msgstr ""
 #: app/templates/dashboard/project_detail.html:31
 #: app/templates/dashboard/projects.html:31
 msgid "Logout"
-msgstr ""
+msgstr "Вийти"
 
 #: app/templates/auth/forgot_password.html:27 app/templates/auth/login.html:3
 #: app/templates/auth/login.html:11 app/templates/auth/login.html:29
 #: app/templates/auth/register.html:64 app/templates/base.html:163
 msgid "Login"
-msgstr ""
+msgstr "Увійти"
 
 #: app/templates/auth/login.html:37 app/templates/auth/register.html:3
 #: app/templates/base.html:164
 msgid "Register"
-msgstr ""
+msgstr "Зареєструватися"
 
 #: app/templates/base.html:191
 msgid "&copy; 2025 Rozoom-KI. All rights reserved."
-msgstr ""
+msgstr "&copy; 2025 Rozoom-KI. Всі права захищені."
 
 #: app/templates/base.html:193 app/templates/de/impressum.html:3
 #: app/templates/impressum.html:3
 msgid "Impressum"
-msgstr ""
+msgstr "Імпресум"
 
 #: app/templates/auth/register.html:56 app/templates/base.html:194
 #: app/templates/de/privacy.html:7 app/templates/privacy.html:7
 msgid "Privacy Policy"
-msgstr ""
+msgstr "Політика конфіденційності"
 
 #: app/templates/auth/register.html:56 app/templates/base.html:195
 #: app/templates/de/terms.html:7 app/templates/terms.html:7
 msgid "Terms of Service"
-msgstr ""
+msgstr "Умови обслуговування"
 
 #: app/templates/base.html:208
 msgid "Rozoom Assistant"
-msgstr ""
+msgstr "Асистент Rozoom"
 
 #: app/templates/base.html:222
 msgid "Type your message..."
-msgstr ""
+msgstr "Введіть ваше повідомлення..."
 
 #: app/templates/blog.html:8
 msgid "Our Blog"
-msgstr ""
+msgstr "Наш блог"
 
 #: app/templates/blog.html:12
 msgid "Latest insights, news and technology updates"
-msgstr ""
+msgstr "Останні інсайти, новини та оновлення технологій"
 
 #: app/templates/blog.html:40 app/templates/blog/blog.html:38
 #: app/templates/blog/blog_category.html:38
 #: app/templates/blog/blog_search.html:41 app/templates/blog/blog_tag.html:40
 #: app/templates/blog_tag.html:34
 msgid "Read More"
-msgstr ""
+msgstr "Читати далі"
 
 #: app/templates/blog.html:49 app/templates/blog_search.html:47
 #: app/templates/blog_tag.html:43
 msgid "Previous"
-msgstr ""
+msgstr "Попередня"
 
 #: app/templates/blog.html:53 app/templates/blog_search.html:51
 #: app/templates/blog_tag.html:47
 msgid "Page"
-msgstr ""
+msgstr "Сторінка"
 
 #: app/templates/blog.html:53 app/templates/blog_search.html:51
 #: app/templates/blog_tag.html:47
 msgid "of"
-msgstr ""
+msgstr "з"
 
 #: app/templates/blog.html:57 app/templates/blog_search.html:55
 #: app/templates/blog_tag.html:51
 msgid "Next"
-msgstr ""
+msgstr "Наступна"
 
 #: app/templates/blog.html:65
 msgid "No posts yet"
-msgstr ""
+msgstr "Поки що немає постів"
 
 #: app/templates/blog.html:66
 msgid "Check back soon for our latest articles and insights."
-msgstr ""
+msgstr "Перевіряйте скоро наші останні статті та інсайти."
 
 #: app/templates/blog.html:73 app/templates/blog.html:78
 #: app/templates/blog/blog.html:125 app/templates/blog/blog_category.html:126
@@ -186,221 +188,223 @@ msgstr ""
 #: app/templates/blog_search.html:85 app/templates/blog_tag.html:68
 #: app/templates/dashboard/projects.html:71
 msgid "Search"
-msgstr ""
+msgstr "Пошук"
 
 #: app/templates/blog.html:76 app/templates/blog_tag.html:71
 msgid "Search posts..."
-msgstr ""
+msgstr "Пошук постів..."
 
 #: app/templates/blog.html:85 app/templates/blog/blog.html:98
 #: app/templates/blog/blog_category.html:104
 #: app/templates/blog/blog_post.html:97 app/templates/blog/blog_search.html:116
 #: app/templates/blog/blog_tag.html:106 app/templates/blog_tag.html:80
 msgid "Categories"
-msgstr ""
+msgstr "Категорії"
 
 #: app/templates/blog.html:97 app/templates/blog_tag.html:92
 msgid "No categories yet"
-msgstr ""
+msgstr "Поки що немає категорій"
 
 #: app/templates/blog.html:103 app/templates/blog_tag.html:113
 msgid "Recent Posts"
-msgstr ""
+msgstr "Недавні пости"
 
 #: app/templates/blog.html:117 app/templates/blog_tag.html:127
 msgid "No recent posts"
-msgstr ""
+msgstr "Немає недавніх постів"
 
 #: app/templates/blog.html:123 app/templates/blog_tag.html:98
 msgid "Popular Tags"
-msgstr ""
+msgstr "Популярні теги"
 
 #: app/templates/blog.html:132 app/templates/blog_tag.html:107
 msgid "No tags yet"
-msgstr ""
+msgstr "Поки що немає тегів"
 
 #: app/templates/blog/blog.html:111 app/templates/blog/blog_category.html:115
 #: app/templates/blog/blog_post.html:108
 #: app/templates/blog/blog_search.html:127 app/templates/blog/blog_tag.html:117
 #: app/templates/blog_post.html:31
 msgid "Tags"
-msgstr ""
+msgstr "Теги"
 
 #: app/templates/blog_post.html:41
 msgid "Share this post"
-msgstr ""
+msgstr "Поділитися цим постом"
 
 #: app/templates/blog/blog_post.html:63 app/templates/blog_post.html:58
 msgid "Related Posts"
-msgstr ""
+msgstr "Схожі пости"
 
 #: app/templates/blog_post.html:84
 msgid "Previous Post"
-msgstr ""
+msgstr "Попередній пост"
 
 #: app/templates/blog_post.html:93
 msgid "Next Post"
-msgstr ""
+msgstr "Наступний пост"
 
 #: app/templates/blog_search.html:3 app/templates/blog_search.html:7
 msgid "Search Results"
-msgstr ""
+msgstr "Результати пошуку"
 
 #: app/templates/blog_search.html:8
 msgid "Showing results for"
-msgstr ""
+msgstr "Показати результати для"
 
 #: app/templates/blog/blog_search.html:11 app/templates/blog_search.html:15
 msgid "Found"
-msgstr ""
+msgstr "Знайдено"
 
 #: app/templates/blog_search.html:15
 msgid "result"
-msgstr ""
+msgstr "результат"
 
 #: app/templates/blog_search.html:15
 msgid "s"
-msgstr ""
+msgstr "s"
 
 #: app/templates/blog_search.html:63
 msgid "No results found"
-msgstr ""
+msgstr "Результатів не знайдено"
 
 #: app/templates/blog_search.html:64
 msgid "Your search"
-msgstr ""
+msgstr "Ваш пошук"
 
 #: app/templates/blog_search.html:64
 msgid "did not match any articles"
-msgstr ""
+msgstr "не знайшов жодної статті"
 
 #: app/templates/blog_search.html:66
 msgid "Suggestions"
-msgstr ""
+msgstr "Пропозиції"
 
 #: app/templates/blog_search.html:68
 msgid "Make sure all words are spelled correctly."
-msgstr ""
+msgstr "Переконайтеся, що всі слова написані правильно."
 
 #: app/templates/blog_search.html:69
 msgid "Try different keywords."
-msgstr ""
+msgstr "Спробуйте інші ключові слова."
 
 #: app/templates/blog_search.html:70
 msgid "Try more general keywords."
-msgstr ""
+msgstr "Спробуйте більш загальні ключові слова."
 
 #: app/templates/blog/blog_post.html:56 app/templates/blog_search.html:73
 #: app/templates/blog_tag.html:61
 msgid "Back to Blog"
-msgstr ""
+msgstr "Повернутися до блогу"
 
 #: app/templates/blog/blog_tag.html:10 app/templates/blog_tag.html:3
 #: app/templates/blog_tag.html:7
 msgid "Tag:"
-msgstr ""
+msgstr "Тег:"
 
 #: app/templates/blog_tag.html:8
 msgid "Articles tagged with"
-msgstr ""
+msgstr "Статті з тегом"
 
 #: app/templates/blog_tag.html:59
 msgid "No posts with this tag"
-msgstr ""
+msgstr "Немає постів з цим тегом"
 
 #: app/templates/blog_tag.html:60
 msgid "There are currently no articles tagged with"
-msgstr ""
+msgstr "Наразі немає статей з тегом"
 
 #: app/templates/contact.html:7 app/templates/pricing.html:182
 msgid "Get in Touch"
-msgstr ""
+msgstr "Зв'язатися"
 
 #: app/templates/contact.html:8
 msgid "Have a question or ready to start your next project? We're here to help!"
-msgstr ""
+msgstr "Маєте питання або готові розпочати наступний проект? Ми тут, щоб допомогти!"
 
 #: app/templates/contact.html:17
 msgid "Address"
-msgstr ""
+msgstr "Адреса"
 
 #: app/templates/contact.html:27
 msgid "Email Us"
-msgstr ""
+msgstr "Напишіть нам"
 
 #: app/templates/contact.html:37
 msgid "Call Us"
-msgstr ""
+msgstr "Зателефонуйте нам"
 
 #: app/templates/contact.html:38
 msgid "Mon-Fri 9:00-18:00"
-msgstr ""
+msgstr "Пн-Пт 9:00-18:00"
 
 #: app/templates/contact.html:44
 msgid "LinkedIn"
-msgstr ""
+msgstr "LinkedIn"
 
 #: app/templates/contact.html:45
 msgid "Twitter"
-msgstr ""
+msgstr "Twitter"
 
 #: app/templates/contact.html:46
 msgid "Facebook"
-msgstr ""
+msgstr "Facebook"
 
 #: app/templates/contact.html:47
 msgid "Instagram"
-msgstr ""
+msgstr "Instagram"
 
 #: app/templates/contact.html:52
 msgid "Send Us a Message"
-msgstr ""
+msgstr "Надішліть нам повідомлення"
 
 #: app/templates/contact.html:59
 msgid "Your message has been sent successfully. We'll get back to you soon!"
-msgstr ""
+msgstr "Ваше повідомлення успішно надіслано. Ми зв'яжемося з вами скоро!"
 
 #: app/templates/auth/register.html:18 app/templates/contact.html:71
 #: app/templates/dashboard/profile.html:50 app/templates/payment_form.html:251
 msgid "Full Name"
-msgstr ""
+msgstr "Повне ім'я"
 
 #: app/templates/contact.html:72
 msgid "Enter your full name"
-msgstr ""
+msgstr "Введіть ваше повне ім'я"
 
 #: app/templates/auth/forgot_password.html:18
 #: app/templates/auth/register.html:22 app/templates/contact.html:76
 #: app/templates/dashboard/profile.html:54 app/templates/payment_form.html:258
 msgid "Email Address"
-msgstr ""
+msgstr "Адреса електронної пошти"
 
 #: app/templates/contact.html:77
 msgid "Enter your email address"
-msgstr ""
+msgstr "Введіть вашу адресу електронної пошти"
 
 #: app/templates/contact.html:81
 msgid "Your Message"
-msgstr ""
+msgstr "Ваше повідомлення"
 
 #: app/templates/contact.html:82
 msgid "How can we help you?"
-msgstr ""
+msgstr "Чим ми можемо вам допомогти?"
 
 #: app/templates/contact.html:89
 msgid ""
 "I consent to having this website store my submitted information so they "
 "can respond to my inquiry"
 msgstr ""
+"Я погоджуюся, що цей сайт зберігає мої надіслані дані, щоб вони могли "
+"відповісти на мій запит"
 
 #: app/templates/contact.html:93 app/templates/dashboard/messages.html:308
 #: app/templates/dashboard/project_detail.html:228
 msgid "Send Message"
-msgstr ""
+msgstr "Надіслати повідомлення"
 
 #: app/templates/contact.html:103
 msgid "Remote Work"
-msgstr ""
+msgstr "Віддалена робота"
 
 #: app/templates/contact.html:104
 msgid ""
@@ -408,103 +412,109 @@ msgid ""
 "various locations. This allows us to serve clients worldwide while "
 "maintaining flexibility and efficiency."
 msgstr ""
+"Ми працюємо як remote-first компанія з членами команди, які працюють з "
+"різних місць. Це дозволяє нам обслуговувати клієнтів по всьому світу, "
+"зберігаючи гнучкість та ефективність."
 
 #: app/templates/faq.html:3 app/templates/faq.html:6
 msgid "FAQ"
-msgstr ""
+msgstr "FAQ"
 
 #: app/templates/faq.html:7
 msgid "Frequently asked questions."
-msgstr ""
+msgstr "Часті запитання."
 
 #: app/templates/de/impressum.html:7 app/templates/impressum.html:7
 msgid "Impressum (Legal Notice)"
-msgstr ""
+msgstr "Імпресум (Юридичне повідомлення)"
 
 #: app/templates/de/impressum.html:10 app/templates/impressum.html:10
 msgid "Information According to § 5 TMG"
-msgstr ""
+msgstr "Інформація відповідно до § 5 TMG"
 
 #: app/templates/de/impressum.html:15 app/templates/de/impressum.html:48
 #: app/templates/impressum.html:15 app/templates/impressum.html:48
 msgid "Germany"
-msgstr ""
+msgstr "Німеччина"
 
 #: app/templates/de/impressum.html:18 app/templates/impressum.html:18
 msgid "Represented by:"
-msgstr ""
+msgstr "Представлено:"
 
 #: app/templates/de/impressum.html:21 app/templates/impressum.html:21
 msgid "Contact:"
-msgstr ""
+msgstr "Контакт:"
 
 #: app/templates/de/impressum.html:23 app/templates/de/privacy.html:61
 #: app/templates/de/terms.html:59 app/templates/impressum.html:23
 #: app/templates/privacy.html:61 app/templates/terms.html:59
 msgid "Phone:"
-msgstr ""
+msgstr "Телефон:"
 
 #: app/templates/de/impressum.html:24 app/templates/de/privacy.html:60
 #: app/templates/de/terms.html:58 app/templates/impressum.html:24
 #: app/templates/privacy.html:60 app/templates/terms.html:58
 msgid "Email:"
-msgstr ""
+msgstr "Електронна пошта:"
 
 #: app/templates/de/impressum.html:25 app/templates/impressum.html:25
 msgid "Website:"
-msgstr ""
+msgstr "Вебсайт:"
 
 #: app/templates/de/impressum.html:28 app/templates/impressum.html:28
 msgid "Registration:"
-msgstr ""
+msgstr "Реєстрація:"
 
 #: app/templates/de/impressum.html:30 app/templates/impressum.html:30
 msgid "Registered in the Commercial Register"
-msgstr ""
+msgstr "Зареєстровано в торговому реєстрі"
 
 #: app/templates/de/impressum.html:31 app/templates/impressum.html:31
 msgid "Register Court:"
-msgstr ""
+msgstr "Суд реєстру:"
 
 #: app/templates/de/impressum.html:32 app/templates/impressum.html:32
 msgid "Register Number:"
-msgstr ""
+msgstr "Номер реєстру:"
 
 #: app/templates/de/impressum.html:35 app/templates/impressum.html:35
 msgid "VAT Identification Number:"
-msgstr ""
+msgstr "Ідентифікаційний номер ПДВ:"
 
 #: app/templates/de/impressum.html:37 app/templates/impressum.html:37
 msgid "VAT ID:"
-msgstr ""
+msgstr "Ідентифікатор ПДВ:"
 
 #: app/templates/de/impressum.html:38 app/templates/impressum.html:38
 msgid "According to § 27 a of the German Value Added Tax Act"
-msgstr ""
+msgstr "Відповідно до § 27 a Закону Німеччини про податок на додану вартість"
 
 #: app/templates/de/impressum.html:43 app/templates/impressum.html:43
 msgid "Responsible for Content According to § 55 Abs. 2 RStV"
-msgstr ""
+msgstr "Відповідальний за зміст відповідно до § 55 Abs. 2 RStV"
 
 #: app/templates/de/impressum.html:53 app/templates/impressum.html:53
 msgid "Dispute Resolution"
-msgstr ""
+msgstr "Вирішення спорів"
 
 #: app/templates/de/impressum.html:54 app/templates/impressum.html:54
 msgid ""
 "The European Commission provides a platform for online dispute resolution"
 " (OS):"
 msgstr ""
+"Європейська Комісія надає платформу для онлайн-вирішення спорів (OS):"
 
 #: app/templates/de/impressum.html:55 app/templates/impressum.html:55
 msgid ""
 "We are not willing or obliged to participate in dispute resolution "
 "proceedings before a consumer arbitration board."
 msgstr ""
+"Ми не бажаємо або не зобов'язані брати участь у процедурах вирішення спорів "
+"перед арбітражною радою споживачів."
 
 #: app/templates/de/impressum.html:59 app/templates/impressum.html:59
 msgid "Liability for Content"
-msgstr ""
+msgstr "Відповідальність за зміст"
 
 #: app/templates/de/impressum.html:60 app/templates/impressum.html:60
 msgid ""
@@ -514,6 +524,11 @@ msgid ""
 " not obliged to monitor transmitted or stored external information or to "
 "investigate circumstances that indicate illegal activity."
 msgstr ""
+"Як постачальник послуг, ми несемо відповідальність за власний зміст на цих "
+"сторінках відповідно до § 7 абзацу 1 TMG (Німецький закон про телемедіа) та "
+"загальних законів. Відповідно до §§ 8 до 10 TMG, однак, ми як постачальник "
+"послуг не зобов'язані контролювати передані або збережені зовнішні "
+"інформації або досліджувати обставини, які вказують на незаконну діяльність."
 
 #: app/templates/de/impressum.html:61 app/templates/impressum.html:61
 msgid ""
@@ -523,10 +538,15 @@ msgid ""
 "As soon as we become aware of such legal violations, we will remove this "
 "content immediately."
 msgstr ""
+"Зобов'язання щодо видалення або блокування використання інформації відповідно "
+"до загальних законів залишаються незмінними. Однак відповідальність у цьому "
+"відношенні можлива лише з моменту отримання знань про конкретне порушення "
+"закону. Як тільки ми дізнаємося про такі порушення закону, ми негайно "
+"видалимо цей зміст."
 
 #: app/templates/de/impressum.html:65 app/templates/impressum.html:65
 msgid "Liability for Links"
-msgstr ""
+msgstr "Відповідальність за посилання"
 
 #: app/templates/de/impressum.html:66 app/templates/impressum.html:66
 msgid ""
@@ -537,6 +557,12 @@ msgid ""
 "linked pages were checked for possible legal violations at the time of "
 "linking. Illegal contents were not recognizable at the time of linking."
 msgstr ""
+"Наша пропозиція містить посилання на зовнішні вебсайти третіх сторін, на "
+"зміст яких ми не маємо впливу. Тому ми не можемо нести жодної відповідальності "
+"за ці зовнішні змісти. Відповідний постачальник або оператор сторін завжди "
+"несе відповідальність за зміст пов'язаних сторін. Пов'язані сторінки були "
+"перевірені на можливі порушення закону на момент посилання. Незаконний зміст "
+"не був розпізнаний на момент посилання."
 
 #: app/templates/de/impressum.html:67 app/templates/impressum.html:67
 msgid ""
@@ -544,10 +570,13 @@ msgid ""
 "reasonable without concrete evidence of a violation of law. If we become "
 "aware of any legal violations, we will remove such links immediately."
 msgstr ""
+"Однак, постійний контроль змісту пов'язаних сторін не є розумним без "
+"конкретних доказів порушення закону. Якщо ми дізнаємося про будь-які "
+"порушення закону, ми негайно видалимо такі посилання."
 
 #: app/templates/de/impressum.html:71 app/templates/impressum.html:71
 msgid "Copyright"
-msgstr ""
+msgstr "Авторське право"
 
 #: app/templates/de/impressum.html:72 app/templates/impressum.html:72
 msgid ""
@@ -557,6 +586,11 @@ msgid ""
 "written consent of the respective author or creator. Downloads and copies"
 " of this site are only permitted for private, non-commercial use."
 msgstr ""
+"Зміст і роботи, створені операторами сайту на цих сторінках, підлягають "
+"німецькому закону про авторське право. Дублювання, обробка, розповсюдження "
+"та будь-який вид експлуатації за межами меж авторського права вимагають "
+"письмової згоди відповідного автора або творця. Завантаження та копії цього "
+"сайту дозволені лише для приватного, некомерційного використання."
 
 #: app/templates/de/impressum.html:73 app/templates/impressum.html:73
 msgid ""
@@ -566,72 +600,85 @@ msgid ""
 "copyright infringement, please inform us accordingly. If we become aware "
 "of any infringements, we will remove such content immediately."
 msgstr ""
+"Оскільки зміст цього сайту не був створений оператором, поважаються "
+"авторські права третіх сторін. Зокрема, зміст третіх сторін позначений як "
+"такий. Якщо ви все ж таки помітите порушення авторських прав, будь ласка, "
+"повідомте нас про це. Якщо ми дізнаємося про будь-які порушення, ми негайно "
+"видалимо такий зміст."
 
 #: app/templates/index.html:20
 msgid "Intelligent AI Solutions for Modern Business"
-msgstr ""
+msgstr "Інтелектуальні рішення ШІ для сучасного бізнесу"
 
 #: app/templates/index.html:21
 msgid ""
 "Transform your business with our state-of-the-art AI assistants and "
 "custom solutions"
 msgstr ""
+"Трансформуйте свій бізнес за допомогою наших передових AI-асистентів та "
+"індивідуальних рішень"
 
 #: app/templates/index.html:23
 msgid "Explore Services"
-msgstr ""
+msgstr "Дослідити послуги"
 
 #: app/templates/index.html:24 app/templates/pricing.html:157
 #: app/templates/pricing.html:168 app/templates/pricing.html:192
 #: app/templates/services.html:440
 msgid "Contact Us"
-msgstr ""
+msgstr "Зв'язатися з нами"
 
 #: app/templates/index.html:26
 msgid "Sign Up for Free"
-msgstr ""
+msgstr "Зареєструватися безкоштовно"
 
 #: app/templates/index.html:28 app/templates/payment_success.html:42
 msgid "Go to Dashboard"
-msgstr ""
+msgstr "Перейти до панелі керування"
 
 #: app/templates/index.html:35
 msgid "How We Can Help"
-msgstr ""
+msgstr "Чим ми можемо допомогти"
 
 #: app/templates/index.html:41 app/templates/services.html:21
 msgid "Web Development"
-msgstr ""
+msgstr "Веб-розробка"
 
 #: app/templates/index.html:42
 msgid ""
 "Custom websites and web applications with AI-powered features to enhance "
 "user experience."
 msgstr ""
+"Індивідуальні вебсайти та веб-додатки з функціями, що працюють на основі ШІ, "
+"для покращення користувацького досвіду."
 
 #: app/templates/index.html:48
 msgid "ML & AI Integration"
-msgstr ""
+msgstr "Інтеграція ML та ШІ"
 
 #: app/templates/index.html:49
 msgid ""
 "Integrate machine learning models and AI capabilities into your existing "
 "software systems."
 msgstr ""
+"Інтегруйте моделі машинного навчання та можливості ШІ у ваші існуючі "
+"програмні системи."
 
 #: app/templates/index.html:55
 msgid "Process Automation"
-msgstr ""
+msgstr "Автоматизація процесів"
 
 #: app/templates/index.html:56
 msgid ""
 "Streamline your business operations with intelligent automation and "
 "workflow solutions."
 msgstr ""
+"Оптимізуйте свої бізнес-операції за допомогою інтелектуальної автоматизації "
+"та рішень для робочих процесів."
 
 #: app/templates/index.html:62
 msgid "What Our Clients Say"
-msgstr ""
+msgstr "Що кажуть наші клієнти"
 
 #: app/templates/index.html:66
 msgid ""
@@ -639,10 +686,13 @@ msgid ""
 "Response times dropped by 60 percent and customer satisfaction increased "
 "dramatically."
 msgstr ""
+"Rozoom-KI трансформував наш сервіс підтримки клієнтів за допомогою їхнього "
+"AI-асистента. Час відповіді зменшився на 60 відсотків, а задоволеність "
+"клієнтів значно зросла."
 
 #: app/templates/index.html:70
 msgid "CTO, TechSolutions GmbH"
-msgstr ""
+msgstr "CTO, TechSolutions GmbH"
 
 #: app/templates/index.html:75
 msgid ""
@@ -650,10 +700,13 @@ msgid ""
 "us thousands of euros monthly and improved our forecasting accuracy by 40"
 " percent."
 msgstr ""
+"Інтеграція машинного навчання для управління нашим інвентарем заощадила "
+"нам тисячі євро щомісяця та покращила точність прогнозування на 40 "
+"відсотків."
 
 #: app/templates/index.html:79
 msgid "Operations Director, RetailPlus"
-msgstr ""
+msgstr "Директор з операцій, RetailPlus"
 
 #: app/templates/index.html:84
 msgid ""
@@ -661,438 +714,473 @@ msgid ""
 "possible. We have been able to identify new market opportunities and "
 "increase revenue by 25 percent in just six months."
 msgstr ""
+"Їхня платформа аналітики на основі ШІ надала нам інсайти, про які ми ніколи "
+"не думали як про можливі. Ми змогли ідентифікувати нові ринкові можливості "
+"та збільшити дохід на 25 відсотків всього за шість місяців."
 
 #: app/templates/index.html:88
 msgid "Marketing Director, InnovateMedia"
-msgstr ""
+msgstr "Директор з маркетингу, InnovateMedia"
 
 #: app/templates/index.html:99
 msgid "Build Your Workspace with Rozoom-KI"
-msgstr ""
+msgstr "Створіть свій робочий простір з Rozoom-KI"
 
 #: app/templates/index.html:100
 msgid ""
 "Registration unlocks a tailored workspace where you collaborate with our "
 "team and track every automation we build for you."
 msgstr ""
+"Реєстрація відкриває персоналізований робочий простір, де ви співпрацюєте "
+"з нашою командою та відстежуєте кожну автоматизацію, яку ми створюємо для вас."
 
 #: app/templates/index.html:103
 msgid "Why create an account"
-msgstr ""
+msgstr "Чому створити обліковий запис"
 
 #: app/templates/index.html:106
 msgid "Personal command center"
-msgstr ""
+msgstr "Особистий командний центр"
 
 #: app/templates/index.html:107
 msgid ""
 "Monitor proposals, agreements and delivery status in one dashboard with "
 "real-time notifications from our team."
 msgstr ""
+"Відстежуйте пропозиції, угоди та статус доставки в одній панелі керування "
+"з повідомленнями в режимі реального часу від нашої команди."
 
 #: app/templates/index.html:110
 msgid "Faster onboarding every time"
-msgstr ""
+msgstr "Швидше онбординг кожного разу"
 
 #: app/templates/index.html:111
 msgid ""
 "Answer guided discovery questions once and we pre-fill future briefs, "
 "saving you time on each new initiative."
 msgstr ""
+"Відповідайте на керовані питання відкриття один раз, і ми попередньо "
+"заповнюємо майбутні брифи, заощаджуючи ваш час на кожній новій ініціативі."
 
 #: app/templates/index.html:114
 msgid "Integrated billing and approvals"
-msgstr ""
+msgstr "Інтегрована оплата та затвердження"
 
 #: app/templates/index.html:115
 msgid ""
 "Approve estimates, sign milestones and handle payments securely without "
 "leaving the platform."
 msgstr ""
+"Затверджуйте оцінки, підписуйте етапи та обробляйте платежі securely без "
+"виходу з платформи."
 
 #: app/templates/index.html:121
 msgid "What happens after you create a project"
-msgstr ""
+msgstr "Що відбувається після створення проекту"
 
 #: app/templates/index.html:123
 msgid "Share the vision"
-msgstr ""
+msgstr "Поділитися баченням"
 
 #: app/templates/index.html:123
 msgid ""
 "Describe goals, audience and constraints once; our assistants convert it "
 "into a structured brief."
 msgstr ""
+"Опишіть цілі, аудиторію та обмеження один раз; наші асистенти конвертують "
+"це у структурований бриф."
 
 #: app/templates/index.html:124
 msgid "Receive a roadmap"
-msgstr ""
+msgstr "Отримати дорожню карту"
 
 #: app/templates/index.html:124
 msgid ""
 "We design architecture, timelines and budget options you can approve or "
 "adjust with a click."
 msgstr ""
+"Ми проектуємо архітектуру, часові рамки та варіанти бюджету, які ви можете "
+"затвердити або налаштувати одним кліком."
 
 #: app/templates/index.html:125
 msgid "Track delivery in real time"
-msgstr ""
+msgstr "Відстежувати доставку в режимі реального часу"
 
 #: app/templates/index.html:125
 msgid ""
 "Milestones, test results and launch tasks update automatically inside "
 "your dashboard."
 msgstr ""
+"Етапи, результати тестів та завдання запуску оновлюються автоматично "
+"всередині вашої панелі керування."
 
 #: app/templates/index.html:130 app/templates/index.html:195
 msgid "Ready to transform your business with AI?"
-msgstr ""
+msgstr "Готові трансформувати свій бізнес за допомогою ШІ?"
 
 #: app/templates/index.html:131
 msgid ""
 "Your account keeps every conversation, document and approval in sync so "
 "nothing slows the launch."
 msgstr ""
+"Ваш обліковий запис зберігає кожну розмову, документ та затвердження "
+"в синхронізації, щоб нічого не сповільнювало запуск."
 
 #: app/templates/index.html:137
 msgid "Register Now"
-msgstr ""
+msgstr "Зареєструватися зараз"
 
 #: app/templates/auth/register.html:59 app/templates/index.html:139
 msgid "Create Account"
-msgstr ""
+msgstr "Створити обліковий запис"
 
 #: app/templates/index.html:140
 msgid "Already have an account? Login"
-msgstr ""
+msgstr "Вже маєте обліковий запис? Увійти"
 
 #: app/templates/index.html:154
 msgid "How our project chatbot supports you"
-msgstr ""
+msgstr "Як наш проектний чатбот підтримує вас"
 
 #: app/templates/index.html:155
 msgid ""
 "The embedded widget combines three specialized AI agents so you always "
 "get the right guidance at every stage."
 msgstr ""
+"Вбудований віджет поєднує трьох спеціалізованих AI-агентів, щоб ви завжди "
+"отримували правильне керівництво на кожному етапі."
 
 #: app/templates/index.html:157
 msgid "Available 24/7 inside your dashboard and on every project page."
-msgstr ""
+msgstr "Доступний 24/7 всередині вашої панелі керування та на кожній сторінці проекту."
 
 #: app/templates/index.html:158
 msgid "Switch between agents at any time to match the task you are solving."
-msgstr ""
+msgstr "Перемикайтеся між агентами в будь-який час, щоб відповідати завданню, яке ви вирішуєте."
 
 #: app/templates/index.html:159
 msgid ""
 "Conversations sync with your project timeline and notify the human team "
 "when escalation is required."
 msgstr ""
+"Розмови синхронізуються з вашою проектною шкалою часу та повідомляють "
+"людську команду, коли потрібна ескалація."
 
 #: app/templates/index.html:166
 msgid "Discovery Guide"
-msgstr ""
+msgstr "Путівник відкриття"
 
 #: app/templates/index.html:167
 msgid ""
 "Answers general questions about our services, explains pricing scenarios "
 "and helps you decide which solution fits your business."
 msgstr ""
+"Відповідає на загальні питання про наші послуги, пояснює сценарії ціноутворення "
+"та допомагає вам вирішити, яке рішення підходить вашому бізнесу."
 
 #: app/templates/index.html:171
 msgid "Brief Architect"
-msgstr ""
+msgstr "Архітектор брифа"
 
 #: app/templates/index.html:172
 msgid ""
 "Leads you through writing a detailed technical assignment, gathers "
 "requirements and prepares structured specifications for our engineers."
 msgstr ""
+"Веде вас через написання детального технічного завдання, збирає "
+"вимоги та готує структуровані специфікації для наших інженерів."
 
 #: app/templates/index.html:176
 msgid "Project Steward"
-msgstr ""
+msgstr "Стеvard проекту"
 
 #: app/templates/index.html:177
 msgid ""
 "Stays with you after kickoff, summarises sprint progress, reminds you "
 "about approvals and reports on upcoming milestones."
 msgstr ""
+"Залишається з вами після запуску, підсумовує прогрес спринту, нагадує вам "
+"про затвердження та повідомляє про майбутні етапи."
 
 #: app/templates/index.html:196
 msgid "Our team of experts is ready to help you implement intelligent solutions."
-msgstr ""
+msgstr "Наша команда експертів готова допомогти вам впровадити інтелектуальні рішення."
 
 #: app/templates/index.html:197
 msgid "Get Started Today"
-msgstr ""
+msgstr "Почати сьогодні"
 
 #: app/templates/payment_cancel.html:14
 msgid "Payment Cancelled"
-msgstr ""
+msgstr "Платіж скасовано"
 
 #: app/templates/payment_cancel.html:15
 msgid "Your payment was not completed. No charges have been made to your account."
-msgstr ""
+msgstr "Ваш платіж не було завершено. Жодних списань з вашого рахунку не було зроблено."
 
 #: app/templates/payment_cancel.html:18
 msgid "Try Again"
-msgstr ""
+msgstr "Спробувати знову"
 
 #: app/templates/payment_cancel.html:19
 msgid "Back to Pricing"
-msgstr ""
+msgstr "Повернутися до цін"
 
 #: app/templates/client/project_detail.html:130
 #: app/templates/payment_cancel.html:26
 msgid "Need Help?"
-msgstr ""
+msgstr "Потрібна допомога?"
 
 #: app/templates/payment_cancel.html:28
 msgid ""
 "If you encountered any issues with the payment process or have questions "
 "about our services, please don't hesitate to reach out."
 msgstr ""
+"Якщо ви зіткнулися з будь-якими проблемами з процесом оплати або маєте "
+"питання про наші послуги, будь ласка, не соромтеся звернутися."
 
 #: app/templates/payment_cancel.html:31
 msgid "You can email us at"
-msgstr ""
+msgstr "Ви можете написати нам на"
 
 #: app/templates/payment_cancel.html:32
 msgid "or"
-msgstr ""
+msgstr "або"
 
 #: app/templates/payment_cancel.html:32
 msgid "contact us through our website"
-msgstr ""
+msgstr "зв'язатися з нами через наш сайт"
 
 #: app/templates/payment_form.html:197
 msgid "Purchase Development Hours"
-msgstr ""
+msgstr "Придбати години розробки"
 
 #: app/templates/payment_form.html:198
 msgid "Select the number of development hours you need"
-msgstr ""
+msgstr "Виберіть кількість годин розробки, які вам потрібні"
 
 #: app/templates/payment_form.html:215
 msgid "Choose a Package"
-msgstr ""
+msgstr "Виберіть пакет"
 
 #: app/templates/payment_form.html:219 app/templates/payment_form.html:238
 #: app/templates/pricing.html:129
 msgid "Hours"
-msgstr ""
+msgstr "Години"
 
 #: app/templates/payment_form.html:226
 msgid "Or Customize Your Hours"
-msgstr ""
+msgstr "Або налаштуйте свої години"
 
 #: app/templates/payment_form.html:230 app/templates/payment_form.html:231
 #: app/templates/payment_form.html:232
 msgid "hrs"
-msgstr ""
+msgstr "год"
 
 #: app/templates/payment_form.html:239
 msgid "Rate"
-msgstr ""
+msgstr "Ставка"
 
 #: app/templates/payment_form.html:239
 msgid "hour"
-msgstr ""
+msgstr "година"
 
 #: app/templates/payment_form.html:247 app/templates/services.html:384
 msgid "Contact Information"
-msgstr ""
+msgstr "Контактна інформація"
 
 #: app/templates/payment_form.html:267
 msgid "Proceed to Payment"
-msgstr ""
+msgstr "Перейти до оплати"
 
 #: app/templates/payment_form.html:274
 msgid "What's Included"
-msgstr ""
+msgstr "Що включено"
 
 #: app/templates/payment_form.html:276
 msgid "Professional development work per your requirements"
-msgstr ""
+msgstr "Професійна розробка відповідно до ваших вимог"
 
 #: app/templates/payment_form.html:277
 msgid "Regular updates on progress"
-msgstr ""
+msgstr "Регулярні оновлення про прогрес"
 
 #: app/templates/payment_form.html:278
 msgid "Code and documentation delivered via secure channels"
-msgstr ""
+msgstr "Код та документація доставлені через захищені канали"
 
 #: app/templates/payment_form.html:279
 msgid "Free minor revisions"
-msgstr ""
+msgstr "Безкоштовні незначні ревізії"
 
 #: app/templates/payment_form.html:280
 msgid "Access to our project management system"
-msgstr ""
+msgstr "Доступ до нашої системи управління проектами"
 
 #: app/templates/payment_form.html:284
 msgid "Need help choosing the right number of hours? "
-msgstr ""
+msgstr "Потрібна допомога у виборі правильної кількості годин? "
 
 #: app/templates/payment_form.html:285
 msgid "Contact our team"
-msgstr ""
+msgstr "Зв'язатися з нашою командою"
 
 #: app/templates/payment_form.html:285
 msgid "for a custom quote or consultation."
-msgstr ""
+msgstr "для індивідуальної пропозиції або консультації."
 
 #: app/templates/payment_success.html:14
 msgid "Payment Successful!"
-msgstr ""
+msgstr "Платіж успішний!"
 
 #: app/templates/payment_success.html:15
 msgid "Thank you for your purchase. We've received your payment."
-msgstr ""
+msgstr "Дякуємо за вашу покупку. Ми отримали ваш платіж."
 
 #: app/templates/payment_success.html:19
 msgid "Order Summary"
-msgstr ""
+msgstr "Підсумок замовлення"
 
 #: app/templates/payment_success.html:22
 msgid "Hours Purchased"
-msgstr ""
+msgstr "Придбано годин"
 
 #: app/templates/payment_success.html:26
 msgid "Rate per Hour"
-msgstr ""
+msgstr "Ставка за годину"
 
 #: app/templates/payment_success.html:30
 msgid "Total Amount"
-msgstr ""
+msgstr "Загальна сума"
 
 #: app/templates/payment_success.html:37
 msgid ""
 "We've sent a receipt to your email address. Our team will be in touch "
 "shortly to discuss the next steps for your project."
 msgstr ""
+"Ми надіслали квитанцію на вашу електронну адресу. Наша команда зв'яжеться "
+"з вами найближчим часом, щоб обговорити наступні кроки для вашого проекту."
 
 #: app/templates/payment_success.html:40
 msgid "Return Home"
-msgstr ""
+msgstr "Повернутися додому"
 
 #: app/templates/payment_success.html:50
 msgid "What's Next?"
-msgstr ""
+msgstr "Що далі?"
 
 #: app/templates/payment_success.html:52
 msgid "Our project manager will contact you within 24 hours"
-msgstr ""
+msgstr "Наш менеджер проекту зв'яжеться з вами протягом 24 годин"
 
 #: app/templates/payment_success.html:53
 msgid "We'll discuss your project requirements and timeline"
-msgstr ""
+msgstr "Ми обговоримо вимоги до вашого проекту та часові рамки"
 
 #: app/templates/payment_success.html:54
 msgid "Development work will begin according to the agreed schedule"
-msgstr ""
+msgstr "Розробка розпочнеться відповідно до погодженого графіку"
 
 #: app/templates/payment_success.html:55
 msgid "You'll receive regular updates on your project"
-msgstr ""
+msgstr "Ви отримуватимете регулярні оновлення про ваш проект"
 
 #: app/templates/payment_success.html:59
 msgid "If you have any questions, please "
-msgstr ""
+msgstr "Якщо у вас є будь-які питання, будь ласка "
 
 #: app/templates/payment_success.html:60
 msgid "contact us"
-msgstr ""
+msgstr "зв'яжіться з нами"
 
 #: app/templates/pricing.html:115
 msgid "Choose Your Package"
-msgstr ""
+msgstr "Виберіть свій пакет"
 
 #: app/templates/pricing.html:116
 msgid "Get the perfect amount of development time for your project needs"
-msgstr ""
+msgstr "Отримайте ідеальну кількість часу розробки для потреб вашого проекту"
 
 #: app/templates/pricing.html:125
 msgid "Most Popular"
-msgstr ""
+msgstr "Найпопулярніший"
 
 #: app/templates/pricing.html:131
 msgid "per hour"
-msgstr ""
+msgstr "за годину"
 
 #: app/templates/pricing.html:138
 msgid "development hours"
-msgstr ""
+msgstr "години розробки"
 
 #: app/templates/pricing.html:139
 msgid "Custom solutions"
-msgstr ""
+msgstr "Індивідуальні рішення"
 
 #: app/templates/pricing.html:140
 msgid "Support included"
-msgstr ""
+msgstr "Підтримка включена"
 
 #: app/templates/pricing.html:141
 msgid "Regular updates"
-msgstr ""
+msgstr "Регулярні оновлення"
 
 #: app/templates/pricing.html:147
 msgid "Buy Hours"
-msgstr ""
+msgstr "Купити години"
 
 #: app/templates/pricing.html:166
 msgid "Custom Package"
-msgstr ""
+msgstr "Індивідуальний пакет"
 
 #: app/templates/pricing.html:167
 msgid "Tailored to Your Needs"
-msgstr ""
+msgstr "Адаптовано до ваших потреб"
 
 #: app/templates/pricing.html:169
 msgid "For special requirements"
-msgstr ""
+msgstr "Для особливих вимог"
 
 #: app/templates/pricing.html:173
 msgid "Flexible hours"
-msgstr ""
+msgstr "Гнучкі години"
 
 #: app/templates/pricing.html:174
 msgid "Custom development"
-msgstr ""
+msgstr "Індивідуальна розробка"
 
 #: app/templates/pricing.html:175
 msgid "Dedicated support"
-msgstr ""
+msgstr "Спеціалізована підтримка"
 
 #: app/templates/pricing.html:176
 msgid "Priority service"
-msgstr ""
+msgstr "Пріоритетне обслуговування"
 
 #: app/templates/pricing.html:177
 msgid "Enterprise solutions"
-msgstr ""
+msgstr "Корпоративні рішення"
 
 #: app/templates/pricing.html:190
 msgid "Need Help Choosing?"
-msgstr ""
+msgstr "Потрібна допомога у виборі?"
 
 #: app/templates/pricing.html:191
 msgid ""
 "Contact our team for a free consultation and we'll help you select the "
 "perfect package for your project."
 msgstr ""
+"Зв'яжіться з нашою командою для безкоштовної консультації, і ми допоможемо "
+"вам вибрати ідеальний пакет для вашого проекту."
 
 #: app/templates/de/privacy.html:8 app/templates/de/terms.html:8
 #: app/templates/privacy.html:8 app/templates/terms.html:8
 msgid "Last updated: September 1, 2025"
-msgstr ""
+msgstr "Останнє оновлення: 1 вересня 2025"
 
 #: app/templates/de/privacy.html:11 app/templates/privacy.html:11
 msgid "1. Introduction"
-msgstr ""
+msgstr "1. Вступ"
 
 #: app/templates/de/privacy.html:12 app/templates/privacy.html:12
 msgid ""
@@ -1102,36 +1190,43 @@ msgid ""
 "website and tell you about your privacy rights and how the law protects "
 "you."
 msgstr ""
+"Rozoom-KI (\"ми\", \"нас\" або \"наш\") поважає вашу приватність та "
+"зобов'язується захищати ваші персональні дані. Ця політика конфіденційності "
+"повідомить вас про те, як ми доглядаємо за вашими персональними даними, "
+"коли ви відвідуєте наш сайт, і розповість про ваші права на приватність "
+"та про те, як закон вас захищає."
 
 #: app/templates/de/privacy.html:16 app/templates/privacy.html:16
 msgid "2. The Data We Collect"
-msgstr ""
+msgstr "2. Дані, які ми збираємо"
 
 #: app/templates/de/privacy.html:17 app/templates/privacy.html:17
 msgid ""
 "We may collect, use, store and transfer different kinds of personal data "
 "about you which we have grouped together as follows:"
 msgstr ""
+"Ми можемо збирати, використовувати, зберігати та передавати різні види "
+"персональних даних про вас, які ми згрупували наступним чином:"
 
 #: app/templates/de/privacy.html:19 app/templates/privacy.html:19
 msgid "Identity Data"
-msgstr ""
+msgstr "Дані ідентифікації"
 
 #: app/templates/de/privacy.html:19 app/templates/privacy.html:19
 msgid "includes first name, last name, username or similar identifier."
-msgstr ""
+msgstr "включає ім'я, прізвище, ім'я користувача або подібний ідентифікатор."
 
 #: app/templates/de/privacy.html:20 app/templates/privacy.html:20
 msgid "Contact Data"
-msgstr ""
+msgstr "Контактні дані"
 
 #: app/templates/de/privacy.html:20 app/templates/privacy.html:20
 msgid "includes email address and telephone numbers."
-msgstr ""
+msgstr "включає адресу електронної пошти та номери телефонів."
 
 #: app/templates/de/privacy.html:21 app/templates/privacy.html:21
 msgid "Technical Data"
-msgstr ""
+msgstr "Технічні дані"
 
 #: app/templates/de/privacy.html:21 app/templates/privacy.html:21
 msgid ""
@@ -1140,50 +1235,59 @@ msgid ""
 "system and platform, and other technology on the devices you use to "
 "access this website."
 msgstr ""
+"включає адресу інтернет-протоколу (IP), тип та версію браузера, налаштування "
+"часового поясу та місцезнаходження, типи та версії плагінів браузера, "
+"операційну систему та платформу, та інші технології на пристроях, які ви "
+"використовуєте для доступу до цього сайту."
 
 #: app/templates/de/privacy.html:22 app/templates/privacy.html:22
 msgid "Usage Data"
-msgstr ""
+msgstr "Дані використання"
 
 #: app/templates/de/privacy.html:22 app/templates/privacy.html:22
 msgid "includes information about how you use our website and services."
-msgstr ""
+msgstr "включає інформацію про те, як ви використовуєте наш сайт та послуги."
 
 #: app/templates/de/privacy.html:27 app/templates/privacy.html:27
 msgid "3. How We Use Your Data"
-msgstr ""
+msgstr "3. Як ми використовуємо ваші дані"
 
 #: app/templates/de/privacy.html:28 app/templates/privacy.html:28
 msgid ""
 "We will only use your personal data when the law allows us to. Most "
 "commonly, we will use your personal data in the following circumstances:"
 msgstr ""
+"Ми будемо використовувати ваші персональні дані лише тоді, коли закон "
+"дозволяє нам це робити. Найчастіше ми будемо використовувати ваші "
+"персональні дані в наступних обставинах:"
 
 #: app/templates/de/privacy.html:30 app/templates/privacy.html:30
 msgid "To register you as a new customer."
-msgstr ""
+msgstr "Для реєстрації вас як нового клієнта."
 
 #: app/templates/de/privacy.html:31 app/templates/privacy.html:31
 msgid "To process and deliver your order."
-msgstr ""
+msgstr "Для обробки та доставки вашого замовлення."
 
 #: app/templates/de/privacy.html:32 app/templates/privacy.html:32
 msgid "To manage our relationship with you."
-msgstr ""
+msgstr "Для управління нашими стосунками з вами."
 
 #: app/templates/de/privacy.html:33 app/templates/privacy.html:33
 msgid ""
 "To improve our website, products/services, marketing or customer "
 "relationships."
 msgstr ""
+"Для покращення нашого веб-сайту, продуктів/послуг, маркетингу або стосунків "
+"з клієнтами."
 
 #: app/templates/de/privacy.html:34 app/templates/privacy.html:34
 msgid "To recommend products or services that may be of interest to you."
-msgstr ""
+msgstr "Для рекомендації продуктів або послуг, які можуть вас зацікавити."
 
 #: app/templates/de/privacy.html:39 app/templates/privacy.html:39
 msgid "4. Data Security"
-msgstr ""
+msgstr "4. Безпека даних"
 
 #: app/templates/de/privacy.html:40 app/templates/privacy.html:40
 msgid ""
@@ -1193,226 +1297,252 @@ msgid ""
 "data to those employees, agents, contractors and other third parties who "
 "have a business need to know."
 msgstr ""
+"Ми вжили відповідних заходів безпеки для запобігання випадковій втраті, "
+"використанню або доступу до ваших персональних даних несанкціонованим "
+"способом, їх зміні або розголошенню. Ми обмежуємо доступ до ваших "
+"персональних даних тими співробітниками, агентами, підрядниками та іншими "
+"третіми сторонами, яким це необхідно знати для ведення бізнесу."
 
 #: app/templates/de/privacy.html:44 app/templates/privacy.html:44
 msgid "5. Your Legal Rights"
-msgstr ""
+msgstr "5. Ваші законні права"
 
 #: app/templates/de/privacy.html:45 app/templates/privacy.html:45
 msgid ""
 "Under certain circumstances, you have rights under data protection laws "
 "in relation to your personal data, including the right to:"
 msgstr ""
+"За певних обставин ви маєте права відповідно до законів про захист даних "
+"щодо ваших персональних даних, включаючи право на:"
 
 #: app/templates/de/privacy.html:47 app/templates/privacy.html:47
 msgid "Request access to your personal data."
-msgstr ""
+msgstr "Надати запит на доступ до ваших персональних даних."
 
 #: app/templates/de/privacy.html:48 app/templates/privacy.html:48
 msgid "Request correction of your personal data."
-msgstr ""
+msgstr "Надати запит на виправлення ваших персональних даних."
 
 #: app/templates/de/privacy.html:49 app/templates/privacy.html:49
 msgid "Request erasure of your personal data."
-msgstr ""
+msgstr "Надати запит на видалення ваших персональних даних."
 
 #: app/templates/de/privacy.html:50 app/templates/privacy.html:50
 msgid "Object to processing of your personal data."
-msgstr ""
+msgstr "Заперечити проти обробки ваших персональних даних."
 
 #: app/templates/de/privacy.html:51 app/templates/privacy.html:51
 msgid "Request restriction of processing your personal data."
-msgstr ""
+msgstr "Надати запит на обмеження обробки ваших персональних даних."
 
 #: app/templates/de/privacy.html:52 app/templates/privacy.html:52
 msgid "Request transfer of your personal data."
-msgstr ""
+msgstr "Надати запит на передачу ваших персональних даних."
 
 #: app/templates/de/privacy.html:53 app/templates/privacy.html:53
 msgid "Right to withdraw consent."
-msgstr ""
+msgstr "Право відкликати згоду."
 
 #: app/templates/de/privacy.html:58 app/templates/privacy.html:58
 msgid "6. Contact Us"
-msgstr ""
+msgstr "6. Зв'яжіться з нами"
 
 #: app/templates/de/privacy.html:59 app/templates/privacy.html:59
 msgid ""
 "If you have any questions about this privacy policy or our privacy "
 "practices, please contact us at:"
 msgstr ""
+"Якщо у вас є будь-які питання щодо цієї політики конфіденційності або наших "
+"практик конфіденційності, будь ласка, зв'яжіться з нами за адресою:"
 
 #: app/templates/de/privacy.html:62 app/templates/de/terms.html:60
 #: app/templates/privacy.html:62 app/templates/terms.html:60
 msgid "Address:"
-msgstr ""
+msgstr "Адреса:"
 
 #: app/templates/services.html:9
 msgid "Our Services"
-msgstr ""
+msgstr "Наші послуги"
 
 #: app/templates/services.html:14
 msgid "AI Development"
-msgstr ""
+msgstr "Розробка ШІ"
 
 #: app/templates/services.html:15
 msgid ""
 "We develop custom AI solutions for your business needs, including natural"
 " language processing, computer vision, and machine learning models."
 msgstr ""
+"Ми розробляємо індивідуальні рішення ШІ для ваших бізнес-потреб, включаючи "
+"обробку природної мови, комп'ютерний зір та моделі машинного навчання."
 
 #: app/templates/services.html:22
 msgid ""
 "Full-stack web development services using modern frameworks and "
 "technologies to create responsive, scalable web applications."
 msgstr ""
+"Послуги повностекової веб-розробки з використанням сучасних фреймворків та "
+"технологій для створення адаптивних, масштабованих веб-додатків."
 
 #: app/templates/services.html:28
 msgid "Automation Solutions"
-msgstr ""
+msgstr "Рішення автоматизації"
 
 #: app/templates/services.html:29
 msgid ""
 "Automate your business processes with custom software solutions to "
 "increase efficiency and reduce operational costs."
 msgstr ""
+"Автоматизуйте свої бізнес-процеси за допомогою індивідуальних програмних "
+"рішень для підвищення ефективності та зниження операційних витрат."
 
 #: app/templates/services.html:35
 msgid "Data Analysis"
-msgstr ""
+msgstr "Аналіз даних"
 
 #: app/templates/services.html:36
 msgid ""
 "Turn your data into actionable insights with our comprehensive data "
 "analysis and visualization services."
 msgstr ""
+"Перетворіть свої дані на практичні висновки за допомогою наших комплексних "
+"послуг аналізу даних та візуалізації."
 
 #: app/templates/services.html:41
 msgid "Request a Project Estimate"
-msgstr ""
+msgstr "Замовити оцінку проекту"
 
 #: app/templates/services.html:42
 msgid ""
 "Fill out our project questionnaire to get a free time and budget estimate"
 " for your project. No obligations!"
 msgstr ""
+"Заповніть нашу анкету проекту, щоб отримати безкоштовну оцінку часу та "
+"бюджету для вашого проекту. Без зобов'язань!"
 
 #: app/templates/services.html:63
 msgid "What type of project are you looking to develop?"
-msgstr ""
+msgstr "Який тип проекту ви хочете розробити?"
 
 #: app/templates/services.html:70
 msgid "Select a project type"
-msgstr ""
+msgstr "Виберіть тип проекту"
 
 #: app/templates/services.html:71
 msgid "Web Application"
-msgstr ""
+msgstr "Веб-додаток"
 
 #: app/templates/services.html:72
 msgid "Mobile Application"
-msgstr ""
+msgstr "Мобільний додаток"
 
 #: app/templates/services.html:73
 msgid "AI/ML Solution"
-msgstr ""
+msgstr "Рішення ШІ/МЛ"
 
 #: app/templates/services.html:74
 msgid "Automation Tool"
-msgstr ""
+msgstr "Інструмент автоматизації"
 
 #: app/templates/services.html:75
 msgid "Data Analytics"
-msgstr ""
+msgstr "Аналітика даних"
 
 #: app/templates/services.html:76 app/templates/services.html:285
 msgid "Other"
-msgstr ""
+msgstr "Інше"
 
 #: app/templates/services.html:78
 msgid "Choose the category that best describes your project."
-msgstr ""
+msgstr "Виберіть категорію, яка найкраще описує ваш проект."
 
 #: app/templates/services.html:88
 msgid "What is the primary goal of your project?"
-msgstr ""
+msgstr "Яка основна мета вашого проекту?"
 
 #: app/templates/services.html:94
 msgid "Describe the main purpose of your project..."
-msgstr ""
+msgstr "Опишіть основну мету вашого проекту..."
 
 #: app/templates/services.html:95
 msgid ""
 "Clearly define what problem your project solves or what opportunity it "
 "addresses."
 msgstr ""
+"Чітко визначте, яку проблему вирішує ваш проект або яку можливість він "
+"охоплює."
 
 #: app/templates/services.html:105
 msgid "Who are the target users of your project?"
-msgstr ""
+msgstr "Хто є цільовими користувачами вашого проекту?"
 
 #: app/templates/services.html:111
 msgid "Describe your target audience..."
-msgstr ""
+msgstr "Опишіть вашу цільову аудиторію..."
 
 #: app/templates/services.html:112
 msgid ""
 "Specify who will be using your solution (e.g., businesses, consumers, "
 "specific industry professionals)."
 msgstr ""
+"Вкажіть, хто буде використовувати ваше рішення (наприклад, бізнеси, "
+"споживачі, спеціалісти конкретної галузі)."
 
 #: app/templates/services.html:122
 msgid "What features are essential for your project?"
-msgstr ""
+msgstr "Які функції є необхідними для вашого проекту?"
 
 #: app/templates/services.html:128
 msgid "List the key features your project must have..."
-msgstr ""
+msgstr "Перелічіть ключові функції, які обов'язково повинен мати ваш проект..."
 
 #: app/templates/services.html:129
 msgid ""
 "Focus on the core functionality that is absolutely necessary for your "
 "project to succeed."
 msgstr ""
+"Зосередьтеся на основній функціональності, яка абсолютно необхідна для "
+"успіху вашого проекту."
 
 #: app/templates/services.html:139
 msgid "What features would be nice to have but aren't essential?"
-msgstr ""
+msgstr "Які функції було б добре мати, але вони не є необхідними?"
 
 #: app/templates/services.html:145
 msgid "List any additional features that would be beneficial..."
-msgstr ""
+msgstr "Перелічіть будь-які додаткові функції, які будуть корисними..."
 
 #: app/templates/services.html:146
 msgid ""
 "These are features that could be implemented in later phases of the "
 "project."
 msgstr ""
+"Це функції, які можуть бути реалізовані на пізніших етапах проекту."
 
 #: app/templates/services.html:156
 msgid "Do you have a specific timeline for this project?"
-msgstr ""
+msgstr "Чи є у вас конкретні терміни для цього проекту?"
 
 #: app/templates/services.html:163
 msgid "Select a timeline"
-msgstr ""
+msgstr "Виберіть терміни"
 
 #: app/templates/services.html:164
 msgid "Urgent (1-2 months)"
-msgstr ""
+msgstr "Терміново (1-2 місяці)"
 
 #: app/templates/services.html:165
 msgid "Standard (3-6 months)"
-msgstr ""
+msgstr "Стандартно (3-6 місяців)"
 
 #: app/templates/services.html:166
 msgid "Flexible (6+ months)"
-msgstr ""
+msgstr "Гнучко (6+ місяців)"
 
 #: app/templates/services.html:167 app/templates/services.html:191
 #: app/templates/services.html:312
 msgid "Not yet decided"
-msgstr ""
+msgstr "Ще не вирішив"
 
 #: app/templates/services.html:169
 msgid "This helps us determine the development pace and resource allocation."
@@ -1420,235 +1550,251 @@ msgstr ""
 
 #: app/templates/services.html:179
 msgid "Do you have a budget range in mind?"
-msgstr ""
+msgstr "Чи маєте ви уявлення про діапазон бюджету?"
 
 #: app/templates/services.html:186
 msgid "Select a budget range"
-msgstr ""
+msgstr "Оберіть діапазон бюджету"
 
 #: app/templates/services.html:187
 msgid "Less than €10,000"
-msgstr ""
+msgstr "Менше ніж €10,000"
 
 #: app/templates/services.html:188
 msgid "€10,000 - €30,000"
-msgstr ""
+msgstr "€10,000 - €30,000"
 
 #: app/templates/services.html:189
 msgid "€30,000 - €100,000"
-msgstr ""
+msgstr "€30,000 - €100,000"
 
 #: app/templates/services.html:190
 msgid "€100,000+"
-msgstr ""
+msgstr "€100,000+"
 
 #: app/templates/services.html:193
 msgid ""
 "This helps us suggest solutions that fit within your financial "
 "constraints."
 msgstr ""
+"Це допомагає нам запропонувати рішення, які відповідають вашим "
+"фінансовим обмеженням."
 
 #: app/templates/services.html:203
 msgid "Are there any existing systems your project needs to integrate with?"
-msgstr ""
+msgstr "Чи є існуючі системи, з якими ваш проект повинен інтегруватися?"
 
 #: app/templates/services.html:209
 msgid "List any systems, APIs, or services your project needs to connect with..."
-msgstr ""
+msgstr "Перелічіть будь-які системи, API або сервіси, з якими ваш проект повинен підключатися..."
 
 #: app/templates/services.html:210
 msgid "For example: payment gateways, CRMs, ERPs, social media platforms, etc."
-msgstr ""
+msgstr "Наприклад: платіжні шлюзи, CRM, ERP, платформи соціальних мереж тощо."
 
 #: app/templates/services.html:220
 msgid "Do you have any specific technical requirements or preferences?"
-msgstr ""
+msgstr "Чи маєте ви будь-які конкретні технічні вимоги або переваги?"
 
 #: app/templates/services.html:226
 msgid "Specify any technologies, frameworks, or platforms you prefer..."
-msgstr ""
+msgstr "Вкажіть будь-які технології, фреймворки або платформи, які ви віддаєте перевагу..."
 
 #: app/templates/services.html:227
 msgid ""
 "For example: programming languages, cloud providers, frameworks, or "
 "architecture preferences."
 msgstr ""
+"Наприклад: мови програмування, хмарні провайдери, фреймворки або "
+"архітектурні переваги."
 
 #: app/templates/services.html:237
 msgid "Do you have any examples of similar projects you admire?"
-msgstr ""
+msgstr "Чи маєте ви приклади подібних проектів, які ви захоплюєтеся?"
 
 #: app/templates/services.html:243
 msgid "List websites, apps, or products similar to what you envision..."
-msgstr ""
+msgstr "Перелічіть веб-сайти, додатки або продукти, подібні до того, що ви уявляєте..."
 
 #: app/templates/services.html:244
 msgid "This helps us understand your vision and aesthetic preferences."
-msgstr ""
+msgstr "Це допомагає нам зрозуміти ваше бачення та естетичні переваги."
 
 #: app/templates/services.html:254
 msgid "How do you plan to measure the success of this project?"
-msgstr ""
+msgstr "Як ви плануєте вимірювати успіх цього проекту?"
 
 #: app/templates/services.html:260
 msgid "Describe key performance indicators or success metrics..."
-msgstr ""
+msgstr "Опишіть ключові показники ефективності або метрики успіху..."
 
 #: app/templates/services.html:261
 msgid ""
 "For example: user acquisition, conversion rates, efficiency improvements,"
 " cost savings, etc."
 msgstr ""
+"Наприклад: залучення користувачів, коефіцієнти конверсії, покращення "
+"ефективності, економія витрат тощо."
 
 #: app/templates/services.html:271
 msgid "Do you have any specific security or compliance requirements?"
-msgstr ""
+msgstr "Чи маєте ви будь-які конкретні вимоги до безпеки або відповідності?"
 
 #: app/templates/services.html:278
 msgid "GDPR Compliance"
-msgstr ""
+msgstr "Відповідність GDPR"
 
 #: app/templates/services.html:279
 msgid "HIPAA Compliance"
-msgstr ""
+msgstr "Відповідність HIPAA"
 
 #: app/templates/services.html:280
 msgid "PCI DSS Compliance"
-msgstr ""
+msgstr "Відповідність PCI DSS"
 
 #: app/templates/services.html:281
 msgid "SOC 2 Compliance"
-msgstr ""
+msgstr "Відповідність SOC 2"
 
 #: app/templates/services.html:282
 msgid "ISO 27001 Compliance"
-msgstr ""
+msgstr "Відповідність ISO 27001"
 
 #: app/templates/services.html:283
 msgid "Two-factor Authentication"
-msgstr ""
+msgstr "Двофакторна аутентифікація"
 
 #: app/templates/services.html:284
 msgid "Data Encryption"
-msgstr ""
+msgstr "Шифрування даних"
 
 #: app/templates/services.html:287
 msgid "Hold Ctrl/Cmd to select multiple options, or leave blank if unsure."
-msgstr ""
+msgstr "Утримуйте Ctrl/Cmd для вибору кількох варіантів, або залиште порожнім, якщо не впевнені."
 
 #: app/templates/services.html:290
 msgid ""
 "If you selected 'Other' or have additional security requirements, please "
 "specify..."
 msgstr ""
+"Якщо ви вибрали 'Інше' або маєте додаткові вимоги до безпеки, будь "
+"ласка, вкажіть..."
 
 #: app/templates/services.html:300
 msgid "What level of ongoing support will you need after launch?"
-msgstr ""
+msgstr "Який рівень постійної підтримки вам знадобиться після запуску?"
 
 #: app/templates/services.html:307
 msgid "Select support level"
-msgstr ""
+msgstr "Оберіть рівень підтримки"
 
 #: app/templates/services.html:308
 msgid "Minimal (Bug fixes only)"
-msgstr ""
+msgstr "Мінімальний (тільки виправлення помилок)"
 
 #: app/templates/services.html:309
 msgid "Standard (Bug fixes and minor updates)"
-msgstr ""
+msgstr "Стандартний (виправлення помилок та незначні оновлення)"
 
 #: app/templates/services.html:310
 msgid "Comprehensive (Ongoing development and support)"
-msgstr ""
+msgstr "Комплексний (постійна розробка та підтримка)"
 
 #: app/templates/services.html:311
 msgid "Fully Managed Service"
-msgstr ""
+msgstr "Повністю керований сервіс"
 
 #: app/templates/services.html:314
 msgid "This helps us plan for post-launch resources and maintenance."
-msgstr ""
+msgstr "Це допомагає нам планувати ресурси та обслуговування після запуску."
 
 #: app/templates/services.html:324
 msgid "Do you already have any design assets or documentation for this project?"
-msgstr ""
+msgstr "Чи маєте ви вже будь-які дизайн-ресурси або документацію для цього проекту?"
 
 #: app/templates/services.html:332
 msgid "Wireframes"
-msgstr ""
+msgstr "Вайрфрейми"
 
 #: app/templates/services.html:336
 msgid "Design Mockups"
-msgstr ""
+msgstr "Дизайн-макети"
 
 #: app/templates/services.html:340
 msgid "Brand Guidelines"
-msgstr ""
+msgstr "Брендбук"
 
 #: app/templates/services.html:344
 msgid "User Stories"
-msgstr ""
+msgstr "Користувацькі історії"
 
 #: app/templates/services.html:348
 msgid "Requirements Document"
-msgstr ""
+msgstr "Документ з вимогами"
 
 #: app/templates/services.html:352
 msgid "Existing Code"
-msgstr ""
+msgstr "Існуючий код"
 
 #: app/templates/services.html:356
 msgid "None of the above"
-msgstr ""
+msgstr "Нічого з переліченого"
 
 #: app/templates/services.html:358
 msgid ""
 "Check all that apply. This helps us understand what resources are "
 "available to start with."
 msgstr ""
+"Позначте все, що підходить. Це допомагає нам зрозуміти, які ресурси "
+"доступні для початку роботи."
 
 #: app/templates/services.html:368
 msgid "Any additional information you'd like to share about your project?"
-msgstr ""
+msgstr "Будь-яка додаткова інформація, яку ви хотіли б поділитися про ваш проект?"
 
 #: app/templates/services.html:374
 msgid ""
 "Share any other details that might help us understand your project "
 "better..."
 msgstr ""
+"Поділіться будь-якими іншими деталями, які можуть допомогти нам краще "
+"зрозуміти ваш проект..."
 
 #: app/templates/services.html:375
 msgid ""
 "Include any considerations, challenges, or specific requirements not "
 "covered by previous questions."
 msgstr ""
+"Включіть будь-які міркування, виклики або конкретні вимоги, які не "
+"були охоплені попередніми питаннями."
 
 #: app/templates/services.html:387
 msgid "Name *"
-msgstr ""
+msgstr "Ім'я *"
 
 #: app/templates/auth/register.html:35 app/templates/services.html:391
 msgid "Company Name"
-msgstr ""
+msgstr "Назва компанії"
 
 #: app/templates/services.html:397
 msgid "Email *"
-msgstr ""
+msgstr "Email *"
 
 #: app/templates/services.html:401
 msgid "Phone"
-msgstr ""
+msgstr "Телефон"
 
 #: app/templates/services.html:408
 msgid ""
 "I consent to having this website store my submitted information so they "
 "can respond to my inquiry. *"
 msgstr ""
+"Я даю згоду на зберігання цим веб-сайтом наданої мною інформації, щоб "
+"вони могли відповісти на мій запит. *"
 
 #: app/templates/services.html:414
 msgid "Submit Project Request"
-msgstr ""
+msgstr "Надіслати запит на проект"
 
 #: app/templates/services.html:425
 msgid "Why Choose Us"

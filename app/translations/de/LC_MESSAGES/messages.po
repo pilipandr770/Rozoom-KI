@@ -20,58 +20,60 @@ msgid ""
 "No pricing packages are currently available. Please contact us for custom"
 " pricing."
 msgstr ""
+"Derzeit sind keine Preispakete verfügbar. Bitte kontaktieren Sie uns für"
+" individuelle Preise."
 
 #: app/routes/payment/__init__.py:92
 msgid "Development Hours"
-msgstr ""
+msgstr "Entwicklungsstunden"
 
 #: app/routes/payment/__init__.py:137
 msgid "An error occurred while processing your payment. Please try again later."
-msgstr ""
+msgstr "Bei der Verarbeitung Ihrer Zahlung ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut."
 
 #: app/routes/payment/__init__.py:153
 msgid "Payment information not found."
-msgstr ""
+msgstr "Zahlungsinformationen nicht gefunden."
 
 #: app/routes/payment/__init__.py:179
 msgid "Payment successful! Thank you for your purchase."
-msgstr ""
+msgstr "Zahlung erfolgreich! Vielen Dank für Ihren Einkauf."
 
 #: app/routes/payment/__init__.py:181
 msgid "Payment is being processed. We will update you when it completes."
-msgstr ""
+msgstr "Ihre Zahlung wird bearbeitet. Wir informieren Sie, wenn sie abgeschlossen ist."
 
 #: app/routes/payment/__init__.py:187
 msgid "An error occurred while processing your payment information."
-msgstr ""
+msgstr "Bei der Verarbeitung Ihrer Zahlungsinformationen ist ein Fehler aufgetreten."
 
 #: app/templates/about.html:3 app/templates/about.html:6
 msgid "About"
-msgstr ""
+msgstr "Über uns"
 
 #: app/templates/about.html:7
 msgid "About the author."
-msgstr ""
+msgstr "Über den Autor."
 
 #: app/templates/base.html:146
 msgid "Home"
-msgstr ""
+msgstr "Startseite"
 
 #: app/templates/base.html:147 app/templates/services.html:3
 msgid "Services"
-msgstr ""
+msgstr "Dienstleistungen"
 
 #: app/templates/base.html:148
 msgid "Pricing"
-msgstr ""
+msgstr "Preise"
 
 #: app/templates/base.html:149 app/templates/blog/blog.html:9
 msgid "Blog"
-msgstr ""
+msgstr "Blog"
 
 #: app/templates/base.html:150
 msgid "Contact"
-msgstr ""
+msgstr "Kontakt"
 
 #: app/templates/base.html:157 app/templates/dashboard/index.html:34
 #: app/templates/dashboard/index.html:60
@@ -81,11 +83,11 @@ msgstr ""
 #: app/templates/dashboard/project_detail.html:14
 #: app/templates/dashboard/projects.html:14
 msgid "Dashboard"
-msgstr ""
+msgstr "Dashboard"
 
 #: app/templates/base.html:159
 msgid "Admin Panel"
-msgstr ""
+msgstr "Admin-Panel"
 
 #: app/templates/base.html:161 app/templates/dashboard/index.html:51
 #: app/templates/dashboard/invoices.html:31
@@ -94,88 +96,88 @@ msgstr ""
 #: app/templates/dashboard/project_detail.html:31
 #: app/templates/dashboard/projects.html:31
 msgid "Logout"
-msgstr ""
+msgstr "Abmelden"
 
 #: app/templates/auth/forgot_password.html:27 app/templates/auth/login.html:3
 #: app/templates/auth/login.html:11 app/templates/auth/login.html:29
 #: app/templates/auth/register.html:64 app/templates/base.html:163
 msgid "Login"
-msgstr ""
+msgstr "Anmelden"
 
 #: app/templates/auth/login.html:37 app/templates/auth/register.html:3
 #: app/templates/base.html:164
 msgid "Register"
-msgstr ""
+msgstr "Registrieren"
 
 #: app/templates/base.html:191
 msgid "&copy; 2025 Rozoom-KI. All rights reserved."
-msgstr ""
+msgstr "&copy; 2025 Rozoom-KI. Alle Rechte vorbehalten."
 
 #: app/templates/base.html:193 app/templates/de/impressum.html:3
 #: app/templates/impressum.html:3
 msgid "Impressum"
-msgstr ""
+msgstr "Impressum"
 
 #: app/templates/auth/register.html:56 app/templates/base.html:194
 #: app/templates/de/privacy.html:7 app/templates/privacy.html:7
 msgid "Privacy Policy"
-msgstr ""
+msgstr "Datenschutzrichtlinie"
 
 #: app/templates/auth/register.html:56 app/templates/base.html:195
 #: app/templates/de/terms.html:7 app/templates/terms.html:7
 msgid "Terms of Service"
-msgstr ""
+msgstr "Nutzungsbedingungen"
 
 #: app/templates/base.html:208
 msgid "Rozoom Assistant"
-msgstr ""
+msgstr "Rozoom-Assistent"
 
 #: app/templates/base.html:222
 msgid "Type your message..."
-msgstr ""
+msgstr "Geben Sie Ihre Nachricht ein..."
 
 #: app/templates/blog.html:8
 msgid "Our Blog"
-msgstr ""
+msgstr "Unser Blog"
 
 #: app/templates/blog.html:12
 msgid "Latest insights, news and technology updates"
-msgstr ""
+msgstr "Neueste Einblicke, Nachrichten und Technologie-Updates"
 
 #: app/templates/blog.html:40 app/templates/blog/blog.html:38
 #: app/templates/blog/blog_category.html:38
 #: app/templates/blog/blog_search.html:41 app/templates/blog/blog_tag.html:40
 #: app/templates/blog_tag.html:34
 msgid "Read More"
-msgstr ""
+msgstr "Mehr lesen"
 
 #: app/templates/blog.html:49 app/templates/blog_search.html:47
 #: app/templates/blog_tag.html:43
 msgid "Previous"
-msgstr ""
+msgstr "Zurück"
 
 #: app/templates/blog.html:53 app/templates/blog_search.html:51
 #: app/templates/blog_tag.html:47
 msgid "Page"
-msgstr ""
+msgstr "Seite"
 
 #: app/templates/blog.html:53 app/templates/blog_search.html:51
 #: app/templates/blog_tag.html:47
 msgid "of"
-msgstr ""
+msgstr "von"
 
 #: app/templates/blog.html:57 app/templates/blog_search.html:55
 #: app/templates/blog_tag.html:51
 msgid "Next"
-msgstr ""
+msgstr "Weiter"
 
 #: app/templates/blog.html:65
 msgid "No posts yet"
-msgstr ""
+msgstr "Noch keine Beiträge"
 
 #: app/templates/blog.html:66
 msgid "Check back soon for our latest articles and insights."
-msgstr ""
+msgstr "Schauen Sie bald wieder vorbei für unsere neuesten Artikel und Einblicke."
 
 #: app/templates/blog.html:73 app/templates/blog.html:78
 #: app/templates/blog/blog.html:125 app/templates/blog/blog_category.html:126
@@ -185,221 +187,223 @@ msgstr ""
 #: app/templates/blog_search.html:85 app/templates/blog_tag.html:68
 #: app/templates/dashboard/projects.html:71
 msgid "Search"
-msgstr ""
+msgstr "Suchen"
 
 #: app/templates/blog.html:76 app/templates/blog_tag.html:71
 msgid "Search posts..."
-msgstr ""
+msgstr "Beiträge suchen..."
 
 #: app/templates/blog.html:85 app/templates/blog/blog.html:98
 #: app/templates/blog/blog_category.html:104
 #: app/templates/blog/blog_post.html:97 app/templates/blog/blog_search.html:116
 #: app/templates/blog/blog_tag.html:106 app/templates/blog_tag.html:80
 msgid "Categories"
-msgstr ""
+msgstr "Kategorien"
 
 #: app/templates/blog.html:97 app/templates/blog_tag.html:92
 msgid "No categories yet"
-msgstr ""
+msgstr "Noch keine Kategorien"
 
 #: app/templates/blog.html:103 app/templates/blog_tag.html:113
 msgid "Recent Posts"
-msgstr ""
+msgstr "Aktuelle Beiträge"
 
 #: app/templates/blog.html:117 app/templates/blog_tag.html:127
 msgid "No recent posts"
-msgstr ""
+msgstr "Keine aktuellen Beiträge"
 
 #: app/templates/blog.html:123 app/templates/blog_tag.html:98
 msgid "Popular Tags"
-msgstr ""
+msgstr "Beliebte Tags"
 
 #: app/templates/blog.html:132 app/templates/blog_tag.html:107
 msgid "No tags yet"
-msgstr ""
+msgstr "Noch keine Tags"
 
 #: app/templates/blog/blog.html:111 app/templates/blog/blog_category.html:115
 #: app/templates/blog/blog_post.html:108
 #: app/templates/blog/blog_search.html:127 app/templates/blog/blog_tag.html:117
 #: app/templates/blog_post.html:31
 msgid "Tags"
-msgstr ""
+msgstr "Tags"
 
 #: app/templates/blog_post.html:41
 msgid "Share this post"
-msgstr ""
+msgstr "Diesen Beitrag teilen"
 
 #: app/templates/blog/blog_post.html:63 app/templates/blog_post.html:58
 msgid "Related Posts"
-msgstr ""
+msgstr "Ähnliche Beiträge"
 
 #: app/templates/blog_post.html:84
 msgid "Previous Post"
-msgstr ""
+msgstr "Vorheriger Beitrag"
 
 #: app/templates/blog_post.html:93
 msgid "Next Post"
-msgstr ""
+msgstr "Nächster Beitrag"
 
 #: app/templates/blog_search.html:3 app/templates/blog_search.html:7
 msgid "Search Results"
-msgstr ""
+msgstr "Suchergebnisse"
 
 #: app/templates/blog_search.html:8
 msgid "Showing results for"
-msgstr ""
+msgstr "Ergebnisse für"
 
 #: app/templates/blog/blog_search.html:11 app/templates/blog_search.html:15
 msgid "Found"
-msgstr ""
+msgstr "Gefunden"
 
 #: app/templates/blog_search.html:15
 msgid "result"
-msgstr ""
+msgstr "Ergebnis"
 
 #: app/templates/blog_search.html:15
 msgid "s"
-msgstr ""
+msgstr "s"
 
 #: app/templates/blog_search.html:63
 msgid "No results found"
-msgstr ""
+msgstr "Keine Ergebnisse gefunden"
 
 #: app/templates/blog_search.html:64
 msgid "Your search"
-msgstr ""
+msgstr "Ihre Suche"
 
 #: app/templates/blog_search.html:64
 msgid "did not match any articles"
-msgstr ""
+msgstr "hat keine Artikel gefunden"
 
 #: app/templates/blog_search.html:66
 msgid "Suggestions"
-msgstr ""
+msgstr "Vorschläge"
 
 #: app/templates/blog_search.html:68
 msgid "Make sure all words are spelled correctly."
-msgstr ""
+msgstr "Stellen Sie sicher, dass alle Wörter richtig geschrieben sind."
 
 #: app/templates/blog_search.html:69
 msgid "Try different keywords."
-msgstr ""
+msgstr "Versuchen Sie andere Schlüsselwörter."
 
 #: app/templates/blog_search.html:70
 msgid "Try more general keywords."
-msgstr ""
+msgstr "Versuchen Sie allgemeinere Schlüsselwörter."
 
 #: app/templates/blog/blog_post.html:56 app/templates/blog_search.html:73
 #: app/templates/blog_tag.html:61
 msgid "Back to Blog"
-msgstr ""
+msgstr "Zurück zum Blog"
 
 #: app/templates/blog/blog_tag.html:10 app/templates/blog_tag.html:3
 #: app/templates/blog_tag.html:7
 msgid "Tag:"
-msgstr ""
+msgstr "Tag:"
 
 #: app/templates/blog_tag.html:8
 msgid "Articles tagged with"
-msgstr ""
+msgstr "Artikel mit Tag"
 
 #: app/templates/blog_tag.html:59
 msgid "No posts with this tag"
-msgstr ""
+msgstr "Keine Beiträge mit diesem Tag"
 
 #: app/templates/blog_tag.html:60
 msgid "There are currently no articles tagged with"
-msgstr ""
+msgstr "Derzeit gibt es keine Artikel mit dem Tag"
 
 #: app/templates/contact.html:7 app/templates/pricing.html:182
 msgid "Get in Touch"
-msgstr ""
+msgstr "Kontakt aufnehmen"
 
 #: app/templates/contact.html:8
 msgid "Have a question or ready to start your next project? We're here to help!"
-msgstr ""
+msgstr "Haben Sie eine Frage oder sind Sie bereit, Ihr nächstes Projekt zu starten? Wir sind hier, um zu helfen!"
 
 #: app/templates/contact.html:17
 msgid "Address"
-msgstr ""
+msgstr "Adresse"
 
 #: app/templates/contact.html:27
 msgid "Email Us"
-msgstr ""
+msgstr "Schreiben Sie uns eine E-Mail"
 
 #: app/templates/contact.html:37
 msgid "Call Us"
-msgstr ""
+msgstr "Rufen Sie uns an"
 
 #: app/templates/contact.html:38
 msgid "Mon-Fri 9:00-18:00"
-msgstr ""
+msgstr "Mo-Fr 9:00-18:00"
 
 #: app/templates/contact.html:44
 msgid "LinkedIn"
-msgstr ""
+msgstr "LinkedIn"
 
 #: app/templates/contact.html:45
 msgid "Twitter"
-msgstr ""
+msgstr "Twitter"
 
 #: app/templates/contact.html:46
 msgid "Facebook"
-msgstr ""
+msgstr "Facebook"
 
 #: app/templates/contact.html:47
 msgid "Instagram"
-msgstr ""
+msgstr "Instagram"
 
 #: app/templates/contact.html:52
 msgid "Send Us a Message"
-msgstr ""
+msgstr "Senden Sie uns eine Nachricht"
 
 #: app/templates/contact.html:59
 msgid "Your message has been sent successfully. We'll get back to you soon!"
-msgstr ""
+msgstr "Ihre Nachricht wurde erfolgreich gesendet. Wir melden uns bald bei Ihnen!"
 
 #: app/templates/auth/register.html:18 app/templates/contact.html:71
 #: app/templates/dashboard/profile.html:50 app/templates/payment_form.html:251
 msgid "Full Name"
-msgstr ""
+msgstr "Vollständiger Name"
 
 #: app/templates/contact.html:72
 msgid "Enter your full name"
-msgstr ""
+msgstr "Geben Sie Ihren vollständigen Namen ein"
 
 #: app/templates/auth/forgot_password.html:18
 #: app/templates/auth/register.html:22 app/templates/contact.html:76
 #: app/templates/dashboard/profile.html:54 app/templates/payment_form.html:258
 msgid "Email Address"
-msgstr ""
+msgstr "E-Mail-Adresse"
 
 #: app/templates/contact.html:77
 msgid "Enter your email address"
-msgstr ""
+msgstr "Geben Sie Ihre E-Mail-Adresse ein"
 
 #: app/templates/contact.html:81
 msgid "Your Message"
-msgstr ""
+msgstr "Ihre Nachricht"
 
 #: app/templates/contact.html:82
 msgid "How can we help you?"
-msgstr ""
+msgstr "Wie können wir Ihnen helfen?"
 
 #: app/templates/contact.html:89
 msgid ""
 "I consent to having this website store my submitted information so they "
 "can respond to my inquiry"
 msgstr ""
+"Ich stimme zu, dass diese Website meine übermittelten Informationen "
+"speichert, damit sie auf meine Anfrage antworten können"
 
 #: app/templates/contact.html:93 app/templates/dashboard/messages.html:308
 #: app/templates/dashboard/project_detail.html:228
 msgid "Send Message"
-msgstr ""
+msgstr "Nachricht senden"
 
 #: app/templates/contact.html:103
 msgid "Remote Work"
-msgstr ""
+msgstr "Remote-Arbeit"
 
 #: app/templates/contact.html:104
 msgid ""
@@ -407,103 +411,110 @@ msgid ""
 "various locations. This allows us to serve clients worldwide while "
 "maintaining flexibility and efficiency."
 msgstr ""
+"Wir arbeiten als remote-first Unternehmen mit Teammitgliedern, die aus "
+"verschiedenen Standorten arbeiten. Dies ermöglicht es uns, Kunden weltweit "
+"zu bedienen und gleichzeitig Flexibilität und Effizienz zu wahren."
 
 #: app/templates/faq.html:3 app/templates/faq.html:6
 msgid "FAQ"
-msgstr ""
+msgstr "FAQ"
 
 #: app/templates/faq.html:7
 msgid "Frequently asked questions."
-msgstr ""
+msgstr "Häufig gestellte Fragen."
 
 #: app/templates/de/impressum.html:7 app/templates/impressum.html:7
 msgid "Impressum (Legal Notice)"
-msgstr ""
+msgstr "Impressum (Impressum)"
 
 #: app/templates/de/impressum.html:10 app/templates/impressum.html:10
 msgid "Information According to § 5 TMG"
-msgstr ""
+msgstr "Angaben gemäß § 5 TMG"
 
 #: app/templates/de/impressum.html:15 app/templates/de/impressum.html:48
 #: app/templates/impressum.html:15 app/templates/impressum.html:48
 msgid "Germany"
-msgstr ""
+msgstr "Deutschland"
 
 #: app/templates/de/impressum.html:18 app/templates/impressum.html:18
 msgid "Represented by:"
-msgstr ""
+msgstr "Vertreten durch:"
 
 #: app/templates/de/impressum.html:21 app/templates/impressum.html:21
 msgid "Contact:"
-msgstr ""
+msgstr "Kontakt:"
 
 #: app/templates/de/impressum.html:23 app/templates/de/privacy.html:61
 #: app/templates/de/terms.html:59 app/templates/impressum.html:23
 #: app/templates/privacy.html:61 app/templates/terms.html:59
 msgid "Phone:"
-msgstr ""
+msgstr "Telefon:"
 
 #: app/templates/de/impressum.html:24 app/templates/de/privacy.html:60
 #: app/templates/de/terms.html:58 app/templates/impressum.html:24
 #: app/templates/privacy.html:60 app/templates/terms.html:58
 msgid "Email:"
-msgstr ""
+msgstr "E-Mail:"
 
 #: app/templates/de/impressum.html:25 app/templates/impressum.html:25
 msgid "Website:"
-msgstr ""
+msgstr "Website:"
 
 #: app/templates/de/impressum.html:28 app/templates/impressum.html:28
 msgid "Registration:"
-msgstr ""
+msgstr "Registrierung:"
 
 #: app/templates/de/impressum.html:30 app/templates/impressum.html:30
 msgid "Registered in the Commercial Register"
-msgstr ""
+msgstr "Eingetragen im Handelsregister"
 
 #: app/templates/de/impressum.html:31 app/templates/impressum.html:31
 msgid "Register Court:"
-msgstr ""
+msgstr "Registergericht:"
 
 #: app/templates/de/impressum.html:32 app/templates/impressum.html:32
 msgid "Register Number:"
-msgstr ""
+msgstr "Registernummer:"
 
 #: app/templates/de/impressum.html:35 app/templates/impressum.html:35
 msgid "VAT Identification Number:"
-msgstr ""
+msgstr "Umsatzsteuer-Identifikationsnummer:"
 
 #: app/templates/de/impressum.html:37 app/templates/impressum.html:37
 msgid "VAT ID:"
-msgstr ""
+msgstr "USt-ID:"
 
 #: app/templates/de/impressum.html:38 app/templates/impressum.html:38
 msgid "According to § 27 a of the German Value Added Tax Act"
-msgstr ""
+msgstr "Gemäß § 27 a Umsatzsteuergesetz"
 
 #: app/templates/de/impressum.html:43 app/templates/impressum.html:43
 msgid "Responsible for Content According to § 55 Abs. 2 RStV"
-msgstr ""
+msgstr "Verantwortlich für den Inhalt gemäß § 55 Abs. 2 RStV"
 
 #: app/templates/de/impressum.html:53 app/templates/impressum.html:53
 msgid "Dispute Resolution"
-msgstr ""
+msgstr "Streitbeilegung"
 
 #: app/templates/de/impressum.html:54 app/templates/impressum.html:54
 msgid ""
 "The European Commission provides a platform for online dispute resolution"
 " (OS):"
 msgstr ""
+"Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung"
+" (OS) bereit:"
 
 #: app/templates/de/impressum.html:55 app/templates/impressum.html:55
 msgid ""
 "We are not willing or obliged to participate in dispute resolution "
 "proceedings before a consumer arbitration board."
 msgstr ""
+"Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor "
+"einer Verbraucherschlichtungsstelle teilzunehmen."
 
 #: app/templates/de/impressum.html:59 app/templates/impressum.html:59
 msgid "Liability for Content"
-msgstr ""
+msgstr "Haftung für Inhalte"
 
 #: app/templates/de/impressum.html:60 app/templates/impressum.html:60
 msgid ""
@@ -513,6 +524,11 @@ msgid ""
 " not obliged to monitor transmitted or stored external information or to "
 "investigate circumstances that indicate illegal activity."
 msgstr ""
+"Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG (Telemediengesetz) für "
+"eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. "
+"Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, "
+"übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach "
+"Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen."
 
 #: app/templates/de/impressum.html:61 app/templates/impressum.html:61
 msgid ""
@@ -522,10 +538,15 @@ msgid ""
 "As soon as we become aware of such legal violations, we will remove this "
 "content immediately."
 msgstr ""
+"Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen "
+"nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche "
+"Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten "
+"Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen "
+"werden wir diese Inhalte umgehend entfernen."
 
 #: app/templates/de/impressum.html:65 app/templates/impressum.html:65
 msgid "Liability for Links"
-msgstr ""
+msgstr "Haftung für Links"
 
 #: app/templates/de/impressum.html:66 app/templates/impressum.html:66
 msgid ""
@@ -536,6 +557,13 @@ msgid ""
 "linked pages were checked for possible legal violations at the time of "
 "linking. Illegal contents were not recognizable at the time of linking."
 msgstr ""
+"Unser Angebot enthält Links zu externen Websites Dritter, auf deren "
+"Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden "
+"Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten "
+"Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. "
+"Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche "
+"Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der "
+"Verlinkung nicht erkennbar."
 
 #: app/templates/de/impressum.html:67 app/templates/impressum.html:67
 msgid ""
@@ -543,10 +571,13 @@ msgid ""
 "reasonable without concrete evidence of a violation of law. If we become "
 "aware of any legal violations, we will remove such links immediately."
 msgstr ""
+"Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne "
+"konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden "
+"von Rechtsverletzungen werden wir derartige Links umgehend entfernen."
 
 #: app/templates/de/impressum.html:71 app/templates/impressum.html:71
 msgid "Copyright"
-msgstr ""
+msgstr "Urheberrecht"
 
 #: app/templates/de/impressum.html:72 app/templates/impressum.html:72
 msgid ""
@@ -556,6 +587,12 @@ msgid ""
 "written consent of the respective author or creator. Downloads and copies"
 " of this site are only permitted for private, non-commercial use."
 msgstr ""
+"Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten "
+"unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, "
+"Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes "
+"bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. "
+"Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen "
+"Gebrauch gestattet."
 
 #: app/templates/de/impressum.html:73 app/templates/impressum.html:73
 msgid ""
@@ -565,72 +602,85 @@ msgid ""
 "copyright infringement, please inform us accordingly. If we become aware "
 "of any infringements, we will remove such content immediately."
 msgstr ""
+"Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, "
+"werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter "
+"als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung "
+"aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden "
+"von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen."
 
 #: app/templates/index.html:20
 msgid "Intelligent AI Solutions for Modern Business"
-msgstr ""
+msgstr "Intelligente KI-Lösungen für moderne Unternehmen"
 
 #: app/templates/index.html:21
 msgid ""
 "Transform your business with our state-of-the-art AI assistants and "
 "custom solutions"
 msgstr ""
+"Transformieren Sie Ihr Unternehmen mit unseren hochmodernen KI-Assistenten "
+"und maßgeschneiderten Lösungen"
 
 #: app/templates/index.html:23
 msgid "Explore Services"
-msgstr ""
+msgstr "Dienstleistungen erkunden"
 
 #: app/templates/index.html:24 app/templates/pricing.html:157
 #: app/templates/pricing.html:168 app/templates/pricing.html:192
 #: app/templates/services.html:440
 msgid "Contact Us"
-msgstr ""
+msgstr "Kontaktieren Sie uns"
 
 #: app/templates/index.html:26
 msgid "Sign Up for Free"
-msgstr ""
+msgstr "Kostenlos anmelden"
 
 #: app/templates/index.html:28 app/templates/payment_success.html:42
 msgid "Go to Dashboard"
-msgstr ""
+msgstr "Zum Dashboard gehen"
 
 #: app/templates/index.html:35
 msgid "How We Can Help"
-msgstr ""
+msgstr "Wie wir helfen können"
 
 #: app/templates/index.html:41 app/templates/services.html:21
 msgid "Web Development"
-msgstr ""
+msgstr "Webentwicklung"
 
 #: app/templates/index.html:42
 msgid ""
 "Custom websites and web applications with AI-powered features to enhance "
 "user experience."
 msgstr ""
+"Maßgeschneiderte Websites und Webanwendungen mit KI-gestützten Funktionen "
+"zur Verbesserung der Benutzererfahrung."
 
 #: app/templates/index.html:48
 msgid "ML & AI Integration"
-msgstr ""
+msgstr "ML & KI-Integration"
 
 #: app/templates/index.html:49
 msgid ""
 "Integrate machine learning models and AI capabilities into your existing "
 "software systems."
 msgstr ""
+"Integrieren Sie Machine-Learning-Modelle und KI-Funktionen in Ihre "
+"bestehenden Softwaresysteme."
 
 #: app/templates/index.html:55
 msgid "Process Automation"
-msgstr ""
+msgstr "Prozessautomatisierung"
 
 #: app/templates/index.html:56
 msgid ""
 "Streamline your business operations with intelligent automation and "
 "workflow solutions."
 msgstr ""
+"Optimieren Sie Ihre Geschäftsprozesse mit intelligenter Automatisierung "
+"und Workflow-Lösungen."
 
 #: app/templates/index.html:62
 msgid "What Our Clients Say"
-msgstr ""
+msgstr "Was unsere Kunden sagen"
 
 #: app/templates/index.html:66
 msgid ""
@@ -638,10 +688,13 @@ msgid ""
 "Response times dropped by 60 percent and customer satisfaction increased "
 "dramatically."
 msgstr ""
+"Rozoom-KI hat unseren Kundenservice mit ihrem KI-Assistenten transformiert. "
+"Die Antwortzeiten sind um 60 Prozent gesunken und die Kundenzufriedenheit "
+"ist dramatisch gestiegen."
 
 #: app/templates/index.html:70
 msgid "CTO, TechSolutions GmbH"
-msgstr ""
+msgstr "CTO, TechSolutions GmbH"
 
 #: app/templates/index.html:75
 msgid ""
@@ -649,6 +702,9 @@ msgid ""
 "us thousands of euros monthly and improved our forecasting accuracy by 40"
 " percent."
 msgstr ""
+"Die Machine-Learning-Integration für unser Bestandsmanagement hat uns "
+"monatlich tausende Euro gespart und unsere Prognosegenauigkeit um 40 "
+"Prozent verbessert."
 
 #: app/templates/index.html:79
 msgid "Operations Director, RetailPlus"
