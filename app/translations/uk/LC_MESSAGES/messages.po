@@ -1,1150 +1,4509 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: Rozoom-KI 1.0\n"
 "Report-Msgid-Bugs-To: info@rozoom-ki.com\n"
-"POT-Creation-Date: 2025-09-11 11:35+0200\n"
+"POT-Creation-Date: 2025-09-30 13:41+0200\n"
 "PO-Revision-Date: 2025-09-11 11:35+0200\n"
 "Last-Translator: \n"
 "Language: uk\n"
 "Language-Team: Ukrainian\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-msgid "Home"
-msgstr "Головна"
+#: app/routes/payment/__init__.py:28 app/routes/payment/__init__.py:58
+#: app/templates/pricing.html:156
+msgid ""
+"No pricing packages are currently available. Please contact us for custom"
+" pricing."
+msgstr ""
 
-msgid "Services"
-msgstr "Послуги"
+#: app/routes/payment/__init__.py:92
+msgid "Development Hours"
+msgstr ""
 
-msgid "Pricing"
-msgstr "Ціни"
+#: app/routes/payment/__init__.py:137
+msgid "An error occurred while processing your payment. Please try again later."
+msgstr ""
 
-msgid "Blog"
-msgstr "Блог"
+#: app/routes/payment/__init__.py:153
+msgid "Payment information not found."
+msgstr ""
 
-msgid "Contact"
-msgstr "Контакти"
+#: app/routes/payment/__init__.py:179
+msgid "Payment successful! Thank you for your purchase."
+msgstr ""
 
-msgid "Login"
-msgstr "Увійти"
+#: app/routes/payment/__init__.py:181
+msgid "Payment is being processed. We will update you when it completes."
+msgstr ""
 
-msgid "Logout"
-msgstr "Вийти"
+#: app/routes/payment/__init__.py:187
+msgid "An error occurred while processing your payment information."
+msgstr ""
 
-msgid "Register"
-msgstr "Зареєструватися"
-
-msgid "Dashboard"
-msgstr "Панель керування"
-
-msgid "Admin Panel"
-msgstr "Панель адміністратора"
-
-msgid "Search"
-msgstr "Пошук"
-
-msgid "Submit"
-msgstr "Надіслати"
-
-msgid "Save"
-msgstr "Зберегти"
-
-msgid "Cancel"
-msgstr "Скасувати"
-
-msgid "Delete"
-msgstr "Видалити"
-
-msgid "Edit"
-msgstr "Редагувати"
-
-msgid "Create"
-msgstr "Створити"
-
-msgid "Users"
-msgstr "Користувачі"
-
-msgid "Projects"
-msgstr "Проекти"
-
-msgid "Settings"
-msgstr "Налаштування"
-
-msgid "Profile"
-msgstr "Профіль"
-
-msgid "Language"
-msgstr "Мова"
-
-msgid "Name"
-msgstr "Ім'я"
-
-msgid "Email"
-msgstr "Email"
-
-msgid "Password"
-msgstr "Пароль"
-
-msgid "Confirm Password"
-msgstr "Підтвердити пароль"
-
-msgid "Required field"
-msgstr "Обов'язкове поле"
-
-msgid "Invalid email format"
-msgstr "Невірний формат email"
-
-msgid "Welcome to Rozoom-KI"
-msgstr "Ласкаво просимо до Rozoom-KI"
-
-msgid "Request a Project Estimate"
-msgstr "Замовити оцінку проекту"
-
-msgid "Fill out our project questionnaire to get a free time and budget estimate for your project. No obligations!"
-msgstr "Заповніть нашу анкету проекту, щоб отримати безкоштовну оцінку часу та бюджету для вашого проекту. Без зобов'язань!"
-
-msgid "What type of project are you looking to develop?"
-msgstr "Який тип проекту ви хочете розробити?"
-
-msgid "Select a project type"
-msgstr "Виберіть тип проекту"
-
-msgid "Web Application"
-msgstr "Веб-додаток"
-
-msgid "Mobile Application"
-msgstr "Мобільний додаток"
-
-msgid "AI/ML Solution"
-msgstr "Рішення ШІ/ML"
-
-msgid "Automation Tool"
-msgstr "Інструмент автоматизації"
-
-msgid "Data Analytics"
-msgstr "Аналітика даних"
-
-msgid "Other"
-msgstr "Інше"
-
-msgid "Choose the category that best describes your project."
-msgstr "Виберіть категорію, яка найкраще описує ваш проект."
-
-msgid "What is the primary goal of your project?"
-msgstr "Яка основна мета вашого проекту?"
-
-msgid "Describe the main purpose of your project..."
-msgstr "Опишіть основну мету вашого проекту..."
-
+#: app/templates/about.html:3 app/templates/about.html:6
 msgid "About"
-msgstr "Про нас"
+msgstr ""
 
+#: app/templates/about.html:7
 msgid "About the author."
-msgstr "Про автора."
+msgstr ""
 
+#: app/templates/base.html:146
+msgid "Home"
+msgstr ""
+
+#: app/templates/base.html:147 app/templates/services.html:3
+msgid "Services"
+msgstr ""
+
+#: app/templates/base.html:148
+msgid "Pricing"
+msgstr ""
+
+#: app/templates/base.html:149 app/templates/blog/blog.html:9
+msgid "Blog"
+msgstr ""
+
+#: app/templates/base.html:150
+msgid "Contact"
+msgstr ""
+
+#: app/templates/base.html:157 app/templates/dashboard/index.html:34
+#: app/templates/dashboard/index.html:60
+#: app/templates/dashboard/invoices.html:14
+#: app/templates/dashboard/messages.html:18
+#: app/templates/dashboard/profile.html:14
+#: app/templates/dashboard/project_detail.html:14
+#: app/templates/dashboard/projects.html:14
+msgid "Dashboard"
+msgstr ""
+
+#: app/templates/base.html:159
+msgid "Admin Panel"
+msgstr ""
+
+#: app/templates/base.html:161 app/templates/dashboard/index.html:51
+#: app/templates/dashboard/invoices.html:31
+#: app/templates/dashboard/messages.html:35
+#: app/templates/dashboard/profile.html:31
+#: app/templates/dashboard/project_detail.html:31
+#: app/templates/dashboard/projects.html:31
+msgid "Logout"
+msgstr ""
+
+#: app/templates/auth/forgot_password.html:27 app/templates/auth/login.html:3
+#: app/templates/auth/login.html:11 app/templates/auth/login.html:29
+#: app/templates/auth/register.html:64 app/templates/base.html:163
+msgid "Login"
+msgstr ""
+
+#: app/templates/auth/login.html:37 app/templates/auth/register.html:3
+#: app/templates/base.html:164
+msgid "Register"
+msgstr ""
+
+#: app/templates/base.html:191
+msgid "&copy; 2025 Rozoom-KI. All rights reserved."
+msgstr ""
+
+#: app/templates/base.html:193 app/templates/de/impressum.html:3
+#: app/templates/impressum.html:3
+msgid "Impressum"
+msgstr ""
+
+#: app/templates/auth/register.html:56 app/templates/base.html:194
+#: app/templates/de/privacy.html:7 app/templates/privacy.html:7
+msgid "Privacy Policy"
+msgstr ""
+
+#: app/templates/auth/register.html:56 app/templates/base.html:195
+#: app/templates/de/terms.html:7 app/templates/terms.html:7
+msgid "Terms of Service"
+msgstr ""
+
+#: app/templates/base.html:208
+msgid "Rozoom Assistant"
+msgstr ""
+
+#: app/templates/base.html:222
+msgid "Type your message..."
+msgstr ""
+
+#: app/templates/blog.html:8
+msgid "Our Blog"
+msgstr ""
+
+#: app/templates/blog.html:12
+msgid "Latest insights, news and technology updates"
+msgstr ""
+
+#: app/templates/blog.html:40 app/templates/blog/blog.html:38
+#: app/templates/blog/blog_category.html:38
+#: app/templates/blog/blog_search.html:41 app/templates/blog/blog_tag.html:40
+#: app/templates/blog_tag.html:34
+msgid "Read More"
+msgstr ""
+
+#: app/templates/blog.html:49 app/templates/blog_search.html:47
+#: app/templates/blog_tag.html:43
+msgid "Previous"
+msgstr ""
+
+#: app/templates/blog.html:53 app/templates/blog_search.html:51
+#: app/templates/blog_tag.html:47
+msgid "Page"
+msgstr ""
+
+#: app/templates/blog.html:53 app/templates/blog_search.html:51
+#: app/templates/blog_tag.html:47
+msgid "of"
+msgstr ""
+
+#: app/templates/blog.html:57 app/templates/blog_search.html:55
+#: app/templates/blog_tag.html:51
+msgid "Next"
+msgstr ""
+
+#: app/templates/blog.html:65
+msgid "No posts yet"
+msgstr ""
+
+#: app/templates/blog.html:66
+msgid "Check back soon for our latest articles and insights."
+msgstr ""
+
+#: app/templates/blog.html:73 app/templates/blog.html:78
+#: app/templates/blog/blog.html:125 app/templates/blog/blog_category.html:126
+#: app/templates/blog/blog_post.html:120
+#: app/templates/blog/blog_search.html:106
+#: app/templates/blog/blog_search.html:138 app/templates/blog/blog_tag.html:128
+#: app/templates/blog_search.html:85 app/templates/blog_tag.html:68
+#: app/templates/dashboard/projects.html:71
+msgid "Search"
+msgstr ""
+
+#: app/templates/blog.html:76 app/templates/blog_tag.html:71
+msgid "Search posts..."
+msgstr ""
+
+#: app/templates/blog.html:85 app/templates/blog/blog.html:98
+#: app/templates/blog/blog_category.html:104
+#: app/templates/blog/blog_post.html:97 app/templates/blog/blog_search.html:116
+#: app/templates/blog/blog_tag.html:106 app/templates/blog_tag.html:80
+msgid "Categories"
+msgstr ""
+
+#: app/templates/blog.html:97 app/templates/blog_tag.html:92
+msgid "No categories yet"
+msgstr ""
+
+#: app/templates/blog.html:103 app/templates/blog_tag.html:113
+msgid "Recent Posts"
+msgstr ""
+
+#: app/templates/blog.html:117 app/templates/blog_tag.html:127
+msgid "No recent posts"
+msgstr ""
+
+#: app/templates/blog.html:123 app/templates/blog_tag.html:98
+msgid "Popular Tags"
+msgstr ""
+
+#: app/templates/blog.html:132 app/templates/blog_tag.html:107
+msgid "No tags yet"
+msgstr ""
+
+#: app/templates/blog/blog.html:111 app/templates/blog/blog_category.html:115
+#: app/templates/blog/blog_post.html:108
+#: app/templates/blog/blog_search.html:127 app/templates/blog/blog_tag.html:117
+#: app/templates/blog_post.html:31
+msgid "Tags"
+msgstr ""
+
+#: app/templates/blog_post.html:41
+msgid "Share this post"
+msgstr ""
+
+#: app/templates/blog/blog_post.html:63 app/templates/blog_post.html:58
+msgid "Related Posts"
+msgstr ""
+
+#: app/templates/blog_post.html:84
+msgid "Previous Post"
+msgstr ""
+
+#: app/templates/blog_post.html:93
+msgid "Next Post"
+msgstr ""
+
+#: app/templates/blog_search.html:3 app/templates/blog_search.html:7
+msgid "Search Results"
+msgstr ""
+
+#: app/templates/blog_search.html:8
+msgid "Showing results for"
+msgstr ""
+
+#: app/templates/blog/blog_search.html:11 app/templates/blog_search.html:15
+msgid "Found"
+msgstr ""
+
+#: app/templates/blog_search.html:15
+msgid "result"
+msgstr ""
+
+#: app/templates/blog_search.html:15
+msgid "s"
+msgstr ""
+
+#: app/templates/blog_search.html:63
+msgid "No results found"
+msgstr ""
+
+#: app/templates/blog_search.html:64
+msgid "Your search"
+msgstr ""
+
+#: app/templates/blog_search.html:64
+msgid "did not match any articles"
+msgstr ""
+
+#: app/templates/blog_search.html:66
+msgid "Suggestions"
+msgstr ""
+
+#: app/templates/blog_search.html:68
+msgid "Make sure all words are spelled correctly."
+msgstr ""
+
+#: app/templates/blog_search.html:69
+msgid "Try different keywords."
+msgstr ""
+
+#: app/templates/blog_search.html:70
+msgid "Try more general keywords."
+msgstr ""
+
+#: app/templates/blog/blog_post.html:56 app/templates/blog_search.html:73
+#: app/templates/blog_tag.html:61
+msgid "Back to Blog"
+msgstr ""
+
+#: app/templates/blog/blog_tag.html:10 app/templates/blog_tag.html:3
+#: app/templates/blog_tag.html:7
+msgid "Tag:"
+msgstr ""
+
+#: app/templates/blog_tag.html:8
+msgid "Articles tagged with"
+msgstr ""
+
+#: app/templates/blog_tag.html:59
+msgid "No posts with this tag"
+msgstr ""
+
+#: app/templates/blog_tag.html:60
+msgid "There are currently no articles tagged with"
+msgstr ""
+
+#: app/templates/contact.html:7 app/templates/pricing.html:182
+msgid "Get in Touch"
+msgstr ""
+
+#: app/templates/contact.html:8
+msgid "Have a question or ready to start your next project? We're here to help!"
+msgstr ""
+
+#: app/templates/contact.html:17
+msgid "Address"
+msgstr ""
+
+#: app/templates/contact.html:27
+msgid "Email Us"
+msgstr ""
+
+#: app/templates/contact.html:37
+msgid "Call Us"
+msgstr ""
+
+#: app/templates/contact.html:38
+msgid "Mon-Fri 9:00-18:00"
+msgstr ""
+
+#: app/templates/contact.html:44
+msgid "LinkedIn"
+msgstr ""
+
+#: app/templates/contact.html:45
+msgid "Twitter"
+msgstr ""
+
+#: app/templates/contact.html:46
+msgid "Facebook"
+msgstr ""
+
+#: app/templates/contact.html:47
+msgid "Instagram"
+msgstr ""
+
+#: app/templates/contact.html:52
+msgid "Send Us a Message"
+msgstr ""
+
+#: app/templates/contact.html:59
+msgid "Your message has been sent successfully. We'll get back to you soon!"
+msgstr ""
+
+#: app/templates/auth/register.html:18 app/templates/contact.html:71
+#: app/templates/dashboard/profile.html:50 app/templates/payment_form.html:251
+msgid "Full Name"
+msgstr ""
+
+#: app/templates/contact.html:72
+msgid "Enter your full name"
+msgstr ""
+
+#: app/templates/auth/forgot_password.html:18
+#: app/templates/auth/register.html:22 app/templates/contact.html:76
+#: app/templates/dashboard/profile.html:54 app/templates/payment_form.html:258
+msgid "Email Address"
+msgstr ""
+
+#: app/templates/contact.html:77
+msgid "Enter your email address"
+msgstr ""
+
+#: app/templates/contact.html:81
+msgid "Your Message"
+msgstr ""
+
+#: app/templates/contact.html:82
+msgid "How can we help you?"
+msgstr ""
+
+#: app/templates/contact.html:89
+msgid ""
+"I consent to having this website store my submitted information so they "
+"can respond to my inquiry"
+msgstr ""
+
+#: app/templates/contact.html:93 app/templates/dashboard/messages.html:308
+#: app/templates/dashboard/project_detail.html:228
+msgid "Send Message"
+msgstr ""
+
+#: app/templates/contact.html:103
+msgid "Remote Work"
+msgstr ""
+
+#: app/templates/contact.html:104
+msgid ""
+"We operate as a remote-first company with team members working from "
+"various locations. This allows us to serve clients worldwide while "
+"maintaining flexibility and efficiency."
+msgstr ""
+
+#: app/templates/faq.html:3 app/templates/faq.html:6
+msgid "FAQ"
+msgstr ""
+
+#: app/templates/faq.html:7
+msgid "Frequently asked questions."
+msgstr ""
+
+#: app/templates/de/impressum.html:7 app/templates/impressum.html:7
+msgid "Impressum (Legal Notice)"
+msgstr ""
+
+#: app/templates/de/impressum.html:10 app/templates/impressum.html:10
+msgid "Information According to § 5 TMG"
+msgstr ""
+
+#: app/templates/de/impressum.html:15 app/templates/de/impressum.html:48
+#: app/templates/impressum.html:15 app/templates/impressum.html:48
+msgid "Germany"
+msgstr ""
+
+#: app/templates/de/impressum.html:18 app/templates/impressum.html:18
+msgid "Represented by:"
+msgstr ""
+
+#: app/templates/de/impressum.html:21 app/templates/impressum.html:21
+msgid "Contact:"
+msgstr ""
+
+#: app/templates/de/impressum.html:23 app/templates/de/privacy.html:61
+#: app/templates/de/terms.html:59 app/templates/impressum.html:23
+#: app/templates/privacy.html:61 app/templates/terms.html:59
+msgid "Phone:"
+msgstr ""
+
+#: app/templates/de/impressum.html:24 app/templates/de/privacy.html:60
+#: app/templates/de/terms.html:58 app/templates/impressum.html:24
+#: app/templates/privacy.html:60 app/templates/terms.html:58
+msgid "Email:"
+msgstr ""
+
+#: app/templates/de/impressum.html:25 app/templates/impressum.html:25
+msgid "Website:"
+msgstr ""
+
+#: app/templates/de/impressum.html:28 app/templates/impressum.html:28
+msgid "Registration:"
+msgstr ""
+
+#: app/templates/de/impressum.html:30 app/templates/impressum.html:30
+msgid "Registered in the Commercial Register"
+msgstr ""
+
+#: app/templates/de/impressum.html:31 app/templates/impressum.html:31
+msgid "Register Court:"
+msgstr ""
+
+#: app/templates/de/impressum.html:32 app/templates/impressum.html:32
+msgid "Register Number:"
+msgstr ""
+
+#: app/templates/de/impressum.html:35 app/templates/impressum.html:35
+msgid "VAT Identification Number:"
+msgstr ""
+
+#: app/templates/de/impressum.html:37 app/templates/impressum.html:37
+msgid "VAT ID:"
+msgstr ""
+
+#: app/templates/de/impressum.html:38 app/templates/impressum.html:38
+msgid "According to § 27 a of the German Value Added Tax Act"
+msgstr ""
+
+#: app/templates/de/impressum.html:43 app/templates/impressum.html:43
+msgid "Responsible for Content According to § 55 Abs. 2 RStV"
+msgstr ""
+
+#: app/templates/de/impressum.html:53 app/templates/impressum.html:53
+msgid "Dispute Resolution"
+msgstr ""
+
+#: app/templates/de/impressum.html:54 app/templates/impressum.html:54
+msgid ""
+"The European Commission provides a platform for online dispute resolution"
+" (OS):"
+msgstr ""
+
+#: app/templates/de/impressum.html:55 app/templates/impressum.html:55
+msgid ""
+"We are not willing or obliged to participate in dispute resolution "
+"proceedings before a consumer arbitration board."
+msgstr ""
+
+#: app/templates/de/impressum.html:59 app/templates/impressum.html:59
+msgid "Liability for Content"
+msgstr ""
+
+#: app/templates/de/impressum.html:60 app/templates/impressum.html:60
+msgid ""
+"As a service provider, we are responsible for our own content on these "
+"pages according to § 7 paragraph 1 TMG (German Telemedia Act) and general"
+" laws. According to §§ 8 to 10 TMG, however, we as a service provider are"
+" not obliged to monitor transmitted or stored external information or to "
+"investigate circumstances that indicate illegal activity."
+msgstr ""
+
+#: app/templates/de/impressum.html:61 app/templates/impressum.html:61
+msgid ""
+"Obligations to remove or block the use of information according to "
+"general laws remain unaffected. However, liability in this respect is "
+"only possible from the time of knowledge of a specific legal violation. "
+"As soon as we become aware of such legal violations, we will remove this "
+"content immediately."
+msgstr ""
+
+#: app/templates/de/impressum.html:65 app/templates/impressum.html:65
+msgid "Liability for Links"
+msgstr ""
+
+#: app/templates/de/impressum.html:66 app/templates/impressum.html:66
+msgid ""
+"Our offer contains links to external websites of third parties, on whose "
+"contents we have no influence. Therefore, we cannot assume any liability "
+"for these external contents. The respective provider or operator of the "
+"pages is always responsible for the content of the linked pages. The "
+"linked pages were checked for possible legal violations at the time of "
+"linking. Illegal contents were not recognizable at the time of linking."
+msgstr ""
+
+#: app/templates/de/impressum.html:67 app/templates/impressum.html:67
+msgid ""
+"However, a permanent control of the contents of the linked pages is not "
+"reasonable without concrete evidence of a violation of law. If we become "
+"aware of any legal violations, we will remove such links immediately."
+msgstr ""
+
+#: app/templates/de/impressum.html:71 app/templates/impressum.html:71
+msgid "Copyright"
+msgstr ""
+
+#: app/templates/de/impressum.html:72 app/templates/impressum.html:72
+msgid ""
+"The content and works created by the site operators on these pages are "
+"subject to German copyright law. Duplication, processing, distribution, "
+"and any kind of exploitation outside the limits of copyright require the "
+"written consent of the respective author or creator. Downloads and copies"
+" of this site are only permitted for private, non-commercial use."
+msgstr ""
+
+#: app/templates/de/impressum.html:73 app/templates/impressum.html:73
+msgid ""
+"Insofar as the content on this site was not created by the operator, the "
+"copyrights of third parties are respected. In particular, third-party "
+"content is marked as such. Should you nevertheless become aware of a "
+"copyright infringement, please inform us accordingly. If we become aware "
+"of any infringements, we will remove such content immediately."
+msgstr ""
+
+#: app/templates/index.html:20
 msgid "Intelligent AI Solutions for Modern Business"
-msgstr "Інтелектуальні рішення ШІ для сучасного бізнесу"
+msgstr ""
 
-msgid "Transform your business with our state-of-the-art AI assistants and custom solutions"
-msgstr "Трансформуйте свій бізнес за допомогою наших передових асистентів ШІ та індивідуальних рішень"
+#: app/templates/index.html:21
+msgid ""
+"Transform your business with our state-of-the-art AI assistants and "
+"custom solutions"
+msgstr ""
 
+#: app/templates/index.html:23
 msgid "Explore Services"
-msgstr "Дослідити послуги"
+msgstr ""
 
+#: app/templates/index.html:24 app/templates/pricing.html:157
+#: app/templates/pricing.html:168 app/templates/pricing.html:192
+#: app/templates/services.html:440
 msgid "Contact Us"
-msgstr "Зв'язатися з нами"
+msgstr ""
 
+#: app/templates/index.html:26
 msgid "Sign Up for Free"
-msgstr "Зареєструватися безкоштовно"
+msgstr ""
 
+#: app/templates/index.html:28 app/templates/payment_success.html:42
 msgid "Go to Dashboard"
-msgstr "Перейти до панелі керування"
+msgstr ""
 
+#: app/templates/index.html:35
 msgid "How We Can Help"
-msgstr "Як ми можемо допомогти"
+msgstr ""
 
+#: app/templates/index.html:41 app/templates/services.html:21
 msgid "Web Development"
-msgstr "Веб-розробка"
+msgstr ""
 
-msgid "Custom websites and web applications with AI-powered features to enhance user experience."
-msgstr "Індивідуальні веб-сайти та веб-додатки з функціями на основі ШІ для покращення користувацького досвіду."
+#: app/templates/index.html:42
+msgid ""
+"Custom websites and web applications with AI-powered features to enhance "
+"user experience."
+msgstr ""
 
+#: app/templates/index.html:48
 msgid "ML & AI Integration"
-msgstr "Інтеграція ML та ШІ"
+msgstr ""
 
-msgid "Integrate machine learning models and AI capabilities into your existing software systems."
-msgstr "Інтегруйте моделі машинного навчання та можливості ШІ у ваші існуючі програмні системи."
+#: app/templates/index.html:49
+msgid ""
+"Integrate machine learning models and AI capabilities into your existing "
+"software systems."
+msgstr ""
 
+#: app/templates/index.html:55
 msgid "Process Automation"
-msgstr "Автоматизація процесів"
+msgstr ""
 
-msgid "Streamline your business operations with intelligent automation and workflow solutions."
-msgstr "Оптимізуйте бізнес-процеси за допомогою інтелектуальної автоматизації та рішень для робочих процесів."
+#: app/templates/index.html:56
+msgid ""
+"Streamline your business operations with intelligent automation and "
+"workflow solutions."
+msgstr ""
 
+#: app/templates/index.html:62
 msgid "What Our Clients Say"
-msgstr "Що кажуть наші клієнти"
+msgstr ""
 
-msgid "Create Your Personal Account"
-msgstr "Створіть свій особистий обліковий запис"
+#: app/templates/index.html:66
+msgid ""
+"Rozoom-KI transformed our customer service with their AI assistant. "
+"Response times dropped by 60 percent and customer satisfaction increased "
+"dramatically."
+msgstr ""
 
-msgid "Track your projects, access personalized services, and collaborate with our team in real-time."
-msgstr "Відстежуйте свої проекти, отримуйте доступ до персоналізованих послуг та співпрацюйте з нашою командою в режимі реального часу."
+#: app/templates/index.html:70
+msgid "CTO, TechSolutions GmbH"
+msgstr ""
 
+#: app/templates/index.html:75
+msgid ""
+"The machine learning integration for our inventory management has saved "
+"us thousands of euros monthly and improved our forecasting accuracy by 40"
+" percent."
+msgstr ""
+
+#: app/templates/index.html:79
+msgid "Operations Director, RetailPlus"
+msgstr ""
+
+#: app/templates/index.html:84
+msgid ""
+"Their AI-powered analytics platform gave us insights we never thought "
+"possible. We have been able to identify new market opportunities and "
+"increase revenue by 25 percent in just six months."
+msgstr ""
+
+#: app/templates/index.html:88
+msgid "Marketing Director, InnovateMedia"
+msgstr ""
+
+#: app/templates/index.html:99
+msgid "Build Your Workspace with Rozoom-KI"
+msgstr ""
+
+#: app/templates/index.html:100
+msgid ""
+"Registration unlocks a tailored workspace where you collaborate with our "
+"team and track every automation we build for you."
+msgstr ""
+
+#: app/templates/index.html:103
+msgid "Why create an account"
+msgstr ""
+
+#: app/templates/index.html:106
+msgid "Personal command center"
+msgstr ""
+
+#: app/templates/index.html:107
+msgid ""
+"Monitor proposals, agreements and delivery status in one dashboard with "
+"real-time notifications from our team."
+msgstr ""
+
+#: app/templates/index.html:110
+msgid "Faster onboarding every time"
+msgstr ""
+
+#: app/templates/index.html:111
+msgid ""
+"Answer guided discovery questions once and we pre-fill future briefs, "
+"saving you time on each new initiative."
+msgstr ""
+
+#: app/templates/index.html:114
+msgid "Integrated billing and approvals"
+msgstr ""
+
+#: app/templates/index.html:115
+msgid ""
+"Approve estimates, sign milestones and handle payments securely without "
+"leaving the platform."
+msgstr ""
+
+#: app/templates/index.html:121
+msgid "What happens after you create a project"
+msgstr ""
+
+#: app/templates/index.html:123
+msgid "Share the vision"
+msgstr ""
+
+#: app/templates/index.html:123
+msgid ""
+"Describe goals, audience and constraints once; our assistants convert it "
+"into a structured brief."
+msgstr ""
+
+#: app/templates/index.html:124
+msgid "Receive a roadmap"
+msgstr ""
+
+#: app/templates/index.html:124
+msgid ""
+"We design architecture, timelines and budget options you can approve or "
+"adjust with a click."
+msgstr ""
+
+#: app/templates/index.html:125
+msgid "Track delivery in real time"
+msgstr ""
+
+#: app/templates/index.html:125
+msgid ""
+"Milestones, test results and launch tasks update automatically inside "
+"your dashboard."
+msgstr ""
+
+#: app/templates/index.html:130 app/templates/index.html:195
+msgid "Ready to transform your business with AI?"
+msgstr ""
+
+#: app/templates/index.html:131
+msgid ""
+"Your account keeps every conversation, document and approval in sync so "
+"nothing slows the launch."
+msgstr ""
+
+#: app/templates/index.html:137
+msgid "Register Now"
+msgstr ""
+
+#: app/templates/auth/register.html:59 app/templates/index.html:139
+msgid "Create Account"
+msgstr ""
+
+#: app/templates/index.html:140
+msgid "Already have an account? Login"
+msgstr ""
+
+#: app/templates/index.html:154
+msgid "How our project chatbot supports you"
+msgstr ""
+
+#: app/templates/index.html:155
+msgid ""
+"The embedded widget combines three specialized AI agents so you always "
+"get the right guidance at every stage."
+msgstr ""
+
+#: app/templates/index.html:157
+msgid "Available 24/7 inside your dashboard and on every project page."
+msgstr ""
+
+#: app/templates/index.html:158
+msgid "Switch between agents at any time to match the task you are solving."
+msgstr ""
+
+#: app/templates/index.html:159
+msgid ""
+"Conversations sync with your project timeline and notify the human team "
+"when escalation is required."
+msgstr ""
+
+#: app/templates/index.html:166
+msgid "Discovery Guide"
+msgstr ""
+
+#: app/templates/index.html:167
+msgid ""
+"Answers general questions about our services, explains pricing scenarios "
+"and helps you decide which solution fits your business."
+msgstr ""
+
+#: app/templates/index.html:171
+msgid "Brief Architect"
+msgstr ""
+
+#: app/templates/index.html:172
+msgid ""
+"Leads you through writing a detailed technical assignment, gathers "
+"requirements and prepares structured specifications for our engineers."
+msgstr ""
+
+#: app/templates/index.html:176
+msgid "Project Steward"
+msgstr ""
+
+#: app/templates/index.html:177
+msgid ""
+"Stays with you after kickoff, summarises sprint progress, reminds you "
+"about approvals and reports on upcoming milestones."
+msgstr ""
+
+#: app/templates/index.html:196
+msgid "Our team of experts is ready to help you implement intelligent solutions."
+msgstr ""
+
+#: app/templates/index.html:197
+msgid "Get Started Today"
+msgstr ""
+
+#: app/templates/payment_cancel.html:14
+msgid "Payment Cancelled"
+msgstr ""
+
+#: app/templates/payment_cancel.html:15
+msgid "Your payment was not completed. No charges have been made to your account."
+msgstr ""
+
+#: app/templates/payment_cancel.html:18
+msgid "Try Again"
+msgstr ""
+
+#: app/templates/payment_cancel.html:19
+msgid "Back to Pricing"
+msgstr ""
+
+#: app/templates/client/project_detail.html:130
+#: app/templates/payment_cancel.html:26
+msgid "Need Help?"
+msgstr ""
+
+#: app/templates/payment_cancel.html:28
+msgid ""
+"If you encountered any issues with the payment process or have questions "
+"about our services, please don't hesitate to reach out."
+msgstr ""
+
+#: app/templates/payment_cancel.html:31
+msgid "You can email us at"
+msgstr ""
+
+#: app/templates/payment_cancel.html:32
+msgid "or"
+msgstr ""
+
+#: app/templates/payment_cancel.html:32
+msgid "contact us through our website"
+msgstr ""
+
+#: app/templates/payment_form.html:197
+msgid "Purchase Development Hours"
+msgstr ""
+
+#: app/templates/payment_form.html:198
+msgid "Select the number of development hours you need"
+msgstr ""
+
+#: app/templates/payment_form.html:215
+msgid "Choose a Package"
+msgstr ""
+
+#: app/templates/payment_form.html:219 app/templates/payment_form.html:238
+#: app/templates/pricing.html:129
+msgid "Hours"
+msgstr ""
+
+#: app/templates/payment_form.html:226
+msgid "Or Customize Your Hours"
+msgstr ""
+
+#: app/templates/payment_form.html:230 app/templates/payment_form.html:231
+#: app/templates/payment_form.html:232
+msgid "hrs"
+msgstr ""
+
+#: app/templates/payment_form.html:239
+msgid "Rate"
+msgstr ""
+
+#: app/templates/payment_form.html:239
+msgid "hour"
+msgstr ""
+
+#: app/templates/payment_form.html:247 app/templates/services.html:384
+msgid "Contact Information"
+msgstr ""
+
+#: app/templates/payment_form.html:267
+msgid "Proceed to Payment"
+msgstr ""
+
+#: app/templates/payment_form.html:274
+msgid "What's Included"
+msgstr ""
+
+#: app/templates/payment_form.html:276
+msgid "Professional development work per your requirements"
+msgstr ""
+
+#: app/templates/payment_form.html:277
+msgid "Regular updates on progress"
+msgstr ""
+
+#: app/templates/payment_form.html:278
+msgid "Code and documentation delivered via secure channels"
+msgstr ""
+
+#: app/templates/payment_form.html:279
+msgid "Free minor revisions"
+msgstr ""
+
+#: app/templates/payment_form.html:280
+msgid "Access to our project management system"
+msgstr ""
+
+#: app/templates/payment_form.html:284
+msgid "Need help choosing the right number of hours? "
+msgstr ""
+
+#: app/templates/payment_form.html:285
+msgid "Contact our team"
+msgstr ""
+
+#: app/templates/payment_form.html:285
+msgid "for a custom quote or consultation."
+msgstr ""
+
+#: app/templates/payment_success.html:14
+msgid "Payment Successful!"
+msgstr ""
+
+#: app/templates/payment_success.html:15
+msgid "Thank you for your purchase. We've received your payment."
+msgstr ""
+
+#: app/templates/payment_success.html:19
+msgid "Order Summary"
+msgstr ""
+
+#: app/templates/payment_success.html:22
+msgid "Hours Purchased"
+msgstr ""
+
+#: app/templates/payment_success.html:26
+msgid "Rate per Hour"
+msgstr ""
+
+#: app/templates/payment_success.html:30
+msgid "Total Amount"
+msgstr ""
+
+#: app/templates/payment_success.html:37
+msgid ""
+"We've sent a receipt to your email address. Our team will be in touch "
+"shortly to discuss the next steps for your project."
+msgstr ""
+
+#: app/templates/payment_success.html:40
+msgid "Return Home"
+msgstr ""
+
+#: app/templates/payment_success.html:50
+msgid "What's Next?"
+msgstr ""
+
+#: app/templates/payment_success.html:52
+msgid "Our project manager will contact you within 24 hours"
+msgstr ""
+
+#: app/templates/payment_success.html:53
+msgid "We'll discuss your project requirements and timeline"
+msgstr ""
+
+#: app/templates/payment_success.html:54
+msgid "Development work will begin according to the agreed schedule"
+msgstr ""
+
+#: app/templates/payment_success.html:55
+msgid "You'll receive regular updates on your project"
+msgstr ""
+
+#: app/templates/payment_success.html:59
+msgid "If you have any questions, please "
+msgstr ""
+
+#: app/templates/payment_success.html:60
+msgid "contact us"
+msgstr ""
+
+#: app/templates/pricing.html:115
+msgid "Choose Your Package"
+msgstr ""
+
+#: app/templates/pricing.html:116
+msgid "Get the perfect amount of development time for your project needs"
+msgstr ""
+
+#: app/templates/pricing.html:125
+msgid "Most Popular"
+msgstr ""
+
+#: app/templates/pricing.html:131
+msgid "per hour"
+msgstr ""
+
+#: app/templates/pricing.html:138
+msgid "development hours"
+msgstr ""
+
+#: app/templates/pricing.html:139
+msgid "Custom solutions"
+msgstr ""
+
+#: app/templates/pricing.html:140
+msgid "Support included"
+msgstr ""
+
+#: app/templates/pricing.html:141
+msgid "Regular updates"
+msgstr ""
+
+#: app/templates/pricing.html:147
+msgid "Buy Hours"
+msgstr ""
+
+#: app/templates/pricing.html:166
+msgid "Custom Package"
+msgstr ""
+
+#: app/templates/pricing.html:167
+msgid "Tailored to Your Needs"
+msgstr ""
+
+#: app/templates/pricing.html:169
+msgid "For special requirements"
+msgstr ""
+
+#: app/templates/pricing.html:173
+msgid "Flexible hours"
+msgstr ""
+
+#: app/templates/pricing.html:174
+msgid "Custom development"
+msgstr ""
+
+#: app/templates/pricing.html:175
+msgid "Dedicated support"
+msgstr ""
+
+#: app/templates/pricing.html:176
+msgid "Priority service"
+msgstr ""
+
+#: app/templates/pricing.html:177
+msgid "Enterprise solutions"
+msgstr ""
+
+#: app/templates/pricing.html:190
+msgid "Need Help Choosing?"
+msgstr ""
+
+#: app/templates/pricing.html:191
+msgid ""
+"Contact our team for a free consultation and we'll help you select the "
+"perfect package for your project."
+msgstr ""
+
+#: app/templates/de/privacy.html:8 app/templates/de/terms.html:8
+#: app/templates/privacy.html:8 app/templates/terms.html:8
+msgid "Last updated: September 1, 2025"
+msgstr ""
+
+#: app/templates/de/privacy.html:11 app/templates/privacy.html:11
+msgid "1. Introduction"
+msgstr ""
+
+#: app/templates/de/privacy.html:12 app/templates/privacy.html:12
+msgid ""
+"Rozoom-KI (\"we\", \"us\", or \"our\") respects your privacy and is "
+"committed to protecting your personal data. This privacy policy will "
+"inform you about how we look after your personal data when you visit our "
+"website and tell you about your privacy rights and how the law protects "
+"you."
+msgstr ""
+
+#: app/templates/de/privacy.html:16 app/templates/privacy.html:16
+msgid "2. The Data We Collect"
+msgstr ""
+
+#: app/templates/de/privacy.html:17 app/templates/privacy.html:17
+msgid ""
+"We may collect, use, store and transfer different kinds of personal data "
+"about you which we have grouped together as follows:"
+msgstr ""
+
+#: app/templates/de/privacy.html:19 app/templates/privacy.html:19
+msgid "Identity Data"
+msgstr ""
+
+#: app/templates/de/privacy.html:19 app/templates/privacy.html:19
+msgid "includes first name, last name, username or similar identifier."
+msgstr ""
+
+#: app/templates/de/privacy.html:20 app/templates/privacy.html:20
+msgid "Contact Data"
+msgstr ""
+
+#: app/templates/de/privacy.html:20 app/templates/privacy.html:20
+msgid "includes email address and telephone numbers."
+msgstr ""
+
+#: app/templates/de/privacy.html:21 app/templates/privacy.html:21
+msgid "Technical Data"
+msgstr ""
+
+#: app/templates/de/privacy.html:21 app/templates/privacy.html:21
+msgid ""
+"includes internet protocol (IP) address, browser type and version, time "
+"zone setting and location, browser plug-in types and versions, operating "
+"system and platform, and other technology on the devices you use to "
+"access this website."
+msgstr ""
+
+#: app/templates/de/privacy.html:22 app/templates/privacy.html:22
+msgid "Usage Data"
+msgstr ""
+
+#: app/templates/de/privacy.html:22 app/templates/privacy.html:22
+msgid "includes information about how you use our website and services."
+msgstr ""
+
+#: app/templates/de/privacy.html:27 app/templates/privacy.html:27
+msgid "3. How We Use Your Data"
+msgstr ""
+
+#: app/templates/de/privacy.html:28 app/templates/privacy.html:28
+msgid ""
+"We will only use your personal data when the law allows us to. Most "
+"commonly, we will use your personal data in the following circumstances:"
+msgstr ""
+
+#: app/templates/de/privacy.html:30 app/templates/privacy.html:30
+msgid "To register you as a new customer."
+msgstr ""
+
+#: app/templates/de/privacy.html:31 app/templates/privacy.html:31
+msgid "To process and deliver your order."
+msgstr ""
+
+#: app/templates/de/privacy.html:32 app/templates/privacy.html:32
+msgid "To manage our relationship with you."
+msgstr ""
+
+#: app/templates/de/privacy.html:33 app/templates/privacy.html:33
+msgid ""
+"To improve our website, products/services, marketing or customer "
+"relationships."
+msgstr ""
+
+#: app/templates/de/privacy.html:34 app/templates/privacy.html:34
+msgid "To recommend products or services that may be of interest to you."
+msgstr ""
+
+#: app/templates/de/privacy.html:39 app/templates/privacy.html:39
+msgid "4. Data Security"
+msgstr ""
+
+#: app/templates/de/privacy.html:40 app/templates/privacy.html:40
+msgid ""
+"We have put in place appropriate security measures to prevent your "
+"personal data from being accidentally lost, used or accessed in an "
+"unauthorized way, altered or disclosed. We limit access to your personal "
+"data to those employees, agents, contractors and other third parties who "
+"have a business need to know."
+msgstr ""
+
+#: app/templates/de/privacy.html:44 app/templates/privacy.html:44
+msgid "5. Your Legal Rights"
+msgstr ""
+
+#: app/templates/de/privacy.html:45 app/templates/privacy.html:45
+msgid ""
+"Under certain circumstances, you have rights under data protection laws "
+"in relation to your personal data, including the right to:"
+msgstr ""
+
+#: app/templates/de/privacy.html:47 app/templates/privacy.html:47
+msgid "Request access to your personal data."
+msgstr ""
+
+#: app/templates/de/privacy.html:48 app/templates/privacy.html:48
+msgid "Request correction of your personal data."
+msgstr ""
+
+#: app/templates/de/privacy.html:49 app/templates/privacy.html:49
+msgid "Request erasure of your personal data."
+msgstr ""
+
+#: app/templates/de/privacy.html:50 app/templates/privacy.html:50
+msgid "Object to processing of your personal data."
+msgstr ""
+
+#: app/templates/de/privacy.html:51 app/templates/privacy.html:51
+msgid "Request restriction of processing your personal data."
+msgstr ""
+
+#: app/templates/de/privacy.html:52 app/templates/privacy.html:52
+msgid "Request transfer of your personal data."
+msgstr ""
+
+#: app/templates/de/privacy.html:53 app/templates/privacy.html:53
+msgid "Right to withdraw consent."
+msgstr ""
+
+#: app/templates/de/privacy.html:58 app/templates/privacy.html:58
+msgid "6. Contact Us"
+msgstr ""
+
+#: app/templates/de/privacy.html:59 app/templates/privacy.html:59
+msgid ""
+"If you have any questions about this privacy policy or our privacy "
+"practices, please contact us at:"
+msgstr ""
+
+#: app/templates/de/privacy.html:62 app/templates/de/terms.html:60
+#: app/templates/privacy.html:62 app/templates/terms.html:60
+msgid "Address:"
+msgstr ""
+
+#: app/templates/services.html:9
+msgid "Our Services"
+msgstr ""
+
+#: app/templates/services.html:14
+msgid "AI Development"
+msgstr ""
+
+#: app/templates/services.html:15
+msgid ""
+"We develop custom AI solutions for your business needs, including natural"
+" language processing, computer vision, and machine learning models."
+msgstr ""
+
+#: app/templates/services.html:22
+msgid ""
+"Full-stack web development services using modern frameworks and "
+"technologies to create responsive, scalable web applications."
+msgstr ""
+
+#: app/templates/services.html:28
+msgid "Automation Solutions"
+msgstr ""
+
+#: app/templates/services.html:29
+msgid ""
+"Automate your business processes with custom software solutions to "
+"increase efficiency and reduce operational costs."
+msgstr ""
+
+#: app/templates/services.html:35
+msgid "Data Analysis"
+msgstr ""
+
+#: app/templates/services.html:36
+msgid ""
+"Turn your data into actionable insights with our comprehensive data "
+"analysis and visualization services."
+msgstr ""
+
+#: app/templates/services.html:41
+msgid "Request a Project Estimate"
+msgstr ""
+
+#: app/templates/services.html:42
+msgid ""
+"Fill out our project questionnaire to get a free time and budget estimate"
+" for your project. No obligations!"
+msgstr ""
+
+#: app/templates/services.html:63
+msgid "What type of project are you looking to develop?"
+msgstr ""
+
+#: app/templates/services.html:70
+msgid "Select a project type"
+msgstr ""
+
+#: app/templates/services.html:71
+msgid "Web Application"
+msgstr ""
+
+#: app/templates/services.html:72
+msgid "Mobile Application"
+msgstr ""
+
+#: app/templates/services.html:73
+msgid "AI/ML Solution"
+msgstr ""
+
+#: app/templates/services.html:74
+msgid "Automation Tool"
+msgstr ""
+
+#: app/templates/services.html:75
+msgid "Data Analytics"
+msgstr ""
+
+#: app/templates/services.html:76 app/templates/services.html:285
+msgid "Other"
+msgstr ""
+
+#: app/templates/services.html:78
+msgid "Choose the category that best describes your project."
+msgstr ""
+
+#: app/templates/services.html:88
+msgid "What is the primary goal of your project?"
+msgstr ""
+
+#: app/templates/services.html:94
+msgid "Describe the main purpose of your project..."
+msgstr ""
+
+#: app/templates/services.html:95
+msgid ""
+"Clearly define what problem your project solves or what opportunity it "
+"addresses."
+msgstr ""
+
+#: app/templates/services.html:105
+msgid "Who are the target users of your project?"
+msgstr ""
+
+#: app/templates/services.html:111
+msgid "Describe your target audience..."
+msgstr ""
+
+#: app/templates/services.html:112
+msgid ""
+"Specify who will be using your solution (e.g., businesses, consumers, "
+"specific industry professionals)."
+msgstr ""
+
+#: app/templates/services.html:122
+msgid "What features are essential for your project?"
+msgstr ""
+
+#: app/templates/services.html:128
+msgid "List the key features your project must have..."
+msgstr ""
+
+#: app/templates/services.html:129
+msgid ""
+"Focus on the core functionality that is absolutely necessary for your "
+"project to succeed."
+msgstr ""
+
+#: app/templates/services.html:139
+msgid "What features would be nice to have but aren't essential?"
+msgstr ""
+
+#: app/templates/services.html:145
+msgid "List any additional features that would be beneficial..."
+msgstr ""
+
+#: app/templates/services.html:146
+msgid ""
+"These are features that could be implemented in later phases of the "
+"project."
+msgstr ""
+
+#: app/templates/services.html:156
+msgid "Do you have a specific timeline for this project?"
+msgstr ""
+
+#: app/templates/services.html:163
+msgid "Select a timeline"
+msgstr ""
+
+#: app/templates/services.html:164
+msgid "Urgent (1-2 months)"
+msgstr ""
+
+#: app/templates/services.html:165
+msgid "Standard (3-6 months)"
+msgstr ""
+
+#: app/templates/services.html:166
+msgid "Flexible (6+ months)"
+msgstr ""
+
+#: app/templates/services.html:167 app/templates/services.html:191
+#: app/templates/services.html:312
+msgid "Not yet decided"
+msgstr ""
+
+#: app/templates/services.html:169
+msgid "This helps us determine the development pace and resource allocation."
+msgstr ""
+
+#: app/templates/services.html:179
+msgid "Do you have a budget range in mind?"
+msgstr ""
+
+#: app/templates/services.html:186
+msgid "Select a budget range"
+msgstr ""
+
+#: app/templates/services.html:187
+msgid "Less than €10,000"
+msgstr ""
+
+#: app/templates/services.html:188
+msgid "€10,000 - €30,000"
+msgstr ""
+
+#: app/templates/services.html:189
+msgid "€30,000 - €100,000"
+msgstr ""
+
+#: app/templates/services.html:190
+msgid "€100,000+"
+msgstr ""
+
+#: app/templates/services.html:193
+msgid ""
+"This helps us suggest solutions that fit within your financial "
+"constraints."
+msgstr ""
+
+#: app/templates/services.html:203
+msgid "Are there any existing systems your project needs to integrate with?"
+msgstr ""
+
+#: app/templates/services.html:209
+msgid "List any systems, APIs, or services your project needs to connect with..."
+msgstr ""
+
+#: app/templates/services.html:210
+msgid "For example: payment gateways, CRMs, ERPs, social media platforms, etc."
+msgstr ""
+
+#: app/templates/services.html:220
+msgid "Do you have any specific technical requirements or preferences?"
+msgstr ""
+
+#: app/templates/services.html:226
+msgid "Specify any technologies, frameworks, or platforms you prefer..."
+msgstr ""
+
+#: app/templates/services.html:227
+msgid ""
+"For example: programming languages, cloud providers, frameworks, or "
+"architecture preferences."
+msgstr ""
+
+#: app/templates/services.html:237
+msgid "Do you have any examples of similar projects you admire?"
+msgstr ""
+
+#: app/templates/services.html:243
+msgid "List websites, apps, or products similar to what you envision..."
+msgstr ""
+
+#: app/templates/services.html:244
+msgid "This helps us understand your vision and aesthetic preferences."
+msgstr ""
+
+#: app/templates/services.html:254
+msgid "How do you plan to measure the success of this project?"
+msgstr ""
+
+#: app/templates/services.html:260
+msgid "Describe key performance indicators or success metrics..."
+msgstr ""
+
+#: app/templates/services.html:261
+msgid ""
+"For example: user acquisition, conversion rates, efficiency improvements,"
+" cost savings, etc."
+msgstr ""
+
+#: app/templates/services.html:271
+msgid "Do you have any specific security or compliance requirements?"
+msgstr ""
+
+#: app/templates/services.html:278
+msgid "GDPR Compliance"
+msgstr ""
+
+#: app/templates/services.html:279
+msgid "HIPAA Compliance"
+msgstr ""
+
+#: app/templates/services.html:280
+msgid "PCI DSS Compliance"
+msgstr ""
+
+#: app/templates/services.html:281
+msgid "SOC 2 Compliance"
+msgstr ""
+
+#: app/templates/services.html:282
+msgid "ISO 27001 Compliance"
+msgstr ""
+
+#: app/templates/services.html:283
+msgid "Two-factor Authentication"
+msgstr ""
+
+#: app/templates/services.html:284
+msgid "Data Encryption"
+msgstr ""
+
+#: app/templates/services.html:287
+msgid "Hold Ctrl/Cmd to select multiple options, or leave blank if unsure."
+msgstr ""
+
+#: app/templates/services.html:290
+msgid ""
+"If you selected 'Other' or have additional security requirements, please "
+"specify..."
+msgstr ""
+
+#: app/templates/services.html:300
+msgid "What level of ongoing support will you need after launch?"
+msgstr ""
+
+#: app/templates/services.html:307
+msgid "Select support level"
+msgstr ""
+
+#: app/templates/services.html:308
+msgid "Minimal (Bug fixes only)"
+msgstr ""
+
+#: app/templates/services.html:309
+msgid "Standard (Bug fixes and minor updates)"
+msgstr ""
+
+#: app/templates/services.html:310
+msgid "Comprehensive (Ongoing development and support)"
+msgstr ""
+
+#: app/templates/services.html:311
+msgid "Fully Managed Service"
+msgstr ""
+
+#: app/templates/services.html:314
+msgid "This helps us plan for post-launch resources and maintenance."
+msgstr ""
+
+#: app/templates/services.html:324
+msgid "Do you already have any design assets or documentation for this project?"
+msgstr ""
+
+#: app/templates/services.html:332
+msgid "Wireframes"
+msgstr ""
+
+#: app/templates/services.html:336
+msgid "Design Mockups"
+msgstr ""
+
+#: app/templates/services.html:340
+msgid "Brand Guidelines"
+msgstr ""
+
+#: app/templates/services.html:344
+msgid "User Stories"
+msgstr ""
+
+#: app/templates/services.html:348
+msgid "Requirements Document"
+msgstr ""
+
+#: app/templates/services.html:352
+msgid "Existing Code"
+msgstr ""
+
+#: app/templates/services.html:356
+msgid "None of the above"
+msgstr ""
+
+#: app/templates/services.html:358
+msgid ""
+"Check all that apply. This helps us understand what resources are "
+"available to start with."
+msgstr ""
+
+#: app/templates/services.html:368
+msgid "Any additional information you'd like to share about your project?"
+msgstr ""
+
+#: app/templates/services.html:374
+msgid ""
+"Share any other details that might help us understand your project "
+"better..."
+msgstr ""
+
+#: app/templates/services.html:375
+msgid ""
+"Include any considerations, challenges, or specific requirements not "
+"covered by previous questions."
+msgstr ""
+
+#: app/templates/services.html:387
+msgid "Name *"
+msgstr ""
+
+#: app/templates/auth/register.html:35 app/templates/services.html:391
+msgid "Company Name"
+msgstr ""
+
+#: app/templates/services.html:397
+msgid "Email *"
+msgstr ""
+
+#: app/templates/services.html:401
+msgid "Phone"
+msgstr ""
+
+#: app/templates/services.html:408
+msgid ""
+"I consent to having this website store my submitted information so they "
+"can respond to my inquiry. *"
+msgstr ""
+
+#: app/templates/services.html:414
+msgid "Submit Project Request"
+msgstr ""
+
+#: app/templates/services.html:425
+msgid "Why Choose Us"
+msgstr ""
+
+#: app/templates/services.html:427
+msgid "Expert team with proven track record"
+msgstr ""
+
+#: app/templates/services.html:428
+msgid "Transparent pricing and process"
+msgstr ""
+
+#: app/templates/services.html:429
+msgid "Agile development methodology"
+msgstr ""
+
+#: app/templates/services.html:430
+msgid "Ongoing support and maintenance"
+msgstr ""
+
+#: app/templates/services.html:431
+msgid "Cutting-edge technologies"
+msgstr ""
+
+#: app/templates/services.html:438
+msgid "Free Consultation"
+msgstr ""
+
+#: app/templates/services.html:439
+msgid ""
+"Get a free 30-minute consultation with our experts to discuss your "
+"project needs."
+msgstr ""
+
+#: app/templates/services.html:460
+msgid "Submitting..."
+msgstr ""
+
+#: app/templates/de/terms.html:11 app/templates/terms.html:11
+msgid "1. Acceptance of Terms"
+msgstr ""
+
+#: app/templates/de/terms.html:12 app/templates/terms.html:12
+msgid ""
+"By accessing or using the services of Rozoom-KI (\"we\", \"us\", "
+"\"our\"), you agree to be bound by these Terms of Service. If you do not "
+"agree to these terms, please do not use our services."
+msgstr ""
+
+#: app/templates/de/terms.html:16 app/templates/terms.html:16
+msgid "2. Description of Service"
+msgstr ""
+
+#: app/templates/de/terms.html:17 app/templates/terms.html:17
+msgid ""
+"Rozoom-KI provides custom software development and AI integration "
+"services as described on our website. We reserve the right to modify, "
+"suspend, or discontinue any part of our services at any time without "
+"notice."
+msgstr ""
+
+#: app/templates/de/terms.html:21 app/templates/terms.html:21
+msgid "3. User Accounts"
+msgstr ""
+
+#: app/templates/de/terms.html:22 app/templates/terms.html:22
+msgid ""
+"Some of our services may require you to create an account. You are "
+"responsible for maintaining the confidentiality of your account "
+"information and for all activities that occur under your account. You "
+"agree to notify us immediately of any unauthorized use of your account."
+msgstr ""
+
+#: app/templates/de/terms.html:26 app/templates/terms.html:26
+msgid "4. Payment Terms"
+msgstr ""
+
+#: app/templates/de/terms.html:27 app/templates/terms.html:27
+msgid ""
+"Fees for our services are described on our website or in individual "
+"agreements. Unless otherwise specified, all fees are quoted in Euro (€) "
+"and are non-refundable. We reserve the right to change our fees at any "
+"time, with notice provided to existing customers."
+msgstr ""
+
+#: app/templates/de/terms.html:31 app/templates/terms.html:31
+msgid "5. Intellectual Property"
+msgstr ""
+
+#: app/templates/de/terms.html:32 app/templates/terms.html:32
+msgid ""
+"All content, features, and functionality of our services, including but "
+"not limited to text, graphics, logos, icons, and software, are the "
+"exclusive property of Rozoom-KI or its licensors and are protected by "
+"copyright, trademark, and other intellectual property laws."
+msgstr ""
+
+#: app/templates/de/terms.html:36 app/templates/terms.html:36
+msgid "6. User Content"
+msgstr ""
+
+#: app/templates/de/terms.html:37 app/templates/terms.html:37
+msgid ""
+"You retain ownership of any content you submit to our services. By "
+"submitting content, you grant us a worldwide, non-exclusive, royalty-free"
+" license to use, reproduce, modify, adapt, publish, translate, and "
+"distribute your content in any existing or future media."
+msgstr ""
+
+#: app/templates/de/terms.html:41 app/templates/terms.html:41
+msgid "7. Limitation of Liability"
+msgstr ""
+
+#: app/templates/de/terms.html:42 app/templates/terms.html:42
+msgid ""
+"To the maximum extent permitted by law, Rozoom-KI shall not be liable for"
+" any indirect, incidental, special, consequential, or punitive damages, "
+"including but not limited to loss of profits, data, use, or goodwill, "
+"arising out of or in connection with these terms or the use or inability "
+"to use our services."
+msgstr ""
+
+#: app/templates/de/terms.html:46 app/templates/terms.html:46
+msgid "8. Governing Law"
+msgstr ""
+
+#: app/templates/de/terms.html:47 app/templates/terms.html:47
+msgid ""
+"These Terms shall be governed by and construed in accordance with the "
+"laws of Germany, without regard to its conflict of law provisions."
+msgstr ""
+
+#: app/templates/de/terms.html:51 app/templates/terms.html:51
+msgid "9. Changes to Terms"
+msgstr ""
+
+#: app/templates/de/terms.html:52 app/templates/terms.html:52
+msgid ""
+"We reserve the right to modify these Terms at any time. We will provide "
+"notice of significant changes through our website or via email. Your "
+"continued use of our services after such modifications constitutes your "
+"acceptance of the revised Terms."
+msgstr ""
+
+#: app/templates/de/terms.html:56 app/templates/terms.html:56
+msgid "10. Contact Us"
+msgstr ""
+
+#: app/templates/de/terms.html:57 app/templates/terms.html:57
+msgid "If you have any questions about these Terms, please contact us at:"
+msgstr ""
+
+#: app/templates/auth/forgot_password.html:3
+msgid "Forgot Password"
+msgstr ""
+
+#: app/templates/auth/forgot_password.html:11
+msgid "Reset Password"
+msgstr ""
+
+#: app/templates/auth/forgot_password.html:14
+msgid ""
+"Enter your email address below and we'll send you instructions to reset "
+"your password."
+msgstr ""
+
+#: app/templates/auth/forgot_password.html:22
+msgid "Send Reset Link"
+msgstr ""
+
+#: app/templates/auth/forgot_password.html:27
+msgid "Remember your password?"
+msgstr ""
+
+#: app/templates/auth/login.html:17
+msgid "Email or Username"
+msgstr ""
+
+#: app/templates/auth/login.html:21 app/templates/auth/register.html:45
+msgid "Password"
+msgstr ""
+
+#: app/templates/auth/login.html:26
+msgid "Remember me"
+msgstr ""
+
+#: app/templates/auth/login.html:33
+msgid "Forgot your password?"
+msgstr ""
+
+#: app/templates/auth/login.html:37
+msgid "Don't have an account?"
+msgstr ""
+
+#: app/templates/auth/register.html:11
+msgid "Create an Account"
+msgstr ""
+
+#: app/templates/auth/register.html:28
+msgid "Username"
+msgstr ""
+
+#: app/templates/auth/register.html:29
+msgid "Choose a username or leave blank to use your email"
+msgstr ""
+
+#: app/templates/auth/register.html:30
+msgid "This will be used for login and displayed in your profile"
+msgstr ""
+
+#: app/templates/auth/register.html:39 app/templates/dashboard/profile.html:59
+msgid "Phone Number"
+msgstr ""
+
+#: app/templates/auth/register.html:47
+msgid "Password must be at least 8 characters long"
+msgstr ""
+
+#: app/templates/auth/register.html:50
+msgid "Confirm Password"
+msgstr ""
+
+#: app/templates/auth/register.html:56
+msgid "I agree to the"
+msgstr ""
+
+#: app/templates/auth/register.html:56
+msgid "and"
+msgstr ""
+
+#: app/templates/auth/register.html:64
+msgid "Already have an account?"
+msgstr ""
+
+#: app/templates/blog/blog.html:50
+msgid "No blog posts found."
+msgstr ""
+
+#: app/templates/blog/blog.html:105
+msgid "No categories found"
+msgstr ""
+
+#: app/templates/blog/blog.html:119
+msgid "No tags found"
+msgstr ""
+
+#: app/templates/blog/blog.html:128 app/templates/blog/blog_category.html:129
+#: app/templates/blog/blog_post.html:123
+#: app/templates/blog/blog_search.html:141 app/templates/blog/blog_tag.html:131
+msgid "Search blog..."
+msgstr ""
+
+#: app/templates/blog/blog_category.html:10
+msgid "Category:"
+msgstr ""
+
+#: app/templates/blog/blog_category.html:50
+msgid "No posts found in this category."
+msgstr ""
+
+#: app/templates/blog/blog_category.html:96
+#: app/templates/blog/blog_search.html:99 app/templates/blog/blog_tag.html:98
+msgid "Back to All Posts"
+msgstr ""
+
+#: app/templates/blog/blog_post.html:45
+msgid "Tags:"
+msgstr ""
+
+#: app/templates/blog/blog_search.html:10
+msgid "Search Results for"
+msgstr ""
+
+#: app/templates/blog/blog_search.html:11
+msgid "results"
+msgstr ""
+
+#: app/templates/blog/blog_search.html:53
+msgid "No results found for"
+msgstr ""
+
+#: app/templates/blog/blog_search.html:104
+msgid "Try another search..."
+msgstr ""
+
+#: app/templates/blog/blog_tag.html:52
+msgid "No posts found with this tag."
+msgstr ""
+
+#: app/templates/client/dashboard.html:3 app/templates/client/dashboard.html:7
+#: app/templates/client/project_detail.html:9
+#: app/templates/client/tech_spec_detail.html:9
+msgid "My Projects"
+msgstr ""
+
+#: app/templates/client/dashboard.html:27
+#: app/templates/client/project_detail.html:36
+msgid "Project Progress"
+msgstr ""
+
+#: app/templates/client/dashboard.html:32
+msgid "Est. completion"
+msgstr ""
+
+#: app/templates/client/dashboard.html:34
+msgid "Start date"
+msgstr ""
+
+#: app/templates/client/dashboard.html:34
+msgid "TBD"
+msgstr ""
+
+#: app/templates/client/dashboard.html:40
+msgid "Last update"
+msgstr ""
+
+#: app/templates/client/dashboard.html:46
+#: app/templates/dashboard/index.html:200
+msgid "View Details"
+msgstr ""
+
+#: app/templates/client/dashboard.html:48
+msgid "Ask PM"
+msgstr ""
+
+#: app/templates/client/dashboard.html:57
+msgid "No Projects Yet!"
+msgstr ""
+
+#: app/templates/client/dashboard.html:58
+msgid "You don't have any active projects at the moment."
+msgstr ""
+
+#: app/templates/client/dashboard.html:61
+msgid ""
+"You have submitted technical specifications that are under review. Our "
+"team will contact you soon."
+msgstr ""
+
+#: app/templates/client/dashboard.html:64
+msgid "Would you like to start a new project?"
+msgstr ""
+
+#: app/templates/client/dashboard.html:65
+msgid "Create Technical Specification"
+msgstr ""
+
+#: app/templates/client/dashboard.html:71
+msgid "Your Technical Specifications"
+msgstr ""
+
+#: app/templates/client/dashboard.html:76
+msgid "Date Submitted"
+msgstr ""
+
+#: app/templates/client/dashboard.html:77
+#: app/templates/client/tech_spec_detail.html:46
+msgid "Project Type"
+msgstr ""
+
+#: app/templates/client/dashboard.html:78
+msgid "Goal"
+msgstr ""
+
+#: app/templates/client/dashboard.html:79
+#: app/templates/client/tech_spec_detail.html:22
+#: app/templates/dashboard/invoices.html:152
+#: app/templates/dashboard/project_detail.html:143
+#: app/templates/dashboard/projects.html:86
+msgid "Status"
+msgstr ""
+
+#: app/templates/client/dashboard.html:80
+#: app/templates/dashboard/invoices.html:153
+#: app/templates/dashboard/projects.html:90
+msgid "Actions"
+msgstr ""
+
+#: app/templates/client/dashboard.html:91
+#: app/templates/client/tech_spec_detail.html:22
+msgid "Under Review"
+msgstr ""
+
+#: app/templates/client/dashboard.html:95
+#: app/templates/dashboard/projects.html:116
+msgid "View"
+msgstr ""
+
+#: app/templates/client/dashboard.html:99
+msgid "Go to Project"
+msgstr ""
+
+#: app/templates/client/project_detail.html:25
+msgid "Project Description"
+msgstr ""
+
+#: app/templates/client/project_detail.html:42
+#: app/templates/dashboard/project_detail.html:64
+#: app/templates/dashboard/projects.html:87
+msgid "Start Date"
+msgstr ""
+
+#: app/templates/client/project_detail.html:43
+#: app/templates/dashboard/project_detail.html:69
+#: app/templates/dashboard/project_detail.html:93
+#: app/templates/dashboard/project_detail.html:159
+#: app/templates/dashboard/projects.html:107
+msgid "Not set"
+msgstr ""
+
+#: app/templates/client/project_detail.html:46
+#: app/templates/dashboard/project_detail.html:68
+msgid "Estimated Completion"
+msgstr ""
+
+#: app/templates/client/project_detail.html:47
+msgid "To be determined"
+msgstr ""
+
+#: app/templates/client/project_detail.html:55
+msgid "Project Updates"
+msgstr ""
+
+#: app/templates/client/project_detail.html:73
+msgid "No updates yet."
+msgstr ""
+
+#: app/templates/client/project_detail.html:82
+msgid "Project Tasks"
+msgstr ""
+
+#: app/templates/client/project_detail.html:95
+msgid "No tasks created yet."
+msgstr ""
+
+#: app/templates/client/project_detail.html:102
+msgid "Project Team"
+msgstr ""
+
+#: app/templates/client/project_detail.html:123
+msgid "No team members assigned yet."
+msgstr ""
+
+#: app/templates/client/project_detail.html:133
+msgid "Have questions about your project?"
+msgstr ""
+
+#: app/templates/client/project_detail.html:135
+msgid "Chat with Project Manager"
+msgstr ""
+
+#: app/templates/client/tech_spec_detail.html:3
+#: app/templates/client/tech_spec_detail.html:10
+msgid "Technical Specification"
+msgstr ""
+
+#: app/templates/client/tech_spec_detail.html:21
+msgid "Submitted on"
+msgstr ""
+
+#: app/templates/client/tech_spec_detail.html:25
+msgid "Contact Name"
+msgstr ""
+
+#: app/templates/client/tech_spec_detail.html:26
+msgid "Contact Email"
+msgstr ""
+
+#: app/templates/client/tech_spec_detail.html:28
+msgid "Contact Phone"
+msgstr ""
+
+#: app/templates/client/tech_spec_detail.html:33
+msgid "Technical Specification Details"
+msgstr ""
+
+#: app/templates/client/tech_spec_detail.html:39
+#: app/templates/dashboard/project_detail.html:56
+msgid "Project Overview"
+msgstr ""
+
+#: app/templates/client/tech_spec_detail.html:43
+msgid "Project Goal"
+msgstr ""
+
+#: app/templates/client/tech_spec_detail.html:49
+msgid "Target Audience"
+msgstr ""
+
+#: app/templates/client/tech_spec_detail.html:58
+msgid "Functionality"
+msgstr ""
+
+#: app/templates/client/tech_spec_detail.html:62
+msgid "Key Features"
+msgstr ""
+
+#: app/templates/client/tech_spec_detail.html:65
+msgid "User Roles"
+msgstr ""
+
+#: app/templates/client/tech_spec_detail.html:74
+msgid "Design & Technical Requirements"
+msgstr ""
+
+#: app/templates/client/tech_spec_detail.html:78
+msgid "Design Preferences"
+msgstr ""
+
+#: app/templates/client/tech_spec_detail.html:82
+msgid "Similar Sites"
+msgstr ""
+
+#: app/templates/client/tech_spec_detail.html:87
+msgid "Technical Requirements"
+msgstr ""
+
+#: app/templates/client/tech_spec_detail.html:92
+msgid "Integrations"
+msgstr ""
+
+#: app/templates/client/tech_spec_detail.html:102
+msgid "Business & Timeline"
+msgstr ""
+
+#: app/templates/client/tech_spec_detail.html:106
+msgid "Budget Range"
+msgstr ""
+
+#: app/templates/client/tech_spec_detail.html:109
+msgid "Timeline"
+msgstr ""
+
+#: app/templates/client/tech_spec_detail.html:113
+msgid "Additional Information"
+msgstr ""
+
+#: app/templates/client/tech_spec_detail.html:123
+msgid "Discuss This Specification"
+msgstr ""
+
+#: app/templates/dashboard/index.html:37
+#: app/templates/dashboard/invoices.html:17
+#: app/templates/dashboard/messages.html:21
+#: app/templates/dashboard/profile.html:17
+#: app/templates/dashboard/project_detail.html:17
+#: app/templates/dashboard/projects.html:17
+msgid "Projects"
+msgstr ""
+
+#: app/templates/dashboard/index.html:40
+#: app/templates/dashboard/invoices.html:20
+#: app/templates/dashboard/messages.html:24
+#: app/templates/dashboard/messages.html:44
+#: app/templates/dashboard/profile.html:20
+#: app/templates/dashboard/project_detail.html:20
+#: app/templates/dashboard/projects.html:20
+msgid "Messages"
+msgstr ""
+
+#: app/templates/dashboard/index.html:43
+#: app/templates/dashboard/invoices.html:23
+#: app/templates/dashboard/invoices.html:40
+#: app/templates/dashboard/messages.html:27
+#: app/templates/dashboard/profile.html:23
+#: app/templates/dashboard/project_detail.html:23
+#: app/templates/dashboard/projects.html:23
+msgid "Invoices"
+msgstr ""
+
+#: app/templates/dashboard/index.html:46
+#: app/templates/dashboard/invoices.html:26
+#: app/templates/dashboard/messages.html:30
+#: app/templates/dashboard/profile.html:26
+#: app/templates/dashboard/profile.html:40
+#: app/templates/dashboard/project_detail.html:26
+#: app/templates/dashboard/projects.html:26
+msgid "Profile Settings"
+msgstr ""
+
+#: app/templates/dashboard/index.html:62
+msgid "Welcome back"
+msgstr ""
+
+#: app/templates/dashboard/index.html:68
+msgid "Your Account Benefits"
+msgstr "Переваги вашого облікового запису"
+
+#: app/templates/dashboard/index.html:72
 msgid "Personal dashboard to monitor project progress"
-msgstr "Особиста панель керування для моніторингу прогресу проекту"
+msgstr "Особистий дашборд для моніторингу прогресу проектів"
 
+#: app/templates/dashboard/index.html:73
 msgid "Direct messaging with our development team"
 msgstr "Пряме спілкування з нашою командою розробки"
 
+#: app/templates/dashboard/index.html:74
 msgid "Online invoicing and payment processing"
 msgstr "Онлайн виставлення рахунків та обробка платежів"
 
+#: app/templates/dashboard/index.html:79
 msgid "Project milestone tracking and updates"
-msgstr "Відстеження етапів проекту та оновлення"
+msgstr "Відстеження етапів проектів та оновлення"
 
-msgid "Register Now"
-msgstr "Зареєструватися зараз"
+#: app/templates/dashboard/index.html:80
+msgid "Access to exclusive AI tools and resources"
+msgstr "Доступ до ексклюзивних інструментів та ресурсів ШІ"
 
-msgid "Create Account"
-msgstr "Створити обліковий запис"
+#: app/templates/dashboard/index.html:81
+msgid "Priority support and faster response times"
+msgstr "Пріоритетна підтримка та швидші часи відповіді"
 
-msgid "Already have an account? Login"
-msgstr "Вже маєте обліковий запис? Увійдіть"
-
-msgid "Ready to transform your business with AI?"
-msgstr "Готові трансформувати свій бізнес за допомогою ШІ?"
-
-msgid "Our team of experts is ready to help you implement intelligent solutions."
-msgstr "Наша команда експертів готова допомогти вам впровадити інтелектуальні рішення."
-
-msgid "Get Started Today"
-msgstr "Почати сьогодні"
-
-msgid "Our Services"
-msgstr "Наші послуги"
-
-msgid "AI Development"
-msgstr "Розробка ШІ"
-
-msgid "We develop custom AI solutions for your business needs, including natural language processing, computer vision, and machine learning models."
-msgstr "Ми розробляємо індивідуальні рішення ШІ для ваших бізнес-потреб, включаючи обробку природної мови, комп'ютерний зір та моделі машинного навчання."
-
-msgid "Automation Solutions"
-msgstr "Рішення автоматизації"
-
-msgid "Automate your business processes with custom software solutions to increase efficiency and reduce operational costs."
-msgstr "Автоматизуйте бізнес-процеси за допомогою індивідуальних програмних рішень для підвищення ефективності та зниження операційних витрат."
-
-msgid "Data Analysis"
-msgstr "Аналіз даних"
-
-msgid "Turn your data into actionable insights with our comprehensive data analysis and visualization services."
-msgstr "Перетворіть ваші дані на практичні висновки за допомогою наших комплексних послуг аналізу даних та візуалізації."
-
-msgid "Rozoom-KI transformed our customer service with their AI assistant. Response times dropped by 60 percent and customer satisfaction increased dramatically."
-msgstr "Rozoom-KI трансформувала наш клієнтський сервіс за допомогою їхнього асистента ШІ. Час відповіді зменшився на 60 відсотків, а задоволеність клієнтів значно зросла."
-
-msgid "The machine learning integration for our inventory management has saved us thousands of euros monthly and improved our forecasting accuracy by 40 percent."
-msgstr "Інтеграція машинного навчання для управління запасами заощадила нам тисячі євро щомісяця та покращила точність прогнозування на 40 відсотків."
-
-msgid "Their AI-powered analytics platform gave us insights we never thought possible. We have been able to identify new market opportunities and increase revenue by 25 percent in just six months."
-msgstr "Їхня платформа аналітики на основі ШІ надала нам висновки, про які ми ніколи не думали як про можливі. Ми змогли ідентифікувати нові ринкові можливості та збільшити дохід на 25 відсотків всього за шість місяців."
-
-msgid "CTO, TechSolutions GmbH"
-msgstr "CTO, TechSolutions GmbH"
-
-msgid "Operations Director, RetailPlus"
-msgstr "Директор з операцій, RetailPlus"
-
-msgid "Marketing Director, InnovateMedia"
-msgstr "Директор з маркетингу, InnovateMedia"
-
-msgid "Describe your target audience..."
-msgstr "Опишіть вашу цільову аудиторію..."
-
-msgid "Specify who will be using your solution (e.g., businesses, consumers, specific industry professionals)."
-msgstr "Вкажіть, хто буде використовувати ваше рішення (наприклад, бізнеси, споживачі, фахівці конкретної галузі)."
-
-msgid "List the key features your project must have..."
-msgstr "Перелічіть ключові функції, які повинен мати ваш проект..."
-
-msgid "Focus on the core functionality that is absolutely necessary for your project to succeed."
-msgstr "Зосередьтеся на основній функціональності, яка абсолютно необхідна для успіху вашого проекту."
-
-msgid "List any additional features that would be beneficial..."
-msgstr "Перелічіть будь-які додаткові функції, які будуть корисними..."
-
-msgid "These are features that could be implemented in later phases of the project."
-msgstr "Це функції, які можуть бути реалізовані в пізніших фазах проекту."
-
-msgid "Select a timeline"
-msgstr "Виберіть терміни"
-
-msgid "Urgent (1-2 months)"
-msgstr "Терміново (1-2 місяці)"
-
-msgid "Standard (3-6 months)"
-msgstr "Стандартно (3-6 місяців)"
-
-msgid "Flexible (6+ months)"
-msgstr "Гнучко (6+ місяців)"
-
-msgid "Not yet decided"
-msgstr "Ще не вирішено"
-
-msgid "This helps us determine the development pace and resource allocation."
-msgstr "Це допомагає нам визначити темп розробки та розподіл ресурсів."
-
-msgid "Select a budget range"
-msgstr "Виберіть діапазон бюджету"
-
-msgid "Less than €10,000"
-msgstr "Менше €10,000"
-
-msgid "€10,000 - €30,000"
-msgstr "€10,000 - €30,000"
-
-msgid "€30,000 - €100,000"
-msgstr "€30,000 - €100,000"
-
-msgid "€100,000+"
-msgstr "€100,000+"
-
-msgid "This helps us suggest solutions that fit within your financial constraints."
-msgstr "Це допомагає нам запропонувати рішення, які підходять до ваших фінансових можливостей."
-
-msgid "List any systems, APIs, or services your project needs to connect with..."
-msgstr "Перелічіть будь-які системи, API або послуги, з якими повинен підключатися ваш проект..."
-
-msgid "For example: payment gateways, CRMs, ERPs, social media platforms, etc."
-msgstr "Наприклад: платіжні шлюзи, CRM, ERP, платформи соціальних мереж тощо."
-
-msgid "Specify any technologies, frameworks, or platforms you prefer..."
-msgstr "Вкажіть будь-які технології, фреймворки або платформи, які ви віддаєте перевагу..."
-
-msgid "For example: programming languages, cloud providers, frameworks, or architecture preferences."
-msgstr "Наприклад: мови програмування, хмарні провайдери, фреймворки або архітектурні вподобання."
-
-msgid "List websites, apps, or products similar to what you envision..."
-msgstr "Перелічіть веб-сайти, додатки або продукти, подібні до того, що ви уявляєте..."
-
-msgid "This helps us understand your vision and aesthetic preferences."
-msgstr "Це допомагає нам зрозуміти ваше бачення та естетичні вподобання."
-
-msgid "Describe key performance indicators or success metrics..."
-msgstr "Опишіть ключові показники ефективності або метрики успіху..."
-
-msgid "For example: user acquisition, conversion rates, efficiency improvements, cost savings, etc."
-msgstr "Наприклад: залучення користувачів, коефіцієнти конверсії, покращення ефективності, економія витрат тощо."
-
-msgid "GDPR Compliance"
-msgstr "Відповідність GDPR"
-
-msgid "HIPAA Compliance"
-msgstr "Відповідність HIPAA"
-
-msgid "PCI DSS Compliance"
-msgstr "Відповідність PCI DSS"
-
-msgid "SOC 2 Compliance"
-msgstr "Відповідність SOC 2"
-
-msgid "ISO 27001 Compliance"
-msgstr "Відповідність ISO 27001"
-
-msgid "Two-factor Authentication"
-msgstr "Двофакторна аутентифікація"
-
-msgid "Data Encryption"
-msgstr "Шифрування даних"
-
-msgid "Hold Ctrl/Cmd to select multiple options, or leave blank if unsure."
-msgstr "Утримуйте Ctrl/Cmd для вибору кількох варіантів, або залиште порожнім, якщо не впевнені."
-
-msgid "If you selected 'Other' or have additional security requirements, please specify..."
-msgstr "Якщо ви вибрали 'Інше' або маєте додаткові вимоги до безпеки, будь ласка, уточніть..."
-
-msgid "Select support level"
-msgstr "Виберіть рівень підтримки"
-
-msgid "Minimal (Bug fixes only)"
-msgstr "Мінімальний (тільки виправлення помилок)"
-
-msgid "Standard (Bug fixes and minor updates)"
-msgstr "Стандартний (виправлення помилок та невеликі оновлення)"
-
-msgid "Comprehensive (Ongoing development and support)"
-msgstr "Комплексний (постійна розробка та підтримка)"
-
-msgid "Fully Managed Service"
-msgstr "Повністю керована послуга"
-
-msgid "This helps us plan for post-launch resources and maintenance."
-msgstr "Це допомагає нам планувати ресурси та обслуговування після запуску."
-
-msgid "Wireframes"
-msgstr "Вайрфрейми"
-
-msgid "Design Mockups"
-msgstr "Дизайн-макети"
-
-msgid "Brand Guidelines"
-msgstr "Брендбук"
-
-msgid "User Stories"
-msgstr "Користувацькі історії"
-
-msgid "Requirements Document"
-msgstr "Документ вимог"
-
-msgid "Existing Code"
-msgstr "Існуючий код"
-
-msgid "None of the above"
-msgstr "Жодного з вищевказаних"
-
-msgid "Check all that apply. This helps us understand what resources are available to start with."
-msgstr "Позначте все, що підходить. Це допомагає нам зрозуміти, які ресурси доступні для початку."
-
-msgid "Share any other details that might help us understand your project better..."
-msgstr "Поділіться будь-якими іншими деталями, які можуть допомогти нам краще зрозуміти ваш проект..."
-
-msgid "Include any considerations, challenges, or specific requirements not covered by previous questions."
-msgstr "Включіть будь-які міркування, виклики або специфічні вимоги, не охоплені попередніми питаннями."
-
-msgid "Contact Information"
-msgstr "Контактна інформація"
-
-msgid "Name *"
-msgstr "Ім'я *"
-
-msgid "Company Name"
-msgstr "Назва компанії"
-
-msgid "Email *"
-msgstr "Email *"
-
-msgid "Phone"
-msgstr "Телефон"
-
-msgid "I consent to having this website store my submitted information so they can respond to my inquiry. *"
-msgstr "Я даю згоду на зберігання цим веб-сайтом наданої мною інформації, щоб вони могли відповісти на мій запит. *"
-
-msgid "Submit Project Request"
-msgstr "Надіслати запит на проект"
-
-msgid "Why Choose Us"
-msgstr "Чому обрати нас"
-
-msgid "Expert team with proven track record"
-msgstr "Команда експертів з перевіреним досвідом"
-
-msgid "Transparent pricing and process"
-msgstr "Прозора цінова політика та процес"
-
-msgid "Agile development methodology"
-msgstr "Agile методологія розробки"
-
-msgid "Ongoing support and maintenance"
-msgstr "Постійна підтримка та обслуговування"
-
-msgid "Cutting-edge technologies"
-msgstr "Найсучасніші технології"
-
-msgid "Free Consultation"
-msgstr "Безкоштовна консультація"
-
-msgid "Get a free 30-minute consultation with our experts to discuss your project needs."
-msgstr "Отримайте безкоштовну 30-хвилинну консультацію з нашими експертами для обговорення потреб вашого проекту."
-
-msgid "Submitting..."
-msgstr "Надсилається..."
-
-msgid "Impressum"
-msgstr "Імпрессум"
-
-msgid "Impressum (Legal Notice)"
-msgstr "Імпрессум (Юридична інформація)"
-
-msgid "Information According to § 5 TMG"
-msgstr "Інформація відповідно до § 5 TMG"
-
-msgid "Germany"
-msgstr "Німеччина"
-
-msgid "Represented by:"
-msgstr "Представлено:"
-
-msgid "Contact:"
-msgstr "Контакти:"
-
-msgid "Phone:"
-msgstr "Телефон:"
-
-msgid "Registration:"
-msgstr "Реєстрація:"
-
-msgid "Registered in the Commercial Register"
-msgstr "Зареєстровано в торговому реєстрі"
-
-msgid "Register Court:"
-msgstr "Суд реєстрації:"
-
-msgid "Register Number:"
-msgstr "Реєстраційний номер:"
-
-msgid "VAT Identification Number:"
-msgstr "Ідентифікаційний номер ПДВ:"
-
-msgid "VAT ID:"
-msgstr "ІПН:"
-
-msgid "According to § 27 a of the German Value Added Tax Act"
-msgstr "Відповідно до § 27 a Закону Німеччини про податок на додану вартість"
-
-msgid "Responsible for Content According to § 55 Abs. 2 RStV"
-msgstr "Відповідальний за зміст відповідно до § 55 Abs. 2 RStV"
-
-msgid "Dispute Resolution"
-msgstr "Вирішення спорів"
-
-msgid "The European Commission provides a platform for online dispute resolution (OS):"
-msgstr "Європейська Комісія надає платформу для онлайн вирішення спорів (OS):"
-
-msgid "We are not willing or obliged to participate in dispute resolution proceedings before a consumer arbitration board."
-msgstr "Ми не бажаємо та не зобов'язані брати участь у процедурах вирішення спорів перед арбітражною комісією споживачів."
-
-msgid "Liability for Content"
-msgstr "Відповідальність за зміст"
-
-msgid "As a service provider, we are responsible for our own content on these pages according to § 7 paragraph 1 TMG (German Telemedia Act) and general laws. According to §§ 8 to 10 TMG, however, we as a service provider are not obliged to monitor transmitted or stored external information or to investigate circumstances that indicate illegal activity."
-msgstr "Як постачальник послуг, ми несемо відповідальність за власний зміст на цих сторінках відповідно до § 7 абзацу 1 TMG (Німецький закон про телемедіа) та загальних законів. Відповідно до §§ 8-10 TMG, однак, ми як постачальник послуг не зобов'язані контролювати передані або збережені зовнішні відомості або досліджувати обставини, які вказують на незаконну діяльність."
-
-msgid "Obligations to remove or block the use of information according to general laws remain unaffected. However, liability in this respect is only possible from the time of knowledge of a specific legal violation. As soon as we become aware of such legal violations, we will remove this content immediately."
-msgstr "Зобов'язання щодо видалення або блокування використання інформації відповідно до загальних законів залишаються незмінними. Однак відповідальність у цьому відношенні можлива лише з моменту отримання знань про конкретне порушення закону. Як тільки ми дізнаємося про такі порушення закону, ми негайно видалимо цей зміст."
-
-msgid "Liability for Links"
-msgstr "Відповідальність за посилання"
-
-msgid "Our offer contains links to external websites of third parties, on whose contents we have no influence. Therefore, we cannot assume any liability for these external contents. The respective provider or operator of the pages is always responsible for the content of the linked pages. The linked pages were checked for possible legal violations at the time of linking. Illegal contents were not recognizable at the time of linking."
-msgstr "Наша пропозиція містить посилання на зовнішні веб-сайти третіх сторін, на зміст яких ми не маємо впливу. Тому ми не можемо брати на себе відповідальність за цей зовнішній зміст. Відповідальний за зміст пов'язаних сторінок завжди є відповідний постачальник або оператор сторінок. Пов'язані сторінки були перевірені на можливі порушення закону на момент встановлення посилання. Незаконний зміст не був розпізнаний на момент встановлення посилання."
-
-msgid "However, a permanent control of the contents of the linked pages is not reasonable without concrete evidence of a violation of law. If we become aware of any legal violations, we will remove such links immediately."
-msgstr "Однак постійний контроль змісту пов'язаних сторінок не є розумним без конкретних доказів порушення закону. Якщо ми дізнаємося про будь-які порушення закону, ми негайно видалимо такі посилання."
-
-msgid "Copyright"
-msgstr "Авторське право"
-
-msgid "The content and works created by the site operators on these pages are subject to German copyright law. Duplication, processing, distribution, and any kind of exploitation outside the limits of copyright require the written consent of the respective author or creator. Downloads and copies of this site are only permitted for private, non-commercial use."
-msgstr "Зміст та роботи, створені операторами сайту на цих сторінках, підлягають німецькому закону про авторське право. Дублювання, обробка, розповсюдження та будь-який вид використання поза межами авторського права вимагають письмової згоди відповідного автора або творця. Завантаження та копії цього сайту дозволені лише для приватного, некомерційного використання."
-
-msgid "Insofar as the content on this site was not created by the operator, the copyrights of third parties are respected. In particular, third-party content is marked as such. Should you nevertheless become aware of a copyright infringement, please inform us accordingly. If we become aware of any infringements, we will remove such content immediately."
-msgstr "Оскільки зміст цього сайту не був створений оператором, поважаються авторські права третіх сторін. Зокрема, зміст третіх сторін позначений як такий. Якщо ви все ж таки помітите порушення авторських прав, будь ласка, повідомте нас про це. Якщо ми дізнаємося про будь-які порушення, ми негайно видалимо такий зміст."
-
-msgid "Privacy Policy"
-msgstr "Політика конфіденційності"
-
-msgid "Terms of Service"
-msgstr "Умови обслуговування"
-
-msgid "Last updated: September 1, 2025"
-msgstr "Останнє оновлення: 1 вересня 2025"
-
-msgid "1. Introduction"
-msgstr "1. Вступ"
-
-msgid "Rozoom-KI (\"we\", \"us\", or \"our\") respects your privacy and is committed to protecting your personal data. This privacy policy will inform you about how we look after your personal data when you visit our website and tell you about your privacy rights and how the law protects you."
-msgstr "Rozoom-KI (\"ми\", \"нас\" або \"наш\") поважає вашу конфіденційність та прагне захищати ваші персональні дані. Ця політика конфіденційності повідомить вас про те, як ми піклуємося про ваші персональні дані, коли ви відвідуєте наш веб-сайт, і розповість про ваші права на конфіденційність та про те, як закон вас захищає."
-
-msgid "2. The Data We Collect"
-msgstr "2. Дані, які ми збираємо"
-
-msgid "We may collect, use, store and transfer different kinds of personal data about you which we have grouped together as follows:"
-msgstr "Ми можемо збирати, використовувати, зберігати та передавати різні види персональних даних про вас, які ми згрупували наступним чином:"
-
-msgid "Identity Data"
-msgstr "Дані ідентифікації"
-
-msgid "includes first name, last name, username or similar identifier."
-msgstr "включає ім'я, прізвище, ім'я користувача або подібний ідентифікатор."
-
-msgid "Contact Data"
-msgstr "Контактні дані"
-
-msgid "includes email address and telephone numbers."
-msgstr "включає адресу електронної пошти та номери телефонів."
-
-msgid "Technical Data"
-msgstr "Технічні дані"
-
-msgid "includes internet protocol (IP) address, browser type and version, time zone setting and location, browser plug-in types and versions, operating system and platform, and other technology on the devices you use to access this website."
-msgstr "включає адресу інтернет-протоколу (IP), тип та версію браузера, налаштування часового поясу та місцезнаходження, типи та версії плагінів браузера, операційну систему та платформу, а також інші технології на пристроях, які ви використовуєте для доступу до цього веб-сайту."
-
-msgid "Usage Data"
-msgstr "Дані використання"
-
-msgid "includes information about how you use our website and services."
-msgstr "включає інформацію про те, як ви використовуєте наш веб-сайт та послуги."
-
-msgid "3. How We Use Your Data"
-msgstr "3. Як ми використовуємо ваші дані"
-
-msgid "We will only use your personal data when the law allows us to. Most commonly, we will use your personal data in the following circumstances:"
-msgstr "Ми будемо використовувати ваші персональні дані лише тоді, коли закон дозволяє нам це робити. Найчастіше ми будемо використовувати ваші персональні дані в наступних обставинах:"
-
-msgid "To register you as a new customer."
-msgstr "Для реєстрації вас як нового клієнта."
-
-msgid "To process and deliver your order."
-msgstr "Для обробки та виконання вашого замовлення."
-
-msgid "To manage our relationship with you."
-msgstr "Для управління нашими відносинами з вами."
-
-msgid "To improve our website, products/services, marketing or customer relationships."
-msgstr "Для покращення нашого веб-сайту, продуктів/послуг, маркетингу або відносин з клієнтами."
-
-msgid "To recommend products or services that may be of interest to you."
-msgstr "Для рекомендації продуктів або послуг, які можуть вас зацікавити."
-
-msgid "4. Data Security"
-msgstr "4. Безпека даних"
-
-msgid "We have put in place appropriate security measures to prevent your personal data from being accidentally lost, used or accessed in an unauthorized way, altered or disclosed. We limit access to your personal data to those employees, agents, contractors and other third parties who have a business need to know."
-msgstr "Ми запровадили відповідні заходи безпеки для запобігання випадковій втраті, використанню або несанкціонованому доступу до ваших персональних даних, їх зміні або розголошенню. Ми обмежуємо доступ до ваших персональних даних тими співробітниками, агентами, підрядниками та іншими третіми сторонами, які мають ділову необхідність знати."
-
-msgid "5. Your Legal Rights"
-msgstr "5. Ваші законні права"
-
-msgid "Under certain circumstances, you have rights under data protection laws in relation to your personal data, including the right to:"
-msgstr "За певних обставин ви маєте права відповідно до законів про захист даних щодо ваших персональних даних, включаючи право на:"
-
-msgid "Request access to your personal data."
-msgstr "Запит доступу до ваших персональних даних."
-
-msgid "Request correction of your personal data."
-msgstr "Запит виправлення ваших персональних даних."
-
-msgid "Request erasure of your personal data."
-msgstr "Запит видалення ваших персональних даних."
-
-msgid "Object to processing of your personal data."
-msgstr "Заперечення проти обробки ваших персональних даних."
-
-msgid "Request restriction of processing your personal data."
-msgstr "Запит обмеження обробки ваших персональних даних."
-
-msgid "Request transfer of your personal data."
-msgstr "Запит передачі ваших персональних даних."
-
-msgid "Right to withdraw consent."
-msgstr "Право відкликати згоду."
-
-msgid "6. Contact Us"
-msgstr "6. Зв'яжіться з нами"
-
-msgid "If you have any questions about this privacy policy or our privacy practices, please contact us at:"
-msgstr "Якщо у вас є питання щодо цієї політики конфіденційності або наших практик конфіденційності, будь ласка, зв'яжіться з нами за адресою:"
-
-msgid "Email:"
-msgstr "Email:"
-
-msgid "1. Acceptance of Terms"
-msgstr "1. Прийняття умов"
-
-msgid "By accessing or using the services of Rozoom-KI (\"we\", \"us\", \"our\"), you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our services."
-msgstr "Доступаючись до послуг Rozoom-KI або використовуючи їх (\"ми\", \"нас\", \"наш\"), ви погоджуєтеся дотримуватися цих Умов обслуговування. Якщо ви не погоджуєтеся з цими умовами, будь ласка, не використовуйте наші послуги."
-
-msgid "2. Description of Service"
-msgstr "2. Опис послуги"
-
-msgid "Rozoom-KI provides custom software development and AI integration services as described on our website. We reserve the right to modify, suspend, or discontinue any part of our services at any time without notice."
-msgstr "Rozoom-KI надає послуги індивідуальної розробки програмного забезпечення та інтеграції ШІ, як описано на нашому веб-сайті. Ми залишаємо за собою право змінювати, призупиняти або припиняти будь-яку частину наших послуг у будь-який час без попередження."
-
-msgid "3. User Accounts"
-msgstr "3. Облікові записи користувачів"
-
-msgid "Some of our services may require you to create an account. You are responsible for maintaining the confidentiality of your account information and for all activities that occur under your account. You agree to notify us immediately of any unauthorized use of your account."
-msgstr "Деякі з наших послуг можуть вимагати створення облікового запису. Ви несете відповідальність за збереження конфіденційності інформації вашого облікового запису та за всі дії, що відбуваються під вашим обліковим записом. Ви погоджуєтеся негайно повідомити нас про будь-яке несанкціоноване використання вашого облікового запису."
-
-msgid "4. Payment Terms"
-msgstr "4. Умови оплати"
-
-msgid "Fees for our services are described on our website or in individual agreements. Unless otherwise specified, all fees are quoted in Euro (€) and are non-refundable. We reserve the right to change our fees at any time, with notice provided to existing customers."
-msgstr "Плата за наші послуги описана на нашому веб-сайті або в окремих угодах. Якщо не вказано інше, вся плата вказана в євро (€) та не підлягає поверненню. Ми залишаємо за собою право змінювати нашу плату у будь-який час, повідомивши існуючих клієнтів."
-
-msgid "5. Intellectual Property"
-msgstr "5. Інтелектуальна власність"
-
-msgid "All content, features, and functionality of our services, including but not limited to text, graphics, logos, icons, and software, are the exclusive property of Rozoom-KI or its licensors and are protected by copyright, trademark, and other intellectual property laws."
-msgstr "Весь зміст, функції та функціональність наших послуг, включаючи, але не обмежуючись текстом, графікою, логотипами, іконками та програмним забезпеченням, є виключною власністю Rozoom-KI або його ліцензіарів та захищені законами про авторське право, товарні знаки та іншу інтелектуальну власність."
-
-msgid "6. User Content"
-msgstr "6. Зміст користувача"
-
-msgid "You retain ownership of any content you submit to our services. By submitting content, you grant us a worldwide, non-exclusive, royalty-free license to use, reproduce, modify, adapt, publish, translate, and distribute your content in any existing or future media."
-msgstr "Ви зберігаєте право власності на будь-який зміст, який ви надсилаєте до наших послуг. Надсилаючи зміст, ви надаєте нам всесвітню, неексклюзивну, безоплатну ліцензію на використання, відтворення, модифікацію, адаптацію, публікацію, переклад та розповсюдження вашого змісту в будь-яких існуючих або майбутніх засобах масової інформації."
-
-msgid "7. Limitation of Liability"
-msgstr "7. Обмеження відповідальності"
-
-msgid "To the maximum extent permitted by law, Rozoom-KI shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of profits, data, use, or goodwill, arising out of or in connection with these terms or the use or inability to use our services."
-msgstr "У максимально дозволеному законом обсязі Rozoom-KI не несе відповідальності за будь-які непрямі, випадкові, особливі, наслідкові або штрафні збитки, включаючи, але не обмежуючись втратою прибутку, даних, використання або доброї волі, що виникають у зв'язку з цими умовами або використанням чи неможливістю використання наших послуг."
-
-msgid "8. Governing Law"
-msgstr "8. Застосовне право"
-
-msgid "These Terms shall be governed by and construed in accordance with the laws of Germany, without regard to its conflict of law provisions."
-msgstr "Ці Умови регулюються та тлумачаться відповідно до законів Німеччини, без урахування положень про конфлікт законів."
-
-msgid "9. Changes to Terms"
-msgstr "9. Зміни до умов"
-
-msgid "We reserve the right to modify these Terms at any time. We will provide notice of significant changes through our website or via email. Your continued use of our services after such modifications constitutes your acceptance of the revised Terms."
-msgstr "Ми залишаємо за собою право змінювати ці Умови у будь-який час. Ми надамо повідомлення про значні зміни через наш веб-сайт або електронною поштою. Ваше подальше використання наших послуг після таких змін становить вашу згоду з переглянутими Умовами."
-
-msgid "10. Contact Us"
-msgstr "10. Зв'яжіться з нами"
-
-msgid "If you have any questions about these Terms, please contact us at:"
-msgstr "Якщо у вас є питання щодо цих Умов, будь ласка, зв'яжіться з нами за адресою:"
-msgstr "Ці Умови регулюються та тлумачаться відповідно до законів Німеччини, без урахування положень про колізію законів."
-
-msgid "9. Changes to Terms"
-msgstr "9. Зміни умов"
-
-msgid "We reserve the right to modify these Terms at any time. We will provide notice of significant changes through our website or via email. Your continued use of our services after such modifications constitutes your acceptance of the revised Terms."
-msgstr "Ми залишаємо за собою право змінювати ці Умови у будь-який час. Ми надамо повідомлення про значні зміни через наш веб-сайт або електронною поштою. Ваше продовження використання наших послуг після таких змін становить вашу згоду з переглянутими Умовами."
-
-msgid "10. Contact Us"
-msgstr "10. Зв'яжіться з нами"
-
-msgid "If you have any questions about these Terms, please contact us at:"
-msgstr "Якщо у вас є питання щодо цих Умов, будь ласка, зв'яжіться з нами за адресою:"
-
-msgid "Clearly define what problem your project solves or what opportunity it addresses."
-msgstr "Чітко визначте, яку проблему вирішує ваш проект або яку можливість він розглядає."
-
-msgid "Who are the target users of your project?"
-msgstr "Хто є цільовими користувачами вашого проекту?"
-
-msgid "What features are essential for your project?"
-msgstr "Які функції є необхідними для вашого проекту?"
-
-msgid "What features would be nice to have but aren't essential?"
-msgstr "Які функції було б добре мати, але вони не є необхідними?"
-
-msgid "Do you have a specific timeline for this project?"
-msgstr "Чи маєте ви конкретний термін для цього проекту?"
-
-msgid "Do you have a budget range in mind?"
-msgstr "Чи маєте ви на увазі діапазон бюджету?"
-
-msgid "Are there any existing systems your project needs to integrate with?"
-msgstr "Чи є існуючі системи, з якими повинен інтегруватися ваш проект?"
-
-msgid "Do you have any specific technical requirements or preferences?"
-msgstr "Чи маєте ви будь-які конкретні технічні вимоги або вподобання?"
-
-msgid "Do you have any examples of similar projects you admire?"
-msgstr "Чи маєте ви приклади подібних проектів, які ви захоплюєтеся?"
-
-msgid "How do you plan to measure the success of this project?"
-msgstr "Як ви плануєте вимірювати успіх цього проекту?"
-
-msgid "Do you have any specific security or compliance requirements?"
-msgstr "Чи маєте ви будь-які конкретні вимоги до безпеки або відповідності?"
-
-msgid "What level of ongoing support will you need after launch?"
-msgstr "Який рівень постійної підтримки вам знадобиться після запуску?"
-
-msgid "Do you already have any design assets or documentation for this project?"
-msgstr "Чи маєте ви вже будь-які дизайн-ресурси або документацію для цього проекту?"
-
-msgid "Any additional information you'd like to share about your project?"
-msgstr "Будь-яка додаткова інформація, яку ви хотіли б поділитися про ваш проект?"
-
-msgid "Choose Your Package"
-msgstr "Виберіть свій пакет"
-
-msgid "Get the perfect amount of development time for your project needs"
-msgstr "Отримайте ідеальну кількість часу розробки для потреб вашого проекту"
-
-msgid "Most Popular"
-msgstr "Найпопулярніший"
-
-msgid "Hours"
-msgstr "Години"
-
-msgid "per hour"
-msgstr "за годину"
-
-msgid "development hours"
-msgstr "годин розробки"
-
-msgid "Custom solutions"
-msgstr "Індивідуальні рішення"
-
-msgid "Support included"
-msgstr "Підтримка включена"
-
-msgid "Regular updates"
-msgstr "Регулярні оновлення"
-
-msgid "Select Package"
-msgstr "Виберіть пакет"
-
-msgid "Custom Package"
-msgstr "Індивідуальний пакет"
-
-msgid "Tailored to Your Needs"
-msgstr "Адаптовано до ваших потреб"
-
-msgid "For special requirements"
-msgstr "Для особливих вимог"
-
-msgid "Flexible hours"
-msgstr "Гнучкі години"
-
-msgid "Custom development"
-msgstr "Індивідуальна розробка"
-
-msgid "Dedicated support"
-msgstr "Спеціалізована підтримка"
-
-msgid "Priority service"
-msgstr "Пріоритетне обслуговування"
-
-msgid "Enterprise solutions"
-msgstr "Корпоративні рішення"
-
-msgid "Get in Touch"
-msgstr "Зв'язатися"
-
-msgid "Need Help Choosing?"
-msgstr "Потрібна допомога у виборі?"
-
-msgid "Contact our team for a free consultation and we'll help you select the perfect package for your project."
-msgstr "Зв'яжіться з нашою командою для безкоштовної консультації, і ми допоможемо вам вибрати ідеальний пакет для вашого проекту."
-
-msgid "No pricing packages are currently available. Please contact us for custom pricing."
-msgstr "Наразі немає доступних пакетів цін. Будь ласка, зв'яжіться з нами для індивідуального ціноутворення."
-
-msgid "Have a question or ready to start your next project? We're here to help!"
-msgstr "Маєте питання або готові розпочати свій наступний проект? Ми тут, щоб допомогти!"
-
-msgid "Address"
-msgstr "Адреса"
-
-msgid "Email Us"
-msgstr "Напишіть нам"
-
-msgid "Call Us"
-msgstr "Зателефонуйте нам"
-
-msgid "Mon-Fri 9:00-18:00"
-msgstr "Пн-Пт 9:00-18:00"
-
-msgid "Send Us a Message"
-msgstr "Надішліть нам повідомлення"
-
-msgid "Your message has been sent successfully. We'll get back to you soon!"
-msgstr "Ваше повідомлення успішно надіслано. Ми скоро зв'яжемося з вами!"
-
-msgid "Full Name"
-msgstr "Повне ім'я"
-
-msgid "Enter your full name"
-msgstr "Введіть ваше повне ім'я"
-
-msgid "Email Address"
-msgstr "Адреса електронної пошти"
-
-msgid "Enter your email address"
-msgstr "Введіть вашу адресу електронної пошти"
-
-msgid "Your Message"
-msgstr "Ваше повідомлення"
-
-msgid "How can we help you?"
-msgstr "Чим ми можемо вам допомогти?"
-
-msgid "I consent to having this website store my submitted information so they can respond to my inquiry"
-msgstr "Я даю згоду на зберігання цим веб-сайтом наданої мною інформації, щоб вони могли відповісти на мій запит"
-
-msgid "Send Message"
-msgstr "Надіслати повідомлення"
-
-msgid "Remote Work"
-msgstr "Віддалена робота"
-
-msgid "We operate as a remote-first company with team members working from various locations. This allows us to serve clients worldwide while maintaining flexibility and efficiency."
-msgstr "Ми працюємо як компанія, орієнтована на віддалену роботу, з членами команди, які працюють з різних місць. Це дозволяє нам обслуговувати клієнтів по всьому світу, зберігаючи гнучкість та ефективність."
-
-msgid "Working remotely from Germany"
-msgstr "Віддалена робота з Німеччини"
-
-msgid "Welcome back"
-msgstr "Ласкаво просимо назад"
-
+#: app/templates/dashboard/index.html:92
 msgid "Projects Overview"
-msgstr "Огляд проектів"
+msgstr ""
 
+#: app/templates/dashboard/index.html:95
 msgid "Active Projects"
-msgstr "Активні проекти"
+msgstr ""
 
+#: app/templates/dashboard/index.html:99
 msgid "Completed Projects"
-msgstr "Завершені проекти"
+msgstr ""
 
+#: app/templates/dashboard/index.html:103
 msgid "New Projects"
-msgstr "Нові проекти"
+msgstr ""
 
+#: app/templates/dashboard/index.html:107
 msgid "Total Projects"
-msgstr "Загальна кількість проектів"
+msgstr ""
 
+#: app/templates/dashboard/index.html:119
 msgid "Quick Actions"
-msgstr "Швидкі дії"
+msgstr ""
 
+#: app/templates/dashboard/index.html:122
+#: app/templates/dashboard/projects.html:42
 msgid "New Project Request"
-msgstr "Новий запит на проект"
+msgstr ""
 
+#: app/templates/dashboard/index.html:125
 msgid "Contact Support"
-msgstr "Зв'язатися з підтримкою"
+msgstr ""
 
+#: app/templates/dashboard/index.html:128
 msgid "Update Profile"
-msgstr "Оновити профіль"
+msgstr ""
 
+#: app/templates/dashboard/index.html:139
 msgid "Recent Activity"
-msgstr "Недавня активність"
+msgstr ""
 
+#: app/templates/dashboard/index.html:142
 msgid "Last login"
-msgstr "Останній вхід"
+msgstr ""
 
+#: app/templates/dashboard/index.html:142
 msgid "Never"
-msgstr "Ніколи"
+msgstr ""
 
+#: app/templates/dashboard/index.html:153
 msgid "No recent activity"
-msgstr "Немає недавньої активності"
+msgstr ""
 
-msgid "Profile Settings"
-msgstr "Налаштування профілю"
-
-msgid "Personal Information"
-msgstr "Особиста інформація"
-
-msgid "Phone Number"
-msgstr "Номер телефону"
-
-msgid "Change Password"
-msgstr "Змінити пароль"
-
-msgid "Current Password"
-msgstr "Поточний пароль"
-
-msgid "New Password"
-msgstr "Новий пароль"
-
-msgid "Confirm New Password"
-msgstr "Підтвердити новий пароль"
-
-msgid "Leave password fields empty if you don't want to change your password."
-msgstr "Залиште поля пароля порожніми, якщо ви не хочете змінювати пароль."
-
-msgid "Save Changes"
-msgstr "Зберегти зміни"
-
-msgid "Danger Zone"
-msgstr "Небезпечна зона"
-
-msgid "Actions here can't be undone. Please be careful."
-msgstr "Дії тут не можна скасувати. Будь ласка, будьте обережні."
-
+#: app/templates/dashboard/index.html:164
+#: app/templates/dashboard/projects.html:40
 msgid "Your Projects"
-msgstr "Ваші проекти"
+msgstr ""
 
-msgid "All Statuses"
-msgstr "Всі статуси"
+#: app/templates/dashboard/index.html:165
+msgid "View All"
+msgstr ""
 
-msgid "New"
-msgstr "Новий"
+#: app/templates/dashboard/index.html:186
+msgid "Started"
+msgstr ""
 
-msgid "In Progress"
-msgstr "В роботі"
+#: app/templates/dashboard/index.html:192
+#: app/templates/dashboard/project_detail.html:75
+#: app/templates/dashboard/projects.html:89
+msgid "Progress"
+msgstr ""
 
-msgid "Testing"
-msgstr "Тестування"
+#: app/templates/dashboard/index.html:209
+msgid "No projects yet"
+msgstr ""
 
-msgid "Completed"
-msgstr "Завершено"
+#: app/templates/dashboard/index.html:210
+#: app/templates/dashboard/projects.html:126
+msgid "Start by submitting a new project request"
+msgstr ""
 
-msgid "Newest First"
-msgstr "Спочатку найновіші"
+#: app/templates/dashboard/index.html:211
+#: app/templates/dashboard/projects.html:127
+msgid "Request a Project"
+msgstr ""
 
-msgid "Oldest First"
-msgstr "Спочатку найстаріші"
+#: app/templates/dashboard/invoices.html:44
+msgid "Filter"
+msgstr ""
 
-msgid "Name (A-Z)"
-msgstr "Назва (А-Я)"
+#: app/templates/dashboard/invoices.html:47
+msgid "All Invoices"
+msgstr ""
 
-msgid "Name (Z-A)"
-msgstr "Назва (Я-А)"
+#: app/templates/dashboard/invoices.html:48
+#: app/templates/dashboard/invoices.html:96
+#: app/templates/dashboard/invoices.html:168
+msgid "Paid"
+msgstr ""
 
-msgid "Search projects"
-msgstr "Пошук проектів"
+#: app/templates/dashboard/invoices.html:49
+#: app/templates/dashboard/invoices.html:113
+#: app/templates/dashboard/invoices.html:170
+msgid "Pending"
+msgstr ""
 
+#: app/templates/dashboard/invoices.html:50
+#: app/templates/dashboard/invoices.html:130
+#: app/templates/dashboard/invoices.html:172
+msgid "Overdue"
+msgstr ""
+
+#: app/templates/dashboard/invoices.html:55
+msgid "Sort"
+msgstr ""
+
+#: app/templates/dashboard/invoices.html:58
+msgid "Date (Newest First)"
+msgstr ""
+
+#: app/templates/dashboard/invoices.html:59
+msgid "Date (Oldest First)"
+msgstr ""
+
+#: app/templates/dashboard/invoices.html:60
+msgid "Amount (Highest First)"
+msgstr ""
+
+#: app/templates/dashboard/invoices.html:61
+msgid "Amount (Lowest First)"
+msgstr ""
+
+#: app/templates/dashboard/invoices.html:79
+msgid "Total Invoices"
+msgstr ""
+
+#: app/templates/dashboard/invoices.html:147
+msgid "Invoice #"
+msgstr ""
+
+#: app/templates/dashboard/invoices.html:148
+#: app/templates/dashboard/projects.html:85
 msgid "Project"
-msgstr "Проект"
+msgstr ""
 
-msgid "Status"
-msgstr "Статус"
+#: app/templates/dashboard/invoices.html:149
+#: app/templates/dashboard/messages.html:11
+#: app/templates/dashboard/messages.html:77
+msgid "Date"
+msgstr ""
 
-msgid "LinkedIn"
-msgstr "LinkedIn"
+#: app/templates/dashboard/invoices.html:150
+#: app/templates/dashboard/project_detail.html:144
+msgid "Due Date"
+msgstr ""
 
-msgid "Twitter"
-msgstr "Twitter"
+#: app/templates/dashboard/invoices.html:151
+msgid "Amount"
+msgstr ""
 
-msgid "Facebook"
-msgstr "Facebook"
+#: app/templates/dashboard/invoices.html:198
+msgid "No invoices available"
+msgstr ""
 
-msgid "Instagram"
-msgstr "Instagram"
+#: app/templates/dashboard/invoices.html:199
+msgid "Your invoices will appear here once they are generated"
+msgstr ""
 
-msgid "Tags:"
-msgstr "Теги:"
+#: app/templates/dashboard/messages.html:9
+#: app/templates/dashboard/messages.html:210
+#: app/templates/dashboard/messages.html:275
+msgid "To"
+msgstr ""
 
-msgid "Back to Blog"
-msgstr "Повернутися до блогу"
+#: app/templates/dashboard/messages.html:10
+#: app/templates/dashboard/messages.html:76
+#: app/templates/dashboard/messages.html:293
+#: app/templates/dashboard/project_detail.html:217
+msgid "Subject"
+msgstr ""
 
-msgid "Related Posts"
-msgstr "Пов'язані пости"
+#: app/templates/dashboard/messages.html:46
+#: app/templates/dashboard/messages.html:269
+msgid "New Message"
+msgstr ""
 
-msgid "Categories"
-msgstr "Категорії"
+#: app/templates/dashboard/messages.html:56
+msgid "Inbox"
+msgstr ""
 
-msgid "Tags"
-msgstr "Теги"
+#: app/templates/dashboard/messages.html:61
+msgid "Sent"
+msgstr ""
 
-msgid "Search blog..."
-msgstr "Пошук у блозі..."
+#: app/templates/dashboard/messages.html:75
+#: app/templates/dashboard/messages.html:102
+msgid "From"
+msgstr ""
 
-msgid "Category:"
-msgstr "Категорія:"
+#: app/templates/dashboard/messages.html:85
+#: app/templates/dashboard/projects.html:53
+msgid "New"
+msgstr ""
 
-msgid "Read More"
-msgstr "Читати далі"
+#: app/templates/dashboard/messages.html:132
+#: app/templates/dashboard/messages.html:240
+msgid "Close"
+msgstr ""
 
-msgid "No posts found in this category."
-msgstr "У цій категорії не знайдено постів."
+#: app/templates/dashboard/messages.html:133
+#: app/templates/dashboard/messages.html:144
+msgid "Reply"
+msgstr ""
 
-msgid "Back to All Posts"
-msgstr "Повернутися до всіх постів"
+#: app/templates/dashboard/messages.html:150
+#: app/templates/dashboard/messages.html:297
+#: app/templates/dashboard/project_detail.html:221
+msgid "Message"
+msgstr ""
 
-msgid "Tag:"
-msgstr "Тег:"
+#: app/templates/dashboard/messages.html:154
+#: app/templates/dashboard/messages.html:301
+msgid "Attachments (optional)"
+msgstr ""
 
-msgid "No posts found with this tag."
-msgstr "Не знайдено постів з цим тегом."
+#: app/templates/dashboard/messages.html:158
+#: app/templates/dashboard/messages.html:307
+#: app/templates/dashboard/profile.html:119
+#: app/templates/dashboard/project_detail.html:227
+msgid "Cancel"
+msgstr ""
 
-msgid "Search Results for"
-msgstr "Результати пошуку для"
+#: app/templates/dashboard/messages.html:159
+msgid "Send Reply"
+msgstr ""
 
-msgid "Found"
-msgstr "Знайдено"
+#: app/templates/dashboard/messages.html:173
+msgid "Your inbox is empty"
+msgstr ""
 
-msgid "results"
-msgstr "результатів"
+#: app/templates/dashboard/messages.html:174
+msgid "Messages from our team will appear here"
+msgstr ""
 
-msgid "No results found for"
-msgstr "Не знайдено результатів для"
+#: app/templates/dashboard/messages.html:252
+msgid "No sent messages"
+msgstr ""
 
-msgid "Try another search..."
-msgstr "Спробуйте інший пошук..."
+#: app/templates/dashboard/messages.html:253
+msgid "Messages you send will appear here"
+msgstr ""
 
-msgid "Build Your Workspace with Rozoom-KI"
-msgstr "Створіть свій робочий простір з Rozoom-KI"
+#: app/templates/dashboard/messages.html:277
+msgid "Select recipient"
+msgstr ""
 
-msgid "Registration unlocks a tailored workspace where you collaborate with our team and track every automation we build for you."
-msgstr "Реєстрація відкриває персональний робочий простір, де ви співпрацюєте з нашою командою та відстежуєте кожну автоматизацію, яку ми створюємо для вас."
+#: app/templates/dashboard/messages.html:284
+msgid "Related Project (optional)"
+msgstr ""
 
-msgid "Why create an account"
-msgstr "Навіщо створювати акаунт"
+#: app/templates/dashboard/messages.html:286
+msgid "None"
+msgstr ""
 
-msgid "Personal command center"
-msgstr "Персональний центр керування"
+#: app/templates/dashboard/profile.html:48
+msgid "Personal Information"
+msgstr ""
 
-msgid "Monitor proposals, agreements and delivery status in one dashboard with real-time notifications from our team."
-msgstr "Відстежуйте пропозиції, угоди й статус виконання в одній панелі з миттєвими сповіщеннями від нашої команди."
+#: app/templates/dashboard/profile.html:56
+msgid "Email cannot be changed. Contact support if needed."
+msgstr ""
 
-msgid "Faster onboarding every time"
-msgstr "Швидший онбординг щоразу"
+#: app/templates/dashboard/profile.html:63
+msgid "Company"
+msgstr ""
 
-msgid "Answer guided discovery questions once and we pre-fill future briefs, saving you time on each new initiative."
-msgstr "Відповідайте на навідні запитання лише один раз, і ми попередньо заповнимо бриф для наступних ініціатив."
+#: app/templates/dashboard/profile.html:68
+msgid "Change Password"
+msgstr ""
 
-msgid "Integrated billing and approvals"
-msgstr "Інтегровані рахунки та затвердження"
+#: app/templates/dashboard/profile.html:70
+msgid "Current Password"
+msgstr ""
 
-msgid "Approve estimates, sign milestones and handle payments securely without leaving the platform."
-msgstr "Затверджуйте кошториси, підтверджуйте етапи й оплачуйте безпечно, не залишаючи платформу."
+#: app/templates/dashboard/profile.html:74
+msgid "New Password"
+msgstr ""
 
-msgid "What happens after you create a project"
-msgstr "Що відбувається після створення проєкту"
+#: app/templates/dashboard/profile.html:78
+msgid "Confirm New Password"
+msgstr ""
 
-msgid "Share the vision"
-msgstr "Поділіться баченням"
+#: app/templates/dashboard/profile.html:81
+msgid "Leave password fields empty if you don't want to change your password."
+msgstr ""
 
-msgid "Describe goals, audience and constraints once; our assistants convert it into a structured brief."
-msgstr "Опишіть цілі, аудиторію та обмеження один раз — наші асистенти перетворять це на структурований бриф."
+#: app/templates/dashboard/profile.html:85
+msgid "Save Changes"
+msgstr ""
 
-msgid "Receive a roadmap"
-msgstr "Отримайте дорожню карту"
+#: app/templates/dashboard/profile.html:93
+msgid "Danger Zone"
+msgstr ""
 
-msgid "We design architecture, timelines and budget options you can approve or adjust with a click."
-msgstr "Ми розробимо архітектуру, графік і варіанти бюджету, які ви зможете затвердити або змінити в один клік."
+#: app/templates/dashboard/profile.html:94
+msgid "Actions here can't be undone. Please be careful."
+msgstr ""
 
-msgid "Track delivery in real time"
-msgstr "Відстежуйте виконання в режимі реального часу"
+#: app/templates/dashboard/profile.html:96
+#: app/templates/dashboard/profile.html:120
+msgid "Delete Account"
+msgstr ""
 
-msgid "Milestones, test results and launch tasks update automatically inside your dashboard."
-msgstr "Етапи, результати тестів і завдання запуску автоматично оновлюються у вашій панелі."
+#: app/templates/dashboard/profile.html:109
+msgid "Confirm Account Deletion"
+msgstr ""
 
-msgid "Your account keeps every conversation, document and approval in sync so nothing slows the launch."
-msgstr "Ваш акаунт синхронізує всі розмови, документи та затвердження, щоб запуск нічого не гальмував."
+#: app/templates/dashboard/profile.html:113
+msgid "Warning: This action cannot be undone."
+msgstr ""
 
-msgid "How our project chatbot supports you"
-msgstr "Як наш проєктний чат-бот підтримує вас"
+#: app/templates/dashboard/profile.html:114
+msgid ""
+"Deleting your account will remove all your personal information from our "
+"system. Your projects and associated data will still be accessible to "
+"administrators."
+msgstr ""
 
-msgid "The embedded widget combines three specialized AI agents so you always get the right guidance at every stage."
-msgstr "Вбудований віджет об'єднує трьох спеціалізованих AI-агентів, щоб на кожному етапі ви отримували потрібну підтримку."
+#: app/templates/dashboard/profile.html:115
+msgid "To confirm, please type \"DELETE\" in the field below:"
+msgstr ""
 
-msgid "Available 24/7 inside your dashboard and on every project page."
-msgstr "Доступний 24/7 у вашій панелі та на кожній сторінці проєкту."
+#: app/templates/dashboard/profile.html:140
+msgid ""
+"This feature is not yet implemented. Please contact support to delete "
+"your account."
+msgstr ""
 
-msgid "Switch between agents at any time to match the task you are solving."
-msgstr "Перемикайтеся між агентами будь-коли, підлаштовуючись під завдання."
+#: app/templates/dashboard/project_detail.html:42
+msgid "Back to Projects"
+msgstr ""
 
-msgid "Conversations sync with your project timeline and notify the human team when escalation is required."
-msgstr "Розмови синхронізуються з таймлайном проєкту та сповіщають команду, коли потрібна ескалація."
+#: app/templates/dashboard/project_detail.html:58
+msgid "Description"
+msgstr ""
 
-msgid "Discovery Guide"
-msgstr "Агент-навігатор"
+#: app/templates/dashboard/project_detail.html:59
+msgid "No description provided."
+msgstr ""
 
-msgid "Answers general questions about our services, explains pricing scenarios and helps you decide which solution fits your business."
-msgstr "Відповідає на загальні питання про наші послуги, пояснює сценарії ціноутворення та допомагає обрати рішення для вашого бізнесу."
+#: app/templates/dashboard/project_detail.html:65
+msgid "Not started yet"
+msgstr ""
 
-msgid "Brief Architect"
-msgstr "Агент технічного завдання"
+#: app/templates/dashboard/project_detail.html:80
+msgid "Complete"
+msgstr ""
 
-msgid "Leads you through writing a detailed technical assignment, gathers requirements and prepares structured specifications for our engineers."
-msgstr "Проводить вас через підготовку детального технічного завдання, збирає вимоги та формує структуровані специфікації для наших інженерів."
+#: app/templates/dashboard/project_detail.html:89
+msgid "Project Details"
+msgstr ""
 
-msgid "Project Steward"
-msgstr "Агент супроводу проєкту"
+#: app/templates/dashboard/project_detail.html:92
+msgid "Budget"
+msgstr ""
 
-msgid "Stays with you after kickoff, summarises sprint progress, reminds you about approvals and reports on upcoming milestones."
-msgstr "Залишається з вами після старту, підсумовує прогрес спринтів, нагадує про затвердження та повідомляє про майбутні етапи."
+#: app/templates/dashboard/project_detail.html:97
+msgid "Project Created"
+msgstr ""
+
+#: app/templates/dashboard/project_detail.html:102
+msgid "Last Updated"
+msgstr ""
+
+#: app/templates/dashboard/project_detail.html:110
+#: app/templates/dashboard/project_detail.html:211
+msgid "Contact Project Manager"
+msgstr ""
+
+#: app/templates/dashboard/project_detail.html:124
+msgid "Tasks"
+msgstr ""
+
+#: app/templates/dashboard/project_detail.html:129
+msgid "Updates & Milestones"
+msgstr ""
+
+#: app/templates/dashboard/project_detail.html:142
+msgid "Task"
+msgstr ""
+
+#: app/templates/dashboard/project_detail.html:168
+msgid "No tasks defined yet"
+msgstr ""
+
+#: app/templates/dashboard/project_detail.html:169
+msgid "Tasks will appear here once the project planning phase is complete"
+msgstr ""
+
+#: app/templates/dashboard/project_detail.html:194
+msgid "No updates yet"
+msgstr ""
+
+#: app/templates/dashboard/project_detail.html:195
+msgid "Project updates and milestones will appear here"
+msgstr ""
+
+#: app/templates/dashboard/project_detail.html:222
+msgid "Type your message here..."
+msgstr ""
+
+#: app/templates/dashboard/projects.html:52
+msgid "All Statuses"
+msgstr ""
+
+#: app/templates/dashboard/projects.html:54
+msgid "In Progress"
+msgstr ""
+
+#: app/templates/dashboard/projects.html:55
+msgid "Testing"
+msgstr ""
+
+#: app/templates/dashboard/projects.html:56
+msgid "Completed"
+msgstr ""
+
+#: app/templates/dashboard/projects.html:61
+msgid "Newest First"
+msgstr ""
+
+#: app/templates/dashboard/projects.html:62
+msgid "Oldest First"
+msgstr ""
+
+#: app/templates/dashboard/projects.html:63
+msgid "Name (A-Z)"
+msgstr ""
+
+#: app/templates/dashboard/projects.html:64
+msgid "Name (Z-A)"
+msgstr ""
+
+#: app/templates/dashboard/projects.html:69
+msgid "Search projects"
+msgstr ""
+
+#: app/templates/dashboard/projects.html:88
+msgid "Estimated End"
+msgstr ""
+
+#: app/templates/dashboard/projects.html:99
+msgid "No description"
+msgstr ""
+
+#: app/templates/dashboard/projects.html:106
+msgid "Not started"
+msgstr ""
+
+#: app/templates/dashboard/projects.html:125
+msgid "No projects found"
+msgstr ""
+
+#~ msgid "Home"
+#~ msgstr "Головна"
+
+#~ msgid "Services"
+#~ msgstr "Послуги"
+
+#~ msgid "Pricing"
+#~ msgstr "Ціни"
+
+#~ msgid "Blog"
+#~ msgstr "Блог"
+
+#~ msgid "Contact"
+#~ msgstr "Контакти"
+
+#~ msgid "Login"
+#~ msgstr "Увійти"
+
+#~ msgid "Logout"
+#~ msgstr "Вийти"
+
+#~ msgid "Register"
+#~ msgstr "Зареєструватися"
+
+#~ msgid "Dashboard"
+#~ msgstr "Панель керування"
+
+#~ msgid "Admin Panel"
+#~ msgstr "Панель адміністратора"
+
+#~ msgid "Search"
+#~ msgstr "Пошук"
+
+#~ msgid "Submit"
+#~ msgstr "Надіслати"
+
+#~ msgid "Save"
+#~ msgstr "Зберегти"
+
+#~ msgid "Cancel"
+#~ msgstr "Скасувати"
+
+#~ msgid "Delete"
+#~ msgstr "Видалити"
+
+#~ msgid "Edit"
+#~ msgstr "Редагувати"
+
+#~ msgid "Create"
+#~ msgstr "Створити"
+
+#~ msgid "Users"
+#~ msgstr "Користувачі"
+
+#~ msgid "Projects"
+#~ msgstr "Проекти"
+
+#~ msgid "Settings"
+#~ msgstr "Налаштування"
+
+#~ msgid "Profile"
+#~ msgstr "Профіль"
+
+#~ msgid "Language"
+#~ msgstr "Мова"
+
+#~ msgid "Name"
+#~ msgstr "Ім'я"
+
+#~ msgid "Email"
+#~ msgstr "Email"
+
+#~ msgid "Password"
+#~ msgstr "Пароль"
+
+#~ msgid "Confirm Password"
+#~ msgstr "Підтвердити пароль"
+
+#~ msgid "Required field"
+#~ msgstr "Обов'язкове поле"
+
+#~ msgid "Invalid email format"
+#~ msgstr "Невірний формат email"
+
+#~ msgid "Welcome to Rozoom-KI"
+#~ msgstr "Ласкаво просимо до Rozoom-KI"
+
+#~ msgid "Request a Project Estimate"
+#~ msgstr "Замовити оцінку проекту"
+
+#~ msgid ""
+#~ "Fill out our project questionnaire to"
+#~ " get a free time and budget "
+#~ "estimate for your project. No "
+#~ "obligations!"
+#~ msgstr ""
+#~ "Заповніть нашу анкету проекту, щоб "
+#~ "отримати безкоштовну оцінку часу та "
+#~ "бюджету для вашого проекту. Без "
+#~ "зобов'язань!"
+
+#~ msgid "What type of project are you looking to develop?"
+#~ msgstr "Який тип проекту ви хочете розробити?"
+
+#~ msgid "Select a project type"
+#~ msgstr "Виберіть тип проекту"
+
+#~ msgid "Web Application"
+#~ msgstr "Веб-додаток"
+
+#~ msgid "Mobile Application"
+#~ msgstr "Мобільний додаток"
+
+#~ msgid "AI/ML Solution"
+#~ msgstr "Рішення ШІ/ML"
+
+#~ msgid "Automation Tool"
+#~ msgstr "Інструмент автоматизації"
+
+#~ msgid "Data Analytics"
+#~ msgstr "Аналітика даних"
+
+#~ msgid "Other"
+#~ msgstr "Інше"
+
+#~ msgid "Choose the category that best describes your project."
+#~ msgstr "Виберіть категорію, яка найкраще описує ваш проект."
+
+#~ msgid "What is the primary goal of your project?"
+#~ msgstr "Яка основна мета вашого проекту?"
+
+#~ msgid "Describe the main purpose of your project..."
+#~ msgstr "Опишіть основну мету вашого проекту..."
+
+#~ msgid "About"
+#~ msgstr "Про нас"
+
+#~ msgid "About the author."
+#~ msgstr "Про автора."
+
+#~ msgid "Intelligent AI Solutions for Modern Business"
+#~ msgstr "Інтелектуальні рішення ШІ для сучасного бізнесу"
+
+#~ msgid ""
+#~ "Transform your business with our "
+#~ "state-of-the-art AI assistants and"
+#~ " custom solutions"
+#~ msgstr ""
+#~ "Трансформуйте свій бізнес за допомогою "
+#~ "наших передових асистентів ШІ та "
+#~ "індивідуальних рішень"
+
+#~ msgid "Explore Services"
+#~ msgstr "Дослідити послуги"
+
+#~ msgid "Contact Us"
+#~ msgstr "Зв'язатися з нами"
+
+#~ msgid "Sign Up for Free"
+#~ msgstr "Зареєструватися безкоштовно"
+
+#~ msgid "Go to Dashboard"
+#~ msgstr "Перейти до панелі керування"
+
+#~ msgid "How We Can Help"
+#~ msgstr "Як ми можемо допомогти"
+
+#~ msgid "Web Development"
+#~ msgstr "Веб-розробка"
+
+#~ msgid ""
+#~ "Custom websites and web applications "
+#~ "with AI-powered features to enhance "
+#~ "user experience."
+#~ msgstr ""
+#~ "Індивідуальні веб-сайти та веб-додатки з "
+#~ "функціями на основі ШІ для покращення"
+#~ " користувацького досвіду."
+
+#~ msgid "ML & AI Integration"
+#~ msgstr "Інтеграція ML та ШІ"
+
+#~ msgid ""
+#~ "Integrate machine learning models and AI"
+#~ " capabilities into your existing software"
+#~ " systems."
+#~ msgstr ""
+#~ "Інтегруйте моделі машинного навчання та "
+#~ "можливості ШІ у ваші існуючі програмні"
+#~ " системи."
+
+#~ msgid "Process Automation"
+#~ msgstr "Автоматизація процесів"
+
+#~ msgid ""
+#~ "Streamline your business operations with "
+#~ "intelligent automation and workflow solutions."
+#~ msgstr ""
+#~ "Оптимізуйте бізнес-процеси за допомогою "
+#~ "інтелектуальної автоматизації та рішень для"
+#~ " робочих процесів."
+
+#~ msgid "What Our Clients Say"
+#~ msgstr "Що кажуть наші клієнти"
+
+#~ msgid "Create Your Personal Account"
+#~ msgstr "Створіть свій особистий обліковий запис"
+
+#~ msgid ""
+#~ "Track your projects, access personalized "
+#~ "services, and collaborate with our team"
+#~ " in real-time."
+#~ msgstr ""
+#~ "Відстежуйте свої проекти, отримуйте доступ "
+#~ "до персоналізованих послуг та співпрацюйте "
+#~ "з нашою командою в режимі реального "
+#~ "часу."
+
+#~ msgid "Personal dashboard to monitor project progress"
+#~ msgstr "Особиста панель керування для моніторингу прогресу проекту"
+
+#~ msgid "Direct messaging with our development team"
+#~ msgstr "Пряме спілкування з нашою командою розробки"
+
+#~ msgid "Online invoicing and payment processing"
+#~ msgstr "Онлайн виставлення рахунків та обробка платежів"
+
+#~ msgid "Project milestone tracking and updates"
+#~ msgstr "Відстеження етапів проекту та оновлення"
+
+#~ msgid "Register Now"
+#~ msgstr "Зареєструватися зараз"
+
+#~ msgid "Create Account"
+#~ msgstr "Створити обліковий запис"
+
+#~ msgid "Already have an account? Login"
+#~ msgstr "Вже маєте обліковий запис? Увійдіть"
+
+#~ msgid "Ready to transform your business with AI?"
+#~ msgstr "Готові трансформувати свій бізнес за допомогою ШІ?"
+
+#~ msgid ""
+#~ "Our team of experts is ready to"
+#~ " help you implement intelligent solutions."
+#~ msgstr ""
+#~ "Наша команда експертів готова допомогти "
+#~ "вам впровадити інтелектуальні рішення."
+
+#~ msgid "Get Started Today"
+#~ msgstr "Почати сьогодні"
+
+#~ msgid "Our Services"
+#~ msgstr "Наші послуги"
+
+#~ msgid "AI Development"
+#~ msgstr "Розробка ШІ"
+
+#~ msgid ""
+#~ "We develop custom AI solutions for "
+#~ "your business needs, including natural "
+#~ "language processing, computer vision, and "
+#~ "machine learning models."
+#~ msgstr ""
+#~ "Ми розробляємо індивідуальні рішення ШІ "
+#~ "для ваших бізнес-потреб, включаючи обробку "
+#~ "природної мови, комп'ютерний зір та "
+#~ "моделі машинного навчання."
+
+#~ msgid "Automation Solutions"
+#~ msgstr "Рішення автоматизації"
+
+#~ msgid ""
+#~ "Automate your business processes with "
+#~ "custom software solutions to increase "
+#~ "efficiency and reduce operational costs."
+#~ msgstr ""
+#~ "Автоматизуйте бізнес-процеси за допомогою "
+#~ "індивідуальних програмних рішень для "
+#~ "підвищення ефективності та зниження "
+#~ "операційних витрат."
+
+#~ msgid "Data Analysis"
+#~ msgstr "Аналіз даних"
+
+#~ msgid ""
+#~ "Turn your data into actionable insights"
+#~ " with our comprehensive data analysis "
+#~ "and visualization services."
+#~ msgstr ""
+#~ "Перетворіть ваші дані на практичні "
+#~ "висновки за допомогою наших комплексних "
+#~ "послуг аналізу даних та візуалізації."
+
+#~ msgid ""
+#~ "Rozoom-KI transformed our customer "
+#~ "service with their AI assistant. "
+#~ "Response times dropped by 60 percent "
+#~ "and customer satisfaction increased "
+#~ "dramatically."
+#~ msgstr ""
+#~ "Rozoom-KI трансформувала наш клієнтський "
+#~ "сервіс за допомогою їхнього асистента "
+#~ "ШІ. Час відповіді зменшився на 60 "
+#~ "відсотків, а задоволеність клієнтів значно "
+#~ "зросла."
+
+#~ msgid ""
+#~ "The machine learning integration for our"
+#~ " inventory management has saved us "
+#~ "thousands of euros monthly and improved"
+#~ " our forecasting accuracy by 40 "
+#~ "percent."
+#~ msgstr ""
+#~ "Інтеграція машинного навчання для управління"
+#~ " запасами заощадила нам тисячі євро "
+#~ "щомісяця та покращила точність прогнозування"
+#~ " на 40 відсотків."
+
+#~ msgid ""
+#~ "Their AI-powered analytics platform gave"
+#~ " us insights we never thought "
+#~ "possible. We have been able to "
+#~ "identify new market opportunities and "
+#~ "increase revenue by 25 percent in "
+#~ "just six months."
+#~ msgstr ""
+#~ "Їхня платформа аналітики на основі ШІ"
+#~ " надала нам висновки, про які ми "
+#~ "ніколи не думали як про можливі. "
+#~ "Ми змогли ідентифікувати нові ринкові "
+#~ "можливості та збільшити дохід на 25 "
+#~ "відсотків всього за шість місяців."
+
+#~ msgid "CTO, TechSolutions GmbH"
+#~ msgstr "CTO, TechSolutions GmbH"
+
+#~ msgid "Operations Director, RetailPlus"
+#~ msgstr "Директор з операцій, RetailPlus"
+
+#~ msgid "Marketing Director, InnovateMedia"
+#~ msgstr "Директор з маркетингу, InnovateMedia"
+
+#~ msgid "Describe your target audience..."
+#~ msgstr "Опишіть вашу цільову аудиторію..."
+
+#~ msgid ""
+#~ "Specify who will be using your "
+#~ "solution (e.g., businesses, consumers, "
+#~ "specific industry professionals)."
+#~ msgstr ""
+#~ "Вкажіть, хто буде використовувати ваше "
+#~ "рішення (наприклад, бізнеси, споживачі, "
+#~ "фахівці конкретної галузі)."
+
+#~ msgid "List the key features your project must have..."
+#~ msgstr "Перелічіть ключові функції, які повинен мати ваш проект..."
+
+#~ msgid ""
+#~ "Focus on the core functionality that "
+#~ "is absolutely necessary for your project"
+#~ " to succeed."
+#~ msgstr ""
+#~ "Зосередьтеся на основній функціональності, яка"
+#~ " абсолютно необхідна для успіху вашого "
+#~ "проекту."
+
+#~ msgid "List any additional features that would be beneficial..."
+#~ msgstr "Перелічіть будь-які додаткові функції, які будуть корисними..."
+
+#~ msgid ""
+#~ "These are features that could be "
+#~ "implemented in later phases of the "
+#~ "project."
+#~ msgstr "Це функції, які можуть бути реалізовані в пізніших фазах проекту."
+
+#~ msgid "Select a timeline"
+#~ msgstr "Виберіть терміни"
+
+#~ msgid "Urgent (1-2 months)"
+#~ msgstr "Терміново (1-2 місяці)"
+
+#~ msgid "Standard (3-6 months)"
+#~ msgstr "Стандартно (3-6 місяців)"
+
+#~ msgid "Flexible (6+ months)"
+#~ msgstr "Гнучко (6+ місяців)"
+
+#~ msgid "Not yet decided"
+#~ msgstr "Ще не вирішено"
+
+#~ msgid "This helps us determine the development pace and resource allocation."
+#~ msgstr "Це допомагає нам визначити темп розробки та розподіл ресурсів."
+
+#~ msgid "Select a budget range"
+#~ msgstr "Виберіть діапазон бюджету"
+
+#~ msgid "Less than €10,000"
+#~ msgstr "Менше €10,000"
+
+#~ msgid "€10,000 - €30,000"
+#~ msgstr "€10,000 - €30,000"
+
+#~ msgid "€30,000 - €100,000"
+#~ msgstr "€30,000 - €100,000"
+
+#~ msgid "€100,000+"
+#~ msgstr "€100,000+"
+
+#~ msgid ""
+#~ "This helps us suggest solutions that "
+#~ "fit within your financial constraints."
+#~ msgstr ""
+#~ "Це допомагає нам запропонувати рішення, "
+#~ "які підходять до ваших фінансових "
+#~ "можливостей."
+
+#~ msgid ""
+#~ "List any systems, APIs, or services "
+#~ "your project needs to connect with..."
+#~ msgstr ""
+#~ "Перелічіть будь-які системи, API або "
+#~ "послуги, з якими повинен підключатися "
+#~ "ваш проект..."
+
+#~ msgid "For example: payment gateways, CRMs, ERPs, social media platforms, etc."
+#~ msgstr "Наприклад: платіжні шлюзи, CRM, ERP, платформи соціальних мереж тощо."
+
+#~ msgid "Specify any technologies, frameworks, or platforms you prefer..."
+#~ msgstr ""
+#~ "Вкажіть будь-які технології, фреймворки або"
+#~ " платформи, які ви віддаєте перевагу..."
+
+#~ msgid ""
+#~ "For example: programming languages, cloud "
+#~ "providers, frameworks, or architecture "
+#~ "preferences."
+#~ msgstr ""
+#~ "Наприклад: мови програмування, хмарні "
+#~ "провайдери, фреймворки або архітектурні "
+#~ "вподобання."
+
+#~ msgid "List websites, apps, or products similar to what you envision..."
+#~ msgstr ""
+#~ "Перелічіть веб-сайти, додатки або продукти,"
+#~ " подібні до того, що ви уявляєте..."
+
+#~ msgid "This helps us understand your vision and aesthetic preferences."
+#~ msgstr "Це допомагає нам зрозуміти ваше бачення та естетичні вподобання."
+
+#~ msgid "Describe key performance indicators or success metrics..."
+#~ msgstr "Опишіть ключові показники ефективності або метрики успіху..."
+
+#~ msgid ""
+#~ "For example: user acquisition, conversion "
+#~ "rates, efficiency improvements, cost savings,"
+#~ " etc."
+#~ msgstr ""
+#~ "Наприклад: залучення користувачів, коефіцієнти "
+#~ "конверсії, покращення ефективності, економія "
+#~ "витрат тощо."
+
+#~ msgid "GDPR Compliance"
+#~ msgstr "Відповідність GDPR"
+
+#~ msgid "HIPAA Compliance"
+#~ msgstr "Відповідність HIPAA"
+
+#~ msgid "PCI DSS Compliance"
+#~ msgstr "Відповідність PCI DSS"
+
+#~ msgid "SOC 2 Compliance"
+#~ msgstr "Відповідність SOC 2"
+
+#~ msgid "ISO 27001 Compliance"
+#~ msgstr "Відповідність ISO 27001"
+
+#~ msgid "Two-factor Authentication"
+#~ msgstr "Двофакторна аутентифікація"
+
+#~ msgid "Data Encryption"
+#~ msgstr "Шифрування даних"
+
+#~ msgid "Hold Ctrl/Cmd to select multiple options, or leave blank if unsure."
+#~ msgstr ""
+#~ "Утримуйте Ctrl/Cmd для вибору кількох "
+#~ "варіантів, або залиште порожнім, якщо не"
+#~ " впевнені."
+
+#~ msgid ""
+#~ "If you selected 'Other' or have "
+#~ "additional security requirements, please "
+#~ "specify..."
+#~ msgstr ""
+#~ "Якщо ви вибрали 'Інше' або маєте "
+#~ "додаткові вимоги до безпеки, будь ласка,"
+#~ " уточніть..."
+
+#~ msgid "Select support level"
+#~ msgstr "Виберіть рівень підтримки"
+
+#~ msgid "Minimal (Bug fixes only)"
+#~ msgstr "Мінімальний (тільки виправлення помилок)"
+
+#~ msgid "Standard (Bug fixes and minor updates)"
+#~ msgstr "Стандартний (виправлення помилок та невеликі оновлення)"
+
+#~ msgid "Comprehensive (Ongoing development and support)"
+#~ msgstr "Комплексний (постійна розробка та підтримка)"
+
+#~ msgid "Fully Managed Service"
+#~ msgstr "Повністю керована послуга"
+
+#~ msgid "This helps us plan for post-launch resources and maintenance."
+#~ msgstr "Це допомагає нам планувати ресурси та обслуговування після запуску."
+
+#~ msgid "Wireframes"
+#~ msgstr "Вайрфрейми"
+
+#~ msgid "Design Mockups"
+#~ msgstr "Дизайн-макети"
+
+#~ msgid "Brand Guidelines"
+#~ msgstr "Брендбук"
+
+#~ msgid "User Stories"
+#~ msgstr "Користувацькі історії"
+
+#~ msgid "Requirements Document"
+#~ msgstr "Документ вимог"
+
+#~ msgid "Existing Code"
+#~ msgstr "Існуючий код"
+
+#~ msgid "None of the above"
+#~ msgstr "Жодного з вищевказаних"
+
+#~ msgid ""
+#~ "Check all that apply. This helps "
+#~ "us understand what resources are "
+#~ "available to start with."
+#~ msgstr ""
+#~ "Позначте все, що підходить. Це допомагає"
+#~ " нам зрозуміти, які ресурси доступні "
+#~ "для початку."
+
+#~ msgid ""
+#~ "Share any other details that might "
+#~ "help us understand your project "
+#~ "better..."
+#~ msgstr ""
+#~ "Поділіться будь-якими іншими деталями, які "
+#~ "можуть допомогти нам краще зрозуміти ваш"
+#~ " проект..."
+
+#~ msgid ""
+#~ "Include any considerations, challenges, or "
+#~ "specific requirements not covered by "
+#~ "previous questions."
+#~ msgstr ""
+#~ "Включіть будь-які міркування, виклики або "
+#~ "специфічні вимоги, не охоплені попередніми "
+#~ "питаннями."
+
+#~ msgid "Contact Information"
+#~ msgstr "Контактна інформація"
+
+#~ msgid "Name *"
+#~ msgstr "Ім'я *"
+
+#~ msgid "Company Name"
+#~ msgstr "Назва компанії"
+
+#~ msgid "Email *"
+#~ msgstr "Email *"
+
+#~ msgid "Phone"
+#~ msgstr "Телефон"
+
+#~ msgid ""
+#~ "I consent to having this website "
+#~ "store my submitted information so they"
+#~ " can respond to my inquiry. *"
+#~ msgstr ""
+#~ "Я даю згоду на зберігання цим "
+#~ "веб-сайтом наданої мною інформації, щоб "
+#~ "вони могли відповісти на мій запит. "
+#~ "*"
+
+#~ msgid "Submit Project Request"
+#~ msgstr "Надіслати запит на проект"
+
+#~ msgid "Why Choose Us"
+#~ msgstr "Чому обрати нас"
+
+#~ msgid "Expert team with proven track record"
+#~ msgstr "Команда експертів з перевіреним досвідом"
+
+#~ msgid "Transparent pricing and process"
+#~ msgstr "Прозора цінова політика та процес"
+
+#~ msgid "Agile development methodology"
+#~ msgstr "Agile методологія розробки"
+
+#~ msgid "Ongoing support and maintenance"
+#~ msgstr "Постійна підтримка та обслуговування"
+
+#~ msgid "Cutting-edge technologies"
+#~ msgstr "Найсучасніші технології"
+
+#~ msgid "Free Consultation"
+#~ msgstr "Безкоштовна консультація"
+
+#~ msgid ""
+#~ "Get a free 30-minute consultation with"
+#~ " our experts to discuss your project"
+#~ " needs."
+#~ msgstr ""
+#~ "Отримайте безкоштовну 30-хвилинну консультацію "
+#~ "з нашими експертами для обговорення "
+#~ "потреб вашого проекту."
+
+#~ msgid "Submitting..."
+#~ msgstr "Надсилається..."
+
+#~ msgid "Impressum"
+#~ msgstr "Імпрессум"
+
+#~ msgid "Impressum (Legal Notice)"
+#~ msgstr "Імпрессум (Юридична інформація)"
+
+#~ msgid "Information According to § 5 TMG"
+#~ msgstr "Інформація відповідно до § 5 TMG"
+
+#~ msgid "Germany"
+#~ msgstr "Німеччина"
+
+#~ msgid "Represented by:"
+#~ msgstr "Представлено:"
+
+#~ msgid "Contact:"
+#~ msgstr "Контакти:"
+
+#~ msgid "Phone:"
+#~ msgstr "Телефон:"
+
+#~ msgid "Registration:"
+#~ msgstr "Реєстрація:"
+
+#~ msgid "Registered in the Commercial Register"
+#~ msgstr "Зареєстровано в торговому реєстрі"
+
+#~ msgid "Register Court:"
+#~ msgstr "Суд реєстрації:"
+
+#~ msgid "Register Number:"
+#~ msgstr "Реєстраційний номер:"
+
+#~ msgid "VAT Identification Number:"
+#~ msgstr "Ідентифікаційний номер ПДВ:"
+
+#~ msgid "VAT ID:"
+#~ msgstr "ІПН:"
+
+#~ msgid "According to § 27 a of the German Value Added Tax Act"
+#~ msgstr "Відповідно до § 27 a Закону Німеччини про податок на додану вартість"
+
+#~ msgid "Responsible for Content According to § 55 Abs. 2 RStV"
+#~ msgstr "Відповідальний за зміст відповідно до § 55 Abs. 2 RStV"
+
+#~ msgid "Dispute Resolution"
+#~ msgstr "Вирішення спорів"
+
+#~ msgid ""
+#~ "The European Commission provides a "
+#~ "platform for online dispute resolution "
+#~ "(OS):"
+#~ msgstr "Європейська Комісія надає платформу для онлайн вирішення спорів (OS):"
+
+#~ msgid ""
+#~ "We are not willing or obliged to"
+#~ " participate in dispute resolution "
+#~ "proceedings before a consumer arbitration "
+#~ "board."
+#~ msgstr ""
+#~ "Ми не бажаємо та не зобов'язані "
+#~ "брати участь у процедурах вирішення "
+#~ "спорів перед арбітражною комісією споживачів."
+
+#~ msgid "Liability for Content"
+#~ msgstr "Відповідальність за зміст"
+
+#~ msgid ""
+#~ "As a service provider, we are "
+#~ "responsible for our own content on "
+#~ "these pages according to § 7 "
+#~ "paragraph 1 TMG (German Telemedia Act)"
+#~ " and general laws. According to §§"
+#~ " 8 to 10 TMG, however, we as"
+#~ " a service provider are not obliged"
+#~ " to monitor transmitted or stored "
+#~ "external information or to investigate "
+#~ "circumstances that indicate illegal activity."
+#~ msgstr ""
+#~ "Як постачальник послуг, ми несемо "
+#~ "відповідальність за власний зміст на цих"
+#~ " сторінках відповідно до § 7 абзацу"
+#~ " 1 TMG (Німецький закон про "
+#~ "телемедіа) та загальних законів. Відповідно"
+#~ " до §§ 8-10 TMG, однак, ми як"
+#~ " постачальник послуг не зобов'язані "
+#~ "контролювати передані або збережені зовнішні"
+#~ " відомості або досліджувати обставини, які"
+#~ " вказують на незаконну діяльність."
+
+#~ msgid ""
+#~ "Obligations to remove or block the "
+#~ "use of information according to general"
+#~ " laws remain unaffected. However, liability"
+#~ " in this respect is only possible "
+#~ "from the time of knowledge of a"
+#~ " specific legal violation. As soon as"
+#~ " we become aware of such legal "
+#~ "violations, we will remove this content"
+#~ " immediately."
+#~ msgstr ""
+#~ "Зобов'язання щодо видалення або блокування "
+#~ "використання інформації відповідно до "
+#~ "загальних законів залишаються незмінними. "
+#~ "Однак відповідальність у цьому відношенні "
+#~ "можлива лише з моменту отримання знань"
+#~ " про конкретне порушення закону. Як "
+#~ "тільки ми дізнаємося про такі порушення"
+#~ " закону, ми негайно видалимо цей "
+#~ "зміст."
+
+#~ msgid "Liability for Links"
+#~ msgstr "Відповідальність за посилання"
+
+#~ msgid ""
+#~ "Our offer contains links to external "
+#~ "websites of third parties, on whose "
+#~ "contents we have no influence. "
+#~ "Therefore, we cannot assume any "
+#~ "liability for these external contents. "
+#~ "The respective provider or operator of"
+#~ " the pages is always responsible for"
+#~ " the content of the linked pages. "
+#~ "The linked pages were checked for "
+#~ "possible legal violations at the time"
+#~ " of linking. Illegal contents were "
+#~ "not recognizable at the time of "
+#~ "linking."
+#~ msgstr ""
+#~ "Наша пропозиція містить посилання на "
+#~ "зовнішні веб-сайти третіх сторін, на "
+#~ "зміст яких ми не маємо впливу. "
+#~ "Тому ми не можемо брати на себе"
+#~ " відповідальність за цей зовнішній зміст."
+#~ " Відповідальний за зміст пов'язаних "
+#~ "сторінок завжди є відповідний постачальник "
+#~ "або оператор сторінок. Пов'язані сторінки "
+#~ "були перевірені на можливі порушення "
+#~ "закону на момент встановлення посилання. "
+#~ "Незаконний зміст не був розпізнаний на"
+#~ " момент встановлення посилання."
+
+#~ msgid ""
+#~ "However, a permanent control of the "
+#~ "contents of the linked pages is "
+#~ "not reasonable without concrete evidence "
+#~ "of a violation of law. If we "
+#~ "become aware of any legal violations,"
+#~ " we will remove such links "
+#~ "immediately."
+#~ msgstr ""
+#~ "Однак постійний контроль змісту пов'язаних "
+#~ "сторінок не є розумним без конкретних"
+#~ " доказів порушення закону. Якщо ми "
+#~ "дізнаємося про будь-які порушення закону, "
+#~ "ми негайно видалимо такі посилання."
+
+#~ msgid "Copyright"
+#~ msgstr "Авторське право"
+
+#~ msgid ""
+#~ "The content and works created by "
+#~ "the site operators on these pages "
+#~ "are subject to German copyright law. "
+#~ "Duplication, processing, distribution, and any"
+#~ " kind of exploitation outside the "
+#~ "limits of copyright require the written"
+#~ " consent of the respective author or"
+#~ " creator. Downloads and copies of "
+#~ "this site are only permitted for "
+#~ "private, non-commercial use."
+#~ msgstr ""
+#~ "Зміст та роботи, створені операторами "
+#~ "сайту на цих сторінках, підлягають "
+#~ "німецькому закону про авторське право. "
+#~ "Дублювання, обробка, розповсюдження та "
+#~ "будь-який вид використання поза межами "
+#~ "авторського права вимагають письмової згоди"
+#~ " відповідного автора або творця. "
+#~ "Завантаження та копії цього сайту "
+#~ "дозволені лише для приватного, некомерційного"
+#~ " використання."
+
+#~ msgid ""
+#~ "Insofar as the content on this "
+#~ "site was not created by the "
+#~ "operator, the copyrights of third "
+#~ "parties are respected. In particular, "
+#~ "third-party content is marked as "
+#~ "such. Should you nevertheless become "
+#~ "aware of a copyright infringement, "
+#~ "please inform us accordingly. If we "
+#~ "become aware of any infringements, we"
+#~ " will remove such content immediately."
+#~ msgstr ""
+#~ "Оскільки зміст цього сайту не був "
+#~ "створений оператором, поважаються авторські "
+#~ "права третіх сторін. Зокрема, зміст "
+#~ "третіх сторін позначений як такий. Якщо"
+#~ " ви все ж таки помітите порушення "
+#~ "авторських прав, будь ласка, повідомте "
+#~ "нас про це. Якщо ми дізнаємося про"
+#~ " будь-які порушення, ми негайно видалимо"
+#~ " такий зміст."
+
+#~ msgid "Privacy Policy"
+#~ msgstr "Політика конфіденційності"
+
+#~ msgid "Terms of Service"
+#~ msgstr "Умови обслуговування"
+
+#~ msgid "Last updated: September 1, 2025"
+#~ msgstr "Останнє оновлення: 1 вересня 2025"
+
+#~ msgid "1. Introduction"
+#~ msgstr "1. Вступ"
+
+#~ msgid ""
+#~ "Rozoom-KI (\"we\", \"us\", or \"our\")"
+#~ " respects your privacy and is "
+#~ "committed to protecting your personal "
+#~ "data. This privacy policy will inform"
+#~ " you about how we look after "
+#~ "your personal data when you visit "
+#~ "our website and tell you about "
+#~ "your privacy rights and how the "
+#~ "law protects you."
+#~ msgstr ""
+#~ "Rozoom-KI (\"ми\", \"нас\" або \"наш\")"
+#~ " поважає вашу конфіденційність та прагне"
+#~ " захищати ваші персональні дані. Ця "
+#~ "політика конфіденційності повідомить вас про"
+#~ " те, як ми піклуємося про ваші "
+#~ "персональні дані, коли ви відвідуєте наш"
+#~ " веб-сайт, і розповість про ваші "
+#~ "права на конфіденційність та про те, "
+#~ "як закон вас захищає."
+
+#~ msgid "2. The Data We Collect"
+#~ msgstr "2. Дані, які ми збираємо"
+
+#~ msgid ""
+#~ "We may collect, use, store and "
+#~ "transfer different kinds of personal "
+#~ "data about you which we have "
+#~ "grouped together as follows:"
+#~ msgstr ""
+#~ "Ми можемо збирати, використовувати, зберігати"
+#~ " та передавати різні види персональних "
+#~ "даних про вас, які ми згрупували "
+#~ "наступним чином:"
+
+#~ msgid "Identity Data"
+#~ msgstr "Дані ідентифікації"
+
+#~ msgid "includes first name, last name, username or similar identifier."
+#~ msgstr "включає ім'я, прізвище, ім'я користувача або подібний ідентифікатор."
+
+#~ msgid "Contact Data"
+#~ msgstr "Контактні дані"
+
+#~ msgid "includes email address and telephone numbers."
+#~ msgstr "включає адресу електронної пошти та номери телефонів."
+
+#~ msgid "Technical Data"
+#~ msgstr "Технічні дані"
+
+#~ msgid ""
+#~ "includes internet protocol (IP) address, "
+#~ "browser type and version, time zone "
+#~ "setting and location, browser plug-in"
+#~ " types and versions, operating system "
+#~ "and platform, and other technology on"
+#~ " the devices you use to access "
+#~ "this website."
+#~ msgstr ""
+#~ "включає адресу інтернет-протоколу (IP), тип"
+#~ " та версію браузера, налаштування часового"
+#~ " поясу та місцезнаходження, типи та "
+#~ "версії плагінів браузера, операційну систему"
+#~ " та платформу, а також інші "
+#~ "технології на пристроях, які ви "
+#~ "використовуєте для доступу до цього "
+#~ "веб-сайту."
+
+#~ msgid "Usage Data"
+#~ msgstr "Дані використання"
+
+#~ msgid "includes information about how you use our website and services."
+#~ msgstr ""
+#~ "включає інформацію про те, як ви "
+#~ "використовуєте наш веб-сайт та послуги."
+
+#~ msgid "3. How We Use Your Data"
+#~ msgstr "3. Як ми використовуємо ваші дані"
+
+#~ msgid ""
+#~ "We will only use your personal "
+#~ "data when the law allows us to."
+#~ " Most commonly, we will use your "
+#~ "personal data in the following "
+#~ "circumstances:"
+#~ msgstr ""
+#~ "Ми будемо використовувати ваші персональні "
+#~ "дані лише тоді, коли закон дозволяє "
+#~ "нам це робити. Найчастіше ми будемо "
+#~ "використовувати ваші персональні дані в "
+#~ "наступних обставинах:"
+
+#~ msgid "To register you as a new customer."
+#~ msgstr "Для реєстрації вас як нового клієнта."
+
+#~ msgid "To process and deliver your order."
+#~ msgstr "Для обробки та виконання вашого замовлення."
+
+#~ msgid "To manage our relationship with you."
+#~ msgstr "Для управління нашими відносинами з вами."
+
+#~ msgid ""
+#~ "To improve our website, products/services, "
+#~ "marketing or customer relationships."
+#~ msgstr ""
+#~ "Для покращення нашого веб-сайту, "
+#~ "продуктів/послуг, маркетингу або відносин з"
+#~ " клієнтами."
+
+#~ msgid "To recommend products or services that may be of interest to you."
+#~ msgstr "Для рекомендації продуктів або послуг, які можуть вас зацікавити."
+
+#~ msgid "4. Data Security"
+#~ msgstr "4. Безпека даних"
+
+#~ msgid ""
+#~ "We have put in place appropriate "
+#~ "security measures to prevent your "
+#~ "personal data from being accidentally "
+#~ "lost, used or accessed in an "
+#~ "unauthorized way, altered or disclosed. "
+#~ "We limit access to your personal "
+#~ "data to those employees, agents, "
+#~ "contractors and other third parties who"
+#~ " have a business need to know."
+#~ msgstr ""
+#~ "Ми запровадили відповідні заходи безпеки "
+#~ "для запобігання випадковій втраті, "
+#~ "використанню або несанкціонованому доступу до"
+#~ " ваших персональних даних, їх зміні "
+#~ "або розголошенню. Ми обмежуємо доступ до"
+#~ " ваших персональних даних тими "
+#~ "співробітниками, агентами, підрядниками та "
+#~ "іншими третіми сторонами, які мають "
+#~ "ділову необхідність знати."
+
+#~ msgid "5. Your Legal Rights"
+#~ msgstr "5. Ваші законні права"
+
+#~ msgid ""
+#~ "Under certain circumstances, you have "
+#~ "rights under data protection laws in "
+#~ "relation to your personal data, "
+#~ "including the right to:"
+#~ msgstr ""
+#~ "За певних обставин ви маєте права "
+#~ "відповідно до законів про захист даних"
+#~ " щодо ваших персональних даних, включаючи"
+#~ " право на:"
+
+#~ msgid "Request access to your personal data."
+#~ msgstr "Запит доступу до ваших персональних даних."
+
+#~ msgid "Request correction of your personal data."
+#~ msgstr "Запит виправлення ваших персональних даних."
+
+#~ msgid "Request erasure of your personal data."
+#~ msgstr "Запит видалення ваших персональних даних."
+
+#~ msgid "Object to processing of your personal data."
+#~ msgstr "Заперечення проти обробки ваших персональних даних."
+
+#~ msgid "Request restriction of processing your personal data."
+#~ msgstr "Запит обмеження обробки ваших персональних даних."
+
+#~ msgid "Request transfer of your personal data."
+#~ msgstr "Запит передачі ваших персональних даних."
+
+#~ msgid "Right to withdraw consent."
+#~ msgstr "Право відкликати згоду."
+
+#~ msgid "6. Contact Us"
+#~ msgstr "6. Зв'яжіться з нами"
+
+#~ msgid ""
+#~ "If you have any questions about "
+#~ "this privacy policy or our privacy "
+#~ "practices, please contact us at:"
+#~ msgstr ""
+#~ "Якщо у вас є питання щодо цієї "
+#~ "політики конфіденційності або наших практик"
+#~ " конфіденційності, будь ласка, зв'яжіться з"
+#~ " нами за адресою:"
+
+#~ msgid "Email:"
+#~ msgstr "Email:"
+
+#~ msgid "1. Acceptance of Terms"
+#~ msgstr "1. Прийняття умов"
+
+#~ msgid ""
+#~ "By accessing or using the services "
+#~ "of Rozoom-KI (\"we\", \"us\", \"our\"),"
+#~ " you agree to be bound by these"
+#~ " Terms of Service. If you do "
+#~ "not agree to these terms, please "
+#~ "do not use our services."
+#~ msgstr ""
+#~ "Доступаючись до послуг Rozoom-KI або "
+#~ "використовуючи їх (\"ми\", \"нас\", \"наш\"),"
+#~ " ви погоджуєтеся дотримуватися цих Умов "
+#~ "обслуговування. Якщо ви не погоджуєтеся "
+#~ "з цими умовами, будь ласка, не "
+#~ "використовуйте наші послуги."
+
+#~ msgid "2. Description of Service"
+#~ msgstr "2. Опис послуги"
+
+#~ msgid ""
+#~ "Rozoom-KI provides custom software "
+#~ "development and AI integration services "
+#~ "as described on our website. We "
+#~ "reserve the right to modify, suspend,"
+#~ " or discontinue any part of our "
+#~ "services at any time without notice."
+#~ msgstr ""
+#~ "Rozoom-KI надає послуги індивідуальної "
+#~ "розробки програмного забезпечення та "
+#~ "інтеграції ШІ, як описано на нашому "
+#~ "веб-сайті. Ми залишаємо за собою право"
+#~ " змінювати, призупиняти або припиняти "
+#~ "будь-яку частину наших послуг у "
+#~ "будь-який час без попередження."
+
+#~ msgid "3. User Accounts"
+#~ msgstr "3. Облікові записи користувачів"
+
+#~ msgid ""
+#~ "Some of our services may require "
+#~ "you to create an account. You are"
+#~ " responsible for maintaining the "
+#~ "confidentiality of your account information"
+#~ " and for all activities that occur"
+#~ " under your account. You agree to "
+#~ "notify us immediately of any "
+#~ "unauthorized use of your account."
+#~ msgstr ""
+#~ "Деякі з наших послуг можуть вимагати "
+#~ "створення облікового запису. Ви несете "
+#~ "відповідальність за збереження конфіденційності "
+#~ "інформації вашого облікового запису та "
+#~ "за всі дії, що відбуваються під "
+#~ "вашим обліковим записом. Ви погоджуєтеся "
+#~ "негайно повідомити нас про будь-яке "
+#~ "несанкціоноване використання вашого облікового "
+#~ "запису."
+
+#~ msgid "4. Payment Terms"
+#~ msgstr "4. Умови оплати"
+
+#~ msgid ""
+#~ "Fees for our services are described "
+#~ "on our website or in individual "
+#~ "agreements. Unless otherwise specified, all"
+#~ " fees are quoted in Euro (€) "
+#~ "and are non-refundable. We reserve "
+#~ "the right to change our fees at"
+#~ " any time, with notice provided to"
+#~ " existing customers."
+#~ msgstr ""
+#~ "Плата за наші послуги описана на "
+#~ "нашому веб-сайті або в окремих угодах."
+#~ " Якщо не вказано інше, вся плата "
+#~ "вказана в євро (€) та не підлягає"
+#~ " поверненню. Ми залишаємо за собою "
+#~ "право змінювати нашу плату у будь-який"
+#~ " час, повідомивши існуючих клієнтів."
+
+#~ msgid "5. Intellectual Property"
+#~ msgstr "5. Інтелектуальна власність"
+
+#~ msgid ""
+#~ "All content, features, and functionality "
+#~ "of our services, including but not "
+#~ "limited to text, graphics, logos, icons,"
+#~ " and software, are the exclusive "
+#~ "property of Rozoom-KI or its "
+#~ "licensors and are protected by "
+#~ "copyright, trademark, and other intellectual"
+#~ " property laws."
+#~ msgstr ""
+#~ "Весь зміст, функції та функціональність "
+#~ "наших послуг, включаючи, але не "
+#~ "обмежуючись текстом, графікою, логотипами, "
+#~ "іконками та програмним забезпеченням, є "
+#~ "виключною власністю Rozoom-KI або його"
+#~ " ліцензіарів та захищені законами про "
+#~ "авторське право, товарні знаки та іншу"
+#~ " інтелектуальну власність."
+
+#~ msgid "6. User Content"
+#~ msgstr "6. Зміст користувача"
+
+#~ msgid ""
+#~ "You retain ownership of any content "
+#~ "you submit to our services. By "
+#~ "submitting content, you grant us a "
+#~ "worldwide, non-exclusive, royalty-free "
+#~ "license to use, reproduce, modify, "
+#~ "adapt, publish, translate, and distribute "
+#~ "your content in any existing or "
+#~ "future media."
+#~ msgstr ""
+#~ "Ви зберігаєте право власності на "
+#~ "будь-який зміст, який ви надсилаєте до"
+#~ " наших послуг. Надсилаючи зміст, ви "
+#~ "надаєте нам всесвітню, неексклюзивну, "
+#~ "безоплатну ліцензію на використання, "
+#~ "відтворення, модифікацію, адаптацію, публікацію, "
+#~ "переклад та розповсюдження вашого змісту "
+#~ "в будь-яких існуючих або майбутніх "
+#~ "засобах масової інформації."
+
+#~ msgid "7. Limitation of Liability"
+#~ msgstr "7. Обмеження відповідальності"
+
+#~ msgid ""
+#~ "To the maximum extent permitted by "
+#~ "law, Rozoom-KI shall not be liable"
+#~ " for any indirect, incidental, special, "
+#~ "consequential, or punitive damages, including"
+#~ " but not limited to loss of "
+#~ "profits, data, use, or goodwill, arising"
+#~ " out of or in connection with "
+#~ "these terms or the use or "
+#~ "inability to use our services."
+#~ msgstr ""
+#~ "У максимально дозволеному законом обсязі "
+#~ "Rozoom-KI не несе відповідальності за"
+#~ " будь-які непрямі, випадкові, особливі, "
+#~ "наслідкові або штрафні збитки, включаючи, "
+#~ "але не обмежуючись втратою прибутку, "
+#~ "даних, використання або доброї волі, що"
+#~ " виникають у зв'язку з цими умовами"
+#~ " або використанням чи неможливістю "
+#~ "використання наших послуг."
+
+#~ msgid "8. Governing Law"
+#~ msgstr "8. Застосовне право"
+
+#~ msgid ""
+#~ "These Terms shall be governed by "
+#~ "and construed in accordance with the "
+#~ "laws of Germany, without regard to "
+#~ "its conflict of law provisions."
+#~ msgstr ""
+#~ "Ці Умови регулюються та тлумачаться "
+#~ "відповідно до законів Німеччини, без "
+#~ "урахування положень про конфлікт законів."
+
+#~ msgid "9. Changes to Terms"
+#~ msgstr "9. Зміни до умов"
+
+#~ msgid ""
+#~ "We reserve the right to modify "
+#~ "these Terms at any time. We will"
+#~ " provide notice of significant changes "
+#~ "through our website or via email. "
+#~ "Your continued use of our services "
+#~ "after such modifications constitutes your "
+#~ "acceptance of the revised Terms."
+#~ msgstr ""
+#~ "Ми залишаємо за собою право змінювати"
+#~ " ці Умови у будь-який час. Ми "
+#~ "надамо повідомлення про значні зміни "
+#~ "через наш веб-сайт або електронною "
+#~ "поштою. Ваше подальше використання наших "
+#~ "послуг після таких змін становить вашу"
+#~ " згоду з переглянутими Умовами."
+
+#~ msgid "10. Contact Us"
+#~ msgstr "10. Зв'яжіться з нами"
+
+#~ msgid "If you have any questions about these Terms, please contact us at:"
+#~ msgstr ""
+#~ "Ці Умови регулюються та тлумачаться "
+#~ "відповідно до законів Німеччини, без "
+#~ "урахування положень про колізію законів."
+
+#~ msgid ""
+#~ "Clearly define what problem your project"
+#~ " solves or what opportunity it "
+#~ "addresses."
+#~ msgstr ""
+#~ "Чітко визначте, яку проблему вирішує ваш"
+#~ " проект або яку можливість він "
+#~ "розглядає."
+
+#~ msgid "Who are the target users of your project?"
+#~ msgstr "Хто є цільовими користувачами вашого проекту?"
+
+#~ msgid "What features are essential for your project?"
+#~ msgstr "Які функції є необхідними для вашого проекту?"
+
+#~ msgid "What features would be nice to have but aren't essential?"
+#~ msgstr "Які функції було б добре мати, але вони не є необхідними?"
+
+#~ msgid "Do you have a specific timeline for this project?"
+#~ msgstr "Чи маєте ви конкретний термін для цього проекту?"
+
+#~ msgid "Do you have a budget range in mind?"
+#~ msgstr "Чи маєте ви на увазі діапазон бюджету?"
+
+#~ msgid "Are there any existing systems your project needs to integrate with?"
+#~ msgstr "Чи є існуючі системи, з якими повинен інтегруватися ваш проект?"
+
+#~ msgid "Do you have any specific technical requirements or preferences?"
+#~ msgstr "Чи маєте ви будь-які конкретні технічні вимоги або вподобання?"
+
+#~ msgid "Do you have any examples of similar projects you admire?"
+#~ msgstr "Чи маєте ви приклади подібних проектів, які ви захоплюєтеся?"
+
+#~ msgid "How do you plan to measure the success of this project?"
+#~ msgstr "Як ви плануєте вимірювати успіх цього проекту?"
+
+#~ msgid "Do you have any specific security or compliance requirements?"
+#~ msgstr "Чи маєте ви будь-які конкретні вимоги до безпеки або відповідності?"
+
+#~ msgid "What level of ongoing support will you need after launch?"
+#~ msgstr "Який рівень постійної підтримки вам знадобиться після запуску?"
+
+#~ msgid ""
+#~ "Do you already have any design "
+#~ "assets or documentation for this "
+#~ "project?"
+#~ msgstr ""
+#~ "Чи маєте ви вже будь-які дизайн-ресурси"
+#~ " або документацію для цього проекту?"
+
+#~ msgid "Any additional information you'd like to share about your project?"
+#~ msgstr ""
+#~ "Будь-яка додаткова інформація, яку ви "
+#~ "хотіли б поділитися про ваш проект?"
+
+#~ msgid "Choose Your Package"
+#~ msgstr "Виберіть свій пакет"
+
+#~ msgid "Get the perfect amount of development time for your project needs"
+#~ msgstr "Отримайте ідеальну кількість часу розробки для потреб вашого проекту"
+
+#~ msgid "Most Popular"
+#~ msgstr "Найпопулярніший"
+
+#~ msgid "Hours"
+#~ msgstr "Години"
+
+#~ msgid "per hour"
+#~ msgstr "за годину"
+
+#~ msgid "development hours"
+#~ msgstr "годин розробки"
+
+#~ msgid "Custom solutions"
+#~ msgstr "Індивідуальні рішення"
+
+#~ msgid "Support included"
+#~ msgstr "Підтримка включена"
+
+#~ msgid "Regular updates"
+#~ msgstr "Регулярні оновлення"
+
+#~ msgid "Select Package"
+#~ msgstr "Виберіть пакет"
+
+#~ msgid "Custom Package"
+#~ msgstr "Індивідуальний пакет"
+
+#~ msgid "Tailored to Your Needs"
+#~ msgstr "Адаптовано до ваших потреб"
+
+#~ msgid "For special requirements"
+#~ msgstr "Для особливих вимог"
+
+#~ msgid "Flexible hours"
+#~ msgstr "Гнучкі години"
+
+#~ msgid "Custom development"
+#~ msgstr "Індивідуальна розробка"
+
+#~ msgid "Dedicated support"
+#~ msgstr "Спеціалізована підтримка"
+
+#~ msgid "Priority service"
+#~ msgstr "Пріоритетне обслуговування"
+
+#~ msgid "Enterprise solutions"
+#~ msgstr "Корпоративні рішення"
+
+#~ msgid "Get in Touch"
+#~ msgstr "Зв'язатися"
+
+#~ msgid "Need Help Choosing?"
+#~ msgstr "Потрібна допомога у виборі?"
+
+#~ msgid ""
+#~ "Contact our team for a free "
+#~ "consultation and we'll help you select"
+#~ " the perfect package for your "
+#~ "project."
+#~ msgstr ""
+#~ "Зв'яжіться з нашою командою для "
+#~ "безкоштовної консультації, і ми допоможемо "
+#~ "вам вибрати ідеальний пакет для вашого"
+#~ " проекту."
+
+#~ msgid ""
+#~ "No pricing packages are currently "
+#~ "available. Please contact us for custom"
+#~ " pricing."
+#~ msgstr ""
+#~ "Наразі немає доступних пакетів цін. Будь"
+#~ " ласка, зв'яжіться з нами для "
+#~ "індивідуального ціноутворення."
+
+#~ msgid ""
+#~ "Have a question or ready to start"
+#~ " your next project? We're here to "
+#~ "help!"
+#~ msgstr ""
+#~ "Маєте питання або готові розпочати свій"
+#~ " наступний проект? Ми тут, щоб "
+#~ "допомогти!"
+
+#~ msgid "Address"
+#~ msgstr "Адреса"
+
+#~ msgid "Email Us"
+#~ msgstr "Напишіть нам"
+
+#~ msgid "Call Us"
+#~ msgstr "Зателефонуйте нам"
+
+#~ msgid "Mon-Fri 9:00-18:00"
+#~ msgstr "Пн-Пт 9:00-18:00"
+
+#~ msgid "Send Us a Message"
+#~ msgstr "Надішліть нам повідомлення"
+
+#~ msgid "Your message has been sent successfully. We'll get back to you soon!"
+#~ msgstr "Ваше повідомлення успішно надіслано. Ми скоро зв'яжемося з вами!"
+
+#~ msgid "Full Name"
+#~ msgstr "Повне ім'я"
+
+#~ msgid "Enter your full name"
+#~ msgstr "Введіть ваше повне ім'я"
+
+#~ msgid "Email Address"
+#~ msgstr "Адреса електронної пошти"
+
+#~ msgid "Enter your email address"
+#~ msgstr "Введіть вашу адресу електронної пошти"
+
+#~ msgid "Your Message"
+#~ msgstr "Ваше повідомлення"
+
+#~ msgid "How can we help you?"
+#~ msgstr "Чим ми можемо вам допомогти?"
+
+#~ msgid ""
+#~ "I consent to having this website "
+#~ "store my submitted information so they"
+#~ " can respond to my inquiry"
+#~ msgstr ""
+#~ "Я даю згоду на зберігання цим "
+#~ "веб-сайтом наданої мною інформації, щоб "
+#~ "вони могли відповісти на мій запит"
+
+#~ msgid "Send Message"
+#~ msgstr "Надіслати повідомлення"
+
+#~ msgid "Remote Work"
+#~ msgstr "Віддалена робота"
+
+#~ msgid ""
+#~ "We operate as a remote-first "
+#~ "company with team members working from"
+#~ " various locations. This allows us to"
+#~ " serve clients worldwide while maintaining"
+#~ " flexibility and efficiency."
+#~ msgstr ""
+#~ "Ми працюємо як компанія, орієнтована на"
+#~ " віддалену роботу, з членами команди, "
+#~ "які працюють з різних місць. Це "
+#~ "дозволяє нам обслуговувати клієнтів по "
+#~ "всьому світу, зберігаючи гнучкість та "
+#~ "ефективність."
+
+#~ msgid "Working remotely from Germany"
+#~ msgstr "Віддалена робота з Німеччини"
+
+#~ msgid "Welcome back"
+#~ msgstr "Ласкаво просимо назад"
+
+#~ msgid "Projects Overview"
+#~ msgstr "Огляд проектів"
+
+#~ msgid "Active Projects"
+#~ msgstr "Активні проекти"
+
+#~ msgid "Completed Projects"
+#~ msgstr "Завершені проекти"
+
+#~ msgid "New Projects"
+#~ msgstr "Нові проекти"
+
+#~ msgid "Total Projects"
+#~ msgstr "Загальна кількість проектів"
+
+#~ msgid "Quick Actions"
+#~ msgstr "Швидкі дії"
+
+#~ msgid "New Project Request"
+#~ msgstr "Новий запит на проект"
+
+#~ msgid "Contact Support"
+#~ msgstr "Зв'язатися з підтримкою"
+
+#~ msgid "Update Profile"
+#~ msgstr "Оновити профіль"
+
+#~ msgid "Recent Activity"
+#~ msgstr "Недавня активність"
+
+#~ msgid "Last login"
+#~ msgstr "Останній вхід"
+
+#~ msgid "Never"
+#~ msgstr "Ніколи"
+
+#~ msgid "No recent activity"
+#~ msgstr "Немає недавньої активності"
+
+#~ msgid "Profile Settings"
+#~ msgstr "Налаштування профілю"
+
+#~ msgid "Personal Information"
+#~ msgstr "Особиста інформація"
+
+#~ msgid "Phone Number"
+#~ msgstr "Номер телефону"
+
+#~ msgid "Change Password"
+#~ msgstr "Змінити пароль"
+
+#~ msgid "Current Password"
+#~ msgstr "Поточний пароль"
+
+#~ msgid "New Password"
+#~ msgstr "Новий пароль"
+
+#~ msgid "Confirm New Password"
+#~ msgstr "Підтвердити новий пароль"
+
+#~ msgid "Leave password fields empty if you don't want to change your password."
+#~ msgstr "Залиште поля пароля порожніми, якщо ви не хочете змінювати пароль."
+
+#~ msgid "Save Changes"
+#~ msgstr "Зберегти зміни"
+
+#~ msgid "Danger Zone"
+#~ msgstr "Небезпечна зона"
+
+#~ msgid "Actions here can't be undone. Please be careful."
+#~ msgstr "Дії тут не можна скасувати. Будь ласка, будьте обережні."
+
+#~ msgid "Your Projects"
+#~ msgstr "Ваші проекти"
+
+#~ msgid "All Statuses"
+#~ msgstr "Всі статуси"
+
+#~ msgid "New"
+#~ msgstr "Новий"
+
+#~ msgid "In Progress"
+#~ msgstr "В роботі"
+
+#~ msgid "Testing"
+#~ msgstr "Тестування"
+
+#~ msgid "Completed"
+#~ msgstr "Завершено"
+
+#~ msgid "Newest First"
+#~ msgstr "Спочатку найновіші"
+
+#~ msgid "Oldest First"
+#~ msgstr "Спочатку найстаріші"
+
+#~ msgid "Name (A-Z)"
+#~ msgstr "Назва (А-Я)"
+
+#~ msgid "Name (Z-A)"
+#~ msgstr "Назва (Я-А)"
+
+#~ msgid "Search projects"
+#~ msgstr "Пошук проектів"
+
+#~ msgid "Project"
+#~ msgstr "Проект"
+
+#~ msgid "Status"
+#~ msgstr "Статус"
+
+#~ msgid "LinkedIn"
+#~ msgstr "LinkedIn"
+
+#~ msgid "Twitter"
+#~ msgstr "Twitter"
+
+#~ msgid "Facebook"
+#~ msgstr "Facebook"
+
+#~ msgid "Instagram"
+#~ msgstr "Instagram"
+
+#~ msgid "Tags:"
+#~ msgstr "Теги:"
+
+#~ msgid "Back to Blog"
+#~ msgstr "Повернутися до блогу"
+
+#~ msgid "Related Posts"
+#~ msgstr "Пов'язані пости"
+
+#~ msgid "Categories"
+#~ msgstr "Категорії"
+
+#~ msgid "Tags"
+#~ msgstr "Теги"
+
+#~ msgid "Search blog..."
+#~ msgstr "Пошук у блозі..."
+
+#~ msgid "Category:"
+#~ msgstr "Категорія:"
+
+#~ msgid "Read More"
+#~ msgstr "Читати далі"
+
+#~ msgid "No posts found in this category."
+#~ msgstr "У цій категорії не знайдено постів."
+
+#~ msgid "Back to All Posts"
+#~ msgstr "Повернутися до всіх постів"
+
+#~ msgid "Tag:"
+#~ msgstr "Тег:"
+
+#~ msgid "No posts found with this tag."
+#~ msgstr "Не знайдено постів з цим тегом."
+
+#~ msgid "Search Results for"
+#~ msgstr "Результати пошуку для"
+
+#~ msgid "Found"
+#~ msgstr "Знайдено"
+
+#~ msgid "results"
+#~ msgstr "результатів"
+
+#~ msgid "No results found for"
+#~ msgstr "Не знайдено результатів для"
+
+#~ msgid "Try another search..."
+#~ msgstr "Спробуйте інший пошук..."
+
+#~ msgid "Build Your Workspace with Rozoom-KI"
+#~ msgstr "Створіть свій робочий простір з Rozoom-KI"
+
+#~ msgid ""
+#~ "Registration unlocks a tailored workspace "
+#~ "where you collaborate with our team "
+#~ "and track every automation we build "
+#~ "for you."
+#~ msgstr ""
+#~ "Реєстрація відкриває персональний робочий "
+#~ "простір, де ви співпрацюєте з нашою "
+#~ "командою та відстежуєте кожну автоматизацію,"
+#~ " яку ми створюємо для вас."
+
+#~ msgid "Why create an account"
+#~ msgstr "Навіщо створювати акаунт"
+
+#~ msgid "Personal command center"
+#~ msgstr "Персональний центр керування"
+
+#~ msgid ""
+#~ "Monitor proposals, agreements and delivery "
+#~ "status in one dashboard with real-"
+#~ "time notifications from our team."
+#~ msgstr ""
+#~ "Відстежуйте пропозиції, угоди й статус "
+#~ "виконання в одній панелі з миттєвими "
+#~ "сповіщеннями від нашої команди."
+
+#~ msgid "Faster onboarding every time"
+#~ msgstr "Швидший онбординг щоразу"
+
+#~ msgid ""
+#~ "Answer guided discovery questions once "
+#~ "and we pre-fill future briefs, "
+#~ "saving you time on each new "
+#~ "initiative."
+#~ msgstr ""
+#~ "Відповідайте на навідні запитання лише "
+#~ "один раз, і ми попередньо заповнимо "
+#~ "бриф для наступних ініціатив."
+
+#~ msgid "Integrated billing and approvals"
+#~ msgstr "Інтегровані рахунки та затвердження"
+
+#~ msgid ""
+#~ "Approve estimates, sign milestones and "
+#~ "handle payments securely without leaving "
+#~ "the platform."
+#~ msgstr ""
+#~ "Затверджуйте кошториси, підтверджуйте етапи й"
+#~ " оплачуйте безпечно, не залишаючи "
+#~ "платформу."
+
+#~ msgid "What happens after you create a project"
+#~ msgstr "Що відбувається після створення проєкту"
+
+#~ msgid "Share the vision"
+#~ msgstr "Поділіться баченням"
+
+#~ msgid ""
+#~ "Describe goals, audience and constraints "
+#~ "once; our assistants convert it into "
+#~ "a structured brief."
+#~ msgstr ""
+#~ "Опишіть цілі, аудиторію та обмеження "
+#~ "один раз — наші асистенти перетворять"
+#~ " це на структурований бриф."
+
+#~ msgid "Receive a roadmap"
+#~ msgstr "Отримайте дорожню карту"
+
+#~ msgid ""
+#~ "We design architecture, timelines and "
+#~ "budget options you can approve or "
+#~ "adjust with a click."
+#~ msgstr ""
+#~ "Ми розробимо архітектуру, графік і "
+#~ "варіанти бюджету, які ви зможете "
+#~ "затвердити або змінити в один клік."
+
+#~ msgid "Track delivery in real time"
+#~ msgstr "Відстежуйте виконання в режимі реального часу"
+
+#~ msgid ""
+#~ "Milestones, test results and launch "
+#~ "tasks update automatically inside your "
+#~ "dashboard."
+#~ msgstr ""
+#~ "Етапи, результати тестів і завдання "
+#~ "запуску автоматично оновлюються у вашій "
+#~ "панелі."
+
+#~ msgid ""
+#~ "Your account keeps every conversation, "
+#~ "document and approval in sync so "
+#~ "nothing slows the launch."
+#~ msgstr ""
+#~ "Ваш акаунт синхронізує всі розмови, "
+#~ "документи та затвердження, щоб запуск "
+#~ "нічого не гальмував."
+
+#~ msgid "How our project chatbot supports you"
+#~ msgstr "Як наш проєктний чат-бот підтримує вас"
+
+#~ msgid ""
+#~ "The embedded widget combines three "
+#~ "specialized AI agents so you always "
+#~ "get the right guidance at every "
+#~ "stage."
+#~ msgstr ""
+#~ "Вбудований віджет об'єднує трьох "
+#~ "спеціалізованих AI-агентів, щоб на кожному "
+#~ "етапі ви отримували потрібну підтримку."
+
+#~ msgid "Available 24/7 inside your dashboard and on every project page."
+#~ msgstr "Доступний 24/7 у вашій панелі та на кожній сторінці проєкту."
+
+#~ msgid "Switch between agents at any time to match the task you are solving."
+#~ msgstr "Перемикайтеся між агентами будь-коли, підлаштовуючись під завдання."
+
+#~ msgid ""
+#~ "Conversations sync with your project "
+#~ "timeline and notify the human team "
+#~ "when escalation is required."
+#~ msgstr ""
+#~ "Розмови синхронізуються з таймлайном проєкту"
+#~ " та сповіщають команду, коли потрібна "
+#~ "ескалація."
+
+#~ msgid "Discovery Guide"
+#~ msgstr "Агент-навігатор"
+
+#~ msgid ""
+#~ "Answers general questions about our "
+#~ "services, explains pricing scenarios and "
+#~ "helps you decide which solution fits "
+#~ "your business."
+#~ msgstr ""
+#~ "Відповідає на загальні питання про наші"
+#~ " послуги, пояснює сценарії ціноутворення та"
+#~ " допомагає обрати рішення для вашого "
+#~ "бізнесу."
+
+#~ msgid "Brief Architect"
+#~ msgstr "Агент технічного завдання"
+
+#~ msgid ""
+#~ "Leads you through writing a detailed "
+#~ "technical assignment, gathers requirements and"
+#~ " prepares structured specifications for our"
+#~ " engineers."
+#~ msgstr ""
+#~ "Проводить вас через підготовку детального "
+#~ "технічного завдання, збирає вимоги та "
+#~ "формує структуровані специфікації для наших"
+#~ " інженерів."
+
+#~ msgid "Project Steward"
+#~ msgstr "Агент супроводу проєкту"
+
+#~ msgid ""
+#~ "Stays with you after kickoff, summarises"
+#~ " sprint progress, reminds you about "
+#~ "approvals and reports on upcoming "
+#~ "milestones."
+#~ msgstr ""
+#~ "Залишається з вами після старту, "
+#~ "підсумовує прогрес спринтів, нагадує про "
+#~ "затвердження та повідомляє про майбутні "
+#~ "етапи."
 
