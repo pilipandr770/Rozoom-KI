@@ -1404,340 +1404,363 @@ msgstr ""
 
 #: app/templates/services.html:105
 msgid "Who are the target users of your project?"
-msgstr ""
+msgstr "Wer sind die Zielnutzer Ihres Projekts?"
 
 #: app/templates/services.html:111
 msgid "Describe your target audience..."
-msgstr ""
+msgstr "Beschreiben Sie Ihre Zielgruppe..."
 
 #: app/templates/services.html:112
 msgid ""
 "Specify who will be using your solution (e.g., businesses, consumers, "
 "specific industry professionals)."
 msgstr ""
+"Geben Sie an, wer Ihre Lösung nutzen wird (z. B. Unternehmen, "
+"Verbraucher, spezifische Branchenprofis)."
 
 #: app/templates/services.html:122
 msgid "What features are essential for your project?"
-msgstr ""
+msgstr "Welche Funktionen sind für Ihr Projekt unerlässlich?"
 
 #: app/templates/services.html:128
 msgid "List the key features your project must have..."
-msgstr ""
+msgstr "Listen Sie die wichtigsten Funktionen auf, die Ihr Projekt haben muss..."
 
 #: app/templates/services.html:129
 msgid ""
 "Focus on the core functionality that is absolutely necessary for your "
 "project to succeed."
 msgstr ""
+"Konzentrieren Sie sich auf die Kernfunktionalität, die unbedingt "
+"erforderlich ist, damit Ihr Projekt erfolgreich ist."
 
 #: app/templates/services.html:139
 msgid "What features would be nice to have but aren't essential?"
-msgstr ""
+msgstr "Welche Funktionen wären schön zu haben, sind aber nicht unerlässlich?"
 
 #: app/templates/services.html:145
 msgid "List any additional features that would be beneficial..."
-msgstr ""
+msgstr "Listen Sie alle zusätzlichen Funktionen auf, die vorteilhaft wären..."
 
 #: app/templates/services.html:146
 msgid ""
 "These are features that could be implemented in later phases of the "
 "project."
 msgstr ""
+"Dies sind Funktionen, die in späteren Phasen des Projekts implementiert "
+"werden könnten."
 
 #: app/templates/services.html:156
 msgid "Do you have a specific timeline for this project?"
-msgstr ""
+msgstr "Haben Sie einen spezifischen Zeitplan für dieses Projekt?"
 
 #: app/templates/services.html:163
 msgid "Select a timeline"
-msgstr ""
+msgstr "Wählen Sie einen Zeitplan"
 
 #: app/templates/services.html:164
 msgid "Urgent (1-2 months)"
-msgstr ""
+msgstr "Dringend (1-2 Monate)"
 
 #: app/templates/services.html:165
 msgid "Standard (3-6 months)"
-msgstr ""
+msgstr "Standard (3-6 Monate)"
 
 #: app/templates/services.html:166
 msgid "Flexible (6+ months)"
-msgstr ""
+msgstr "Flexibel (6+ Monate)"
 
 #: app/templates/services.html:167 app/templates/services.html:191
 #: app/templates/services.html:312
 msgid "Not yet decided"
-msgstr ""
+msgstr "Noch nicht entschieden"
 
 #: app/templates/services.html:169
 msgid "This helps us determine the development pace and resource allocation."
-msgstr ""
+msgstr "Dies hilft uns, das Entwicklungstempo und die Ressourcenzuweisung zu bestimmen."
 
 #: app/templates/services.html:179
 msgid "Do you have a budget range in mind?"
-msgstr ""
+msgstr "Haben Sie einen Budgetbereich im Sinn?"
 
 #: app/templates/services.html:186
 msgid "Select a budget range"
-msgstr ""
+msgstr "Wählen Sie einen Budgetbereich"
 
 #: app/templates/services.html:187
 msgid "Less than €10,000"
-msgstr ""
+msgstr "Weniger als €10.000"
 
 #: app/templates/services.html:188
 msgid "€10,000 - €30,000"
-msgstr ""
+msgstr "€10.000 - €30.000"
 
 #: app/templates/services.html:189
 msgid "€30,000 - €100,000"
-msgstr ""
+msgstr "€30.000 - €100.000"
 
 #: app/templates/services.html:190
 msgid "€100,000+"
-msgstr ""
+msgstr "€100.000+"
 
 #: app/templates/services.html:193
 msgid ""
 "This helps us suggest solutions that fit within your financial "
 "constraints."
 msgstr ""
+"Dies hilft uns, Lösungen vorzuschlagen, die Ihren finanziellen "
+"Einschränkungen entsprechen."
 
 #: app/templates/services.html:203
 msgid "Are there any existing systems your project needs to integrate with?"
-msgstr ""
+msgstr "Gibt es bestehende Systeme, mit denen Ihr Projekt integriert werden muss?"
 
 #: app/templates/services.html:209
 msgid "List any systems, APIs, or services your project needs to connect with..."
-msgstr ""
+msgstr "Listen Sie alle Systeme, APIs oder Dienste auf, mit denen Ihr Projekt verbunden werden muss..."
 
 #: app/templates/services.html:210
 msgid "For example: payment gateways, CRMs, ERPs, social media platforms, etc."
-msgstr ""
+msgstr "Zum Beispiel: Zahlungsgateways, CRMs, ERPs, Social-Media-Plattformen usw."
 
 #: app/templates/services.html:220
 msgid "Do you have any specific technical requirements or preferences?"
-msgstr ""
+msgstr "Haben Sie spezifische technische Anforderungen oder Präferenzen?"
 
 #: app/templates/services.html:226
 msgid "Specify any technologies, frameworks, or platforms you prefer..."
-msgstr ""
+msgstr "Geben Sie alle Technologien, Frameworks oder Plattformen an, die Sie bevorzugen..."
 
 #: app/templates/services.html:227
 msgid ""
 "For example: programming languages, cloud providers, frameworks, or "
 "architecture preferences."
 msgstr ""
+"Zum Beispiel: Programmiersprachen, Cloud-Anbieter, Frameworks oder "
+"Architekturpräferenzen."
 
 #: app/templates/services.html:237
 msgid "Do you have any examples of similar projects you admire?"
-msgstr ""
+msgstr "Haben Sie Beispiele für ähnliche Projekte, die Sie bewundern?"
 
 #: app/templates/services.html:243
 msgid "List websites, apps, or products similar to what you envision..."
-msgstr ""
+msgstr "Listen Sie Websites, Apps oder Produkte auf, die dem entsprechen, was Sie sich vorstellen..."
 
 #: app/templates/services.html:244
 msgid "This helps us understand your vision and aesthetic preferences."
-msgstr ""
+msgstr "Dies hilft uns, Ihre Vision und ästhetischen Präferenzen zu verstehen."
 
 #: app/templates/services.html:254
 msgid "How do you plan to measure the success of this project?"
-msgstr ""
+msgstr "Wie planen Sie, den Erfolg dieses Projekts zu messen?"
 
 #: app/templates/services.html:260
 msgid "Describe key performance indicators or success metrics..."
-msgstr ""
+msgstr "Beschreiben Sie wichtige Leistungsindikatoren oder Erfolgsmetriken..."
 
 #: app/templates/services.html:261
 msgid ""
 "For example: user acquisition, conversion rates, efficiency improvements,"
 " cost savings, etc."
 msgstr ""
+"Zum Beispiel: Nutzergewinnung, Konversionsraten, Effizienzverbesserungen,"
+" Kosteneinsparungen usw."
 
 #: app/templates/services.html:271
 msgid "Do you have any specific security or compliance requirements?"
-msgstr ""
+msgstr "Haben Sie spezifische Sicherheits- oder Compliance-Anforderungen?"
 
 #: app/templates/services.html:278
 msgid "GDPR Compliance"
-msgstr ""
+msgstr "DSGVO-Konformität"
 
 #: app/templates/services.html:279
 msgid "HIPAA Compliance"
-msgstr ""
+msgstr "HIPAA-Konformität"
 
 #: app/templates/services.html:280
 msgid "PCI DSS Compliance"
-msgstr ""
+msgstr "PCI DSS-Konformität"
 
 #: app/templates/services.html:281
 msgid "SOC 2 Compliance"
-msgstr ""
+msgstr "SOC 2-Konformität"
 
 #: app/templates/services.html:282
 msgid "ISO 27001 Compliance"
-msgstr ""
+msgstr "ISO 27001-Konformität"
 
 #: app/templates/services.html:283
 msgid "Two-factor Authentication"
-msgstr ""
+msgstr "Zwei-Faktor-Authentifizierung"
 
 #: app/templates/services.html:284
 msgid "Data Encryption"
-msgstr ""
+msgstr "Datenverschlüsselung"
 
 #: app/templates/services.html:287
 msgid "Hold Ctrl/Cmd to select multiple options, or leave blank if unsure."
-msgstr ""
+msgstr "Halten Sie Strg/Cmd gedrückt, um mehrere Optionen auszuwählen, oder lassen Sie es leer, wenn Sie unsicher sind."
 
 #: app/templates/services.html:290
 msgid ""
 "If you selected 'Other' or have additional security requirements, please "
 "specify..."
 msgstr ""
+"Wenn Sie 'Sonstiges' ausgewählt haben oder zusätzliche Sicherheitsanforderungen haben, bitte angeben..."
 
 #: app/templates/services.html:300
 msgid "What level of ongoing support will you need after launch?"
-msgstr ""
+msgstr "Welches Maß an laufender Unterstützung benötigen Sie nach dem Launch?"
 
 #: app/templates/services.html:307
 msgid "Select support level"
-msgstr ""
+msgstr "Wählen Sie Support-Level"
 
 #: app/templates/services.html:308
 msgid "Minimal (Bug fixes only)"
-msgstr ""
+msgstr "Minimal (nur Fehlerbehebungen)"
 
 #: app/templates/services.html:309
 msgid "Standard (Bug fixes and minor updates)"
-msgstr ""
+msgstr "Standard (Fehlerbehebungen und kleinere Updates)"
 
 #: app/templates/services.html:310
 msgid "Comprehensive (Ongoing development and support)"
-msgstr ""
+msgstr "Umfassend (laufende Entwicklung und Support)"
 
 #: app/templates/services.html:311
 msgid "Fully Managed Service"
-msgstr ""
+msgstr "Vollständig verwalteter Service"
 
 #: app/templates/services.html:314
 msgid "This helps us plan for post-launch resources and maintenance."
-msgstr ""
+msgstr "Dies hilft uns, Ressourcen und Wartung nach dem Launch zu planen."
 
 #: app/templates/services.html:324
 msgid "Do you already have any design assets or documentation for this project?"
-msgstr ""
+msgstr "Haben Sie bereits Design-Assets oder Dokumentation für dieses Projekt?"
 
 #: app/templates/services.html:332
 msgid "Wireframes"
-msgstr ""
+msgstr "Wireframes"
 
 #: app/templates/services.html:336
 msgid "Design Mockups"
-msgstr ""
+msgstr "Design-Mockups"
 
 #: app/templates/services.html:340
 msgid "Brand Guidelines"
-msgstr ""
+msgstr "Markenrichtlinien"
 
 #: app/templates/services.html:344
 msgid "User Stories"
-msgstr ""
+msgstr "User Stories"
 
 #: app/templates/services.html:348
 msgid "Requirements Document"
-msgstr ""
+msgstr "Anforderungsdokument"
 
 #: app/templates/services.html:352
 msgid "Existing Code"
-msgstr ""
+msgstr "Vorhandener Code"
 
 #: app/templates/services.html:356
 msgid "None of the above"
-msgstr ""
+msgstr "Keine der oben genannten"
 
 #: app/templates/services.html:358
 msgid ""
 "Check all that apply. This helps us understand what resources are "
 "available to start with."
 msgstr ""
+"Markieren Sie alle zutreffenden. Dies hilft uns zu verstehen, welche "
+"Ressourcen zu Beginn verfügbar sind."
 
 #: app/templates/services.html:368
 msgid "Any additional information you'd like to share about your project?"
-msgstr ""
+msgstr "Gibt es weitere Informationen, die Sie über Ihr Projekt teilen möchten?"
 
 #: app/templates/services.html:374
 msgid ""
 "Share any other details that might help us understand your project "
 "better..."
 msgstr ""
+"Teilen Sie alle anderen Details, die uns helfen könnten, Ihr Projekt "
+"besser zu verstehen..."
 
 #: app/templates/services.html:375
 msgid ""
 "Include any considerations, challenges, or specific requirements not "
 "covered by previous questions."
 msgstr ""
+"Schließen Sie alle Überlegungen, Herausforderungen oder spezifischen "
+"Anforderungen ein, die in den vorherigen Fragen nicht behandelt wurden."
 
 #: app/templates/services.html:387
 msgid "Name *"
-msgstr ""
+msgstr "Name *"
 
 #: app/templates/auth/register.html:35 app/templates/services.html:391
 msgid "Company Name"
-msgstr ""
+msgstr "Firmenname"
 
 #: app/templates/services.html:397
 msgid "Email *"
-msgstr ""
+msgstr "E-Mail *"
 
 #: app/templates/services.html:401
 msgid "Phone"
-msgstr ""
+msgstr "Telefon"
 
 #: app/templates/services.html:408
 msgid ""
 "I consent to having this website store my submitted information so they "
 "can respond to my inquiry. *"
 msgstr ""
+"Ich stimme zu, dass diese Website meine übermittelten Informationen "
+"speichert, damit sie auf meine Anfrage antworten können. *"
 
 #: app/templates/services.html:414
 msgid "Submit Project Request"
-msgstr ""
+msgstr "Projektanfrage senden"
 
 #: app/templates/services.html:425
 msgid "Why Choose Us"
-msgstr ""
+msgstr "Warum uns wählen"
 
 #: app/templates/services.html:427
 msgid "Expert team with proven track record"
-msgstr ""
+msgstr "Expertenteam mit bewährter Erfolgsbilanz"
 
 #: app/templates/services.html:428
 msgid "Transparent pricing and process"
-msgstr ""
+msgstr "Transparente Preisgestaltung und Prozesse"
 
 #: app/templates/services.html:429
 msgid "Agile development methodology"
-msgstr ""
+msgstr "Agile Entwicklungs-Methodik"
 
 #: app/templates/services.html:430
 msgid "Ongoing support and maintenance"
-msgstr ""
+msgstr "Laufender Support und Wartung"
 
 #: app/templates/services.html:431
 msgid "Cutting-edge technologies"
-msgstr ""
+msgstr "Modernste Technologien"
 
 #: app/templates/services.html:438
 msgid "Free Consultation"
-msgstr ""
+msgstr "Kostenlose Beratung"
 
 #: app/templates/services.html:439
 msgid ""
 "Get a free 30-minute consultation with our experts to discuss your "
 "project needs."
 msgstr ""
+"Erhalten Sie eine kostenlose 30-minütige Beratung mit unseren Experten, "
+"um Ihre Projektanforderungen zu besprechen."
 
 #: app/templates/services.html:460
 msgid "Submitting..."

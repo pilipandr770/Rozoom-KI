@@ -1798,37 +1798,39 @@ msgstr "Надіслати запит на проект"
 
 #: app/templates/services.html:425
 msgid "Why Choose Us"
-msgstr ""
+msgstr "Чому обирають нас"
 
 #: app/templates/services.html:427
 msgid "Expert team with proven track record"
-msgstr ""
+msgstr "Команда експертів з перевіреним досвідом"
 
 #: app/templates/services.html:428
 msgid "Transparent pricing and process"
-msgstr ""
+msgstr "Прозора цінова політика та процеси"
 
 #: app/templates/services.html:429
 msgid "Agile development methodology"
-msgstr ""
+msgstr "Агільна методологія розробки"
 
 #: app/templates/services.html:430
 msgid "Ongoing support and maintenance"
-msgstr ""
+msgstr "Постійна підтримка та обслуговування"
 
 #: app/templates/services.html:431
 msgid "Cutting-edge technologies"
-msgstr ""
+msgstr "Найсучасніші технології"
 
 #: app/templates/services.html:438
 msgid "Free Consultation"
-msgstr ""
+msgstr "Безкоштовна консультація"
 
 #: app/templates/services.html:439
 msgid ""
 "Get a free 30-minute consultation with our experts to discuss your "
 "project needs."
 msgstr ""
+"Отримайте безкоштовну 30-хвилинну консультацію з нашими експертами для "
+"обговорення потреб вашого проекту."
 
 #: app/templates/services.html:460
 msgid "Submitting..."
