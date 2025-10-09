@@ -1,4 +1,4 @@
-# Деплой проекта Rozoom-KI на Render.com
+# Деплой проекта Andrii Pylypchuk на Render.com
 
 ## Подготовка проекта
 

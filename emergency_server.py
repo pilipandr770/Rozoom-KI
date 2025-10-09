@@ -67,7 +67,7 @@ def create_app():
             # Check for marketing related keywords
             if any(word in message_lower for word in ["маркет", "market", "marketing", "маркетинг"]):
                 if language == 'uk':
-                    answer = """Для автоматизації маркетингу Rozoom-KI пропонує:
+                    answer = """Для автоматизації маркетингу Andrii Pylypchuk пропонує:
 1. Інтеграцію з CRM системами
 2. Автоматичні email-розсилки
 3. Аналітику ефективності рекламних кампаній
@@ -76,7 +76,7 @@ def create_app():
 
 Який аспект маркетингу вас цікавить найбільше?"""
                 elif language == 'ru':
-                    answer = """Для автоматизации маркетинга Rozoom-KI предлагает:
+                    answer = """Для автоматизации маркетинга Andrii Pylypchuk предлагает:
 1. Интеграцию с CRM системами
 2. Автоматические email-рассылки
 3. Аналитику эффективности рекламных кампаний
@@ -85,7 +85,7 @@ def create_app():
 
 Какой аспект маркетинга вас интересует больше всего?"""
                 elif language == 'en':
-                    answer = """For marketing automation, Rozoom-KI offers:
+                    answer = """For marketing automation, Andrii Pylypchuk offers:
 1. Integration with CRM systems
 2. Automated email campaigns
 3. Ad campaign performance analytics
@@ -94,7 +94,7 @@ def create_app():
 
 Which aspect of marketing are you most interested in?"""
                 else:
-                    answer = """Für Marketing-Automatisierung bietet Rozoom-KI:
+                    answer = """Für Marketing-Automatisierung bietet Andrii Pylypchuk:
 1. Integration mit CRM-Systemen
 2. Automatisierte E-Mail-Kampagnen
 3. Analyse der Werbekampagnenleistung
@@ -120,7 +120,7 @@ Dies hilft uns, Ihre Bedürfnisse besser zu verstehen und die optimale Lösung f
             # Check for chat system related keywords
             elif any(word in message_lower for word in ["чат", "chat", "відповід", "отвеч", "answer", "ответ"]):
                 if language == 'uk':
-                    answer = """Наш чат-бот працює в режимі простих відповідей. Я намагаюся надати вам корисну інформацію про послуги Rozoom-KI.
+                    answer = """Наш чат-бот працює в режимі простих відповідей. Я намагаюся надати вам корисну інформацію про послуги Andrii Pylypchuk.
 Якщо у вас є конкретні питання про веб-розробку, дизайн, маркетинг або інші послуги, я радий на них відповісти."""
                 elif language == 'ru':
                     answer = """Наш чат-бот работает в режиме простых ответов. Я стараюсь предоставить вам полезную информацию об услугах Rozoom-KI.

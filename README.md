@@ -1,4 +1,4 @@
-﻿Rozoom-KI — Flask landing + Stripe + Chat-widget
+﻿Andrii Pylypchuk — Flask landing + Stripe + Chat-widget
 
 Quick start:
 
@@ -37,7 +37,7 @@ If you don't have a local Postgres server, you can create tables locally with SQ
    python scripts\db\create_sqlite_db.py
 
 This will create tables locally and is useful for development when Postgres is not available (psql connection refused error is expected unless Postgres is running).
-# ROZOOM-KI — "Години розробки" (Flask + Stripe)
+# Andrii Pylypchuk — "Години розробки" (Flask + Stripe)
 
 Цей репозиторій містить сайт-продаж годин розробки із пакетами, оплатою через Stripe, багатомовністю (DE/EN, опційно UA) та блогом.  
 **Швидкий старт:** відкрий `AGENT.md`  це єдине джерело правди для Copilot Agent.

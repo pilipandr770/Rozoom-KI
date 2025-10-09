@@ -1,8 +1,8 @@
 
 msgid ""
 msgstr ""
-"Project-Id-Version: Rozoom-KI 1.0\n"
-"Report-Msgid-Bugs-To: info@rozoom-ki.com\n"
+"Project-Id-Version: Andrii Pylypchuk 1.0\n"
+"Report-Msgid-Bugs-To: info@andrii-pylypchuk.com\n"
 "POT-Creation-Date: 2025-09-30 13:41+0200\n"
 "PO-Revision-Date: 2025-09-07 18:22+0200\n"
 "Last-Translator: \n"
@@ -110,8 +110,8 @@ msgid "Register"
 msgstr "Registrieren"
 
 #: app/templates/base.html:191
-msgid "&copy; 2025 Rozoom-KI. All rights reserved."
-msgstr "&copy; 2025 Rozoom-KI. Alle Rechte vorbehalten."
+msgid "&copy; 2025 Andrii Pylypchuk. All rights reserved."
+msgstr "&copy; 2025 Andrii Pylypchuk. Alle Rechte vorbehalten."
 
 #: app/templates/base.html:193 app/templates/de/impressum.html:3
 #: app/templates/impressum.html:3
@@ -722,8 +722,8 @@ msgid "Marketing Director, InnovateMedia"
 msgstr ""
 
 #: app/templates/index.html:99
-msgid "Build Your Workspace with Rozoom-KI"
-msgstr ""
+msgid "Build Your Workspace with Andrii Pylypchuk"
+msgstr "Bauen Sie Ihren Arbeitsbereich mit Andrii Pylypchuk auf"
 
 #: app/templates/index.html:100
 msgid ""
@@ -2887,8 +2887,8 @@ msgstr ""
 #~ msgid "Invalid email format"
 #~ msgstr "Ungültiges E-Mail-Format"
 
-#~ msgid "Welcome to Rozoom-KI"
-#~ msgstr "Willkommen bei Rozoom-KI"
+#~ msgid "Welcome to Andrii Pylypchuk"
+#~ msgstr "Willkommen bei Andrii Pylypchuk"
 
 #~ msgid "Request a Project Estimate"
 #~ msgstr "Anfrage für eine Projektschätzung"

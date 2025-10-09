@@ -91,8 +91,8 @@ def messages():
         {
             'id': 2,
             'sender_name': 'Support Team',
-            'subject': 'Welcome to Rozoom-KI',
-            'content': 'Welcome to Rozoom-KI! We are excited to have you on board. Please let us know if you have any questions.',
+            'subject': 'Welcome to Andrii Pylypchuk',
+            'content': 'Welcome to Andrii Pylypchuk! We are excited to have you on board. Please let us know if you have any questions.',
             'created_at': datetime.now(),
             'is_read': False,
             'project': None

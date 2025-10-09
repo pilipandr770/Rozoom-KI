@@ -1,4 +1,4 @@
-﻿# PROJECT SPEC (ТЗ)  ROZOOM-KI
+﻿# PROJECT SPEC (ТЗ) Andrii Pylypchuk
 
 ## 1) Мета і KPI
 - Конверсія у заявку/оплату ≥ 2–5%.
