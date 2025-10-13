@@ -730,158 +730,182 @@ msgid ""
 "Registration unlocks a tailored workspace where you collaborate with our "
 "team and track every automation we build for you."
 msgstr ""
+"Die Registrierung schaltet einen maßgeschneiderten Arbeitsbereich frei, in dem Sie "
+"mit unserem Team zusammenarbeiten und jede Automatisierung verfolgen können, die wir für Sie erstellen."
 
 #: app/templates/index.html:103
 msgid "Why create an account"
-msgstr ""
+msgstr "Warum ein Konto erstellen"
 
 #: app/templates/index.html:106
 msgid "Personal command center"
-msgstr ""
+msgstr "Persönliche Kommandozentrale"
 
 #: app/templates/index.html:107
 msgid ""
 "Monitor proposals, agreements and delivery status in one dashboard with "
 "real-time notifications from our team."
 msgstr ""
+"Überwachen Sie Angebote, Vereinbarungen und Lieferstatus in einem Dashboard mit "
+"Echtzeit-Benachrichtigungen von unserem Team."
 
 #: app/templates/index.html:110
 msgid "Faster onboarding every time"
-msgstr ""
+msgstr "Schnelleres Onboarding jedes Mal"
 
 #: app/templates/index.html:111
 msgid ""
 "Answer guided discovery questions once and we pre-fill future briefs, "
 "saving you time on each new initiative."
 msgstr ""
+"Beantworten Sie geführte Entdeckungsfragen einmal und wir füllen zukünftige Briefs automatisch aus, "
+"wodurch Sie bei jeder neuen Initiative Zeit sparen."
 
 #: app/templates/index.html:114
 msgid "Integrated billing and approvals"
-msgstr ""
+msgstr "Integrierte Abrechnung und Genehmigungen"
 
 #: app/templates/index.html:115
 msgid ""
 "Approve estimates, sign milestones and handle payments securely without "
 "leaving the platform."
 msgstr ""
+"Genehmigen Sie Kostenvoranschläge, unterzeichnen Sie Meilensteine und wickeln Sie Zahlungen sicher ab, "
+"ohne die Plattform zu verlassen."
 
 #: app/templates/index.html:121
 msgid "What happens after you create a project"
-msgstr ""
+msgstr "Was passiert, nachdem Sie ein Projekt erstellt haben"
 
 #: app/templates/index.html:123
 msgid "Share the vision"
-msgstr ""
+msgstr "Teilen Sie die Vision"
 
 #: app/templates/index.html:123
 msgid ""
 "Describe goals, audience and constraints once; our assistants convert it "
 "into a structured brief."
 msgstr ""
+"Beschreiben Sie einmal Ziele, Zielgruppe und Einschränkungen; unsere Assistenten "
+"wandeln dies in ein strukturiertes Briefing um."
 
 #: app/templates/index.html:124
 msgid "Receive a roadmap"
-msgstr ""
+msgstr "Erhalten Sie eine Roadmap"
 
 #: app/templates/index.html:124
 msgid ""
 "We design architecture, timelines and budget options you can approve or "
 "adjust with a click."
 msgstr ""
+"Wir entwerfen Architektur, Zeitpläne und Budgetoptionen, die Sie mit einem Klick "
+"genehmigen oder anpassen können."
 
 #: app/templates/index.html:125
 msgid "Track delivery in real time"
-msgstr ""
+msgstr "Verfolgen Sie die Lieferung in Echtzeit"
 
 #: app/templates/index.html:125
 msgid ""
 "Milestones, test results and launch tasks update automatically inside "
 "your dashboard."
 msgstr ""
+"Meilensteine, Testergebnisse und Launch-Aufgaben werden automatisch in Ihrem Dashboard aktualisiert."
 
 #: app/templates/index.html:130 app/templates/index.html:195
 msgid "Ready to transform your business with AI?"
-msgstr ""
+msgstr "Bereit, Ihr Geschäft mit KI zu transformieren?"
 
 #: app/templates/index.html:131
 msgid ""
 "Your account keeps every conversation, document and approval in sync so "
 "nothing slows the launch."
 msgstr ""
+"Ihr Konto hält jedes Gespräch, Dokument und jede Genehmigung synchron, damit nichts den Start verzögert."
 
 #: app/templates/index.html:137
 msgid "Register Now"
-msgstr ""
+msgstr "Jetzt registrieren"
 
 #: app/templates/auth/register.html:59 app/templates/index.html:139
 msgid "Create Account"
-msgstr ""
+msgstr "Konto erstellen"
 
 #: app/templates/index.html:140
 msgid "Already have an account? Login"
-msgstr ""
+msgstr "Haben Sie bereits ein Konto? Anmelden"
 
 #: app/templates/index.html:154
 msgid "How our project chatbot supports you"
-msgstr ""
+msgstr "Wie unser Projekt-Chatbot Sie unterstützt"
 
 #: app/templates/index.html:155
 msgid ""
 "The embedded widget combines three specialized AI agents so you always "
 "get the right guidance at every stage."
 msgstr ""
+"Das eingebettete Widget kombiniert drei spezialisierte KI-Agenten, damit Sie in jeder Phase "
+"immer die richtige Anleitung erhalten."
 
 #: app/templates/index.html:157
 msgid "Available 24/7 inside your dashboard and on every project page."
-msgstr ""
+msgstr "Verfügbar 24/7 in Ihrem Dashboard und auf jeder Projektseite."
 
 #: app/templates/index.html:158
 msgid "Switch between agents at any time to match the task you are solving."
-msgstr ""
+msgstr "Wechseln Sie jederzeit zwischen Agenten, um zur Aufgabe zu passen, die Sie lösen."
 
 #: app/templates/index.html:159
 msgid ""
 "Conversations sync with your project timeline and notify the human team "
 "when escalation is required."
 msgstr ""
+"Gespräche synchronisieren sich mit Ihrer Projektzeitleiste und benachrichtigen das menschliche Team, "
+"wenn eine Eskalation erforderlich ist."
 
 #: app/templates/index.html:166
 msgid "Discovery Guide"
-msgstr ""
+msgstr "Entdeckungs-Leitfaden"
 
 #: app/templates/index.html:167
 msgid ""
 "Answers general questions about our services, explains pricing scenarios "
 "and helps you decide which solution fits your business."
 msgstr ""
+"Beantwortet allgemeine Fragen zu unseren Dienstleistungen, erklärt Preisszenarien "
+"und hilft Ihnen bei der Entscheidung, welche Lösung zu Ihrem Unternehmen passt."
 
 #: app/templates/index.html:171
 msgid "Brief Architect"
-msgstr ""
+msgstr "Briefing-Architekt"
 
 #: app/templates/index.html:172
 msgid ""
 "Leads you through writing a detailed technical assignment, gathers "
 "requirements and prepares structured specifications for our engineers."
 msgstr ""
+"Führt Sie durch das Verfassen einer detaillierten technischen Aufgabenstellung, sammelt "
+"Anforderungen und erstellt strukturierte Spezifikationen für unsere Ingenieure."
 
 #: app/templates/index.html:176
 msgid "Project Steward"
-msgstr ""
+msgstr "Projekt-Betreuer"
 
 #: app/templates/index.html:177
 msgid ""
 "Stays with you after kickoff, summarises sprint progress, reminds you "
 "about approvals and reports on upcoming milestones."
 msgstr ""
+"Bleibt nach dem Kickoff an Ihrer Seite, fasst den Sprint-Fortschritt zusammen, erinnert Sie "
+"an Genehmigungen und berichtet über bevorstehende Meilensteine."
 
 #: app/templates/index.html:196
 msgid "Our team of experts is ready to help you implement intelligent solutions."
-msgstr ""
+msgstr "Unser Expertenteam ist bereit, Ihnen bei der Implementierung intelligenter Lösungen zu helfen."
 
 #: app/templates/index.html:197
 msgid "Get Started Today"
-msgstr ""
+msgstr "Starten Sie noch heute"
 
 #: app/templates/payment_cancel.html:14
 msgid "Payment Cancelled"
