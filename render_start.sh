@@ -86,21 +86,7 @@ try:
     # Очистка памяти
     gc.collect()
     
-    # DISABLED: These scripts use raw SQL without schema and conflict with SQLAlchemy
-    # Database tables will be created automatically by Flask-SQLAlchemy with proper schema
-    # print('Исправление проблем с app/database.py...')
-    # import fix_app_database
-    # print('✅ app/database.py исправлен')
-    
-    # print('Исправление дублирующихся столбцов...')
-    # import fix_duplicate_columns
-    # print('✅ Дублирующиеся столбцы исправлены')
-    
-    # print('Исправление проблем с ревизией миграции...')
-    # import fix_revision_issue
-    # print('✅ Проблемы с ревизией миграции исправлены')
-    
-    print('✅ Схема инициализирована, приложение создаст таблицы автоматически')
+    print('✅ Схема инициализирована')
     
 except Exception as e:
     print(f'⚠️  Предупреждение: {e}, продолжаем...')
@@ -110,13 +96,13 @@ else
     echo "⚠️  Предупреждение: проблемы с подготовкой базы данных, продолжаем..."
 fi
 
-# Очистка памяти перед запуском приложения
-echo "Финальная очистка памяти перед запуском приложения..."
-python -c "import gc; gc.collect()"
-
-# DISABLED: All migration scripts that use raw SQL without schema awareness
-# Flask-SQLAlchemy will create all tables with proper schema on first app startup
-echo "✅ База данных готова - таблицы будут созданы автоматически при запуске приложения"
+# Create database tables using dedicated script
+echo "Создание таблиц базы данных..."
+if bash create_tables.sh; then
+    echo "✅ Таблицы базы данных созданы успешно"
+else
+    echo "⚠️ Предупреждение: проблемы с созданием таблиц, приложение попытается создать их при запуске..."
+fi
 
 # Финальная очистка памяти
 echo "Финальная очистка памяти перед запуском приложения..."

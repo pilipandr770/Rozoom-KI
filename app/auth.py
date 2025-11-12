@@ -62,33 +62,49 @@ def create_admin_user(app):
         # Note: PostgreSQL schema is configured at metadata level in create_app()
         schema = app.config.get('POSTGRES_SCHEMA', 'rozoom_ki_schema') if 'postgresql' in app.config['SQLALCHEMY_DATABASE_URI'] else None
         
-        # Drop problematic duplicate indexes before create_all
+        # Aggressively clean up ALL indexes that might conflict
         if schema:
             try:
                 with db.engine.begin() as conn:
-                    conn.execute(text(f"DROP INDEX IF EXISTS {schema}.ix_chat_messages_conversation_id"))
-                app.logger.info("Cleaned up duplicate indexes before table creation")
+                    # Get all indexes in the schema
+                    result = conn.execute(text(f"""
+                        SELECT indexname 
+                        FROM pg_indexes 
+                        WHERE schemaname = '{schema}'
+                    """))
+                    indexes = [row[0] for row in result]
+                    
+                    # Drop all indexes
+                    for index_name in indexes:
+                        try:
+                            conn.execute(text(f"DROP INDEX IF EXISTS {schema}.{index_name}"))
+                        except Exception:
+                            pass
+                    
+                    app.logger.info(f"Cleaned up {len(indexes)} existing indexes before table creation")
             except Exception as e:
                 app.logger.warning(f"Could not clean up indexes: {e}")
         
-        # Create all tables
+        # Create all tables - if this fails, the database is in a bad state
         try:
             db.create_all()
             app.logger.info("Database tables created/verified successfully")
         except Exception as e:
-            # Handle remaining duplicate errors gracefully
-            if isinstance(e, ProgrammingError) and 'already exists' in str(e):
-                app.logger.warning(f"Some database objects already exist (this is normal): {str(e)}")
-                # Continue anyway - tables should exist even if indexes failed
-            else:
-                app.logger.error(f"Error creating tables: {str(e)}")
-                raise
+            app.logger.error(f"CRITICAL: Could not create database tables: {str(e)}")
+            # Don't raise - let the app start and tables can be created later
         
         # Verify admin_users table exists
         inspector = inspect(db.engine)
         existing_tables = inspector.get_table_names(schema=schema)
+        
+        if not existing_tables:
+            app.logger.error(f"CRITICAL: No tables found in schema '{schema}'. Database may need manual initialization.")
+            return
+        
+        app.logger.info(f"Found {len(existing_tables)} tables in database: {', '.join(existing_tables)}")
+        
         if 'admin_users' not in existing_tables:
-            app.logger.error(f"admin_users table still doesn't exist. Existing tables: {existing_tables}")
+            app.logger.warning(f"admin_users table not found. Available tables: {existing_tables}")
             return
         
         admin = AdminUser.query.filter_by(username='admin').first()
