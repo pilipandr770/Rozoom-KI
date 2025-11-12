@@ -5,9 +5,11 @@ from flask_migrate import Migrate
 from flask_login import LoginManager
 from flask_mail import Mail
 from flask_wtf.csrf import CSRFProtect
-from sqlalchemy import text
+from sqlalchemy import text, MetaData
 import os
 
+# Create metadata with schema configuration
+# This will be set dynamically in create_app
 db = SQLAlchemy()
 migrate = Migrate()
 mail = Mail()
@@ -19,14 +21,13 @@ from app.babel import init_babel
 
 
 def setup_schema_handling(app):
-    """Configure schema handling based on the database dialect.
-
-    For Postgres: Set search_path to use schema
-    For SQLite: Remove schema from all table definitions
+    """Configure schema handling for SQLite (remove schemas).
+    
+    Note: PostgreSQL schema is now configured at metadata level in create_app()
     """
-    from sqlalchemy import text, event
+    from sqlalchemy import event
 
-    # Get database info (compatible with Flask-SQLAlchemy >=3)
+    # Get database info
     try:
         engine = db.session.get_bind()
     except Exception:
@@ -37,7 +38,6 @@ def setup_schema_handling(app):
             return
 
     dialect = engine.dialect.name
-    schema = app.config.get('POSTGRES_SCHEMA')
 
     # For SQLite: Remove schema from all tables at runtime
     if dialect == 'sqlite':
@@ -51,30 +51,6 @@ def setup_schema_handling(app):
             for table in target.tables.values():
                 if table.schema:
                     table.schema = None
-
-    # For Postgres: Set search_path
-    elif dialect in ('postgresql', 'postgres') and schema:
-        try:
-            # Check if event listeners are already registered
-            if not hasattr(engine, '_schema_listeners_registered'):
-                # First, ensure every new connection sets the search path BEFORE any operations
-                @event.listens_for(engine, "connect")
-                def connect(dbapi_connection, connection_record):
-                    cursor = dbapi_connection.cursor()
-                    cursor.execute(f"SET search_path TO {schema}, public")
-                    cursor.close()
-                
-                # Mark listeners as registered
-                engine._schema_listeners_registered = True
-            
-            # Set search_path for the current connection
-            with engine.connect() as conn:
-                conn.execute(text(f"SET search_path TO {schema}, public"))
-                conn.commit()
-                
-            app.logger.info(f"PostgreSQL schema '{schema}' configured successfully")
-        except Exception as e:
-            app.logger.error(f"Error setting up Postgres schema: {e}")
 
 
 def test_database_connection(app):
@@ -155,6 +131,12 @@ def create_app():
     # Initialize database
     db.init_app(app)
     migrate.init_app(app, db)
+    
+    # Configure PostgreSQL schema at metadata level
+    if 'postgresql' in app.config['SQLALCHEMY_DATABASE_URI']:
+        schema = app.config.get('POSTGRES_SCHEMA', 'rozoom_ki_schema')
+        db.metadata.schema = schema
+        app.logger.info(f"PostgreSQL schema '{schema}' configured in metadata")
     
     # Test database connection and handle SSL issues
     with app.app_context():

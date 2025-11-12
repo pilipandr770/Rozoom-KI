@@ -56,21 +56,7 @@ def load_user(user_id):
 # Function to create admin user for initial setup
 def create_admin_user(app):
     with app.app_context():
-        # Ensure schema is set for PostgreSQL before creating tables
-        try:
-            from sqlalchemy import text
-            engine = db.session.get_bind()
-            dialect = engine.dialect.name
-            schema = app.config.get('POSTGRES_SCHEMA')
-            
-            if dialect in ('postgresql', 'postgres') and schema:
-                with engine.connect() as conn:
-                    conn.execute(text(f"SET search_path TO {schema}, public"))
-                    conn.commit()
-                app.logger.info(f"Schema '{schema}' set before creating tables")
-        except Exception as e:
-            app.logger.warning(f"Could not set schema before create_all: {e}")
-        
+        # Note: PostgreSQL schema is configured at metadata level in create_app()
         # Create admin user table if it doesn't exist
         db.create_all()
         
