@@ -9,12 +9,13 @@ echo "=== CREATING DATABASE TABLES ==="
 export FLASK_APP=run.py
 export PYTHONPATH=.
 
-# CRITICAL: Reset database to clean state before creating tables
-echo "⚠️  Resetting database to clean state (dropping all tables)..."
-if python reset_database.py; then
-    echo "✅ Database reset successfully"
+# NUCLEAR OPTION: Drop entire schema and recreate from scratch
+echo "🔥 NUCLEAR RESET: Dropping entire schema and recreating..."
+if python nuclear_reset.py; then
+    echo "✅ Schema dropped and recreated successfully"
 else
-    echo "⚠️  Database reset had issues, continuing anyway..."
+    echo "❌ Nuclear reset failed, cannot continue"
+    exit 1
 fi
 
 # Now create all tables fresh
