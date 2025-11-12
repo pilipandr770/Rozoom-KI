@@ -46,6 +46,25 @@ def create_schema():
             cursor.execute(f'CREATE SCHEMA IF NOT EXISTS "{schema_name}"')
             print(f"✅ Schema '{schema_name}' created successfully")
         
+        # Clean up old objects from public schema that might conflict
+        try:
+            # Drop old indexes from public schema
+            cursor.execute("""
+                DO $$ 
+                BEGIN
+                    IF EXISTS (
+                        SELECT 1 FROM pg_indexes 
+                        WHERE schemaname = 'public' 
+                        AND indexname = 'ix_chat_messages_conversation_id'
+                    ) THEN
+                        DROP INDEX public.ix_chat_messages_conversation_id;
+                    END IF;
+                END $$;
+            """)
+            print(f"✅ Cleaned up conflicting objects from public schema")
+        except Exception as cleanup_error:
+            print(f"⚠️ Could not clean up old objects: {cleanup_error}")
+        
         cursor.close()
         conn.close()
         return True
