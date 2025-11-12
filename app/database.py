@@ -58,16 +58,16 @@ def init_database_schema(app):
         if 'chat_messages' in inspector.get_table_names():
             columns = [col['name'] for col in inspector.get_columns('chat_messages')]
             
-            if 'conversation_id' not in columns:
-                try:
-                    with engine.begin() as conn:
-                        conn.execute(text("ALTER TABLE chat_messages ADD COLUMN IF NOT EXISTS conversation_id VARCHAR(36)"))
-                        # Create an index for conversation_id
-                        conn.execute(text("CREATE INDEX IF NOT EXISTS ix_chat_messages_conversation_id ON chat_messages (conversation_id)"))
-                        app.logger.info("Added conversation_id column to chat_messages table")
-                except Exception as e:
-                    app.logger.error(f"Failed to add conversation_id column to chat_messages: {str(e)}")
-                    # We'll handle the error in the API layer with our dynamic schema handling
+            # DISABLED: Schema migrations should be handled by Alembic, not raw SQL
+            # This raw SQL doesn't respect the PostgreSQL schema setting
+            # if 'conversation_id' not in columns:
+            #     try:
+            #         with engine.begin() as conn:
+            #             conn.execute(text("ALTER TABLE chat_messages ADD COLUMN IF NOT EXISTS conversation_id VARCHAR(36)"))
+            #             conn.execute(text("CREATE INDEX IF NOT EXISTS ix_chat_messages_conversation_id ON chat_messages (conversation_id)"))
+            #             app.logger.info("Added conversation_id column to chat_messages table")
+            #     except Exception as e:
+            #         app.logger.error(f"Failed to add conversation_id column to chat_messages: {str(e)}")
             if 'data' not in columns:
                 try:
                     with engine.begin() as conn:

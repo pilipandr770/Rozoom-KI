@@ -4,48 +4,55 @@ from sqlalchemy import text, inspect
 
 def ensure_chat_message_model():
     """
-    Ensure chat_messages table has conversation_id and thread_id columns.
-    Uses simple, idempotent raw SQL to avoid Alembic complexity on boot.
+    DISABLED: All schema changes now handled by db.create_all() or Alembic migrations.
+    Raw SQL migrations don't respect PostgreSQL schema configuration.
     """
     try:
+        current_app.logger.info("✅ Chat message schema handled by SQLAlchemy models")
+        return
+        
+        # OLD CODE DISABLED:
         # verify connection and clear any failed tx
-        try:
-            db.session.rollback()
-        except Exception:
-            pass
-        db.session.execute(text('SELECT 1'))
-
-        inspector = inspect(db.engine)
-        if not inspector.has_table('chat_messages'):
-            current_app.logger.info("chat_messages table doesn't exist yet. It will be created by models/migrations.")
-            return
+        # try:
+        #     db.session.rollback()
+        # except Exception:
+        #     pass
+        # db.session.execute(text('SELECT 1'))
+        #
+        # inspector = inspect(db.engine)
+        # if not inspector.has_table('chat_messages'):
+        #     current_app.logger.info("chat_messages table doesn't exist yet. It will be created by models/migrations.")
+        #     return
 
         # refresh columns view each time after changes
         def get_columns():
             return {col['name'] for col in inspector.get_columns('chat_messages')}
 
-        cols = get_columns()
-
-        if 'conversation_id' not in cols:
-            current_app.logger.info("Adding conversation_id column to chat_messages table")
-            with db.engine.begin() as conn:
-                conn.execute(text("ALTER TABLE chat_messages ADD COLUMN conversation_id VARCHAR(64)"))
-                # index creation should be guarded
-                try:
-                    conn.execute(text("CREATE INDEX ix_chat_messages_conversation_id ON chat_messages (conversation_id)"))
-                except Exception:
-                    pass
-        # re-inspect
-        cols = get_columns()
-
-        if 'thread_id' not in cols:
-            current_app.logger.info("Adding thread_id column to chat_messages table")
-            with db.engine.begin() as conn:
-                conn.execute(text("ALTER TABLE chat_messages ADD COLUMN thread_id VARCHAR(64)"))
-                try:
-                    conn.execute(text("CREATE INDEX ix_chat_messages_thread_id ON chat_messages (thread_id)"))
-                except Exception:
-                    pass
+        # DISABLED: Raw SQL migrations don't respect PostgreSQL schema
+        # All schema changes should be done via Alembic migrations or db.create_all()
+        # cols = get_columns()
+        #
+        # if 'conversation_id' not in cols:
+        #     current_app.logger.info("Adding conversation_id column to chat_messages table")
+        #     with db.engine.begin() as conn:
+        #         conn.execute(text("ALTER TABLE chat_messages ADD COLUMN conversation_id VARCHAR(64)"))
+        #         try:
+        #             conn.execute(text("CREATE INDEX ix_chat_messages_conversation_id ON chat_messages (conversation_id)"))
+        #         except Exception:
+        #             pass
+        #
+        # cols = get_columns()
+        #
+        # if 'thread_id' not in cols:
+        #     current_app.logger.info("Adding thread_id column to chat_messages table")
+        #     with db.engine.begin() as conn:
+        #         conn.execute(text("ALTER TABLE chat_messages ADD COLUMN thread_id VARCHAR(64)"))
+        #         try:
+        #             conn.execute(text("CREATE INDEX ix_chat_messages_thread_id ON chat_messages (thread_id)"))
+        #         except Exception:
+        #             pass
+        
+        current_app.logger.info("✅ Schema migrations disabled - using Alembic/SQLAlchemy models")
 
     except Exception as e:
         current_app.logger.error(f"Error checking/updating database schema: {e}")
