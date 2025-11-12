@@ -55,15 +55,24 @@ def setup_schema_handling(app):
     # For Postgres: Set search_path
     elif dialect in ('postgresql', 'postgres') and schema:
         try:
+            # Check if event listeners are already registered
+            if not hasattr(engine, '_schema_listeners_registered'):
+                # First, ensure every new connection sets the search path BEFORE any operations
+                @event.listens_for(engine, "connect")
+                def connect(dbapi_connection, connection_record):
+                    cursor = dbapi_connection.cursor()
+                    cursor.execute(f"SET search_path TO {schema}, public")
+                    cursor.close()
+                
+                # Mark listeners as registered
+                engine._schema_listeners_registered = True
+            
+            # Set search_path for the current connection
             with engine.connect() as conn:
                 conn.execute(text(f"SET search_path TO {schema}, public"))
-
-            # Ensure every new connection sets the search path
-            @event.listens_for(engine, "connect")
-            def connect(dbapi_connection, connection_record):
-                cursor = dbapi_connection.cursor()
-                cursor.execute(f"SET search_path TO {schema}, public")
-                cursor.close()
+                conn.commit()
+                
+            app.logger.info(f"PostgreSQL schema '{schema}' configured successfully")
         except Exception as e:
             app.logger.error(f"Error setting up Postgres schema: {e}")
 

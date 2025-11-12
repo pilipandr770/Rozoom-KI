@@ -30,7 +30,7 @@ class ContentSchedule(db.Model):
     topic_area = db.Column(db.String(255), nullable=False)
     description = db.Column(db.Text)
     keywords = db.Column(db.Text)  # Ключевые слова для SEO, разделенные запятыми
-    frequency = db.Column(Enum(PublishFrequency), default=PublishFrequency.WEEKLY)
+    frequency = db.Column(Enum(PublishFrequency, name='publishfrequency', native_enum=False), default=PublishFrequency.WEEKLY)
     enabled = db.Column(db.Boolean, default=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
@@ -69,7 +69,7 @@ class GeneratedContent(db.Model):
     meta_description_en = db.Column(db.Text)  # SEO-описание на английском
     meta_description_de = db.Column(db.Text)  # SEO-описание на немецком
     keywords = db.Column(db.Text)  # SEO-ключевые слова
-    status = db.Column(Enum(ContentStatus), default=ContentStatus.PLANNED)
+    status = db.Column(Enum(ContentStatus, name='contentstatus', native_enum=False), default=ContentStatus.PLANNED)
     error_message = db.Column(db.Text)  # Для сохранения ошибок при генерации
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     published_at = db.Column(db.DateTime)
