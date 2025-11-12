@@ -86,28 +86,21 @@ try:
     # Очистка памяти
     gc.collect()
     
-    # Исправление проблем с database.py
-    print('Исправление проблем с app/database.py...')
-    import fix_app_database
-    print('✅ app/database.py исправлен')
+    # DISABLED: These scripts use raw SQL without schema and conflict with SQLAlchemy
+    # Database tables will be created automatically by Flask-SQLAlchemy with proper schema
+    # print('Исправление проблем с app/database.py...')
+    # import fix_app_database
+    # print('✅ app/database.py исправлен')
     
-    # Очистка памяти
-    gc.collect()
+    # print('Исправление дублирующихся столбцов...')
+    # import fix_duplicate_columns
+    # print('✅ Дублирующиеся столбцы исправлены')
     
-    # Исправление дублирующихся столбцов
-    print('Исправление дублирующихся столбцов...')
-    import fix_duplicate_columns
-    print('✅ Дублирующиеся столбцы исправлены')
+    # print('Исправление проблем с ревизией миграции...')
+    # import fix_revision_issue
+    # print('✅ Проблемы с ревизией миграции исправлены')
     
-    # Очистка памяти
-    gc.collect()
-    
-    # Исправление ревизии миграции
-    print('Исправление проблем с ревизией миграции...')
-    import fix_revision_issue
-    print('✅ Проблемы с ревизией миграции исправлены')
-    
-    print('✅ Все исправления выполнены успешно')
+    print('✅ Схема инициализирована, приложение создаст таблицы автоматически')
     
 except Exception as e:
     print(f'⚠️  Предупреждение: {e}, продолжаем...')
@@ -117,15 +110,18 @@ else
     echo "⚠️  Предупреждение: проблемы с подготовкой базы данных, продолжаем..."
 fi
 
-# Очистка памяти перед запуском миграций
-echo "Очистка памяти..."
+# Очистка памяти перед запуском приложения
+echo "Финальная очистка памяти перед запуском приложения..."
 python -c "import gc; gc.collect()"
 
-echo "Проверка и инициализация миграций базы данных..."
+# DISABLED: All migration scripts that use raw SQL without schema awareness
+# Flask-SQLAlchemy will create all tables with proper schema on first app startup
+echo "✅ База данных готова - таблицы будут созданы автоматически при запуске приложения"
 
-# Проверяем и запускаем миграцию для обновления структуры БД с новыми полями для хранения оригинальных URL изображений
-echo "Проверка миграции для изображений блога..."
-if python -c "
+# Skip all old migration scripts below
+if false; then
+# Old migration code disabled - keeping for reference only
+python -c "
 import sys
 try:
     # Проверяем наличие колонок для хранения оригинальных URL изображений
@@ -473,6 +469,9 @@ except Exception as e:
         fi
     fi
 fi
+
+fi
+# End of disabled migration scripts
 
 # Финальная очистка памяти
 echo "Финальная очистка памяти перед запуском приложения..."
