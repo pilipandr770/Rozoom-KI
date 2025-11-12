@@ -169,65 +169,22 @@ def init_database_schema(app):
                 app.logger.info(f"Note about username constraint: {str(e)}")
         
         # Create projects table if it doesn't exist
+        # Note: This fallback is deprecated - SQLAlchemy should handle table creation
+        # Kept for backwards compatibility only
         if 'projects' not in inspector.get_table_names():
-            try:
-                with engine.begin() as conn:
-                    conn.execute(text("""
-                    CREATE TABLE projects (
-                        id SERIAL PRIMARY KEY,
-                        title VARCHAR(255) NOT NULL,
-                        description TEXT,
-                        status VARCHAR(50) DEFAULT 'new',
-                        start_date TIMESTAMP,
-                        estimated_end_date TIMESTAMP,
-                        actual_end_date TIMESTAMP,
-                        budget FLOAT,
-                        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                        client_id INTEGER REFERENCES users(id)
-                    )
-                    """))
-                    app.logger.info("Created projects table")
-            except Exception as e:
-                app.logger.error(f"Failed to create projects table: {str(e)}")
+            app.logger.warning("Projects table missing - should be created by SQLAlchemy models")
         
         # Create project_tasks table if it doesn't exist
+        # Note: This fallback is deprecated - SQLAlchemy should handle table creation
+        # Kept for backwards compatibility only
         if 'project_tasks' not in inspector.get_table_names():
-            try:
-                with engine.begin() as conn:
-                    conn.execute(text("""
-                    CREATE TABLE project_tasks (
-                        id SERIAL PRIMARY KEY,
-                        title VARCHAR(255) NOT NULL,
-                        description TEXT,
-                        status VARCHAR(50) DEFAULT 'pending',
-                        due_date TIMESTAMP,
-                        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                        project_id INTEGER REFERENCES projects(id)
-                    )
-                    """))
-                    app.logger.info("Created project_tasks table")
-            except Exception as e:
-                app.logger.error(f"Failed to create project_tasks table: {str(e)}")
+            app.logger.warning("Project_tasks table missing - should be created by SQLAlchemy models")
                 
         # Create project_updates table if it doesn't exist
+        # Note: This fallback is deprecated - SQLAlchemy should handle table creation
+        # Kept for backwards compatibility only
         if 'project_updates' not in inspector.get_table_names():
-            try:
-                with engine.begin() as conn:
-                    conn.execute(text("""
-                    CREATE TABLE project_updates (
-                        id SERIAL PRIMARY KEY,
-                        title VARCHAR(255) NOT NULL,
-                        content TEXT,
-                        is_milestone BOOLEAN DEFAULT FALSE,
-                        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                        project_id INTEGER REFERENCES projects(id)
-                    )
-                    """))
-                    app.logger.info("Created project_updates table")
-            except Exception as e:
-                app.logger.error(f"Failed to create project_updates table: {str(e)}")
+            app.logger.warning("Project_updates table missing - should be created by SQLAlchemy models")
                 
 # Для возможности запуска как отдельный скрипт
 if __name__ == "__main__":
