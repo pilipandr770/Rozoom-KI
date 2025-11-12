@@ -78,7 +78,10 @@ try:
     # Инициализация схем
     print('Инициализация схем PostgreSQL...')
     import init_postgres_schemas
-    print('✅ Схемы PostgreSQL инициализированы')
+    if init_postgres_schemas.create_schema():
+        print('✅ Схемы PostgreSQL инициализированы')
+    else:
+        print('⚠️ Не удалось инициализировать схемы PostgreSQL')
     
     # Очистка памяти
     gc.collect()
