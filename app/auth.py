@@ -56,19 +56,41 @@ def load_user(user_id):
 # Function to create admin user for initial setup
 def create_admin_user(app):
     with app.app_context():
+        from sqlalchemy import inspect, text
+        from sqlalchemy.exc import ProgrammingError
+        
         # Note: PostgreSQL schema is configured at metadata level in create_app()
-        # Create admin user table if it doesn't exist
+        schema = app.config.get('POSTGRES_SCHEMA', 'rozoom_ki_schema') if 'postgresql' in app.config['SQLALCHEMY_DATABASE_URI'] else None
+        
+        # Drop problematic duplicate indexes before create_all
+        if schema:
+            try:
+                with db.engine.begin() as conn:
+                    conn.execute(text(f"DROP INDEX IF EXISTS {schema}.ix_chat_messages_conversation_id"))
+                app.logger.info("Cleaned up duplicate indexes before table creation")
+            except Exception as e:
+                app.logger.warning(f"Could not clean up indexes: {e}")
+        
+        # Create all tables
         try:
             db.create_all()
+            app.logger.info("Database tables created/verified successfully")
         except Exception as e:
-            # Handle duplicate index/table errors gracefully
-            from sqlalchemy.exc import ProgrammingError
+            # Handle remaining duplicate errors gracefully
             if isinstance(e, ProgrammingError) and 'already exists' in str(e):
                 app.logger.warning(f"Some database objects already exist (this is normal): {str(e)}")
+                # Continue anyway - tables should exist even if indexes failed
             else:
+                app.logger.error(f"Error creating tables: {str(e)}")
                 raise
         
-        # Check if admin user exists
+        # Verify admin_users table exists
+        inspector = inspect(db.engine)
+        existing_tables = inspector.get_table_names(schema=schema)
+        if 'admin_users' not in existing_tables:
+            app.logger.error(f"admin_users table still doesn't exist. Existing tables: {existing_tables}")
+            return
+        
         admin = AdminUser.query.filter_by(username='admin').first()
         if not admin:
             try:
