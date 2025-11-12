@@ -58,7 +58,15 @@ def create_admin_user(app):
     with app.app_context():
         # Note: PostgreSQL schema is configured at metadata level in create_app()
         # Create admin user table if it doesn't exist
-        db.create_all()
+        try:
+            db.create_all()
+        except Exception as e:
+            # Handle duplicate index/table errors gracefully
+            from sqlalchemy.exc import ProgrammingError
+            if isinstance(e, ProgrammingError) and 'already exists' in str(e):
+                app.logger.warning(f"Some database objects already exist (this is normal): {str(e)}")
+            else:
+                raise
         
         # Check if admin user exists
         admin = AdminUser.query.filter_by(username='admin').first()
