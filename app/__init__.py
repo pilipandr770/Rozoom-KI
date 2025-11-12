@@ -132,12 +132,6 @@ def create_app():
     db.init_app(app)
     migrate.init_app(app, db)
     
-    # Configure PostgreSQL schema at metadata level
-    if 'postgresql' in app.config['SQLALCHEMY_DATABASE_URI']:
-        schema = app.config.get('POSTGRES_SCHEMA', 'rozoom_ki_schema')
-        db.metadata.schema = schema
-        app.logger.info(f"PostgreSQL schema '{schema}' configured in metadata")
-    
     # Test database connection and handle SSL issues
     with app.app_context():
         # Ensure all models are imported before creating tables
@@ -146,6 +140,16 @@ def create_app():
         except Exception as e:
             app.logger.warning(f"Could not import models before schema init: {e}")
         test_database_connection(app)
+        
+        # Configure PostgreSQL schema at metadata level AFTER models are imported
+        if 'postgresql' in app.config['SQLALCHEMY_DATABASE_URI']:
+            schema = app.config.get('POSTGRES_SCHEMA', 'rozoom_ki_schema')
+            # Set schema on metadata
+            db.metadata.schema = schema
+            # Also set schema on all existing tables
+            for table in db.metadata.tables.values():
+                table.schema = schema
+            app.logger.info(f"PostgreSQL schema '{schema}' configured for {len(db.metadata.tables)} tables")
     
     # Initialize Flask-Login
     login_manager.init_app(app)
