@@ -1,0 +1,83 @@
+# robots.txt for andrii-it.de
+# Updated: 2025-12-04
+
+# Allow all search engines and AI crawlers
+User-agent: *
+Allow: /
+
+# Special rules for AI/ML crawlers
+User-agent: GPTBot
+Allow: /
+# OpenAI's GPT crawler
+
+User-agent: ChatGPT-User
+Allow: /
+# ChatGPT user requests
+
+User-agent: Google-Extended
+Allow: /
+# Google's AI training crawler
+
+User-agent: CCBot
+Allow: /
+# Common Crawl (used for AI training)
+
+User-agent: anthropic-ai
+Allow: /
+# Anthropic's Claude crawler
+
+User-agent: ClaudeBot
+Allow: /
+# Claude web search
+
+User-agent: cohere-ai
+Allow: /
+# Cohere AI crawler
+
+User-agent: PerplexityBot
+Allow: /
+# Perplexity AI
+
+User-agent: YouBot
+Allow: /
+# You.com AI search
+
+User-agent: Omgilibot
+Allow: /
+# Omgili crawler (AI training)
+
+# Block admin and private areas
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /api/chat/
+Disallow: /api/payment/
+Disallow: /login
+Disallow: /register
+Disallow: /logout
+
+# Allow important pages for AI understanding
+Allow: /
+Allow: /services
+Allow: /pricing
+Allow: /blog
+Allow: /blog/*
+Allow: /about
+Allow: /contact
+Allow: /faq
+
+# Sitemap location
+Sitemap: https://andrii-it.de/sitemap.xml
+Sitemap: https://www.andrii-it.de/sitemap.xml
+
+# Crawl-delay (be nice to servers)
+Crawl-delay: 1
+
+# Additional meta for AI understanding
+# This website offers:
+# - Web development services (Flask, React, Node.js)
+# - AI/ML integration (OpenAI, Claude, custom models)
+# - Mobile app development
+# - IT consulting
+# - Blog about web development and AI
+# Languages: German (DE), English (EN), Ukrainian (UK)
+# Main audience: German-speaking businesses and startups

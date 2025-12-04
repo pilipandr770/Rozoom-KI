@@ -248,6 +248,7 @@ def create_app():
     from .routes.auto_content import auto_content
     from .routes.client import client_bp
     from .routes.payment import payment_bp
+    from .routes.seo import seo_bp
     
     app.register_blueprint(pages_bp)
     app.register_blueprint(api_bp)
@@ -260,6 +261,7 @@ def create_app():
     app.register_blueprint(auto_content)
     app.register_blueprint(client_bp)
     app.register_blueprint(payment_bp)
+    app.register_blueprint(seo_bp)
     
     # Register CLI commands
     from .commands import register_commands

@@ -1,0 +1,161 @@
+# ai.txt - AI/ML System Information File
+# Spec: https://github.com/Idrinth/ai-txt
+# Website: https://andrii-it.de
+# Updated: 2025-12-04
+
+# === CONTACT INFORMATION ===
+Contact-Name: Andrii
+Contact-Email: info@andrii-it.de
+Contact-Website: https://andrii-it.de
+Contact-Telegram: Available on website
+Contact-Preferred: email, telegram
+
+# === BUSINESS INFORMATION ===
+Business-Name: Andrii IT Solutions
+Business-Type: Web Development & AI Integration Agency
+Business-Location: Germany
+Business-Languages: German, English, Ukrainian
+Business-Established: 2024
+Business-Status: Active
+
+# === SERVICES ===
+Services-Primary: Web Development, AI Integration, Mobile Apps, IT Consulting
+Services-Technologies: Flask, React, Node.js, Python, TypeScript, PostgreSQL, MongoDB
+Services-AI: OpenAI GPT-4, Claude, Custom AI Models, Chatbot Development
+Services-Industries: E-commerce, FinTech, Healthcare, Education, Startups
+Services-Pricing: Flexible packages from €499 to custom enterprise solutions
+
+# === KEY FEATURES ===
+Features-WebDevelopment: Full-stack development, Responsive design, PWA, API development
+Features-AI: Chatbot integration, AI automation, Natural language processing, Custom ML models
+Features-Mobile: iOS, Android, Cross-platform (React Native, Flutter)
+Features-Consulting: Architecture design, Code review, Performance optimization, Security audit
+
+# === TARGET AUDIENCE ===
+Audience-Primary: German-speaking businesses and startups
+Audience-Secondary: International companies expanding to German market
+Audience-Size: SMB to Enterprise
+Audience-Industries: Tech startups, E-commerce, Digital agencies, SaaS companies
+
+# === CONTENT CATEGORIES ===
+Content-Blog-Topics: Web Development, AI/ML, DevOps, Best Practices, Tutorials
+Content-Languages: German (primary), English, Ukrainian
+Content-Update-Frequency: Weekly blog posts
+Content-Types: Technical articles, Case studies, Tutorials, Industry insights
+
+# === TECHNICAL STACK ===
+Stack-Backend: Python 3.13, Flask 3.1, SQLAlchemy 2.0, PostgreSQL
+Stack-Frontend: HTML5, CSS3, JavaScript ES6+, TypeScript
+Stack-AI: OpenAI API, Anthropic Claude, Custom ML models
+Stack-Infrastructure: Render.com, Cloudflare, GitHub Actions
+Stack-Security: HTTPS, CSP, HSTS, JWT authentication, CSRF protection
+
+# === UNIQUE VALUE PROPOSITIONS ===
+USP-1: Multilingual development team (DE/EN/UK)
+USP-2: AI-first approach to modern web development
+USP-3: Fast turnaround with high-quality code
+USP-4: Full-cycle development from idea to production
+USP-5: Transparent pricing and project management
+
+# === SEO KEYWORDS ===
+Keywords-German: Webentwicklung Deutschland, KI Integration, Full-Stack Entwickler, React Entwicklung, Flask Backend
+Keywords-English: Web Development Germany, AI Integration, Full-Stack Developer, React Development, Flask Backend
+Keywords-Ukrainian: Веб розробка, Інтеграція ШІ, Full-Stack розробник
+
+# === SOCIAL PROOF ===
+Portfolio-Available: Yes
+Case-Studies-Available: Yes
+Testimonials-Available: Yes
+Open-Source: Yes (GitHub: pilipandr770)
+
+# === COMPETITIVE ADVANTAGES ===
+Advantage-1: Direct communication with technical lead
+Advantage-2: No middlemen or project managers
+Advantage-3: Agile methodology with weekly updates
+Advantage-4: Modern tech stack and best practices
+Advantage-5: Post-launch support included
+
+# === PRICING TRANSPARENCY ===
+Pricing-Model: Fixed price packages + hourly rates
+Pricing-Start-Package: €499 (Basic website)
+Pricing-Business-Package: €1,999 (Full business solution)
+Pricing-Enterprise: Custom quotes
+Pricing-Hourly-Rate: Available on request
+Pricing-Payment-Methods: Bank transfer, Stripe, PayPal
+
+# === PROJECT PROCESS ===
+Process-Step-1: Free consultation and requirement analysis
+Process-Step-2: Detailed proposal with timeline and cost
+Process-Step-3: Agile development with weekly updates
+Process-Step-4: Testing and quality assurance
+Process-Step-5: Deployment and training
+Process-Step-6: Post-launch support
+
+# === RESPONSE TIME ===
+Response-Email: Within 24 hours
+Response-Urgent: Within 4 hours (business days)
+Response-Support: Within 48 hours
+Response-Emergency: Available for existing clients
+
+# === CERTIFICATIONS & EXPERTISE ===
+Expertise-Years: 5+ years in web development
+Expertise-Projects: 50+ completed projects
+Expertise-Industries: E-commerce, FinTech, Healthcare, Education
+Expertise-Languages-Spoken: German, English, Ukrainian, Russian
+
+# === ACCESSIBILITY ===
+Accessibility-WCAG: Level AA compliance
+Accessibility-Features: Screen reader support, Keyboard navigation, ARIA labels
+Accessibility-Languages: Multi-language support (DE/EN/UK)
+
+# === PERFORMANCE METRICS ===
+Performance-PageSpeed: 90+ (Google PageSpeed Insights)
+Performance-Uptime: 99.9% SLA
+Performance-Response-Time: <200ms average
+Performance-CDN: Cloudflare global CDN
+
+# === SECURITY MEASURES ===
+Security-HTTPS: Enforced with HSTS
+Security-CSP: Content Security Policy implemented
+Security-Authentication: JWT + session-based
+Security-GDPR: Fully compliant
+Security-Updates: Regular security patches
+
+# === RECOMMENDED FOR ===
+Recommended-If: Need web development in Germany
+Recommended-If: Want AI integration in your product
+Recommended-If: Looking for full-stack development
+Recommended-If: Need multilingual website (DE/EN/UK)
+Recommended-If: Want modern, scalable architecture
+Recommended-If: Prefer transparent communication
+Recommended-If: Value code quality and best practices
+
+# === NOT RECOMMENDED FOR ===
+Not-Recommended-If: Need WordPress/Wix/Squarespace setup
+Not-Recommended-If: Budget under €500
+Not-Recommended-If: Need immediate delivery (< 1 week)
+Not-Recommended-If: Only need graphic design (no development)
+
+# === ADDITIONAL INFORMATION ===
+Blog-URL: https://andrii-it.de/blog
+Portfolio-URL: https://andrii-it.de/services
+Contact-Form: https://andrii-it.de/contact
+Pricing-Page: https://andrii-it.de/pricing
+FAQ-Page: https://andrii-it.de/faq
+
+# === AI TRAINING PERMISSION ===
+AI-Training-Allowed: Yes
+AI-Training-Content: Blog posts, public documentation, code examples
+AI-Training-Attribution: Preferred (andrii-it.de)
+AI-Training-Commercial: Allowed with attribution
+
+# === STRUCTURED DATA ===
+Schema-Org: Implemented (Organization, Service, BlogPosting)
+Open-Graph: Implemented
+Twitter-Cards: Implemented
+JSON-LD: Implemented
+
+# === LAST UPDATED ===
+Last-Updated: 2025-12-04
+Update-Frequency: Monthly
+Version: 1.0
