@@ -28,6 +28,10 @@ limit_request_line = 4096
 limit_request_fields = 100
 limit_request_field_size = 8190
 
+# Скрыть версию Gunicorn из заголовка Server
+import gunicorn
+gunicorn.SERVER_SOFTWARE = 'Undisclosed'
+
 # ВАЖЛИВО: не pre-load з gthread це не критично, але краще лишити False для передбачуваності
 preload_app = False
 worker_tmp_dir = "/tmp"

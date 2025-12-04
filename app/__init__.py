@@ -163,6 +163,10 @@ def create_app():
     # Initialize CSRF protection
     csrf.init_app(app)
     
+    # Initialize security headers
+    from .security_headers import init_security_headers
+    init_security_headers(app)
+    
     # Исключить API чата из CSRF защиты
     @csrf.exempt
     def exempt_chat_api():
