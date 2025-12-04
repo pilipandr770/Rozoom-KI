@@ -4,6 +4,11 @@
  */
 
 /* Placeholder text in input fields - bright green */
+.card-body input::placeholder,
+.card-body textarea::placeholder,
+.card-body select::placeholder,
+.card-body .form-control::placeholder,
+.card-body .form-select::placeholder,
 input::placeholder,
 textarea::placeholder,
 select::placeholder,
@@ -11,9 +16,15 @@ select::placeholder,
 .form-select::placeholder {
     color: #00ff00 !important; /* Bright green */
     opacity: 1 !important;
+    font-weight: 500 !important;
 }
 
 /* WebKit browsers (Chrome, Safari, Edge) */
+.card-body input::-webkit-input-placeholder,
+.card-body textarea::-webkit-input-placeholder,
+.card-body select::-webkit-input-placeholder,
+.card-body .form-control::-webkit-input-placeholder,
+.card-body .form-select::-webkit-input-placeholder,
 input::-webkit-input-placeholder,
 textarea::-webkit-input-placeholder,
 select::-webkit-input-placeholder,
@@ -21,9 +32,15 @@ select::-webkit-input-placeholder,
 .form-select::-webkit-input-placeholder {
     color: #00ff00 !important;
     opacity: 1 !important;
+    font-weight: 500 !important;
 }
 
 /* Firefox */
+.card-body input::-moz-placeholder,
+.card-body textarea::-moz-placeholder,
+.card-body select::-moz-placeholder,
+.card-body .form-control::-moz-placeholder,
+.card-body .form-select::-moz-placeholder,
 input::-moz-placeholder,
 textarea::-moz-placeholder,
 select::-moz-placeholder,
@@ -31,9 +48,15 @@ select::-moz-placeholder,
 .form-select::-moz-placeholder {
     color: #00ff00 !important;
     opacity: 1 !important;
+    font-weight: 500 !important;
 }
 
 /* IE 10+ */
+.card-body input::-ms-input-placeholder,
+.card-body textarea::-ms-input-placeholder,
+.card-body select::-ms-input-placeholder,
+.card-body .form-control::-ms-input-placeholder,
+.card-body .form-select::-ms-input-placeholder,
 input::-ms-input-placeholder,
 textarea::-ms-input-placeholder,
 select::-ms-input-placeholder,
@@ -41,20 +64,29 @@ select::-ms-input-placeholder,
 .form-select::-ms-input-placeholder {
     color: #00ff00 !important;
     opacity: 1 !important;
+    font-weight: 500 !important;
 }
 
 /* Small hint text (text-muted class) - bright green */
+.card-body small.text-muted,
+.card-body .text-muted,
+.card-body .form-text,
 small.text-muted,
 .text-muted,
 .form-text {
     color: #00ff00 !important;
+    opacity: 1 !important;
+    font-weight: 500 !important;
 }
 
 /* Form labels - ensure they're visible too */
+.card-body .form-label,
+.card-body label,
 .form-label,
 label {
     color: #00ff00 !important;
-    font-weight: 500;
+    font-weight: 600 !important;
+    text-shadow: 0 0 2px rgba(0, 255, 0, 0.5);
 }
 
 /* Card text on register page */
@@ -62,53 +94,85 @@ label {
 .card-body small,
 .card-body .text-muted {
     color: #00ff00 !important;
+    font-weight: 500 !important;
 }
 
 /* Checkbox label text */
+.card-body .form-check-label,
 .form-check-label {
     color: #00ff00 !important;
+    font-weight: 500 !important;
 }
 
 /* Links in form (Terms, Privacy) - bright green with underline */
+.card-body .form-check-label a,
+.card-body .card-footer a,
 .form-check-label a,
 .card-footer a {
     color: #00ff00 !important;
-    text-decoration: underline;
+    text-decoration: underline !important;
+    font-weight: 600 !important;
 }
 
+.card-body .form-check-label a:hover,
+.card-body .card-footer a:hover,
 .form-check-label a:hover,
 .card-footer a:hover {
     color: #00cc00 !important; /* Slightly darker green on hover */
+    text-shadow: 0 0 5px rgba(0, 255, 0, 0.8);
 }
 
 /* Input field text - white for better contrast */
-input,
-textarea,
-select,
-.form-control,
-.form-select {
+.card-body input,
+.card-body textarea,
+.card-body select,
+.card-body .form-control,
+.card-body .form-select {
     color: #ffffff !important;
-    background-color: rgba(0, 0, 0, 0.5) !important;
-    border-color: #00ff00 !important;
+    background-color: rgba(0, 0, 0, 0.7) !important;
+    border: 2px solid #00ff00 !important;
+    font-weight: 500 !important;
 }
 
 /* Input focus state - brighter green border */
-input:focus,
-textarea:focus,
-select:focus,
-.form-control:focus,
-.form-select:focus {
+.card-body input:focus,
+.card-body textarea:focus,
+.card-body select:focus,
+.card-body .form-control:focus,
+.card-body .form-select:focus {
     border-color: #00ff00 !important;
-    box-shadow: 0 0 0 0.2rem rgba(0, 255, 0, 0.25) !important;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5) !important;
     color: #ffffff !important;
+    background-color: rgba(0, 0, 0, 0.8) !important;
 }
 
 /* Card footer text */
-.card-footer p {
+.card-footer p,
+.card-footer .mb-0 {
+    color: #00ff00 !important;
+    font-weight: 500 !important;
+}
+
+/* Card header text */
+.card-header h3,
+.card-header .mb-0 {
     color: #ffffff !important;
+    font-weight: 600 !important;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 /* Required asterisk - bright green */
 .form-label::after {
     color: #00ff00 !important;
+}
+
+/* Make sure text in center div is visible */
+.text-center a {
+    color: #00ff00 !important;
+    text-decoration: underline;
+    font-weight: 600 !important;
+}
+
+.text-center a:hover {
+    color: #00cc00 !important;
 }

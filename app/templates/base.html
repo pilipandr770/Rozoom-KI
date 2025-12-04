@@ -96,6 +96,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/pm-agent.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/contact-form-green.css') }}">
+    {% block extra_css %}{% endblock %}
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon.png') }}">
     <!-- Inline styles for ensuring high contrast in chat -->
     <style>
