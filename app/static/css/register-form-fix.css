@@ -1,0 +1,114 @@
+/*
+ * Registration form fix - bright green placeholders and hints
+ * Fixes dark text on dark background issue
+ */
+
+/* Placeholder text in input fields - bright green */
+input::placeholder,
+textarea::placeholder,
+select::placeholder,
+.form-control::placeholder,
+.form-select::placeholder {
+    color: #00ff00 !important; /* Bright green */
+    opacity: 1 !important;
+}
+
+/* WebKit browsers (Chrome, Safari, Edge) */
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder,
+select::-webkit-input-placeholder,
+.form-control::-webkit-input-placeholder,
+.form-select::-webkit-input-placeholder {
+    color: #00ff00 !important;
+    opacity: 1 !important;
+}
+
+/* Firefox */
+input::-moz-placeholder,
+textarea::-moz-placeholder,
+select::-moz-placeholder,
+.form-control::-moz-placeholder,
+.form-select::-moz-placeholder {
+    color: #00ff00 !important;
+    opacity: 1 !important;
+}
+
+/* IE 10+ */
+input::-ms-input-placeholder,
+textarea::-ms-input-placeholder,
+select::-ms-input-placeholder,
+.form-control::-ms-input-placeholder,
+.form-select::-ms-input-placeholder {
+    color: #00ff00 !important;
+    opacity: 1 !important;
+}
+
+/* Small hint text (text-muted class) - bright green */
+small.text-muted,
+.text-muted,
+.form-text {
+    color: #00ff00 !important;
+}
+
+/* Form labels - ensure they're visible too */
+.form-label,
+label {
+    color: #00ff00 !important;
+    font-weight: 500;
+}
+
+/* Card text on register page */
+.card-body label,
+.card-body small,
+.card-body .text-muted {
+    color: #00ff00 !important;
+}
+
+/* Checkbox label text */
+.form-check-label {
+    color: #00ff00 !important;
+}
+
+/* Links in form (Terms, Privacy) - bright green with underline */
+.form-check-label a,
+.card-footer a {
+    color: #00ff00 !important;
+    text-decoration: underline;
+}
+
+.form-check-label a:hover,
+.card-footer a:hover {
+    color: #00cc00 !important; /* Slightly darker green on hover */
+}
+
+/* Input field text - white for better contrast */
+input,
+textarea,
+select,
+.form-control,
+.form-select {
+    color: #ffffff !important;
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    border-color: #00ff00 !important;
+}
+
+/* Input focus state - brighter green border */
+input:focus,
+textarea:focus,
+select:focus,
+.form-control:focus,
+.form-select:focus {
+    border-color: #00ff00 !important;
+    box-shadow: 0 0 0 0.2rem rgba(0, 255, 0, 0.25) !important;
+    color: #ffffff !important;
+}
+
+/* Card footer text */
+.card-footer p {
+    color: #ffffff !important;
+}
+
+/* Required asterisk - bright green */
+.form-label::after {
+    color: #00ff00 !important;
+}
