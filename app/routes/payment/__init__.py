@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash, current_app, jsonify
 from flask_login import current_user
 from app.models import PricePackage, StripePayment
-from app import db
+from app import db, csrf
 import stripe
 import os
 from datetime import datetime
@@ -193,6 +193,7 @@ def cancel():
     return render_template('payment/cancel.html')
 
 @payment_bp.route('/webhook', methods=['POST'])
+@csrf.exempt
 def webhook():
     """Handle Stripe webhook events"""
     payload = request.get_data(as_text=True)

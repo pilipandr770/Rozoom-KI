@@ -23,6 +23,10 @@ class AdminUser(UserMixin, db.Model):
     password_hash = db.Column(db.String(256), nullable=False)
     is_admin = db.Column(db.Boolean, default=True, nullable=False)  # Add is_admin attribute
     
+    def get_id(self):
+        """Prefix admin IDs to avoid collision with regular User IDs in Flask-Login session"""
+        return f"admin_{self.id}"
+    
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
     
@@ -31,26 +35,37 @@ class AdminUser(UserMixin, db.Model):
 
 @login_manager.user_loader
 def load_user(user_id):
-    """Load user by ID for Flask-Login"""
+    """Load user by ID for Flask-Login.
+    
+    IDs are prefixed to avoid collisions between AdminUser and User tables:
+    - AdminUser: stored as 'admin_<id>'
+    - User:      stored as 'user_<id>'
+    Legacy unprefixed IDs are handled for backwards compatibility.
+    """
     from flask import current_app
     from app import db
 
     try:
-        # Ensure we have an application context
-        if not current_app:
-            return None
+        if isinstance(user_id, str) and user_id.startswith('admin_'):
+            return db.session.get(AdminUser, int(user_id[6:]))
 
-        with current_app.app_context():
-            # Try to load regular user first
+        if isinstance(user_id, str) and user_id.startswith('user_'):
             from app.models import User
-            user = User.query.get(int(user_id))
-            if user:
-                return user
+            return db.session.get(User, int(user_id[5:]))
 
-            # If not found, try admin user
-            return AdminUser.query.get(int(user_id))
+        # Legacy fallback: bare numeric ID (old sessions before prefix migration)
+        uid = int(user_id)
+        from app.models import User
+        user = db.session.get(User, uid)
+        if user:
+            return user
+        return db.session.get(AdminUser, uid)
+
     except Exception as e:
-        current_app.logger.error(f"Error loading user {user_id}: {str(e)}")
+        try:
+            current_app.logger.error(f"Error loading user {user_id}: {str(e)}")
+        except Exception:
+            pass
         return None
 
 # Function to create admin user for initial setup

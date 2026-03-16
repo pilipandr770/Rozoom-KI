@@ -612,7 +612,7 @@ def edit_pricing_package(id):
         flash('Access denied. Admin privileges required.', 'danger')
         return redirect(url_for('admin.dashboard'))
     
-    package = PricePackage.query.get_or_404(id)
+    package = db.get_or_404(PricePackage, id)
     
     if request.method == 'POST':
         name = request.form.get('name')
@@ -655,7 +655,7 @@ def delete_pricing_package(id):
         flash('Access denied. Admin privileges required.', 'danger')
         return redirect(url_for('admin.dashboard'))
     
-    package = PricePackage.query.get_or_404(id)
+    package = db.get_or_404(PricePackage, id)
     db.session.delete(package)
     db.session.commit()
     

@@ -25,10 +25,7 @@ services:
     runtime: python
     plan: starter # Используйте соответствующий тарифный план
     buildCommand: pip install -r requirements.txt
-    startCommand: bash render_start.sh || bash direct_start.sh
-    # Двойной fallback для максимальной надежности:
-    # 1. render_start.sh - основной скрипт с миграциями и исправлениями
-    # 2. direct_start.sh - запуск без миграций, прямое создание таблиц
+    startCommand: gunicorn -c gunicorn_config.py run:app
     envVars:
       - key: FLASK_APP
         value: run.py

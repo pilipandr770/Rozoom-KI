@@ -13,3 +13,7 @@ def register_commands(app):
     # Register schema update command
     from app.commands.update_schema import update_schema_command
     app.cli.add_command(update_schema_command)
+
+    # Register pricing seed command
+    from app.commands.seed_pricing import seed_pricing_command
+    app.cli.add_command(seed_pricing_command)

@@ -27,6 +27,10 @@ class User(UserMixin, db.Model):
     
     # Blog relationships
     blog_posts = relationship("BlogPost", back_populates="author")
+
+    def get_id(self):
+        """Prefix user IDs to avoid collision with AdminUser IDs in Flask-Login session"""
+        return f"user_{self.id}"
     
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)

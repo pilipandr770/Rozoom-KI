@@ -25,7 +25,7 @@ class Config:
     if database_url and 'postgresql://' in database_url:
         if DISABLE_SSL:
             # Completely disable SSL if explicitly requested
-            app.logger.info("SSL disabled by DISABLE_POSTGRES_SSL environment variable")
+            print("[Config] SSL disabled by DISABLE_POSTGRES_SSL environment variable")
             # Remove any existing SSL parameters
             if '?' in database_url:
                 base_url = database_url.split('?')[0]

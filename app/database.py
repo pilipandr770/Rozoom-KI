@@ -22,6 +22,17 @@ def init_database_schema(app):
             app.logger.info("Database tables have been created if they did not exist")
         except Exception as e:
             app.logger.error(f"Failed to create database tables: {str(e)}")
+
+        # Auto-seed pricing packages if table is empty
+        try:
+            from app.models.pricing import PricePackage
+            from app.commands.seed_pricing import seed_pricing
+            if PricePackage.query.count() == 0:
+                app.logger.info("price_packages table is empty — seeding default packages...")
+                seed_pricing()
+                app.logger.info("Default pricing packages seeded successfully")
+        except Exception as e:
+            app.logger.warning(f"Could not auto-seed pricing packages: {e}")
         
         # Check and add email column to AdminUser if needed
         if 'admin_users' in inspector.get_table_names():
