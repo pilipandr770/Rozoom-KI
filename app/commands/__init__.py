@@ -17,3 +17,7 @@ def register_commands(app):
     # Register pricing seed command
     from app.commands.seed_pricing import seed_pricing_command
     app.cli.add_command(seed_pricing_command)
+
+    # Register admin reset command
+    from app.commands.reset_admin import reset_admin_command
+    app.cli.add_command(reset_admin_command)

@@ -71,46 +71,48 @@ def load_user(user_id):
 # Function to create admin user for initial setup
 def create_admin_user(app):
     with app.app_context():
-        from sqlalchemy import inspect, text
-        from sqlalchemy.exc import ProgrammingError
-        
-        # Note: PostgreSQL schema is configured at metadata level in create_app()
-        # Tables should already be created by create_tables.sh during deployment
-        schema = app.config.get('POSTGRES_SCHEMA', 'rozoom_ki_schema') if 'postgresql' in app.config['SQLALCHEMY_DATABASE_URI'] else None
-        
-        # Verify tables exist
+        from sqlalchemy import inspect
+
         inspector = inspect(db.engine)
+        schema = app.config.get('POSTGRES_SCHEMA', 'rozoom_ki_schema') if 'postgresql' in app.config['SQLALCHEMY_DATABASE_URI'] else None
+
+        # Try the configured schema first, then fall back to 'public'
         existing_tables = inspector.get_table_names(schema=schema)
-        
         if not existing_tables:
-            app.logger.error(f"CRITICAL: No tables found in schema '{schema}'. Database initialization failed during deployment.")
+            app.logger.warning(f"No tables in schema '{schema}', trying 'public'...")
+            existing_tables = inspector.get_table_names(schema='public')
+        if not existing_tables:
+            app.logger.error("CRITICAL: No tables found in any schema. Database not initialized.")
             return
-        
-        app.logger.info(f"Found {len(existing_tables)} tables in database: {', '.join(existing_tables)}")
-        
+
+        app.logger.info(f"Found {len(existing_tables)} tables: {', '.join(existing_tables)}")
+
         if 'admin_users' not in existing_tables:
-            app.logger.warning(f"admin_users table not found. Available tables: {existing_tables}")
+            app.logger.warning(f"admin_users table not found. Available: {existing_tables}")
             return
-        
+
         admin = AdminUser.query.filter_by(username='admin').first()
         if not admin:
             try:
-                # Try to create admin user with email
                 admin = AdminUser(
                     username='admin',
                     email=os.environ.get('ADMIN_EMAIL', 'admin@rozoom-ki.com')
                 )
-                admin.set_password('admin')  # Default password, should be changed in production
-                db.session.add(admin)
-                db.session.commit()
-                print("Admin user created.")
-            except Exception as e:
-                # If email column doesn't exist yet
-                print(f"Warning: {e}")
-                admin = AdminUser(username='admin')
                 admin.set_password('admin')
                 db.session.add(admin)
                 db.session.commit()
-                print("Admin user created without email field.")
+                print("Admin user created. Login: admin / admin")
+            except Exception as e:
+                db.session.rollback()
+                print(f"Warning creating admin with email: {e}")
+                try:
+                    admin = AdminUser(username='admin')
+                    admin.set_password('admin')
+                    db.session.add(admin)
+                    db.session.commit()
+                    print("Admin user created (without email). Login: admin / admin")
+                except Exception as e2:
+                    db.session.rollback()
+                    print(f"ERROR: Could not create admin user: {e2}")
         else:
             print("Admin user already exists.")
