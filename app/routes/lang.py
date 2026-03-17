@@ -1,4 +1,5 @@
-﻿from flask import Blueprint, request, current_app, jsonify, make_response, redirect
+﻿from urllib.parse import urlparse
+from flask import Blueprint, request, current_app, jsonify, make_response, redirect
 
 lang_bp = Blueprint('lang', __name__)
 
@@ -32,7 +33,10 @@ def set_language(lang):
         normalized = _default_language()
         cookie_value = normalized
 
-    next_url = request.args.get('next') or request.referrer or '/'
+    # Restrict redirect to local paths only (prevent open-redirect).
+    raw_next = request.args.get('next') or ''
+    parsed = urlparse(raw_next)
+    next_url = raw_next if (not parsed.netloc and raw_next.startswith('/')) else '/'
     is_ajax = request.headers.get('X-Requested-With') == 'XMLHttpRequest'
     max_age = 365 * 24 * 60 * 60
 

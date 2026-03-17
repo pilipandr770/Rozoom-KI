@@ -24,7 +24,7 @@ services:
     name: andrii-pylypchuk
     runtime: python
     plan: starter # Используйте соответствующий тарифный план
-    buildCommand: pip install -r requirements.txt
+    buildCommand: pip install -r requirements.txt && pybabel compile -d app/translations
     startCommand: gunicorn -c gunicorn_config.py run:app
     envVars:
       - key: FLASK_APP

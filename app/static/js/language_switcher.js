@@ -1,59 +1,13 @@
 /**
- * JavaScript для улучшенного переключения языков
+ * Language switcher – direct navigation (no AJAX).
+ * The server sets the cookie and redirects back to the same page.
  */
-document.addEventListener('DOMContentLoaded', function() {
-    initLanguageSwitcher();
-});
-
-function initLanguageSwitcher() {
-    // Находим все кнопки переключения языка
-    const langButtons = document.querySelectorAll('.lang-button');
-    
-    langButtons.forEach(button => {
-        button.addEventListener('click', function(event) {
-            // Если текущий язык уже активен, не делаем ничего
-            if (this.classList.contains('active')) {
-                event.preventDefault();
-                return;
-            }
-            
-            // Получаем URL для переключения языка
-            const langUrl = this.getAttribute('href');
-            
-            // Предотвращаем стандартное поведение ссылки
-            event.preventDefault();
-            
-            // Анимация нажатия
+document.addEventListener('DOMContentLoaded', function () {
+    // Visual feedback only: animate the clicked button.
+    document.querySelectorAll('.lang-button').forEach(function (btn) {
+        btn.addEventListener('click', function () {
             this.classList.add('clicked');
-            setTimeout(() => this.classList.remove('clicked'), 300);
-            
-            // Делаем AJAX запрос для переключения языка
-            fetch(langUrl, {
-                headers: {
-                    'X-Requested-With': 'XMLHttpRequest'
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    // Обновляем активный класс на кнопках
-                    langButtons.forEach(btn => btn.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Устанавливаем атрибут data-lang на html элементе
-                    const lang = this.getAttribute('data-lang') || 'en';
-                    document.documentElement.setAttribute('data-lang', lang);
-                    document.documentElement.setAttribute('lang', lang);
-                    
-                    // Перезагружаем страницу для применения изменений
-                    location.reload();
-                }
-            })
-            .catch(error => {
-                console.error('Ошибка при переключении языка:', error);
-                // В случае ошибки просто перенаправляем
-                window.location.href = langUrl;
-            });
+            // Let default <a> navigation handle the rest.
         });
     });
-}
+});

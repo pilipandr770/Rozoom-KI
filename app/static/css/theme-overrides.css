@@ -481,3 +481,53 @@ input[type="range"] { accent-color: var(--accent); }
   outline: 2px solid var(--accent) !important;
   outline-offset: 2px !important;
 }
+
+/* ─── Homepage benefit cards (account-cta section) ──────────── */
+.benefit-card {
+  background: var(--bg-surface-2) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text-primary) !important;
+}
+.benefit-card h5 {
+  color: var(--text-on-dark) !important;
+  font-weight: 600;
+}
+.benefit-card p {
+  color: var(--text-secondary) !important;
+  font-size: 0.95rem;
+}
+
+/* account-cta section background & text */
+.account-cta {
+  background: var(--bg-surface) !important;
+  border-top: 1px solid var(--border) !important;
+}
+.account-cta h2, .account-cta h3, .account-cta h4 {
+  color: var(--text-on-dark) !important;
+}
+.account-cta p, .account-cta .lead {
+  color: var(--text-secondary) !important;
+}
+.account-cta .account-highlight {
+  background: var(--bg-surface-2) !important;
+  border-left: 3px solid var(--accent) !important;
+}
+.account-cta .account-highlight p,
+.account-cta .account-highlight strong {
+  color: var(--text-primary) !important;
+}
+.account-cta .card {
+  background: var(--bg-surface-2) !important;
+  border: 1px solid var(--border) !important;
+}
+.account-cta .card h4, .account-cta .card h5 {
+  color: var(--text-on-dark) !important;
+}
+.account-cta .card p { color: var(--text-secondary) !important; }
+
+/* project-journey list (if used) */
+.project-journey li {
+  background: var(--bg-surface-2) !important;
+  border-left: 3px solid var(--accent) !important;
+  color: var(--text-primary) !important;
+}
