@@ -621,3 +621,23 @@ input[type="range"] { accent-color: var(--accent); }
   border-left: 3px solid var(--accent) !important;
   color: var(--text-primary) !important;
 }
+
+/* ─── Chatbot-widget section + agent cards ──────────────────── */
+.chatbot-widget-section {
+  background: var(--bg-surface) !important;
+  border-top: 1px solid var(--border) !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+.chatbot-widget-section h2 { color: var(--text-on-dark) !important; }
+.chatbot-widget-section .lead,
+.widget-benefits li { color: var(--text-secondary) !important; }
+.widget-benefits li::before { color: var(--accent) !important; }
+
+.agent-card {
+  background: var(--bg-surface-2) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: none !important;
+}
+.agent-card h3 { color: var(--text-on-dark)   !important; }
+.agent-card p   { color: var(--text-secondary) !important; }
+.agent-number   { color: rgba(59,130,246,.30)  !important; }

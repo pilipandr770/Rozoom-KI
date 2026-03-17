@@ -1,4 +1,4 @@
-﻿from urllib.parse import urlparse
+﻿from urllib.parse import urlparse, urlunparse, urlencode, parse_qs, urljoin
 from flask import Blueprint, request, current_app, jsonify, make_response, redirect
 
 lang_bp = Blueprint('lang', __name__)
@@ -36,7 +36,14 @@ def set_language(lang):
     # Restrict redirect to local paths only (prevent open-redirect).
     raw_next = request.args.get('next') or ''
     parsed = urlparse(raw_next)
-    next_url = raw_next if (not parsed.netloc and raw_next.startswith('/')) else '/'
+    if not parsed.netloc and raw_next.startswith('/'):
+        # Append ?lang=<normalized> so get_locale() reads it at step 1
+        # even if the browser blocks the cookie.
+        qs = parse_qs(parsed.query)
+        qs['lang'] = [normalized]
+        next_url = urlunparse(parsed._replace(query=urlencode(qs, doseq=True)))
+    else:
+        next_url = f'/?lang={normalized}'
     is_ajax = request.headers.get('X-Requested-With') == 'XMLHttpRequest'
     max_age = 365 * 24 * 60 * 60
 
