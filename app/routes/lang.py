@@ -1,5 +1,5 @@
 ﻿from urllib.parse import urlparse, urlunparse, urlencode, parse_qs, urljoin
-from flask import Blueprint, request, current_app, jsonify, make_response, redirect
+from flask import Blueprint, request, current_app, jsonify, make_response, redirect, session
 
 lang_bp = Blueprint('lang', __name__)
 
@@ -52,6 +52,17 @@ def set_language(lang):
         response.set_cookie('lang', cookie_value, max_age=max_age, path='/')
         return response
 
+    # Store in Flask session as a reliable cross-request backup
+    session['lang'] = normalized
+    session.permanent = True
+
     response = make_response(redirect(next_url))
-    response.set_cookie('lang', cookie_value, max_age=max_age, path='/')
+    response.set_cookie(
+        'lang', cookie_value,
+        max_age=max_age,
+        path='/',
+        samesite='Lax',
+    )
+    # No-store so the redirect itself is never served from browser cache
+    response.headers['Cache-Control'] = 'no-store'
     return response

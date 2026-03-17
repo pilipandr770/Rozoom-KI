@@ -77,7 +77,16 @@ def init_security_headers(app: Flask):
         # Удалить заголовок Server (скрыть версию сервера)
         # Cloudflare все равно добавляет свой заголовок Server, но мы можем убрать наш
         response.headers.pop('Server', None)
-        
+
+        # For HTML pages: tell caches the content varies by Cookie (language) and
+        # Accept-Language, preventing stale-language cache hits.
+        content_type = response.content_type or ''
+        if 'text/html' in content_type:
+            response.headers['Vary'] = 'Cookie, Accept-Language'
+            # Disable caching for dynamic HTML so language changes are always fresh
+            if 'Cache-Control' not in response.headers:
+                response.headers['Cache-Control'] = 'no-store, no-cache, must-revalidate, max-age=0'
+
         return response
     
     app.logger.info("✅ Security headers middleware initialized")

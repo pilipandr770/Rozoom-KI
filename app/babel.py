@@ -1,4 +1,4 @@
-﻿from flask import request, g, current_app
+﻿from flask import request, g, current_app, session
 from flask_babel import Babel
 from .i18n_patch import domain_manager, payment_domain
 
@@ -32,13 +32,21 @@ def get_locale():
     if from_cookie:
         return from_cookie
 
-    # 3. Accept-Language header best match
+    # 3. Flask session (set by /set-language/ alongside the cookie)
+    try:
+        from_session = _resolve_alias(session.get('lang'))
+        if from_session:
+            return from_session
+    except RuntimeError:
+        pass  # Outside request context
+
+    # 4. Accept-Language header best match
     best_match = request.accept_languages.best_match(languages)
     normalized_best = _resolve_alias(best_match)
     if normalized_best:
         return normalized_best
 
-    # 4. Configured default locale
+    # 5. Configured default locale
     default_locale = current_app.config.get('BABEL_DEFAULT_LOCALE', languages[0] if languages else 'en')
     normalized_default = _resolve_alias(default_locale)
     if normalized_default:
