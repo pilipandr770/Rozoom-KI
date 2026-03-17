@@ -1,10 +1,8 @@
-/* 
+/* DEPRECATED: Neon green styling removed. Dark theme handled by theme-overrides.css */
+/*
 * Services form placeholder and help text fix
-* Changes the text color to bright green for better readability
-* on light backgrounds
 */
-
-/* Target specifically the service form textareas and inputs */
+/*
 #project-questionnaire input::placeholder,
 #project-questionnaire textarea::placeholder,
 #project-questionnaire .form-control::placeholder,

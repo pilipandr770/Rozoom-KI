@@ -78,71 +78,18 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/animations.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/dark-background.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/particles-bg.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/particles-sphere.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/video-background.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/video-hero.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/video-responsive.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/language_switcher.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/fix-contrast.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/no-icons.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/blog-fixes.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/checkbox-text-fix.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/chat-widget.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/chat-header.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/chat-fixes.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/chat-button-fix.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/agent-transitions.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/tech-spec.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/pm-agent.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/contact-form-green.css') }}">
-    <!-- Theme overrides: loaded last to win over Bootstrap and all other sheets -->
+    <!-- Theme overrides: loaded last, single source of truth for dark theme -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/theme-overrides.css') }}">
     {% block extra_css %}{% endblock %}
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon.png') }}">
-    <!-- Inline styles for ensuring high contrast in chat -->
-    <style>
-      /* Critical inline styles for chatbot */
-      .chat-msg.bot {
-        background-color: #2980b9 !important; /* Deeper blue for better contrast */
-        color: #ffffff !important;
-        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2) !important;
-      }
-      
-      .chat-msg.user {
-        background-color: #2ecc71 !important;
-        color: #ffffff !important;
-      }
-      
-      .chat-window {
-        background: #1e2732 !important;
-      }
-      
-      .chat-messages {
-        background: #1e2732 !important;
-      }
-    </style>
-    <!-- Обратите внимание: удален ненужный закрывающий тег script -->
-    <style>
-      /* Критическое CSS для блокировки всех Font Awesome иконок */
-      i.fas, i.fab, i.fa, i.far, i[class^="fa"], i[class*=" fa"],
-      .fas, .fab, .fa, .far, [class^="fa-"], [class*=" fa-"] {
-        display: none !important;
-        visibility: hidden !important;
-        opacity: 0 !important;
-        width: 0 !important;
-        height: 0 !important;
-        overflow: hidden !important;
-        margin: 0 !important;
-        padding: 0 !important;
-      }
-      
-      /* Скрываем все дополнительные иконки в статьях */
-      .blog-post-content i, .blog-post-meta i, .blog-post-title i {
-        display: none !important;
-        visibility: hidden !important;
-      }
-    </style>
     {% endblock %}
   <body>
     <!-- Particles.js background -->

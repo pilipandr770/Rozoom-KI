@@ -1,9 +1,5 @@
-/* 
-* Checkbox labels enhancement for better readability
-* Makes all checkbox-related text bright green
-*/
-
-/* Main checkbox labels */
+/* DEPRECATED: Neon green styling removed. Dark theme handled by theme-overrides.css */
+/*
 #project-questionnaire .form-check-label {
     color: #00cc00 !important;
     font-weight: 600 !important;

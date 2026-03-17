@@ -1,6 +1,5 @@
-/* Direct targeting of checkbox help text */
-
-/* Target all form-text divs under project-questionnaire */
+/* DEPRECATED: Neon green styling removed. Dark theme handled by theme-overrides.css */
+/*
 #project-questionnaire .form-text {
     color: #00cc00 !important;
     font-weight: 500 !important;

@@ -1,23 +1,4 @@
-/*
- * Registration form fix - bright green placeholders and hints
- * Fixes dark text on dark background issue
- */
-
-/* Placeholder text in input fields - bright green */
-.card-body input::placeholder,
-.card-body textarea::placeholder,
-.card-body select::placeholder,
-.card-body .form-control::placeholder,
-.card-body .form-select::placeholder,
-input::placeholder,
-textarea::placeholder,
-select::placeholder,
-.form-control::placeholder,
-.form-select::placeholder {
-    color: #00ff00 !important; /* Bright green */
-    opacity: 1 !important;
-    font-weight: 500 !important;
-}
+/* register-form-fix.css — DEPRECATED. All form styles now live in theme-overrides.css */
 
 /* WebKit browsers (Chrome, Safari, Edge) */
 .card-body input::-webkit-input-placeholder,

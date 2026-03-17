@@ -1,20 +1,4 @@
-/* Fix contrast issues for form elements and blog posts */
-
-/* Form elements in services.html */
-.form-check-label {
-    color: #333333 !important; /* Darker text color for checkbox labels */
-}
-
-/* Form hint text */
-.form-text {
-    color: #333333 !important; /* Darker text color for hint text */
-    font-weight: 500; /* Make it slightly bolder */
-}
-
-/* Blog post content */
-.post-body {
-    color: #333333 !important; /* Darker text color for blog content */
-}
+/* fix-contrast.css — DEPRECATED. All contrast fixes now live in theme-overrides.css */
 
 /* Make sure the accordion text is visible */
 .accordion-item {
