@@ -41,16 +41,11 @@ worker_tmp_dir = "/tmp"
 def post_fork(server, worker):
     """Reset the asyncio event loop in each forked worker.
 
-    Python 3.12+ (and especially 3.14) raises RuntimeError if a worker
-    inherits an event loop created in the master process.  We explicitly
-    close the inherited loop and install a brand-new one so no stale
-    callbacks can fire.
+    Python 3.12+ (especially 3.14) raises RuntimeError if a worker inherits
+    an event loop from the master process.  Calling close() on the inherited
+    loop triggers its pending callbacks, which then fail with
+    "loop is not the running loop" because a new loop was already installed.
+    Safe fix: just install a fresh loop without touching the inherited one.
     """
     import asyncio
-    try:
-        old = asyncio.get_event_loop_policy().get_event_loop()
-        if old is not None and not old.is_closed():
-            old.close()
-    except Exception:
-        pass
     asyncio.set_event_loop(asyncio.new_event_loop())
