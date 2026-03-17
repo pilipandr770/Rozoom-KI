@@ -10,7 +10,8 @@ cpu_count = multiprocessing.cpu_count()
 worker_class = "gthread"
 workers = min(2, cpu_count)         # небагато воркерів для економії пам'яті
 threads = 4                         # пара потоків на воркер — достатньо
-timeout = 120                       # щоб не обривати повільні запити до OpenAI
+timeout = 300                       # OpenAI/Telegram calls can be slow
+graceful_timeout = 30               # time to finish in-flight requests on shutdown
 keepalive = 5
 
 # Логування
