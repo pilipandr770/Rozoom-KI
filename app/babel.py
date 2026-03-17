@@ -65,3 +65,11 @@ def init_babel(app):
     @app.before_request
     def before_request():
         g.locale = str(get_locale())
+        # If ?lang= is in the URL, persist it to session so subsequent pages
+        # (without the query param) keep the same language.
+        lang_param = request.args.get('lang')
+        if lang_param:
+            resolved = _resolve_alias(lang_param)
+            if resolved:
+                session['lang'] = resolved
+                session.permanent = True

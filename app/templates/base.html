@@ -111,25 +111,25 @@
       
       <nav class="nav">
         <div class="nav-left">
-          <a href="/">{{ _('Home') }}</a>
-          <a href="/services">{{ _('Services') }}</a>
-          <a href="/pricing">{{ _('Pricing') }}</a>
-          <a href="/blog">{{ _('Blog') }}</a>
-          <a href="/contact">{{ _('Contact') }}</a>
+          <a href="/?lang={{ g.locale }}">{{ _('Home') }}</a>
+          <a href="/services?lang={{ g.locale }}">{{ _('Services') }}</a>
+          <a href="/pricing?lang={{ g.locale }}">{{ _('Pricing') }}</a>
+          <a href="/blog?lang={{ g.locale }}">{{ _('Blog') }}</a>
+          <a href="/contact?lang={{ g.locale }}">{{ _('Contact') }}</a>
         </div>
         <div class="nav-right">
           {# Мовне меню #}
           {{ language_switcher() }}
 
           {% if current_user.is_authenticated %}
-            <a href="{{ url_for('dashboard.index') }}">{{ _('Dashboard') }}</a>
+            <a href="{{ url_for('dashboard.index', lang=g.locale) }}">{{ _('Dashboard') }}</a>
             {% if current_user.is_admin %}
-              <a href="{{ url_for('admin.dashboard') }}" class="admin-link">{{ _('Admin Panel') }}</a>
+              <a href="{{ url_for('admin.dashboard', lang=g.locale) }}" class="admin-link">{{ _('Admin Panel') }}</a>
             {% endif %}
-            <a href="{{ url_for('auth.logout') }}">{{ _('Logout') }}</a>
+            <a href="{{ url_for('auth.logout', lang=g.locale) }}">{{ _('Logout') }}</a>
           {% else %}
-            <a href="{{ url_for('auth.login') }}">{{ _('Login') }}</a>
-            <a href="{{ url_for('auth.register') }}">{{ _('Register') }}</a>
+            <a href="{{ url_for('auth.login', lang=g.locale) }}">{{ _('Login') }}</a>
+            <a href="{{ url_for('auth.register', lang=g.locale) }}">{{ _('Register') }}</a>
           {% endif %}
         </div>
       </nav>
@@ -158,9 +158,9 @@
       <div class="footer-content">
         <p>{{ _('&copy; 2025 Andrii Pylypchuk. All rights reserved.') }}</p>
         <nav class="footer-links" aria-label="Footer Navigation">
-          <a href="{{ url_for('pages.impressum') }}" class="footer-link">{{ _('Impressum') }}</a>
-          <a href="{{ url_for('pages.privacy') }}" class="footer-link">{{ _('Privacy Policy') }}</a>
-          <a href="{{ url_for('pages.terms') }}" class="footer-link">{{ _('Terms of Service') }}</a>
+          <a href="{{ url_for('pages.impressum', lang=g.locale) }}" class="footer-link">{{ _('Impressum') }}</a>
+          <a href="{{ url_for('pages.privacy', lang=g.locale) }}" class="footer-link">{{ _('Privacy Policy') }}</a>
+          <a href="{{ url_for('pages.terms', lang=g.locale) }}" class="footer-link">{{ _('Terms of Service') }}</a>
         </nav>
       </div>
     </footer>
