@@ -32,7 +32,7 @@ def init_scheduler():
     )
 
     scheduler.start()
-    logger.info("APScheduler started — content generation job registered (every 30 min)")
+    logger.info("APScheduler started — content generation job registered (daily at 08:00 UTC)")
     return scheduler
 
 

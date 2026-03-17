@@ -454,6 +454,61 @@ input[type="range"] { accent-color: var(--accent); }
 }
 .blog-post-meta { color: var(--text-secondary) !important; }
 
+/* Blog list cards */
+.blog-post {
+  background: var(--bg-surface) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text-primary) !important;
+}
+.blog-post .post-content h2 a {
+  color: var(--text-on-dark) !important;
+}
+.blog-post .post-meta,
+.blog-post .post-excerpt { color: var(--text-secondary) !important; }
+
+/* Blog sidebar */
+.sidebar-widget {
+  background: var(--bg-surface) !important;
+  border: 1px solid var(--border) !important;
+}
+.sidebar-widget h3 { border-bottom-color: var(--border) !important; }
+.category-list li a, .recent-posts li a { color: var(--text-secondary) !important; }
+.recent-post-info h4 { color: var(--text-primary) !important; }
+.recent-post-date { color: var(--text-muted) !important; }
+.count, .tag {
+  background: var(--bg-surface-2) !important;
+  color: var(--text-secondary) !important;
+}
+.tag:hover, .tag.active {
+  background: var(--accent) !important;
+  color: #fff !important;
+}
+
+/* Blog list empty state */
+.no-posts {
+  background: var(--bg-surface) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text-secondary) !important;
+}
+.no-posts h2, .no-posts p { color: var(--text-secondary) !important; }
+
+/* Related posts + post navigation */
+.related-post {
+  background: var(--bg-surface) !important;
+  border: 1px solid var(--border) !important;
+}
+.related-post a { color: var(--text-primary) !important; }
+.related-post h3 { color: var(--text-primary) !important; }
+.related-post-date { color: var(--text-muted) !important; }
+
+.post-nav {
+  background: var(--bg-surface) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text-primary) !important;
+}
+.post-nav-info span { color: var(--text-muted) !important; }
+.post-nav-info h4   { color: var(--text-primary) !important; }
+
 /* ─── Flash messages (own .alert wrappers) ───────────────────── */
 .flash-container .alert { margin-bottom: .75rem; }
 
@@ -481,6 +536,41 @@ input[type="range"] { accent-color: var(--accent); }
   outline: 2px solid var(--accent) !important;
   outline-offset: 2px !important;
 }
+
+/* ─── Pricing cards (pricing.html inline styles override) ───── */
+.pricing-card {
+  background: var(--bg-surface) !important;
+  border-color: var(--border) !important;
+  color: var(--text-primary) !important;
+}
+.pricing-card.featured {
+  border-color: var(--accent) !important;
+  box-shadow: 0 6px 24px rgba(59,130,246,.22) !important;
+}
+.pricing-name  { color: var(--accent) !important; }
+.pricing-hours { color: var(--text-secondary) !important; }
+.pricing-price { color: var(--text-on-dark) !important; }
+.pricing-per-hour   { color: var(--text-muted) !important; }
+.pricing-description { color: var(--text-secondary) !important; }
+.featured-tag {
+  background: var(--green) !important;
+  color: #fff !important;
+}
+.pricing-btn {
+  background: var(--accent) !important;
+  color: #fff !important;
+}
+.pricing-btn:hover { background: var(--accent-hover) !important; }
+
+/* ─── Testimonials ───────────────────────────────────────────── */
+.testimonial-card {
+  background: var(--bg-surface) !important;
+  border: 1px solid var(--border) !important;
+  border-left: 4px solid var(--accent) !important;
+}
+.testimonial-content p { color: var(--text-primary) !important; }
+.testimonial-author strong { color: var(--text-on-dark) !important; }
+.testimonial-author span  { color: var(--text-muted)   !important; }
 
 /* ─── Homepage benefit cards (account-cta section) ──────────── */
 .benefit-card {
