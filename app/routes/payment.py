@@ -167,7 +167,7 @@ def webhook():
         # Find the payment record
         payment_id = session.get('metadata', {}).get('payment_id')
         if payment_id:
-            payment = StripePayment.query.get(payment_id)
+            payment = db.session.get(StripePayment, payment_id)
             if payment:
                 payment.status = 'succeeded'
                 payment.payment_intent_id = session.get('payment_intent')

@@ -1,4 +1,5 @@
 from flask import current_app
+from app import db
 from app.models.project import Project, ProjectTask, ProjectUpdate
 from app.models.base import User
 from app.models.tech_spec_submission import TechSpecSubmission
@@ -15,7 +16,7 @@ def handle_pm_request(message: str, metadata: Dict) -> Dict:
         }
     
     user_id = metadata['user_id']
-    user = User.query.get(user_id)
+    user = db.session.get(User, user_id)
     
     if not user:
         return {

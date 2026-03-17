@@ -102,7 +102,7 @@ def edit_schedule(id):
         return redirect(url_for('main.index'))
     
     # Получаем расписание
-    schedule = ContentSchedule.query.get_or_404(id)
+    schedule = db.get_or_404(ContentSchedule, id)
     
     # Получаем все категории для выбора
     categories = BlogCategory.query.all()
@@ -137,7 +137,7 @@ def delete_schedule(id):
         return redirect(url_for('main.index'))
     
     # Получаем расписание
-    schedule = ContentSchedule.query.get_or_404(id)
+    schedule = db.get_or_404(ContentSchedule, id)
     
     db.session.delete(schedule)
     db.session.commit()
@@ -155,7 +155,7 @@ def generate_now(id):
         return redirect(url_for('main.index'))
     
     # Получаем расписание
-    schedule = ContentSchedule.query.get_or_404(id)
+    schedule = db.get_or_404(ContentSchedule, id)
     
     # Генерируем контент
     generated_content = ContentSchedulerService.generate_content(schedule)
@@ -197,7 +197,7 @@ def view_content(id):
         return redirect(url_for('main.index'))
     
     # Получаем контент
-    content = GeneratedContent.query.get_or_404(id)
+    content = db.get_or_404(GeneratedContent, id)
     
     return render_template('admin/auto_content/view_content.html', content=content)
 
@@ -211,7 +211,7 @@ def publish_content(id):
         return redirect(url_for('main.index'))
     
     # Получаем контент
-    content = GeneratedContent.query.get_or_404(id)
+    content = db.get_or_404(GeneratedContent, id)
     
     # Публикуем контент
     en_post, de_post = ContentSchedulerService.publish_content(content)

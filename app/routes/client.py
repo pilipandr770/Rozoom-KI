@@ -70,7 +70,7 @@ def dashboard():
 @login_required
 def view_project(project_id):
     """Просмотр проекта клиентом"""
-    project = Project.query.get_or_404(project_id)
+    project = db.get_or_404(Project, project_id)
     
     # Проверяем, что проект принадлежит текущему пользователю
     if project.client_id != current_user.id:
@@ -137,7 +137,7 @@ def view_project(project_id):
 @login_required
 def view_submission(submission_id):
     """Просмотр заявки клиентом"""
-    submission = TechSpecSubmission.query.get_or_404(submission_id)
+    submission = db.get_or_404(TechSpecSubmission, submission_id)
     
     # Проверяем, что заявка принадлежит текущему пользователю
     if submission.client_id != current_user.id:
@@ -193,7 +193,7 @@ def api_get_projects():
 @login_required
 def api_get_project_updates(project_id):
     """API для получения обновлений проекта для PM агента"""
-    project = Project.query.get_or_404(project_id)
+    project = db.get_or_404(Project, project_id)
     
     # Проверяем, что проект принадлежит текущему пользователю
     if project.client_id != current_user.id:

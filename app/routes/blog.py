@@ -137,14 +137,28 @@ def get_image(post_id):
     from flask import send_file, make_response
     import io
     
-    post = BlogPost.query.get_or_404(post_id)
+    post = db.session.get(BlogPost, post_id)
+    if post is None:
+        abort(404)
     
     if not post.image_data:
         abort(404)
     
-    # Create response with image data
-    response = make_response(post.image_data)
-    response.headers.set('Content-Type', 'image/png')  # Assuming PNG format
-    response.headers.set('Cache-Control', 'public, max-age=31536000')  # Cache for 1 year
+    # Detect MIME type from image binary header
+    data = post.image_data
+    if data[:8] == b'\x89PNG\r\n\x1a\n':
+        mime = 'image/png'
+    elif data[:2] == b'\xff\xd8':
+        mime = 'image/jpeg'
+    elif data[:4] == b'RIFF' and data[8:12] == b'WEBP':
+        mime = 'image/webp'
+    elif data[:6] in (b'GIF87a', b'GIF89a'):
+        mime = 'image/gif'
+    else:
+        mime = 'image/png'
+    
+    response = make_response(data)
+    response.headers.set('Content-Type', mime)
+    response.headers.set('Cache-Control', 'public, max-age=31536000')
     
     return response

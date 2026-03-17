@@ -140,7 +140,7 @@ def create_post():
         tags = BlogTag.query.filter(BlogTag.id.in_(tag_ids)).all()
         
         # Get category
-        category = BlogCategory.query.get(category_id)
+        category = db.session.get(BlogCategory, category_id)
         
         # Create new blog post
         post = BlogPost(
@@ -175,7 +175,7 @@ def edit_post(id):
         flash('Access denied. Admin privileges required.', 'danger')
         return redirect(url_for('admin.dashboard'))
         
-    post = BlogPost.query.get_or_404(id)
+    post = db.get_or_404(BlogPost, id)
     
     if request.method == 'POST':
         post.title = request.form.get('title')
@@ -187,7 +187,7 @@ def edit_post(id):
         
         # Update category
         category_id = request.form.get('category_id')
-        post.category = BlogCategory.query.get(category_id)
+        post.category = db.session.get(BlogCategory, category_id)
         
         # Update tags
         tag_ids = request.form.getlist('tags')
@@ -228,7 +228,7 @@ def delete_post(id):
         return redirect(url_for('admin.blog_posts'))
     
     # Получаем пост
-    post = BlogPost.query.get_or_404(id)
+    post = db.get_or_404(BlogPost, id)
     post_title = post.title  # Запоминаем название поста для сообщения
     
     try:
@@ -307,7 +307,7 @@ def edit_category(id):
         flash('Access denied. Admin privileges required.', 'danger')
         return redirect(url_for('admin.dashboard'))
         
-    category = BlogCategory.query.get_or_404(id)
+    category = db.get_or_404(BlogCategory, id)
     
     if request.method == 'POST':
         category.name = request.form.get('name')
@@ -473,7 +473,7 @@ def import_blog_json():
                         post = BlogPost.query.filter_by(slug=post_data['slug']).first()
                         if not post:
                             # Get category
-                            category = BlogCategory.query.get(post_data['category_id'])
+                            category = db.session.get(BlogCategory, post_data['category_id'])
                             
                             # Create post
                             post = BlogPost(
@@ -517,7 +517,7 @@ def edit_tag(id):
         flash('Access denied. Admin privileges required.', 'danger')
         return redirect(url_for('admin.dashboard'))
         
-    tag = BlogTag.query.get_or_404(id)
+    tag = db.get_or_404(BlogTag, id)
     
     if request.method == 'POST':
         tag.name = request.form.get('name')
@@ -539,7 +539,7 @@ def delete_tag(id):
         flash('Access denied. Admin privileges required.', 'danger')
         return redirect(url_for('admin.dashboard'))
         
-    tag = BlogTag.query.get_or_404(id)
+    tag = db.get_or_404(BlogTag, id)
     db.session.delete(tag)
     db.session.commit()
     
@@ -684,7 +684,7 @@ def user_detail(user_id):
         flash('Access denied. Admin privileges required.', 'danger')
         return redirect(url_for('admin.dashboard'))
         
-    user = User.query.get_or_404(user_id)
+    user = db.get_or_404(User, user_id)
     return render_template('admin/user_detail.html', user=user)
 
 @admin.route('/users/<int:user_id>/add_project', methods=['GET', 'POST'])
@@ -696,7 +696,7 @@ def add_user_project(user_id):
         flash('Access denied. Admin privileges required.', 'danger')
         return redirect(url_for('admin.dashboard'))
         
-    user = User.query.get_or_404(user_id)
+    user = db.get_or_404(User, user_id)
     
     if request.method == 'POST':
         title = request.form.get('title')
@@ -773,7 +773,7 @@ def tech_spec_detail(spec_id):
         flash('Access denied. Admin privileges required.', 'danger')
         return redirect(url_for('admin.dashboard'))
     
-    submission = TechSpecSubmission.query.get_or_404(spec_id)
+    submission = db.get_or_404(TechSpecSubmission, spec_id)
     
     if request.method == 'POST':
         action = request.form.get('action')
@@ -863,7 +863,7 @@ def project_detail(project_id):
         flash('Access denied. Admin privileges required.', 'danger')
         return redirect(url_for('admin.dashboard'))
     
-    project = Project.query.get_or_404(project_id)
+    project = db.get_or_404(Project, project_id)
     
     if request.method == 'POST':
         action = request.form.get('action')
@@ -892,7 +892,7 @@ def project_detail(project_id):
             
         elif action == 'update_task':
             task_id = request.form.get('task_id')
-            task = ProjectTask.query.get(task_id)
+            task = db.session.get(ProjectTask, task_id)
             if task:
                 task.status = request.form.get('task_status')
                 db.session.commit()
@@ -1005,6 +1005,6 @@ def payment_detail(payment_id):
         flash('Access denied. Admin privileges required.', 'danger')
         return redirect(url_for('main.index'))
     
-    payment = StripePayment.query.get_or_404(payment_id)
+    payment = db.get_or_404(StripePayment, payment_id)
     
     return render_template('admin/payment_detail.html', payment=payment)
