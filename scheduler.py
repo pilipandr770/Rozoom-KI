@@ -7,7 +7,6 @@ It sets up the APScheduler to periodically call the content generation task.
 
 import logging
 from apscheduler.schedulers.background import BackgroundScheduler
-from apscheduler.triggers.interval import IntervalTrigger
 
 logger = logging.getLogger(__name__)
 
@@ -21,14 +20,15 @@ def init_scheduler():
     """
     scheduler = BackgroundScheduler(daemon=True)
 
-    # Run content generation check every 30 minutes
+    # Run content generation once per day at 08:00 UTC
+    from apscheduler.triggers.cron import CronTrigger
     scheduler.add_job(
         func=_run_content_generation,
-        trigger=IntervalTrigger(minutes=30),
+        trigger=CronTrigger(hour=8, minute=0),
         id='generate_scheduled_content',
-        name='Auto-generate blog content on schedule',
+        name='Daily blog content generation (EN + DE)',
         replace_existing=True,
-        misfire_grace_time=300,
+        misfire_grace_time=3600,  # 1 hour grace if server was down at 08:00
     )
 
     scheduler.start()
