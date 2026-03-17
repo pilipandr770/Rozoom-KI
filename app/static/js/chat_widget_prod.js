@@ -7,9 +7,6 @@
     var toggle = document.getElementById('chat-toggle');
     var closeBtn = document.getElementById('chat-close');
     var chatWindow = document.getElementById('chat-window');
-    var btnGreeter = document.getElementById('agent-btn-greeter');
-    var btnSpec = document.getElementById('agent-btn-spec');
-    var btnPm = document.getElementById('agent-btn-pm');
     if (!input || !send || !messages || !toggle || !chatWindow) return;
 
     // IDs
@@ -45,17 +42,15 @@
       return 'uk';
     }
 
-    // Agent selection state
-    var selectedAgent = localStorage.getItem('rozoom_selected_agent') || 'greeter';
-    function setSelectedAgent(agent) {
-      selectedAgent = agent || 'greeter';
-      localStorage.setItem('rozoom_selected_agent', selectedAgent);
-      // Update UI state
-      [btnGreeter, btnSpec, btnPm].forEach(function(b){ if (!b) return; b.classList.remove('active'); });
-      var map = { greeter: btnGreeter, spec: btnSpec, pm: btnPm };
-      if (map[selectedAgent]) map[selectedAgent].classList.add('active');
+    // ── Auto-detect agent from current page ──────────────────────
+    function agentForPage() {
+      var path = window.location.pathname.toLowerCase();
+      if (path.indexOf('/dashboard') === 0 || path.indexOf('/client') === 0) return 'pm';
+      if (path.indexOf('/services') === 0 && path.indexOf('spec') !== -1) return 'spec';
+      return 'greeter';
     }
-    setSelectedAgent(selectedAgent);
+
+    var selectedAgent = agentForPage();
 
     function appendMsg(text, cls) {
       var div = document.createElement('div');
@@ -131,42 +126,13 @@
       });
     }
 
-    // Agent toggle events
-    function wireAgentButton(btn, agentKey, presetMessage) {
-      if (!btn) return;
-      btn.addEventListener('click', function(){
-        setSelectedAgent(agentKey);
-        // Send a silent handoff message (empty) to keep the same conversation and context
-        var thinking = showThinking();
-        var headers = { 'Content-Type': 'application/json' };
-        var tokenMeta = document.querySelector('meta[name="csrf-token"]');
-        if (tokenMeta) headers['X-CSRFToken'] = tokenMeta.getAttribute('content');
-        var metadata = {
-          language: detectLanguage(),
-          page: window.location.pathname,
-          user_id: userId,
-          conversation_id: conversationId,
-          selected_agent: selectedAgent,
-          suppress_greeting: true
-        };
-        fetch('/api/chat', {
-          method: 'POST',
-          headers: headers,
-          body: JSON.stringify({ message: presetMessage || '', metadata: metadata })
-        })
-        .then(function(res){ return res.json().catch(function(){ return {}; }); })
-        .then(function(data){ if (thinking && thinking.remove) thinking.remove(); if (data && data.answer) appendMsg(data.answer, 'bot'); })
-        .catch(function(){ if (thinking && thinking.remove) thinking.remove(); });
-      });
-    }
-    wireAgentButton(btnGreeter, 'greeter');
-    wireAgentButton(btnSpec, 'spec');
-    wireAgentButton(btnPm, 'pm');
+    // Agent toggle events removed — agent is auto-selected from the page.
+    // Keep wireAgentButton stub in case templates call openChat directly.
 
     // Expose openChat to allow templates to open with a specific agent and optional message
     window.openChat = function(agentKey, text){
       try { if (toggle && chatWindow && chatWindow.classList.contains('hidden')) { toggle.click(); } } catch(e){}
-      if (agentKey) setSelectedAgent(agentKey);
+      if (agentKey) selectedAgent = agentKey;
       if (typeof text === 'string' && text.trim()) {
         input.value = text;
         sendMessage();

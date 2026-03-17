@@ -203,11 +203,34 @@ META_SUPPRESS = "suppress_greeting"   # bool
 
 VALID_AGENTS = ("greeter", "spec", "pm")
 
+# Page-path → agent mapping (used when frontend doesn't set selected_agent)
+_PAGE_AGENT_MAP = (
+    ('/dashboard', 'pm'),
+    ('/client',    'pm'),
+    # Add more path prefixes here when new sections appear
+)
+
+def _infer_agent_from_page(page: str) -> str | None:
+    """Return agent key if the page path matches a known prefix."""
+    if not page:
+        return None
+    p = page.lower()
+    for prefix, agent in _PAGE_AGENT_MAP:
+        if p.startswith(prefix):
+            return agent
+    if '/spec' in p:
+        return 'spec'
+    return None
+
 def _ensure_defaults(metadata: Dict[str, Any]) -> None:
     if META_LANG not in metadata or not metadata[META_LANG]:
         metadata[META_LANG] = "uk"
+
+    # Auto-select agent from page when frontend didn't explicitly set one
     if META_SELECTED not in metadata or metadata[META_SELECTED] not in VALID_AGENTS:
-        metadata[META_SELECTED] = "greeter"
+        page_agent = _infer_agent_from_page(metadata.get('page', ''))
+        metadata[META_SELECTED] = page_agent or 'greeter'
+
     if META_ACTIVE not in metadata or metadata[META_ACTIVE] not in VALID_AGENTS:
         metadata[META_ACTIVE] = metadata[META_SELECTED]
 
