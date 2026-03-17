@@ -179,23 +179,14 @@ def init_database_schema(app):
             except Exception as e:
                 app.logger.info(f"Note about username constraint: {str(e)}")
         
-        # Create projects table if it doesn't exist
-        # Note: This fallback is deprecated - SQLAlchemy should handle table creation
-        # Kept for backwards compatibility only
-        if 'projects' not in inspector.get_table_names():
-            app.logger.warning("Projects table missing - should be created by SQLAlchemy models")
-        
-        # Create project_tasks table if it doesn't exist
-        # Note: This fallback is deprecated - SQLAlchemy should handle table creation
-        # Kept for backwards compatibility only
-        if 'project_tasks' not in inspector.get_table_names():
-            app.logger.warning("Project_tasks table missing - should be created by SQLAlchemy models")
-                
-        # Create project_updates table if it doesn't exist
-        # Note: This fallback is deprecated - SQLAlchemy should handle table creation
-        # Kept for backwards compatibility only
-        if 'project_updates' not in inspector.get_table_names():
-            app.logger.warning("Project_updates table missing - should be created by SQLAlchemy models")
+        # Use the configured schema so inspector finds schema-qualified tables
+        pg_schema = app.config.get('POSTGRES_SCHEMA') if 'postgresql' in str(engine.url) else None
+        existing = set(inspector.get_table_names(schema=pg_schema))
+
+        # Deprecated fallback checks — tables should be created by SQLAlchemy models
+        for tbl in ('projects', 'project_tasks', 'project_updates'):
+            if tbl not in existing:
+                app.logger.warning(f"{tbl} table missing – should be created by SQLAlchemy models")
                 
 # Для возможности запуска как отдельный скрипт
 if __name__ == "__main__":

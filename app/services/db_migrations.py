@@ -69,15 +69,12 @@ def ensure_assistant_thread_model():
         db.session.execute(text('SELECT 1'))
 
         inspector = inspect(db.engine)
-        if not inspector.has_table('assistant_threads'):
+        pg_schema = current_app.config.get('POSTGRES_SCHEMA') if 'postgresql' in str(db.engine.url) else None
+        if not inspector.has_table('assistant_threads', schema=pg_schema):
             current_app.logger.info("Creating assistant_threads table...")
-            # Create via SQLAlchemy Table metadata if available
             from app.models.assistant_thread import AssistantThread
             AssistantThread.__table__.create(db.engine)
             current_app.logger.info("assistant_threads table created successfully")
-        else:
-            # Table exists
-            pass
     except Exception as e:
         current_app.logger.error(f"Error ensuring assistant_threads table: {e}")
 

@@ -36,3 +36,14 @@ gunicorn.SERVER_SOFTWARE = 'Undisclosed'
 # ВАЖЛИВО: не pre-load з gthread це не критично, але краще лишити False для передбачуваності
 preload_app = False
 worker_tmp_dir = "/tmp"
+
+
+def post_fork(server, worker):
+    """Reset the asyncio event loop in each forked worker.
+
+    Python 3.12+ (and especially 3.14) raises RuntimeError if a worker
+    inherits an event loop created in the master process. A fresh loop
+    per worker process avoids 'loop is not the running loop' errors.
+    """
+    import asyncio
+    asyncio.set_event_loop(asyncio.new_event_loop())
