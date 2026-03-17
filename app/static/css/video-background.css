@@ -33,9 +33,11 @@
 /* Стили для секции с видео в качестве фона */
 .video-background-section {
   position: relative;
-  width: 100%;
+  /* full-bleed: выход за пределы Bootstrap .container */
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
   padding: 4rem 0;
-  margin: 3rem 0;
   overflow: hidden;
   color: white;
 }
