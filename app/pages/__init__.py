@@ -16,13 +16,50 @@ def index():
 
 @pages_bp.route('/health')
 def health_check():
-    """Health check endpoint РґР»СЏ РјРѕРЅРёС‚РѕСЂРёРЅРіР° СЃРµСЂРІРёСЃР° РЅР° Render.com"""
+    """Health check endpoint для мониторинга сервиса на Render.com"""
     return jsonify({"status": "ok", "service": "rozoom-ki"}), 200
 
 @pages_bp.route('/services')
 def services():
     return render_template('services.html')
-    
+
+
+@pages_bp.route('/lebenslauf')
+def lebenslauf():
+    """Public CV / Lebenslauf page."""
+    from app.models.cv import (
+        CVProfile, CVExperience, CVEducation, CVSkill,
+        CVProject, CVSocialLink, CVLanguage, CVCertification
+    )
+    profile = CVProfile.query.first()
+    experiences = CVExperience.query.order_by(CVExperience.order_idx, CVExperience.created_at.desc()).all()
+    educations = CVEducation.query.order_by(CVEducation.order_idx, CVEducation.created_at.desc()).all()
+    skills = CVSkill.query.order_by(CVSkill.category, CVSkill.order_idx).all()
+    projects = CVProject.query.order_by(CVProject.order_idx, CVProject.created_at.desc()).all()
+    social_links = CVSocialLink.query.order_by(CVSocialLink.order_idx).all()
+    languages = CVLanguage.query.order_by(CVLanguage.order_idx).all()
+    certifications = CVCertification.query.order_by(CVCertification.order_idx).all()
+
+    # Group skills by category
+    skills_by_cat = {}
+    for s in skills:
+        cat = s.category or 'Sonstige'
+        skills_by_cat.setdefault(cat, []).append(s)
+
+    return render_template(
+        'cv.html',
+        profile=profile,
+        experiences=experiences,
+        educations=educations,
+        skills_by_cat=skills_by_cat,
+        projects=projects,
+        social_links=social_links,
+        languages=languages,
+        certifications=certifications,
+    )
+
+
+
 @pages_bp.route('/submit-questionnaire', methods=['POST'])
 def submit_questionnaire():
     """Handle project questionnaire submissions (ALL 15 fields)."""

@@ -1,0 +1,362 @@
+{% extends 'admin/base.html' %}
+{% block title %}CV / Lebenslauf — Admin{% endblock %}
+
+{% block head %}
+{{ super() }}
+<style>
+.cv-tab-content { padding-top: 1.5rem; }
+.cv-section-card {
+    background: rgba(30,41,59,0.8);
+    border: 1px solid #334155;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+}
+.cv-section-card h6 { color: #94a3b8; font-size: .75rem; text-transform: uppercase; letter-spacing: .1em; }
+.cv-entry-row {
+    background: rgba(15,23,42,.5);
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin-bottom: .75rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+.cv-entry-row .entry-meta { flex: 1; }
+.cv-entry-row .entry-title { font-weight: 600; color: #f1f5f9; margin-bottom: .15rem; }
+.cv-entry-row .entry-sub { color: #94a3b8; font-size: .85rem; }
+.cv-entry-row .entry-badge {
+    background: rgba(59,130,246,.15);
+    border: 1px solid rgba(59,130,246,.3);
+    color: #60a5fa;
+    font-size: .72rem;
+    padding: .2rem .6rem;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+.skill-bar-container { background: #1e293b; border-radius: 4px; height: 8px; margin-top: .25rem; overflow: hidden; }
+.skill-bar-fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg,#3b82f6,#6366f1); }
+.add-inline-form {
+    background: rgba(15,23,42,.6);
+    border: 1px dashed #334155;
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+}
+.nav-tabs .nav-link { color: #94a3b8; border-color: transparent; }
+.nav-tabs .nav-link:hover { color: #f1f5f9; border-color: transparent; }
+.nav-tabs .nav-link.active { color: #3b82f6; background: rgba(59,130,246,.1); border-color: #334155 #334155 transparent; }
+.nav-tabs { border-bottom-color: #334155; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="content-header d-flex justify-content-between align-items-center">
+    <h1 class="h3 text-light">CV / Lebenslauf</h1>
+    <a href="{{ url_for('pages.lebenslauf') }}" target="_blank" class="btn btn-outline-info btn-sm">
+        <i class="fas fa-eye me-1"></i>Vorschau
+    </a>
+</div>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% for cat, msg in messages %}
+    <div class="alert alert-{{ cat }} alert-dismissible fade show">{{ msg }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+  {% endfor %}
+{% endwith %}
+
+<!-- TABS -->
+<ul class="nav nav-tabs mb-0" id="cvTabs">
+  <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#profile"><i class="fas fa-user me-1"></i>Profil</a></li>
+  <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#experience"><i class="fas fa-briefcase me-1"></i>Erfahrung</a></li>
+  <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#education"><i class="fas fa-graduation-cap me-1"></i>Ausbildung</a></li>
+  <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#skills"><i class="fas fa-code me-1"></i>Kenntnisse</a></li>
+  <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#projects"><i class="fas fa-project-diagram me-1"></i>Projekte</a></li>
+  <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#social"><i class="fab fa-linkedin me-1"></i>Links</a></li>
+  <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#languages"><i class="fas fa-language me-1"></i>Sprachen</a></li>
+  <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#certifications"><i class="fas fa-certificate me-1"></i>Zertifikate</a></li>
+</ul>
+
+<div class="tab-content cv-tab-content">
+
+  <!-- ── PROFILE ─────────────────────────────── -->
+  <div class="tab-pane fade show active" id="profile">
+    <div class="cv-section-card">
+      <div class="d-flex justify-content-between mb-3">
+        <span class="text-light fw-bold">Persönliche Daten</span>
+        <a href="{{ url_for('admin.cv_profile') }}" class="btn btn-primary btn-sm"><i class="fas fa-edit me-1"></i>Bearbeiten</a>
+      </div>
+      {% if profile %}
+      <div class="row g-3">
+        {% if profile.photo_url %}
+        <div class="col-auto">
+          <img src="{{ profile.photo_url }}" style="width:80px;height:80px;object-fit:cover;border-radius:50%;border:2px solid #3b82f6;" alt="Foto">
+        </div>
+        {% endif %}
+        <div class="col">
+          <div class="entry-title fs-5">{{ profile.full_name }}</div>
+          <div class="entry-sub">{{ profile.headline }}</div>
+          <div class="mt-2 text-light" style="font-size:.85rem;">
+            {% if profile.email %}<span class="me-3"><i class="fas fa-envelope me-1 text-primary"></i>{{ profile.email }}</span>{% endif %}
+            {% if profile.phone %}<span class="me-3"><i class="fas fa-phone me-1 text-primary"></i>{{ profile.phone }}</span>{% endif %}
+            {% if profile.location %}<span class="me-3"><i class="fas fa-map-marker-alt me-1 text-primary"></i>{{ profile.location }}</span>{% endif %}
+            {% if profile.website %}<span><i class="fas fa-globe me-1 text-primary"></i>{{ profile.website }}</span>{% endif %}
+          </div>
+          {% if profile.summary %}
+          <div class="mt-2 text-muted" style="font-size:.85rem;">{{ profile.summary[:200] }}{% if profile.summary|length > 200 %}…{% endif %}</div>
+          {% endif %}
+        </div>
+      </div>
+      {% else %}
+      <p class="text-muted">Noch kein Profil angelegt. <a href="{{ url_for('admin.cv_profile') }}">Jetzt erstellen →</a></p>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- ── EXPERIENCE ────────────────────────────── -->
+  <div class="tab-pane fade" id="experience">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <span class="text-light fw-bold">Berufserfahrung</span>
+      <a href="{{ url_for('admin.cv_experience_add') }}" class="btn btn-primary btn-sm"><i class="fas fa-plus me-1"></i>Hinzufügen</a>
+    </div>
+    {% for exp in experiences %}
+    <div class="cv-entry-row">
+      <div class="entry-meta">
+        <div class="entry-title">{{ exp.position }}</div>
+        <div class="entry-sub">{{ exp.company }}{% if exp.location %} · {{ exp.location }}{% endif %}</div>
+        <div class="entry-sub mt-1">{{ exp.start_year }} – {% if exp.is_current %}heute{% else %}{{ exp.end_year }}{% endif %}</div>
+        {% if exp.technologies %}<div class="mt-1">{% for t in exp.technologies.split(',') %}<span class="entry-badge me-1">{{ t.strip() }}</span>{% endfor %}</div>{% endif %}
+      </div>
+      <div class="d-flex gap-2 flex-shrink-0">
+        <a href="{{ url_for('admin.cv_experience_edit', exp_id=exp.id) }}" class="btn btn-sm btn-outline-secondary"><i class="fas fa-edit"></i></a>
+        <form action="{{ url_for('admin.cv_experience_delete', exp_id=exp.id) }}" method="post" onsubmit="return confirm('Löschen?')">
+          {{ csrf_field() }}
+          <button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button>
+        </form>
+      </div>
+    </div>
+    {% else %}<p class="text-muted">Noch keine Einträge.</p>{% endfor %}
+  </div>
+
+  <!-- ── EDUCATION ────────────────────────────── -->
+  <div class="tab-pane fade" id="education">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <span class="text-light fw-bold">Ausbildung / Studium</span>
+      <a href="{{ url_for('admin.cv_education_add') }}" class="btn btn-primary btn-sm"><i class="fas fa-plus me-1"></i>Hinzufügen</a>
+    </div>
+    {% for edu in educations %}
+    <div class="cv-entry-row">
+      <div class="entry-meta">
+        <div class="entry-title">{{ edu.degree }}{% if edu.field %} — {{ edu.field }}{% endif %}</div>
+        <div class="entry-sub">{{ edu.institution }}{% if edu.location %} · {{ edu.location }}{% endif %}</div>
+        <div class="entry-sub mt-1">{{ edu.start_year }} – {% if edu.is_current %}heute{% else %}{{ edu.end_year }}{% endif %}{% if edu.grade %} · Note: {{ edu.grade }}{% endif %}</div>
+      </div>
+      <div class="d-flex gap-2 flex-shrink-0">
+        <a href="{{ url_for('admin.cv_education_edit', edu_id=edu.id) }}" class="btn btn-sm btn-outline-secondary"><i class="fas fa-edit"></i></a>
+        <form action="{{ url_for('admin.cv_education_delete', edu_id=edu.id) }}" method="post" onsubmit="return confirm('Löschen?')">
+          {{ csrf_field() }}
+          <button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button>
+        </form>
+      </div>
+    </div>
+    {% else %}<p class="text-muted">Noch keine Einträge.</p>{% endfor %}
+  </div>
+
+  <!-- ── SKILLS ────────────────────────────────── -->
+  <div class="tab-pane fade" id="skills">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <span class="text-light fw-bold">Kenntnisse &amp; Skills</span>
+    </div>
+    <!-- Add skill inline form -->
+    <div class="add-inline-form mb-4">
+      <form method="post" action="{{ url_for('admin.cv_skill_add') }}">
+        {{ csrf_field() }}
+        <div class="row g-2 align-items-end">
+          <div class="col-md-3"><label class="form-label text-muted small">Name</label>
+            <input name="name" class="form-control form-control-sm bg-dark text-light border-secondary" placeholder="z.B. Python" required></div>
+          <div class="col-md-2"><label class="form-label text-muted small">Kategorie</label>
+            <input name="category" class="form-control form-control-sm bg-dark text-light border-secondary" placeholder="z.B. Backend"></div>
+          <div class="col-md-2"><label class="form-label text-muted small">Level % (0-100)</label>
+            <input name="level" type="number" min="0" max="100" value="80" class="form-control form-control-sm bg-dark text-light border-secondary"></div>
+          <div class="col-md-2"><label class="form-label text-muted small">Label</label>
+            <input name="level_label" class="form-control form-control-sm bg-dark text-light border-secondary" placeholder="Expert"></div>
+          <div class="col-md-1"><label class="form-label text-muted small">Reihenf.</label>
+            <input name="order_idx" type="number" value="0" class="form-control form-control-sm bg-dark text-light border-secondary"></div>
+          <div class="col-auto"><button class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Skill</button></div>
+        </div>
+      </form>
+    </div>
+    {% for skill in skills %}
+    <div class="cv-entry-row" style="align-items:center;">
+      <div class="entry-meta">
+        <div class="d-flex align-items-center gap-2">
+          <span class="entry-title">{{ skill.name }}</span>
+          {% if skill.category %}<span class="entry-badge">{{ skill.category }}</span>{% endif %}
+          {% if skill.level_label %}<span class="text-muted" style="font-size:.8rem;">{{ skill.level_label }}</span>{% endif %}
+        </div>
+        <div class="skill-bar-container mt-1" style="width:200px;">
+          <div class="skill-bar-fill" style="width:{{ skill.level }}%;"></div>
+        </div>
+      </div>
+      <div class="d-flex gap-2 flex-shrink-0">
+        <a href="{{ url_for('admin.cv_skill_edit', skill_id=skill.id) }}" class="btn btn-sm btn-outline-secondary"><i class="fas fa-edit"></i></a>
+        <form action="{{ url_for('admin.cv_skill_delete', skill_id=skill.id) }}" method="post" onsubmit="return confirm('Löschen?')">
+          {{ csrf_field() }}
+          <button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button>
+        </form>
+      </div>
+    </div>
+    {% else %}<p class="text-muted">Noch keine Skills.</p>{% endfor %}
+  </div>
+
+  <!-- ── PROJECTS ──────────────────────────────── -->
+  <div class="tab-pane fade" id="projects">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <span class="text-light fw-bold">Projekte</span>
+      <a href="{{ url_for('admin.cv_project_add') }}" class="btn btn-primary btn-sm"><i class="fas fa-plus me-1"></i>Hinzufügen</a>
+    </div>
+    {% for proj in projects %}
+    <div class="cv-entry-row">
+      <div class="entry-meta">
+        <div class="d-flex align-items-center gap-2">
+          <span class="entry-title">{{ proj.title }}</span>
+          {% if proj.featured %}<span class="entry-badge" style="border-color:rgba(234,179,8,.4);color:#fbbf24;background:rgba(234,179,8,.1);">⭐ Featured</span>{% endif %}
+          {% if proj.year %}<span class="text-muted" style="font-size:.8rem;">{{ proj.year }}</span>{% endif %}
+        </div>
+        <div class="entry-sub">{{ proj.description[:120] if proj.description else '' }}{% if proj.description and proj.description|length > 120 %}…{% endif %}</div>
+        <div class="mt-1">
+          {% if proj.url %}<a href="{{ proj.url }}" target="_blank" class="text-primary me-2" style="font-size:.8rem;"><i class="fas fa-external-link-alt"></i> Demo</a>{% endif %}
+          {% if proj.github_url %}<a href="{{ proj.github_url }}" target="_blank" class="text-muted" style="font-size:.8rem;"><i class="fab fa-github"></i> GitHub</a>{% endif %}
+        </div>
+        {% if proj.technologies %}<div class="mt-1">{% for t in proj.technologies.split(',') %}<span class="entry-badge me-1">{{ t.strip() }}</span>{% endfor %}</div>{% endif %}
+      </div>
+      <div class="d-flex gap-2 flex-shrink-0">
+        <a href="{{ url_for('admin.cv_project_edit', proj_id=proj.id) }}" class="btn btn-sm btn-outline-secondary"><i class="fas fa-edit"></i></a>
+        <form action="{{ url_for('admin.cv_project_delete', proj_id=proj.id) }}" method="post" onsubmit="return confirm('Löschen?')">
+          {{ csrf_field() }}
+          <button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button>
+        </form>
+      </div>
+    </div>
+    {% else %}<p class="text-muted">Noch keine Projekte.</p>{% endfor %}
+  </div>
+
+  <!-- ── SOCIAL ─────────────────────────────────── -->
+  <div class="tab-pane fade" id="social">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <span class="text-light fw-bold">Social &amp; Kontakt-Links</span>
+    </div>
+    <div class="add-inline-form mb-4">
+      <form method="post" action="{{ url_for('admin.cv_social_add') }}">
+        {{ csrf_field() }}
+        <div class="row g-2 align-items-end">
+          <div class="col-md-2"><label class="form-label text-muted small">Plattform</label>
+            <input name="platform" class="form-control form-control-sm bg-dark text-light border-secondary" placeholder="LinkedIn" required></div>
+          <div class="col-md-4"><label class="form-label text-muted small">URL</label>
+            <input name="url" type="url" class="form-control form-control-sm bg-dark text-light border-secondary" placeholder="https://..." required></div>
+          <div class="col-md-2"><label class="form-label text-muted small">Icon (FA class)</label>
+            <input name="icon_class" class="form-control form-control-sm bg-dark text-light border-secondary" placeholder="fab fa-linkedin"></div>
+          <div class="col-md-2"><label class="form-label text-muted small">Anzeigename</label>
+            <input name="display_name" class="form-control form-control-sm bg-dark text-light border-secondary" placeholder="Optional"></div>
+          <div class="col-auto"><button class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Link</button></div>
+        </div>
+      </form>
+    </div>
+    {% for link in social_links %}
+    <div class="cv-entry-row" style="align-items:center;">
+      <div class="entry-meta">
+        <span class="entry-title"><i class="{{ link.icon_class }} me-2"></i>{{ link.platform }}</span>
+        <a href="{{ link.url }}" target="_blank" class="entry-sub ms-2">{{ link.display_name or link.url }}</a>
+      </div>
+      <div class="d-flex gap-2 flex-shrink-0">
+        <a href="{{ url_for('admin.cv_social_edit', link_id=link.id) }}" class="btn btn-sm btn-outline-secondary"><i class="fas fa-edit"></i></a>
+        <form action="{{ url_for('admin.cv_social_delete', link_id=link.id) }}" method="post" onsubmit="return confirm('Löschen?')">
+          {{ csrf_field() }}
+          <button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button>
+        </form>
+      </div>
+    </div>
+    {% else %}<p class="text-muted">Noch keine Links.</p>{% endfor %}
+  </div>
+
+  <!-- ── LANGUAGES ─────────────────────────────── -->
+  <div class="tab-pane fade" id="languages">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <span class="text-light fw-bold">Sprachkenntnisse</span>
+    </div>
+    <div class="add-inline-form mb-4">
+      <form method="post" action="{{ url_for('admin.cv_language_add') }}">
+        {{ csrf_field() }}
+        <div class="row g-2 align-items-end">
+          <div class="col-md-3"><label class="form-label text-muted small">Sprache</label>
+            <input name="language" class="form-control form-control-sm bg-dark text-light border-secondary" placeholder="Deutsch" required></div>
+          <div class="col-md-2"><label class="form-label text-muted small">Niveau</label>
+            <input name="level" class="form-control form-control-sm bg-dark text-light border-secondary" placeholder="C1 / Muttersprache"></div>
+          <div class="col-md-2"><label class="form-label text-muted small">Balken % (0-100)</label>
+            <input name="level_percent" type="number" min="0" max="100" value="80" class="form-control form-control-sm bg-dark text-light border-secondary"></div>
+          <div class="col-md-1"><label class="form-label text-muted small">Reihenf.</label>
+            <input name="order_idx" type="number" value="0" class="form-control form-control-sm bg-dark text-light border-secondary"></div>
+          <div class="col-auto"><button class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Sprache</button></div>
+        </div>
+      </form>
+    </div>
+    {% for lang in languages %}
+    <div class="cv-entry-row" style="align-items:center;">
+      <div class="entry-meta">
+        <div class="d-flex align-items-center gap-3">
+          <span class="entry-title">{{ lang.language }}</span>
+          <span class="entry-badge">{{ lang.level }}</span>
+        </div>
+        <div class="skill-bar-container mt-1" style="width:200px;">
+          <div class="skill-bar-fill" style="width:{{ lang.level_percent }}%;"></div>
+        </div>
+      </div>
+      <div class="d-flex gap-2 flex-shrink-0">
+        <a href="{{ url_for('admin.cv_language_edit', lang_id=lang.id) }}" class="btn btn-sm btn-outline-secondary"><i class="fas fa-edit"></i></a>
+        <form action="{{ url_for('admin.cv_language_delete', lang_id=lang.id) }}" method="post" onsubmit="return confirm('Löschen?')">
+          {{ csrf_field() }}
+          <button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button>
+        </form>
+      </div>
+    </div>
+    {% else %}<p class="text-muted">Noch keine Sprachkenntnisse.</p>{% endfor %}
+  </div>
+
+  <!-- ── CERTIFICATIONS ────────────────────────── -->
+  <div class="tab-pane fade" id="certifications">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <span class="text-light fw-bold">Zertifikate &amp; Weiterbildungen</span>
+      <a href="{{ url_for('admin.cv_certification_add') }}" class="btn btn-primary btn-sm"><i class="fas fa-plus me-1"></i>Hinzufügen</a>
+    </div>
+    {% for cert in certifications %}
+    <div class="cv-entry-row">
+      <div class="entry-meta">
+        <div class="entry-title">{{ cert.name }}</div>
+        <div class="entry-sub">{{ cert.issuer }}{% if cert.date %} · {{ cert.date }}{% endif %}</div>
+        {% if cert.url %}<a href="{{ cert.url }}" target="_blank" class="text-primary" style="font-size:.8rem;"><i class="fas fa-external-link-alt"></i> Nachweis</a>{% endif %}
+      </div>
+      <div class="d-flex gap-2 flex-shrink-0">
+        <a href="{{ url_for('admin.cv_certification_edit', cert_id=cert.id) }}" class="btn btn-sm btn-outline-secondary"><i class="fas fa-edit"></i></a>
+        <form action="{{ url_for('admin.cv_certification_delete', cert_id=cert.id) }}" method="post" onsubmit="return confirm('Löschen?')">
+          {{ csrf_field() }}
+          <button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button>
+        </form>
+      </div>
+    </div>
+    {% else %}<p class="text-muted">Noch keine Zertifikate.</p>{% endfor %}
+  </div>
+
+</div><!-- /tab-content -->
+
+<script>
+// Restore active tab from URL hash
+(function(){
+  var hash = window.location.hash;
+  if(hash){
+    var tab = document.querySelector('[href="'+hash+'"]');
+    if(tab){ new bootstrap.Tab(tab).show(); }
+  }
+})();
+</script>
+{% endblock %}

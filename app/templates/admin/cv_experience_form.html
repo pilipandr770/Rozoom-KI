@@ -1,0 +1,60 @@
+{% extends 'admin/base.html' %}
+{% block title %}{% if exp %}Erfahrung bearbeiten{% else %}Erfahrung hinzufügen{% endif %} — CV{% endblock %}
+
+{% block content %}
+<div class="content-header d-flex justify-content-between align-items-center">
+  <h1 class="h4 text-light">{% if exp %}Erfahrung bearbeiten{% else %}Neue Berufserfahrung{% endif %}</h1>
+  <a href="{{ url_for('admin.cv_dashboard') }}#experience" class="btn btn-outline-secondary btn-sm">← Zurück</a>
+</div>
+<div class="content-card">
+  <div class="card-body">
+    <form method="post">
+      {{ csrf_field() }}
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label text-muted">Position / Jobtitel *</label>
+          <input name="position" value="{{ exp.position if exp else '' }}" required class="form-control bg-dark text-light border-secondary" placeholder="Senior Developer">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label text-muted">Unternehmen *</label>
+          <input name="company" value="{{ exp.company if exp else '' }}" required class="form-control bg-dark text-light border-secondary" placeholder="Musterfirma GmbH">
+        </div>
+        <div class="col-md-4">
+          <label class="form-label text-muted">Standort</label>
+          <input name="location" value="{{ exp.location if exp else '' }}" class="form-control bg-dark text-light border-secondary" placeholder="Berlin, Remote">
+        </div>
+        <div class="col-md-3">
+          <label class="form-label text-muted">Von (Jahr / Monat)</label>
+          <input name="start_year" value="{{ exp.start_year if exp else '' }}" class="form-control bg-dark text-light border-secondary" placeholder="Jan 2022">
+        </div>
+        <div class="col-md-3">
+          <label class="form-label text-muted">Bis — leer lassen für „heute"</label>
+          <input name="end_year" value="{{ exp.end_year if exp else '' }}" class="form-control bg-dark text-light border-secondary" placeholder="Dez 2023">
+        </div>
+        <div class="col-md-2 d-flex align-items-end pb-2">
+          <div class="form-check">
+            <input type="checkbox" name="is_current" id="is_current" class="form-check-input" {% if exp and exp.is_current %}checked{% endif %}>
+            <label class="form-check-label text-muted" for="is_current">Aktuell</label>
+          </div>
+        </div>
+        <div class="col-12">
+          <label class="form-label text-muted">Beschreibung / Tätigkeiten</label>
+          <textarea name="description" rows="6" class="form-control bg-dark text-light border-secondary" placeholder="• Aufgabe 1&#10;• Aufgabe 2&#10;• Erfolg …">{{ exp.description if exp else '' }}</textarea>
+        </div>
+        <div class="col-md-8">
+          <label class="form-label text-muted">Technologien (kommagetrennt)</label>
+          <input name="technologies" value="{{ exp.technologies if exp else '' }}" class="form-control bg-dark text-light border-secondary" placeholder="Python, Flask, React, PostgreSQL">
+        </div>
+        <div class="col-md-2">
+          <label class="form-label text-muted">Reihenfolge</label>
+          <input name="order_idx" type="number" value="{{ exp.order_idx if exp else 0 }}" class="form-control bg-dark text-light border-secondary">
+        </div>
+        <div class="col-12 d-flex gap-2 mt-2">
+          <button type="submit" class="btn btn-primary"><i class="fas fa-save me-1"></i>Speichern</button>
+          <a href="{{ url_for('admin.cv_dashboard') }}#experience" class="btn btn-outline-secondary">Abbrechen</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

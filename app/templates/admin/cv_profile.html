@@ -1,0 +1,72 @@
+{% extends 'admin/base.html' %}
+{% block title %}Profil bearbeiten — CV Admin{% endblock %}
+
+{% block content %}
+<div class="content-header d-flex justify-content-between align-items-center">
+  <h1 class="h4 text-light">Profil bearbeiten</h1>
+  <a href="{{ url_for('admin.cv_dashboard') }}" class="btn btn-outline-secondary btn-sm">← Zurück</a>
+</div>
+
+<div class="content-card">
+  <div class="card-body">
+    <form method="post">
+      {{ csrf_field() }}
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label text-muted">Vollständiger Name *</label>
+          <input name="full_name" value="{{ profile.full_name if profile else '' }}" required class="form-control bg-dark text-light border-secondary" placeholder="Max Mustermann">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label text-muted">Berufsbezeichnung / Headline</label>
+          <input name="headline" value="{{ profile.headline if profile else '' }}" class="form-control bg-dark text-light border-secondary" placeholder="Full-Stack Developer · Python · React">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label text-muted">E-Mail</label>
+          <input name="email" type="email" value="{{ profile.email if profile else '' }}" class="form-control bg-dark text-light border-secondary">
+        </div>
+        <div class="col-md-3">
+          <label class="form-label text-muted">Telefon</label>
+          <input name="phone" value="{{ profile.phone if profile else '' }}" class="form-control bg-dark text-light border-secondary" placeholder="+49 …">
+        </div>
+        <div class="col-md-3">
+          <label class="form-label text-muted">Standort</label>
+          <input name="location" value="{{ profile.location if profile else '' }}" class="form-control bg-dark text-light border-secondary" placeholder="Berlin, Deutschland">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label text-muted">Website / Portfolio</label>
+          <input name="website" value="{{ profile.website if profile else '' }}" class="form-control bg-dark text-light border-secondary" placeholder="https://…">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label text-muted">Foto-URL</label>
+          <input name="photo_url" value="{{ profile.photo_url if profile else '' }}" class="form-control bg-dark text-light border-secondary" placeholder="https://… oder /static/img/…">
+        </div>
+        <div class="col-12">
+          <label class="form-label text-muted">Profil / Zusammenfassung</label>
+          <textarea name="summary" rows="5" class="form-control bg-dark text-light border-secondary" placeholder="Kurze professionelle Selbstbeschreibung …">{{ profile.summary if profile else '' }}</textarea>
+        </div>
+        <div class="col-12"><hr class="border-secondary"><p class="text-muted small mb-2">Optionale Angaben (in Deutschland häufig üblich)</p></div>
+        <div class="col-md-3">
+          <label class="form-label text-muted">Geburtsdatum</label>
+          <input name="date_of_birth" value="{{ profile.date_of_birth if profile else '' }}" class="form-control bg-dark text-light border-secondary" placeholder="01.01.1990">
+        </div>
+        <div class="col-md-3">
+          <label class="form-label text-muted">Staatsangehörigkeit</label>
+          <input name="nationality" value="{{ profile.nationality if profile else '' }}" class="form-control bg-dark text-light border-secondary" placeholder="Deutsch">
+        </div>
+        <div class="col-md-3">
+          <label class="form-label text-muted">Führerschein</label>
+          <input name="driving_license" value="{{ profile.driving_license if profile else '' }}" class="form-control bg-dark text-light border-secondary" placeholder="Klasse B">
+        </div>
+        <div class="col-md-3">
+          <label class="form-label text-muted">Verfügbar ab</label>
+          <input name="available_from" value="{{ profile.available_from if profile else '' }}" class="form-control bg-dark text-light border-secondary" placeholder="ab sofort">
+        </div>
+        <div class="col-12 d-flex gap-2 mt-2">
+          <button type="submit" class="btn btn-primary"><i class="fas fa-save me-1"></i>Speichern</button>
+          <a href="{{ url_for('admin.cv_dashboard') }}" class="btn btn-outline-secondary">Abbrechen</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

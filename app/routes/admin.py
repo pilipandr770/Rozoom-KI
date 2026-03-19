@@ -1008,3 +1008,474 @@ def payment_detail(payment_id):
     payment = db.get_or_404(StripePayment, payment_id)
     
     return render_template('admin/payment_detail.html', payment=payment)
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# CV / Lebenslauf admin routes
+# ─────────────────────────────────────────────────────────────────────────────
+from app.models.cv import (
+    CVProfile, CVExperience, CVEducation, CVSkill,
+    CVProject, CVSocialLink, CVLanguage, CVCertification
+)
+
+
+def _admin_check():
+    if not current_user.is_admin:
+        flash('Access denied. Admin privileges required.', 'danger')
+        return redirect(url_for('admin.dashboard'))
+    return None
+
+
+@admin.route('/cv')
+@login_required
+def cv_dashboard():
+    guard = _admin_check()
+    if guard:
+        return guard
+    profile = CVProfile.query.first()
+    experiences = CVExperience.query.order_by(CVExperience.order_idx, CVExperience.created_at.desc()).all()
+    educations = CVEducation.query.order_by(CVEducation.order_idx, CVEducation.created_at.desc()).all()
+    skills = CVSkill.query.order_by(CVSkill.category, CVSkill.order_idx).all()
+    projects = CVProject.query.order_by(CVProject.order_idx, CVProject.created_at.desc()).all()
+    social_links = CVSocialLink.query.order_by(CVSocialLink.order_idx).all()
+    languages = CVLanguage.query.order_by(CVLanguage.order_idx).all()
+    certifications = CVCertification.query.order_by(CVCertification.order_idx).all()
+    return render_template(
+        'admin/cv.html',
+        profile=profile,
+        experiences=experiences,
+        educations=educations,
+        skills=skills,
+        projects=projects,
+        social_links=social_links,
+        languages=languages,
+        certifications=certifications,
+    )
+
+
+# ── Profile ──────────────────────────────────────────────────────────────────
+@admin.route('/cv/profile', methods=['GET', 'POST'])
+@login_required
+def cv_profile():
+    guard = _admin_check()
+    if guard:
+        return guard
+    profile = CVProfile.query.first()
+    if request.method == 'POST':
+        if not profile:
+            profile = CVProfile()
+            db.session.add(profile)
+        profile.full_name = request.form.get('full_name', '')
+        profile.headline = request.form.get('headline', '')
+        profile.email = request.form.get('email', '')
+        profile.phone = request.form.get('phone', '')
+        profile.location = request.form.get('location', '')
+        profile.website = request.form.get('website', '')
+        profile.summary = request.form.get('summary', '')
+        profile.photo_url = request.form.get('photo_url', '')
+        profile.date_of_birth = request.form.get('date_of_birth', '')
+        profile.nationality = request.form.get('nationality', '')
+        profile.driving_license = request.form.get('driving_license', '')
+        profile.available_from = request.form.get('available_from', '')
+        db.session.commit()
+        flash('Profile saved.', 'success')
+        return redirect(url_for('admin.cv_dashboard'))
+    return render_template('admin/cv_profile.html', profile=profile)
+
+
+# ── Experience ────────────────────────────────────────────────────────────────
+@admin.route('/cv/experience/add', methods=['GET', 'POST'])
+@login_required
+def cv_experience_add():
+    guard = _admin_check()
+    if guard:
+        return guard
+    if request.method == 'POST':
+        exp = CVExperience(
+            company=request.form.get('company', ''),
+            position=request.form.get('position', ''),
+            location=request.form.get('location', ''),
+            start_year=request.form.get('start_year', ''),
+            end_year=request.form.get('end_year', ''),
+            is_current='is_current' in request.form,
+            description=request.form.get('description', ''),
+            technologies=request.form.get('technologies', ''),
+            order_idx=int(request.form.get('order_idx', 0) or 0),
+        )
+        db.session.add(exp)
+        db.session.commit()
+        flash('Experience entry added.', 'success')
+        return redirect(url_for('admin.cv_dashboard') + '#experience')
+    return render_template('admin/cv_experience_form.html', exp=None)
+
+
+@admin.route('/cv/experience/<int:exp_id>/edit', methods=['GET', 'POST'])
+@login_required
+def cv_experience_edit(exp_id):
+    guard = _admin_check()
+    if guard:
+        return guard
+    exp = db.get_or_404(CVExperience, exp_id)
+    if request.method == 'POST':
+        exp.company = request.form.get('company', '')
+        exp.position = request.form.get('position', '')
+        exp.location = request.form.get('location', '')
+        exp.start_year = request.form.get('start_year', '')
+        exp.end_year = request.form.get('end_year', '')
+        exp.is_current = 'is_current' in request.form
+        exp.description = request.form.get('description', '')
+        exp.technologies = request.form.get('technologies', '')
+        exp.order_idx = int(request.form.get('order_idx', 0) or 0)
+        db.session.commit()
+        flash('Experience updated.', 'success')
+        return redirect(url_for('admin.cv_dashboard') + '#experience')
+    return render_template('admin/cv_experience_form.html', exp=exp)
+
+
+@admin.route('/cv/experience/<int:exp_id>/delete', methods=['POST'])
+@login_required
+def cv_experience_delete(exp_id):
+    guard = _admin_check()
+    if guard:
+        return guard
+    exp = db.get_or_404(CVExperience, exp_id)
+    db.session.delete(exp)
+    db.session.commit()
+    flash('Experience entry deleted.', 'success')
+    return redirect(url_for('admin.cv_dashboard') + '#experience')
+
+
+# ── Education ─────────────────────────────────────────────────────────────────
+@admin.route('/cv/education/add', methods=['GET', 'POST'])
+@login_required
+def cv_education_add():
+    guard = _admin_check()
+    if guard:
+        return guard
+    if request.method == 'POST':
+        edu = CVEducation(
+            institution=request.form.get('institution', ''),
+            degree=request.form.get('degree', ''),
+            field=request.form.get('field', ''),
+            location=request.form.get('location', ''),
+            start_year=request.form.get('start_year', ''),
+            end_year=request.form.get('end_year', ''),
+            is_current='is_current' in request.form,
+            grade=request.form.get('grade', ''),
+            description=request.form.get('description', ''),
+            order_idx=int(request.form.get('order_idx', 0) or 0),
+        )
+        db.session.add(edu)
+        db.session.commit()
+        flash('Education entry added.', 'success')
+        return redirect(url_for('admin.cv_dashboard') + '#education')
+    return render_template('admin/cv_education_form.html', edu=None)
+
+
+@admin.route('/cv/education/<int:edu_id>/edit', methods=['GET', 'POST'])
+@login_required
+def cv_education_edit(edu_id):
+    guard = _admin_check()
+    if guard:
+        return guard
+    edu = db.get_or_404(CVEducation, edu_id)
+    if request.method == 'POST':
+        edu.institution = request.form.get('institution', '')
+        edu.degree = request.form.get('degree', '')
+        edu.field = request.form.get('field', '')
+        edu.location = request.form.get('location', '')
+        edu.start_year = request.form.get('start_year', '')
+        edu.end_year = request.form.get('end_year', '')
+        edu.is_current = 'is_current' in request.form
+        edu.grade = request.form.get('grade', '')
+        edu.description = request.form.get('description', '')
+        edu.order_idx = int(request.form.get('order_idx', 0) or 0)
+        db.session.commit()
+        flash('Education updated.', 'success')
+        return redirect(url_for('admin.cv_dashboard') + '#education')
+    return render_template('admin/cv_education_form.html', edu=edu)
+
+
+@admin.route('/cv/education/<int:edu_id>/delete', methods=['POST'])
+@login_required
+def cv_education_delete(edu_id):
+    guard = _admin_check()
+    if guard:
+        return guard
+    edu = db.get_or_404(CVEducation, edu_id)
+    db.session.delete(edu)
+    db.session.commit()
+    flash('Education entry deleted.', 'success')
+    return redirect(url_for('admin.cv_dashboard') + '#education')
+
+
+# ── Skills ────────────────────────────────────────────────────────────────────
+@admin.route('/cv/skill/add', methods=['POST'])
+@login_required
+def cv_skill_add():
+    guard = _admin_check()
+    if guard:
+        return guard
+    skill = CVSkill(
+        name=request.form.get('name', ''),
+        category=request.form.get('category', ''),
+        level=int(request.form.get('level', 80) or 80),
+        level_label=request.form.get('level_label', ''),
+        order_idx=int(request.form.get('order_idx', 0) or 0),
+    )
+    db.session.add(skill)
+    db.session.commit()
+    flash('Skill added.', 'success')
+    return redirect(url_for('admin.cv_dashboard') + '#skills')
+
+
+@admin.route('/cv/skill/<int:skill_id>/edit', methods=['GET', 'POST'])
+@login_required
+def cv_skill_edit(skill_id):
+    guard = _admin_check()
+    if guard:
+        return guard
+    skill = db.get_or_404(CVSkill, skill_id)
+    if request.method == 'POST':
+        skill.name = request.form.get('name', '')
+        skill.category = request.form.get('category', '')
+        skill.level = int(request.form.get('level', 80) or 80)
+        skill.level_label = request.form.get('level_label', '')
+        skill.order_idx = int(request.form.get('order_idx', 0) or 0)
+        db.session.commit()
+        flash('Skill updated.', 'success')
+        return redirect(url_for('admin.cv_dashboard') + '#skills')
+    return render_template('admin/cv_skill_form.html', skill=skill)
+
+
+@admin.route('/cv/skill/<int:skill_id>/delete', methods=['POST'])
+@login_required
+def cv_skill_delete(skill_id):
+    guard = _admin_check()
+    if guard:
+        return guard
+    skill = db.get_or_404(CVSkill, skill_id)
+    db.session.delete(skill)
+    db.session.commit()
+    flash('Skill deleted.', 'success')
+    return redirect(url_for('admin.cv_dashboard') + '#skills')
+
+
+# ── Projects ──────────────────────────────────────────────────────────────────
+@admin.route('/cv/project/add', methods=['GET', 'POST'])
+@login_required
+def cv_project_add():
+    guard = _admin_check()
+    if guard:
+        return guard
+    if request.method == 'POST':
+        proj = CVProject(
+            title=request.form.get('title', ''),
+            description=request.form.get('description', ''),
+            url=request.form.get('url', ''),
+            github_url=request.form.get('github_url', ''),
+            image_url=request.form.get('image_url', ''),
+            technologies=request.form.get('technologies', ''),
+            year=request.form.get('year', ''),
+            featured='featured' in request.form,
+            order_idx=int(request.form.get('order_idx', 0) or 0),
+        )
+        db.session.add(proj)
+        db.session.commit()
+        flash('Project added.', 'success')
+        return redirect(url_for('admin.cv_dashboard') + '#projects')
+    return render_template('admin/cv_project_form.html', proj=None)
+
+
+@admin.route('/cv/project/<int:proj_id>/edit', methods=['GET', 'POST'])
+@login_required
+def cv_project_edit(proj_id):
+    guard = _admin_check()
+    if guard:
+        return guard
+    proj = db.get_or_404(CVProject, proj_id)
+    if request.method == 'POST':
+        proj.title = request.form.get('title', '')
+        proj.description = request.form.get('description', '')
+        proj.url = request.form.get('url', '')
+        proj.github_url = request.form.get('github_url', '')
+        proj.image_url = request.form.get('image_url', '')
+        proj.technologies = request.form.get('technologies', '')
+        proj.year = request.form.get('year', '')
+        proj.featured = 'featured' in request.form
+        proj.order_idx = int(request.form.get('order_idx', 0) or 0)
+        db.session.commit()
+        flash('Project updated.', 'success')
+        return redirect(url_for('admin.cv_dashboard') + '#projects')
+    return render_template('admin/cv_project_form.html', proj=proj)
+
+
+@admin.route('/cv/project/<int:proj_id>/delete', methods=['POST'])
+@login_required
+def cv_project_delete(proj_id):
+    guard = _admin_check()
+    if guard:
+        return guard
+    proj = db.get_or_404(CVProject, proj_id)
+    db.session.delete(proj)
+    db.session.commit()
+    flash('Project deleted.', 'success')
+    return redirect(url_for('admin.cv_dashboard') + '#projects')
+
+
+# ── Social Links ──────────────────────────────────────────────────────────────
+@admin.route('/cv/social/add', methods=['POST'])
+@login_required
+def cv_social_add():
+    guard = _admin_check()
+    if guard:
+        return guard
+    link = CVSocialLink(
+        platform=request.form.get('platform', ''),
+        url=request.form.get('url', ''),
+        icon_class=request.form.get('icon_class', ''),
+        display_name=request.form.get('display_name', ''),
+        order_idx=int(request.form.get('order_idx', 0) or 0),
+    )
+    db.session.add(link)
+    db.session.commit()
+    flash('Social link added.', 'success')
+    return redirect(url_for('admin.cv_dashboard') + '#social')
+
+
+@admin.route('/cv/social/<int:link_id>/edit', methods=['GET', 'POST'])
+@login_required
+def cv_social_edit(link_id):
+    guard = _admin_check()
+    if guard:
+        return guard
+    link = db.get_or_404(CVSocialLink, link_id)
+    if request.method == 'POST':
+        link.platform = request.form.get('platform', '')
+        link.url = request.form.get('url', '')
+        link.icon_class = request.form.get('icon_class', '')
+        link.display_name = request.form.get('display_name', '')
+        link.order_idx = int(request.form.get('order_idx', 0) or 0)
+        db.session.commit()
+        flash('Social link updated.', 'success')
+        return redirect(url_for('admin.cv_dashboard') + '#social')
+    return render_template('admin/cv_social_form.html', link=link)
+
+
+@admin.route('/cv/social/<int:link_id>/delete', methods=['POST'])
+@login_required
+def cv_social_delete(link_id):
+    guard = _admin_check()
+    if guard:
+        return guard
+    link = db.get_or_404(CVSocialLink, link_id)
+    db.session.delete(link)
+    db.session.commit()
+    flash('Social link deleted.', 'success')
+    return redirect(url_for('admin.cv_dashboard') + '#social')
+
+
+# ── Languages ─────────────────────────────────────────────────────────────────
+@admin.route('/cv/language/add', methods=['POST'])
+@login_required
+def cv_language_add():
+    guard = _admin_check()
+    if guard:
+        return guard
+    lang = CVLanguage(
+        language=request.form.get('language', ''),
+        level=request.form.get('level', ''),
+        level_percent=int(request.form.get('level_percent', 80) or 80),
+        order_idx=int(request.form.get('order_idx', 0) or 0),
+    )
+    db.session.add(lang)
+    db.session.commit()
+    flash('Language added.', 'success')
+    return redirect(url_for('admin.cv_dashboard') + '#languages')
+
+
+@admin.route('/cv/language/<int:lang_id>/edit', methods=['GET', 'POST'])
+@login_required
+def cv_language_edit(lang_id):
+    guard = _admin_check()
+    if guard:
+        return guard
+    lang = db.get_or_404(CVLanguage, lang_id)
+    if request.method == 'POST':
+        lang.language = request.form.get('language', '')
+        lang.level = request.form.get('level', '')
+        lang.level_percent = int(request.form.get('level_percent', 80) or 80)
+        lang.order_idx = int(request.form.get('order_idx', 0) or 0)
+        db.session.commit()
+        flash('Language updated.', 'success')
+        return redirect(url_for('admin.cv_dashboard') + '#languages')
+    return render_template('admin/cv_language_form.html', lang=lang)
+
+
+@admin.route('/cv/language/<int:lang_id>/delete', methods=['POST'])
+@login_required
+def cv_language_delete(lang_id):
+    guard = _admin_check()
+    if guard:
+        return guard
+    lang = db.get_or_404(CVLanguage, lang_id)
+    db.session.delete(lang)
+    db.session.commit()
+    flash('Language deleted.', 'success')
+    return redirect(url_for('admin.cv_dashboard') + '#languages')
+
+
+# ── Certifications ────────────────────────────────────────────────────────────
+@admin.route('/cv/certification/add', methods=['GET', 'POST'])
+@login_required
+def cv_certification_add():
+    guard = _admin_check()
+    if guard:
+        return guard
+    if request.method == 'POST':
+        cert = CVCertification(
+            name=request.form.get('name', ''),
+            issuer=request.form.get('issuer', ''),
+            date=request.form.get('date', ''),
+            url=request.form.get('url', ''),
+            description=request.form.get('description', ''),
+            order_idx=int(request.form.get('order_idx', 0) or 0),
+        )
+        db.session.add(cert)
+        db.session.commit()
+        flash('Certification added.', 'success')
+        return redirect(url_for('admin.cv_dashboard') + '#certifications')
+    return render_template('admin/cv_certification_form.html', cert=None)
+
+
+@admin.route('/cv/certification/<int:cert_id>/edit', methods=['GET', 'POST'])
+@login_required
+def cv_certification_edit(cert_id):
+    guard = _admin_check()
+    if guard:
+        return guard
+    cert = db.get_or_404(CVCertification, cert_id)
+    if request.method == 'POST':
+        cert.name = request.form.get('name', '')
+        cert.issuer = request.form.get('issuer', '')
+        cert.date = request.form.get('date', '')
+        cert.url = request.form.get('url', '')
+        cert.description = request.form.get('description', '')
+        cert.order_idx = int(request.form.get('order_idx', 0) or 0)
+        db.session.commit()
+        flash('Certification updated.', 'success')
+        return redirect(url_for('admin.cv_dashboard') + '#certifications')
+    return render_template('admin/cv_certification_form.html', cert=cert)
+
+
+@admin.route('/cv/certification/<int:cert_id>/delete', methods=['POST'])
+@login_required
+def cv_certification_delete(cert_id):
+    guard = _admin_check()
+    if guard:
+        return guard
+    cert = db.get_or_404(CVCertification, cert_id)
+    db.session.delete(cert)
+    db.session.commit()
+    flash('Certification deleted.', 'success')
+    return redirect(url_for('admin.cv_dashboard') + '#certifications')

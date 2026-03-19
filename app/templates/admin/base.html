@@ -225,6 +225,9 @@
                 <a class="nav-link {% if '/admin/payments' in request.path %}active{% endif %}" href="{{ url_for('admin.payments') }}">
                     <i class="fas fa-credit-card"></i> Платежи
                 </a>
+                <a class="nav-link {% if '/admin/cv' in request.path %}active{% endif %}" href="{{ url_for('admin.cv_dashboard') }}">
+                    <i class="fas fa-id-card"></i> CV / Lebenslauf
+                </a>
                 <a class="nav-link" href="{{ url_for('main.index') }}">
                     <i class="fas fa-home"></i> На главную
                 </a>

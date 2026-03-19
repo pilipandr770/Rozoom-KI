@@ -1,0 +1,64 @@
+{% extends 'admin/base.html' %}
+{% block title %}{% if edu %}Ausbildung bearbeiten{% else %}Ausbildung hinzufügen{% endif %} — CV{% endblock %}
+
+{% block content %}
+<div class="content-header d-flex justify-content-between align-items-center">
+  <h1 class="h4 text-light">{% if edu %}Ausbildung bearbeiten{% else %}Neuer Bildungsabschnitt{% endif %}</h1>
+  <a href="{{ url_for('admin.cv_dashboard') }}#education" class="btn btn-outline-secondary btn-sm">← Zurück</a>
+</div>
+<div class="content-card">
+  <div class="card-body">
+    <form method="post">
+      {{ csrf_field() }}
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label text-muted">Abschluss / Titel</label>
+          <input name="degree" value="{{ edu.degree if edu else '' }}" class="form-control bg-dark text-light border-secondary" placeholder="Bachelor of Science / Ausbildung …">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label text-muted">Fachrichtung</label>
+          <input name="field" value="{{ edu.field if edu else '' }}" class="form-control bg-dark text-light border-secondary" placeholder="Informatik, Wirtschaft …">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label text-muted">Institution *</label>
+          <input name="institution" value="{{ edu.institution if edu else '' }}" required class="form-control bg-dark text-light border-secondary" placeholder="TU Berlin / IHK …">
+        </div>
+        <div class="col-md-3">
+          <label class="form-label text-muted">Standort</label>
+          <input name="location" value="{{ edu.location if edu else '' }}" class="form-control bg-dark text-light border-secondary" placeholder="Berlin">
+        </div>
+        <div class="col-md-3">
+          <label class="form-label text-muted">Note</label>
+          <input name="grade" value="{{ edu.grade if edu else '' }}" class="form-control bg-dark text-light border-secondary" placeholder="1,7 / sehr gut">
+        </div>
+        <div class="col-md-3">
+          <label class="form-label text-muted">Von</label>
+          <input name="start_year" value="{{ edu.start_year if edu else '' }}" class="form-control bg-dark text-light border-secondary" placeholder="2018">
+        </div>
+        <div class="col-md-3">
+          <label class="form-label text-muted">Bis</label>
+          <input name="end_year" value="{{ edu.end_year if edu else '' }}" class="form-control bg-dark text-light border-secondary" placeholder="2022">
+        </div>
+        <div class="col-md-2 d-flex align-items-end pb-2">
+          <div class="form-check">
+            <input type="checkbox" name="is_current" id="is_current" class="form-check-input" {% if edu and edu.is_current %}checked{% endif %}>
+            <label class="form-check-label text-muted" for="is_current">Aktuell</label>
+          </div>
+        </div>
+        <div class="col-12">
+          <label class="form-label text-muted">Beschreibung / Schwerpunkte</label>
+          <textarea name="description" rows="4" class="form-control bg-dark text-light border-secondary" placeholder="Schwerpunkte, Projekte, Aktivitäten …">{{ edu.description if edu else '' }}</textarea>
+        </div>
+        <div class="col-md-2">
+          <label class="form-label text-muted">Reihenfolge</label>
+          <input name="order_idx" type="number" value="{{ edu.order_idx if edu else 0 }}" class="form-control bg-dark text-light border-secondary">
+        </div>
+        <div class="col-12 d-flex gap-2 mt-2">
+          <button type="submit" class="btn btn-primary"><i class="fas fa-save me-1"></i>Speichern</button>
+          <a href="{{ url_for('admin.cv_dashboard') }}#education" class="btn btn-outline-secondary">Abbrechen</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
