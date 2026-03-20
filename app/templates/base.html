@@ -118,7 +118,7 @@
           <a href="/services?lang={{ g.locale }}">{{ _('Services') }}</a>
           <a href="/pricing?lang={{ g.locale }}">{{ _('Pricing') }}</a>
           <a href="/blog?lang={{ g.locale }}">{{ _('Blog') }}</a>
-          <a href="/lebenslauf?lang={{ g.locale }}">Lebenslauf</a>
+          <a href="/lebenslauf?lang={{ g.locale }}">{% if g.locale == 'en' %}CV{% elif g.locale == 'uk' %}Резюме{% else %}Lebenslauf{% endif %}</a>
           <a href="/contact?lang={{ g.locale }}">{{ _('Contact') }}</a>
         </div>
         <div class="nav-right">
