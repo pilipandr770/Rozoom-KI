@@ -12,7 +12,7 @@
 
 .footer-content {
   position: relative;
-  z-index: 2;
+  z-index: 1001;
 }
 
 .footer-links {
@@ -59,6 +59,7 @@
   width: 100%;
   overflow: hidden;
   line-height: 0;
+  pointer-events: none;
 }
 
 .wave {
@@ -69,6 +70,7 @@
   height: 30px;
   background: url('../img/wave.svg');
   animation: wave 20s linear infinite;
+  pointer-events: none;
 }
 
 .wave1 {
