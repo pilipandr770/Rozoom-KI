@@ -21,3 +21,7 @@ def register_commands(app):
     # Register admin reset command
     from app.commands.reset_admin import reset_admin_command
     app.cli.add_command(reset_admin_command)
+
+    # Register CV projects seed command
+    from app.commands.seed_cv_projects import seed_cv_projects_command
+    app.cli.add_command(seed_cv_projects_command)
