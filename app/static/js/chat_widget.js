@@ -436,11 +436,19 @@
       // Show typing indicator
       const thinking = showTypingIndicator();
       
+      // Include conversation history for spec agent context & save trigger
+      // Trim to last 30 entries to keep payload small
+      const historySlice = conversationHistory.slice(-30).map(e => ({
+        text: e.text || '',
+        type: e.type || 'bot'
+      }));
+
       const resp = await fetch('/api/chat', {
-        method: 'POST', 
+        method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
-          message, 
+          message,
+          history: historySlice,
           metadata: {
             ...metadata,
             // Ensure these keys are always present for API
@@ -481,6 +489,14 @@
         appendMessage(result.answer, 'bot');
       } else {
         appendMessage('Вибачте, сталася помилка. Спробуйте ще раз.', 'bot');
+      }
+
+      // When the spec brief was saved, clear history so a new conversation can start
+      if (result.spec_saved) {
+        conversationHistory = [];
+        localStorage.removeItem('rozoom_history');
+        metadata.selected_agent = 'greeter';
+        metadata.active_specialist = 'greeter';
       }
 
       // Reset suppress_greeting after one request

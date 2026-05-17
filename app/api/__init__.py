@@ -1,4 +1,4 @@
-﻿from flask import Blueprint, request, jsonify, current_app, session
+from flask import Blueprint, request, jsonify, current_app, session
 from flask_login import current_user
 import os
 import requests
@@ -27,6 +27,8 @@ def chat():
         data = request.get_json() or {}
         message = data.get('message', '')
         metadata = data.get('metadata', {})
+        # Conversation history sent by the chat widget (spec agent context + save trigger)
+        metadata['history'] = data.get('history', [])
 
         current_app.logger.info(f"Chat API received: message={message[:50]}..., metadata={metadata}")
 
@@ -99,6 +101,9 @@ def chat():
     }
     if result.get('interactive'):
         response['interactive'] = result['interactive']
+    if result.get('spec_saved'):
+        response['spec_saved'] = True
+        response['submission_id'] = result.get('submission_id')
 
     current_app.logger.info(f"Sending chat response: agent={agent}, answer={str(answer)[:50]}...")
     return jsonify(response)

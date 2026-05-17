@@ -78,15 +78,32 @@ _LANG_NAMES = {
 }
 
 
-def build_messages(user_text: str, agent: str, context: Optional[str], language: str) -> List[Dict[str, Any]]:
+def build_messages(
+    user_text: str,
+    agent: str,
+    context: Optional[str],
+    language: str,
+    prior_messages: Optional[List[Dict[str, Any]]] = None,
+) -> List[Dict[str, Any]]:
     system_prompt = SYSTEM_PROMPTS.get(agent, SYSTEM_PROMPTS["greeter"])
     lang_name = _LANG_NAMES.get(language, language)
+
     messages: List[Dict[str, Any]] = [
         {"role": "system", "content": system_prompt},
         {"role": "system", "content": f"Detected user language: {lang_name}. Reply in {lang_name}."},
     ]
     if context:
         messages.append({"role": "system", "content": f"PROJECT CONTEXT:\n{context}"})
+
+    # Inject prior conversation turns (spec agent multi-turn context)
+    if prior_messages:
+        # Keep the last 20 turns max to stay within token budget
+        for m in prior_messages[-20:]:
+            role = m.get("role", "user")
+            content = (m.get("content") or "").strip()
+            if content and role in ("user", "assistant"):
+                messages.append({"role": role, "content": content})
+
     messages.append({"role": "user", "content": user_text})
     return messages
 
@@ -99,12 +116,20 @@ def respond(
     language: str = "uk",
     context: Optional[str] = None,
     structured: bool = False,
+    prior_messages: Optional[List[Dict[str, Any]]] = None,
 ) -> Dict[str, Any]:
     """
     Універсальний виклик Responses API.
+    prior_messages: previous turns [{role,content}] injected before the current user message.
     Якщо structured=True — просимо модель віддати JSON, валідований Pydantic'ом.
     """
-    messages = build_messages(user_text=user_text, agent=agent, context=context, language=language)
+    messages = build_messages(
+        user_text=user_text,
+        agent=agent,
+        context=context,
+        language=language,
+        prior_messages=prior_messages,
+    )
 
     if structured:
         schema_hint = (

@@ -234,6 +234,52 @@ def _ensure_defaults(metadata: Dict[str, Any]) -> None:
     if META_ACTIVE not in metadata or metadata[META_ACTIVE] not in VALID_AGENTS:
         metadata[META_ACTIVE] = metadata[META_SELECTED]
 
+def is_spec_confirmation(message: str, history: list) -> bool:
+    """
+    Return True when the user is confirming the spec summary.
+    Requires at least 8 history entries (= 4 exchanges) to avoid false positives
+    on the very first message.
+    """
+    if len(history) < 8:
+        return False
+    try:
+        from app.services.spec_service import is_confirmation
+        return is_confirmation(message)
+    except Exception:
+        return False
+
+
+def _history_to_llm_messages(history: list) -> list:
+    """Convert JS history [{text, type}, …] to [{role, content}, …] for the LLM."""
+    try:
+        from app.services.spec_service import history_to_messages
+        return history_to_messages(history)
+    except Exception:
+        return []
+
+
+def _spec_thanks(language: str, submission_id: int) -> str:
+    msgs = {
+        "de": (
+            f"✅ Vielen Dank! Ihre Projektbeschreibung wurde gespeichert (#{submission_id}) "
+            "und an unser Team gesendet. Wir melden uns innerhalb von 24 Stunden bei Ihnen."
+        ),
+        "en": (
+            f"✅ Thank you! Your project brief has been saved (#{submission_id}) "
+            "and sent to our team. We'll get back to you within 24 hours."
+        ),
+        "uk": (
+            f"✅ Дякуємо! Ваше технічне завдання збережено (#{submission_id}) "
+            "і надіслано нашій команді. Ми зв'яжемося з вами протягом 24 годин."
+        ),
+        "ru": (
+            f"✅ Спасибо! Ваше техническое задание сохранено (#{submission_id}) "
+            "и отправлено нашей команде. Мы свяжемся с вами в течение 24 часов."
+        ),
+    }
+    return msgs.get(language, msgs["en"])
+
+
 def route_and_respond(message, metadata=None):
     """
     Повертає словник з результатами виклику асиста:
@@ -289,8 +335,33 @@ def route_and_respond(message, metadata=None):
             # В случае ошибки возвращаемся к стандартному обработчику
             pass
     
-    # If SPEC agent is chosen, enrich context with Services TZ form schema/CTA
+    # ── SPEC agent handling ───────────────────────────────────────────────────
     if agent == 'spec':
+        history: list = metadata.get('history') or []
+
+        # ① Confirmation path: user confirmed the summary → save to DB + Telegram
+        if is_spec_confirmation(message or '', history):
+            try:
+                from app.services.spec_service import save_and_notify
+                user_id = metadata.get('user_id')
+                submission = save_and_notify(history, user_id=user_id, language=language)
+                if submission:
+                    thanks = _spec_thanks(language, submission.id)
+                    return {
+                        'agent': 'requirements',
+                        'answer': thanks,
+                        'interactive': None,
+                        'conversation_id': conversation_id,
+                        'spec_saved': True,
+                        'submission_id': submission.id,
+                    }
+            except Exception as exc:
+                logger.error(f"Spec save_and_notify failed: {exc}")
+            # Fall through to normal LLM response if save failed
+
+        # ② Normal spec path: pass conversation history as LLM context
+        conv_messages = _history_to_llm_messages(history)
+
         try:
             from app.agents.site_knowledge import spec_agent_context
             spec_ctx = spec_agent_context(language)
@@ -301,14 +372,24 @@ def route_and_respond(message, metadata=None):
         except Exception:
             pass
 
-    result = responses_respond(
-        user_text=message or '',
-        agent=agent,
-        conversation_id=conversation_id,
-        language=language,
-        context=context,
-        structured=False,
-    )
+        result = responses_respond(
+            user_text=message or '',
+            agent=agent,
+            conversation_id=conversation_id,
+            language=language,
+            context=context,
+            structured=False,
+            prior_messages=conv_messages,
+        )
+    else:
+        result = responses_respond(
+            user_text=message or '',
+            agent=agent,
+            conversation_id=conversation_id,
+            language=language,
+            context=context,
+            structured=False,
+        )
 
     ui_agent = 'requirements' if result.get('agent') == 'spec' else result.get('agent')
     # Keep UI state coherent
