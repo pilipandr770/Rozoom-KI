@@ -927,14 +927,43 @@ def project_detail(project_id):
 
 # Вспомогательные функции для отправки уведомлений
 def send_estimate_notification(submission):
-    """Отправка уведомления клиенту о готовой оценке"""
-    # Здесь можно реализовать отправку email
-    current_app.logger.info(f"Estimate notification would be sent to {submission.contact_email}")
+    """Send Telegram alert to admin when an estimate is saved for a spec."""
+    try:
+        from app.services.telegram_service import send_telegram_message
+        msg = (
+            f"💰 <b>Estimate set for spec #{submission.id}</b>\n\n"
+            f"<b>Contact:</b> {submission.contact_name} &lt;{submission.contact_email}&gt;\n"
+            f"<b>Project type:</b> {submission.project_type or '—'}\n"
+            f"<b>Estimated hours:</b> {submission.estimated_hours or '—'}\n"
+            f"<b>Estimated cost:</b> {submission.estimated_cost or '—'}\n"
+            f"<b>Timeline:</b> {submission.estimated_timeline or '—'}\n"
+            "<i>Client has NOT been notified automatically — contact them directly.</i>"
+        )
+        send_telegram_message(msg)
+    except Exception as exc:
+        current_app.logger.error(f"send_estimate_notification failed: {exc}")
+
 
 def send_welcome_email(user, temp_password):
-    """Отправка приветственного письма с временным паролем"""
-    # Здесь можно реализовать отправку email
-    current_app.logger.info(f"Welcome email with temporary password would be sent to {user.email}")
+    """
+    Send the client's temporary password to the admin via Telegram so it is not lost.
+    (Real email delivery requires SMTP config — add Flask-Mail later when SMTP is set up.)
+    """
+    try:
+        from app.services.telegram_service import send_telegram_message
+        msg = (
+            f"🔑 <b>New client account created</b>\n\n"
+            f"<b>Name:</b> {user.name or '—'}\n"
+            f"<b>Email:</b> {user.email}\n"
+            f"<b>Temp password:</b> <code>{temp_password}</code>\n\n"
+            "<i>Please send these credentials to the client manually.</i>"
+        )
+        send_telegram_message(msg)
+        current_app.logger.info(f"Welcome credentials for {user.email} sent to admin via Telegram.")
+    except Exception as exc:
+        current_app.logger.error(f"send_welcome_email (Telegram) failed: {exc}")
+        # Critical fallback: at minimum log the password so it is not lost
+        current_app.logger.warning(f"TEMP PASSWORD for {user.email}: {temp_password}")
 
 def send_project_update_notification(project, update):
     """Отправка уведомления об обновлении проекта"""
