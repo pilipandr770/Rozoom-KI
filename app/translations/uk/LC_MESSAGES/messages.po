@@ -1546,7 +1546,7 @@ msgstr "Ще не вирішив"
 
 #: app/templates/services.html:169
 msgid "This helps us determine the development pace and resource allocation."
-msgstr ""
+msgstr "Це допомагає нам визначити темп розробки та розподіл ресурсів."
 
 #: app/templates/services.html:179
 msgid "Do you have a budget range in mind?"
@@ -1834,11 +1834,11 @@ msgstr ""
 
 #: app/templates/services.html:460
 msgid "Submitting..."
-msgstr ""
+msgstr "Надсилається…"
 
 #: app/templates/de/terms.html:11 app/templates/terms.html:11
 msgid "1. Acceptance of Terms"
-msgstr ""
+msgstr "1. Прийняття умов"
 
 #: app/templates/de/terms.html:12 app/templates/terms.html:12
 msgid ""
@@ -1849,7 +1849,7 @@ msgstr ""
 
 #: app/templates/de/terms.html:16 app/templates/terms.html:16
 msgid "2. Description of Service"
-msgstr ""
+msgstr "2. Опис послуг"
 
 #: app/templates/de/terms.html:17 app/templates/terms.html:17
 msgid ""
@@ -1861,7 +1861,7 @@ msgstr ""
 
 #: app/templates/de/terms.html:21 app/templates/terms.html:21
 msgid "3. User Accounts"
-msgstr ""
+msgstr "3. Облікові записи користувачів"
 
 #: app/templates/de/terms.html:22 app/templates/terms.html:22
 msgid ""
@@ -1873,7 +1873,7 @@ msgstr ""
 
 #: app/templates/de/terms.html:26 app/templates/terms.html:26
 msgid "4. Payment Terms"
-msgstr ""
+msgstr "4. Умови оплати"
 
 #: app/templates/de/terms.html:27 app/templates/terms.html:27
 msgid ""
@@ -1885,7 +1885,7 @@ msgstr ""
 
 #: app/templates/de/terms.html:31 app/templates/terms.html:31
 msgid "5. Intellectual Property"
-msgstr ""
+msgstr "5. Інтелектуальна власність"
 
 #: app/templates/de/terms.html:32 app/templates/terms.html:32
 msgid ""
@@ -1897,7 +1897,7 @@ msgstr ""
 
 #: app/templates/de/terms.html:36 app/templates/terms.html:36
 msgid "6. User Content"
-msgstr ""
+msgstr "6. Контент користувача"
 
 #: app/templates/de/terms.html:37 app/templates/terms.html:37
 msgid ""
@@ -1909,7 +1909,7 @@ msgstr ""
 
 #: app/templates/de/terms.html:41 app/templates/terms.html:41
 msgid "7. Limitation of Liability"
-msgstr ""
+msgstr "7. Обмеження відповідальності"
 
 #: app/templates/de/terms.html:42 app/templates/terms.html:42
 msgid ""
@@ -1922,7 +1922,7 @@ msgstr ""
 
 #: app/templates/de/terms.html:46 app/templates/terms.html:46
 msgid "8. Governing Law"
-msgstr ""
+msgstr "8. Застосовне право"
 
 #: app/templates/de/terms.html:47 app/templates/terms.html:47
 msgid ""
@@ -1932,7 +1932,7 @@ msgstr ""
 
 #: app/templates/de/terms.html:51 app/templates/terms.html:51
 msgid "9. Changes to Terms"
-msgstr ""
+msgstr "9. Зміни умов"
 
 #: app/templates/de/terms.html:52 app/templates/terms.html:52
 msgid ""
@@ -1944,19 +1944,19 @@ msgstr ""
 
 #: app/templates/de/terms.html:56 app/templates/terms.html:56
 msgid "10. Contact Us"
-msgstr ""
+msgstr "10. Контакт"
 
 #: app/templates/de/terms.html:57 app/templates/terms.html:57
 msgid "If you have any questions about these Terms, please contact us at:"
-msgstr ""
+msgstr "Якщо у вас є питання щодо цих Умов, зверніться до нас:"
 
 #: app/templates/auth/forgot_password.html:3
 msgid "Forgot Password"
-msgstr ""
+msgstr "Забули пароль"
 
 #: app/templates/auth/forgot_password.html:11
 msgid "Reset Password"
-msgstr ""
+msgstr "Скинути пароль"
 
 #: app/templates/auth/forgot_password.html:14
 msgid ""
@@ -1966,170 +1966,170 @@ msgstr ""
 
 #: app/templates/auth/forgot_password.html:22
 msgid "Send Reset Link"
-msgstr ""
+msgstr "Надіслати посилання для скидання"
 
 #: app/templates/auth/forgot_password.html:27
 msgid "Remember your password?"
-msgstr ""
+msgstr "Пам’ятаєте пароль?"
 
 #: app/templates/auth/login.html:17
 msgid "Email or Username"
-msgstr ""
+msgstr "Електронна пошта або логін"
 
 #: app/templates/auth/login.html:21 app/templates/auth/register.html:45
 msgid "Password"
-msgstr ""
+msgstr "Пароль"
 
 #: app/templates/auth/login.html:26
 msgid "Remember me"
-msgstr ""
+msgstr "Зап’ятати мене"
 
 #: app/templates/auth/login.html:33
 msgid "Forgot your password?"
-msgstr ""
+msgstr "Забули пароль?"
 
 #: app/templates/auth/login.html:37
 msgid "Don't have an account?"
-msgstr ""
+msgstr "Немає облікового запису?"
 
 #: app/templates/auth/register.html:11
 msgid "Create an Account"
-msgstr ""
+msgstr "Створити обліковий запис"
 
 #: app/templates/auth/register.html:28
 msgid "Username"
-msgstr ""
+msgstr "Логін"
 
 #: app/templates/auth/register.html:29
 msgid "Choose a username or leave blank to use your email"
-msgstr ""
+msgstr "Оберіть логін або залиште порожнім для використання email"
 
 #: app/templates/auth/register.html:30
 msgid "This will be used for login and displayed in your profile"
-msgstr ""
+msgstr "Використовується для входу та відображається у профілі"
 
 #: app/templates/auth/register.html:39 app/templates/dashboard/profile.html:59
 msgid "Phone Number"
-msgstr ""
+msgstr "Номер телефону"
 
 #: app/templates/auth/register.html:47
 msgid "Password must be at least 8 characters long"
-msgstr ""
+msgstr "Пароль має бути не менше 8 символів"
 
 #: app/templates/auth/register.html:50
 msgid "Confirm Password"
-msgstr ""
+msgstr "Підтвердити пароль"
 
 #: app/templates/auth/register.html:56
 msgid "I agree to the"
-msgstr ""
+msgstr "Я погоджуюсь з"
 
 #: app/templates/auth/register.html:56
 msgid "and"
-msgstr ""
+msgstr "та"
 
 #: app/templates/auth/register.html:64
 msgid "Already have an account?"
-msgstr ""
+msgstr "Вже є обліковий запис?"
 
 #: app/templates/blog/blog.html:50
 msgid "No blog posts found."
-msgstr ""
+msgstr "Публікацій у блозі не знайдено."
 
 #: app/templates/blog/blog.html:105
 msgid "No categories found"
-msgstr ""
+msgstr "Категорій не знайдено"
 
 #: app/templates/blog/blog.html:119
 msgid "No tags found"
-msgstr ""
+msgstr "Тегів не знайдено"
 
 #: app/templates/blog/blog.html:128 app/templates/blog/blog_category.html:129
 #: app/templates/blog/blog_post.html:123
 #: app/templates/blog/blog_search.html:141 app/templates/blog/blog_tag.html:131
 msgid "Search blog..."
-msgstr ""
+msgstr "Пошук у блозі…"
 
 #: app/templates/blog/blog_category.html:10
 msgid "Category:"
-msgstr ""
+msgstr "Категорія:"
 
 #: app/templates/blog/blog_category.html:50
 msgid "No posts found in this category."
-msgstr ""
+msgstr "Публікацій у цій категорії не знайдено."
 
 #: app/templates/blog/blog_category.html:96
 #: app/templates/blog/blog_search.html:99 app/templates/blog/blog_tag.html:98
 msgid "Back to All Posts"
-msgstr ""
+msgstr "Повернутися до всіх публікацій"
 
 #: app/templates/blog/blog_post.html:45
 msgid "Tags:"
-msgstr ""
+msgstr "Теги:"
 
 #: app/templates/blog/blog_search.html:10
 msgid "Search Results for"
-msgstr ""
+msgstr "Результати пошуку для"
 
 #: app/templates/blog/blog_search.html:11
 msgid "results"
-msgstr ""
+msgstr "результати"
 
 #: app/templates/blog/blog_search.html:53
 msgid "No results found for"
-msgstr ""
+msgstr "Результатів не знайдено для"
 
 #: app/templates/blog/blog_search.html:104
 msgid "Try another search..."
-msgstr ""
+msgstr "Спробуйте інший запит…"
 
 #: app/templates/blog/blog_tag.html:52
 msgid "No posts found with this tag."
-msgstr ""
+msgstr "Публікацій з цим тегом не знайдено."
 
 #: app/templates/client/dashboard.html:3 app/templates/client/dashboard.html:7
 #: app/templates/client/project_detail.html:9
 #: app/templates/client/tech_spec_detail.html:9
 msgid "My Projects"
-msgstr ""
+msgstr "Мої проєкти"
 
 #: app/templates/client/dashboard.html:27
 #: app/templates/client/project_detail.html:36
 msgid "Project Progress"
-msgstr ""
+msgstr "Прогрес проєкту"
 
 #: app/templates/client/dashboard.html:32
 msgid "Est. completion"
-msgstr ""
+msgstr "Орієнтовне завершення"
 
 #: app/templates/client/dashboard.html:34
 msgid "Start date"
-msgstr ""
+msgstr "Дата початку"
 
 #: app/templates/client/dashboard.html:34
 msgid "TBD"
-msgstr ""
+msgstr "Буде визначено"
 
 #: app/templates/client/dashboard.html:40
 msgid "Last update"
-msgstr ""
+msgstr "Останнє оновлення"
 
 #: app/templates/client/dashboard.html:46
 #: app/templates/dashboard/index.html:200
 msgid "View Details"
-msgstr ""
+msgstr "Переглянути деталі"
 
 #: app/templates/client/dashboard.html:48
 msgid "Ask PM"
-msgstr ""
+msgstr "Запитати PM"
 
 #: app/templates/client/dashboard.html:57
 msgid "No Projects Yet!"
-msgstr ""
+msgstr "Проєктів ще немає!"
 
 #: app/templates/client/dashboard.html:58
 msgid "You don't have any active projects at the moment."
-msgstr ""
+msgstr "У вас наразі немає активних проєктів."
 
 #: app/templates/client/dashboard.html:61
 msgid ""
@@ -2139,28 +2139,28 @@ msgstr ""
 
 #: app/templates/client/dashboard.html:64
 msgid "Would you like to start a new project?"
-msgstr ""
+msgstr "Бажаєте розпочати новий проєкт?"
 
 #: app/templates/client/dashboard.html:65
 msgid "Create Technical Specification"
-msgstr ""
+msgstr "Створити технічне завдання"
 
 #: app/templates/client/dashboard.html:71
 msgid "Your Technical Specifications"
-msgstr ""
+msgstr "Ваші технічні завдання"
 
 #: app/templates/client/dashboard.html:76
 msgid "Date Submitted"
-msgstr ""
+msgstr "Дата подачі"
 
 #: app/templates/client/dashboard.html:77
 #: app/templates/client/tech_spec_detail.html:46
 msgid "Project Type"
-msgstr ""
+msgstr "Тип проєкту"
 
 #: app/templates/client/dashboard.html:78
 msgid "Goal"
-msgstr ""
+msgstr "Мета"
 
 #: app/templates/client/dashboard.html:79
 #: app/templates/client/tech_spec_detail.html:22
@@ -2168,37 +2168,37 @@ msgstr ""
 #: app/templates/dashboard/project_detail.html:143
 #: app/templates/dashboard/projects.html:86
 msgid "Status"
-msgstr ""
+msgstr "Статус"
 
 #: app/templates/client/dashboard.html:80
 #: app/templates/dashboard/invoices.html:153
 #: app/templates/dashboard/projects.html:90
 msgid "Actions"
-msgstr ""
+msgstr "Дії"
 
 #: app/templates/client/dashboard.html:91
 #: app/templates/client/tech_spec_detail.html:22
 msgid "Under Review"
-msgstr ""
+msgstr "На розгляді"
 
 #: app/templates/client/dashboard.html:95
 #: app/templates/dashboard/projects.html:116
 msgid "View"
-msgstr ""
+msgstr "Переглянути"
 
 #: app/templates/client/dashboard.html:99
 msgid "Go to Project"
-msgstr ""
+msgstr "Перейти до проєкту"
 
 #: app/templates/client/project_detail.html:25
 msgid "Project Description"
-msgstr ""
+msgstr "Опис проєкту"
 
 #: app/templates/client/project_detail.html:42
 #: app/templates/dashboard/project_detail.html:64
 #: app/templates/dashboard/projects.html:87
 msgid "Start Date"
-msgstr ""
+msgstr "Дата початку"
 
 #: app/templates/client/project_detail.html:43
 #: app/templates/dashboard/project_detail.html:69
@@ -2206,138 +2206,138 @@ msgstr ""
 #: app/templates/dashboard/project_detail.html:159
 #: app/templates/dashboard/projects.html:107
 msgid "Not set"
-msgstr ""
+msgstr "Не визначено"
 
 #: app/templates/client/project_detail.html:46
 #: app/templates/dashboard/project_detail.html:68
 msgid "Estimated Completion"
-msgstr ""
+msgstr "Орієнтовне завершення"
 
 #: app/templates/client/project_detail.html:47
 msgid "To be determined"
-msgstr ""
+msgstr "Буде визначено"
 
 #: app/templates/client/project_detail.html:55
 msgid "Project Updates"
-msgstr ""
+msgstr "Оновлення проєкту"
 
 #: app/templates/client/project_detail.html:73
 msgid "No updates yet."
-msgstr ""
+msgstr "Оновлень ще немає."
 
 #: app/templates/client/project_detail.html:82
 msgid "Project Tasks"
-msgstr ""
+msgstr "Завдання проєкту"
 
 #: app/templates/client/project_detail.html:95
 msgid "No tasks created yet."
-msgstr ""
+msgstr "Завдань ще не створено."
 
 #: app/templates/client/project_detail.html:102
 msgid "Project Team"
-msgstr ""
+msgstr "Команда проєкту"
 
 #: app/templates/client/project_detail.html:123
 msgid "No team members assigned yet."
-msgstr ""
+msgstr "Учасників команди ще не призначено."
 
 #: app/templates/client/project_detail.html:133
 msgid "Have questions about your project?"
-msgstr ""
+msgstr "є питання щодо вашого проєкту?"
 
 #: app/templates/client/project_detail.html:135
 msgid "Chat with Project Manager"
-msgstr ""
+msgstr "Написати проєктному менеджеру"
 
 #: app/templates/client/tech_spec_detail.html:3
 #: app/templates/client/tech_spec_detail.html:10
 msgid "Technical Specification"
-msgstr ""
+msgstr "Технічне завдання"
 
 #: app/templates/client/tech_spec_detail.html:21
 msgid "Submitted on"
-msgstr ""
+msgstr "Подано"
 
 #: app/templates/client/tech_spec_detail.html:25
 msgid "Contact Name"
-msgstr ""
+msgstr "Ім’я контакту"
 
 #: app/templates/client/tech_spec_detail.html:26
 msgid "Contact Email"
-msgstr ""
+msgstr "Email контакту"
 
 #: app/templates/client/tech_spec_detail.html:28
 msgid "Contact Phone"
-msgstr ""
+msgstr "Телефон контакту"
 
 #: app/templates/client/tech_spec_detail.html:33
 msgid "Technical Specification Details"
-msgstr ""
+msgstr "Деталі технічного завдання"
 
 #: app/templates/client/tech_spec_detail.html:39
 #: app/templates/dashboard/project_detail.html:56
 msgid "Project Overview"
-msgstr ""
+msgstr "Огляд проєкту"
 
 #: app/templates/client/tech_spec_detail.html:43
 msgid "Project Goal"
-msgstr ""
+msgstr "Мета проєкту"
 
 #: app/templates/client/tech_spec_detail.html:49
 msgid "Target Audience"
-msgstr ""
+msgstr "Цільова аудиторія"
 
 #: app/templates/client/tech_spec_detail.html:58
 msgid "Functionality"
-msgstr ""
+msgstr "Функціональність"
 
 #: app/templates/client/tech_spec_detail.html:62
 msgid "Key Features"
-msgstr ""
+msgstr "Ключові функції"
 
 #: app/templates/client/tech_spec_detail.html:65
 msgid "User Roles"
-msgstr ""
+msgstr "Ролі користувачів"
 
 #: app/templates/client/tech_spec_detail.html:74
 msgid "Design & Technical Requirements"
-msgstr ""
+msgstr "Дизайн та технічні вимоги"
 
 #: app/templates/client/tech_spec_detail.html:78
 msgid "Design Preferences"
-msgstr ""
+msgstr "Переваги дизайну"
 
 #: app/templates/client/tech_spec_detail.html:82
 msgid "Similar Sites"
-msgstr ""
+msgstr "Схожі сайти"
 
 #: app/templates/client/tech_spec_detail.html:87
 msgid "Technical Requirements"
-msgstr ""
+msgstr "Технічні вимоги"
 
 #: app/templates/client/tech_spec_detail.html:92
 msgid "Integrations"
-msgstr ""
+msgstr "Інтеграції"
 
 #: app/templates/client/tech_spec_detail.html:102
 msgid "Business & Timeline"
-msgstr ""
+msgstr "Бізнес та графік"
 
 #: app/templates/client/tech_spec_detail.html:106
 msgid "Budget Range"
-msgstr ""
+msgstr "Діапазон бюджету"
 
 #: app/templates/client/tech_spec_detail.html:109
 msgid "Timeline"
-msgstr ""
+msgstr "Графік"
 
 #: app/templates/client/tech_spec_detail.html:113
 msgid "Additional Information"
-msgstr ""
+msgstr "Додаткова інформація"
 
 #: app/templates/client/tech_spec_detail.html:123
 msgid "Discuss This Specification"
-msgstr ""
+msgstr "Обговорити завдання"
 
 #: app/templates/dashboard/index.html:37
 #: app/templates/dashboard/invoices.html:17
@@ -2346,7 +2346,7 @@ msgstr ""
 #: app/templates/dashboard/project_detail.html:17
 #: app/templates/dashboard/projects.html:17
 msgid "Projects"
-msgstr ""
+msgstr "Проєкти"
 
 #: app/templates/dashboard/index.html:40
 #: app/templates/dashboard/invoices.html:20
@@ -2356,7 +2356,7 @@ msgstr ""
 #: app/templates/dashboard/project_detail.html:20
 #: app/templates/dashboard/projects.html:20
 msgid "Messages"
-msgstr ""
+msgstr "Повідомлення"
 
 #: app/templates/dashboard/index.html:43
 #: app/templates/dashboard/invoices.html:23
@@ -2366,7 +2366,7 @@ msgstr ""
 #: app/templates/dashboard/project_detail.html:23
 #: app/templates/dashboard/projects.html:23
 msgid "Invoices"
-msgstr ""
+msgstr "Рахунки"
 
 #: app/templates/dashboard/index.html:46
 #: app/templates/dashboard/invoices.html:26
@@ -2376,11 +2376,11 @@ msgstr ""
 #: app/templates/dashboard/project_detail.html:26
 #: app/templates/dashboard/projects.html:26
 msgid "Profile Settings"
-msgstr ""
+msgstr "Налаштування профілю"
 
 #: app/templates/dashboard/index.html:62
 msgid "Welcome back"
-msgstr ""
+msgstr "Ласкаво просимо"
 
 #: app/templates/dashboard/index.html:68
 msgid "Your Account Benefits"
@@ -2412,324 +2412,324 @@ msgstr "Пріоритетна підтримка та швидші часи в�
 
 #: app/templates/dashboard/index.html:92
 msgid "Projects Overview"
-msgstr ""
+msgstr "Огляд проєктів"
 
 #: app/templates/dashboard/index.html:95
 msgid "Active Projects"
-msgstr ""
+msgstr "Активні проєкти"
 
 #: app/templates/dashboard/index.html:99
 msgid "Completed Projects"
-msgstr ""
+msgstr "Завершені проєкти"
 
 #: app/templates/dashboard/index.html:103
 msgid "New Projects"
-msgstr ""
+msgstr "Нові проєкти"
 
 #: app/templates/dashboard/index.html:107
 msgid "Total Projects"
-msgstr ""
+msgstr "Всього проєктів"
 
 #: app/templates/dashboard/index.html:119
 msgid "Quick Actions"
-msgstr ""
+msgstr "Швидкі дії"
 
 #: app/templates/dashboard/index.html:122
 #: app/templates/dashboard/projects.html:42
 msgid "New Project Request"
-msgstr ""
+msgstr "Нова заявка на проєкт"
 
 #: app/templates/dashboard/index.html:125
 msgid "Contact Support"
-msgstr ""
+msgstr "Зв’язатися з підтримкою"
 
 #: app/templates/dashboard/index.html:128
 msgid "Update Profile"
-msgstr ""
+msgstr "Оновити профіль"
 
 #: app/templates/dashboard/index.html:139
 msgid "Recent Activity"
-msgstr ""
+msgstr "Остання активність"
 
 #: app/templates/dashboard/index.html:142
 msgid "Last login"
-msgstr ""
+msgstr "Останній вхід"
 
 #: app/templates/dashboard/index.html:142
 msgid "Never"
-msgstr ""
+msgstr "Ніколи"
 
 #: app/templates/dashboard/index.html:153
 msgid "No recent activity"
-msgstr ""
+msgstr "Останньої активності немає"
 
 #: app/templates/dashboard/index.html:164
 #: app/templates/dashboard/projects.html:40
 msgid "Your Projects"
-msgstr ""
+msgstr "Ваші проєкти"
 
 #: app/templates/dashboard/index.html:165
 msgid "View All"
-msgstr ""
+msgstr "Переглянути всі"
 
 #: app/templates/dashboard/index.html:186
 msgid "Started"
-msgstr ""
+msgstr "Розпочато"
 
 #: app/templates/dashboard/index.html:192
 #: app/templates/dashboard/project_detail.html:75
 #: app/templates/dashboard/projects.html:89
 msgid "Progress"
-msgstr ""
+msgstr "Прогрес"
 
 #: app/templates/dashboard/index.html:209
 msgid "No projects yet"
-msgstr ""
+msgstr "Проєктів ще немає"
 
 #: app/templates/dashboard/index.html:210
 #: app/templates/dashboard/projects.html:126
 msgid "Start by submitting a new project request"
-msgstr ""
+msgstr "Почніть з нової заявки на проєкт"
 
 #: app/templates/dashboard/index.html:211
 #: app/templates/dashboard/projects.html:127
 msgid "Request a Project"
-msgstr ""
+msgstr "Замовити проєкт"
 
 #: app/templates/dashboard/invoices.html:44
 msgid "Filter"
-msgstr ""
+msgstr "Фільтр"
 
 #: app/templates/dashboard/invoices.html:47
 msgid "All Invoices"
-msgstr ""
+msgstr "Всі рахунки"
 
 #: app/templates/dashboard/invoices.html:48
 #: app/templates/dashboard/invoices.html:96
 #: app/templates/dashboard/invoices.html:168
 msgid "Paid"
-msgstr ""
+msgstr "Сплачено"
 
 #: app/templates/dashboard/invoices.html:49
 #: app/templates/dashboard/invoices.html:113
 #: app/templates/dashboard/invoices.html:170
 msgid "Pending"
-msgstr ""
+msgstr "Очікується"
 
 #: app/templates/dashboard/invoices.html:50
 #: app/templates/dashboard/invoices.html:130
 #: app/templates/dashboard/invoices.html:172
 msgid "Overdue"
-msgstr ""
+msgstr "Прострочено"
 
 #: app/templates/dashboard/invoices.html:55
 msgid "Sort"
-msgstr ""
+msgstr "Сортування"
 
 #: app/templates/dashboard/invoices.html:58
 msgid "Date (Newest First)"
-msgstr ""
+msgstr "Дата (новіші спочатку)"
 
 #: app/templates/dashboard/invoices.html:59
 msgid "Date (Oldest First)"
-msgstr ""
+msgstr "Дата (старіші спочатку)"
 
 #: app/templates/dashboard/invoices.html:60
 msgid "Amount (Highest First)"
-msgstr ""
+msgstr "Сума (найбільша спочатку)"
 
 #: app/templates/dashboard/invoices.html:61
 msgid "Amount (Lowest First)"
-msgstr ""
+msgstr "Сума (найменша спочатку)"
 
 #: app/templates/dashboard/invoices.html:79
 msgid "Total Invoices"
-msgstr ""
+msgstr "Всього рахунків"
 
 #: app/templates/dashboard/invoices.html:147
 msgid "Invoice #"
-msgstr ""
+msgstr "Рахунок №"
 
 #: app/templates/dashboard/invoices.html:148
 #: app/templates/dashboard/projects.html:85
 msgid "Project"
-msgstr ""
+msgstr "Проєкт"
 
 #: app/templates/dashboard/invoices.html:149
 #: app/templates/dashboard/messages.html:11
 #: app/templates/dashboard/messages.html:77
 msgid "Date"
-msgstr ""
+msgstr "Дата"
 
 #: app/templates/dashboard/invoices.html:150
 #: app/templates/dashboard/project_detail.html:144
 msgid "Due Date"
-msgstr ""
+msgstr "Дата оплати"
 
 #: app/templates/dashboard/invoices.html:151
 msgid "Amount"
-msgstr ""
+msgstr "Сума"
 
 #: app/templates/dashboard/invoices.html:198
 msgid "No invoices available"
-msgstr ""
+msgstr "Рахунків немає"
 
 #: app/templates/dashboard/invoices.html:199
 msgid "Your invoices will appear here once they are generated"
-msgstr ""
+msgstr "Ваші рахунки з’являться тут після їх створення"
 
 #: app/templates/dashboard/messages.html:9
 #: app/templates/dashboard/messages.html:210
 #: app/templates/dashboard/messages.html:275
 msgid "To"
-msgstr ""
+msgstr "Кому"
 
 #: app/templates/dashboard/messages.html:10
 #: app/templates/dashboard/messages.html:76
 #: app/templates/dashboard/messages.html:293
 #: app/templates/dashboard/project_detail.html:217
 msgid "Subject"
-msgstr ""
+msgstr "Тема"
 
 #: app/templates/dashboard/messages.html:46
 #: app/templates/dashboard/messages.html:269
 msgid "New Message"
-msgstr ""
+msgstr "Нове повідомлення"
 
 #: app/templates/dashboard/messages.html:56
 msgid "Inbox"
-msgstr ""
+msgstr "Вхідні"
 
 #: app/templates/dashboard/messages.html:61
 msgid "Sent"
-msgstr ""
+msgstr "Надіслані"
 
 #: app/templates/dashboard/messages.html:75
 #: app/templates/dashboard/messages.html:102
 msgid "From"
-msgstr ""
+msgstr "Від"
 
 #: app/templates/dashboard/messages.html:85
 #: app/templates/dashboard/projects.html:53
 msgid "New"
-msgstr ""
+msgstr "Нове"
 
 #: app/templates/dashboard/messages.html:132
 #: app/templates/dashboard/messages.html:240
 msgid "Close"
-msgstr ""
+msgstr "Закрити"
 
 #: app/templates/dashboard/messages.html:133
 #: app/templates/dashboard/messages.html:144
 msgid "Reply"
-msgstr ""
+msgstr "Відповісти"
 
 #: app/templates/dashboard/messages.html:150
 #: app/templates/dashboard/messages.html:297
 #: app/templates/dashboard/project_detail.html:221
 msgid "Message"
-msgstr ""
+msgstr "Повідомлення"
 
 #: app/templates/dashboard/messages.html:154
 #: app/templates/dashboard/messages.html:301
 msgid "Attachments (optional)"
-msgstr ""
+msgstr "Вкладення (необов’язково)"
 
 #: app/templates/dashboard/messages.html:158
 #: app/templates/dashboard/messages.html:307
 #: app/templates/dashboard/profile.html:119
 #: app/templates/dashboard/project_detail.html:227
 msgid "Cancel"
-msgstr ""
+msgstr "Скасувати"
 
 #: app/templates/dashboard/messages.html:159
 msgid "Send Reply"
-msgstr ""
+msgstr "Надіслати відповідь"
 
 #: app/templates/dashboard/messages.html:173
 msgid "Your inbox is empty"
-msgstr ""
+msgstr "Вхідні порожні"
 
 #: app/templates/dashboard/messages.html:174
 msgid "Messages from our team will appear here"
-msgstr ""
+msgstr "Тут з’являться повідомлення від нашої команди"
 
 #: app/templates/dashboard/messages.html:252
 msgid "No sent messages"
-msgstr ""
+msgstr "Надісланих повідомлень немає"
 
 #: app/templates/dashboard/messages.html:253
 msgid "Messages you send will appear here"
-msgstr ""
+msgstr "Тут з’являться ваші надіслані повідомлення"
 
 #: app/templates/dashboard/messages.html:277
 msgid "Select recipient"
-msgstr ""
+msgstr "Оберіть одержувача"
 
 #: app/templates/dashboard/messages.html:284
 msgid "Related Project (optional)"
-msgstr ""
+msgstr "Пов’язаний проєкт (необов’язково)"
 
 #: app/templates/dashboard/messages.html:286
 msgid "None"
-msgstr ""
+msgstr "Немає"
 
 #: app/templates/dashboard/profile.html:48
 msgid "Personal Information"
-msgstr ""
+msgstr "Особиста інформація"
 
 #: app/templates/dashboard/profile.html:56
 msgid "Email cannot be changed. Contact support if needed."
-msgstr ""
+msgstr "Email не можна змінити. За потреби зверніться до підтримки."
 
 #: app/templates/dashboard/profile.html:63
 msgid "Company"
-msgstr ""
+msgstr "Компанія"
 
 #: app/templates/dashboard/profile.html:68
 msgid "Change Password"
-msgstr ""
+msgstr "Змінити пароль"
 
 #: app/templates/dashboard/profile.html:70
 msgid "Current Password"
-msgstr ""
+msgstr "Поточний пароль"
 
 #: app/templates/dashboard/profile.html:74
 msgid "New Password"
-msgstr ""
+msgstr "Новий пароль"
 
 #: app/templates/dashboard/profile.html:78
 msgid "Confirm New Password"
-msgstr ""
+msgstr "Підтвердити новий пароль"
 
 #: app/templates/dashboard/profile.html:81
 msgid "Leave password fields empty if you don't want to change your password."
-msgstr ""
+msgstr "Залиште поля паролю порожніми, якщо не хочете змінювати пароль."
 
 #: app/templates/dashboard/profile.html:85
 msgid "Save Changes"
-msgstr ""
+msgstr "Зберегти зміни"
 
 #: app/templates/dashboard/profile.html:93
 msgid "Danger Zone"
-msgstr ""
+msgstr "Небезпечна зона"
 
 #: app/templates/dashboard/profile.html:94
 msgid "Actions here can't be undone. Please be careful."
-msgstr ""
+msgstr "Дії тут не можна скасувати. Будьте обережні."
 
 #: app/templates/dashboard/profile.html:96
 #: app/templates/dashboard/profile.html:120
 msgid "Delete Account"
-msgstr ""
+msgstr "Видалити обліковий запис"
 
 #: app/templates/dashboard/profile.html:109
 msgid "Confirm Account Deletion"
-msgstr ""
+msgstr "Підтвердити видалення облікового запису"
 
 #: app/templates/dashboard/profile.html:113
 msgid "Warning: This action cannot be undone."
-msgstr ""
+msgstr "Увага: цю дію не можна скасувати."
 
 #: app/templates/dashboard/profile.html:114
 msgid ""
@@ -2740,7 +2740,7 @@ msgstr ""
 
 #: app/templates/dashboard/profile.html:115
 msgid "To confirm, please type \"DELETE\" in the field below:"
-msgstr ""
+msgstr "Для підтвердження введіть «ВИДАЛИТИ» у поле нижче:"
 
 #: app/templates/dashboard/profile.html:140
 msgid ""
@@ -2750,128 +2750,128 @@ msgstr ""
 
 #: app/templates/dashboard/project_detail.html:42
 msgid "Back to Projects"
-msgstr ""
+msgstr "Назад до проєктів"
 
 #: app/templates/dashboard/project_detail.html:58
 msgid "Description"
-msgstr ""
+msgstr "Опис"
 
 #: app/templates/dashboard/project_detail.html:59
 msgid "No description provided."
-msgstr ""
+msgstr "Опис не надано."
 
 #: app/templates/dashboard/project_detail.html:65
 msgid "Not started yet"
-msgstr ""
+msgstr "Ще не розпочато"
 
 #: app/templates/dashboard/project_detail.html:80
 msgid "Complete"
-msgstr ""
+msgstr "Завершено"
 
 #: app/templates/dashboard/project_detail.html:89
 msgid "Project Details"
-msgstr ""
+msgstr "Деталі проєкту"
 
 #: app/templates/dashboard/project_detail.html:92
 msgid "Budget"
-msgstr ""
+msgstr "Бюджет"
 
 #: app/templates/dashboard/project_detail.html:97
 msgid "Project Created"
-msgstr ""
+msgstr "Проєкт створено"
 
 #: app/templates/dashboard/project_detail.html:102
 msgid "Last Updated"
-msgstr ""
+msgstr "Останнє оновлення"
 
 #: app/templates/dashboard/project_detail.html:110
 #: app/templates/dashboard/project_detail.html:211
 msgid "Contact Project Manager"
-msgstr ""
+msgstr "Зв’язатися з проєктним менеджером"
 
 #: app/templates/dashboard/project_detail.html:124
 msgid "Tasks"
-msgstr ""
+msgstr "Завдання"
 
 #: app/templates/dashboard/project_detail.html:129
 msgid "Updates & Milestones"
-msgstr ""
+msgstr "Оновлення та віхи"
 
 #: app/templates/dashboard/project_detail.html:142
 msgid "Task"
-msgstr ""
+msgstr "Завдання"
 
 #: app/templates/dashboard/project_detail.html:168
 msgid "No tasks defined yet"
-msgstr ""
+msgstr "Завдань ще не визначено"
 
 #: app/templates/dashboard/project_detail.html:169
 msgid "Tasks will appear here once the project planning phase is complete"
-msgstr ""
+msgstr "Завдання з’являться тут після завершення фази планування"
 
 #: app/templates/dashboard/project_detail.html:194
 msgid "No updates yet"
-msgstr ""
+msgstr "Оновлень ще немає"
 
 #: app/templates/dashboard/project_detail.html:195
 msgid "Project updates and milestones will appear here"
-msgstr ""
+msgstr "Тут з’являться оновлення та віхи проєкту"
 
 #: app/templates/dashboard/project_detail.html:222
 msgid "Type your message here..."
-msgstr ""
+msgstr "Введіть ваше повідомлення тут…"
 
 #: app/templates/dashboard/projects.html:52
 msgid "All Statuses"
-msgstr ""
+msgstr "Всі статуси"
 
 #: app/templates/dashboard/projects.html:54
 msgid "In Progress"
-msgstr ""
+msgstr "В роботі"
 
 #: app/templates/dashboard/projects.html:55
 msgid "Testing"
-msgstr ""
+msgstr "Тестування"
 
 #: app/templates/dashboard/projects.html:56
 msgid "Completed"
-msgstr ""
+msgstr "Завершено"
 
 #: app/templates/dashboard/projects.html:61
 msgid "Newest First"
-msgstr ""
+msgstr "Спочатку нові"
 
 #: app/templates/dashboard/projects.html:62
 msgid "Oldest First"
-msgstr ""
+msgstr "Спочатку старі"
 
 #: app/templates/dashboard/projects.html:63
 msgid "Name (A-Z)"
-msgstr ""
+msgstr "Назва (А–Я)"
 
 #: app/templates/dashboard/projects.html:64
 msgid "Name (Z-A)"
-msgstr ""
+msgstr "Назва (Я–А)"
 
 #: app/templates/dashboard/projects.html:69
 msgid "Search projects"
-msgstr ""
+msgstr "Пошук проєктів"
 
 #: app/templates/dashboard/projects.html:88
 msgid "Estimated End"
-msgstr ""
+msgstr "Орієнтовний кінець"
 
 #: app/templates/dashboard/projects.html:99
 msgid "No description"
-msgstr ""
+msgstr "Без опису"
 
 #: app/templates/dashboard/projects.html:106
 msgid "Not started"
-msgstr ""
+msgstr "Не розпочато"
 
 #: app/templates/dashboard/projects.html:125
 msgid "No projects found"
-msgstr ""
+msgstr "Проєктів не знайдено"
 
 #~ msgid "Home"
 #~ msgstr "Головна"

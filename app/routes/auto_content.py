@@ -50,7 +50,14 @@ def create_schedule():
         keywords = request.form.get('keywords')
         frequency = request.form.get('frequency')
         category_id = request.form.get('category_id', type=int)
-        
+
+        # Validate: category must exist
+        if not category_id or not BlogCategory.query.get(category_id):
+            flash('Сначала создайте хотя бы одну категорию блога.', 'danger')
+            return render_template('admin/auto_content/create_schedule.html',
+                                   categories=categories,
+                                   frequencies=[f.value for f in PublishFrequency])
+
         # Определяем автора - если это AdminUser, найдем соответствующего User
         from app.auth import AdminUser
         from app.models import User

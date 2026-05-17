@@ -50,12 +50,26 @@
           
           <div class="mb-3">
             <label for="category_id" class="form-label">Категория блога</label>
+            {% if categories %}
             <select class="form-select" id="category_id" name="category_id" required>
               {% for category in categories %}
               <option value="{{ category.id }}">{{ category.name }}</option>
               {% endfor %}
             </select>
             <div class="form-text">В какой категории блога будут публиковаться сгенерированные статьи</div>
+            {% else %}
+            <div class="alert alert-warning d-flex align-items-center gap-2 mb-2" role="alert">
+              <i class="bi bi-exclamation-triangle-fill flex-shrink-0"></i>
+              <div>
+                Категории блога ещё не созданы. Сначала
+                <a href="{{ url_for('admin.create_category') }}" class="alert-link">создайте хотя бы одну категорию</a>,
+                затем вернитесь сюда.
+              </div>
+            </div>
+            <select class="form-select" id="category_id" name="category_id" disabled>
+              <option value="">— нет категорий —</option>
+            </select>
+            {% endif %}
           </div>
           
           <div class="mb-3 form-check">
@@ -65,7 +79,7 @@
           
           <div class="d-flex justify-content-between">
             <a href="{{ url_for('auto_content.index') }}" class="btn btn-secondary">Отмена</a>
-            <button type="submit" class="btn btn-primary">Создать расписание</button>
+            <button type="submit" class="btn btn-primary" {% if not categories %}disabled title="Создайте категорию блога, чтобы продолжить"{% endif %}>Создать расписание</button>
           </div>
         </form>
       </div>

@@ -708,7 +708,7 @@ msgstr ""
 
 #: app/templates/index.html:79
 msgid "Operations Director, RetailPlus"
-msgstr ""
+msgstr "Betriebsleiter, RetailPlus"
 
 #: app/templates/index.html:84
 msgid ""
@@ -719,7 +719,7 @@ msgstr ""
 
 #: app/templates/index.html:88
 msgid "Marketing Director, InnovateMedia"
-msgstr ""
+msgstr "Marketingleiter, InnovateMedia"
 
 #: app/templates/index.html:99
 msgid "Build Your Workspace with Andrii Pylypchuk"
@@ -909,24 +909,24 @@ msgstr "Starten Sie noch heute"
 
 #: app/templates/payment_cancel.html:14
 msgid "Payment Cancelled"
-msgstr ""
+msgstr "Zahlung abgebrochen"
 
 #: app/templates/payment_cancel.html:15
 msgid "Your payment was not completed. No charges have been made to your account."
-msgstr ""
+msgstr "Ihre Zahlung wurde nicht abgeschlossen. Es wurden keine Kosten verbucht."
 
 #: app/templates/payment_cancel.html:18
 msgid "Try Again"
-msgstr ""
+msgstr "Erneut versuchen"
 
 #: app/templates/payment_cancel.html:19
 msgid "Back to Pricing"
-msgstr ""
+msgstr "Zurück zur Preisübersicht"
 
 #: app/templates/client/project_detail.html:130
 #: app/templates/payment_cancel.html:26
 msgid "Need Help?"
-msgstr ""
+msgstr "Hilfe benötigt?"
 
 #: app/templates/payment_cancel.html:28
 msgid ""
@@ -936,117 +936,117 @@ msgstr ""
 
 #: app/templates/payment_cancel.html:31
 msgid "You can email us at"
-msgstr ""
+msgstr "Sie können uns per E-Mail erreichen unter"
 
 #: app/templates/payment_cancel.html:32
 msgid "or"
-msgstr ""
+msgstr "oder"
 
 #: app/templates/payment_cancel.html:32
 msgid "contact us through our website"
-msgstr ""
+msgstr "kontaktieren Sie uns über unsere Website"
 
 #: app/templates/payment_form.html:197
 msgid "Purchase Development Hours"
-msgstr ""
+msgstr "Entwicklungsstunden kaufen"
 
 #: app/templates/payment_form.html:198
 msgid "Select the number of development hours you need"
-msgstr ""
+msgstr "Wählen Sie die benötigte Anzahl an Entwicklungsstunden"
 
 #: app/templates/payment_form.html:215
 msgid "Choose a Package"
-msgstr ""
+msgstr "Paket auswählen"
 
 #: app/templates/payment_form.html:219 app/templates/payment_form.html:238
 #: app/templates/pricing.html:129
 msgid "Hours"
-msgstr ""
+msgstr "Stunden"
 
 #: app/templates/payment_form.html:226
 msgid "Or Customize Your Hours"
-msgstr ""
+msgstr "Oder passen Sie Ihre Stunden an"
 
 #: app/templates/payment_form.html:230 app/templates/payment_form.html:231
 #: app/templates/payment_form.html:232
 msgid "hrs"
-msgstr ""
+msgstr "Std."
 
 #: app/templates/payment_form.html:239
 msgid "Rate"
-msgstr ""
+msgstr "Stundensatz"
 
 #: app/templates/payment_form.html:239
 msgid "hour"
-msgstr ""
+msgstr "Stunde"
 
 #: app/templates/payment_form.html:247 app/templates/services.html:384
 msgid "Contact Information"
-msgstr ""
+msgstr "Kontaktinformationen"
 
 #: app/templates/payment_form.html:267
 msgid "Proceed to Payment"
-msgstr ""
+msgstr "Zur Zahlung fortfahren"
 
 #: app/templates/payment_form.html:274
 msgid "What's Included"
-msgstr ""
+msgstr "Im Preis enthalten"
 
 #: app/templates/payment_form.html:276
 msgid "Professional development work per your requirements"
-msgstr ""
+msgstr "Professionelle Entwicklungsarbeit nach Ihren Anforderungen"
 
 #: app/templates/payment_form.html:277
 msgid "Regular updates on progress"
-msgstr ""
+msgstr "Regelmäßige Fortschrittsberichte"
 
 #: app/templates/payment_form.html:278
 msgid "Code and documentation delivered via secure channels"
-msgstr ""
+msgstr "Code und Dokumentation über sichere Kanäle"
 
 #: app/templates/payment_form.html:279
 msgid "Free minor revisions"
-msgstr ""
+msgstr "Kostenlose kleinere Anpassungen"
 
 #: app/templates/payment_form.html:280
 msgid "Access to our project management system"
-msgstr ""
+msgstr "Zugang zu unserem Projektmanagementsystem"
 
 #: app/templates/payment_form.html:284
 msgid "Need help choosing the right number of hours? "
-msgstr ""
+msgstr "Hilfe bei der Wahl der richtigen Stundenanzahl? "
 
 #: app/templates/payment_form.html:285
 msgid "Contact our team"
-msgstr ""
+msgstr "Kontaktieren Sie unser Team"
 
 #: app/templates/payment_form.html:285
 msgid "for a custom quote or consultation."
-msgstr ""
+msgstr "für ein individuelles Angebot oder eine Beratung."
 
 #: app/templates/payment_success.html:14
 msgid "Payment Successful!"
-msgstr ""
+msgstr "Zahlung erfolgreich!"
 
 #: app/templates/payment_success.html:15
 msgid "Thank you for your purchase. We've received your payment."
-msgstr ""
+msgstr "Vielen Dank für Ihren Kauf. Wir haben Ihre Zahlung erhalten."
 
 #: app/templates/payment_success.html:19
 msgid "Order Summary"
-msgstr ""
+msgstr "Bestellübersicht"
 
 #: app/templates/payment_success.html:22
 msgid "Hours Purchased"
-msgstr ""
+msgstr "Gekaufte Stunden"
 
 #: app/templates/payment_success.html:26
 msgid "Rate per Hour"
-msgstr ""
+msgstr "Stundensatz"
 
 #: app/templates/payment_success.html:30
 msgid "Total Amount"
-msgstr ""
+msgstr "Gesamtbetrag"
 
 #: app/templates/payment_success.html:37
 msgid ""
@@ -1056,107 +1056,107 @@ msgstr ""
 
 #: app/templates/payment_success.html:40
 msgid "Return Home"
-msgstr ""
+msgstr "Zur Startseite"
 
 #: app/templates/payment_success.html:50
 msgid "What's Next?"
-msgstr ""
+msgstr "Wie geht es weiter?"
 
 #: app/templates/payment_success.html:52
 msgid "Our project manager will contact you within 24 hours"
-msgstr ""
+msgstr "Unser Projektmanager kontaktiert Sie innerhalb von 24 Stunden"
 
 #: app/templates/payment_success.html:53
 msgid "We'll discuss your project requirements and timeline"
-msgstr ""
+msgstr "Wir besprechen Ihre Anforderungen und den Zeitplan"
 
 #: app/templates/payment_success.html:54
 msgid "Development work will begin according to the agreed schedule"
-msgstr ""
+msgstr "Die Entwicklung beginnt gemäß dem vereinbarten Zeitplan"
 
 #: app/templates/payment_success.html:55
 msgid "You'll receive regular updates on your project"
-msgstr ""
+msgstr "Sie erhalten regelmäßige Updates zu Ihrem Projekt"
 
 #: app/templates/payment_success.html:59
 msgid "If you have any questions, please "
-msgstr ""
+msgstr "Wenn Sie Fragen haben, "
 
 #: app/templates/payment_success.html:60
 msgid "contact us"
-msgstr ""
+msgstr "kontaktieren Sie uns"
 
 #: app/templates/pricing.html:115
 msgid "Choose Your Package"
-msgstr ""
+msgstr "Wählen Sie Ihr Paket"
 
 #: app/templates/pricing.html:116
 msgid "Get the perfect amount of development time for your project needs"
-msgstr ""
+msgstr "Die optimale Entwicklungszeit für Ihr Projekt"
 
 #: app/templates/pricing.html:125
 msgid "Most Popular"
-msgstr ""
+msgstr "Am beliebtesten"
 
 #: app/templates/pricing.html:131
 msgid "per hour"
-msgstr ""
+msgstr "pro Stunde"
 
 #: app/templates/pricing.html:138
 msgid "development hours"
-msgstr ""
+msgstr "Entwicklungsstunden"
 
 #: app/templates/pricing.html:139
 msgid "Custom solutions"
-msgstr ""
+msgstr "Individuelle Lösungen"
 
 #: app/templates/pricing.html:140
 msgid "Support included"
-msgstr ""
+msgstr "Support inklusive"
 
 #: app/templates/pricing.html:141
 msgid "Regular updates"
-msgstr ""
+msgstr "Regelmäßige Updates"
 
 #: app/templates/pricing.html:147
 msgid "Buy Hours"
-msgstr ""
+msgstr "Stunden kaufen"
 
 #: app/templates/pricing.html:166
 msgid "Custom Package"
-msgstr ""
+msgstr "Individuelles Paket"
 
 #: app/templates/pricing.html:167
 msgid "Tailored to Your Needs"
-msgstr ""
+msgstr "Auf Ihre Bedürfnisse zugeschnitten"
 
 #: app/templates/pricing.html:169
 msgid "For special requirements"
-msgstr ""
+msgstr "Für besondere Anforderungen"
 
 #: app/templates/pricing.html:173
 msgid "Flexible hours"
-msgstr ""
+msgstr "Flexible Stunden"
 
 #: app/templates/pricing.html:174
 msgid "Custom development"
-msgstr ""
+msgstr "Individuelle Entwicklung"
 
 #: app/templates/pricing.html:175
 msgid "Dedicated support"
-msgstr ""
+msgstr "Dedizierter Support"
 
 #: app/templates/pricing.html:176
 msgid "Priority service"
-msgstr ""
+msgstr "Prioritätsservice"
 
 #: app/templates/pricing.html:177
 msgid "Enterprise solutions"
-msgstr ""
+msgstr "Unternehmenslosungen"
 
 #: app/templates/pricing.html:190
 msgid "Need Help Choosing?"
-msgstr ""
+msgstr "Hilfe bei der Auswahl?"
 
 #: app/templates/pricing.html:191
 msgid ""
@@ -1167,11 +1167,11 @@ msgstr ""
 #: app/templates/de/privacy.html:8 app/templates/de/terms.html:8
 #: app/templates/privacy.html:8 app/templates/terms.html:8
 msgid "Last updated: September 1, 2025"
-msgstr ""
+msgstr "Zuletzt aktualisiert: 1. September 2025"
 
 #: app/templates/de/privacy.html:11 app/templates/privacy.html:11
 msgid "1. Introduction"
-msgstr ""
+msgstr "1. Einführung"
 
 #: app/templates/de/privacy.html:12 app/templates/privacy.html:12
 msgid ""
@@ -1184,7 +1184,7 @@ msgstr ""
 
 #: app/templates/de/privacy.html:16 app/templates/privacy.html:16
 msgid "2. The Data We Collect"
-msgstr ""
+msgstr "2. Die von uns erhobenen Daten"
 
 #: app/templates/de/privacy.html:17 app/templates/privacy.html:17
 msgid ""
@@ -1194,23 +1194,23 @@ msgstr ""
 
 #: app/templates/de/privacy.html:19 app/templates/privacy.html:19
 msgid "Identity Data"
-msgstr ""
+msgstr "Identitätsdaten"
 
 #: app/templates/de/privacy.html:19 app/templates/privacy.html:19
 msgid "includes first name, last name, username or similar identifier."
-msgstr ""
+msgstr "umfasst Vorname, Nachname, Benutzername oder ähnliche Kennungen."
 
 #: app/templates/de/privacy.html:20 app/templates/privacy.html:20
 msgid "Contact Data"
-msgstr ""
+msgstr "Kontaktdaten"
 
 #: app/templates/de/privacy.html:20 app/templates/privacy.html:20
 msgid "includes email address and telephone numbers."
-msgstr ""
+msgstr "umfasst E-Mail-Adresse und Telefonnummern."
 
 #: app/templates/de/privacy.html:21 app/templates/privacy.html:21
 msgid "Technical Data"
-msgstr ""
+msgstr "Technische Daten"
 
 #: app/templates/de/privacy.html:21 app/templates/privacy.html:21
 msgid ""
@@ -1222,15 +1222,15 @@ msgstr ""
 
 #: app/templates/de/privacy.html:22 app/templates/privacy.html:22
 msgid "Usage Data"
-msgstr ""
+msgstr "Nutzungsdaten"
 
 #: app/templates/de/privacy.html:22 app/templates/privacy.html:22
 msgid "includes information about how you use our website and services."
-msgstr ""
+msgstr "umfasst Informationen über die Nutzung unserer Website und Dienste."
 
 #: app/templates/de/privacy.html:27 app/templates/privacy.html:27
 msgid "3. How We Use Your Data"
-msgstr ""
+msgstr "3. Verwendung Ihrer Daten"
 
 #: app/templates/de/privacy.html:28 app/templates/privacy.html:28
 msgid ""
@@ -1240,15 +1240,15 @@ msgstr ""
 
 #: app/templates/de/privacy.html:30 app/templates/privacy.html:30
 msgid "To register you as a new customer."
-msgstr ""
+msgstr "Um Sie als neuen Kunden zu registrieren."
 
 #: app/templates/de/privacy.html:31 app/templates/privacy.html:31
 msgid "To process and deliver your order."
-msgstr ""
+msgstr "Um Ihre Bestellung zu bearbeiten und zu liefern."
 
 #: app/templates/de/privacy.html:32 app/templates/privacy.html:32
 msgid "To manage our relationship with you."
-msgstr ""
+msgstr "Um unsere Geschäftsbeziehung zu pflegen."
 
 #: app/templates/de/privacy.html:33 app/templates/privacy.html:33
 msgid ""
@@ -1258,11 +1258,11 @@ msgstr ""
 
 #: app/templates/de/privacy.html:34 app/templates/privacy.html:34
 msgid "To recommend products or services that may be of interest to you."
-msgstr ""
+msgstr "Um Ihnen relevante Produkte oder Dienstleistungen zu empfehlen."
 
 #: app/templates/de/privacy.html:39 app/templates/privacy.html:39
 msgid "4. Data Security"
-msgstr ""
+msgstr "4. Datensicherheit"
 
 #: app/templates/de/privacy.html:40 app/templates/privacy.html:40
 msgid ""
@@ -1275,7 +1275,7 @@ msgstr ""
 
 #: app/templates/de/privacy.html:44 app/templates/privacy.html:44
 msgid "5. Your Legal Rights"
-msgstr ""
+msgstr "5. Ihre gesetzlichen Rechte"
 
 #: app/templates/de/privacy.html:45 app/templates/privacy.html:45
 msgid ""
@@ -1285,35 +1285,35 @@ msgstr ""
 
 #: app/templates/de/privacy.html:47 app/templates/privacy.html:47
 msgid "Request access to your personal data."
-msgstr ""
+msgstr "Zugang zu Ihren persönlichen Daten anfordern."
 
 #: app/templates/de/privacy.html:48 app/templates/privacy.html:48
 msgid "Request correction of your personal data."
-msgstr ""
+msgstr "Korrektur Ihrer persönlichen Daten anfordern."
 
 #: app/templates/de/privacy.html:49 app/templates/privacy.html:49
 msgid "Request erasure of your personal data."
-msgstr ""
+msgstr "Löschung Ihrer persönlichen Daten anfordern."
 
 #: app/templates/de/privacy.html:50 app/templates/privacy.html:50
 msgid "Object to processing of your personal data."
-msgstr ""
+msgstr "Der Verarbeitung Ihrer persönlichen Daten widersprechen."
 
 #: app/templates/de/privacy.html:51 app/templates/privacy.html:51
 msgid "Request restriction of processing your personal data."
-msgstr ""
+msgstr "Einschränkung der Verarbeitung Ihrer persönlichen Daten anfordern."
 
 #: app/templates/de/privacy.html:52 app/templates/privacy.html:52
 msgid "Request transfer of your personal data."
-msgstr ""
+msgstr "Übertragung Ihrer persönlichen Daten anfordern."
 
 #: app/templates/de/privacy.html:53 app/templates/privacy.html:53
 msgid "Right to withdraw consent."
-msgstr ""
+msgstr "Recht auf Widerruf der Einwilligung."
 
 #: app/templates/de/privacy.html:58 app/templates/privacy.html:58
 msgid "6. Contact Us"
-msgstr ""
+msgstr "6. Kontakt"
 
 #: app/templates/de/privacy.html:59 app/templates/privacy.html:59
 msgid ""
@@ -1324,15 +1324,15 @@ msgstr ""
 #: app/templates/de/privacy.html:62 app/templates/de/terms.html:60
 #: app/templates/privacy.html:62 app/templates/terms.html:60
 msgid "Address:"
-msgstr ""
+msgstr "Adresse:"
 
 #: app/templates/services.html:9
 msgid "Our Services"
-msgstr ""
+msgstr "Unsere Leistungen"
 
 #: app/templates/services.html:14
 msgid "AI Development"
-msgstr ""
+msgstr "KI-Entwicklung"
 
 #: app/templates/services.html:15
 msgid ""
@@ -1348,7 +1348,7 @@ msgstr ""
 
 #: app/templates/services.html:28
 msgid "Automation Solutions"
-msgstr ""
+msgstr "Automatisierungslösungen"
 
 #: app/templates/services.html:29
 msgid ""
@@ -1358,7 +1358,7 @@ msgstr ""
 
 #: app/templates/services.html:35
 msgid "Data Analysis"
-msgstr ""
+msgstr "Datenanalyse"
 
 #: app/templates/services.html:36
 msgid ""
@@ -1368,7 +1368,7 @@ msgstr ""
 
 #: app/templates/services.html:41
 msgid "Request a Project Estimate"
-msgstr ""
+msgstr "Projektschätzung anfragen"
 
 #: app/templates/services.html:42
 msgid ""
@@ -1378,47 +1378,47 @@ msgstr ""
 
 #: app/templates/services.html:63
 msgid "What type of project are you looking to develop?"
-msgstr ""
+msgstr "Welche Art von Projekt möchten Sie entwickeln?"
 
 #: app/templates/services.html:70
 msgid "Select a project type"
-msgstr ""
+msgstr "Projekttyp auswählen"
 
 #: app/templates/services.html:71
 msgid "Web Application"
-msgstr ""
+msgstr "Webanwendung"
 
 #: app/templates/services.html:72
 msgid "Mobile Application"
-msgstr ""
+msgstr "Mobile Anwendung"
 
 #: app/templates/services.html:73
 msgid "AI/ML Solution"
-msgstr ""
+msgstr "KI/ML-Lösung"
 
 #: app/templates/services.html:74
 msgid "Automation Tool"
-msgstr ""
+msgstr "Automatisierungswerkzeug"
 
 #: app/templates/services.html:75
 msgid "Data Analytics"
-msgstr ""
+msgstr "Datenanalyse"
 
 #: app/templates/services.html:76 app/templates/services.html:285
 msgid "Other"
-msgstr ""
+msgstr "Sonstiges"
 
 #: app/templates/services.html:78
 msgid "Choose the category that best describes your project."
-msgstr ""
+msgstr "Wählen Sie die Kategorie, die Ihr Projekt am besten beschreibt."
 
 #: app/templates/services.html:88
 msgid "What is the primary goal of your project?"
-msgstr ""
+msgstr "Was ist das Hauptziel Ihres Projekts?"
 
 #: app/templates/services.html:94
 msgid "Describe the main purpose of your project..."
-msgstr ""
+msgstr "Beschreiben Sie den Hauptzweck Ihres Projekts..."
 
 #: app/templates/services.html:95
 msgid ""
@@ -1788,11 +1788,11 @@ msgstr ""
 
 #: app/templates/services.html:460
 msgid "Submitting..."
-msgstr ""
+msgstr "Wird gesendet…"
 
 #: app/templates/de/terms.html:11 app/templates/terms.html:11
 msgid "1. Acceptance of Terms"
-msgstr ""
+msgstr "1. Annahme der Bedingungen"
 
 #: app/templates/de/terms.html:12 app/templates/terms.html:12
 msgid ""
@@ -1803,7 +1803,7 @@ msgstr ""
 
 #: app/templates/de/terms.html:16 app/templates/terms.html:16
 msgid "2. Description of Service"
-msgstr ""
+msgstr "2. Leistungsbeschreibung"
 
 #: app/templates/de/terms.html:17 app/templates/terms.html:17
 msgid ""
@@ -1815,7 +1815,7 @@ msgstr ""
 
 #: app/templates/de/terms.html:21 app/templates/terms.html:21
 msgid "3. User Accounts"
-msgstr ""
+msgstr "3. Benutzerkonten"
 
 #: app/templates/de/terms.html:22 app/templates/terms.html:22
 msgid ""
@@ -1827,7 +1827,7 @@ msgstr ""
 
 #: app/templates/de/terms.html:26 app/templates/terms.html:26
 msgid "4. Payment Terms"
-msgstr ""
+msgstr "4. Zahlungsbedingungen"
 
 #: app/templates/de/terms.html:27 app/templates/terms.html:27
 msgid ""
@@ -1839,7 +1839,7 @@ msgstr ""
 
 #: app/templates/de/terms.html:31 app/templates/terms.html:31
 msgid "5. Intellectual Property"
-msgstr ""
+msgstr "5. Geistiges Eigentum"
 
 #: app/templates/de/terms.html:32 app/templates/terms.html:32
 msgid ""
@@ -1851,7 +1851,7 @@ msgstr ""
 
 #: app/templates/de/terms.html:36 app/templates/terms.html:36
 msgid "6. User Content"
-msgstr ""
+msgstr "6. Nutzerinhalte"
 
 #: app/templates/de/terms.html:37 app/templates/terms.html:37
 msgid ""
@@ -1863,7 +1863,7 @@ msgstr ""
 
 #: app/templates/de/terms.html:41 app/templates/terms.html:41
 msgid "7. Limitation of Liability"
-msgstr ""
+msgstr "7. Haftungsbeschränkung"
 
 #: app/templates/de/terms.html:42 app/templates/terms.html:42
 msgid ""
@@ -1876,7 +1876,7 @@ msgstr ""
 
 #: app/templates/de/terms.html:46 app/templates/terms.html:46
 msgid "8. Governing Law"
-msgstr ""
+msgstr "8. Anwendbares Recht"
 
 #: app/templates/de/terms.html:47 app/templates/terms.html:47
 msgid ""
@@ -1886,7 +1886,7 @@ msgstr ""
 
 #: app/templates/de/terms.html:51 app/templates/terms.html:51
 msgid "9. Changes to Terms"
-msgstr ""
+msgstr "9. Änderungen der Bedingungen"
 
 #: app/templates/de/terms.html:52 app/templates/terms.html:52
 msgid ""
@@ -1898,19 +1898,19 @@ msgstr ""
 
 #: app/templates/de/terms.html:56 app/templates/terms.html:56
 msgid "10. Contact Us"
-msgstr ""
+msgstr "10. Kontakt"
 
 #: app/templates/de/terms.html:57 app/templates/terms.html:57
 msgid "If you have any questions about these Terms, please contact us at:"
-msgstr ""
+msgstr "Wenn Sie Fragen zu diesen Bedingungen haben, kontaktieren Sie uns bitte unter:"
 
 #: app/templates/auth/forgot_password.html:3
 msgid "Forgot Password"
-msgstr ""
+msgstr "Passwort vergessen"
 
 #: app/templates/auth/forgot_password.html:11
 msgid "Reset Password"
-msgstr ""
+msgstr "Passwort zurücksetzen"
 
 #: app/templates/auth/forgot_password.html:14
 msgid ""
@@ -1920,170 +1920,170 @@ msgstr ""
 
 #: app/templates/auth/forgot_password.html:22
 msgid "Send Reset Link"
-msgstr ""
+msgstr "Reset-Link senden"
 
 #: app/templates/auth/forgot_password.html:27
 msgid "Remember your password?"
-msgstr ""
+msgstr "Passwort noch bekannt?"
 
 #: app/templates/auth/login.html:17
 msgid "Email or Username"
-msgstr ""
+msgstr "E-Mail oder Benutzername"
 
 #: app/templates/auth/login.html:21 app/templates/auth/register.html:45
 msgid "Password"
-msgstr ""
+msgstr "Passwort"
 
 #: app/templates/auth/login.html:26
 msgid "Remember me"
-msgstr ""
+msgstr "Angemeldet bleiben"
 
 #: app/templates/auth/login.html:33
 msgid "Forgot your password?"
-msgstr ""
+msgstr "Passwort vergessen?"
 
 #: app/templates/auth/login.html:37
 msgid "Don't have an account?"
-msgstr ""
+msgstr "Noch kein Konto?"
 
 #: app/templates/auth/register.html:11
 msgid "Create an Account"
-msgstr ""
+msgstr "Konto erstellen"
 
 #: app/templates/auth/register.html:28
 msgid "Username"
-msgstr ""
+msgstr "Benutzername"
 
 #: app/templates/auth/register.html:29
 msgid "Choose a username or leave blank to use your email"
-msgstr ""
+msgstr "Benutzernamen wählen oder leer lassen für E-Mail"
 
 #: app/templates/auth/register.html:30
 msgid "This will be used for login and displayed in your profile"
-msgstr ""
+msgstr "Für Anmeldung und Profilanzeige verwendet"
 
 #: app/templates/auth/register.html:39 app/templates/dashboard/profile.html:59
 msgid "Phone Number"
-msgstr ""
+msgstr "Telefonnummer"
 
 #: app/templates/auth/register.html:47
 msgid "Password must be at least 8 characters long"
-msgstr ""
+msgstr "Das Passwort muss mindestens 8 Zeichen lang sein"
 
 #: app/templates/auth/register.html:50
 msgid "Confirm Password"
-msgstr ""
+msgstr "Passwort bestätigen"
 
 #: app/templates/auth/register.html:56
 msgid "I agree to the"
-msgstr ""
+msgstr "Ich stimme den"
 
 #: app/templates/auth/register.html:56
 msgid "and"
-msgstr ""
+msgstr "und"
 
 #: app/templates/auth/register.html:64
 msgid "Already have an account?"
-msgstr ""
+msgstr "Bereits ein Konto?"
 
 #: app/templates/blog/blog.html:50
 msgid "No blog posts found."
-msgstr ""
+msgstr "Keine Blogbeiträge gefunden."
 
 #: app/templates/blog/blog.html:105
 msgid "No categories found"
-msgstr ""
+msgstr "Keine Kategorien gefunden"
 
 #: app/templates/blog/blog.html:119
 msgid "No tags found"
-msgstr ""
+msgstr "Keine Tags gefunden"
 
 #: app/templates/blog/blog.html:128 app/templates/blog/blog_category.html:129
 #: app/templates/blog/blog_post.html:123
 #: app/templates/blog/blog_search.html:141 app/templates/blog/blog_tag.html:131
 msgid "Search blog..."
-msgstr ""
+msgstr "Blog durchsuchen…"
 
 #: app/templates/blog/blog_category.html:10
 msgid "Category:"
-msgstr ""
+msgstr "Kategorie:"
 
 #: app/templates/blog/blog_category.html:50
 msgid "No posts found in this category."
-msgstr ""
+msgstr "Keine Beiträge in dieser Kategorie."
 
 #: app/templates/blog/blog_category.html:96
 #: app/templates/blog/blog_search.html:99 app/templates/blog/blog_tag.html:98
 msgid "Back to All Posts"
-msgstr ""
+msgstr "Zurück zu allen Beiträgen"
 
 #: app/templates/blog/blog_post.html:45
 msgid "Tags:"
-msgstr ""
+msgstr "Tags:"
 
 #: app/templates/blog/blog_search.html:10
 msgid "Search Results for"
-msgstr ""
+msgstr "Suchergebnisse für"
 
 #: app/templates/blog/blog_search.html:11
 msgid "results"
-msgstr ""
+msgstr "Ergebnisse"
 
 #: app/templates/blog/blog_search.html:53
 msgid "No results found for"
-msgstr ""
+msgstr "Keine Ergebnisse für"
 
 #: app/templates/blog/blog_search.html:104
 msgid "Try another search..."
-msgstr ""
+msgstr "Anderen Suchbegriff versuchen…"
 
 #: app/templates/blog/blog_tag.html:52
 msgid "No posts found with this tag."
-msgstr ""
+msgstr "Keine Beiträge mit diesem Tag."
 
 #: app/templates/client/dashboard.html:3 app/templates/client/dashboard.html:7
 #: app/templates/client/project_detail.html:9
 #: app/templates/client/tech_spec_detail.html:9
 msgid "My Projects"
-msgstr ""
+msgstr "Meine Projekte"
 
 #: app/templates/client/dashboard.html:27
 #: app/templates/client/project_detail.html:36
 msgid "Project Progress"
-msgstr ""
+msgstr "Projektfortschritt"
 
 #: app/templates/client/dashboard.html:32
 msgid "Est. completion"
-msgstr ""
+msgstr "Voraussichtlicher Abschluss"
 
 #: app/templates/client/dashboard.html:34
 msgid "Start date"
-msgstr ""
+msgstr "Startdatum"
 
 #: app/templates/client/dashboard.html:34
 msgid "TBD"
-msgstr ""
+msgstr "Noch festzulegen"
 
 #: app/templates/client/dashboard.html:40
 msgid "Last update"
-msgstr ""
+msgstr "Letzte Aktualisierung"
 
 #: app/templates/client/dashboard.html:46
 #: app/templates/dashboard/index.html:200
 msgid "View Details"
-msgstr ""
+msgstr "Details anzeigen"
 
 #: app/templates/client/dashboard.html:48
 msgid "Ask PM"
-msgstr ""
+msgstr "PM fragen"
 
 #: app/templates/client/dashboard.html:57
 msgid "No Projects Yet!"
-msgstr ""
+msgstr "Noch keine Projekte!"
 
 #: app/templates/client/dashboard.html:58
 msgid "You don't have any active projects at the moment."
-msgstr ""
+msgstr "Sie haben derzeit keine aktiven Projekte."
 
 #: app/templates/client/dashboard.html:61
 msgid ""
@@ -2093,28 +2093,28 @@ msgstr ""
 
 #: app/templates/client/dashboard.html:64
 msgid "Would you like to start a new project?"
-msgstr ""
+msgstr "Möchten Sie ein neues Projekt starten?"
 
 #: app/templates/client/dashboard.html:65
 msgid "Create Technical Specification"
-msgstr ""
+msgstr "Technische Spezifikation erstellen"
 
 #: app/templates/client/dashboard.html:71
 msgid "Your Technical Specifications"
-msgstr ""
+msgstr "Ihre technischen Spezifikationen"
 
 #: app/templates/client/dashboard.html:76
 msgid "Date Submitted"
-msgstr ""
+msgstr "Einreichungsdatum"
 
 #: app/templates/client/dashboard.html:77
 #: app/templates/client/tech_spec_detail.html:46
 msgid "Project Type"
-msgstr ""
+msgstr "Projekttyp"
 
 #: app/templates/client/dashboard.html:78
 msgid "Goal"
-msgstr ""
+msgstr "Ziel"
 
 #: app/templates/client/dashboard.html:79
 #: app/templates/client/tech_spec_detail.html:22
@@ -2122,37 +2122,37 @@ msgstr ""
 #: app/templates/dashboard/project_detail.html:143
 #: app/templates/dashboard/projects.html:86
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
 #: app/templates/client/dashboard.html:80
 #: app/templates/dashboard/invoices.html:153
 #: app/templates/dashboard/projects.html:90
 msgid "Actions"
-msgstr ""
+msgstr "Aktionen"
 
 #: app/templates/client/dashboard.html:91
 #: app/templates/client/tech_spec_detail.html:22
 msgid "Under Review"
-msgstr ""
+msgstr "In Prüfung"
 
 #: app/templates/client/dashboard.html:95
 #: app/templates/dashboard/projects.html:116
 msgid "View"
-msgstr ""
+msgstr "Anzeigen"
 
 #: app/templates/client/dashboard.html:99
 msgid "Go to Project"
-msgstr ""
+msgstr "Zum Projekt"
 
 #: app/templates/client/project_detail.html:25
 msgid "Project Description"
-msgstr ""
+msgstr "Projektbeschreibung"
 
 #: app/templates/client/project_detail.html:42
 #: app/templates/dashboard/project_detail.html:64
 #: app/templates/dashboard/projects.html:87
 msgid "Start Date"
-msgstr ""
+msgstr "Startdatum"
 
 #: app/templates/client/project_detail.html:43
 #: app/templates/dashboard/project_detail.html:69
@@ -2160,138 +2160,138 @@ msgstr ""
 #: app/templates/dashboard/project_detail.html:159
 #: app/templates/dashboard/projects.html:107
 msgid "Not set"
-msgstr ""
+msgstr "Nicht festgelegt"
 
 #: app/templates/client/project_detail.html:46
 #: app/templates/dashboard/project_detail.html:68
 msgid "Estimated Completion"
-msgstr ""
+msgstr "Voraussichtlicher Abschluss"
 
 #: app/templates/client/project_detail.html:47
 msgid "To be determined"
-msgstr ""
+msgstr "Noch festzulegen"
 
 #: app/templates/client/project_detail.html:55
 msgid "Project Updates"
-msgstr ""
+msgstr "Projektaktualisierungen"
 
 #: app/templates/client/project_detail.html:73
 msgid "No updates yet."
-msgstr ""
+msgstr "Noch keine Aktualisierungen."
 
 #: app/templates/client/project_detail.html:82
 msgid "Project Tasks"
-msgstr ""
+msgstr "Projektaufgaben"
 
 #: app/templates/client/project_detail.html:95
 msgid "No tasks created yet."
-msgstr ""
+msgstr "Noch keine Aufgaben erstellt."
 
 #: app/templates/client/project_detail.html:102
 msgid "Project Team"
-msgstr ""
+msgstr "Projektteam"
 
 #: app/templates/client/project_detail.html:123
 msgid "No team members assigned yet."
-msgstr ""
+msgstr "Noch keine Teammitglieder zugewiesen."
 
 #: app/templates/client/project_detail.html:133
 msgid "Have questions about your project?"
-msgstr ""
+msgstr "Haben Sie Fragen zu Ihrem Projekt?"
 
 #: app/templates/client/project_detail.html:135
 msgid "Chat with Project Manager"
-msgstr ""
+msgstr "Mit Projektmanager chatten"
 
 #: app/templates/client/tech_spec_detail.html:3
 #: app/templates/client/tech_spec_detail.html:10
 msgid "Technical Specification"
-msgstr ""
+msgstr "Technische Spezifikation"
 
 #: app/templates/client/tech_spec_detail.html:21
 msgid "Submitted on"
-msgstr ""
+msgstr "Eingereicht am"
 
 #: app/templates/client/tech_spec_detail.html:25
 msgid "Contact Name"
-msgstr ""
+msgstr "Kontaktname"
 
 #: app/templates/client/tech_spec_detail.html:26
 msgid "Contact Email"
-msgstr ""
+msgstr "Kontakt-E-Mail"
 
 #: app/templates/client/tech_spec_detail.html:28
 msgid "Contact Phone"
-msgstr ""
+msgstr "Kontakttelefon"
 
 #: app/templates/client/tech_spec_detail.html:33
 msgid "Technical Specification Details"
-msgstr ""
+msgstr "Details der technischen Spezifikation"
 
 #: app/templates/client/tech_spec_detail.html:39
 #: app/templates/dashboard/project_detail.html:56
 msgid "Project Overview"
-msgstr ""
+msgstr "Projektübersicht"
 
 #: app/templates/client/tech_spec_detail.html:43
 msgid "Project Goal"
-msgstr ""
+msgstr "Projektziel"
 
 #: app/templates/client/tech_spec_detail.html:49
 msgid "Target Audience"
-msgstr ""
+msgstr "Zielgruppe"
 
 #: app/templates/client/tech_spec_detail.html:58
 msgid "Functionality"
-msgstr ""
+msgstr "Funktionalität"
 
 #: app/templates/client/tech_spec_detail.html:62
 msgid "Key Features"
-msgstr ""
+msgstr "Hauptfunktionen"
 
 #: app/templates/client/tech_spec_detail.html:65
 msgid "User Roles"
-msgstr ""
+msgstr "Benutzerrollen"
 
 #: app/templates/client/tech_spec_detail.html:74
 msgid "Design & Technical Requirements"
-msgstr ""
+msgstr "Design- und technische Anforderungen"
 
 #: app/templates/client/tech_spec_detail.html:78
 msgid "Design Preferences"
-msgstr ""
+msgstr "Designpräferenzen"
 
 #: app/templates/client/tech_spec_detail.html:82
 msgid "Similar Sites"
-msgstr ""
+msgstr "Ähnliche Websites"
 
 #: app/templates/client/tech_spec_detail.html:87
 msgid "Technical Requirements"
-msgstr ""
+msgstr "Technische Anforderungen"
 
 #: app/templates/client/tech_spec_detail.html:92
 msgid "Integrations"
-msgstr ""
+msgstr "Integrationen"
 
 #: app/templates/client/tech_spec_detail.html:102
 msgid "Business & Timeline"
-msgstr ""
+msgstr "Geschäft & Zeitplan"
 
 #: app/templates/client/tech_spec_detail.html:106
 msgid "Budget Range"
-msgstr ""
+msgstr "Budgetrahmen"
 
 #: app/templates/client/tech_spec_detail.html:109
 msgid "Timeline"
-msgstr ""
+msgstr "Zeitplan"
 
 #: app/templates/client/tech_spec_detail.html:113
 msgid "Additional Information"
-msgstr ""
+msgstr "Zusätzliche Informationen"
 
 #: app/templates/client/tech_spec_detail.html:123
 msgid "Discuss This Specification"
-msgstr ""
+msgstr "Diese Spezifikation besprechen"
 
 #: app/templates/dashboard/index.html:37
 #: app/templates/dashboard/invoices.html:17
@@ -2300,7 +2300,7 @@ msgstr ""
 #: app/templates/dashboard/project_detail.html:17
 #: app/templates/dashboard/projects.html:17
 msgid "Projects"
-msgstr ""
+msgstr "Projekte"
 
 #: app/templates/dashboard/index.html:40
 #: app/templates/dashboard/invoices.html:20
@@ -2310,7 +2310,7 @@ msgstr ""
 #: app/templates/dashboard/project_detail.html:20
 #: app/templates/dashboard/projects.html:20
 msgid "Messages"
-msgstr ""
+msgstr "Nachrichten"
 
 #: app/templates/dashboard/index.html:43
 #: app/templates/dashboard/invoices.html:23
@@ -2320,7 +2320,7 @@ msgstr ""
 #: app/templates/dashboard/project_detail.html:23
 #: app/templates/dashboard/projects.html:23
 msgid "Invoices"
-msgstr ""
+msgstr "Rechnungen"
 
 #: app/templates/dashboard/index.html:46
 #: app/templates/dashboard/invoices.html:26
@@ -2330,11 +2330,11 @@ msgstr ""
 #: app/templates/dashboard/project_detail.html:26
 #: app/templates/dashboard/projects.html:26
 msgid "Profile Settings"
-msgstr ""
+msgstr "Profileinstellungen"
 
 #: app/templates/dashboard/index.html:62
 msgid "Welcome back"
-msgstr ""
+msgstr "Willkommen zurück"
 
 #: app/templates/dashboard/index.html:68
 msgid "Your Account Benefits"
@@ -2366,324 +2366,324 @@ msgstr "Prioritäts-Support und schnellere Reaktionszeiten"
 
 #: app/templates/dashboard/index.html:92
 msgid "Projects Overview"
-msgstr ""
+msgstr "Projektübersicht"
 
 #: app/templates/dashboard/index.html:95
 msgid "Active Projects"
-msgstr ""
+msgstr "Aktive Projekte"
 
 #: app/templates/dashboard/index.html:99
 msgid "Completed Projects"
-msgstr ""
+msgstr "Abgeschlossene Projekte"
 
 #: app/templates/dashboard/index.html:103
 msgid "New Projects"
-msgstr ""
+msgstr "Neue Projekte"
 
 #: app/templates/dashboard/index.html:107
 msgid "Total Projects"
-msgstr ""
+msgstr "Projekte gesamt"
 
 #: app/templates/dashboard/index.html:119
 msgid "Quick Actions"
-msgstr ""
+msgstr "Schnellaktionen"
 
 #: app/templates/dashboard/index.html:122
 #: app/templates/dashboard/projects.html:42
 msgid "New Project Request"
-msgstr ""
+msgstr "Neue Projektanfrage"
 
 #: app/templates/dashboard/index.html:125
 msgid "Contact Support"
-msgstr ""
+msgstr "Support kontaktieren"
 
 #: app/templates/dashboard/index.html:128
 msgid "Update Profile"
-msgstr ""
+msgstr "Profil aktualisieren"
 
 #: app/templates/dashboard/index.html:139
 msgid "Recent Activity"
-msgstr ""
+msgstr "Letzte Aktivität"
 
 #: app/templates/dashboard/index.html:142
 msgid "Last login"
-msgstr ""
+msgstr "Letzte Anmeldung"
 
 #: app/templates/dashboard/index.html:142
 msgid "Never"
-msgstr ""
+msgstr "Nie"
 
 #: app/templates/dashboard/index.html:153
 msgid "No recent activity"
-msgstr ""
+msgstr "Keine kürzliche Aktivität"
 
 #: app/templates/dashboard/index.html:164
 #: app/templates/dashboard/projects.html:40
 msgid "Your Projects"
-msgstr ""
+msgstr "Ihre Projekte"
 
 #: app/templates/dashboard/index.html:165
 msgid "View All"
-msgstr ""
+msgstr "Alle anzeigen"
 
 #: app/templates/dashboard/index.html:186
 msgid "Started"
-msgstr ""
+msgstr "Gestartet"
 
 #: app/templates/dashboard/index.html:192
 #: app/templates/dashboard/project_detail.html:75
 #: app/templates/dashboard/projects.html:89
 msgid "Progress"
-msgstr ""
+msgstr "Fortschritt"
 
 #: app/templates/dashboard/index.html:209
 msgid "No projects yet"
-msgstr ""
+msgstr "Noch keine Projekte"
 
 #: app/templates/dashboard/index.html:210
 #: app/templates/dashboard/projects.html:126
 msgid "Start by submitting a new project request"
-msgstr ""
+msgstr "Beginnen Sie mit einer neuen Projektanfrage"
 
 #: app/templates/dashboard/index.html:211
 #: app/templates/dashboard/projects.html:127
 msgid "Request a Project"
-msgstr ""
+msgstr "Projekt anfragen"
 
 #: app/templates/dashboard/invoices.html:44
 msgid "Filter"
-msgstr ""
+msgstr "Filter"
 
 #: app/templates/dashboard/invoices.html:47
 msgid "All Invoices"
-msgstr ""
+msgstr "Alle Rechnungen"
 
 #: app/templates/dashboard/invoices.html:48
 #: app/templates/dashboard/invoices.html:96
 #: app/templates/dashboard/invoices.html:168
 msgid "Paid"
-msgstr ""
+msgstr "Bezahlt"
 
 #: app/templates/dashboard/invoices.html:49
 #: app/templates/dashboard/invoices.html:113
 #: app/templates/dashboard/invoices.html:170
 msgid "Pending"
-msgstr ""
+msgstr "Ausstehend"
 
 #: app/templates/dashboard/invoices.html:50
 #: app/templates/dashboard/invoices.html:130
 #: app/templates/dashboard/invoices.html:172
 msgid "Overdue"
-msgstr ""
+msgstr "Überfällig"
 
 #: app/templates/dashboard/invoices.html:55
 msgid "Sort"
-msgstr ""
+msgstr "Sortieren"
 
 #: app/templates/dashboard/invoices.html:58
 msgid "Date (Newest First)"
-msgstr ""
+msgstr "Datum (Neueste zuerst)"
 
 #: app/templates/dashboard/invoices.html:59
 msgid "Date (Oldest First)"
-msgstr ""
+msgstr "Datum (Älteste zuerst)"
 
 #: app/templates/dashboard/invoices.html:60
 msgid "Amount (Highest First)"
-msgstr ""
+msgstr "Betrag (Höchster zuerst)"
 
 #: app/templates/dashboard/invoices.html:61
 msgid "Amount (Lowest First)"
-msgstr ""
+msgstr "Betrag (Niedrigster zuerst)"
 
 #: app/templates/dashboard/invoices.html:79
 msgid "Total Invoices"
-msgstr ""
+msgstr "Rechnungen gesamt"
 
 #: app/templates/dashboard/invoices.html:147
 msgid "Invoice #"
-msgstr ""
+msgstr "Rechnung Nr."
 
 #: app/templates/dashboard/invoices.html:148
 #: app/templates/dashboard/projects.html:85
 msgid "Project"
-msgstr ""
+msgstr "Projekt"
 
 #: app/templates/dashboard/invoices.html:149
 #: app/templates/dashboard/messages.html:11
 #: app/templates/dashboard/messages.html:77
 msgid "Date"
-msgstr ""
+msgstr "Datum"
 
 #: app/templates/dashboard/invoices.html:150
 #: app/templates/dashboard/project_detail.html:144
 msgid "Due Date"
-msgstr ""
+msgstr "Fälligkeitsdatum"
 
 #: app/templates/dashboard/invoices.html:151
 msgid "Amount"
-msgstr ""
+msgstr "Betrag"
 
 #: app/templates/dashboard/invoices.html:198
 msgid "No invoices available"
-msgstr ""
+msgstr "Keine Rechnungen verfügbar"
 
 #: app/templates/dashboard/invoices.html:199
 msgid "Your invoices will appear here once they are generated"
-msgstr ""
+msgstr "Ihre Rechnungen erscheinen hier nach der Erstellung"
 
 #: app/templates/dashboard/messages.html:9
 #: app/templates/dashboard/messages.html:210
 #: app/templates/dashboard/messages.html:275
 msgid "To"
-msgstr ""
+msgstr "An"
 
 #: app/templates/dashboard/messages.html:10
 #: app/templates/dashboard/messages.html:76
 #: app/templates/dashboard/messages.html:293
 #: app/templates/dashboard/project_detail.html:217
 msgid "Subject"
-msgstr ""
+msgstr "Betreff"
 
 #: app/templates/dashboard/messages.html:46
 #: app/templates/dashboard/messages.html:269
 msgid "New Message"
-msgstr ""
+msgstr "Neue Nachricht"
 
 #: app/templates/dashboard/messages.html:56
 msgid "Inbox"
-msgstr ""
+msgstr "Posteingang"
 
 #: app/templates/dashboard/messages.html:61
 msgid "Sent"
-msgstr ""
+msgstr "Gesendet"
 
 #: app/templates/dashboard/messages.html:75
 #: app/templates/dashboard/messages.html:102
 msgid "From"
-msgstr ""
+msgstr "Von"
 
 #: app/templates/dashboard/messages.html:85
 #: app/templates/dashboard/projects.html:53
 msgid "New"
-msgstr ""
+msgstr "Neu"
 
 #: app/templates/dashboard/messages.html:132
 #: app/templates/dashboard/messages.html:240
 msgid "Close"
-msgstr ""
+msgstr "Schließen"
 
 #: app/templates/dashboard/messages.html:133
 #: app/templates/dashboard/messages.html:144
 msgid "Reply"
-msgstr ""
+msgstr "Antworten"
 
 #: app/templates/dashboard/messages.html:150
 #: app/templates/dashboard/messages.html:297
 #: app/templates/dashboard/project_detail.html:221
 msgid "Message"
-msgstr ""
+msgstr "Nachricht"
 
 #: app/templates/dashboard/messages.html:154
 #: app/templates/dashboard/messages.html:301
 msgid "Attachments (optional)"
-msgstr ""
+msgstr "Anhänge (optional)"
 
 #: app/templates/dashboard/messages.html:158
 #: app/templates/dashboard/messages.html:307
 #: app/templates/dashboard/profile.html:119
 #: app/templates/dashboard/project_detail.html:227
 msgid "Cancel"
-msgstr ""
+msgstr "Abbrechen"
 
 #: app/templates/dashboard/messages.html:159
 msgid "Send Reply"
-msgstr ""
+msgstr "Antwort senden"
 
 #: app/templates/dashboard/messages.html:173
 msgid "Your inbox is empty"
-msgstr ""
+msgstr "Ihr Posteingang ist leer"
 
 #: app/templates/dashboard/messages.html:174
 msgid "Messages from our team will appear here"
-msgstr ""
+msgstr "Nachrichten von unserem Team erscheinen hier"
 
 #: app/templates/dashboard/messages.html:252
 msgid "No sent messages"
-msgstr ""
+msgstr "Keine gesendeten Nachrichten"
 
 #: app/templates/dashboard/messages.html:253
 msgid "Messages you send will appear here"
-msgstr ""
+msgstr "Ihre gesendeten Nachrichten erscheinen hier"
 
 #: app/templates/dashboard/messages.html:277
 msgid "Select recipient"
-msgstr ""
+msgstr "Empfänger auswählen"
 
 #: app/templates/dashboard/messages.html:284
 msgid "Related Project (optional)"
-msgstr ""
+msgstr "Zugehöriges Projekt (optional)"
 
 #: app/templates/dashboard/messages.html:286
 msgid "None"
-msgstr ""
+msgstr "Keine"
 
 #: app/templates/dashboard/profile.html:48
 msgid "Personal Information"
-msgstr ""
+msgstr "Persönliche Daten"
 
 #: app/templates/dashboard/profile.html:56
 msgid "Email cannot be changed. Contact support if needed."
-msgstr ""
+msgstr "E-Mail kann nicht geändert werden. Wenden Sie sich bei Bedarf an den Support."
 
 #: app/templates/dashboard/profile.html:63
 msgid "Company"
-msgstr ""
+msgstr "Unternehmen"
 
 #: app/templates/dashboard/profile.html:68
 msgid "Change Password"
-msgstr ""
+msgstr "Passwort ändern"
 
 #: app/templates/dashboard/profile.html:70
 msgid "Current Password"
-msgstr ""
+msgstr "Aktuelles Passwort"
 
 #: app/templates/dashboard/profile.html:74
 msgid "New Password"
-msgstr ""
+msgstr "Neues Passwort"
 
 #: app/templates/dashboard/profile.html:78
 msgid "Confirm New Password"
-msgstr ""
+msgstr "Neues Passwort bestätigen"
 
 #: app/templates/dashboard/profile.html:81
 msgid "Leave password fields empty if you don't want to change your password."
-msgstr ""
+msgstr "Passwortfelder leer lassen, wenn Sie das Passwort nicht ändern möchten."
 
 #: app/templates/dashboard/profile.html:85
 msgid "Save Changes"
-msgstr ""
+msgstr "Änderungen speichern"
 
 #: app/templates/dashboard/profile.html:93
 msgid "Danger Zone"
-msgstr ""
+msgstr "Gefahrenbereich"
 
 #: app/templates/dashboard/profile.html:94
 msgid "Actions here can't be undone. Please be careful."
-msgstr ""
+msgstr "Aktionen hier können nicht rükgängig gemacht werden. Bitte vorsichtig sein."
 
 #: app/templates/dashboard/profile.html:96
 #: app/templates/dashboard/profile.html:120
 msgid "Delete Account"
-msgstr ""
+msgstr "Konto löschen"
 
 #: app/templates/dashboard/profile.html:109
 msgid "Confirm Account Deletion"
-msgstr ""
+msgstr "Kontolöschung bestätigen"
 
 #: app/templates/dashboard/profile.html:113
 msgid "Warning: This action cannot be undone."
-msgstr ""
+msgstr "Warnung: Diese Aktion kann nicht rükgängig gemacht werden."
 
 #: app/templates/dashboard/profile.html:114
 msgid ""
@@ -2694,7 +2694,7 @@ msgstr ""
 
 #: app/templates/dashboard/profile.html:115
 msgid "To confirm, please type \"DELETE\" in the field below:"
-msgstr ""
+msgstr "Zur Bestätigung geben Sie bitte \\"LÖSCHEN\\" in das Feld unten ein:"
 
 #: app/templates/dashboard/profile.html:140
 msgid ""
@@ -2704,128 +2704,128 @@ msgstr ""
 
 #: app/templates/dashboard/project_detail.html:42
 msgid "Back to Projects"
-msgstr ""
+msgstr "Zurück zu den Projekten"
 
 #: app/templates/dashboard/project_detail.html:58
 msgid "Description"
-msgstr ""
+msgstr "Beschreibung"
 
 #: app/templates/dashboard/project_detail.html:59
 msgid "No description provided."
-msgstr ""
+msgstr "Keine Beschreibung vorhanden."
 
 #: app/templates/dashboard/project_detail.html:65
 msgid "Not started yet"
-msgstr ""
+msgstr "Noch nicht begonnen"
 
 #: app/templates/dashboard/project_detail.html:80
 msgid "Complete"
-msgstr ""
+msgstr "Abgeschlossen"
 
 #: app/templates/dashboard/project_detail.html:89
 msgid "Project Details"
-msgstr ""
+msgstr "Projektdetails"
 
 #: app/templates/dashboard/project_detail.html:92
 msgid "Budget"
-msgstr ""
+msgstr "Budget"
 
 #: app/templates/dashboard/project_detail.html:97
 msgid "Project Created"
-msgstr ""
+msgstr "Projekt erstellt"
 
 #: app/templates/dashboard/project_detail.html:102
 msgid "Last Updated"
-msgstr ""
+msgstr "Zuletzt aktualisiert"
 
 #: app/templates/dashboard/project_detail.html:110
 #: app/templates/dashboard/project_detail.html:211
 msgid "Contact Project Manager"
-msgstr ""
+msgstr "Projektmanager kontaktieren"
 
 #: app/templates/dashboard/project_detail.html:124
 msgid "Tasks"
-msgstr ""
+msgstr "Aufgaben"
 
 #: app/templates/dashboard/project_detail.html:129
 msgid "Updates & Milestones"
-msgstr ""
+msgstr "Aktualisierungen & Meilensteine"
 
 #: app/templates/dashboard/project_detail.html:142
 msgid "Task"
-msgstr ""
+msgstr "Aufgabe"
 
 #: app/templates/dashboard/project_detail.html:168
 msgid "No tasks defined yet"
-msgstr ""
+msgstr "Noch keine Aufgaben definiert"
 
 #: app/templates/dashboard/project_detail.html:169
 msgid "Tasks will appear here once the project planning phase is complete"
-msgstr ""
+msgstr "Aufgaben erscheinen hier nach der Planungsphase"
 
 #: app/templates/dashboard/project_detail.html:194
 msgid "No updates yet"
-msgstr ""
+msgstr "Noch keine Aktualisierungen"
 
 #: app/templates/dashboard/project_detail.html:195
 msgid "Project updates and milestones will appear here"
-msgstr ""
+msgstr "Aktualisierungen und Meilensteine erscheinen hier"
 
 #: app/templates/dashboard/project_detail.html:222
 msgid "Type your message here..."
-msgstr ""
+msgstr "Geben Sie hier Ihre Nachricht ein…"
 
 #: app/templates/dashboard/projects.html:52
 msgid "All Statuses"
-msgstr ""
+msgstr "Alle Status"
 
 #: app/templates/dashboard/projects.html:54
 msgid "In Progress"
-msgstr ""
+msgstr "In Bearbeitung"
 
 #: app/templates/dashboard/projects.html:55
 msgid "Testing"
-msgstr ""
+msgstr "Testing"
 
 #: app/templates/dashboard/projects.html:56
 msgid "Completed"
-msgstr ""
+msgstr "Abgeschlossen"
 
 #: app/templates/dashboard/projects.html:61
 msgid "Newest First"
-msgstr ""
+msgstr "Neueste zuerst"
 
 #: app/templates/dashboard/projects.html:62
 msgid "Oldest First"
-msgstr ""
+msgstr "Älteste zuerst"
 
 #: app/templates/dashboard/projects.html:63
 msgid "Name (A-Z)"
-msgstr ""
+msgstr "Name (A–Z)"
 
 #: app/templates/dashboard/projects.html:64
 msgid "Name (Z-A)"
-msgstr ""
+msgstr "Name (Z–A)"
 
 #: app/templates/dashboard/projects.html:69
 msgid "Search projects"
-msgstr ""
+msgstr "Projekte suchen"
 
 #: app/templates/dashboard/projects.html:88
 msgid "Estimated End"
-msgstr ""
+msgstr "Voraussichtliches Ende"
 
 #: app/templates/dashboard/projects.html:99
 msgid "No description"
-msgstr ""
+msgstr "Keine Beschreibung"
 
 #: app/templates/dashboard/projects.html:106
 msgid "Not started"
-msgstr ""
+msgstr "Nicht begonnen"
 
 #: app/templates/dashboard/projects.html:125
 msgid "No projects found"
-msgstr ""
+msgstr "Keine Projekte gefunden"
 
 #~ msgid "Home"
 #~ msgstr "Startseite"
