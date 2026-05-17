@@ -293,5 +293,25 @@ def create_app():
             app.scheduler = scheduler
         except Exception as e:
             app.logger.error(f"Error initializing scheduler: {e}")
-    
+
+    # ---------------------------------------------------------------------------
+    # Cache-Control for static assets
+    # Versioned files (with ?v= or hash in name) get 1 year; others get 1 hour.
+    # ---------------------------------------------------------------------------
+    @app.after_request
+    def set_cache_headers(response):
+        from flask import request as req
+        if req.path.startswith('/static/'):
+            # Long-lived: CSS, JS, images, fonts, videos
+            if any(req.path.endswith(ext) for ext in
+                   ('.css', '.js', '.png', '.jpg', '.jpeg', '.webp',
+                    '.svg', '.ico', '.woff', '.woff2', '.ttf', '.mp4')):
+                response.cache_control.max_age = 31_536_000  # 1 year
+                response.cache_control.public = True
+                response.headers['Vary'] = 'Accept-Encoding'
+            else:
+                response.cache_control.max_age = 3_600  # 1 hour
+                response.cache_control.public = True
+        return response
+
     return app

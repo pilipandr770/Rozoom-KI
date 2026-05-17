@@ -2,50 +2,46 @@
 import multiprocessing
 import os
 
-# Базові настройки
-bind = "0.0.0.0:10000"  # Render сам підставить PORT
+# Bind to the PORT env var Render injects; fall back to 10000 for local runs
+bind = f"0.0.0.0:{os.getenv('PORT', '10000')}"
 cpu_count = multiprocessing.cpu_count()
 
-# Воркер на потоках замість gevent, щоб уникнути проблем із SSL monkey-patch
+# gthread: thread-based workers — no gevent monkey-patching, safe with SSL
 worker_class = "gthread"
-workers = min(2, cpu_count)         # небагато воркерів для економії пам'яті
-threads = 4                         # пара потоків на воркер — достатньо
-timeout = 300                       # OpenAI/Telegram calls can be slow
-graceful_timeout = 30               # time to finish in-flight requests on shutdown
+workers = min(2, cpu_count)   # keep memory footprint small on Render free tier
+threads = 4                   # 2 workers × 4 threads = 8 concurrent requests
+timeout = 120                 # hard cap per request (OpenAI streaming ≤ 60 s)
+graceful_timeout = 30         # time for in-flight requests on shutdown
 keepalive = 5
 
-# Логування
+# Logging
 accesslog = "-"
 errorlog = "-"
 loglevel = "info"
 
-# Ліміти/стабільність
-worker_connections = 100
+# Stability
 max_requests = 500
-max_requests_jitter = 25
+max_requests_jitter = 50      # randomise restart to avoid thundering herd
 
-# Безпека
+# Security
 limit_request_line = 4096
 limit_request_fields = 100
 limit_request_field_size = 8190
 
-# Скрыть версию Gunicorn из заголовка Server
+# Hide Gunicorn version from Server header
 import gunicorn
 gunicorn.SERVER_SOFTWARE = 'Undisclosed'
 
-# ВАЖЛИВО: не pre-load з gthread це не критично, але краще лишити False для передбачуваності
-preload_app = False
+# Preload app once in master; workers get a CoW copy — saves ~30 MB RAM per worker
+preload_app = True
 worker_tmp_dir = "/tmp"
 
 
 def post_fork(server, worker):
-    """Reset the asyncio event loop in each forked worker.
+    """Give each forked worker a fresh asyncio event loop.
 
-    Python 3.12+ (especially 3.14) raises RuntimeError if a worker inherits
-    an event loop from the master process.  Calling close() on the inherited
-    loop triggers its pending callbacks, which then fail with
-    "loop is not the running loop" because a new loop was already installed.
-    Safe fix: just install a fresh loop without touching the inherited one.
+    Required with preload_app=True on Python 3.12+: the master's loop must not
+    be reused by child processes — install a new one instead of closing the old.
     """
     import asyncio
     asyncio.set_event_loop(asyncio.new_event_loop())

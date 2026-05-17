@@ -71,11 +71,20 @@ class Config:
     
     SQLALCHEMY_DATABASE_URI = database_url or 'sqlite:///dev.db'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    
-    # Additional SQLAlchemy settings for better error handling
+
+    # Connection-pool tuning for Render.com free tier:
+    #   2 workers × 4 threads = 8 concurrent DB requests max.
+    #   Render free PostgreSQL allows 25 connections — stay well under that.
     SQLALCHEMY_ENGINE_OPTIONS = {
-        'pool_pre_ping': True,  # Test connections before use
-        'pool_recycle': 300,    # Recycle connections after 5 minutes
+        'pool_pre_ping': True,       # drop stale connections before use
+        'pool_recycle': 300,         # recycle after 5 min (Render cuts idle at ~10 min)
+        'pool_size': 5,              # persistent connections per worker process
+        'max_overflow': 5,           # extra connections allowed under burst load
+        'pool_timeout': 10,          # raise error quickly if no conn available
+        'connect_args': {'connect_timeout': 10},  # TCP connect timeout (PostgreSQL)
+    } if (database_url and 'postgresql' in database_url) else {
+        'pool_pre_ping': True,
+        'pool_recycle': 300,
     }
     POSTGRES_SCHEMA = os.getenv('POSTGRES_SCHEMA', 'rozoom_ki_schema')
     POSTGRES_SCHEMA_CLIENTS = os.getenv('POSTGRES_SCHEMA_CLIENTS', 'rozoom_ki_clients')

@@ -1,0 +1,934 @@
+/* patches.css — consolidated patch styles (replaces 13 separate fix files) */
+
+/* === Chat fixes === */
+
+.chat-window {
+  background: #1e2538 !important;
+  border: none !important;
+}
+
+.chat-messages {
+  background: #1e2538 !important;
+}
+
+.chat-msg.bot.high-contrast {
+  background-color: #3498db !important;
+  color: #ffffff !important;
+  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2) !important;
+  font-size: 16px !important;
+  line-height: 1.5 !important;
+  letter-spacing: 0.015em !important;
+}
+
+.chat-msg.bot {
+  background-color: #3498db !important;
+  color: #ffffff !important;
+  border-radius: 12px !important;
+  border-bottom-left-radius: 2px !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2) !important;
+  font-weight: 500 !important;
+}
+
+.chat-msg.user {
+  background-color: #2ecc71 !important;
+  color: #ffffff !important;
+  border-radius: 12px !important;
+  border-bottom-right-radius: 2px !important;
+  font-weight: 500 !important;
+  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2) !important;
+  font-size: 16px !important;
+}
+
+.chat-options {
+  margin-top: 10px !important;
+}
+
+.chat-options button {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  color: #333333 !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.chat-options button:hover {
+  background-color: #ffffff !important;
+  transform: translateY(-2px) !important;
+}
+
+.chat-input-wrapper {
+  background-color: #ffffff !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+.restart-button {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+  color: #333333 !important;
+}
+
+#chat-input {
+  background-color: #ffffff !important;
+  color: #333333 !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+.thinking-dot {
+  background-color: #ffffff !important;
+  width: 10px !important;
+  height: 10px !important;
+  opacity: 0.9 !important;
+}
+
+@keyframes dot-pulse {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0.6;
+  }
+}
+
+.thinking-dot:nth-child(1) {
+  animation: dot-pulse 1.2s infinite ease-in-out;
+}
+
+.thinking-dot:nth-child(2) {
+  animation: dot-pulse 1.2s infinite ease-in-out 0.4s;
+}
+
+.thinking-dot:nth-child(3) {
+  animation: dot-pulse 1.2s infinite ease-in-out 0.8s;
+}
+
+/* === Chat button fix === */
+
+#chat-toggle {
+  position: fixed !important;
+  z-index: 10000 !important;
+  cursor: pointer !important;
+  pointer-events: auto !important;
+  opacity: 1 !important;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.3) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+#chat-toggle:hover {
+  transform: scale(1.05) !important;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.4) !important;
+}
+
+#chat-widget {
+  pointer-events: none !important;
+}
+
+#chat-widget > * {
+  pointer-events: auto !important;
+}
+
+#chat-window {
+  z-index: 9999 !important;
+}
+
+/* === Chat header === */
+
+.chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    color: white;
+    border-radius: 15px 15px 0 0;
+}
+
+.chat-header-title {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.chat-header-title img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+    background: #fff;
+    object-fit: cover;
+}
+
+.chat-close {
+    cursor: pointer;
+    font-size: 16px;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.chat-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.language-selector {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.lang-button {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #ddd;
+    border-radius: 4px;
+    padding: 3px 6px;
+    margin: 0 2px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.lang-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.lang-button.active {
+    background: rgba(255, 255, 255, 0.25);
+    color: white;
+    font-weight: bold;
+}
+
+/* === Checkbox labels fix === */
+/* DEPRECATED: Neon green styling removed. Dark theme handled by theme-overrides.css */
+
+/* === Checkbox text fix === */
+/* DEPRECATED: Neon green styling removed. Dark theme handled by theme-overrides.css */
+
+/* === Contact form green === */
+/* DEPRECATED: Neon green styling removed. Dark theme handled by theme-overrides.css */
+
+.contact-form-container h2 {
+    color: #00cc00 !important;
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.4);
+    margin-bottom: 1.5rem;
+}
+
+.contact-form .checkbox-container {
+    color: #00cc00 !important;
+    font-weight: 500 !important;
+}
+
+.contact-info h3 {
+    color: #00cc00 !important;
+    text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.3);
+    margin-bottom: 0.5rem;
+}
+
+.contact-header h1 {
+    color: #00cc00 !important;
+    text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+}
+
+.contact-subtitle {
+    color: #00cc00 !important;
+    font-weight: 500 !important;
+}
+
+.remote-work-text {
+    color: #00cc00 !important;
+    font-weight: 500 !important;
+}
+
+.remote-work-notice h3 {
+    color: #00cc00 !important;
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.4);
+    margin-bottom: 1rem;
+}
+
+/* === Fix contrast === */
+/* DEPRECATED: contrast fixes now live in theme-overrides.css */
+
+.accordion-item {
+    background-color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.accordion-button {
+    background-color: rgba(245, 245, 245, 0.95) !important;
+    color: #333333 !important;
+}
+
+.accordion-body {
+    background-color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.form-control, .form-select {
+    color: #333333 !important;
+    background-color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.form-check-input:checked {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+}
+
+input::placeholder,
+textarea::placeholder,
+.form-control::placeholder,
+.form-select::placeholder {
+    color: #666666 !important;
+    opacity: 0.8 !important;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder,
+.form-control::-webkit-input-placeholder,
+.form-select::-webkit-input-placeholder {
+    color: #666666 !important;
+    opacity: 0.8 !important;
+}
+
+input::-moz-placeholder,
+textarea::-moz-placeholder,
+.form-control::-moz-placeholder,
+.form-select::-moz-placeholder {
+    color: #666666 !important;
+    opacity: 0.8 !important;
+}
+
+input::-ms-input-placeholder,
+textarea::-ms-input-placeholder,
+.form-control::-ms-input-placeholder,
+.form-select::-ms-input-placeholder {
+    color: #666666 !important;
+    opacity: 0.8 !important;
+}
+
+.form-text,
+.help-text,
+.text-muted {
+    color: #333333 !important;
+    font-weight: 500 !important;
+}
+
+.form-confirmation,
+.confirmation-text,
+.data-save-notice,
+.save-confirmation {
+    color: #f8fafc !important;
+    background-color: rgba(0, 0, 0, 0.7) !important;
+    padding: 0.75rem !important;
+    border-radius: 4px !important;
+    margin-top: 1rem !important;
+}
+
+.form-label,
+label {
+    color: #333333 !important;
+    font-weight: 600 !important;
+}
+
+input,
+textarea,
+.form-control,
+.form-select {
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    border: 1px solid #ddd !important;
+}
+
+.tech-spec-container input,
+.tech-spec-container textarea,
+.tech-spec-container .form-control {
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    color: #333333 !important;
+    border: 1px solid #ccc !important;
+}
+
+.tech-spec-container label,
+.tech-spec-container .form-label {
+    color: #333333 !important;
+    font-weight: 600 !important;
+}
+
+.tech-spec-container .form-text,
+.tech-spec-container .help-text {
+    color: #333333 !important;
+    font-weight: 500 !important;
+}
+
+.tech-spec-container .confirmation-text,
+.tech-spec-container .data-save-notice,
+.tech-spec-container .save-confirmation {
+    color: #f8fafc !important;
+    background-color: rgba(0, 0, 0, 0.8) !important;
+    padding: 0.75rem !important;
+    border-radius: 4px !important;
+    margin-top: 1rem !important;
+}
+
+.form-floating input::placeholder,
+.form-floating textarea::placeholder {
+    color: #666666 !important;
+    opacity: 0.8 !important;
+}
+
+.form-floating label {
+    color: #333333 !important;
+}
+
+.alert-success {
+    color: #155724 !important;
+    background-color: #d4edda !important;
+    border-color: #c3e6cb !important;
+}
+
+.alert-danger,
+.alert-error {
+    color: #721c24 !important;
+    background-color: #f8d7da !important;
+    border-color: #f5c6cb !important;
+}
+
+.alert-info {
+    color: #0c5460 !important;
+    background-color: #d1ecf1 !important;
+    border-color: #bee5eb !important;
+}
+
+.alert-warning {
+    color: #856404 !important;
+    background-color: #fff3cd !important;
+    border-color: #ffeaa7 !important;
+}
+
+/* === Form labels green === */
+/* DEPRECATED: Neon green styling removed. Dark theme handled by theme-overrides.css */
+
+#project-questionnaire .contact-info .form-label {
+    color: #00cc00 !important;
+    font-weight: 600 !important;
+    text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.3);
+    padding: 2px 4px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+}
+
+#project-questionnaire .contact-info h3 {
+    color: #00cc00 !important;
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.4);
+    margin-bottom: 1rem;
+}
+
+#project-questionnaire .contact-info .form-text {
+    color: #00cc00 !important;
+    font-weight: 500 !important;
+    margin-top: 0.25rem;
+}
+
+#project-questionnaire .contact-info .form-label:after {
+    content: " *";
+    color: #ff6b6b;
+}
+
+#project-questionnaire label[for="company_name"]:after,
+#project-questionnaire label[for="contact_phone"]:after {
+    display: none;
+}
+
+/* === Register form fix === */
+/* DEPRECATED: All form styles now live in theme-overrides.css */
+
+.card-body input::-webkit-input-placeholder,
+.card-body textarea::-webkit-input-placeholder,
+.card-body select::-webkit-input-placeholder,
+.card-body .form-control::-webkit-input-placeholder,
+.card-body .form-select::-webkit-input-placeholder {
+    color: #00ff00 !important;
+    opacity: 1 !important;
+    font-weight: 500 !important;
+}
+
+.card-body input::-moz-placeholder,
+.card-body textarea::-moz-placeholder,
+.card-body select::-moz-placeholder,
+.card-body .form-control::-moz-placeholder,
+.card-body .form-select::-moz-placeholder {
+    color: #00ff00 !important;
+    opacity: 1 !important;
+    font-weight: 500 !important;
+}
+
+.card-body input::-ms-input-placeholder,
+.card-body textarea::-ms-input-placeholder,
+.card-body select::-ms-input-placeholder,
+.card-body .form-control::-ms-input-placeholder,
+.card-body .form-select::-ms-input-placeholder {
+    color: #00ff00 !important;
+    opacity: 1 !important;
+    font-weight: 500 !important;
+}
+
+.card-body small.text-muted,
+.card-body .text-muted,
+.card-body .form-text {
+    color: #00ff00 !important;
+    opacity: 1 !important;
+    font-weight: 500 !important;
+}
+
+.card-body .form-label,
+.card-body label {
+    color: #00ff00 !important;
+    font-weight: 600 !important;
+    text-shadow: 0 0 2px rgba(0, 255, 0, 0.5);
+}
+
+.card-body .form-check-label {
+    color: #00ff00 !important;
+    font-weight: 500 !important;
+}
+
+.card-body .form-check-label a,
+.card-body .card-footer a {
+    color: #00ff00 !important;
+    text-decoration: underline !important;
+    font-weight: 600 !important;
+}
+
+.card-body .form-check-label a:hover,
+.card-body .card-footer a:hover {
+    color: #00cc00 !important;
+    text-shadow: 0 0 5px rgba(0, 255, 0, 0.8);
+}
+
+.card-body input,
+.card-body textarea,
+.card-body select,
+.card-body .form-control,
+.card-body .form-select {
+    color: #ffffff !important;
+    background-color: rgba(0, 0, 0, 0.7) !important;
+    border: 2px solid #00ff00 !important;
+    font-weight: 500 !important;
+}
+
+.card-body input:focus,
+.card-body textarea:focus,
+.card-body select:focus,
+.card-body .form-control:focus,
+.card-body .form-select:focus {
+    border-color: #00ff00 !important;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5) !important;
+    color: #ffffff !important;
+    background-color: rgba(0, 0, 0, 0.8) !important;
+}
+
+.card-footer p,
+.card-footer .mb-0 {
+    color: #00ff00 !important;
+    font-weight: 500 !important;
+}
+
+.card-header h3,
+.card-header .mb-0 {
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.form-label::after {
+    color: #00ff00 !important;
+}
+
+.text-center a {
+    color: #00ff00 !important;
+    text-decoration: underline;
+    font-weight: 600 !important;
+}
+
+.text-center a:hover {
+    color: #00cc00 !important;
+}
+
+/* === Services form fix === */
+
+#project-questionnaire input::placeholder,
+#project-questionnaire textarea::placeholder,
+#project-questionnaire .form-control::placeholder,
+#project-questionnaire .form-select::placeholder {
+    color: #00cc00 !important;
+    opacity: 1 !important;
+    font-weight: 500 !important;
+}
+
+#project-questionnaire input::-webkit-input-placeholder,
+#project-questionnaire textarea::-webkit-input-placeholder,
+#project-questionnaire .form-control::-webkit-input-placeholder,
+#project-questionnaire .form-select::-webkit-input-placeholder {
+    color: #00cc00 !important;
+    opacity: 1 !important;
+}
+
+#project-questionnaire input::-moz-placeholder,
+#project-questionnaire textarea::-moz-placeholder,
+#project-questionnaire .form-control::-moz-placeholder,
+#project-questionnaire .form-select::-moz-placeholder {
+    color: #00cc00 !important;
+    opacity: 1 !important;
+}
+
+#project-questionnaire input::-ms-input-placeholder,
+#project-questionnaire textarea::-ms-input-placeholder,
+#project-questionnaire .form-control::-ms-input-placeholder,
+#project-questionnaire .form-select::-ms-input-placeholder {
+    color: #00cc00 !important;
+    opacity: 1 !important;
+}
+
+#project-questionnaire p,
+#project-questionnaire small,
+#project-questionnaire .help-text,
+#project-questionnaire .form-text,
+#project-questionnaire .text-muted,
+.accordion-body .form-text {
+    color: #00cc00 !important;
+    font-weight: 500 !important;
+    opacity: 1 !important;
+    text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.3);
+}
+
+.accordion-item .form-text,
+.accordion-collapse .form-text,
+#project-questionnaire div.form-text {
+    color: #00cc00 !important;
+    font-weight: 500 !important;
+    margin-top: 5px !important;
+    font-size: 0.9rem !important;
+}
+
+#project-questionnaire .form-check + p,
+#project-questionnaire .form-check ~ p,
+#project-questionnaire .form-check-label ~ small {
+    color: #00cc00 !important;
+    font-weight: 500 !important;
+}
+
+#project-questionnaire input:focus,
+#project-questionnaire textarea:focus,
+#project-questionnaire .form-control:focus,
+#project-questionnaire .form-select:focus {
+    border-color: #00cc00 !important;
+    box-shadow: 0 0 0 0.25rem rgba(0, 204, 0, 0.25) !important;
+}
+
+/* === Services form fix enhanced === */
+/* DEPRECATED: Neon green styling removed. Dark theme handled by theme-overrides.css */
+
+/* === Blog fixes === */
+
+.blog-post-image[data-category]::before {
+    display: none !important;
+    visibility: hidden !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    content: "" !important;
+    opacity: 0 !important;
+}
+
+.blog-post-card .category,
+.blog-post-image .category,
+span.category {
+    display: none !important;
+}
+
+.blog-post-meta .category,
+.blog-post-meta span.category,
+.blog-post-meta a {
+    display: none !important;
+}
+
+[data-category="Technology"],
+[data-category="Технологии"] {
+    position: relative;
+}
+
+[data-category="Technology"]::before,
+[data-category="Технологии"]::before {
+    content: none !important;
+    display: none !important;
+}
+
+/* === No icons === */
+
+.emoji-icon {
+    font-style: normal;
+    margin-right: 5px;
+    font-size: 1.1em;
+}
+
+i.fas, i.fab, i.fa, i.far, i[class^="fa"], i[class*=" fa"] {
+    display: none !important;
+    visibility: hidden !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+li.list-with-icon {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 10px;
+    list-style-type: none;
+}
+
+li.list-with-icon:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--secondary-color);
+    font-weight: bold;
+}
+
+.button-with-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.service-title {
+    display: flex;
+    align-items: center;
+}
+
+.service-icon {
+    margin-right: 10px;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.social-link-text {
+    padding: 8px 12px;
+    margin: 0 5px;
+    display: inline-block;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    text-decoration: none;
+    color: #333;
+}
+
+.social-link-text:hover {
+    background-color: var(--primary-dark);
+}
+
+.pagination-prev::before {
+    content: "←";
+    margin-right: 5px;
+}
+
+.pagination-next::after {
+    content: "→";
+    margin-left: 5px;
+}
+
+.blog-icon {
+    display: inline-block;
+    margin-right: 8px;
+    font-weight: normal;
+}
+
+.recent-posts li {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.recent-posts li:last-child {
+    border-bottom: none;
+}
+
+.recent-post-info h4 {
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.recent-post-date {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+i[class*="fa-"],
+span[class*="fa-"],
+.fas, .fab, .fa, .far, [class^="fa-"],
+i.material-icons, .material-icons,
+.icon, [class*="icon-"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
+}
+
+.blog-post-card {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    background: #fff;
+    margin-bottom: 25px;
+}
+
+.blog-post-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.blog-post-image {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 200px;
+}
+
+.blog-post-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s;
+}
+
+.blog-post-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.blog-post-link:hover .blog-post-image img {
+    transform: scale(1.05);
+}
+
+.blog-post-content {
+    padding: 15px;
+}
+
+.blog-post-meta {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.blog-post-meta span {
+    margin-right: 15px;
+}
+
+.blog-post-footer .read-more {
+    display: inline-block;
+    padding: 6px 15px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+.blog-post-footer .read-more:hover {
+    background-color: #0056b3;
+}
+
+.visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+.blog-post-card .blog-post-image::before {
+    content: attr(data-category) !important;
+    position: absolute !important;
+    top: 10px !important;
+    right: 10px !important;
+    background: var(--primary-color) !important;
+    color: white !important;
+    padding: 5px 15px !important;
+    border-radius: 4px !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    z-index: 999 !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2) !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.search-button::before {
+    content: "🔍";
+    margin-right: 5px;
+}
+
+.contact-info-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.contact-icon {
+    margin-right: 10px;
+    font-size: 1.2em;
+    min-width: 24px;
+    text-align: center;
+}
+
+.dashboard-nav-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.dashboard-icon {
+    margin-right: 10px;
+    min-width: 24px;
+    text-align: center;
+}
+
+.project-action-icon {
+    margin-right: 5px;
+}
+
+.task-icon, .update-icon {
+    margin-right: 8px;
+}
+
+.nav-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 12px;
+    background-color: var(--light-bg);
+    color: var(--text-color);
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.nav-button:hover {
+    background-color: var(--primary-color);
+}

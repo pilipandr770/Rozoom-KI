@@ -32,7 +32,7 @@ def get_chat_response(messages, language='en'):
         
         # Get preferred model from config
         model = current_app.config.get('OPENAI_MODEL', 'gpt-4o-mini')
-        fallback_model = current_app.config.get('OPENAI_MODEL_FALLBACK', 'gpt-3.5-turbo')
+        fallback_model = current_app.config.get('OPENAI_MODEL_FALLBACK', 'gpt-4o-mini')
         
         logger.info(f"Using OpenAI model: {model} (fallback: {fallback_model})")
         

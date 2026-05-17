@@ -195,21 +195,6 @@ Keywords: {keywords}
         """
         try:
             logger.info(f"Starting blog content generation for topic: {topic}, language: {language}")
-            
-            # Тестируем подключение перед генерацией
-            connection_ok, connection_message = self.test_connection()
-            if not connection_ok:
-                logger.warning(f"OpenAI connection failed: {connection_message}")
-                
-                # Проверяем, включен ли fallback режим
-                use_fallback = os.getenv('OPENAI_FALLBACK_ENABLED', 'true').lower() in ('true', 'yes', '1')
-                
-                if use_fallback:
-                    logger.info("Switching to fallback content generation")
-                    return self.generate_blog_content_fallback(topic, keywords, language)
-                else:
-                    raise Exception(f"Failed to connect to OpenAI API: {connection_message}")
-            
             lang_prompt = "English" if language == "en" else "German"
             
             system_prompt = f"""
@@ -258,13 +243,13 @@ Keywords: {keywords}
             """
             
             response = openai.chat.completions.create(
-                model="gpt-3.5-turbo-1106",  # Используем модель с поддержкой JSON
+                model="gpt-4o-mini",
                 messages=[
                     {"role": "system", "content": system_prompt},
                     {"role": "user", "content": user_prompt}
                 ],
                 response_format={"type": "json_object"},
-                timeout=60  # Добавляем таймаут 60 секунд
+                timeout=60
             )
             
             # Получаем содержимое ответа
@@ -276,31 +261,16 @@ Keywords: {keywords}
             
             return blog_data
             
-        except APIConnectionError as e:
-            logger.error(f"OpenAI API connection error: {str(e)}")
-            logger.error(f"Error type: {type(e)}")
-            logger.error(f"Error details: {e.__dict__ if hasattr(e, '__dict__') else 'No details'}")
-            raise Exception("Ошибка подключения к OpenAI API")
-        except AuthenticationError as e:
-            logger.error(f"OpenAI API authentication error: {str(e)}")
-            logger.error(f"Error type: {type(e)}")
-            logger.error(f"Error details: {e.__dict__ if hasattr(e, '__dict__') else 'No details'}")
-            raise Exception("Ошибка аутентификации OpenAI API")
-        except RateLimitError as e:
-            logger.error(f"OpenAI API rate limit error: {str(e)}")
-            logger.error(f"Error type: {type(e)}")
-            logger.error(f"Error details: {e.__dict__ if hasattr(e, '__dict__') else 'No details'}")
-            raise Exception("Превышен лимит запросов к OpenAI API")
-        except APIError as e:
-            logger.error(f"OpenAI API error: {str(e)}")
-            logger.error(f"Error type: {type(e)}")
-            logger.error(f"Error details: {e.__dict__ if hasattr(e, '__dict__') else 'No details'}")
-            raise Exception(f"Ошибка API OpenAI: {str(e)}")
+        except (APIConnectionError, AuthenticationError, RateLimitError, APIError) as e:
+            logger.error(f"OpenAI API error [{type(e).__name__}]: {str(e)}")
+            use_fallback = os.getenv('OPENAI_FALLBACK_ENABLED', 'true').lower() in ('true', 'yes', '1')
+            if use_fallback:
+                logger.info("Switching to fallback content generation after API error")
+                return self.generate_blog_content_fallback(topic, keywords, language)
+            raise Exception(f"OpenAI API error: {str(e)}")
         except Exception as e:
-            logger.error(f"Error generating blog content: {str(e)}")
-            logger.error(f"Error type: {type(e)}")
-            logger.error(f"Error details: {e.__dict__ if hasattr(e, '__dict__') else 'No details'}")
-            raise Exception(f"Ошибка генерации содержимого блога: {str(e)}")
+            logger.error(f"Unexpected error generating blog content: {str(e)}")
+            raise Exception(f"Ошибка генерации блога: {str(e)}")
     
     def generate_image(self, prompt: str) -> Optional[str]:
         """
@@ -392,7 +362,7 @@ Keywords: {keywords}
             """
             
             response = openai.chat.completions.create(
-                model="gpt-4",
+                model="gpt-4o",
                 messages=[
                     {"role": "system", "content": system_prompt},
                     {"role": "user", "content": user_prompt}

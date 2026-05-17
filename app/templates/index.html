@@ -4,7 +4,7 @@
 <section class="video-hero content-wrapper">
   <!-- Enhanced Video Background -->
   <div class="video-background">
-    <video autoplay loop muted playsinline class="hero-video">
+    <video autoplay loop muted playsinline preload="none" class="hero-video">
       <source src="{{ url_for('static', filename='videos/hero_background.mp4') }}" type="video/mp4">
     </video>
     <div class="video-overlay"></div>
@@ -187,7 +187,7 @@
 {% block aftermain %}
 <section class="video-background-section">
   <div class="hero-video-background">
-    <video autoplay loop muted playsinline>
+    <video autoplay loop muted playsinline preload="none">
       <source src="{{ url_for('static', filename='videos/ai_background.mp4') }}" type="video/mp4">
       <div class="fallback-background"></div>
     </video>

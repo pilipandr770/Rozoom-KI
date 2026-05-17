@@ -115,6 +115,23 @@
   }
 }
 
+/* Mobile: hide video to save bandwidth — show dark gradient fallback instead */
+@media (max-width: 768px) {
+  .video-background video,
+  .hero-video-background video {
+    display: none;
+  }
+
+  .video-background::after,
+  .hero-video-background::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #0a1628 0%, #0d2040 50%, #0a1628 100%);
+    z-index: 0;
+  }
+}
+
 /* Мобильная оптимизация видео-героя */
 @media (max-width: 768px) {
   .video-hero {

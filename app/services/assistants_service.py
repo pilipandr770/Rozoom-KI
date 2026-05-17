@@ -17,9 +17,8 @@ from app.models.chat_message import ChatMessage
 logger = logging.getLogger(__name__)
 
 # Используем константу для выбора модели, чтобы легко переключать разные модели
-DEFAULT_MODEL = "gpt-4o-2024-05-13"  # Более современная и мощная модель
-# Запасная модель, если основная недоступна
-FALLBACK_MODEL = "gpt-3.5-turbo"
+DEFAULT_MODEL = "gpt-4o"
+FALLBACK_MODEL = "gpt-4o-mini"
 
 def _client() -> OpenAI:
     api_key = current_app.config.get("OPENAI_API_KEY") or os.getenv("OPENAI_API_KEY")
