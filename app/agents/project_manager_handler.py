@@ -1,243 +1,162 @@
-from flask import current_app
+"""
+project_manager_handler.py
+
+Collects the authenticated client's project data from the DB,
+builds a structured context string, and delegates the answer to
+the LLM via responses_service.respond().  The LLM handles any
+language (DE / EN / UK / RU) and any question the client may ask.
+"""
+from __future__ import annotations
+
+from datetime import date
+from typing import Dict, Any, Optional
+
 from app import db
 from app.models.project import Project, ProjectTask, ProjectUpdate
 from app.models.base import User
-from app.models.tech_spec_submission import TechSpecSubmission
-from typing import Dict, List
+from app.services.responses_service import respond as _llm_respond
 
-def handle_pm_request(message: str, metadata: Dict) -> Dict:
+
+# ── helpers ──────────────────────────────────────────────────────────────────
+
+def _fmt_date(d) -> str:
+    if d is None:
+        return "—"
+    if isinstance(d, date):
+        return d.strftime("%d.%m.%Y")
+    return str(d)
+
+
+def _build_project_context(user: User) -> str:
     """
-    Обрабатывает запросы к агенту ПМ
+    Return a compact text block with all project data for this client.
+    Injected as a system-level context message for the PM agent.
     """
-    if 'user_id' not in metadata or not metadata['user_id']:
-        return {
-            'answer': _get_not_logged_in_message(metadata.get('language', 'en')),
-            'agent': 'pm'
-        }
-    
-    user_id = metadata['user_id']
-    user = db.session.get(User, user_id)
-    
+    projects = Project.query.filter_by(client_id=user.id).all()
+
+    if not projects:
+        return (
+            f"CLIENT: {user.name}\n"
+            "STATUS: No active projects yet. The client may have submitted a "
+            "technical specification that is being reviewed by the team."
+        )
+
+    lines: list[str] = [f"CLIENT: {user.name}  |  email: {user.email or '—'}\n"]
+
+    for idx, proj in enumerate(projects, 1):
+        tasks = ProjectTask.query.filter_by(project_id=proj.id).all()
+        total_tasks = len(tasks)
+        completed_tasks = sum(1 for t in tasks if t.status == "completed")
+        in_progress_tasks = [t for t in tasks if t.status == "in_progress"]
+        blocked_tasks = [t for t in tasks if t.status == "blocked"]
+
+        updates = (
+            ProjectUpdate.query
+            .filter_by(project_id=proj.id)
+            .order_by(ProjectUpdate.created_at.desc())
+            .limit(5)
+            .all()
+        )
+
+        lines.append(f"── PROJECT {idx}: {proj.title} ──")
+        lines.append(f"Status   : {(proj.status or 'unknown').upper()}")
+        lines.append(f"Progress : {proj.progress}%")
+        lines.append(f"Start    : {_fmt_date(proj.start_date)}")
+        lines.append(f"Deadline : {_fmt_date(proj.estimated_end_date)}")
+        lines.append(f"Tasks    : {completed_tasks}/{total_tasks} completed")
+
+        if proj.description:
+            lines.append(f"Goal     : {proj.description[:200]}")
+
+        # Current work
+        if in_progress_tasks:
+            lines.append("In progress:")
+            for t in in_progress_tasks[:5]:
+                lines.append(f"  • {t.title}" + (f": {t.description[:80]}" if t.description else ""))
+
+        # Blockers
+        if blocked_tasks:
+            lines.append("⚠ Blocked:")
+            for t in blocked_tasks[:3]:
+                lines.append(f"  • {t.title}")
+
+        # Recent updates
+        if updates:
+            lines.append("Recent updates:")
+            for u in updates:
+                milestone = " 🏆 MILESTONE" if u.is_milestone else ""
+                lines.append(
+                    f"  [{_fmt_date(u.created_at)}] {u.title}{milestone}"
+                    + (f" — {u.content[:120]}" if u.content else "")
+                )
+        else:
+            lines.append("Recent updates: none yet")
+
+        lines.append("")  # blank line between projects
+
+    return "\n".join(lines)
+
+
+def _not_logged_in_msg(language: str) -> str:
+    msgs = {
+        "en": (
+            "It looks like you're not logged in. Please log in to your client "
+            "dashboard to check your project status."
+        ),
+        "de": (
+            "Es scheint, dass Sie nicht angemeldet sind. Bitte melden Sie sich "
+            "in Ihrem Kundenbereich an, um den Projektstatus zu sehen."
+        ),
+        "uk": (
+            "Здається, ви не увійшли в систему. Будь ласка, увійдіть у свій "
+            "кабінет, щоб перевірити статус проєкту."
+        ),
+        "ru": (
+            "Похоже, вы не вошли в систему. Войдите в личный кабинет, "
+            "чтобы проверить статус проекта."
+        ),
+    }
+    return msgs.get(language, msgs["en"])
+
+
+# ── public entry point ────────────────────────────────────────────────────────
+
+def handle_pm_request(message: str, metadata: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    Called by controller.route_and_respond() when agent == 'pm'.
+
+    Returns:
+        { 'agent': 'pm', 'answer': <str>, 'conversation_id': <str> }
+    """
+    language = metadata.get("language", "en")
+    conversation_id = metadata.get("conversation_id", "anon")
+
+    # ── auth guard ────────────────────────────────────────────────────────────
+    user_id = metadata.get("user_id")
+    user: Optional[User] = db.session.get(User, user_id) if user_id else None
+
     if not user:
         return {
-            'answer': _get_not_logged_in_message(metadata.get('language', 'en')),
-            'agent': 'pm'
+            "agent": "pm",
+            "answer": _not_logged_in_msg(language),
+            "conversation_id": conversation_id,
         }
-    
-    # Обрабатываем сообщение от клиента
-    lowered_message = message.lower()
-    
-    # Запрос на просмотр проектов
-    if any(keyword in lowered_message for keyword in ['project', 'projects', 'status', 'progress', 'проект', 'проекты', 'статус', 'прогресс']):
-        return _handle_project_status_request(user, metadata)
-    
-    # Запрос на последние обновления
-    if any(keyword in lowered_message for keyword in ['update', 'updates', 'latest', 'new', 'обновление', 'обновления', 'последнее', 'новое']):
-        return _handle_project_updates_request(user, metadata)
-    
-    # Запрос конкретного проекта (если в сообщении упоминается название проекта)
-    user_projects = Project.query.filter_by(client_id=user.id).all()
-    for project in user_projects:
-        if project.title.lower() in lowered_message:
-            return _get_specific_project_info(project, metadata)
-    
-    # По умолчанию общая информация
+
+    # ── build context from DB ─────────────────────────────────────────────────
+    context = _build_project_context(user)
+
+    # ── ask the LLM ───────────────────────────────────────────────────────────
+    result = _llm_respond(
+        user_text=message or "",
+        agent="pm",
+        conversation_id=conversation_id,
+        language=language,
+        context=context,
+        structured=False,
+    )
+
     return {
-        'answer': _get_general_welcome_message(user, metadata.get('language', 'en')),
-        'agent': 'pm'
-    }
-
-def _get_not_logged_in_message(language: str) -> str:
-    """Сообщение для неавторизованных пользователей"""
-    messages = {
-        'en': "I can help you track your project status, but it looks like you're not logged in. Please log in to access your project information.",
-        'ru': "Я могу помочь вам отслеживать статус проекта, но похоже, вы не вошли в систему. Пожалуйста, войдите, чтобы получить доступ к информации о вашем проекте.",
-        'de': "Ich kann Ihnen helfen, Ihren Projektstatus zu verfolgen, aber es sieht so aus, als wären Sie nicht angemeldet. Bitte melden Sie sich an, um auf Ihre Projektinformationen zuzugreifen.",
-        'uk': "Я можу допомогти вам відстежувати статус проекту, але схоже, ви не увійшли в систему. Будь ласка, увійдіть, щоб отримати доступ до інформації про ваш проект."
-    }
-    return messages.get(language, messages['en'])
-
-def _get_general_welcome_message(user: User, language: str) -> str:
-    """Приветственное сообщение для авторизованного пользователя с обзором его проектов"""
-    projects = Project.query.filter_by(client_id=user.id).all()
-    
-    if not projects:
-        messages = {
-            'en': f"Hello, {user.name}! You don't have any active projects yet. If you've submitted a technical specification, our team is reviewing it. If you have any questions, feel free to ask!",
-            'ru': f"Здравствуйте, {user.name}! У вас пока нет активных проектов. Если вы отправили техническое задание, наша команда рассматривает его. Если у вас есть вопросы, не стесняйтесь спрашивать!",
-            'de': f"Hallo, {user.name}! Sie haben noch keine aktiven Projekte. Wenn Sie eine technische Spezifikation eingereicht haben, prüft unser Team diese gerade. Wenn Sie Fragen haben, fragen Sie gerne!",
-            'uk': f"Вітаю, {user.name}! У вас поки немає активних проектів. Якщо ви надіслали технічне завдання, наша команда розглядає його. Якщо у вас є питання, не соромтеся запитувати!"
-        }
-        return messages.get(language, messages['en'])
-    
-    # Формируем обзор проектов
-    projects_info = []
-    for project in projects:
-        projects_info.append({
-            'title': project.title,
-            'status': project.status,
-            'progress': project.progress
-        })
-    
-    project_list_str = "\n".join([f"- {p['title']}: {p['status'].upper()} ({p['progress']}% complete)" for p in projects_info])
-    
-    messages = {
-        'en': f"Hello, {user.name}! Here's an overview of your projects:\n\n{project_list_str}\n\nYou can ask me about any specific project or request updates.",
-        'ru': f"Здравствуйте, {user.name}! Вот обзор ваших проектов:\n\n{project_list_str}\n\nВы можете спросить меня о любом конкретном проекте или запросить обновления.",
-        'de': f"Hallo, {user.name}! Hier ist ein Überblick über Ihre Projekte:\n\n{project_list_str}\n\nSie können mich nach einem bestimmten Projekt fragen oder Updates anfordern.",
-        'uk': f"Вітаю, {user.name}! Ось огляд ваших проектів:\n\n{project_list_str}\n\nВи можете запитати мене про будь-який конкретний проект або запросити оновлення."
-    }
-    return messages.get(language, messages['en'])
-
-def _handle_project_status_request(user: User, metadata: Dict) -> Dict:
-    """Обработка запроса о статусе проектов"""
-    projects = Project.query.filter_by(client_id=user.id).all()
-    language = metadata.get('language', 'en')
-    
-    if not projects:
-        messages = {
-            'en': "You don't have any active projects at the moment.",
-            'ru': "У вас нет активных проектов на данный момент.",
-            'de': "Sie haben derzeit keine aktiven Projekte.",
-            'uk': "У вас немає активних проектів на даний момент."
-        }
-        return {
-            'answer': messages.get(language, messages['en']),
-            'agent': 'pm'
-        }
-    
-    # Формируем детальный отчет по каждому проекту
-    projects_report = []
-    for project in projects:
-        tasks = ProjectTask.query.filter_by(project_id=project.id).all()
-        completed_tasks = sum(1 for task in tasks if task.status == 'completed')
-        total_tasks = len(tasks)
-        
-        latest_update = ProjectUpdate.query.filter_by(project_id=project.id).order_by(ProjectUpdate.created_at.desc()).first()
-        
-        project_info = {
-            'title': project.title,
-            'status': project.status,
-            'progress': project.progress,
-            'tasks_info': f"{completed_tasks}/{total_tasks} tasks completed",
-            'latest_update': latest_update.content if latest_update else "No updates yet."
-        }
-        projects_report.append(project_info)
-    
-    # Создаем читаемый текстовый отчет
-    report_text = ""
-    for i, p in enumerate(projects_report, 1):
-        report_text += f"Project {i}: {p['title']}\n"
-        report_text += f"Status: {p['status'].upper()}\n"
-        report_text += f"Progress: {p['progress']}%\n"
-        report_text += f"Tasks: {p['tasks_info']}\n"
-        report_text += f"Latest update: {p['latest_update']}\n\n"
-    
-    messages = {
-        'en': f"Here's the current status of your projects:\n\n{report_text}",
-        'ru': f"Вот текущий статус ваших проектов:\n\n{report_text}",
-        'de': f"Hier ist der aktuelle Status Ihrer Projekte:\n\n{report_text}",
-        'uk': f"Ось поточний статус ваших проектів:\n\n{report_text}"
-    }
-    
-    return {
-        'answer': messages.get(language, messages['en']),
-        'agent': 'pm'
-    }
-
-def _handle_project_updates_request(user: User, metadata: Dict) -> Dict:
-    """Обработка запроса о последних обновлениях проектов"""
-    language = metadata.get('language', 'en')
-    
-    # Получаем ID всех проектов пользователя
-    projects = Project.query.filter_by(client_id=user.id).all()
-    project_ids = [p.id for p in projects]
-    
-    if not project_ids:
-        messages = {
-            'en': "You don't have any active projects yet.",
-            'ru': "У вас пока нет активных проектов.",
-            'de': "Sie haben noch keine aktiven Projekte.",
-            'uk': "У вас поки немає активних проектів."
-        }
-        return {
-            'answer': messages.get(language, messages['en']),
-            'agent': 'pm'
-        }
-    
-    # Получаем последние обновления для всех проектов пользователя
-    updates = ProjectUpdate.query.filter(
-        ProjectUpdate.project_id.in_(project_ids)
-    ).order_by(ProjectUpdate.created_at.desc()).limit(5).all()
-    
-    if not updates:
-        messages = {
-            'en': "There are no recent updates for your projects.",
-            'ru': "Нет недавних обновлений для ваших проектов.",
-            'de': "Es gibt keine aktuellen Updates für Ihre Projekte.",
-            'uk': "Немає нещодавніх оновлень для ваших проектів."
-        }
-        return {
-            'answer': messages.get(language, messages['en']),
-            'agent': 'pm'
-        }
-    
-    # Формируем отчет
-    updates_text = ""
-    for update in updates:
-        project = next((p for p in projects if p.id == update.project_id), None)
-        if project:
-            updates_text += f"Project: {project.title}\n"
-            updates_text += f"Update: {update.title}\n"
-            updates_text += f"Details: {update.content}\n"
-            updates_text += f"Date: {update.created_at.strftime('%Y-%m-%d')}\n"
-            updates_text += f"{'🔔 MILESTONE' if update.is_milestone else ''}\n\n"
-    
-    messages = {
-        'en': f"Here are the recent updates for your projects:\n\n{updates_text}",
-        'ru': f"Вот последние обновления для ваших проектов:\n\n{updates_text}",
-        'de': f"Hier sind die aktuellen Updates für Ihre Projekte:\n\n{updates_text}",
-        'uk': f"Ось останні оновлення для ваших проектів:\n\n{updates_text}"
-    }
-    
-    return {
-        'answer': messages.get(language, messages['en']),
-        'agent': 'pm'
-    }
-
-def _get_specific_project_info(project: Project, metadata: Dict) -> Dict:
-    """Получение информации о конкретном проекте"""
-    language = metadata.get('language', 'en')
-    
-    # Получаем задачи проекта
-    tasks = ProjectTask.query.filter_by(project_id=project.id).all()
-    completed_tasks = sum(1 for task in tasks if task.status == 'completed')
-    total_tasks = len(tasks)
-    
-    # Получаем последние обновления
-    updates = ProjectUpdate.query.filter_by(project_id=project.id).order_by(ProjectUpdate.created_at.desc()).limit(3).all()
-    
-    # Формируем отчет
-    project_details = f"Project: {project.title}\n"
-    project_details += f"Status: {project.status.upper()}\n"
-    project_details += f"Progress: {project.progress}%\n"
-    project_details += f"Tasks: {completed_tasks}/{total_tasks} completed\n\n"
-    
-    if updates:
-        project_details += "Recent Updates:\n"
-        for update in updates:
-            project_details += f"- {update.title}: {update.content}\n"
-    else:
-        project_details += "No recent updates.\n"
-    
-    messages = {
-        'en': f"Here are the details for project '{project.title}':\n\n{project_details}",
-        'ru': f"Вот детали проекта '{project.title}':\n\n{project_details}",
-        'de': f"Hier sind die Details für das Projekt '{project.title}':\n\n{project_details}",
-        'uk': f"Ось деталі проекту '{project.title}':\n\n{project_details}"
-    }
-    
-    return {
-        'answer': messages.get(language, messages['en']),
-        'agent': 'pm'
+        "agent": "pm",
+        "answer": result.get("answer", ""),
+        "conversation_id": result.get("conversation_id", conversation_id),
     }

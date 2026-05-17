@@ -182,7 +182,7 @@ def api_get_projects():
             'progress': project.progress,
             'description': project.description,
             'start_date': project.start_date.strftime('%Y-%m-%d') if project.start_date else None,
-            'estimated_completion': project.estimated_completion_date.strftime('%Y-%m-%d') if project.estimated_completion_date else None
+            'estimated_completion': project.estimated_end_date.strftime('%Y-%m-%d') if project.estimated_end_date else None
         })
     
     return jsonify({
