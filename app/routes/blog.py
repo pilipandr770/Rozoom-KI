@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for, abort
+from flask import Blueprint, render_template, request, redirect, url_for, abort, g
 from app.models import BlogPost, BlogCategory, BlogTag
 from sqlalchemy import desc, func
 from sqlalchemy.orm import joinedload, selectinload
@@ -12,6 +12,18 @@ _sidebar_cache = {
     'categories': None,
     'tags': None,
 }
+
+
+def _use_german_posts() -> bool:
+    """Use German blog variants for DE/UK UI locales."""
+    return getattr(g, 'locale', 'en') in ('de', 'uk')
+
+
+def _apply_locale_filter(query):
+    """Filter blog posts by slug convention: German posts end with '-de'."""
+    if _use_german_posts():
+        return query.filter(BlogPost.slug.ilike('%-de'))
+    return query.filter(~BlogPost.slug.ilike('%-de'))
 
 
 def get_sidebar_data():
@@ -35,10 +47,13 @@ def get_sidebar_data():
 def index():
     """Main blog index page with pagination."""
     page = request.args.get('page', 1, type=int)
-    posts = BlogPost.query.options(
+    posts_query = BlogPost.query.options(
         joinedload(BlogPost.category),
         selectinload(BlogPost.tags),
-    ).filter_by(published=True).order_by(
+    ).filter_by(published=True)
+    posts_query = _apply_locale_filter(posts_query)
+
+    posts = posts_query.order_by(
         desc(BlogPost.created_at)
     ).paginate(page=page, per_page=6, error_out=False)
     
@@ -57,13 +72,18 @@ def index():
 @blog.route('/post/<string:slug>')
 def post(slug):
     """Display a single blog post."""
+    if _use_german_posts() and not slug.endswith('-de'):
+        de_variant = BlogPost.query.filter_by(slug=f"{slug}-de", published=True).first()
+        if de_variant:
+            return redirect(url_for('blog.post', slug=de_variant.slug), code=302)
+
     post = BlogPost.query.options(
         joinedload(BlogPost.category),
         selectinload(BlogPost.tags),
     ).filter_by(slug=slug, published=True).first_or_404()
     
     # Get related posts (same category or tag)
-    related_posts = BlogPost.query.options(
+    related_query = BlogPost.query.options(
         joinedload(BlogPost.category),
         selectinload(BlogPost.tags),
     ).filter(
@@ -73,9 +93,12 @@ def post(slug):
             (BlogPost.category_id == post.category_id) | 
             (BlogPost.tags.any(BlogTag.id.in_([tag.id for tag in post.tags])))
         )
-    ).order_by(desc(BlogPost.created_at)).limit(3).all()
+    )
+    related_query = _apply_locale_filter(related_query)
+    related_posts = related_query.order_by(desc(BlogPost.created_at)).limit(3).all()
     
-    return render_template('blog/blog_post.html', post=post, related_posts=related_posts)
+    categories, tags = get_sidebar_data()
+    return render_template('blog/blog_post.html', post=post, related_posts=related_posts, categories=categories, tags=tags)
 
 @blog.route('/category/<string:slug>')
 def category(slug):
@@ -83,13 +106,16 @@ def category(slug):
     category = BlogCategory.query.filter_by(slug=slug).first_or_404()
     page = request.args.get('page', 1, type=int)
     
-    posts = BlogPost.query.options(
+    posts_query = BlogPost.query.options(
         joinedload(BlogPost.category),
         selectinload(BlogPost.tags),
     ).filter_by(
         published=True, 
         category_id=category.id
-    ).order_by(
+    )
+    posts_query = _apply_locale_filter(posts_query)
+
+    posts = posts_query.order_by(
         desc(BlogPost.created_at)
     ).paginate(page=page, per_page=6, error_out=False)
     
@@ -112,13 +138,16 @@ def tag(slug):
     tag = BlogTag.query.filter_by(slug=slug).first_or_404()
     page = request.args.get('page', 1, type=int)
     
-    posts = BlogPost.query.options(
+    posts_query = BlogPost.query.options(
         joinedload(BlogPost.category),
         selectinload(BlogPost.tags),
     ).filter(
         BlogPost.published == True,
         BlogPost.tags.any(BlogTag.id == tag.id)
-    ).order_by(
+    )
+    posts_query = _apply_locale_filter(posts_query)
+
+    posts = posts_query.order_by(
         desc(BlogPost.created_at)
     ).paginate(page=page, per_page=6, error_out=False)
     
@@ -145,7 +174,7 @@ def search():
         return redirect(url_for('blog.index'))
     
     # Search in title, content and excerpt
-    posts = BlogPost.query.options(
+    posts_query = BlogPost.query.options(
         joinedload(BlogPost.category),
         selectinload(BlogPost.tags),
     ).filter(
@@ -155,7 +184,10 @@ def search():
             BlogPost.content.ilike(f'%{query}%') | 
             BlogPost.excerpt.ilike(f'%{query}%')
         )
-    ).order_by(
+    )
+    posts_query = _apply_locale_filter(posts_query)
+
+    posts = posts_query.order_by(
         desc(BlogPost.created_at)
     ).paginate(page=page, per_page=6, error_out=False)
     

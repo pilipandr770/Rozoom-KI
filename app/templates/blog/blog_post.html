@@ -32,7 +32,7 @@
                 
                 {% if post.image_data or post.image_url %}
                 <div class="blog-post-image mb-4">
-                    <img src="{% if post.image_data %}{{ url_for('blog.get_image', post_id=post.id) }}{% else %}{{ post.image_url }}{% endif %}" alt="{{ post.title }}" class="img-fluid" decoding="async">
+                    <img src="{% if post.image_data %}{{ url_for('blog.get_image', post_id=post.id) }}{% else %}{{ post.image_url }}{% endif %}" alt="{{ post.title }}" class="img-fluid" decoding="async" onerror="this.style.display='none'; this.closest('.blog-post-image').style.display='none';">
                 </div>
                 {% endif %}
                 
@@ -65,8 +65,8 @@
                     {% for related in related_posts %}
                     <div class="col-md-4">
                         <div class="card h-100">
-                            {% if related.image_url %}
-                            <img src="{{ related.image_url }}" class="card-img-top" alt="{{ related.title }}" loading="lazy" decoding="async">
+                            {% if related.image_data or related.image_url %}
+                            <img src="{% if related.image_data %}{{ url_for('blog.get_image', post_id=related.id) }}{% else %}{{ related.image_url }}{% endif %}" class="card-img-top" alt="{{ related.title }}" loading="lazy" decoding="async" onerror="this.style.display='none';">
                             {% endif %}
                             <div class="card-body">
                                 <h5 class="card-title">

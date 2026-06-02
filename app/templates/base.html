@@ -1,7 +1,7 @@
 ﻿<!doctype html>
-{# Р†РјРїРѕСЂС‚СѓС”РјРѕ С„СѓРЅРєС†С–С— РїРµСЂРµРєР»Р°РґСѓ #}
+{# Import translation helpers #}
 {% from "macros/translations.html" import language_switcher with context %}
-{# РРјРїРѕСЂС‚РёСЂСѓРµРј CSRF РјР°РєСЂРѕСЃ #}
+{# Import CSRF macro #}
 {% from "macros/forms.html" import csrf_field with context %}
 <html lang="{{ g.locale }}">
   <head>
@@ -117,7 +117,7 @@
       <div class="stars-layer"></div>
       <div class="glow-layer"></div>
       <div class="particles-container"></div>
-      <!-- Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ СЌР»РµРјРµРЅС‚С‹ Р°РЅРёРјР°С†РёРё РґРѕР±Р°РІР»СЏСЋС‚СЃСЏ С‡РµСЂРµР· JS -->
+      <!-- Additional animation nodes are injected by JS -->
     </div>
     {% endif %}
     
@@ -146,11 +146,11 @@
             <a href="/services?lang={{ g.locale }}">{{ _('Services') }}</a>
             <a href="/pricing?lang={{ g.locale }}">{{ _('Pricing') }}</a>
             <a href="/blog?lang={{ g.locale }}">{{ _('Blog') }}</a>
-            <a href="/lebenslauf?lang={{ g.locale }}">{% if g.locale == 'en' %}CV{% elif g.locale == 'uk' %}Р РµР·СЋРјРµ{% else %}Lebenslauf{% endif %}</a>
+            <a href="/lebenslauf?lang={{ g.locale }}">{% if g.locale == 'en' %}CV{% elif g.locale == 'uk' %}Резюме{% else %}Lebenslauf{% endif %}</a>
             <a href="/contact?lang={{ g.locale }}">{{ _('Contact') }}</a>
           </div>
           <div class="nav-right">
-            {# РњРѕРІРЅРµ РјРµРЅСЋ #}
+            {# Language switcher #}
             {{ language_switcher() }}
 
             {% if current_user.is_authenticated %}
@@ -173,9 +173,9 @@
         {% if messages %}
           {% for category, message in messages %}
             <div class="flash-message flash-{{ category }}">
-              <span class="emoji-icon">{% if category == 'success' %}вњ“{% else %}!{% endif %}</span>
+              <span class="emoji-icon">{% if category == 'success' %}✓{% else %}!{% endif %}</span>
               <p>{{ message }}</p>
-              <button class="flash-close">вњ•</button>
+              <button class="flash-close">✕</button>
             </div>
           {% endfor %}
         {% endif %}
@@ -198,7 +198,7 @@
     <!-- Chat widget -->
     <div id="chat-widget" class="chat-widget high-contrast">
       <div id="chat-toggle" class="chat-toggle">
-        <span class="emoji-icon">рџ’¬</span>
+        <span class="emoji-icon">💬</span>
       </div>
       <div id="chat-window" class="chat-window hidden">
         <div class="chat-header">
@@ -206,7 +206,7 @@
             <span>{{ _('Rozoom Assistant') }}</span>
           </div>
           <div id="chat-close" class="chat-close">
-            вњ•
+            ✕
           </div>
         </div>
         <div id="chat-messages" class="chat-messages high-contrast"></div>
@@ -214,7 +214,7 @@
           <div class="chat-input-wrapper">
             <input id="chat-input" placeholder="{{ _('Type your message...') }}" />
             <button id="chat-send" class="chat-send">
-              рџ“Ё
+              📨
             </button>
           </div>
         </div>
@@ -257,7 +257,7 @@
     <script defer src="{{ url_for('static', filename='js/chat_translations.js') }}"></script>
   <!-- Production chat widget (clean) -->
   <script defer src="{{ url_for('static', filename='js/chat_widget_prod.js') }}"></script>
-    <!-- РњРѕРІР° РІРёР·РЅР°С‡Р°С”С‚СЊСЃСЏ Р°РІС‚РѕРјР°С‚РёС‡РЅРѕ -->
+    <!-- Language is determined automatically -->
   <script defer src="{{ url_for('static', filename='js/language_switcher.js') }}"></script>
   <script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
   <script defer src="{{ url_for('static', filename='js/footer-fix.js') }}"></script>
