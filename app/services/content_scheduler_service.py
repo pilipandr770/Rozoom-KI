@@ -110,6 +110,7 @@ class ContentSchedulerService:
             image_path = openai_service.generate_image(image_prompt)
             local_image_path = None
             original_url = None
+            image_data = None
             
             if image_path:
                 # Проверяем, если путь начинается с http, значит это URL от OpenAI
@@ -152,9 +153,15 @@ class ContentSchedulerService:
             generated_content.image_data = image_data  # Сохраняем бинарные данные изображения
             generated_content.original_image_url = original_url  # Сохраняем оригинальный URL (если был)
             generated_content.keywords = schedule.keywords
-            generated_content.status = ContentStatus.PUBLISHED if local_image_path else ContentStatus.FAILED
+
+            # Не блокируем публикацию статьи из-за ошибки генерации изображения.
+            # Если текст сгенерирован успешно, сохраняем контент как PUBLISHED,
+            # а проблему с изображением фиксируем в error_message.
+            generated_content.status = ContentStatus.PUBLISHED
             if not local_image_path:
-                generated_content.error_message = "Failed to generate or save image"
+                generated_content.error_message = "Image generation failed; article published without image"
+            else:
+                generated_content.error_message = None
             
             db.session.commit()
             

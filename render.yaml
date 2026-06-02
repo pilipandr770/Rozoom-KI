@@ -55,6 +55,8 @@ services:
         value: gpt-5-nano
       - key: OPENAI_MODEL_FALLBACK
         value: gpt-4o-mini
+      - key: OPENAI_IMAGE_MODEL
+        value: gpt-image-1
       - key: USE_CHAT_COMPLETION
         value: "true"
       - key: TELEGRAM_BOT_TOKEN

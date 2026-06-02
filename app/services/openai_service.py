@@ -3,6 +3,8 @@ import openai
 import logging
 import requests
 import time
+import base64
+from pathlib import Path
 from flask import current_app
 from datetime import datetime
 from typing import Tuple, Dict, List, Optional
@@ -24,10 +26,8 @@ class OpenAIService:
         if not self.api_key:
             raise ValueError("OpenAI API key is not set. Please set OPENAI_API_KEY environment variable.")
         
-        # Логируем информацию о ключе (без самого ключа)
+        # Логируем только факт наличия ключа, без раскрытия его признаков
         logger.info(f"OpenAI API key configured: {'Yes' if self.api_key else 'No'}")
-        logger.info(f"OpenAI API key length: {len(self.api_key) if self.api_key else 0}")
-        logger.info(f"OpenAI API key starts with: {self.api_key[:10] if self.api_key else 'None'}...")
         
         openai.api_key = self.api_key
     
@@ -284,34 +284,71 @@ Keywords: {keywords}
             Optional[str]: Локальный путь к сохраненному изображению или None при ошибке
         """
         try:
-            response = openai.images.generate(
-                model="dall-e-3",
-                prompt=prompt,
-                size="1024x1024",
-                quality="standard",
-                n=1
-            )
-            
-            # Получаем временный URL изображения от OpenAI
-            temp_image_url = response.data[0].url
-            
-            # Импортируем здесь, чтобы избежать циклических импортов
-            from app.utils.image_utils import download_and_save_image
-            
-            # Загружаем и сохраняем изображение локально
-            # Здесь entity_id и entity_type будут None, так как мы еще не знаем,
-            # для какой сущности генерируется изображение
-            success, local_path, error_msg = download_and_save_image(
-                image_url=temp_image_url,
-                delete_old=False  # Не удаляем старые изображения при создании нового
-            )
-            
-            if success:
-                logger.info(f"Image successfully saved at {local_path}")
-                return local_path
-            else:
-                logger.error(f"Failed to save image: {error_msg}")
-                return None
+            # Newer API keys may not have legacy DALL-E aliases. Allow override and fallback.
+            configured_model = os.getenv('OPENAI_IMAGE_MODEL', 'gpt-image-1').strip()
+            model_candidates = [configured_model]
+            if configured_model != 'gpt-image-1':
+                model_candidates.append('gpt-image-1')
+
+            last_error = None
+            for model_name in model_candidates:
+                try:
+                    response = openai.images.generate(
+                        model=model_name,
+                        prompt=prompt,
+                        size="1024x1024"
+                    )
+
+                    if not response.data:
+                        logger.error("Image generation returned empty data")
+                        return None
+
+                    image_item = response.data[0]
+                    temp_image_url = getattr(image_item, 'url', None)
+
+                    # Импортируем здесь, чтобы избежать циклических импортов
+                    from app.utils.image_utils import download_and_save_image
+
+                    # Most models return URL; keep existing download flow.
+                    if temp_image_url:
+                        success, local_path, _image_data, error_msg = download_and_save_image(
+                            image_url=temp_image_url,
+                            delete_old=False
+                        )
+                        if success:
+                            logger.info(f"Image successfully saved at {local_path} using model {model_name}")
+                            return local_path
+                        logger.error(f"Failed to save image: {error_msg}")
+                        return None
+
+                    # Some models can return base64 payload instead of URL.
+                    b64_payload = getattr(image_item, 'b64_json', None)
+                    if b64_payload:
+                        from app.utils.storage_config import StorageConfig
+
+                        img_dir = Path(StorageConfig.get_image_storage_path()) / 'blog'
+                        img_dir.mkdir(parents=True, exist_ok=True)
+                        file_name = f"{datetime.utcnow().strftime('%Y%m%d%H%M%S')}_{os.urandom(4).hex()}.png"
+                        file_path = img_dir / file_name
+
+                        image_bytes = base64.b64decode(b64_payload)
+                        with open(file_path, 'wb') as image_file:
+                            image_file.write(image_bytes)
+
+                        local_path = f"/static/img/blog/{file_name}"
+                        logger.info(f"Image successfully saved at {local_path} using model {model_name}")
+                        return local_path
+
+                    logger.error("Image response did not contain URL or base64 data")
+                    return None
+                except Exception as model_error:
+                    last_error = model_error
+                    logger.warning(f"Image generation failed for model {model_name}: {str(model_error)}")
+                    continue
+
+            if last_error:
+                raise last_error
+            return None
             
         except APIConnectionError as e:
             logger.error(f"OpenAI connection error during image generation: {str(e)}")

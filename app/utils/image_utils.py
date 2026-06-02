@@ -34,7 +34,7 @@ def download_and_save_image(image_url: str, entity_id: int = None,
             - Error message if failed, None if successful
     """
     if not image_url:
-        return False, None, "No image URL provided"
+        return False, None, None, "No image URL provided"
     
     try:
         # Получаем базовый путь для хранения изображений из конфигурации
