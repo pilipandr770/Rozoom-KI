@@ -77,6 +77,11 @@ def post(slug):
         de_variant = BlogPost.query.filter_by(slug=f"{slug}-de", published=True).first()
         if de_variant:
             return redirect(url_for('blog.post', slug=de_variant.slug), code=302)
+    elif not _use_german_posts() and slug.endswith('-de'):
+        en_slug = slug[:-3]
+        en_variant = BlogPost.query.filter_by(slug=en_slug, published=True).first()
+        if en_variant:
+            return redirect(url_for('blog.post', slug=en_variant.slug), code=302)
 
     post = BlogPost.query.options(
         joinedload(BlogPost.category),
@@ -248,4 +253,4 @@ def get_image(post_id):
     if original_image_url.startswith('http://') or original_image_url.startswith('https://'):
         return redirect(original_image_url, code=302)
 
-    abort(404)
+    return redirect(url_for('static', filename='img/blog/default-post.jpg'), code=302)

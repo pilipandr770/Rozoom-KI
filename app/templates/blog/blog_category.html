@@ -16,13 +16,11 @@
             <div class="blog-posts">
                 {% for post in posts.items %}
                 <div class="blog-post-card ui-surface-soft mb-4">
-                    {% if post.image_data or post.image_url or post.original_image_url %}
                     <a href="{{ url_for('blog.post', slug=post.slug) }}" class="blog-post-link">
                         <div class="blog-post-image" data-category="{{ category.name }}">
                             <img src="{{ url_for('blog.get_image', post_id=post.id) }}" alt="{{ post.title }}" class="img-fluid" loading="lazy" decoding="async" onerror="this.style.display='none'; this.closest('.blog-post-image').style.display='none';">
                         </div>
                     </a>
-                    {% endif %}
                     <div class="blog-post-content ui-surface-soft">
                         <!-- РЎРєСЂС‹С‚С‹Р№ Р·Р°РіРѕР»РѕРІРѕРє РґР»СЏ SEO Рё РґРѕСЃС‚СѓРїРЅРѕСЃС‚Рё -->
                         <h2 class="blog-post-title visually-hidden">

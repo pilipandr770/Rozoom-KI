@@ -1499,6 +1499,26 @@ p {
   box-shadow: var(--shadow-md);
   overflow: hidden;
   margin-bottom: 3rem;
+  color: #0f172a;
+}
+
+.blog-post-content h1,
+.blog-post-content h2,
+.blog-post-content h3,
+.blog-post-content h4,
+.blog-post-content h5,
+.blog-post-content h6,
+.blog-post-content p,
+.blog-post-content li,
+.blog-post-content blockquote,
+.blog-post-content span,
+.blog-post-content strong,
+.blog-post-content em {
+  color: #0f172a;
+}
+
+.blog-post-content a {
+  color: #0b57d0;
 }
 
 .post-featured-image {
