@@ -1088,11 +1088,11 @@ msgstr "kontaktieren Sie uns"
 
 #: app/templates/pricing.html:115
 msgid "Choose Your Package"
-msgstr "WГ¤hlen Sie Ihr Paket"
+msgstr "Waehlen Sie Ihr Paket"
 
 #: app/templates/pricing.html:116
 msgid "Get the perfect amount of development time for your project needs"
-msgstr "Die optimale Entwicklungszeit fГјr Ihr Projekt"
+msgstr "Die optimale Entwicklungszeit fuer Ihr Projekt"
 
 #: app/templates/pricing.html:125
 msgid "Most Popular"
@@ -1108,7 +1108,7 @@ msgstr "Entwicklungsstunden"
 
 #: app/templates/pricing.html:139
 msgid "Custom solutions"
-msgstr "Individuelle LГ¶sungen"
+msgstr "Individuelle Loesungen"
 
 #: app/templates/pricing.html:140
 msgid "Support included"
@@ -1116,7 +1116,7 @@ msgstr "Support inklusive"
 
 #: app/templates/pricing.html:141
 msgid "Regular updates"
-msgstr "RegelmГ¤Гџige Updates"
+msgstr "Regelmaessige Updates"
 
 #: app/templates/pricing.html:147
 msgid "Buy Hours"
@@ -1128,11 +1128,11 @@ msgstr "Individuelles Paket"
 
 #: app/templates/pricing.html:167
 msgid "Tailored to Your Needs"
-msgstr "Auf Ihre BedГјrfnisse zugeschnitten"
+msgstr "Auf Ihre Beduerfnisse zugeschnitten"
 
 #: app/templates/pricing.html:169
 msgid "For special requirements"
-msgstr "FГјr besondere Anforderungen"
+msgstr "Fuer besondere Anforderungen"
 
 #: app/templates/pricing.html:173
 msgid "Flexible hours"
@@ -1148,11 +1148,11 @@ msgstr "Dedizierter Support"
 
 #: app/templates/pricing.html:176
 msgid "Priority service"
-msgstr "PrioritГ¤tsservice"
+msgstr "Prioritaetsservice"
 
 #: app/templates/pricing.html:177
 msgid "Enterprise solutions"
-msgstr "Unternehmenslosungen"
+msgstr "Unternehmensloesungen"
 
 #: app/templates/pricing.html:190
 msgid "Need Help Choosing?"
@@ -1162,7 +1162,19 @@ msgstr "Hilfe bei der Auswahl?"
 msgid ""
 "Contact our team for a free consultation and we'll help you select the "
 "perfect package for your project."
-msgstr ""
+msgstr "Kontaktieren Sie unser Team fuer eine kostenlose Beratung, und wir helfen Ihnen bei der Auswahl des passenden Pakets fuer Ihr Projekt."
+
+#: app/templates/pricing.html:11
+msgid "Flexible package sizes"
+msgstr "Flexible Paketgroessen"
+
+#: app/templates/pricing.html:12
+msgid "Transparent hourly value"
+msgstr "Transparenter Stundenpreis"
+
+#: app/templates/pricing.html:13
+msgid "Scale support as you grow"
+msgstr "Skalierbarer Support mit Ihrem Wachstum"
 
 #: app/templates/de/privacy.html:8 app/templates/de/terms.html:8
 #: app/templates/privacy.html:8 app/templates/terms.html:8

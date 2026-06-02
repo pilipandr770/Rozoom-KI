@@ -17,6 +17,20 @@
 
         <div class="row">
             {% if packages %}
+                {% set de_name_map = {
+                    'Starter': 'Starter',
+                    'Basic': 'Basis',
+                    'Standard': 'Standard',
+                    'Professional': 'Professionell',
+                    'Enterprise': 'Enterprise'
+                } %}
+                {% set de_desc_map = {
+                    'Perfect for small tasks and fixes.': 'Perfekt fuer kleine Aufgaben und schnelle Korrekturen.',
+                    'Ideal for small features and improvements.': 'Ideal fuer kleine Features und Verbesserungen.',
+                    'Best value for medium-sized projects.': 'Bestes Preis-Leistungs-Verhaeltnis fuer mittelgrosse Projekte.',
+                    'Perfect for growing businesses and larger projects.': 'Perfekt fuer wachsende Unternehmen und groessere Projekte.',
+                    'Comprehensive solution for complex enterprise needs.': 'Umfassende Loesung fuer komplexe Enterprise-Anforderungen.'
+                } %}
                 {% for package in packages %}
                     <div class="col-md-4 mb-4">
                         <div class="pricing-card ui-surface-soft {% if loop.index == 2 %}featured{% endif %}">
@@ -24,14 +38,14 @@
                                 <div class="featured-tag">{{ _('Most Popular') }}</div>
                             {% endif %}
                             <div class="pricing-container">
-                                <h3 class="pricing-name">{{ _(package.name) }}</h3>
+                                <h3 class="pricing-name">{{ de_name_map.get(package.name, _(package.name)) if g.locale == 'de' else _(package.name) }}</h3>
                                 <div class="pricing-hours">{{ package.hours }} {{ _('Hours') }}</div>
-                                <div class="pricing-price">в‚¬{{ "%.2f"|format(package.total_price) }}</div>
-                                <span class="pricing-per-hour">в‚¬{{ "%.2f"|format(package.price_per_hour) }} {{ _('per hour') }}</span>
+                                <div class="pricing-price">€{{ "%.2f"|format(package.total_price) }}</div>
+                                <span class="pricing-per-hour">€{{ "%.2f"|format(package.price_per_hour) }} {{ _('per hour') }}</span>
                                 
                                 <div class="pricing-description">
                                     {% if package.description %}
-                                        <p>{{ _(package.description) }}</p>
+                                        <p>{{ de_desc_map.get(package.description, _(package.description)) if g.locale == 'de' else _(package.description) }}</p>
                                     {% else %}
                                         <ul>
                                             <li>{{ package.hours }} {{ _('development hours') }}</li>
