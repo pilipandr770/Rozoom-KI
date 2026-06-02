@@ -403,58 +403,11 @@ def about():
 @pages_bp.route('/blog')
 @pages_bp.route('/blog/page/<int:page>')
 def blog(page=1):
-    # Get blog posts with pagination
-    from app.models import BlogPost, BlogCategory, BlogTag
-    
-    posts_per_page = 6
-    posts = BlogPost.query.filter_by(published=True).order_by(BlogPost.created_at.desc()).paginate(
-        page=page, per_page=posts_per_page, error_out=False)
-    
-    # Get categories with post count
-    categories = db.session.query(
-        BlogCategory, 
-        db.func.count(BlogPost.id).label('count')
-    ).outerjoin(BlogPost).filter(
-        (BlogPost.published == True) | (BlogPost.id == None)
-    ).group_by(BlogCategory.id).all()
-    
-    # Format categories for template
-    formatted_categories = [
-        {'name': c.BlogCategory.name, 'slug': c.BlogCategory.slug, 'count': c.count} 
-        for c in categories
-    ]
-    
-    # Get popular tags
-    tags = db.session.query(
-        BlogTag, 
-        db.func.count(BlogPost.id).label('count')
-    ).join(BlogTag.posts).filter(
-        BlogPost.published == True
-    ).group_by(BlogTag.id).order_by(
-        db.func.count(BlogPost.id).desc()
-    ).limit(15).all()
-    
-    # Format tags for template
-    formatted_tags = [
-        {'name': t.BlogTag.name, 'slug': t.BlogTag.slug, 'count': t.count} 
-        for t in tags
-    ]
-    
-    # Get recent posts
-    recent_posts = BlogPost.query.filter_by(
-        published=True
-    ).order_by(
-        BlogPost.created_at.desc()
-    ).limit(5).all()
-    
-    return render_template(
-        'blog.html',
-        posts=posts.items,
-        pagination=posts,
-        categories=formatted_categories,
-        tags=formatted_tags,
-        recent_posts=recent_posts
-    )
+    # Delegate to the unified blog blueprint to avoid locale mix between EN/DE posts.
+    params = dict(request.args)
+    if page and page != 1:
+        params['page'] = page
+    return redirect(url_for('blog.index', **params), code=302)
 
 @pages_bp.route('/contact', methods=['GET', 'POST'])
 def contact():
@@ -541,278 +494,28 @@ def terms():
 
 @pages_bp.route('/blog/<slug>')
 def blog_post(slug):
-    from app.models import BlogPost, BlogCategory, BlogTag
-    
-    # Get post by slug
-    post = BlogPost.query.filter_by(slug=slug, published=True).first_or_404()
-    
-    # Get previous and next posts
-    prev_post = BlogPost.query.filter(
-        BlogPost.published == True,
-        BlogPost.created_at < post.created_at
-    ).order_by(BlogPost.created_at.desc()).first()
-    
-    next_post = BlogPost.query.filter(
-        BlogPost.published == True,
-        BlogPost.created_at > post.created_at
-    ).order_by(BlogPost.created_at.asc()).first()
-    
-    # Get related posts
-    if post.category:
-        related_posts = BlogPost.query.filter(
-            BlogPost.published == True,
-            BlogPost.id != post.id,
-            BlogPost.category_id == post.category_id
-        ).order_by(
-            BlogPost.created_at.desc()
-        ).limit(3).all()
-    else:
-        related_posts = BlogPost.query.filter(
-            BlogPost.published == True,
-            BlogPost.id != post.id
-        ).order_by(
-            BlogPost.created_at.desc()
-        ).limit(3).all()
-    
-    # Get post's tags as strings
-    post_tags = [tag.name for tag in post.tags] if post.tags else []
-    
-    return render_template(
-        'blog_post.html',
-        post=post,
-        prev_post=prev_post,
-        next_post=next_post,
-        related_posts=related_posts,
-        tags=post_tags
-    )
+    params = dict(request.args)
+    return redirect(url_for('blog.post', slug=slug, **params), code=302)
 
 @pages_bp.route('/blog/category/<category>')
 @pages_bp.route('/blog/category/<category>/page/<int:page>')
 def blog_category(category, page=1):
-    from app.models import BlogPost, BlogCategory, BlogTag
-    
-    # Get category
-    category_obj = BlogCategory.query.filter_by(slug=category).first_or_404()
-    
-    # Get posts in category with pagination
-    posts_per_page = 6
-    posts = BlogPost.query.filter_by(
-        category_id=category_obj.id,
-        published=True
-    ).order_by(
-        BlogPost.created_at.desc()
-    ).paginate(
-        page=page,
-        per_page=posts_per_page,
-        error_out=False
-    )
-    
-    # Get all categories with post count
-    categories = db.session.query(
-        BlogCategory, 
-        db.func.count(BlogPost.id).label('count')
-    ).outerjoin(BlogPost).filter(
-        (BlogPost.published == True) | (BlogPost.id == None)
-    ).group_by(BlogCategory.id).all()
-    
-    # Format categories for template
-    formatted_categories = [
-        {'name': c.BlogCategory.name, 'slug': c.BlogCategory.slug, 'count': c.count} 
-        for c in categories
-    ]
-    
-    # Get recent posts
-    recent_posts = BlogPost.query.filter_by(
-        published=True
-    ).order_by(
-        BlogPost.created_at.desc()
-    ).limit(5).all()
-    
-    return render_template(
-        'blog_category.html',
-        category=category_obj.name,
-        posts=posts.items,
-        pagination=posts,
-        categories=formatted_categories,
-        recent_posts=recent_posts
-    )
+    params = dict(request.args)
+    if page and page != 1:
+        params['page'] = page
+    return redirect(url_for('blog.category', slug=category, **params), code=302)
 
 @pages_bp.route('/blog/tag/<tag>')
 @pages_bp.route('/blog/tag/<tag>/page/<int:page>')
 def blog_tag(tag, page=1):
-    from app.models import BlogPost, BlogCategory, BlogTag
-    
-    # Get tag
-    tag_obj = BlogTag.query.filter_by(slug=tag).first_or_404()
-    
-    # Get posts with tag (pagination)
-    posts_per_page = 6
-    posts = BlogPost.query.join(BlogPost.tags).filter(
-        BlogTag.id == tag_obj.id,
-        BlogPost.published == True
-    ).order_by(
-        BlogPost.created_at.desc()
-    ).paginate(
-        page=page,
-        per_page=posts_per_page,
-        error_out=False
-    )
-    
-    # Get categories with post count
-    categories = db.session.query(
-        BlogCategory, 
-        db.func.count(BlogPost.id).label('count')
-    ).outerjoin(BlogPost).filter(
-        (BlogPost.published == True) | (BlogPost.id == None)
-    ).group_by(BlogCategory.id).all()
-    
-    # Format categories for template
-    formatted_categories = [
-        {'name': c.BlogCategory.name, 'slug': c.BlogCategory.slug, 'count': c.count} 
-        for c in categories
-    ]
-    
-    # Get popular tags
-    tags = db.session.query(
-        BlogTag, 
-        db.func.count(BlogPost.id).label('count')
-    ).join(BlogTag.posts).filter(
-        BlogPost.published == True
-    ).group_by(BlogTag.id).order_by(
-        db.func.count(BlogPost.id).desc()
-    ).limit(15).all()
-    
-    # Format tags for template
-    formatted_tags = [
-        {'name': t.BlogTag.name, 'slug': t.BlogTag.slug, 'count': t.count} 
-        for t in tags
-    ]
-    
-    # Get recent posts
-    recent_posts = BlogPost.query.filter_by(
-        published=True
-    ).order_by(
-        BlogPost.created_at.desc()
-    ).limit(5).all()
-    
-    return render_template(
-        'blog_tag.html',
-        tag=tag_obj.name,
-        posts=posts.items,
-        pagination=posts,
-        categories=formatted_categories,
-        tags=formatted_tags,
-        recent_posts=recent_posts
-    )
+    params = dict(request.args)
+    if page and page != 1:
+        params['page'] = page
+    return redirect(url_for('blog.tag', slug=tag, **params), code=302)
 
 @pages_bp.route('/blog/search')
 def blog_search():
-    from app.models import BlogPost, BlogCategory, BlogTag
-    from sqlalchemy import or_
-    
-    # Get search query
-    query = request.args.get('q', '')
-    if not query:
-        return redirect(url_for('pages.blog'))
-    
-    # Get page number
-    page = request.args.get('page', 1, type=int)
-    
-    # Search for posts
-    posts_per_page = 6
-    search_query = f"%{query}%"
-    posts = BlogPost.query.filter(
-        BlogPost.published == True,
-        or_(
-            BlogPost.title.ilike(search_query),
-            BlogPost.content.ilike(search_query),
-            BlogPost.excerpt.ilike(search_query)
-        )
-    ).order_by(
-        BlogPost.created_at.desc()
-    ).paginate(
-        page=page,
-        per_page=posts_per_page,
-        error_out=False
-    )
-    
-    # Process posts to highlight search terms
-    for post in posts.items:
-        # Create search excerpt with highlighted terms
-        if query.lower() in post.excerpt.lower():
-            # Simple highlight for demonstration
-            # In production, use a more sophisticated approach
-            excerpt = post.excerpt
-            start_pos = excerpt.lower().find(query.lower())
-            end_pos = start_pos + len(query)
-            
-            # Create excerpt with surrounding context
-            start_context = max(0, start_pos - 50)
-            end_context = min(len(excerpt), end_pos + 50)
-            
-            excerpt = excerpt[start_context:end_context]
-            
-            # Add ellipsis if excerpt doesn't start/end at the original text boundaries
-            if start_context > 0:
-                excerpt = '...' + excerpt
-            if end_context < len(post.excerpt):
-                excerpt = excerpt + '...'
-            
-            # Highlight the search term
-            highlighted = excerpt.replace(
-                query, 
-                f'<em>{query}</em>', 
-                1
-            )
-            post.search_excerpt = highlighted
-        else:
-            post.search_excerpt = post.excerpt[:150] + '...'
-    
-    # Get categories with post count
-    categories = db.session.query(
-        BlogCategory, 
-        db.func.count(BlogPost.id).label('count')
-    ).outerjoin(BlogPost).filter(
-        (BlogPost.published == True) | (BlogPost.id == None)
-    ).group_by(BlogCategory.id).all()
-    
-    # Format categories for template
-    formatted_categories = [
-        {'name': c.BlogCategory.name, 'slug': c.BlogCategory.slug, 'count': c.count} 
-        for c in categories
-    ]
-    
-    # Get popular tags
-    tags = db.session.query(
-        BlogTag, 
-        db.func.count(BlogPost.id).label('count')
-    ).join(BlogTag.posts).filter(
-        BlogPost.published == True
-    ).group_by(BlogTag.id).order_by(
-        db.func.count(BlogPost.id).desc()
-    ).limit(15).all()
-    
-    # Format tags for template
-    formatted_tags = [
-        {'name': t.BlogTag.name, 'slug': t.BlogTag.slug, 'count': t.count} 
-        for t in tags
-    ]
-    
-    # Get recent posts
-    recent_posts = BlogPost.query.filter_by(
-        published=True
-    ).order_by(
-        BlogPost.created_at.desc()
-    ).limit(5).all()
-    
-    return render_template(
-        'blog_search.html',
-        query=query,
-        posts=posts.items,
-        pagination=posts,
-        categories=formatted_categories,
-        tags=formatted_tags,
-        recent_posts=recent_posts
-    )
+    params = dict(request.args)
+    return redirect(url_for('blog.search', **params), code=302)
 
 

@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for, abort, g
 from app.models import BlogPost, BlogCategory, BlogTag
+from app import db
 from sqlalchemy import desc, func
 from sqlalchemy.orm import joinedload, selectinload
 import time
@@ -206,32 +207,45 @@ def search():
 
 @blog.route('/image/<int:post_id>')
 def get_image(post_id):
-    """Serve blog post image from database."""
-    from flask import send_file, make_response
-    import io
+    """Serve blog post image with deploy-safe fallback order."""
+    from flask import make_response, redirect
     
     post = db.session.get(BlogPost, post_id)
     if post is None:
         abort(404)
-    
-    if not post.image_data:
-        abort(404)
-    
-    # Detect MIME type from image binary header
-    data = post.image_data
-    if data[:8] == b'\x89PNG\r\n\x1a\n':
-        mime = 'image/png'
-    elif data[:2] == b'\xff\xd8':
-        mime = 'image/jpeg'
-    elif data[:4] == b'RIFF' and data[8:12] == b'WEBP':
-        mime = 'image/webp'
-    elif data[:6] in (b'GIF87a', b'GIF89a'):
-        mime = 'image/gif'
-    else:
-        mime = 'image/png'
-    
-    response = make_response(data)
-    response.headers.set('Content-Type', mime)
-    response.headers.set('Cache-Control', 'public, max-age=31536000')
-    
-    return response
+
+    # 1) Serve persisted binary image first (stable across deploys)
+    if post.image_data:
+        data = post.image_data
+        if data[:8] == b'\x89PNG\r\n\x1a\n':
+            mime = 'image/png'
+        elif data[:2] == b'\xff\xd8':
+            mime = 'image/jpeg'
+        elif data[:4] == b'RIFF' and data[8:12] == b'WEBP':
+            mime = 'image/webp'
+        elif data[:6] in (b'GIF87a', b'GIF89a'):
+            mime = 'image/gif'
+        else:
+            mime = 'image/png'
+
+        response = make_response(data)
+        response.headers.set('Content-Type', mime)
+        response.headers.set('Cache-Control', 'public, max-age=31536000')
+        return response
+
+    # 2) Fallback to image_url (remote URL or static path)
+    image_url = (post.image_url or '').strip()
+    if image_url:
+        if image_url.startswith('http://') or image_url.startswith('https://'):
+            return redirect(image_url, code=302)
+        if image_url.startswith('/static/'):
+            return redirect(image_url, code=302)
+        if image_url.startswith('static/'):
+            return redirect(f'/{image_url}', code=302)
+
+    # 3) Last fallback to original temporary image URL if present
+    original_image_url = (post.original_image_url or '').strip()
+    if original_image_url.startswith('http://') or original_image_url.startswith('https://'):
+        return redirect(original_image_url, code=302)
+
+    abort(404)
