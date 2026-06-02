@@ -1,12 +1,12 @@
 ﻿{% extends 'admin/base.html' %}
 
-{% block title %}РџСЂРѕСЃРјРѕС‚СЂ РєРѕРЅС‚РµРЅС‚Р°{% endblock %}
+{% block title %}Просмотр контента{% endblock %}
 
 {% block content %}
 <div class="admin-content">
   <div class="content-header">
-    <h1>РџСЂРѕСЃРјРѕС‚СЂ СЃРіРµРЅРµСЂРёСЂРѕРІР°РЅРЅРѕРіРѕ РєРѕРЅС‚РµРЅС‚Р°</h1>
-    <p class="lead">ID: {{ content.id }} | РЎС‚Р°С‚СѓСЃ: 
+    <h1>Просмотр сгенерированного контента</h1>
+    <p class="lead">ID: {{ content.id }} | Статус: 
       <span class="badge 
         {% if content.status.value == 'published' %}bg-success
         {% elif content.status.value == 'planned' %}bg-warning
@@ -28,10 +28,10 @@
             <button class="nav-link" id="german-tab" data-bs-toggle="tab" data-bs-target="#german" type="button" role="tab" aria-controls="german" aria-selected="false">Deutsch</button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="image-tab" data-bs-toggle="tab" data-bs-target="#image" type="button" role="tab" aria-controls="image" aria-selected="false">РР·РѕР±СЂР°Р¶РµРЅРёРµ</button>
+            <button class="nav-link" id="image-tab" data-bs-toggle="tab" data-bs-target="#image" type="button" role="tab" aria-controls="image" aria-selected="false">Изображение</button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="info-tab" data-bs-toggle="tab" data-bs-target="#info" type="button" role="tab" aria-controls="info" aria-selected="false">РРЅС„РѕСЂРјР°С†РёСЏ</button>
+            <button class="nav-link" id="info-tab" data-bs-toggle="tab" data-bs-target="#info" type="button" role="tab" aria-controls="info" aria-selected="false">Информация</button>
           </li>
         </ul>
       </div>
@@ -39,7 +39,7 @@
         <div class="tab-content" id="contentTabsContent">
           <div class="tab-pane fade show active" id="english" role="tabpanel" aria-labelledby="english-tab">
             <h2>{{ content.title_en }}</h2>
-            <p class="text-muted">Meta-РѕРїРёСЃР°РЅРёРµ: {{ content.meta_description_en }}</p>
+            <p class="text-muted">Meta-описание: {{ content.meta_description_en }}</p>
             <hr>
             <div class="content-preview markdown">
               {{ content.content_en|markdown }}
@@ -48,7 +48,7 @@
           
           <div class="tab-pane fade" id="german" role="tabpanel" aria-labelledby="german-tab">
             <h2>{{ content.title_de }}</h2>
-            <p class="text-muted">Meta-РѕРїРёСЃР°РЅРёРµ: {{ content.meta_description_de }}</p>
+            <p class="text-muted">Meta-описание: {{ content.meta_description_de }}</p>
             <hr>
             <div class="content-preview markdown">
               {{ content.content_de|markdown }}
@@ -56,10 +56,10 @@
           </div>
           
           <div class="tab-pane fade" id="image" role="tabpanel" aria-labelledby="image-tab">
-            <h3>РЎРіРµРЅРµСЂРёСЂРѕРІР°РЅРЅРѕРµ РёР·РѕР±СЂР°Р¶РµРЅРёРµ</h3>
+            <h3>Сгенерированное изображение</h3>
             
             <div class="image-prompt-box p-3 my-3 bg-light">
-              <h5>РџСЂРѕРјРїС‚ РґР»СЏ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ:</h5>
+              <h5>Промпт для изображения:</h5>
               <p>{{ content.image_prompt }}</p>
             </div>
             
@@ -69,61 +69,61 @@
             </div>
             {% else %}
             <div class="alert alert-warning">
-              РР·РѕР±СЂР°Р¶РµРЅРёРµ РЅРµ Р±С‹Р»Рѕ СЃРіРµРЅРµСЂРёСЂРѕРІР°РЅРѕ.
+              Изображение не было сгенерировано.
             </div>
             {% endif %}
           </div>
           
           <div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="info-tab">
-            <h3>РРЅС„РѕСЂРјР°С†РёСЏ Рѕ РіРµРЅРµСЂР°С†РёРё</h3>
+            <h3>Информация о генерации</h3>
             
             <div class="row">
               <div class="col-md-6">
                 <dl class="row">
-                  <dt class="col-sm-4">Р Р°СЃРїРёСЃР°РЅРёРµ:</dt>
+                  <dt class="col-sm-4">Расписание:</dt>
                   <dd class="col-sm-8">{{ content.schedule.name }}</dd>
                   
-                  <dt class="col-sm-4">РўРµРјР°С‚РёРєР°:</dt>
+                  <dt class="col-sm-4">Тематика:</dt>
                   <dd class="col-sm-8">{{ content.schedule.topic_area }}</dd>
                   
-                  <dt class="col-sm-4">РљР»СЋС‡РµРІС‹Рµ СЃР»РѕРІР°:</dt>
+                  <dt class="col-sm-4">Ключевые слова:</dt>
                   <dd class="col-sm-8">{{ content.keywords }}</dd>
                   
-                  <dt class="col-sm-4">Р”Р°С‚Р° СЃРѕР·РґР°РЅРёСЏ:</dt>
+                  <dt class="col-sm-4">Дата создания:</dt>
                   <dd class="col-sm-8">{{ content.created_at.strftime('%d.%m.%Y %H:%M:%S') }}</dd>
                 </dl>
               </div>
               
               <div class="col-md-6">
                 <dl class="row">
-                  <dt class="col-sm-4">Р”Р°С‚Р° РїСѓР±Р»РёРєР°С†РёРё:</dt>
+                  <dt class="col-sm-4">Дата публикации:</dt>
                   <dd class="col-sm-8">
                     {% if content.published_at %}
                     {{ content.published_at.strftime('%d.%m.%Y %H:%M:%S') }}
                     {% else %}
-                    РќРµ РѕРїСѓР±Р»РёРєРѕРІР°РЅРѕ
+                    Не опубликовано
                     {% endif %}
                   </dd>
                   
-                  <dt class="col-sm-4">EN РїРѕСЃС‚:</dt>
+                  <dt class="col-sm-4">EN пост:</dt>
                   <dd class="col-sm-8">
                     {% if content.en_post %}
                     <a href="{{ url_for('blog.post', slug=content.en_post.slug) }}" target="_blank" rel="noopener noreferrer">
                       {{ content.en_post.title }}
                     </a>
                     {% else %}
-                    РќРµС‚
+                    Нет
                     {% endif %}
                   </dd>
                   
-                  <dt class="col-sm-4">DE РїРѕСЃС‚:</dt>
+                  <dt class="col-sm-4">DE пост:</dt>
                   <dd class="col-sm-8">
                     {% if content.de_post %}
                     <a href="{{ url_for('blog.post', slug=content.de_post.slug) }}" target="_blank" rel="noopener noreferrer">
                       {{ content.de_post.title }}
                     </a>
                     {% else %}
-                    РќРµС‚
+                    Нет
                     {% endif %}
                   </dd>
                 </dl>
@@ -132,7 +132,7 @@
             
             {% if content.error_message %}
             <div class="alert alert-danger mt-4">
-              <h5>РћС€РёР±РєР° РїСЂРё РіРµРЅРµСЂР°С†РёРё:</h5>
+              <h5>Ошибка при генерации:</h5>
               <pre class="error-log">{{ content.error_message }}</pre>
             </div>
             {% endif %}
@@ -141,24 +141,24 @@
       </div>
       <div class="card-footer">
         <div class="d-flex justify-content-between">
-          <a href="{{ url_for('auto_content.generated_content') }}" class="btn btn-secondary">РќР°Р·Р°Рґ Рє СЃРїРёСЃРєСѓ</a>
+          <a href="{{ url_for('auto_content.generated_content') }}" class="btn btn-secondary">Назад к списку</a>
           
           {% if content.status.value != 'published' %}
           <form method="POST" action="{{ url_for('auto_content.publish_content', id=content.id) }}">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-            <button type="submit" class="btn btn-success">РћРїСѓР±Р»РёРєРѕРІР°С‚СЊ</button>
+            <button type="submit" class="btn btn-success">Опубликовать</button>
           </form>
           {% else %}
           <div>
             {% if content.en_post %}
             <a href="{{ url_for('blog.post', slug=content.en_post.slug) }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary">
-              РџСЂРѕСЃРјРѕС‚СЂРµС‚СЊ EN РїРѕСЃС‚
+              Открыть EN пост
             </a>
             {% endif %}
             
             {% if content.de_post %}
             <a href="{{ url_for('blog.post', slug=content.de_post.slug) }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-info">
-              РџСЂРѕСЃРјРѕС‚СЂРµС‚СЊ DE РїРѕСЃС‚
+              Открыть DE пост
             </a>
             {% endif %}
           </div>

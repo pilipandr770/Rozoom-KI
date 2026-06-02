@@ -1,12 +1,12 @@
 ﻿{% extends 'admin/base.html' %}
 
-{% block title %}РЎРіРµРЅРµСЂРёСЂРѕРІР°РЅРЅС‹Р№ РєРѕРЅС‚РµРЅС‚{% endblock %}
+{% block title %}Сгенерированный контент{% endblock %}
 
 {% block content %}
 <div class="admin-content">
   <div class="content-header">
-    <h1>РЎРіРµРЅРµСЂРёСЂРѕРІР°РЅРЅС‹Р№ РєРѕРЅС‚РµРЅС‚</h1>
-    <p class="lead">РџСЂРѕСЃРјРѕС‚СЂ Рё СѓРїСЂР°РІР»РµРЅРёРµ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё СЃРѕР·РґР°РЅРЅС‹РјРё СЃС‚Р°С‚СЊСЏРјРё</p>
+    <h1>Сгенерированный контент</h1>
+    <p class="lead">Просмотр и управление автоматически созданными статьями</p>
   </div>
 
   <div class="content-section">
@@ -15,12 +15,12 @@
         <thead>
           <tr>
             <th>ID</th>
-            <th>Р—Р°РіРѕР»РѕРІРѕРє (EN)</th>
-            <th>РЎС‚Р°С‚СѓСЃ</th>
-            <th>Р Р°СЃРїРёСЃР°РЅРёРµ</th>
-            <th>Р”Р°С‚Р° СЃРѕР·РґР°РЅРёСЏ</th>
-            <th>Р”Р°С‚Р° РїСѓР±Р»РёРєР°С†РёРё</th>
-            <th>Р”РµР№СЃС‚РІРёСЏ</th>
+            <th>Заголовок (EN)</th>
+            <th>Статус</th>
+            <th>Расписание</th>
+            <th>Дата создания</th>
+            <th>Дата публикации</th>
+            <th>Действия</th>
           </tr>
         </thead>
         <tbody>
@@ -30,16 +30,16 @@
             <td>{{ item.title_en }}</td>
             <td>
               {% if item.status.value == 'published' %}
-              <span class="badge bg-success">РћРїСѓР±Р»РёРєРѕРІР°РЅРѕ</span>
+              <span class="badge bg-success">Опубликовано</span>
               {% elif item.status.value == 'planned' %}
-              <span class="badge bg-warning">Р—Р°РїР»Р°РЅРёСЂРѕРІР°РЅРѕ</span>
+              <span class="badge bg-warning">Запланировано</span>
               {% elif item.status.value == 'generating' %}
-              <span class="badge bg-info">Р“РµРЅРµСЂРёСЂСѓРµС‚СЃСЏ</span>
+              <span class="badge bg-info">Генерируется</span>
               {% else %}
-              <span class="badge bg-danger">РћС€РёР±РєР°</span>
+              <span class="badge bg-danger">Ошибка</span>
               {% endif %}
             </td>
-            <td>{{ item.schedule.name if item.schedule else 'РќРµС‚' }}</td>
+            <td>{{ item.schedule.name if item.schedule else 'Нет' }}</td>
             <td>{{ item.created_at.strftime('%d.%m.%Y %H:%M') }}</td>
             <td>
               {% if item.published_at %}
@@ -51,26 +51,26 @@
             <td>
               <div class="btn-group">
                 <a href="{{ url_for('auto_content.view_content', id=item.id) }}" class="btn btn-sm btn-outline-primary">
-                  <i class="fas fa-eye"></i>
+                  <i class="fas fa-eye"></i> Открыть
                 </a>
                 
                 {% if item.status.value == 'published' %}
                   {% if item.en_post_id %}
-                  <a href="{{ url_for('blog.post', slug=item.en_post.slug) }}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-success" title="РџСЂРѕСЃРјРѕС‚СЂРµС‚СЊ EN">
-                    <i class="fas fa-external-link-alt"></i> EN
+                  <a href="{{ url_for('blog.post', slug=item.en_post.slug) }}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-success" title="Открыть EN пост">
+                    <i class="fas fa-external-link-alt"></i> EN пост
                   </a>
                   {% endif %}
                   
                   {% if item.de_post_id %}
-                  <a href="{{ url_for('blog.post', slug=item.de_post.slug) }}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-info" title="РџСЂРѕСЃРјРѕС‚СЂРµС‚СЊ DE">
-                    <i class="fas fa-external-link-alt"></i> DE
+                  <a href="{{ url_for('blog.post', slug=item.de_post.slug) }}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-info" title="Открыть DE пост">
+                    <i class="fas fa-external-link-alt"></i> DE пост
                   </a>
                   {% endif %}
                 {% elif item.status.value == 'failed' %}
                 <form method="POST" action="{{ url_for('auto_content.publish_content', id=item.id) }}" style="display: inline-block;">
                   <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-                  <button type="submit" class="btn btn-sm btn-outline-warning" title="РџРѕРІС‚РѕСЂРёС‚СЊ РїСѓР±Р»РёРєР°С†РёСЋ">
-                    <i class="fas fa-redo"></i>
+                  <button type="submit" class="btn btn-sm btn-outline-warning" title="Повторно опубликовать">
+                    <i class="fas fa-redo"></i> Опубликовать
                   </button>
                 </form>
                 {% endif %}
@@ -79,7 +79,7 @@
           </tr>
           {% else %}
           <tr>
-            <td colspan="7" class="text-center">РљРѕРЅС‚РµРЅС‚ РїРѕРєР° РЅРµ СЃРіРµРЅРµСЂРёСЂРѕРІР°РЅ</td>
+            <td colspan="7" class="text-center">Контент пока не сгенерирован</td>
           </tr>
           {% endfor %}
         </tbody>
