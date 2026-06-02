@@ -1,4 +1,4 @@
-import click
+﻿import click
 from flask.cli import with_appcontext
 from app import db
 from app.models import User, BlogPost, BlogCategory, BlogTag
@@ -41,9 +41,9 @@ def seed_blog():
     complex quoting that previously caused parse errors.
     """
     # Create a test user
-    user = User.query.filter_by(email='admin@rozoom-ki.com').first()
+    user = User.query.filter_by(email='admin@andrii-it.com').first()
     if not user:
-        user = User(email='admin@rozoom-ki.com', name='Admin User')
+        user = User(email='admin@andrii-it.com', name='Admin User')
         db.session.add(user)
 
     # Minimal set of categories
@@ -111,3 +111,4 @@ def seed_blog():
 
     db.session.commit()
     
+

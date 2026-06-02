@@ -17,7 +17,7 @@ def index():
 @pages_bp.route('/health')
 def health_check():
     """Health check endpoint для мониторинга сервиса на Render.com"""
-    return jsonify({"status": "ok", "service": "rozoom-ki"}), 200
+    return jsonify({"status": "ok", "service": "andrii-it"}), 200
 
 @pages_bp.route('/services')
 def services():
@@ -323,7 +323,7 @@ def send_questionnaire_notification(form_data):
             subject=subject,
             recipients=[admin.email],
             html=html_content,
-            sender=current_app.config.get('MAIL_DEFAULT_SENDER', 'noreply@rozoom-ki.com')
+            sender=current_app.config.get('MAIL_DEFAULT_SENDER', 'noreply@andrii-it.com')
         )
         
         mail.send(msg)
@@ -376,7 +376,7 @@ def send_tech_spec_email_notification(tech_spec_data: dict, contact_info: dict):
             subject=subject,
             recipients=[admin.email],
             html=html_content,
-            sender=current_app.config.get('MAIL_DEFAULT_SENDER', 'noreply@rozoom-ki.com')
+            sender=current_app.config.get('MAIL_DEFAULT_SENDER', 'noreply@andrii-it.com')
         )
         
         mail.send(msg)
@@ -814,4 +814,5 @@ def blog_search():
         tags=formatted_tags,
         recent_posts=recent_posts
     )
+
 

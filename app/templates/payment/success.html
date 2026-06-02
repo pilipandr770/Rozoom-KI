@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Payment Successful — Rozoom-KI{% endblock %}
+{% block title %}Payment Successful — Andrii-IT{% endblock %}
 
 {% block head %}
 {{ super() }}
@@ -102,10 +102,10 @@
                     <dd>{{ payment.hours_purchased }}</dd>
                     
                     <dt>{{ payment_gettext('Total Amount') }}</dt>
-                    <dd>€{{ "%.2f"|format(payment.amount) }}</dd>
+                    <dd>в‚¬{{ "%.2f"|format(payment.amount) }}</dd>
                     
                     <dt>{{ payment_gettext('Rate') }}</dt>
-                    <dd>€{{ "%.2f"|format(payment.hourly_rate) }}/{{ payment_gettext('per hour') }}</dd>
+                    <dd>в‚¬{{ "%.2f"|format(payment.hourly_rate) }}/{{ payment_gettext('per hour') }}</dd>
                     
                     <dt>{{ payment_gettext('Date') }}</dt>
                     <dd>{{ payment.completed_at.strftime('%d-%m-%Y %H:%M') if payment.completed_at else payment.updated_at.strftime('%d-%m-%Y %H:%M') }}</dd>

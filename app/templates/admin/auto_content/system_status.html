@@ -170,7 +170,7 @@
               {% for img in status_info.images.files %}
               <div class="col-md-3 mb-4">
                 <div class="card h-100">
-                  <img src="{{ img.path }}" class="card-img-top" alt="Сохраненное изображение">
+                  <img src="{{ img.path }}" class="card-img-top" alt="Сохраненное изображение" loading="lazy" decoding="async">
                   <div class="card-body small">
                     <p class="card-text mb-1"><small>Имя файла: {{ img.name }}</small></p>
                     <p class="card-text mb-1"><small>Размер: {{ img.size }}</small></p>

@@ -1,5 +1,5 @@
-/**
- * Animation effects for Rozoom-KI website
+﻿/**
+ * Animation effects for Andrii-IT website
  */
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -139,3 +139,4 @@ function initTypedText(elementId, textArray) {
   // Start the typing animation
   setTimeout(type, newTextDelay);
 }
+

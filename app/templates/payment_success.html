@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Payment Successful — Rozoom-KI{% endblock %}
+{% block title %}Payment Successful — Andrii-IT{% endblock %}
 
 {% block content %}
 <div class="container mt-5 mb-5">
@@ -9,7 +9,7 @@
             <div class="card shadow-sm">
                 <div class="card-body text-center p-5">
                     <div class="mb-4">
-                        <span class="display-1 text-success">✓</span>
+                        <span class="display-1 text-success">вњ“</span>
                     </div>
                     <h1 class="card-title mb-4">{{ _('Payment Successful!') }}</h1>
                     <p class="card-text lead mb-4">{{ _('Thank you for your purchase. We\'ve received your payment.') }}</p>
@@ -24,11 +24,11 @@
                             </tr>
                             <tr>
                                 <td class="text-start"><strong>{{ _('Rate per Hour') }}:</strong></td>
-                                <td class="text-end">€{{ "%.2f"|format(payment.hourly_rate) }}</td>
+                                <td class="text-end">в‚¬{{ "%.2f"|format(payment.hourly_rate) }}</td>
                             </tr>
                             <tr class="border-top">
                                 <td class="text-start"><strong>{{ _('Total Amount') }}:</strong></td>
-                                <td class="text-end"><strong>€{{ "%.2f"|format(payment.amount) }}</strong></td>
+                                <td class="text-end"><strong>в‚¬{{ "%.2f"|format(payment.amount) }}</strong></td>
                             </tr>
                         </table>
                     </div>

@@ -1,38 +1,47 @@
 {% extends 'base.html' %}
 
-{% block title %}{{ _('Services') }} — Rozoom-KI{% endblock %}
+{% block title %}{{ _('Services') }} — Andrii-IT{% endblock %}
 
 {% block content %}
 <div class="container my-5">
     <div class="row">
         <div class="col-lg-8">
-            <h1 class="mb-4">{{ _('Our Services') }}</h1>
+            <div class="services-page-header ui-surface-soft mb-4">
+                <p class="ui-kicker mb-2">{{ _('Product Engineering for AI-Driven Teams') }}</p>
+                <h1 class="mb-3">{{ _('Our Services') }}</h1>
+                <p class="lead services-lead">{{ _('We build reliable AI systems, web platforms, and automation workflows designed for measurable business outcomes.') }}</p>
+                <div class="services-proof-row">
+                    <span class="ui-proof-pill">{{ _('Clear scope before build') }}</span>
+                    <span class="ui-proof-pill">{{ _('Transparent communication') }}</span>
+                    <span class="ui-proof-pill">{{ _('Post-launch support included') }}</span>
+                </div>
+            </div>
             
             <div class="services-list mb-5">
-                <div class="service-item card mb-4">
+                <div class="service-item card ui-surface-soft mb-4">
                     <div class="card-body">
-                        <h3 class="card-title service-title"><span class="service-icon">🤖</span> {{ _('AI Development') }}</h3>
+                        <h3 class="card-title service-title"><span class="service-badge">01</span> {{ _('AI Development') }}</h3>
                         <p class="card-text">{{ _('We develop custom AI solutions for your business needs, including natural language processing, computer vision, and machine learning models.') }}</p>
                     </div>
                 </div>
                 
-                <div class="service-item card mb-4">
+                <div class="service-item card ui-surface-soft mb-4">
                     <div class="card-body">
-                        <h3 class="card-title service-title"><span class="service-icon">💻</span> {{ _('Web Development') }}</h3>
+                        <h3 class="card-title service-title"><span class="service-badge">02</span> {{ _('Web Development') }}</h3>
                         <p class="card-text">{{ _('Full-stack web development services using modern frameworks and technologies to create responsive, scalable web applications.') }}</p>
                     </div>
                 </div>
                 
-                <div class="service-item card mb-4">
+                <div class="service-item card ui-surface-soft mb-4">
                     <div class="card-body">
-                        <h3 class="card-title service-title"><span class="service-icon">⚙️</span> {{ _('Automation Solutions') }}</h3>
+                        <h3 class="card-title service-title"><span class="service-badge">03</span> {{ _('Automation Solutions') }}</h3>
                         <p class="card-text">{{ _('Automate your business processes with custom software solutions to increase efficiency and reduce operational costs.') }}</p>
                     </div>
                 </div>
                 
-                <div class="service-item card mb-4">
+                <div class="service-item card ui-surface-soft mb-4">
                     <div class="card-body">
-                        <h3 class="card-title service-title"><span class="service-icon">📊</span> {{ _('Data Analysis') }}</h3>
+                        <h3 class="card-title service-title"><span class="service-badge">04</span> {{ _('Data Analysis') }}</h3>
                         <p class="card-text">{{ _('Turn your data into actionable insights with our comprehensive data analysis and visualization services.') }}</p>
                     </div>
                 </div>
@@ -41,12 +50,12 @@
             <h2 class="mb-4">{{ _('Request a Project Estimate') }}</h2>
             <p class="lead mb-4">{{ _('Fill out our project questionnaire to get a free time and budget estimate for your project. No obligations!') }}</p>
             
-            <div class="card">
+            <div class="card ui-surface-soft">
                 <div class="card-body">
 
-                    <form id="project-questionnaire" method="post" action="{{ url_for('pages.submit_questionnaire') }}">
+                    <form id="project-questionnaire" method="post" action="{{ url_for('pages.submit_questionnaire') }}" data-cta-form data-cta-id="services_questionnaire_submit" data-cta-location="services_questionnaire" data-cta-text="submit_project_request">
                         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-                        <div class="accordion" id="questionnaireAccordion">
+                        <div class="accordion ui-accordion-contrast" id="questionnaireAccordion">
                             <!-- Question 1 -->
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="heading1">
@@ -175,10 +184,10 @@
                                         <div class="form-group">
                                             <select class="form-select" name="budget_range" required>
                                                 <option value="" selected disabled>{{ _('Select a budget range') }}</option>
-                                                <option value="small">{{ _('Less than €10,000') }}</option>
-                                                <option value="medium">{{ _('€10,000 - €30,000') }}</option>
-                                                <option value="large">{{ _('€30,000 - €100,000') }}</option>
-                                                <option value="enterprise">{{ _('€100,000+') }}</option>
+                                                <option value="small">{{ _('Less than в‚¬10,000') }}</option>
+                                                <option value="medium">{{ _('в‚¬10,000 - в‚¬30,000') }}</option>
+                                                <option value="large">{{ _('в‚¬30,000 - в‚¬100,000') }}</option>
+                                                <option value="enterprise">{{ _('в‚¬100,000+') }}</option>
                                                 <option value="undecided">{{ _('Not yet decided') }}</option>
                                             </select>
                                             <div class="form-text">{{ _('This helps us suggest solutions that fit within your financial constraints.') }}</div>
@@ -324,27 +333,27 @@
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" name="existing_assets[]" value="mockups" id="mockups">
-                                                <label class="form-check-label" for="mockups" style="color: #00cc00 !important; font-weight: 500 !important;">{{ _('Design Mockups') }}</label>
+                                                <label class="form-check-label asset-label-emphasis" for="mockups">{{ _('Design Mockups') }}</label>
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" name="existing_assets[]" value="brand_guidelines" id="brand_guidelines">
-                                                <label class="form-check-label" for="brand_guidelines" style="color: #00cc00 !important; font-weight: 500 !important;">{{ _('Brand Guidelines') }}</label>
+                                                <label class="form-check-label asset-label-emphasis" for="brand_guidelines">{{ _('Brand Guidelines') }}</label>
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" name="existing_assets[]" value="user_stories" id="user_stories">
-                                                <label class="form-check-label" for="user_stories" style="color: #00cc00 !important; font-weight: 500 !important;">{{ _('User Stories') }}</label>
+                                                <label class="form-check-label asset-label-emphasis" for="user_stories">{{ _('User Stories') }}</label>
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" name="existing_assets[]" value="requirements_doc" id="requirements_doc">
-                                                <label class="form-check-label" for="requirements_doc" style="color: #00cc00 !important; font-weight: 500 !important;">{{ _('Requirements Document') }}</label>
+                                                <label class="form-check-label asset-label-emphasis" for="requirements_doc">{{ _('Requirements Document') }}</label>
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" name="existing_assets[]" value="code" id="code">
-                                                <label class="form-check-label" for="code" style="color: #00cc00 !important; font-weight: 500 !important;">{{ _('Existing Code') }}</label>
+                                                <label class="form-check-label asset-label-emphasis" for="code">{{ _('Existing Code') }}</label>
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" name="existing_assets[]" value="none" id="none">
-                                                <label class="form-check-label" for="none" style="color: #00cc00 !important; font-weight: 500 !important;">{{ _('None of the above') }}</label>
+                                                <label class="form-check-label asset-label-emphasis" for="none">{{ _('None of the above') }}</label>
                                             </div>
                                             <div class="form-text">{{ _('Check all that apply. This helps us understand what resources are available to start with.') }}</div>
                                         </div>
@@ -376,21 +385,21 @@
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="contact_name" class="form-label">{{ _('Name *') }}</label>
-                                    <input type="text" class="form-control" id="contact_name" name="contact_name" required>
+                                    <input type="text" class="form-control" id="contact_name" name="contact_name" autocomplete="name" required>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="company_name" class="form-label">{{ _('Company Name') }}</label>
-                                    <input type="text" class="form-control" id="company_name" name="company_name">
+                                    <input type="text" class="form-control" id="company_name" name="company_name" autocomplete="organization">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="contact_email" class="form-label">{{ _('Email *') }}</label>
-                                    <input type="email" class="form-control" id="contact_email" name="contact_email" required>
+                                    <input type="email" class="form-control" id="contact_email" name="contact_email" autocomplete="email" required>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="contact_phone" class="form-label">{{ _('Phone') }}</label>
-                                    <input type="tel" class="form-control" id="contact_phone" name="contact_phone">
+                                    <input type="tel" class="form-control" id="contact_phone" name="contact_phone" autocomplete="tel">
                                 </div>
                             </div>
                             <div class="form-check mb-3">
@@ -402,7 +411,7 @@
                         </div>
                         
                         <div class="text-center mt-4">
-                            <button type="submit" class="btn btn-primary btn-lg">{{ _('Submit Project Request') }}</button>
+                            <button type="submit" class="btn btn-primary btn-lg" data-cta-track data-cta-id="services_questionnaire_submit_button" data-cta-location="services_questionnaire" data-cta-text="submit_project_request">{{ _('Submit Project Request') }}</button>
                         </div>
                     </form>
                 </div>
@@ -410,8 +419,8 @@
         </div>
         
         <div class="col-lg-4">
-            <div class="sticky-top" style="top: 2rem;">
-                <div class="card mb-4">
+            <div class="sticky-top services-sticky">
+                <div class="card mb-4 service-aside-card ui-surface-soft">
                     <div class="card-body">
                         <h3 class="card-title">{{ _('Why Choose Us') }}</h3>
                         <ul class="list-unstyled">
@@ -424,11 +433,11 @@
                     </div>
                 </div>
                 
-                <div class="card">
+                <div class="card service-aside-card ui-surface-soft">
                     <div class="card-body">
                         <h3 class="card-title">{{ _('Free Consultation') }}</h3>
                         <p>{{ _('Get a free 30-minute consultation with our experts to discuss your project needs.') }}</p>
-                        <a href="{{ url_for('pages.contact') }}" class="btn btn-outline-primary">{{ _('Contact Us') }}</a>
+                        <a href="{{ url_for('pages.contact', lang=g.locale) }}" class="btn btn-outline-primary" data-cta-track data-cta-id="services_aside_contact" data-cta-location="services_aside" data-cta-text="contact_us">{{ _('Contact Us') }}</a>
                     </div>
                 </div>
             </div>
@@ -474,3 +483,4 @@
     });
 </script>
 {% endblock %}
+

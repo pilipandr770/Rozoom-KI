@@ -1,6 +1,6 @@
-# Database-Independent Telegram Queue System
+﻿# Database-Independent Telegram Queue System
 
-This document describes the database-independent Telegram notification queue system implemented for Rozoom-KI.
+This document describes the database-independent Telegram notification queue system implemented for Andrii-IT.
 
 ## Overview
 
@@ -64,3 +64,4 @@ If notifications are not being sent:
 2. Run the manual processor: `python process_telegram_queue.py`
 3. Check application logs for errors
 4. Verify your Telegram credentials with the test script
+

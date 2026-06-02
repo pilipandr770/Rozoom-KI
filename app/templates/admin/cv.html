@@ -1,5 +1,5 @@
-{% extends 'admin/base.html' %}
-{% block title %}CV / Lebenslauf — Admin{% endblock %}
+﻿{% extends 'admin/base.html' %}
+{% block title %}CV / Lebenslauf вЂ” Admin{% endblock %}
 
 {% block head %}
 {{ super() }}
@@ -53,7 +53,7 @@
 {% block content %}
 <div class="content-header d-flex justify-content-between align-items-center">
     <h1 class="h3 text-light">CV / Lebenslauf</h1>
-    <a href="{{ url_for('pages.lebenslauf') }}" target="_blank" class="btn btn-outline-info btn-sm">
+    <a href="{{ url_for('pages.lebenslauf') }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-info btn-sm">
         <i class="fas fa-eye me-1"></i>Vorschau
     </a>
 </div>
@@ -80,18 +80,18 @@
 
 <div class="tab-content cv-tab-content">
 
-  <!-- ── PROFILE ─────────────────────────────── -->
+  <!-- в”Ђв”Ђ PROFILE в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ -->
   <div class="tab-pane fade show active" id="profile">
     <div class="cv-section-card">
       <div class="d-flex justify-content-between mb-3">
-        <span class="text-light fw-bold">Persönliche Daten</span>
+        <span class="text-light fw-bold">PersГ¶nliche Daten</span>
         <a href="{{ url_for('admin.cv_profile') }}" class="btn btn-primary btn-sm"><i class="fas fa-edit me-1"></i>Bearbeiten</a>
       </div>
       {% if profile %}
       <div class="row g-3">
         {% if profile.photo_url %}
         <div class="col-auto">
-          <img src="{{ profile.photo_url }}" style="width:80px;height:80px;object-fit:cover;border-radius:50%;border:2px solid #3b82f6;" alt="Foto">
+          <img src="{{ profile.photo_url }}" style="width:80px;height:80px;object-fit:cover;border-radius:50%;border:2px solid #3b82f6;" alt="Foto" decoding="async">
         </div>
         {% endif %}
         <div class="col">
@@ -104,66 +104,66 @@
             {% if profile.website %}<span><i class="fas fa-globe me-1 text-primary"></i>{{ profile.website }}</span>{% endif %}
           </div>
           {% if profile.summary %}
-          <div class="mt-2 text-muted" style="font-size:.85rem;">{{ profile.summary[:200] }}{% if profile.summary|length > 200 %}…{% endif %}</div>
+          <div class="mt-2 text-muted" style="font-size:.85rem;">{{ profile.summary[:200] }}{% if profile.summary|length > 200 %}вЂ¦{% endif %}</div>
           {% endif %}
         </div>
       </div>
       {% else %}
-      <p class="text-muted">Noch kein Profil angelegt. <a href="{{ url_for('admin.cv_profile') }}">Jetzt erstellen →</a></p>
+      <p class="text-muted">Noch kein Profil angelegt. <a href="{{ url_for('admin.cv_profile') }}">Jetzt erstellen в†’</a></p>
       {% endif %}
     </div>
   </div>
 
-  <!-- ── EXPERIENCE ────────────────────────────── -->
+  <!-- в”Ђв”Ђ EXPERIENCE в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ -->
   <div class="tab-pane fade" id="experience">
     <div class="d-flex justify-content-between align-items-center mb-3">
       <span class="text-light fw-bold">Berufserfahrung</span>
-      <a href="{{ url_for('admin.cv_experience_add') }}" class="btn btn-primary btn-sm"><i class="fas fa-plus me-1"></i>Hinzufügen</a>
+      <a href="{{ url_for('admin.cv_experience_add') }}" class="btn btn-primary btn-sm"><i class="fas fa-plus me-1"></i>HinzufГјgen</a>
     </div>
     {% for exp in experiences %}
     <div class="cv-entry-row">
       <div class="entry-meta">
         <div class="entry-title">{{ exp.position }}</div>
-        <div class="entry-sub">{{ exp.company }}{% if exp.location %} · {{ exp.location }}{% endif %}</div>
-        <div class="entry-sub mt-1">{{ exp.start_year }} – {% if exp.is_current %}heute{% else %}{{ exp.end_year }}{% endif %}</div>
+        <div class="entry-sub">{{ exp.company }}{% if exp.location %} В· {{ exp.location }}{% endif %}</div>
+        <div class="entry-sub mt-1">{{ exp.start_year }} вЂ“ {% if exp.is_current %}heute{% else %}{{ exp.end_year }}{% endif %}</div>
         {% if exp.technologies %}<div class="mt-1">{% for t in exp.technologies.split(',') %}<span class="entry-badge me-1">{{ t.strip() }}</span>{% endfor %}</div>{% endif %}
       </div>
       <div class="d-flex gap-2 flex-shrink-0">
         <a href="{{ url_for('admin.cv_experience_edit', exp_id=exp.id) }}" class="btn btn-sm btn-outline-secondary"><i class="fas fa-edit"></i></a>
-        <form action="{{ url_for('admin.cv_experience_delete', exp_id=exp.id) }}" method="post" onsubmit="return confirm('Löschen?')">
+        <form action="{{ url_for('admin.cv_experience_delete', exp_id=exp.id) }}" method="post" onsubmit="return confirm('LГ¶schen?')">
           {{ csrf_field() }}
           <button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button>
         </form>
       </div>
     </div>
-    {% else %}<p class="text-muted">Noch keine Einträge.</p>{% endfor %}
+    {% else %}<p class="text-muted">Noch keine EintrГ¤ge.</p>{% endfor %}
   </div>
 
-  <!-- ── EDUCATION ────────────────────────────── -->
+  <!-- в”Ђв”Ђ EDUCATION в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ -->
   <div class="tab-pane fade" id="education">
     <div class="d-flex justify-content-between align-items-center mb-3">
       <span class="text-light fw-bold">Ausbildung / Studium</span>
-      <a href="{{ url_for('admin.cv_education_add') }}" class="btn btn-primary btn-sm"><i class="fas fa-plus me-1"></i>Hinzufügen</a>
+      <a href="{{ url_for('admin.cv_education_add') }}" class="btn btn-primary btn-sm"><i class="fas fa-plus me-1"></i>HinzufГјgen</a>
     </div>
     {% for edu in educations %}
     <div class="cv-entry-row">
       <div class="entry-meta">
-        <div class="entry-title">{{ edu.degree }}{% if edu.field %} — {{ edu.field }}{% endif %}</div>
-        <div class="entry-sub">{{ edu.institution }}{% if edu.location %} · {{ edu.location }}{% endif %}</div>
-        <div class="entry-sub mt-1">{{ edu.start_year }} – {% if edu.is_current %}heute{% else %}{{ edu.end_year }}{% endif %}{% if edu.grade %} · Note: {{ edu.grade }}{% endif %}</div>
+        <div class="entry-title">{{ edu.degree }}{% if edu.field %} вЂ” {{ edu.field }}{% endif %}</div>
+        <div class="entry-sub">{{ edu.institution }}{% if edu.location %} В· {{ edu.location }}{% endif %}</div>
+        <div class="entry-sub mt-1">{{ edu.start_year }} вЂ“ {% if edu.is_current %}heute{% else %}{{ edu.end_year }}{% endif %}{% if edu.grade %} В· Note: {{ edu.grade }}{% endif %}</div>
       </div>
       <div class="d-flex gap-2 flex-shrink-0">
         <a href="{{ url_for('admin.cv_education_edit', edu_id=edu.id) }}" class="btn btn-sm btn-outline-secondary"><i class="fas fa-edit"></i></a>
-        <form action="{{ url_for('admin.cv_education_delete', edu_id=edu.id) }}" method="post" onsubmit="return confirm('Löschen?')">
+        <form action="{{ url_for('admin.cv_education_delete', edu_id=edu.id) }}" method="post" onsubmit="return confirm('LГ¶schen?')">
           {{ csrf_field() }}
           <button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button>
         </form>
       </div>
     </div>
-    {% else %}<p class="text-muted">Noch keine Einträge.</p>{% endfor %}
+    {% else %}<p class="text-muted">Noch keine EintrГ¤ge.</p>{% endfor %}
   </div>
 
-  <!-- ── SKILLS ────────────────────────────────── -->
+  <!-- в”Ђв”Ђ SKILLS в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ -->
   <div class="tab-pane fade" id="skills">
     <div class="d-flex justify-content-between align-items-center mb-3">
       <span class="text-light fw-bold">Kenntnisse &amp; Skills</span>
@@ -201,7 +201,7 @@
       </div>
       <div class="d-flex gap-2 flex-shrink-0">
         <a href="{{ url_for('admin.cv_skill_edit', skill_id=skill.id) }}" class="btn btn-sm btn-outline-secondary"><i class="fas fa-edit"></i></a>
-        <form action="{{ url_for('admin.cv_skill_delete', skill_id=skill.id) }}" method="post" onsubmit="return confirm('Löschen?')">
+        <form action="{{ url_for('admin.cv_skill_delete', skill_id=skill.id) }}" method="post" onsubmit="return confirm('LГ¶schen?')">
           {{ csrf_field() }}
           <button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button>
         </form>
@@ -210,30 +210,30 @@
     {% else %}<p class="text-muted">Noch keine Skills.</p>{% endfor %}
   </div>
 
-  <!-- ── PROJECTS ──────────────────────────────── -->
+  <!-- в”Ђв”Ђ PROJECTS в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ -->
   <div class="tab-pane fade" id="projects">
     <div class="d-flex justify-content-between align-items-center mb-3">
       <span class="text-light fw-bold">Projekte</span>
-      <a href="{{ url_for('admin.cv_project_add') }}" class="btn btn-primary btn-sm"><i class="fas fa-plus me-1"></i>Hinzufügen</a>
+      <a href="{{ url_for('admin.cv_project_add') }}" class="btn btn-primary btn-sm"><i class="fas fa-plus me-1"></i>HinzufГјgen</a>
     </div>
     {% for proj in projects %}
     <div class="cv-entry-row">
       <div class="entry-meta">
         <div class="d-flex align-items-center gap-2">
           <span class="entry-title">{{ proj.title }}</span>
-          {% if proj.featured %}<span class="entry-badge" style="border-color:rgba(234,179,8,.4);color:#fbbf24;background:rgba(234,179,8,.1);">⭐ Featured</span>{% endif %}
+          {% if proj.featured %}<span class="entry-badge" style="border-color:rgba(234,179,8,.4);color:#fbbf24;background:rgba(234,179,8,.1);">в­ђ Featured</span>{% endif %}
           {% if proj.year %}<span class="text-muted" style="font-size:.8rem;">{{ proj.year }}</span>{% endif %}
         </div>
-        <div class="entry-sub">{{ proj.description[:120] if proj.description else '' }}{% if proj.description and proj.description|length > 120 %}…{% endif %}</div>
+        <div class="entry-sub">{{ proj.description[:120] if proj.description else '' }}{% if proj.description and proj.description|length > 120 %}вЂ¦{% endif %}</div>
         <div class="mt-1">
-          {% if proj.url %}<a href="{{ proj.url }}" target="_blank" class="text-primary me-2" style="font-size:.8rem;"><i class="fas fa-external-link-alt"></i> Demo</a>{% endif %}
-          {% if proj.github_url %}<a href="{{ proj.github_url }}" target="_blank" class="text-muted" style="font-size:.8rem;"><i class="fab fa-github"></i> GitHub</a>{% endif %}
+          {% if proj.url %}<a href="{{ proj.url }}" target="_blank" rel="noopener noreferrer" class="text-primary me-2" style="font-size:.8rem;"><i class="fas fa-external-link-alt"></i> Demo</a>{% endif %}
+          {% if proj.github_url %}<a href="{{ proj.github_url }}" target="_blank" rel="noopener noreferrer" class="text-muted" style="font-size:.8rem;"><i class="fab fa-github"></i> GitHub</a>{% endif %}
         </div>
         {% if proj.technologies %}<div class="mt-1">{% for t in proj.technologies.split(',') %}<span class="entry-badge me-1">{{ t.strip() }}</span>{% endfor %}</div>{% endif %}
       </div>
       <div class="d-flex gap-2 flex-shrink-0">
         <a href="{{ url_for('admin.cv_project_edit', proj_id=proj.id) }}" class="btn btn-sm btn-outline-secondary"><i class="fas fa-edit"></i></a>
-        <form action="{{ url_for('admin.cv_project_delete', proj_id=proj.id) }}" method="post" onsubmit="return confirm('Löschen?')">
+        <form action="{{ url_for('admin.cv_project_delete', proj_id=proj.id) }}" method="post" onsubmit="return confirm('LГ¶schen?')">
           {{ csrf_field() }}
           <button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button>
         </form>
@@ -242,7 +242,7 @@
     {% else %}<p class="text-muted">Noch keine Projekte.</p>{% endfor %}
   </div>
 
-  <!-- ── SOCIAL ─────────────────────────────────── -->
+  <!-- в”Ђв”Ђ SOCIAL в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ -->
   <div class="tab-pane fade" id="social">
     <div class="d-flex justify-content-between align-items-center mb-3">
       <span class="text-light fw-bold">Social &amp; Kontakt-Links</span>
@@ -267,11 +267,11 @@
     <div class="cv-entry-row" style="align-items:center;">
       <div class="entry-meta">
         <span class="entry-title"><i class="{{ link.icon_class }} me-2"></i>{{ link.platform }}</span>
-        <a href="{{ link.url }}" target="_blank" class="entry-sub ms-2">{{ link.display_name or link.url }}</a>
+        <a href="{{ link.url }}" target="_blank" rel="noopener noreferrer" class="entry-sub ms-2">{{ link.display_name or link.url }}</a>
       </div>
       <div class="d-flex gap-2 flex-shrink-0">
         <a href="{{ url_for('admin.cv_social_edit', link_id=link.id) }}" class="btn btn-sm btn-outline-secondary"><i class="fas fa-edit"></i></a>
-        <form action="{{ url_for('admin.cv_social_delete', link_id=link.id) }}" method="post" onsubmit="return confirm('Löschen?')">
+        <form action="{{ url_for('admin.cv_social_delete', link_id=link.id) }}" method="post" onsubmit="return confirm('LГ¶schen?')">
           {{ csrf_field() }}
           <button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button>
         </form>
@@ -280,7 +280,7 @@
     {% else %}<p class="text-muted">Noch keine Links.</p>{% endfor %}
   </div>
 
-  <!-- ── LANGUAGES ─────────────────────────────── -->
+  <!-- в”Ђв”Ђ LANGUAGES в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ -->
   <div class="tab-pane fade" id="languages">
     <div class="d-flex justify-content-between align-items-center mb-3">
       <span class="text-light fw-bold">Sprachkenntnisse</span>
@@ -314,7 +314,7 @@
       </div>
       <div class="d-flex gap-2 flex-shrink-0">
         <a href="{{ url_for('admin.cv_language_edit', lang_id=lang.id) }}" class="btn btn-sm btn-outline-secondary"><i class="fas fa-edit"></i></a>
-        <form action="{{ url_for('admin.cv_language_delete', lang_id=lang.id) }}" method="post" onsubmit="return confirm('Löschen?')">
+        <form action="{{ url_for('admin.cv_language_delete', lang_id=lang.id) }}" method="post" onsubmit="return confirm('LГ¶schen?')">
           {{ csrf_field() }}
           <button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button>
         </form>
@@ -323,22 +323,22 @@
     {% else %}<p class="text-muted">Noch keine Sprachkenntnisse.</p>{% endfor %}
   </div>
 
-  <!-- ── CERTIFICATIONS ────────────────────────── -->
+  <!-- в”Ђв”Ђ CERTIFICATIONS в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ -->
   <div class="tab-pane fade" id="certifications">
     <div class="d-flex justify-content-between align-items-center mb-3">
       <span class="text-light fw-bold">Zertifikate &amp; Weiterbildungen</span>
-      <a href="{{ url_for('admin.cv_certification_add') }}" class="btn btn-primary btn-sm"><i class="fas fa-plus me-1"></i>Hinzufügen</a>
+      <a href="{{ url_for('admin.cv_certification_add') }}" class="btn btn-primary btn-sm"><i class="fas fa-plus me-1"></i>HinzufГјgen</a>
     </div>
     {% for cert in certifications %}
     <div class="cv-entry-row">
       <div class="entry-meta">
         <div class="entry-title">{{ cert.name }}</div>
-        <div class="entry-sub">{{ cert.issuer }}{% if cert.date %} · {{ cert.date }}{% endif %}</div>
-        {% if cert.url %}<a href="{{ cert.url }}" target="_blank" class="text-primary" style="font-size:.8rem;"><i class="fas fa-external-link-alt"></i> Nachweis</a>{% endif %}
+        <div class="entry-sub">{{ cert.issuer }}{% if cert.date %} В· {{ cert.date }}{% endif %}</div>
+        {% if cert.url %}<a href="{{ cert.url }}" target="_blank" rel="noopener noreferrer" class="text-primary" style="font-size:.8rem;"><i class="fas fa-external-link-alt"></i> Nachweis</a>{% endif %}
       </div>
       <div class="d-flex gap-2 flex-shrink-0">
         <a href="{{ url_for('admin.cv_certification_edit', cert_id=cert.id) }}" class="btn btn-sm btn-outline-secondary"><i class="fas fa-edit"></i></a>
-        <form action="{{ url_for('admin.cv_certification_delete', cert_id=cert.id) }}" method="post" onsubmit="return confirm('Löschen?')">
+        <form action="{{ url_for('admin.cv_certification_delete', cert_id=cert.id) }}" method="post" onsubmit="return confirm('LГ¶schen?')">
           {{ csrf_field() }}
           <button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button>
         </form>
@@ -360,3 +360,4 @@
 })();
 </script>
 {% endblock %}
+

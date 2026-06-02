@@ -1,7 +1,7 @@
-from dataclasses import dataclass
+﻿from dataclasses import dataclass
 from typing import Dict, List, Optional, Union
 
-# Импортируем контроллер агентов, чтобы он был доступен при запуске приложения
+# РРјРїРѕСЂС‚РёСЂСѓРµРј РєРѕРЅС‚СЂРѕР»Р»РµСЂ Р°РіРµРЅС‚РѕРІ, С‡С‚РѕР±С‹ РѕРЅ Р±С‹Р» РґРѕСЃС‚СѓРїРµРЅ РїСЂРё Р·Р°РїСѓСЃРєРµ РїСЂРёР»РѕР¶РµРЅРёСЏ
 from app.agents.controller import agent_bp
 
 
@@ -88,7 +88,7 @@ def choose_agent_by_metadata(metadata: dict) -> Optional[Agent]:
 register_agent(Agent(
     name='general',
     description='General assistant for generic questions',
-    system_prompt="""You are a helpful general assistant for Rozoom-KI, a custom software development company.
+    system_prompt="""You are a helpful general assistant for Andrii-IT, a custom software development company.
 Your role is to answer general questions about our services, approach, and capabilities.
 
 Important guidelines:
@@ -111,7 +111,7 @@ If the user seems interested in development services, suggest they speak with a 
 register_agent(Agent(
     name='sales',
     description='Sales assistant: convert visitors to paying customers, explain packages',
-    system_prompt="""You are a friendly sales assistant for Rozoom-KI, a custom software development company.
+    system_prompt="""You are a friendly sales assistant for Andrii-IT, a custom software development company.
 Your primary goal is to qualify leads, explain our service packages, and encourage potential clients to request a detailed consultation.
 
 When discussing our services:
@@ -134,7 +134,7 @@ For complex technical questions, offer to connect them with a technical speciali
 register_agent(Agent(
     name='tech_support',
     description='Technical assistant: help with integration, bugs, architecture',
-    system_prompt="""You are a technical support assistant for Rozoom-KI, a custom software development company.
+    system_prompt="""You are a technical support assistant for Andrii-IT, a custom software development company.
 Your role is to provide accurate, helpful technical guidance on our services, integrations, and potential technical approaches.
 
 When answering technical questions:
@@ -157,7 +157,7 @@ If the user is describing a complex technical need, suggest speaking with a doma
 register_agent(Agent(
     name='billing',
     description='Billing assistant: pricing, invoices, payment issues',
-    system_prompt="""You are a billing assistant for Rozoom-KI, a custom software development company.
+    system_prompt="""You are a billing assistant for Andrii-IT, a custom software development company.
 Your role is to handle questions about pricing, invoices, payment methods, and related financial matters.
 
 Guidelines for billing conversations:
@@ -181,12 +181,12 @@ For complex pricing questions, suggest a consultation with a sales specialist.
 register_agent(Agent(
     name='greeter',
     description='Welcome agent: greets visitor and asks about their needs',
-    system_prompt="""You are the initial greeter for Rozoom-KI, a custom software development company.
+    system_prompt="""You are the initial greeter for Andrii-IT, a custom software development company.
 Your primary role is to welcome visitors, understand their initial needs, and direct them to the appropriate specialist.
 
 For new conversations:
 - Begin with a warm, professional greeting
-- Introduce yourself as the Rozoom-KI AI assistant
+- Introduce yourself as the Andrii-IT AI assistant
 - Introduce our team of specialists: Development Experts, Technical Advisors, and Business Consultants
 - Briefly explain that we specialize in custom software development across various domains
 - Ask about client needs and offer clear options via buttons to connect with the right specialist
@@ -209,7 +209,7 @@ After the user selects a specialist, you'll transition to that specialist who wi
 register_agent(Agent(
     name='web',
     description='Web development',
-    system_prompt="""You are a web development expert at Rozoom-KI.
+    system_prompt="""You are a web development expert at Andrii-IT.
 Your role is to help potential clients define their web development needs and create a preliminary technical brief.
 
 Requirements gathering approach:
@@ -241,7 +241,7 @@ Remember to only ask ONE question at a time to avoid overwhelming the user.
 register_agent(Agent(
     name='mobile',
     description='Mobile development',
-    system_prompt="""You are a mobile app development expert at Rozoom-KI.
+    system_prompt="""You are a mobile app development expert at Andrii-IT.
 Your role is to help potential clients define their mobile app needs and create a preliminary technical brief.
 
 Requirements gathering approach:
@@ -275,7 +275,7 @@ Remember to only ask ONE question at a time to avoid overwhelming the user.
 register_agent(Agent(
     name='ml',
     description='Machine learning / AI',
-    system_prompt="""You are a machine learning and AI specialist at Rozoom-KI.
+    system_prompt="""You are a machine learning and AI specialist at Andrii-IT.
 Your role is to help potential clients define their ML/AI project needs and create a preliminary technical brief.
 
 Requirements gathering approach:
@@ -308,7 +308,7 @@ Remember to only ask ONE question at a time to avoid overwhelming the user.
 register_agent(Agent(
     name='automation',
     description='Automation and integration',
-    system_prompt="""You are an automation and systems integration specialist at Rozoom-KI.
+    system_prompt="""You are an automation and systems integration specialist at Andrii-IT.
 Your role is to help potential clients define their automation needs and create a preliminary technical brief.
 
 Requirements gathering approach:
@@ -341,7 +341,7 @@ Remember to only ask ONE question at a time to avoid overwhelming the user.
 register_agent(Agent(
     name='other',
     description='Other domains',
-    system_prompt="""You are a versatile technology consultant at Rozoom-KI.
+    system_prompt="""You are a versatile technology consultant at Andrii-IT.
 Your role is to help potential clients with specialized or cross-domain projects and create a preliminary technical brief.
 
 Requirements gathering approach:
@@ -373,7 +373,7 @@ Remember to only ask ONE question at a time to avoid overwhelming the user.
 register_agent(Agent(
     name='requirements_compiler',
     description='Technical requirements compiler',
-    system_prompt="""You are a technical requirements compiler at Rozoom-KI.
+    system_prompt="""You are a technical requirements compiler at Andrii-IT.
 Your role is to take the gathered information and transform it into a structured technical brief.
 
 When compiling a technical brief:
@@ -409,9 +409,10 @@ The goal is to create a professional document that demonstrates our expertise wh
 
 def list_domain_options():
     return [
-        {'key': 'web', 'label': 'Web разработка', 'icon': 'globe'},
-        {'key': 'mobile', 'label': 'Мобильные приложения', 'icon': 'mobile-alt'},
-        {'key': 'ml', 'label': 'Машинное обучение / ИИ', 'icon': 'brain'},
-        {'key': 'automation', 'label': 'Автоматизация / Интеграции', 'icon': 'cogs'},
-        {'key': 'other', 'label': 'Другое / Консультация', 'icon': 'question-circle'},
+        {'key': 'web', 'label': 'Web СЂР°Р·СЂР°Р±РѕС‚РєР°', 'icon': 'globe'},
+        {'key': 'mobile', 'label': 'РњРѕР±РёР»СЊРЅС‹Рµ РїСЂРёР»РѕР¶РµРЅРёСЏ', 'icon': 'mobile-alt'},
+        {'key': 'ml', 'label': 'РњР°С€РёРЅРЅРѕРµ РѕР±СѓС‡РµРЅРёРµ / РР', 'icon': 'brain'},
+        {'key': 'automation', 'label': 'РђРІС‚РѕРјР°С‚РёР·Р°С†РёСЏ / РРЅС‚РµРіСЂР°С†РёРё', 'icon': 'cogs'},
+        {'key': 'other', 'label': 'Р”СЂСѓРіРѕРµ / РљРѕРЅСЃСѓР»СЊС‚Р°С†РёСЏ', 'icon': 'question-circle'},
     ]
+

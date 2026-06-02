@@ -1,8 +1,8 @@
-# Переводы для страницы контактов
+﻿# РџРµСЂРµРІРѕРґС‹ РґР»СЏ СЃС‚СЂР°РЅРёС†С‹ РєРѕРЅС‚Р°РєС‚РѕРІ
 msgid ""
 msgstr ""
-"Project-Id-Version: Rozoom-KI 1.0\n"
-"Report-Msgid-Bugs-To: info@rozoom-ki.com\n"
+"Project-Id-Version: Andrii-IT 1.0\n"
+"Report-Msgid-Bugs-To: info@andrii-it.com\n"
 "POT-Creation-Date: 2025-09-11 12:05+0200\n"
 "PO-Revision-Date: 2025-09-11 12:05+0200\n"
 "Last-Translator: \n"
@@ -15,85 +15,86 @@ msgstr ""
 "Generated-By: Babel 2.17.0\n"
 
 msgid "Get in Touch"
-msgstr "Зв'язатися"
+msgstr "Р—РІ'СЏР·Р°С‚РёСЃСЏ"
 
 msgid "Have a question or ready to start your next project? We're here to help!"
-msgstr "Маєте питання або готові розпочати свій наступний проект? Ми тут, щоб допомогти!"
+msgstr "РњР°С”С‚Рµ РїРёС‚Р°РЅРЅСЏ Р°Р±Рѕ РіРѕС‚РѕРІС– СЂРѕР·РїРѕС‡Р°С‚Рё СЃРІС–Р№ РЅР°СЃС‚СѓРїРЅРёР№ РїСЂРѕРµРєС‚? РњРё С‚СѓС‚, С‰РѕР± РґРѕРїРѕРјРѕРіС‚Рё!"
 
 msgid "Address"
-msgstr "Адреса"
+msgstr "РђРґСЂРµСЃР°"
 
 msgid "Email Us"
-msgstr "Напишіть нам"
+msgstr "РќР°РїРёС€С–С‚СЊ РЅР°Рј"
 
 msgid "Call Us"
-msgstr "Зателефонуйте нам"
+msgstr "Р—Р°С‚РµР»РµС„РѕРЅСѓР№С‚Рµ РЅР°Рј"
 
 msgid "Mon-Fri 9:00-18:00"
-msgstr "Пн-Пт 9:00-18:00"
+msgstr "РџРЅ-РџС‚ 9:00-18:00"
 
 msgid "Send Us a Message"
-msgstr "Надішліть нам повідомлення"
+msgstr "РќР°РґС–С€Р»С–С‚СЊ РЅР°Рј РїРѕРІС–РґРѕРјР»РµРЅРЅСЏ"
 
 msgid "Your message has been sent successfully. We'll get back to you soon!"
-msgstr "Ваше повідомлення успішно надіслано. Ми скоро зв'яжемося з вами!"
+msgstr "Р’Р°С€Рµ РїРѕРІС–РґРѕРјР»РµРЅРЅСЏ СѓСЃРїС–С€РЅРѕ РЅР°РґС–СЃР»Р°РЅРѕ. РњРё СЃРєРѕСЂРѕ Р·РІ'СЏР¶РµРјРѕСЃСЏ Р· РІР°РјРё!"
 
 msgid "Full Name"
-msgstr "Повне ім'я"
+msgstr "РџРѕРІРЅРµ С–Рј'СЏ"
 
 msgid "Enter your full name"
-msgstr "Введіть ваше повне ім'я"
+msgstr "Р’РІРµРґС–С‚СЊ РІР°С€Рµ РїРѕРІРЅРµ С–Рј'СЏ"
 
 msgid "Email Address"
-msgstr "Адреса електронної пошти"
+msgstr "РђРґСЂРµСЃР° РµР»РµРєС‚СЂРѕРЅРЅРѕС— РїРѕС€С‚Рё"
 
 msgid "Enter your email address"
-msgstr "Введіть вашу адресу електронної пошти"
+msgstr "Р’РІРµРґС–С‚СЊ РІР°С€Сѓ Р°РґСЂРµСЃСѓ РµР»РµРєС‚СЂРѕРЅРЅРѕС— РїРѕС€С‚Рё"
 
 msgid "Your Message"
-msgstr "Ваше повідомлення"
+msgstr "Р’Р°С€Рµ РїРѕРІС–РґРѕРјР»РµРЅРЅСЏ"
 
 msgid "How can we help you?"
-msgstr "Чим ми можемо вам допомогти?"
+msgstr "Р§РёРј РјРё РјРѕР¶РµРјРѕ РІР°Рј РґРѕРїРѕРјРѕРіС‚Рё?"
 
 msgid "I consent to having this website store my submitted information so they can respond to my inquiry"
-msgstr "Я даю згоду на зберігання цим веб-сайтом наданої мною інформації, щоб вони могли відповісти на мій запит"
+msgstr "РЇ РґР°СЋ Р·РіРѕРґСѓ РЅР° Р·Р±РµСЂС–РіР°РЅРЅСЏ С†РёРј РІРµР±-СЃР°Р№С‚РѕРј РЅР°РґР°РЅРѕС— РјРЅРѕСЋ С–РЅС„РѕСЂРјР°С†С–С—, С‰РѕР± РІРѕРЅРё РјРѕРіР»Рё РІС–РґРїРѕРІС–СЃС‚Рё РЅР° РјС–Р№ Р·Р°РїРёС‚"
 
 msgid "Send Message"
-msgstr "Надіслати повідомлення"
+msgstr "РќР°РґС–СЃР»Р°С‚Рё РїРѕРІС–РґРѕРјР»РµРЅРЅСЏ"
 
 msgid "Contact Form"
-msgstr "Контактна форма"
+msgstr "РљРѕРЅС‚Р°РєС‚РЅР° С„РѕСЂРјР°"
 
 msgid "Business Hours"
-msgstr "Робочі години"
+msgstr "Р РѕР±РѕС‡С– РіРѕРґРёРЅРё"
 
 msgid "Phone Support"
-msgstr "Телефонна підтримка"
+msgstr "РўРµР»РµС„РѕРЅРЅР° РїС–РґС‚СЂРёРјРєР°"
 
 msgid "Email Support"
-msgstr "Email підтримка"
+msgstr "Email РїС–РґС‚СЂРёРјРєР°"
 
 msgid "Response Time"
-msgstr "Час відповіді"
+msgstr "Р§Р°СЃ РІС–РґРїРѕРІС–РґС–"
 
 msgid "We typically respond within 24 hours"
-msgstr "Зазвичай ми відповідаємо протягом 24 годин"
+msgstr "Р—Р°Р·РІРёС‡Р°Р№ РјРё РІС–РґРїРѕРІС–РґР°С”РјРѕ РїСЂРѕС‚СЏРіРѕРј 24 РіРѕРґРёРЅ"
 
 msgid "Emergency Support"
-msgstr "Екстрена підтримка"
+msgstr "Р•РєСЃС‚СЂРµРЅР° РїС–РґС‚СЂРёРјРєР°"
 
 msgid "For urgent issues outside business hours"
-msgstr "Для термінових питань поза робочими годинами"
+msgstr "Р”Р»СЏ С‚РµСЂРјС–РЅРѕРІРёС… РїРёС‚Р°РЅСЊ РїРѕР·Р° СЂРѕР±РѕС‡РёРјРё РіРѕРґРёРЅР°РјРё"
 
 msgid "Remote Work"
-msgstr "Віддалена робота"
+msgstr "Р’С–РґРґР°Р»РµРЅР° СЂРѕР±РѕС‚Р°"
 
 msgid "We operate as a remote-first company with team members working from various locations. This allows us to serve clients worldwide while maintaining flexibility and efficiency."
-msgstr "Ми працюємо як компанія, орієнтована на віддалену роботу, з членами команди, які працюють з різних місць. Це дозволяє нам обслуговувати клієнтів по всьому світу, зберігаючи гнучкість та ефективність."
+msgstr "РњРё РїСЂР°С†СЋС”РјРѕ СЏРє РєРѕРјРїР°РЅС–СЏ, РѕСЂС–С”РЅС‚РѕРІР°РЅР° РЅР° РІС–РґРґР°Р»РµРЅСѓ СЂРѕР±РѕС‚Сѓ, Р· С‡Р»РµРЅР°РјРё РєРѕРјР°РЅРґРё, СЏРєС– РїСЂР°С†СЋСЋС‚СЊ Р· СЂС–Р·РЅРёС… РјС–СЃС†СЊ. Р¦Рµ РґРѕР·РІРѕР»СЏС” РЅР°Рј РѕР±СЃР»СѓРіРѕРІСѓРІР°С‚Рё РєР»С–С”РЅС‚С–РІ РїРѕ РІСЃСЊРѕРјСѓ СЃРІС–С‚Сѓ, Р·Р±РµСЂС–РіР°СЋС‡Рё РіРЅСѓС‡РєС–СЃС‚СЊ С‚Р° РµС„РµРєС‚РёРІРЅС–СЃС‚СЊ."
 
 msgid "Working remotely from Germany"
-msgstr "Віддалена робота з Німеччини"
+msgstr "Р’С–РґРґР°Р»РµРЅР° СЂРѕР±РѕС‚Р° Р· РќС–РјРµС‡С‡РёРЅРё"
 
 msgid "For urgent issues outside business hours"
-msgstr "Для термінових питань поза робочими годинами"
+msgstr "Р”Р»СЏ С‚РµСЂРјС–РЅРѕРІРёС… РїРёС‚Р°РЅСЊ РїРѕР·Р° СЂРѕР±РѕС‡РёРјРё РіРѕРґРёРЅР°РјРё"
+

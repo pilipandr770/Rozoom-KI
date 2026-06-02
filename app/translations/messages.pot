@@ -111,7 +111,7 @@ msgid "Register"
 msgstr ""
 
 #: app/templates/base.html:191
-msgid "&copy; 2025 Rozoom-KI. All rights reserved."
+msgid "&copy; 2025 Andrii-IT. All rights reserved."
 msgstr ""
 
 #: app/templates/base.html:193 app/templates/de/impressum.html:3
@@ -637,7 +637,7 @@ msgstr ""
 
 #: app/templates/index.html:66
 msgid ""
-"Rozoom-KI transformed our customer service with their AI assistant. "
+"Andrii-IT transformed our customer service with their AI assistant. "
 "Response times dropped by 60 percent and customer satisfaction increased "
 "dramatically."
 msgstr ""
@@ -669,7 +669,7 @@ msgid "Marketing Director, InnovateMedia"
 msgstr ""
 
 #: app/templates/index.html:99
-msgid "Build Your Workspace with Rozoom-KI"
+msgid "Build Your Workspace with Andrii-IT"
 msgstr ""
 
 #: app/templates/index.html:100
@@ -1098,7 +1098,7 @@ msgstr ""
 
 #: app/templates/de/privacy.html:12 app/templates/privacy.html:12
 msgid ""
-"Rozoom-KI (\"we\", \"us\", or \"our\") respects your privacy and is "
+"Andrii-IT (\"we\", \"us\", or \"our\") respects your privacy and is "
 "committed to protecting your personal data. This privacy policy will "
 "inform you about how we look after your personal data when you visit our "
 "website and tell you about your privacy rights and how the law protects "
@@ -1696,7 +1696,7 @@ msgstr ""
 
 #: app/templates/de/terms.html:12 app/templates/terms.html:12
 msgid ""
-"By accessing or using the services of Rozoom-KI (\"we\", \"us\", "
+"By accessing or using the services of Andrii-IT (\"we\", \"us\", "
 "\"our\"), you agree to be bound by these Terms of Service. If you do not "
 "agree to these terms, please do not use our services."
 msgstr ""
@@ -1707,7 +1707,7 @@ msgstr ""
 
 #: app/templates/de/terms.html:17 app/templates/terms.html:17
 msgid ""
-"Rozoom-KI provides custom software development and AI integration "
+"Andrii-IT provides custom software development and AI integration "
 "services as described on our website. We reserve the right to modify, "
 "suspend, or discontinue any part of our services at any time without "
 "notice."
@@ -1745,7 +1745,7 @@ msgstr ""
 msgid ""
 "All content, features, and functionality of our services, including but "
 "not limited to text, graphics, logos, icons, and software, are the "
-"exclusive property of Rozoom-KI or its licensors and are protected by "
+"exclusive property of Andrii-IT or its licensors and are protected by "
 "copyright, trademark, and other intellectual property laws."
 msgstr ""
 
@@ -1767,7 +1767,7 @@ msgstr ""
 
 #: app/templates/de/terms.html:42 app/templates/terms.html:42
 msgid ""
-"To the maximum extent permitted by law, Rozoom-KI shall not be liable for"
+"To the maximum extent permitted by law, Andrii-IT shall not be liable for"
 " any indirect, incidental, special, consequential, or punitive damages, "
 "including but not limited to loss of profits, data, use, or goodwill, "
 "arising out of or in connection with these terms or the use or inability "

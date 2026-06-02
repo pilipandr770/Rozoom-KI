@@ -1,10 +1,10 @@
-# render.yaml
+﻿# render.yaml
 services:
-  # Cron job для обработки очереди Telegram сообщений
+  # Cron job РґР»СЏ РѕР±СЂР°Р±РѕС‚РєРё РѕС‡РµСЂРµРґРё Telegram СЃРѕРѕР±С‰РµРЅРёР№
   - type: cron
     name: telegram-queue-processor
     runtime: python
-    schedule: "*/5 * * * *"  # Запуск каждые 5 минут
+    schedule: "*/5 * * * *"  # Р—Р°РїСѓСЃРє РєР°Р¶РґС‹Рµ 5 РјРёРЅСѓС‚
     buildCommand: pip install -r requirements.txt
     startCommand: python scripts/process_telegram_queue.py
     envVars:
@@ -12,18 +12,18 @@ services:
         value: "3.13"
       - key: DATABASE_URL
         fromDatabase:
-          name: rozoom-ki-db
+          name: andrii-it-db
           property: connectionString
       - key: TELEGRAM_BOT_TOKEN
         sync: false # Sensitive - must be set manually in Render dashboard
       - key: TELEGRAM_CHAT_ID
         sync: false # Sensitive - must be set manually in Render dashboard
       
-  # Основной веб-сервис
+  # РћСЃРЅРѕРІРЅРѕР№ РІРµР±-СЃРµСЂРІРёСЃ
   - type: web
     name: andrii-pylypchuk
     runtime: python
-    plan: starter # Используйте соответствующий тарифный план
+    plan: starter # РСЃРїРѕР»СЊР·СѓР№С‚Рµ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёР№ С‚Р°СЂРёС„РЅС‹Р№ РїР»Р°РЅ
     buildCommand: pip install -r requirements.txt && pybabel compile -d app/translations
     startCommand: gunicorn -c gunicorn_config.py run:app
     envVars:
@@ -73,12 +73,13 @@ services:
         sync: false # Sensitive - must be set manually in Render dashboard
     healthCheckPath: /health
 
-# База данных PostgreSQL
+# Р‘Р°Р·Р° РґР°РЅРЅС‹С… PostgreSQL
 databases:
-  - name: rozoom-ki-db
-    plan: starter # Используйте соответствующий тарифный план
+  - name: andrii-it-db
+    plan: starter # РСЃРїРѕР»СЊР·СѓР№С‚Рµ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёР№ С‚Р°СЂРёС„РЅС‹Р№ РїР»Р°РЅ
     databaseName: rozoom_ki_database
     user: rozoom_ki_user
-    ipAllowList: # Опционально - ограничение доступа по IP
+    ipAllowList: # РћРїС†РёРѕРЅР°Р»СЊРЅРѕ - РѕРіСЂР°РЅРёС‡РµРЅРёРµ РґРѕСЃС‚СѓРїР° РїРѕ IP
       - source: 0.0.0.0/0
         description: everywhere
+

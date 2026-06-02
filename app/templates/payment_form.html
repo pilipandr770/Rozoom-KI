@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Purchase Development Hours — Rozoom-KI{% endblock %}
+{% block title %}Purchase Development Hours — Andrii-IT{% endblock %}
 
 {% block head %}
 {{ super() }}
@@ -182,7 +182,7 @@
     }
     
     .info-list li:before {
-        content: "✓";
+        content: "вњ“";
         color: var(--primary-color);
         position: absolute;
         left: 0;
@@ -205,7 +205,7 @@
         </div>
         {% endif %}
         
-        <form id="payment-form" action="/payment/create-checkout" method="POST">
+        <form id="payment-form" action="/payment/create-checkout" method="POST" data-cta-form data-cta-id="payment_checkout_submit" data-cta-location="payment_form" data-cta-text="proceed_to_payment">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
             <input type="hidden" id="selected-hours" name="hours" value="10">
             <input type="hidden" id="hourly-rate" name="hourly_rate" value="">
@@ -217,7 +217,7 @@
                     {% for package in packages %}
                     <div class="package-option" data-hours="{{ package.hours }}" data-rate="{{ package.price_per_hour }}" data-id="{{ package.id }}">
                         <div class="package-hours">{{ package.hours }} {{ _('Hours') }}</div>
-                        <div class="package-price">€{{ "%.2f"|format(package.total_price) }}</div>
+                        <div class="package-price">в‚¬{{ "%.2f"|format(package.total_price) }}</div>
                     </div>
                     {% endfor %}
                 </div>
@@ -236,9 +236,9 @@
                     <div class="price-display">
                         <div class="price-breakdown">
                             <div class="hour-display"><span id="hour-value">10</span> {{ _('Hours') }}</div>
-                            <div class="rate-display">{{ _('Rate') }}: €<span id="rate-value">85.00</span>/{{ _('hour') }}</div>
+                            <div class="rate-display">{{ _('Rate') }}: в‚¬<span id="rate-value">85.00</span>/{{ _('hour') }}</div>
                         </div>
-                        <div class="price-total">€<span id="total-price">850.00</span></div>
+                        <div class="price-total">в‚¬<span id="total-price">850.00</span></div>
                     </div>
                 </div>
             </div>
@@ -249,14 +249,14 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="name">{{ _('Full Name') }}</label>
-                            <input type="text" id="name" name="name" class="form-control" required 
+                            <input type="text" id="name" name="name" class="form-control" autocomplete="name" required 
                                    {% if current_user.is_authenticated %}value="{{ current_user.name }}"{% endif %}>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="email">{{ _('Email Address') }}</label>
-                            <input type="email" id="email" name="email" class="form-control" required
+                                <input type="email" id="email" name="email" class="form-control" autocomplete="email" inputmode="email" required
                                   {% if current_user.is_authenticated %}value="{{ current_user.email }}"{% endif %}>
                         </div>
                     </div>

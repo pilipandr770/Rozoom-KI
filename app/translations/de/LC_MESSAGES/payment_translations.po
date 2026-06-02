@@ -1,11 +1,11 @@
-# Payment translations for German.
-# Copyright (C) 2025 Rozoom-KI
-# This file is distributed under the same license as the Rozoom-KI project.
+﻿# Payment translations for German.
+# Copyright (C) 2025 Andrii-IT
+# This file is distributed under the same license as the Andrii-IT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Rozoom-KI 1.0\n"
+"Project-Id-Version: Andrii-IT 1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-09-21 10:00+0200\n"
 "PO-Revision-Date: 2025-09-21 10:00+0200\n"
@@ -22,13 +22,13 @@ msgid "Buy Development Hours"
 msgstr "Entwicklungsstunden kaufen"
 
 msgid "Choose the number of development hours you need for your project"
-msgstr "Wählen Sie die Anzahl der Entwicklungsstunden, die Sie für Ihr Projekt benötigen"
+msgstr "WГ¤hlen Sie die Anzahl der Entwicklungsstunden, die Sie fГјr Ihr Projekt benГ¶tigen"
 
 msgid "Select Hours"
-msgstr "Stunden auswählen"
+msgstr "Stunden auswГ¤hlen"
 
 msgid "Drag the slider to select how many development hours you wish to purchase"
-msgstr "Ziehen Sie den Schieberegler, um auszuwählen, wie viele Entwicklungsstunden Sie kaufen möchten"
+msgstr "Ziehen Sie den Schieberegler, um auszuwГ¤hlen, wie viele Entwicklungsstunden Sie kaufen mГ¶chten"
 
 msgid "hours"
 msgstr "Stunden"
@@ -46,7 +46,7 @@ msgid "Proceed to Checkout"
 msgstr "Zur Kasse gehen"
 
 msgid "Need a custom solution?"
-msgstr "Benötigen Sie eine individuelle Lösung?"
+msgstr "BenГ¶tigen Sie eine individuelle LГ¶sung?"
 
 msgid "Contact us"
 msgstr "Kontaktieren Sie uns"
@@ -56,7 +56,7 @@ msgid "Payment Successful"
 msgstr "Zahlung erfolgreich"
 
 msgid "Thank you for your purchase!"
-msgstr "Vielen Dank für Ihren Einkauf!"
+msgstr "Vielen Dank fГјr Ihren Einkauf!"
 
 msgid "Your payment has been processed successfully."
 msgstr "Ihre Zahlung wurde erfolgreich verarbeitet."
@@ -80,7 +80,7 @@ msgid "Date"
 msgstr "Datum"
 
 msgid "Back to Home"
-msgstr "Zurück zur Startseite"
+msgstr "ZurГјck zur Startseite"
 
 # Cancel page
 msgid "Payment Cancelled"
@@ -90,20 +90,20 @@ msgid "Your payment has been cancelled."
 msgstr "Ihre Zahlung wurde abgebrochen."
 
 msgid "No charges have been made to your account."
-msgstr "Es wurden keine Gebühren von Ihrem Konto abgebucht."
+msgstr "Es wurden keine GebГјhren von Ihrem Konto abgebucht."
 
 msgid "Return to Payment Form"
-msgstr "Zurück zum Zahlungsformular"
+msgstr "ZurГјck zum Zahlungsformular"
 
 # Flash messages
 msgid "Payment successful! Thank you for your purchase."
-msgstr "Zahlung erfolgreich! Vielen Dank für Ihren Einkauf."
+msgstr "Zahlung erfolgreich! Vielen Dank fГјr Ihren Einkauf."
 
 msgid "No pricing packages are currently available. Please contact us for custom pricing."
-msgstr "Derzeit sind keine Preispakete verfügbar. Bitte kontaktieren Sie uns für individuelle Preise."
+msgstr "Derzeit sind keine Preispakete verfГјgbar. Bitte kontaktieren Sie uns fГјr individuelle Preise."
 
 msgid "An error occurred while processing your payment. Please try again later."
-msgstr "Bei der Verarbeitung Ihrer Zahlung ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut."
+msgstr "Bei der Verarbeitung Ihrer Zahlung ist ein Fehler aufgetreten. Bitte versuchen Sie es spГ¤ter erneut."
 
 msgid "Payment is being processed. We will update you when it completes."
 msgstr "Die Zahlung wird bearbeitet. Wir informieren Sie, wenn sie abgeschlossen ist."

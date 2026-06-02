@@ -1,0 +1,44 @@
+/* Phase 2 foundation: global design tokens */
+:root {
+  /* Typography */
+  --font-sans-ui: "Manrope", "Segoe UI", "Helvetica Neue", "Arial", sans-serif;
+
+  /* Core palette */
+  --color-surface-950: #0f172a;
+  --color-surface-900: #1e293b;
+  --color-border-400: rgba(148, 163, 184, 0.28);
+  --color-border-300: rgba(148, 163, 184, 0.24);
+  --color-accent-400: #22d3ee;
+  --color-accent-soft: rgba(34, 211, 238, 0.2);
+  --color-text-50: #f8fafc;
+  --color-text-100: #e2e8f0;
+  --color-text-200: #dbeafe;
+  --color-text-300: #93c5fd;
+
+  /* Semantic surfaces */
+  --surface-glass: rgba(15, 23, 42, 0.72);
+  --surface-glass-strong: rgba(15, 23, 42, 0.9);
+  --surface-glass-soft: rgba(15, 23, 42, 0.55);
+
+  /* Elevation */
+  --shadow-soft-lg: 0 24px 44px rgba(2, 6, 23, 0.35);
+  --shadow-soft-md: 0 18px 32px rgba(2, 6, 23, 0.42);
+
+  /* Radius and spacing */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-7: 2rem;
+
+  /* Motion */
+  --motion-fast: 0.2s;
+  --motion-base: 0.3s;
+}

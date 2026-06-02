@@ -1,15 +1,11 @@
-{% extends 'base.html' %}
+﻿{% extends 'base.html' %}
 
-{% block title %}Messages - Rozoom-KI{% endblock %}
+{% block title %}Messages - Andrii-IT{% endblock %}
 
 {% block content %}
-<div class="container-fluid py-4">
+<div class="container-fluid py-4 app-cabinet">
     <div class="row">
-        <!-- Sid                                                <tr>
-                                                <th style="width: 30%">{{ _('To') }}</th>
-                                                <th style="width: 50%">{{ _('Subject') }}</th>
-                                                <th style="width: 20%">{{ _('Date') }}</th>
-                                            </tr>-->
+        <!-- Sidebar -->
         <div class="col-md-3 col-lg-2">
             <div class="dashboard-sidebar p-3 bg-light rounded">
                 <h5 class="mb-3">{{ current_user.name }}</h5>
@@ -40,7 +36,7 @@
         
         <!-- Main Content -->
         <div class="col-md-9 col-lg-10">
-            <div class="d-flex justify-content-between align-items-center mb-4">
+            <div class="d-flex justify-content-between align-items-center mb-4 cabinet-toolbar">
                 <h1>{{ _('Messages') }}</h1>
                 <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newMessageModal">
                     <i class="fas fa-plus"></i> {{ _('New Message') }}
@@ -69,7 +65,7 @@
                         <div class="tab-pane fade show active" id="inbox" role="tabpanel" aria-labelledby="inbox-tab">
                             {% if inbox_messages %}
                                 <div class="table-responsive">
-                                    <table class="table table-hover mb-0">
+                                    <table class="table table-hover mb-0 mobile-card-table messages-table">
                                         <thead class="table-light">
                                             <tr>
                                                 <th style="width: 30%">{{ _('From') }}</th>
@@ -80,12 +76,12 @@
                                         <tbody>
                                             {% for message in inbox_messages %}
                                                 <tr class="{% if not message.is_read %}fw-bold{% endif %}" data-bs-toggle="modal" data-bs-target="#viewMessageModal{{ message.id }}" style="cursor: pointer;">
-                                                    <td>{{ message.sender_name }}</td>
-                                                    <td>
+                                                    <td data-label="{{ _('From') }}">{{ message.sender_name }}</td>
+                                                    <td data-label="{{ _('Subject') }}">
                                                         {% if not message.is_read %}<span class="badge bg-primary me-2">{{ _('New') }}</span>{% endif %}
                                                         {{ message.subject }}
                                                     </td>
-                                                    <td>{{ message.created_at.strftime('%d %b %Y') }}</td>
+                                                    <td data-label="{{ _('Date') }}">{{ message.created_at.strftime('%d %b %Y') }}</td>
                                                 </tr>
                                                 
                                                 <!-- View Message Modal -->
@@ -145,14 +141,14 @@
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <form action="{{ url_for('dashboard.reply_message', message_id=message.id) }}" method="post" enctype="multipart/form-data">
+                                                                <form action="{{ url_for('dashboard.reply_message', message_id=message.id) }}" method="post" enctype="multipart/form-data" data-cta-form data-cta-id="dashboard_message_reply" data-cta-location="dashboard_messages_reply" data-cta-text="send_reply">
                                                                     <div class="mb-3">
-                                                                        <label for="reply-content" class="form-label">{{ _('Message') }}</label>
-                                                                        <textarea class="form-control" id="reply-content" name="content" rows="6" required></textarea>
+                                                                        <label for="reply-content-{{ message.id }}" class="form-label">{{ _('Message') }}</label>
+                                                                        <textarea class="form-control" id="reply-content-{{ message.id }}" name="content" rows="6" autocomplete="off" required></textarea>
                                                                     </div>
                                                                     <div class="mb-3">
-                                                                        <label for="reply-attachment" class="form-label">{{ _('Attachments (optional)') }}</label>
-                                                                        <input class="form-control" type="file" id="reply-attachment" name="attachments" multiple>
+                                                                        <label for="reply-attachment-{{ message.id }}" class="form-label">{{ _('Attachments (optional)') }}</label>
+                                                                        <input class="form-control" type="file" id="reply-attachment-{{ message.id }}" name="attachments" multiple>
                                                                     </div>
                                                                     <div class="text-end">
                                                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ _('Cancel') }}</button>
@@ -180,20 +176,20 @@
                         <div class="tab-pane fade" id="sent" role="tabpanel" aria-labelledby="sent-tab">
                             {% if sent_messages %}
                                 <div class="table-responsive">
-                                    <table class="table table-hover mb-0">
+                                    <table class="table table-hover mb-0 mobile-card-table messages-table">
                                         <thead class="table-light">
                                             <tr>
-                                                <th style="width: 30%">To</th>
-                                                <th style="width: 50%">Subject</th>
-                                                <th style="width: 20%">Date</th>
+                                                <th style="width: 30%">{{ _('To') }}</th>
+                                                <th style="width: 50%">{{ _('Subject') }}</th>
+                                                <th style="width: 20%">{{ _('Date') }}</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             {% for message in sent_messages %}
                                                 <tr data-bs-toggle="modal" data-bs-target="#viewSentMessageModal{{ message.id }}" style="cursor: pointer;">
-                                                    <td>{{ message.recipient_name }}</td>
-                                                    <td>{{ message.subject }}</td>
-                                                    <td>{{ message.created_at.strftime('%d %b %Y') }}</td>
+                                                    <td data-label="{{ _('To') }}">{{ message.recipient_name }}</td>
+                                                    <td data-label="{{ _('Subject') }}">{{ message.subject }}</td>
+                                                    <td data-label="{{ _('Date') }}">{{ message.created_at.strftime('%d %b %Y') }}</td>
                                                 </tr>
                                                 
                                                 <!-- View Sent Message Modal -->
@@ -270,7 +266,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{ url_for('dashboard.send_message') }}" method="post" enctype="multipart/form-data">
+                <form id="newMessageForm" action="{{ url_for('dashboard.send_message') }}" method="post" enctype="multipart/form-data" data-cta-form data-cta-id="dashboard_message_new" data-cta-location="dashboard_messages_new" data-cta-text="send_message">
                     <div class="mb-3">
                         <label for="recipient" class="form-label">{{ _('To') }}</label>
                         <select class="form-select" id="recipient" name="recipient_id" required>
@@ -291,11 +287,11 @@
                     </div>
                     <div class="mb-3">
                         <label for="subject" class="form-label">{{ _('Subject') }}</label>
-                        <input type="text" class="form-control" id="subject" name="subject" required>
+                        <input type="text" class="form-control" id="subject" name="subject" autocomplete="off" required>
                     </div>
                     <div class="mb-3">
                         <label for="content" class="form-label">{{ _('Message') }}</label>
-                        <textarea class="form-control" id="content" name="content" rows="6" required></textarea>
+                        <textarea class="form-control" id="content" name="content" rows="6" autocomplete="off" required></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="attachments" class="form-label">{{ _('Attachments (optional)') }}</label>
@@ -325,3 +321,4 @@
     }
 </style>
 {% endblock %}
+

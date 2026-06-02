@@ -1,5 +1,9 @@
-import psutil,os
-repo = r'C:\Users\\' + os.getlogin() + '\\Rozoom-KI'
+import os
+from pathlib import Path
+
+import psutil
+
+repo = str(Path(__file__).resolve().parents[1])
 for p in psutil.process_iter(['pid','name','exe']):
     try:
         exe = p.info['exe'] or ''

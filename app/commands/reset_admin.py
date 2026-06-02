@@ -1,4 +1,4 @@
-import click
+﻿import click
 from flask.cli import with_appcontext
 from app import db
 from app.auth import AdminUser
@@ -22,11 +22,12 @@ def reset_admin_command(username, password, email):
     else:
         admin = AdminUser(
             username=username,
-            email=email or f'{username}@rozoom-ki.com',
+            email=email or f'{username}@andrii-it.com',
         )
         admin.set_password(password)
         db.session.add(admin)
         db.session.commit()
         click.echo(f"Admin user '{username}' created with the given password.")
 
-    click.echo(f"Login at /admin/login  →  username: {username}  password: {password}")
+    click.echo(f"Login at /admin/login  в†’  username: {username}  password: {password}")
+

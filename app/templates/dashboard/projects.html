@@ -1,9 +1,9 @@
-{% extends 'base.html' %}
+﻿{% extends 'base.html' %}
 
-{% block title %}Projects - Rozoom-KI{% endblock %}
+{% block title %}Projects - Andrii-IT{% endblock %}
 
 {% block content %}
-<div class="container-fluid py-4">
+<div class="container-fluid py-4 app-cabinet">
     <div class="row">
         <!-- Sidebar -->
         <div class="col-md-3 col-lg-2">
@@ -11,24 +11,24 @@
                 <h5 class="mb-3">{{ current_user.name }}</h5>
                 <div class="list-group mb-4">
                     <a href="{{ url_for('dashboard.index') }}" class="list-group-item list-group-item-action dashboard-nav-item">
-                        <span class="dashboard-icon">🏠</span> {{ _('Dashboard') }}
+                        <span class="dashboard-icon">рџЏ </span> {{ _('Dashboard') }}
                     </a>
                     <a href="{{ url_for('dashboard.projects') }}" class="list-group-item list-group-item-action active dashboard-nav-item">
-                        <span class="dashboard-icon">📊</span> {{ _('Projects') }}
+                        <span class="dashboard-icon">рџ“Љ</span> {{ _('Projects') }}
                     </a>
                     <a href="{{ url_for('dashboard.messages') }}" class="list-group-item list-group-item-action dashboard-nav-item">
-                        <span class="dashboard-icon">✉️</span> {{ _('Messages') }}
+                        <span class="dashboard-icon">вњ‰пёЏ</span> {{ _('Messages') }}
                     </a>
                     <a href="{{ url_for('dashboard.invoices') }}" class="list-group-item list-group-item-action dashboard-nav-item">
-                        <span class="dashboard-icon">📄</span> {{ _('Invoices') }}
+                        <span class="dashboard-icon">рџ“„</span> {{ _('Invoices') }}
                     </a>
                     <a href="{{ url_for('dashboard.profile') }}" class="list-group-item list-group-item-action dashboard-nav-item">
-                        <span class="dashboard-icon">👤</span> {{ _('Profile Settings') }}
+                        <span class="dashboard-icon">рџ‘¤</span> {{ _('Profile Settings') }}
                     </a>
                 </div>
                 <div class="d-grid gap-2">
                     <a href="{{ url_for('auth.logout') }}" class="btn btn-outline-danger dashboard-nav-item">
-                        <span class="dashboard-icon">🚪</span> {{ _('Logout') }}
+                        <span class="dashboard-icon">рџљЄ</span> {{ _('Logout') }}
                     </a>
                 </div>
             </div>
@@ -36,10 +36,10 @@
         
         <!-- Main Content -->
         <div class="col-md-9 col-lg-10">
-            <div class="d-flex justify-content-between align-items-center mb-4">
+            <div class="d-flex justify-content-between align-items-center mb-4 cabinet-toolbar">
                 <h1 class="mb-0">{{ _('Your Projects') }}</h1>
                 <a href="{{ url_for('pages.services') }}" class="btn btn-primary button-with-icon">
-                    <span class="emoji-icon">➕</span> {{ _('New Project Request') }}
+                    <span class="emoji-icon">вћ•</span> {{ _('New Project Request') }}
                 </a>
             </div>
             
@@ -79,7 +79,7 @@
             <!-- Projects List -->
             <div class="card border-0 shadow-sm">
                 <div class="table-responsive">
-                    <table class="table table-hover mb-0">
+                    <table class="table table-hover mb-0 mobile-card-table projects-table">
                         <thead class="table-light">
                             <tr>
                                 <th>{{ _('Project') }}</th>
@@ -94,24 +94,24 @@
                             {% if projects %}
                                 {% for project in projects %}
                                     <tr>
-                                        <td>
+                                        <td data-label="{{ _('Project') }}">
                                             <div class="fw-bold">{{ project.title }}</div>
                                             <div class="small text-muted">{{ project.description|truncate(60) if project.description else _('No description') }}</div>
                                         </td>
-                                        <td>
+                                        <td data-label="{{ _('Status') }}">
                                             <span class="badge bg-{{ {'new': 'info', 'in_progress': 'primary', 'testing': 'warning', 'completed': 'success'}[project.status] }}">
                                                 {{ project.status|replace('_', ' ')|title }}
                                             </span>
                                         </td>
-                                        <td>{{ project.start_date.strftime('%Y-%m-%d') if project.start_date else _('Not started') }}</td>
-                                        <td>{{ project.estimated_end_date.strftime('%Y-%m-%d') if project.estimated_end_date else _('Not set') }}</td>
-                                        <td>
+                                        <td data-label="{{ _('Start Date') }}">{{ project.start_date.strftime('%Y-%m-%d') if project.start_date else _('Not started') }}</td>
+                                        <td data-label="{{ _('Estimated End') }}">{{ project.estimated_end_date.strftime('%Y-%m-%d') if project.estimated_end_date else _('Not set') }}</td>
+                                        <td data-label="{{ _('Progress') }}">
                                             <div class="progress" style="height: 5px;">
                                                 <div class="progress-bar" role="progressbar" style="width: {{ project.progress }}%" aria-valuenow="{{ project.progress }}" aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
                                             <div class="small text-end mt-1">{{ project.progress }}%</div>
                                         </td>
-                                        <td>
+                                        <td data-label="{{ _('Actions') }}" class="table-actions">
                                             <a href="{{ url_for('dashboard.project_detail', project_id=project.id) }}" class="btn btn-sm btn-outline-primary">
                                                 <i class="fas fa-eye"></i> {{ _('View') }}
                                             </a>
@@ -168,3 +168,4 @@
     });
 </script>
 {% endblock %}
+

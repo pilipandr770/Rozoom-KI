@@ -1,9 +1,9 @@
-{% extends 'base.html' %}
+﻿{% extends 'base.html' %}
 
-{% block title %}Profile Settings - Rozoom-KI{% endblock %}
+{% block title %}Profile Settings - Andrii-IT{% endblock %}
 
 {% block content %}
-<div class="container-fluid py-4">
+<div class="container-fluid py-4 app-cabinet">
     <div class="row">
         <!-- Sidebar -->
         <div class="col-md-3 col-lg-2">
@@ -36,47 +36,47 @@
         
         <!-- Main Content -->
         <div class="col-md-9 col-lg-10">
-            <div class="d-flex justify-content-between align-items-center mb-4">
+            <div class="d-flex justify-content-between align-items-center mb-4 cabinet-toolbar">
                 <h1 class="mb-0">{{ _('Profile Settings') }}</h1>
             </div>
             
             <div class="card border-0 shadow-sm mb-4">
                 <div class="card-body">
-                    <form method="post">
+                    <form method="post" id="profile-settings-form" data-cta-form data-cta-id="dashboard_profile_save" data-cta-location="dashboard_profile" data-cta-text="save_profile_changes">
                         <div class="row mb-4">
                             <div class="col-md-6">
                                 <h5 class="card-title">{{ _('Personal Information') }}</h5>
                                 <div class="mb-3">
                                     <label for="name" class="form-label">{{ _('Full Name') }}</label>
-                                    <input type="text" class="form-control" id="name" name="name" value="{{ current_user.name }}" required>
+                                    <input type="text" class="form-control" id="name" name="name" value="{{ current_user.name }}" autocomplete="name" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="email" class="form-label">{{ _('Email Address') }}</label>
-                                    <input type="email" class="form-control" id="email" value="{{ current_user.email }}" disabled>
+                                    <input type="email" class="form-control" id="email" value="{{ current_user.email }}" autocomplete="email" inputmode="email" disabled>
                                     <div class="form-text">{{ _('Email cannot be changed. Contact support if needed.') }}</div>
                                 </div>
                                 <div class="mb-3">
                                     <label for="phone" class="form-label">{{ _('Phone Number') }}</label>
-                                    <input type="tel" class="form-control" id="phone" name="phone" value="{{ current_user.phone or '' }}">
+                                    <input type="tel" class="form-control" id="phone" name="phone" value="{{ current_user.phone or '' }}" autocomplete="tel" inputmode="tel">
                                 </div>
                                 <div class="mb-3">
                                     <label for="company" class="form-label">{{ _('Company') }}</label>
-                                    <input type="text" class="form-control" id="company" name="company" value="{{ current_user.company or '' }}">
+                                    <input type="text" class="form-control" id="company" name="company" value="{{ current_user.company or '' }}" autocomplete="organization">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <h5 class="card-title">{{ _('Change Password') }}</h5>
                                 <div class="mb-3">
                                     <label for="current_password" class="form-label">{{ _('Current Password') }}</label>
-                                    <input type="password" class="form-control" id="current_password" name="current_password">
+                                    <input type="password" class="form-control" id="current_password" name="current_password" autocomplete="current-password">
                                 </div>
                                 <div class="mb-3">
                                     <label for="new_password" class="form-label">{{ _('New Password') }}</label>
-                                    <input type="password" class="form-control" id="new_password" name="new_password">
+                                    <input type="password" class="form-control" id="new_password" name="new_password" autocomplete="new-password">
                                 </div>
                                 <div class="mb-3">
                                     <label for="confirm_password" class="form-label">{{ _('Confirm New Password') }}</label>
-                                    <input type="password" class="form-control" id="confirm_password" name="confirm_password">
+                                    <input type="password" class="form-control" id="confirm_password" name="confirm_password" autocomplete="new-password">
                                 </div>
                                 <div class="form-text mb-3">{{ _('Leave password fields empty if you don\'t want to change your password.') }}</div>
                             </div>
@@ -113,7 +113,7 @@
                 <p class="text-danger">{{ _('Warning: This action cannot be undone.') }}</p>
                 <p>{{ _('Deleting your account will remove all your personal information from our system. Your projects and associated data will still be accessible to administrators.') }}</p>
                 <p>{{ _('To confirm, please type "DELETE" in the field below:') }}</p>
-                <input type="text" class="form-control" id="deleteConfirmation">
+                <input type="text" class="form-control" id="deleteConfirmation" autocomplete="off" autocapitalize="characters" spellcheck="false">
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ _('Cancel') }}</button>
@@ -142,3 +142,4 @@
     });
 </script>
 {% endblock %}
+

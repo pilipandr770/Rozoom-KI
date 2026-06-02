@@ -1,8 +1,8 @@
-# Дополнительные переводы для форм
+﻿# Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РїРµСЂРµРІРѕРґС‹ РґР»СЏ С„РѕСЂРј
 msgid ""
 msgstr ""
-"Project-Id-Version: Rozoom-KI 1.0\n"
-"Report-Msgid-Bugs-To: info@rozoom-ki.com\n"
+"Project-Id-Version: Andrii-IT 1.0\n"
+"Report-Msgid-Bugs-To: info@andrii-it.com\n"
 "POT-Creation-Date: 2025-09-11 12:00+0200\n"
 "PO-Revision-Date: 2025-09-11 12:00+0200\n"
 "Last-Translator: \n"
@@ -15,61 +15,62 @@ msgstr ""
 "Generated-By: Babel 2.17.0\n"
 
 msgid "Technical Specification Form"
-msgstr "Форма технічного завдання"
+msgstr "Р¤РѕСЂРјР° С‚РµС…РЅС–С‡РЅРѕРіРѕ Р·Р°РІРґР°РЅРЅСЏ"
 
 msgid "Project Requirements"
-msgstr "Вимоги до проекту"
+msgstr "Р’РёРјРѕРіРё РґРѕ РїСЂРѕРµРєС‚Сѓ"
 
 msgid "Please fill out this form to help us understand your project needs better."
-msgstr "Будь ласка, заповніть цю форму, щоб допомогти нам краще зрозуміти потреби вашого проекту."
+msgstr "Р‘СѓРґСЊ Р»Р°СЃРєР°, Р·Р°РїРѕРІРЅС–С‚СЊ С†СЋ С„РѕСЂРјСѓ, С‰РѕР± РґРѕРїРѕРјРѕРіС‚Рё РЅР°Рј РєСЂР°С‰Рµ Р·СЂРѕР·СѓРјС–С‚Рё РїРѕС‚СЂРµР±Рё РІР°С€РѕРіРѕ РїСЂРѕРµРєС‚Сѓ."
 
 msgid "Project Type Selection"
-msgstr "Вибір типу проекту"
+msgstr "Р’РёР±С–СЂ С‚РёРїСѓ РїСЂРѕРµРєС‚Сѓ"
 
 msgid "Please select the type of project you are interested in:"
-msgstr "Будь ласка, виберіть тип проекту, який вас цікавить:"
+msgstr "Р‘СѓРґСЊ Р»Р°СЃРєР°, РІРёР±РµСЂС–С‚СЊ С‚РёРї РїСЂРѕРµРєС‚Сѓ, СЏРєРёР№ РІР°СЃ С†С–РєР°РІРёС‚СЊ:"
 
 msgid "Timeline Preferences"
-msgstr "Вподобання щодо термінів"
+msgstr "Р’РїРѕРґРѕР±Р°РЅРЅСЏ С‰РѕРґРѕ С‚РµСЂРјС–РЅС–РІ"
 
 msgid "Budget Considerations"
-msgstr "Бюджетні міркування"
+msgstr "Р‘СЋРґР¶РµС‚РЅС– РјС–СЂРєСѓРІР°РЅРЅСЏ"
 
 msgid "Integration Requirements"
-msgstr "Вимоги до інтеграції"
+msgstr "Р’РёРјРѕРіРё РґРѕ С–РЅС‚РµРіСЂР°С†С–С—"
 
 msgid "Technical Preferences"
-msgstr "Технічні вподобання"
+msgstr "РўРµС…РЅС–С‡РЅС– РІРїРѕРґРѕР±Р°РЅРЅСЏ"
 
 msgid "Design Inspiration"
-msgstr "Дизайн натхнення"
+msgstr "Р”РёР·Р°Р№РЅ РЅР°С‚С…РЅРµРЅРЅСЏ"
 
 msgid "Success Metrics"
-msgstr "Метрики успіху"
+msgstr "РњРµС‚СЂРёРєРё СѓСЃРїС–С…Сѓ"
 
 msgid "Security & Compliance"
-msgstr "Безпека та відповідність"
+msgstr "Р‘РµР·РїРµРєР° С‚Р° РІС–РґРїРѕРІС–РґРЅС–СЃС‚СЊ"
 
 msgid "Support Requirements"
-msgstr "Вимоги до підтримки"
+msgstr "Р’РёРјРѕРіРё РґРѕ РїС–РґС‚СЂРёРјРєРё"
 
 msgid "Additional Resources"
-msgstr "Додаткові ресурси"
+msgstr "Р”РѕРґР°С‚РєРѕРІС– СЂРµСЃСѓСЂСЃРё"
 
 msgid "Contact Details"
-msgstr "Контактні дані"
+msgstr "РљРѕРЅС‚Р°РєС‚РЅС– РґР°РЅС–"
 
 msgid "Form submitted successfully!"
-msgstr "Форму успішно надіслано!"
+msgstr "Р¤РѕСЂРјСѓ СѓСЃРїС–С€РЅРѕ РЅР°РґС–СЃР»Р°РЅРѕ!"
 
 msgid "Thank you for your submission. We will review your requirements and get back to you within 24 hours."
-msgstr "Дякуємо за вашу заявку. Ми розглянемо ваші вимоги та зв'яжемося з вами протягом 24 годин."
+msgstr "Р”СЏРєСѓС”РјРѕ Р·Р° РІР°С€Сѓ Р·Р°СЏРІРєСѓ. РњРё СЂРѕР·РіР»СЏРЅРµРјРѕ РІР°С€С– РІРёРјРѕРіРё С‚Р° Р·РІ'СЏР¶РµРјРѕСЃСЏ Р· РІР°РјРё РїСЂРѕС‚СЏРіРѕРј 24 РіРѕРґРёРЅ."
 
 msgid "There was an error submitting your form. Please try again."
-msgstr "Сталася помилка при надсиланні форми. Будь ласка, спробуйте ще раз."
+msgstr "РЎС‚Р°Р»Р°СЃСЏ РїРѕРјРёР»РєР° РїСЂРё РЅР°РґСЃРёР»Р°РЅРЅС– С„РѕСЂРјРё. Р‘СѓРґСЊ Р»Р°СЃРєР°, СЃРїСЂРѕР±СѓР№С‚Рµ С‰Рµ СЂР°Р·."
 
 msgid "All fields marked with * are required."
-msgstr "Всі поля, позначені *, є обов'язковими."
+msgstr "Р’СЃС– РїРѕР»СЏ, РїРѕР·РЅР°С‡РµРЅС– *, С” РѕР±РѕРІ'СЏР·РєРѕРІРёРјРё."
 
 msgid "Please provide as much detail as possible to help us give you an accurate estimate."
-msgstr "Будь ласка, надайте якомога більше деталей, щоб допомогти нам дати вам точну оцінку."
+msgstr "Р‘СѓРґСЊ Р»Р°СЃРєР°, РЅР°РґР°Р№С‚Рµ СЏРєРѕРјРѕРіР° Р±С–Р»СЊС€Рµ РґРµС‚Р°Р»РµР№, С‰РѕР± РґРѕРїРѕРјРѕРіС‚Рё РЅР°Рј РґР°С‚Рё РІР°Рј С‚РѕС‡РЅСѓ РѕС†С–РЅРєСѓ."
+

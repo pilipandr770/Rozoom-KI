@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+﻿{% extends 'base.html' %}
 
 {% block title %}Blog Tags - Admin{% endblock %}
 
@@ -37,7 +37,7 @@
                         <td>
                             <div class="btn-group">
                                 <a href="{{ url_for('admin.edit_tag', id=tag.id) }}" class="btn btn-sm btn-outline-primary">Edit</a>
-                                <a href="{{ url_for('blog.tag', slug=tag.slug) }}" class="btn btn-sm btn-outline-info" target="_blank">View</a>
+                                <a href="{{ url_for('blog.tag', slug=tag.slug) }}" class="btn btn-sm btn-outline-info" target="_blank" rel="noopener noreferrer">View</a>
                                 <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteTagModal-{{ tag.id }}">Delete</button>
                             </div>
                             
@@ -71,3 +71,4 @@
     </div>
 </div>
 {% endblock %}
+

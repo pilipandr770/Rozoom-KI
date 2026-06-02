@@ -1,4 +1,4 @@
-# Fixing Translation Issues in Rozoom-KI
+﻿# Fixing Translation Issues in Andrii-IT
 
 This document explains how to fix the duplicate message definitions found in the German translation file.
 
@@ -68,7 +68,7 @@ If you need to fix this issue directly on Render.com, you can:
 
 ```bash
 cd /opt/render/project/src
-curl -o fix_translations.sh https://raw.githubusercontent.com/yourusername/Rozoom-KI/main/scripts/fix_translations.sh
+curl -o fix_translations.sh https://raw.githubusercontent.com/yourusername/Andrii-IT/main/scripts/fix_translations.sh
 chmod +x fix_translations.sh
 ./fix_translations.sh
 ```
@@ -83,3 +83,4 @@ To prevent this issue in the future:
 - Always use translation management tools to update `.po` files
 - Avoid manually editing the files when possible
 - If manual edits are needed, check for existing entries before adding new ones
+

@@ -3,7 +3,7 @@
 {% block title %}{{ _('My Projects') }}{% endblock %}
 
 {% block content %}
-<div class="container mt-5">
+<div class="container mt-5 app-cabinet">
     <h1 class="mb-4">{{ _('My Projects') }}</h1>
     
     {% if projects %}
@@ -43,10 +43,12 @@
                             </div>
                         </div>
                         <div class="card-footer bg-transparent">
-                            <a href="{{ url_for('client.project_detail', project_id=project.id) }}" class="btn btn-sm btn-outline-primary">{{ _('View Details') }}</a>
-                            <button class="btn btn-sm btn-outline-secondary float-end chat-with-pm" data-project="{{ project.title }}">
-                                <i class="bi bi-chat-dots"></i> {{ _('Ask PM') }}
-                            </button>
+                            <div class="project-card-actions">
+                                <a href="{{ url_for('client.project_detail', project_id=project.id) }}" class="btn btn-sm btn-outline-primary">{{ _('View Details') }}</a>
+                                <button class="btn btn-sm btn-outline-secondary chat-with-pm" data-project="{{ project.title }}">
+                                    <i class="bi bi-chat-dots"></i> {{ _('Ask PM') }}
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -70,7 +72,7 @@
     {% if submissions %}
         <h2 class="my-4">{{ _('Your Technical Specifications') }}</h2>
         <div class="table-responsive">
-            <table class="table table-hover">
+            <table class="table table-hover mobile-card-table submissions-table">
                 <thead>
                     <tr>
                         <th>{{ _('Date Submitted') }}</th>
@@ -83,14 +85,14 @@
                 <tbody>
                     {% for submission in submissions %}
                         <tr>
-                            <td>{{ submission.created_at.strftime('%d.%m.%Y %H:%M') if submission.created_at else '' }}</td>
-                            <td>{{ submission.project_type or '—' }}</td>
-                            <td>{{ submission.project_goal[:60] ~ ('…' if submission.project_goal and submission.project_goal|length > 60 else '') }}</td>
-                            <td>
+                            <td data-label="{{ _('Date Submitted') }}">{{ submission.created_at.strftime('%d.%m.%Y %H:%M') if submission.created_at else '' }}</td>
+                            <td data-label="{{ _('Project Type') }}">{{ submission.project_type or '—' }}</td>
+                            <td data-label="{{ _('Goal') }}">{{ submission.project_goal[:60] ~ ('…' if submission.project_goal and submission.project_goal|length > 60 else '') }}</td>
+                            <td data-label="{{ _('Status') }}">
                                 {% set badge = {'new':'secondary','reviewed':'info','estimated':'warning','approved':'success','rejected':'danger'}.get(submission.status or 'new','secondary') %}
                                 <span class="badge bg-{{ badge }}">{{ submission.status or _('Under Review') }}</span>
                             </td>
-                            <td>
+                            <td data-label="{{ _('Actions') }}" class="table-actions">
                                 <a href="{{ url_for('client.view_submission', submission_id=submission.id) }}" class="btn btn-sm btn-outline-primary">
                                     {{ _('View') }}
                                 </a>

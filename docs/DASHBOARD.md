@@ -1,6 +1,6 @@
-# User Dashboard Documentation
+﻿# User Dashboard Documentation
 
-This document describes the user dashboard functionality for the Rozoom-KI project.
+This document describes the user dashboard functionality for the Andrii-IT project.
 
 ## Overview
 
@@ -72,3 +72,4 @@ The dashboard allows users to:
 3. Document storage for project deliverables
 4. Multiple payment method support
 5. Project feedback and rating system
+

@@ -1,4 +1,5 @@
 ﻿import os
+import sys
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -19,10 +20,21 @@ class Config:
     if database_url and database_url.startswith('postgres://'):
         database_url = database_url.replace('postgres://', 'postgresql://', 1)
     
+    # Use psycopg (v3) driver on runtimes where psycopg2 binary is unavailable (e.g. Python 3.14+).
+    if database_url and database_url.startswith('postgresql://'):
+        use_psycopg = sys.version_info >= (3, 14)
+        if not use_psycopg:
+            try:
+                import psycopg2  # noqa: F401
+            except Exception:
+                use_psycopg = True
+        if use_psycopg:
+            database_url = database_url.replace('postgresql://', 'postgresql+psycopg://', 1)
+
     # SSL configuration for PostgreSQL connections
     DISABLE_SSL = os.getenv('DISABLE_POSTGRES_SSL', 'False').lower() in ('true', 'yes', '1')
     
-    if database_url and 'postgresql://' in database_url:
+    if database_url and 'postgresql' in database_url:
         if DISABLE_SSL:
             # Completely disable SSL if explicitly requested
             print("[Config] SSL disabled by DISABLE_POSTGRES_SSL environment variable")
@@ -93,7 +105,7 @@ class Config:
     OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 
     # SEO defaults
-    SITE_NAME = os.getenv('SITE_NAME', 'Rozoom-KI')
+    SITE_NAME = os.getenv('SITE_NAME', 'Andrii-IT')
     SITE_DESCRIPTION = os.getenv('SITE_DESCRIPTION', 'AI solutions, chatbots and automation for your business')
     # Can be absolute URL or path relative to static/ (e.g. 'img/og-default.svg' or '/static/img/og-default.svg')
     SITE_IMAGE = os.getenv('SITE_IMAGE', 'img/og-default.svg')
@@ -113,7 +125,8 @@ class Config:
     MAIL_USE_SSL = os.getenv('MAIL_USE_SSL', 'False').lower() in ('true', 'yes', '1')
     MAIL_USERNAME = os.getenv('MAIL_USERNAME')
     MAIL_PASSWORD = os.getenv('MAIL_PASSWORD')
-    MAIL_DEFAULT_SENDER = os.getenv('MAIL_DEFAULT_SENDER', 'noreply@rozoom-ki.com')
+    MAIL_DEFAULT_SENDER = os.getenv('MAIL_DEFAULT_SENDER', 'noreply@andrii-it.com')
+
 
 
 

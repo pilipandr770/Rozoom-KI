@@ -1,11 +1,11 @@
-# Payment translations for Ukrainian.
-# Copyright (C) 2025 Rozoom-KI
-# This file is distributed under the same license as the Rozoom-KI project.
+﻿# Payment translations for Ukrainian.
+# Copyright (C) 2025 Andrii-IT
+# This file is distributed under the same license as the Andrii-IT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Rozoom-KI 1.0\n"
+"Project-Id-Version: Andrii-IT 1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-09-21 10:00+0200\n"
 "PO-Revision-Date: 2025-09-21 10:00+0200\n"
@@ -19,107 +19,107 @@ msgstr ""
 
 # Payment form page
 msgid "Buy Development Hours"
-msgstr "Придбати години розробки"
+msgstr "РџСЂРёРґР±Р°С‚Рё РіРѕРґРёРЅРё СЂРѕР·СЂРѕР±РєРё"
 
 msgid "Choose the number of development hours you need for your project"
-msgstr "Виберіть кількість годин розробки, які вам потрібні для вашого проєкту"
+msgstr "Р’РёР±РµСЂС–С‚СЊ РєС–Р»СЊРєС–СЃС‚СЊ РіРѕРґРёРЅ СЂРѕР·СЂРѕР±РєРё, СЏРєС– РІР°Рј РїРѕС‚СЂС–Р±РЅС– РґР»СЏ РІР°С€РѕРіРѕ РїСЂРѕС”РєС‚Сѓ"
 
 msgid "Select Hours"
-msgstr "Вибрати години"
+msgstr "Р’РёР±СЂР°С‚Рё РіРѕРґРёРЅРё"
 
 msgid "Drag the slider to select how many development hours you wish to purchase"
-msgstr "Перетягніть повзунок, щоб вибрати кількість годин розробки для придбання"
+msgstr "РџРµСЂРµС‚СЏРіРЅС–С‚СЊ РїРѕРІР·СѓРЅРѕРє, С‰РѕР± РІРёР±СЂР°С‚Рё РєС–Р»СЊРєС–СЃС‚СЊ РіРѕРґРёРЅ СЂРѕР·СЂРѕР±РєРё РґР»СЏ РїСЂРёРґР±Р°РЅРЅСЏ"
 
 msgid "hours"
-msgstr "годин"
+msgstr "РіРѕРґРёРЅ"
 
 msgid "Pricing tiers:"
-msgstr "Цінові тарифи:"
+msgstr "Р¦С–РЅРѕРІС– С‚Р°СЂРёС„Рё:"
 
 msgid "per hour"
-msgstr "за годину"
+msgstr "Р·Р° РіРѕРґРёРЅСѓ"
 
 msgid "Total Price"
-msgstr "Загальна ціна"
+msgstr "Р—Р°РіР°Р»СЊРЅР° С†С–РЅР°"
 
 msgid "Proceed to Checkout"
-msgstr "Перейти до оформлення"
+msgstr "РџРµСЂРµР№С‚Рё РґРѕ РѕС„РѕСЂРјР»РµРЅРЅСЏ"
 
 msgid "Need a custom solution?"
-msgstr "Потрібно індивідуальне рішення?"
+msgstr "РџРѕС‚СЂС–Р±РЅРѕ С–РЅРґРёРІС–РґСѓР°Р»СЊРЅРµ СЂС–С€РµРЅРЅСЏ?"
 
 msgid "Contact us"
-msgstr "Зв'яжіться з нами"
+msgstr "Р—РІ'СЏР¶С–С‚СЊСЃСЏ Р· РЅР°РјРё"
 
 # Success page
 msgid "Payment Successful"
-msgstr "Оплата успішна"
+msgstr "РћРїР»Р°С‚Р° СѓСЃРїС–С€РЅР°"
 
 msgid "Thank you for your purchase!"
-msgstr "Дякуємо за покупку!"
+msgstr "Р”СЏРєСѓС”РјРѕ Р·Р° РїРѕРєСѓРїРєСѓ!"
 
 msgid "Your payment has been processed successfully."
-msgstr "Вашу оплату успішно оброблено."
+msgstr "Р’Р°С€Сѓ РѕРїР»Р°С‚Сѓ СѓСЃРїС–С€РЅРѕ РѕР±СЂРѕР±Р»РµРЅРѕ."
 
 msgid "Order Details"
-msgstr "Деталі замовлення"
+msgstr "Р”РµС‚Р°Р»С– Р·Р°РјРѕРІР»РµРЅРЅСЏ"
 
 msgid "Hours Purchased"
-msgstr "Придбані години"
+msgstr "РџСЂРёРґР±Р°РЅС– РіРѕРґРёРЅРё"
 
 msgid "Rate"
-msgstr "Тариф"
+msgstr "РўР°СЂРёС„"
 
 msgid "Total Amount"
-msgstr "Загальна сума"
+msgstr "Р—Р°РіР°Р»СЊРЅР° СЃСѓРјР°"
 
 msgid "Transaction ID"
-msgstr "ID транзакції"
+msgstr "ID С‚СЂР°РЅР·Р°РєС†С–С—"
 
 msgid "Date"
-msgstr "Дата"
+msgstr "Р”Р°С‚Р°"
 
 msgid "Back to Home"
-msgstr "Повернутися на головну"
+msgstr "РџРѕРІРµСЂРЅСѓС‚РёСЃСЏ РЅР° РіРѕР»РѕРІРЅСѓ"
 
 # Cancel page
 msgid "Payment Cancelled"
-msgstr "Оплату скасовано"
+msgstr "РћРїР»Р°С‚Сѓ СЃРєР°СЃРѕРІР°РЅРѕ"
 
 msgid "Your payment has been cancelled."
-msgstr "Вашу оплату скасовано."
+msgstr "Р’Р°С€Сѓ РѕРїР»Р°С‚Сѓ СЃРєР°СЃРѕРІР°РЅРѕ."
 
 msgid "No charges have been made to your account."
-msgstr "З вашого рахунку не було знято коштів."
+msgstr "Р— РІР°С€РѕРіРѕ СЂР°С…СѓРЅРєСѓ РЅРµ Р±СѓР»Рѕ Р·РЅСЏС‚Рѕ РєРѕС€С‚С–РІ."
 
 msgid "Return to Payment Form"
-msgstr "Повернутися до форми оплати"
+msgstr "РџРѕРІРµСЂРЅСѓС‚РёСЃСЏ РґРѕ С„РѕСЂРјРё РѕРїР»Р°С‚Рё"
 
 # Flash messages
 msgid "Payment successful! Thank you for your purchase."
-msgstr "Оплата успішна! Дякуємо за покупку."
+msgstr "РћРїР»Р°С‚Р° СѓСЃРїС–С€РЅР°! Р”СЏРєСѓС”РјРѕ Р·Р° РїРѕРєСѓРїРєСѓ."
 
 msgid "No pricing packages are currently available. Please contact us for custom pricing."
-msgstr "Наразі немає доступних пакетів цін. Будь ласка, зв'яжіться з нами для індивідуального розрахунку."
+msgstr "РќР°СЂР°Р·С– РЅРµРјР°С” РґРѕСЃС‚СѓРїРЅРёС… РїР°РєРµС‚С–РІ С†С–РЅ. Р‘СѓРґСЊ Р»Р°СЃРєР°, Р·РІ'СЏР¶С–С‚СЊСЃСЏ Р· РЅР°РјРё РґР»СЏ С–РЅРґРёРІС–РґСѓР°Р»СЊРЅРѕРіРѕ СЂРѕР·СЂР°С…СѓРЅРєСѓ."
 
 msgid "An error occurred while processing your payment. Please try again later."
-msgstr "Під час обробки вашої оплати сталася помилка. Спробуйте пізніше."
+msgstr "РџС–Рґ С‡Р°СЃ РѕР±СЂРѕР±РєРё РІР°С€РѕС— РѕРїР»Р°С‚Рё СЃС‚Р°Р»Р°СЃСЏ РїРѕРјРёР»РєР°. РЎРїСЂРѕР±СѓР№С‚Рµ РїС–Р·РЅС–С€Рµ."
 
 msgid "Payment is being processed. We will update you when it completes."
-msgstr "Оплата обробляється. Ми повідомимо вас, коли вона буде завершена."
+msgstr "РћРїР»Р°С‚Р° РѕР±СЂРѕР±Р»СЏС”С‚СЊСЃСЏ. РњРё РїРѕРІС–РґРѕРјРёРјРѕ РІР°СЃ, РєРѕР»Рё РІРѕРЅР° Р±СѓРґРµ Р·Р°РІРµСЂС€РµРЅР°."
 
 msgid "Payment information not found."
-msgstr "Інформацію про оплату не знайдено."
+msgstr "Р†РЅС„РѕСЂРјР°С†С–СЋ РїСЂРѕ РѕРїР»Р°С‚Сѓ РЅРµ Р·РЅР°Р№РґРµРЅРѕ."
 
 msgid "An error occurred while processing your payment information."
-msgstr "Під час обробки інформації про вашу оплату сталася помилка."
+msgstr "РџС–Рґ С‡Р°СЃ РѕР±СЂРѕР±РєРё С–РЅС„РѕСЂРјР°С†С–С— РїСЂРѕ РІР°С€Сѓ РѕРїР»Р°С‚Сѓ СЃС‚Р°Р»Р°СЃСЏ РїРѕРјРёР»РєР°."
 
 # Development hours product description
 msgid "Development Hours"
-msgstr "Години розробки"
+msgstr "Р“РѕРґРёРЅРё СЂРѕР·СЂРѕР±РєРё"
 
 msgid "Purchase of"
-msgstr "Придбання"
+msgstr "РџСЂРёРґР±Р°РЅРЅСЏ"
 
 msgid "development hours at"
-msgstr "годин розробки за"
+msgstr "РіРѕРґРёРЅ СЂРѕР·СЂРѕР±РєРё Р·Р°"

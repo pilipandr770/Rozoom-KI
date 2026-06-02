@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for, flash, current_app, jsonify
+﻿from flask import Blueprint, render_template, request, redirect, url_for, flash, current_app, jsonify
 from flask_login import current_user
 from app.models import PricePackage, StripePayment
 from app import db, csrf
@@ -6,9 +6,9 @@ import stripe
 import os
 from datetime import datetime
 
-# Импортируем функции для использования специального домена переводов
+# РРјРїРѕСЂС‚РёСЂСѓРµРј С„СѓРЅРєС†РёРё РґР»СЏ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ СЃРїРµС†РёР°Р»СЊРЅРѕРіРѕ РґРѕРјРµРЅР° РїРµСЂРµРІРѕРґРѕРІ
 from app.i18n_patch import payment_domain
-# Создаем функцию перевода для домена payment_translations
+# РЎРѕР·РґР°РµРј С„СѓРЅРєС†РёСЋ РїРµСЂРµРІРѕРґР° РґР»СЏ РґРѕРјРµРЅР° payment_translations
 _ = payment_domain.gettext
 
 payment_bp = Blueprint('payment', __name__, url_prefix='/payment')
@@ -88,9 +88,9 @@ def create_checkout():
         db.session.add(payment)
         db.session.commit()
         
-        # Переводим описание продукта
+        # РџРµСЂРµРІРѕРґРёРј РѕРїРёСЃР°РЅРёРµ РїСЂРѕРґСѓРєС‚Р°
         product_name = _('Development Hours')
-        product_description = f"{_('Purchase of')} {hours} {_('development hours at')} €{hourly_rate:.2f}/{_('per hour')}"
+        product_description = f"{_('Purchase of')} {hours} {_('development hours at')} в‚¬{hourly_rate:.2f}/{_('per hour')}"
         
         # Create Stripe checkout session
         checkout_session = stripe.checkout.Session.create(
@@ -270,7 +270,7 @@ def webhook():
 #     A new payment has been received:
 #     
 #     Payment ID: {payment.id}
-#     Amount: €{payment.amount:.2f}
+#     Amount: в‚¬{payment.amount:.2f}
 #     Hours: {payment.hours_purchased}
 #     Customer: {payment.customer_name or 'N/A'} ({payment.customer_email or 'N/A'})
 #     Status: {payment.status}
@@ -278,7 +278,7 @@ def webhook():
 #     """
 #     
 #     # Get admin email from config
-#     admin_email = current_app.config.get('ADMIN_EMAIL', 'admin@rozoom-ki.com')
+#     admin_email = current_app.config.get('ADMIN_EMAIL', 'admin@andrii-it.com')
 #     
 #     # Send email
 #     send_email(subject, body, [admin_email])

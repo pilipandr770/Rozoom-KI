@@ -1,0 +1,78 @@
+/* Phase 2 foundation: shared component primitives */
+
+body {
+  font-family: var(--font-sans-ui);
+}
+
+.ui-surface-card {
+  border: 1px solid var(--color-border-400);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(165deg, var(--surface-glass) 0%, var(--surface-glass-strong) 100%);
+  box-shadow: var(--shadow-soft-lg);
+}
+
+.ui-surface-soft {
+  border: 1px solid var(--color-border-400);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(160deg, rgba(15, 23, 42, 0.66), rgba(30, 41, 59, 0.86));
+  box-shadow: var(--shadow-soft-lg);
+}
+
+.ui-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border-400);
+  background: var(--surface-glass);
+  color: var(--color-text-300);
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+}
+
+.ui-proof-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  border: 1px solid var(--color-border-400);
+  border-radius: 999px;
+  background: var(--surface-glass-soft);
+  color: var(--color-text-200);
+  padding: 0.4rem 0.75rem;
+  font-weight: 600;
+}
+
+.ui-proof-pill {
+  border: 1px solid var(--color-border-400);
+  border-radius: 999px;
+  background: var(--surface-glass-soft);
+  color: var(--color-text-200);
+}
+
+.ui-accordion-contrast .accordion-item,
+.ui-accordion-contrast .accordion-button,
+.ui-accordion-contrast .accordion-body {
+  background: transparent;
+  color: var(--color-text-100);
+}
+
+.ui-accordion-contrast .accordion-item {
+  border-color: var(--color-border-300);
+}
+
+.ui-accordion-contrast .accordion-button:not(.collapsed) {
+  box-shadow: none;
+  color: var(--color-text-50);
+}
+
+.ui-section-title {
+  color: var(--color-text-50);
+  letter-spacing: 0.01em;
+  text-wrap: balance;
+}
+
+
+

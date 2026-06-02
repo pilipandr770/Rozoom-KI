@@ -1,4 +1,4 @@
-# Deployment Update for Rozoom-KI
+﻿# Deployment Update for Andrii-IT
 
 ## 1. Telegram Notification Fix
 
@@ -76,9 +76,9 @@ def fix_duplicate_translations(file_path):
         f.write("\n\n")
         f.write("\n\n".join(unique_entries.values()))
     
-    print(f"✅ Removed {duplicates} duplicate entries")
-    print(f"✅ Original entries: {len(entries)}")
-    print(f"✅ Cleaned entries: {len(unique_entries)}")
+    print(f"вњ… Removed {duplicates} duplicate entries")
+    print(f"вњ… Original entries: {len(entries)}")
+    print(f"вњ… Cleaned entries: {len(unique_entries)}")
     
     return duplicates
 
@@ -109,3 +109,4 @@ mkdir -p /opt/render/project/src/logs
 ```
 
 This ensures proper operation of the application.
+

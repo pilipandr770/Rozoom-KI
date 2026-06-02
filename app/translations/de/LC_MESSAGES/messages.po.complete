@@ -1,8 +1,8 @@
-# Файл переводов на немецкий язык для Rozoom-KI
+# Файл переводов на немецкий язык для Andrii-IT
 msgid ""
 msgstr ""
-"Project-Id-Version: Rozoom-KI 1.0\n"
-"Report-Msgid-Bugs-To: info@rozoom-ki.com\n"
+"Project-Id-Version: Andrii-IT 1.0\n"
+"Report-Msgid-Bugs-To: info@andrii-it.com\n"
 "POT-Creation-Date: 2025-09-07 15:47+0200\n"
 "PO-Revision-Date: 2025-09-07 18:22+0200\n"
 "Last-Translator: \n"
@@ -98,8 +98,8 @@ msgstr "Pflichtfeld"
 msgid "Invalid email format"
 msgstr "Ungültiges E-Mail-Format"
 
-msgid "Welcome to Rozoom-KI"
-msgstr "Willkommen bei Rozoom-KI"
+msgid "Welcome to Andrii-IT"
+msgstr "Willkommen bei Andrii-IT"
 
 msgid "Request a Project Estimate"
 msgstr "Anfrage für eine Projektschätzung"
@@ -245,8 +245,8 @@ msgstr "Datenanalyse"
 msgid "Turn your data into actionable insights with our comprehensive data analysis and visualization services."
 msgstr "Verwandeln Sie Ihre Daten in umsetzbare Erkenntnisse mit unseren umfassenden Datenanalyse- und Visualisierungsdiensten."
 
-msgid "Rozoom-KI transformed our customer service with their AI assistant. Response times dropped by 60 percent and customer satisfaction increased dramatically."
-msgstr "Rozoom-KI hat unseren Kundenservice mit ihrem KI-Assistenten transformiert. Die Reaktionszeiten sanken um 60 Prozent und die Kundenzufriedenheit stieg dramatisch an."
+msgid "Andrii-IT transformed our customer service with their AI assistant. Response times dropped by 60 percent and customer satisfaction increased dramatically."
+msgstr "Andrii-IT hat unseren Kundenservice mit ihrem KI-Assistenten transformiert. Die Reaktionszeiten sanken um 60 Prozent und die Kundenzufriedenheit stieg dramatisch an."
 
 msgid "The machine learning integration for our inventory management has saved us thousands of euros monthly and improved our forecasting accuracy by 40 percent."
 msgstr "Die Integration des maschinellen Lernens in unser Bestandsmanagement hat uns monatlich tausende von Euro erspart und unsere Prognosegenauigkeit um 40 Prozent verbessert."

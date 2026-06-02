@@ -1,96 +1,96 @@
-from typing import Dict, List, Optional
+﻿from typing import Dict, List, Optional
 from flask import current_app
 
-# Определение структуры технического задания
+# РћРїСЂРµРґРµР»РµРЅРёРµ СЃС‚СЂСѓРєС‚СѓСЂС‹ С‚РµС…РЅРёС‡РµСЃРєРѕРіРѕ Р·Р°РґР°РЅРёСЏ
 class TechSpecTemplate:
     def __init__(self, language: str = 'en'):
         self.language = language
         self.sections = self._get_sections_by_language()
         
     def _get_sections_by_language(self) -> List[Dict]:
-        """Возвращает секции для технического задания в зависимости от языка"""
+        """Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРµРєС†РёРё РґР»СЏ С‚РµС…РЅРёС‡РµСЃРєРѕРіРѕ Р·Р°РґР°РЅРёСЏ РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ СЏР·С‹РєР°"""
         sections_by_language = {
             'uk': [
                 {
-                    'title': 'Огляд проєкту',
+                    'title': 'РћРіР»СЏРґ РїСЂРѕС”РєС‚Сѓ',
                     'questions': [
-                        'Яка основна мета вашого проєкту?',
-                        'Яку проблему ви намагаєтесь вирішити?',
-                        'Хто є вашою цільовою аудиторією?'
+                        'РЇРєР° РѕСЃРЅРѕРІРЅР° РјРµС‚Р° РІР°С€РѕРіРѕ РїСЂРѕС”РєС‚Сѓ?',
+                        'РЇРєСѓ РїСЂРѕР±Р»РµРјСѓ РІРё РЅР°РјР°РіР°С”С‚РµСЃСЊ РІРёСЂС–С€РёС‚Рё?',
+                        'РҐС‚Рѕ С” РІР°С€РѕСЋ С†С–Р»СЊРѕРІРѕСЋ Р°СѓРґРёС‚РѕСЂС–С”СЋ?'
                     ]
                 },
                 {
-                    'title': 'Функціональні вимоги',
+                    'title': 'Р¤СѓРЅРєС†С–РѕРЅР°Р»СЊРЅС– РІРёРјРѕРіРё',
                     'questions': [
-                        'Які основні функції вам потрібні?',
-                        'Яка конкретна функціональність є критичною для вашого проєкту?',
-                        'Чи є у вас конкретні сценарії взаємодії з користувачем?'
+                        'РЇРєС– РѕСЃРЅРѕРІРЅС– С„СѓРЅРєС†С–С— РІР°Рј РїРѕС‚СЂС–Р±РЅС–?',
+                        'РЇРєР° РєРѕРЅРєСЂРµС‚РЅР° С„СѓРЅРєС†С–РѕРЅР°Р»СЊРЅС–СЃС‚СЊ С” РєСЂРёС‚РёС‡РЅРѕСЋ РґР»СЏ РІР°С€РѕРіРѕ РїСЂРѕС”РєС‚Сѓ?',
+                        'Р§Рё С” Сѓ РІР°СЃ РєРѕРЅРєСЂРµС‚РЅС– СЃС†РµРЅР°СЂС–С— РІР·Р°С”РјРѕРґС–С— Р· РєРѕСЂРёСЃС‚СѓРІР°С‡РµРј?'
                     ]
                 },
                 {
-                    'title': 'Технічні вимоги',
+                    'title': 'РўРµС…РЅС–С‡РЅС– РІРёРјРѕРіРё',
                     'questions': [
-                        'Чи є у вас технологічні вподобання (мови, фреймворки тощо)?',
-                        'Чи потрібна інтеграція з існуючими системами?',
-                        'Які у вас вподобання щодо хостингу/розгортання?'
+                        'Р§Рё С” Сѓ РІР°СЃ С‚РµС…РЅРѕР»РѕРіС–С‡РЅС– РІРїРѕРґРѕР±Р°РЅРЅСЏ (РјРѕРІРё, С„СЂРµР№РјРІРѕСЂРєРё С‚РѕС‰Рѕ)?',
+                        'Р§Рё РїРѕС‚СЂС–Р±РЅР° С–РЅС‚РµРіСЂР°С†С–СЏ Р· С–СЃРЅСѓСЋС‡РёРјРё СЃРёСЃС‚РµРјР°РјРё?',
+                        'РЇРєС– Сѓ РІР°СЃ РІРїРѕРґРѕР±Р°РЅРЅСЏ С‰РѕРґРѕ С…РѕСЃС‚РёРЅРіСѓ/СЂРѕР·РіРѕСЂС‚Р°РЅРЅСЏ?'
                     ]
                 },
                 {
-                    'title': 'Терміни та бюджет',
+                    'title': 'РўРµСЂРјС–РЅРё С‚Р° Р±СЋРґР¶РµС‚',
                     'questions': [
-                        'Який очікуваний термін виконання проєкту?',
-                        'Чи є у вас конкретний діапазон бюджету?',
-                        'Чи є якісь критичні дедлайни, про які ми повинні знати?'
+                        'РЇРєРёР№ РѕС‡С–РєСѓРІР°РЅРёР№ С‚РµСЂРјС–РЅ РІРёРєРѕРЅР°РЅРЅСЏ РїСЂРѕС”РєС‚Сѓ?',
+                        'Р§Рё С” Сѓ РІР°СЃ РєРѕРЅРєСЂРµС‚РЅРёР№ РґС–Р°РїР°Р·РѕРЅ Р±СЋРґР¶РµС‚Сѓ?',
+                        'Р§Рё С” СЏРєС–СЃСЊ РєСЂРёС‚РёС‡РЅС– РґРµРґР»Р°Р№РЅРё, РїСЂРѕ СЏРєС– РјРё РїРѕРІРёРЅРЅС– Р·РЅР°С‚Рё?'
                     ]
                 },
                 {
-                    'title': 'Контактна інформація',
+                    'title': 'РљРѕРЅС‚Р°РєС‚РЅР° С–РЅС„РѕСЂРјР°С†С–СЏ',
                     'questions': [
-                        'Як вас звати?',
-                        'Яка ваша електронна пошта?',
-                        'Який ваш номер телефону? (необов\'язково)'
+                        'РЇРє РІР°СЃ Р·РІР°С‚Рё?',
+                        'РЇРєР° РІР°С€Р° РµР»РµРєС‚СЂРѕРЅРЅР° РїРѕС€С‚Р°?',
+                        'РЇРєРёР№ РІР°С€ РЅРѕРјРµСЂ С‚РµР»РµС„РѕРЅСѓ? (РЅРµРѕР±РѕРІ\'СЏР·РєРѕРІРѕ)'
                     ]
                 }
             ],
             'ru': [
                 {
-                    'title': 'Обзор проекта',
+                    'title': 'РћР±Р·РѕСЂ РїСЂРѕРµРєС‚Р°',
                     'questions': [
-                        'Какова основная цель вашего проекта?',
-                        'Какую проблему вы пытаетесь решить?',
-                        'Кто является вашей целевой аудиторией?'
+                        'РљР°РєРѕРІР° РѕСЃРЅРѕРІРЅР°СЏ С†РµР»СЊ РІР°С€РµРіРѕ РїСЂРѕРµРєС‚Р°?',
+                        'РљР°РєСѓСЋ РїСЂРѕР±Р»РµРјСѓ РІС‹ РїС‹С‚Р°РµС‚РµСЃСЊ СЂРµС€РёС‚СЊ?',
+                        'РљС‚Рѕ СЏРІР»СЏРµС‚СЃСЏ РІР°С€РµР№ С†РµР»РµРІРѕР№ Р°СѓРґРёС‚РѕСЂРёРµР№?'
                     ]
                 },
                 {
-                    'title': 'Функциональные требования',
+                    'title': 'Р¤СѓРЅРєС†РёРѕРЅР°Р»СЊРЅС‹Рµ С‚СЂРµР±РѕРІР°РЅРёСЏ',
                     'questions': [
-                        'Какие ключевые функции вам нужны?',
-                        'Какая конкретная функциональность критически важна для вашего проекта?',
-                        'Есть ли у вас конкретные сценарии взаимодействия с пользователем?'
+                        'РљР°РєРёРµ РєР»СЋС‡РµРІС‹Рµ С„СѓРЅРєС†РёРё РІР°Рј РЅСѓР¶РЅС‹?',
+                        'РљР°РєР°СЏ РєРѕРЅРєСЂРµС‚РЅР°СЏ С„СѓРЅРєС†РёРѕРЅР°Р»СЊРЅРѕСЃС‚СЊ РєСЂРёС‚РёС‡РµСЃРєРё РІР°Р¶РЅР° РґР»СЏ РІР°С€РµРіРѕ РїСЂРѕРµРєС‚Р°?',
+                        'Р•СЃС‚СЊ Р»Рё Сѓ РІР°СЃ РєРѕРЅРєСЂРµС‚РЅС‹Рµ СЃС†РµРЅР°СЂРёРё РІР·Р°РёРјРѕРґРµР№СЃС‚РІРёСЏ СЃ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј?'
                     ]
                 },
                 {
-                    'title': 'Технические требования',
+                    'title': 'РўРµС…РЅРёС‡РµСЃРєРёРµ С‚СЂРµР±РѕРІР°РЅРёСЏ',
                     'questions': [
-                        'Есть ли у вас технологические предпочтения (языки, фреймворки и т.д.)?',
-                        'Нужна ли интеграция с существующими системами?',
-                        'Каковы ваши предпочтения по хостингу/развертыванию?'
+                        'Р•СЃС‚СЊ Р»Рё Сѓ РІР°СЃ С‚РµС…РЅРѕР»РѕРіРёС‡РµСЃРєРёРµ РїСЂРµРґРїРѕС‡С‚РµРЅРёСЏ (СЏР·С‹РєРё, С„СЂРµР№РјРІРѕСЂРєРё Рё С‚.Рґ.)?',
+                        'РќСѓР¶РЅР° Р»Рё РёРЅС‚РµРіСЂР°С†РёСЏ СЃ СЃСѓС‰РµСЃС‚РІСѓСЋС‰РёРјРё СЃРёСЃС‚РµРјР°РјРё?',
+                        'РљР°РєРѕРІС‹ РІР°С€Рё РїСЂРµРґРїРѕС‡С‚РµРЅРёСЏ РїРѕ С…РѕСЃС‚РёРЅРіСѓ/СЂР°Р·РІРµСЂС‚С‹РІР°РЅРёСЋ?'
                     ]
                 },
                 {
-                    'title': 'Сроки и бюджет',
+                    'title': 'РЎСЂРѕРєРё Рё Р±СЋРґР¶РµС‚',
                     'questions': [
-                        'Каков ожидаемый срок выполнения проекта?',
-                        'Есть ли у вас конкретный диапазон бюджета?',
-                        'Есть ли какие-то критические сроки, о которых мы должны знать?'
+                        'РљР°РєРѕРІ РѕР¶РёРґР°РµРјС‹Р№ СЃСЂРѕРє РІС‹РїРѕР»РЅРµРЅРёСЏ РїСЂРѕРµРєС‚Р°?',
+                        'Р•СЃС‚СЊ Р»Рё Сѓ РІР°СЃ РєРѕРЅРєСЂРµС‚РЅС‹Р№ РґРёР°РїР°Р·РѕРЅ Р±СЋРґР¶РµС‚Р°?',
+                        'Р•СЃС‚СЊ Р»Рё РєР°РєРёРµ-С‚Рѕ РєСЂРёС‚РёС‡РµСЃРєРёРµ СЃСЂРѕРєРё, Рѕ РєРѕС‚РѕСЂС‹С… РјС‹ РґРѕР»Р¶РЅС‹ Р·РЅР°С‚СЊ?'
                     ]
                 },
                 {
-                    'title': 'Контактная информация',
+                    'title': 'РљРѕРЅС‚Р°РєС‚РЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ',
                     'questions': [
-                        'Как вас зовут?',
-                        'Какой ваш адрес электронной почты?',
-                        'Какой ваш номер телефона? (необязательно)'
+                        'РљР°Рє РІР°СЃ Р·РѕРІСѓС‚?',
+                        'РљР°РєРѕР№ РІР°С€ Р°РґСЂРµСЃ СЌР»РµРєС‚СЂРѕРЅРЅРѕР№ РїРѕС‡С‚С‹?',
+                        'РљР°РєРѕР№ РІР°С€ РЅРѕРјРµСЂ С‚РµР»РµС„РѕРЅР°? (РЅРµРѕР±СЏР·Р°С‚РµР»СЊРЅРѕ)'
                     ]
                 }
             ],
@@ -138,33 +138,33 @@ class TechSpecTemplate:
             ],
             'de': [
                 {
-                    'title': 'Projektübersicht',
+                    'title': 'ProjektГјbersicht',
                     'questions': [
                         'Was ist der Hauptzweck Ihres Projekts?',
-                        'Welches Problem versuchen Sie zu lösen?',
+                        'Welches Problem versuchen Sie zu lГ¶sen?',
                         'Wer ist Ihre Zielgruppe?'
                     ]
                 },
                 {
                     'title': 'Funktionale Anforderungen',
                     'questions': [
-                        'Welche Schlüsselfunktionen benötigen Sie?',
-                        'Welche spezifische Funktionalität ist für Ihr Projekt entscheidend?',
-                        'Haben Sie bestimmte Benutzerabläufe im Sinn?'
+                        'Welche SchlГјsselfunktionen benГ¶tigen Sie?',
+                        'Welche spezifische FunktionalitГ¤t ist fГјr Ihr Projekt entscheidend?',
+                        'Haben Sie bestimmte BenutzerablГ¤ufe im Sinn?'
                     ]
                 },
                 {
                     'title': 'Technische Anforderungen',
                     'questions': [
-                        'Haben Sie Technologiepräferenzen (Sprachen, Frameworks usw.)?',
-                        'Benötigen Sie Integration mit bestehenden Systemen?',
-                        'Was sind Ihre Hosting-/Bereitstellungspräferenzen?'
+                        'Haben Sie TechnologieprГ¤ferenzen (Sprachen, Frameworks usw.)?',
+                        'BenГ¶tigen Sie Integration mit bestehenden Systemen?',
+                        'Was sind Ihre Hosting-/BereitstellungsprГ¤ferenzen?'
                     ]
                 },
                 {
                     'title': 'Zeitplan & Budget',
                     'questions': [
-                        'Was ist Ihr erwarteter Zeitrahmen für dieses Projekt?',
+                        'Was ist Ihr erwarteter Zeitrahmen fГјr dieses Projekt?',
                         'Haben Sie einen bestimmten Budgetrahmen im Sinn?',
                         'Gibt es kritische Fristen, die wir beachten sollten?'
                     ]
@@ -172,7 +172,7 @@ class TechSpecTemplate:
                 {
                     'title': 'Kontaktinformationen',
                     'questions': [
-                        'Wie heißen Sie?',
+                        'Wie heiГџen Sie?',
                         'Wie lautet Ihre E-Mail-Adresse?',
                         'Wie ist Ihre Telefonnummer? (optional)'
                     ]
@@ -182,70 +182,71 @@ class TechSpecTemplate:
         return sections_by_language.get(self.language, sections_by_language['en'])
 
 def get_tech_spec_prompt(metadata: Dict) -> str:
-    """Создает промпт для сбора требований для технического задания"""
+    """РЎРѕР·РґР°РµС‚ РїСЂРѕРјРїС‚ РґР»СЏ СЃР±РѕСЂР° С‚СЂРµР±РѕРІР°РЅРёР№ РґР»СЏ С‚РµС…РЅРёС‡РµСЃРєРѕРіРѕ Р·Р°РґР°РЅРёСЏ"""
     language = metadata.get('language', 'en')
     current_section = metadata.get('tech_spec_section', 0)
     template = TechSpecTemplate(language)
     
     if current_section >= len(template.sections):
-        # Если мы прошли все секции, то это итоговое резюме
+        # Р•СЃР»Рё РјС‹ РїСЂРѕС€Р»Рё РІСЃРµ СЃРµРєС†РёРё, С‚Рѕ СЌС‚Рѕ РёС‚РѕРіРѕРІРѕРµ СЂРµР·СЋРјРµ
         if language == 'uk':
-            return ("Дякую за всі ваші відповіді! Тепер я маю достатньо інформації для створення попереднього "
-                   "технічного завдання. Бажаєте побачити підсумок ваших вимог, "
-                   "чи є щось, що ви хотіли б додати?")
+            return ("Р”СЏРєСѓСЋ Р·Р° РІСЃС– РІР°С€С– РІС–РґРїРѕРІС–РґС–! РўРµРїРµСЂ СЏ РјР°СЋ РґРѕСЃС‚Р°С‚РЅСЊРѕ С–РЅС„РѕСЂРјР°С†С–С— РґР»СЏ СЃС‚РІРѕСЂРµРЅРЅСЏ РїРѕРїРµСЂРµРґРЅСЊРѕРіРѕ "
+                   "С‚РµС…РЅС–С‡РЅРѕРіРѕ Р·Р°РІРґР°РЅРЅСЏ. Р‘Р°Р¶Р°С”С‚Рµ РїРѕР±Р°С‡РёС‚Рё РїС–РґСЃСѓРјРѕРє РІР°С€РёС… РІРёРјРѕРі, "
+                   "С‡Рё С” С‰РѕСЃСЊ, С‰Рѕ РІРё С…РѕС‚С–Р»Рё Р± РґРѕРґР°С‚Рё?")
         elif language == 'ru':
-            return ("Спасибо за все ваши ответы! Теперь у меня достаточно информации для создания предварительного "
-                   "технического задания. Хотите увидеть резюме ваших требований, "
-                   "или есть что-то, что вы хотели бы добавить?")
+            return ("РЎРїР°СЃРёР±Рѕ Р·Р° РІСЃРµ РІР°С€Рё РѕС‚РІРµС‚С‹! РўРµРїРµСЂСЊ Сѓ РјРµРЅСЏ РґРѕСЃС‚Р°С‚РѕС‡РЅРѕ РёРЅС„РѕСЂРјР°С†РёРё РґР»СЏ СЃРѕР·РґР°РЅРёСЏ РїСЂРµРґРІР°СЂРёС‚РµР»СЊРЅРѕРіРѕ "
+                   "С‚РµС…РЅРёС‡РµСЃРєРѕРіРѕ Р·Р°РґР°РЅРёСЏ. РҐРѕС‚РёС‚Рµ СѓРІРёРґРµС‚СЊ СЂРµР·СЋРјРµ РІР°С€РёС… С‚СЂРµР±РѕРІР°РЅРёР№, "
+                   "РёР»Рё РµСЃС‚СЊ С‡С‚Рѕ-С‚Рѕ, С‡С‚Рѕ РІС‹ С…РѕС‚РµР»Рё Р±С‹ РґРѕР±Р°РІРёС‚СЊ?")
         elif language == 'de':
-            return ("Danke für alle Ihre Antworten! Ich habe jetzt genügend Informationen, um ein vorläufiges "
-                   "technisches Lastenheft zu erstellen. Möchten Sie eine Zusammenfassung Ihrer Anforderungen sehen, "
-                   "oder gibt es noch etwas, das Sie hinzufügen möchten?")
+            return ("Danke fГјr alle Ihre Antworten! Ich habe jetzt genГјgend Informationen, um ein vorlГ¤ufiges "
+                   "technisches Lastenheft zu erstellen. MГ¶chten Sie eine Zusammenfassung Ihrer Anforderungen sehen, "
+                   "oder gibt es noch etwas, das Sie hinzufГјgen mГ¶chten?")
         else:
             return ("Thank you for all your answers! I now have enough information to create a preliminary "
                    "technical specification. Would you like to see a summary of your requirements, "
                    "or is there anything else you'd like to add?")
     
-    # Получаем текущую секцию
+    # РџРѕР»СѓС‡Р°РµРј С‚РµРєСѓС‰СѓСЋ СЃРµРєС†РёСЋ
     section = template.sections[current_section]
     questions = section['questions']
     
-    # Создаем промпт в зависимости от языка
+    # РЎРѕР·РґР°РµРј РїСЂРѕРјРїС‚ РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ СЏР·С‹РєР°
     if language == 'uk':
-        prompt = (f"Я аналітик вимог у Rozoom-KI. Я допоможу вам створити технічне завдання. "
-                 f"Почнемо з розділу '{section['title']}'.\n\n")
+        prompt = (f"РЇ Р°РЅР°Р»С–С‚РёРє РІРёРјРѕРі Сѓ Andrii-IT. РЇ РґРѕРїРѕРјРѕР¶Сѓ РІР°Рј СЃС‚РІРѕСЂРёС‚Рё С‚РµС…РЅС–С‡РЅРµ Р·Р°РІРґР°РЅРЅСЏ. "
+                 f"РџРѕС‡РЅРµРјРѕ Р· СЂРѕР·РґС–Р»Сѓ '{section['title']}'.\n\n")
                  
         for i, question in enumerate(questions):
-            prompt += f"• {question}\n"
+            prompt += f"вЂў {question}\n"
             
-        prompt += ("\nБудь ласка, відповідайте на питання по одному. Коли закінчите, я перейду до наступного "
-                  "розділу. Ваші відповіді допоможуть нам створити індивідуальну пропозицію для вашого проєкту.")
+        prompt += ("\nР‘СѓРґСЊ Р»Р°СЃРєР°, РІС–РґРїРѕРІС–РґР°Р№С‚Рµ РЅР° РїРёС‚Р°РЅРЅСЏ РїРѕ РѕРґРЅРѕРјСѓ. РљРѕР»Рё Р·Р°РєС–РЅС‡РёС‚Рµ, СЏ РїРµСЂРµР№РґСѓ РґРѕ РЅР°СЃС‚СѓРїРЅРѕРіРѕ "
+                  "СЂРѕР·РґС–Р»Сѓ. Р’Р°С€С– РІС–РґРїРѕРІС–РґС– РґРѕРїРѕРјРѕР¶СѓС‚СЊ РЅР°Рј СЃС‚РІРѕСЂРёС‚Рё С–РЅРґРёРІС–РґСѓР°Р»СЊРЅСѓ РїСЂРѕРїРѕР·РёС†С–СЋ РґР»СЏ РІР°С€РѕРіРѕ РїСЂРѕС”РєС‚Сѓ.")
     elif language == 'ru':
-        prompt = (f"Я аналитик требований в Rozoom-KI. Я помогу вам создать техническое задание. "
-                 f"Начнем с раздела '{section['title']}'.\n\n")
+        prompt = (f"РЇ Р°РЅР°Р»РёС‚РёРє С‚СЂРµР±РѕРІР°РЅРёР№ РІ Andrii-IT. РЇ РїРѕРјРѕРіСѓ РІР°Рј СЃРѕР·РґР°С‚СЊ С‚РµС…РЅРёС‡РµСЃРєРѕРµ Р·Р°РґР°РЅРёРµ. "
+                 f"РќР°С‡РЅРµРј СЃ СЂР°Р·РґРµР»Р° '{section['title']}'.\n\n")
                  
         for i, question in enumerate(questions):
-            prompt += f"• {question}\n"
+            prompt += f"вЂў {question}\n"
             
-        prompt += ("\nПожалуйста, отвечайте на вопросы по одному. Когда закончите, я перейду к следующему "
-                  "разделу. Ваши ответы помогут нам создать индивидуальное предложение для вашего проекта.")
+        prompt += ("\nРџРѕР¶Р°Р»СѓР№СЃС‚Р°, РѕС‚РІРµС‡Р°Р№С‚Рµ РЅР° РІРѕРїСЂРѕСЃС‹ РїРѕ РѕРґРЅРѕРјСѓ. РљРѕРіРґР° Р·Р°РєРѕРЅС‡РёС‚Рµ, СЏ РїРµСЂРµР№РґСѓ Рє СЃР»РµРґСѓСЋС‰РµРјСѓ "
+                  "СЂР°Р·РґРµР»Сѓ. Р’Р°С€Рё РѕС‚РІРµС‚С‹ РїРѕРјРѕРіСѓС‚ РЅР°Рј СЃРѕР·РґР°С‚СЊ РёРЅРґРёРІРёРґСѓР°Р»СЊРЅРѕРµ РїСЂРµРґР»РѕР¶РµРЅРёРµ РґР»СЏ РІР°С€РµРіРѕ РїСЂРѕРµРєС‚Р°.")
     elif language == 'de':
-        prompt = (f"Ich bin der Anforderungsanalyst bei Rozoom-KI. Ich helfe Ihnen, ein technisches Lastenheft "
+        prompt = (f"Ich bin der Anforderungsanalyst bei Andrii-IT. Ich helfe Ihnen, ein technisches Lastenheft "
                  f"zu erstellen. Lassen Sie uns mit dem Abschnitt '{section['title']}' beginnen.\n\n")
                  
         for i, question in enumerate(questions):
-            prompt += f"• {question}\n"
+            prompt += f"вЂў {question}\n"
             
-        prompt += ("\nBitte beantworten Sie eine Frage nach der anderen. Wenn Sie fertig sind, werde ich zum nächsten "
-                  "Abschnitt übergehen. Ihre Antworten helfen uns, ein maßgeschneidertes Angebot für Ihr Projekt zu erstellen.")
+        prompt += ("\nBitte beantworten Sie eine Frage nach der anderen. Wenn Sie fertig sind, werde ich zum nГ¤chsten "
+                  "Abschnitt Гјbergehen. Ihre Antworten helfen uns, ein maГџgeschneidertes Angebot fГјr Ihr Projekt zu erstellen.")
     else:
-        prompt = (f"I am the Requirements Analyst at Rozoom-KI. I'm here to help you create a technical specification. "
+        prompt = (f"I am the Requirements Analyst at Andrii-IT. I'm here to help you create a technical specification. "
                  f"Let's start with the '{section['title']}' section.\n\n")
                  
         for i, question in enumerate(questions):
-            prompt += f"• {question}\n"
+            prompt += f"вЂў {question}\n"
             
         prompt += ("\nPlease answer one question at a time. When you're done, I'll move on to the next section. "
                   "Your answers will help us create a tailored proposal for your project.")
     
     return prompt
+

@@ -1,5 +1,5 @@
 /**
- * Main TypeScript file for Rozoom-KI application
+ * Main TypeScript file for Andrii-IT application
  * Place your TypeScript code here
  */
 

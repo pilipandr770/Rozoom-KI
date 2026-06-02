@@ -1,14 +1,14 @@
-# Дополнительные переводы для сайта Rozoom-KI
+﻿# Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РїРµСЂРµРІРѕРґС‹ РґР»СЏ СЃР°Р№С‚Р° Andrii-IT
 
-# Главная страница (index.html)
+# Р“Р»Р°РІРЅР°СЏ СЃС‚СЂР°РЅРёС†Р° (index.html)
 msgid "Create Your Personal Account"
-msgstr "Erstellen Sie Ihr persönliches Konto"
+msgstr "Erstellen Sie Ihr persГ¶nliches Konto"
 
 msgid "Track your projects, access personalized services, and collaborate with our team in real-time."
 msgstr "Verfolgen Sie Ihre Projekte, greifen Sie auf personalisierte Dienste zu und arbeiten Sie in Echtzeit mit unserem Team zusammen."
 
 msgid "Personal dashboard to monitor project progress"
-msgstr "Persönliches Dashboard zur Überwachung des Projektfortschritts"
+msgstr "PersГ¶nliches Dashboard zur Гњberwachung des Projektfortschritts"
 
 msgid "Direct messaging with our development team"
 msgstr "Direkte Nachrichten mit unserem Entwicklungsteam"
@@ -28,19 +28,19 @@ msgstr "Konto erstellen"
 msgid "Already have an account? Login"
 msgstr "Haben Sie bereits ein Konto? Anmelden"
 
-# Чат-виджет (base.html)
+# Р§Р°С‚-РІРёРґР¶РµС‚ (base.html)
 msgid "AI Assistant"
 msgstr "KI-Assistent"
 
 msgid "Type your message..."
 msgstr "Schreiben Sie Ihre Nachricht..."
 
-# Страница цен (pricing.html)
+# РЎС‚СЂР°РЅРёС†Р° С†РµРЅ (pricing.html)
 msgid "Choose Your Package"
-msgstr "Wählen Sie Ihr Paket"
+msgstr "WГ¤hlen Sie Ihr Paket"
 
 msgid "Get the perfect amount of development time for your project needs"
-msgstr "Erhalten Sie die perfekte Menge an Entwicklungszeit für Ihre Projektanforderungen"
+msgstr "Erhalten Sie die perfekte Menge an Entwicklungszeit fГјr Ihre Projektanforderungen"
 
 msgid "Most Popular"
 msgstr "Am beliebtesten"
@@ -55,10 +55,10 @@ msgid "Custom Package"
 msgstr "Individuelles Paket"
 
 msgid "Tailored to Your Needs"
-msgstr "Maßgeschneidert für Ihre Bedürfnisse"
+msgstr "MaГџgeschneidert fГјr Ihre BedГјrfnisse"
 
 msgid "For special requirements"
-msgstr "Für besondere Anforderungen"
+msgstr "FГјr besondere Anforderungen"
 
 msgid "Flexible hours"
 msgstr "Flexible Stunden"
@@ -70,10 +70,10 @@ msgid "Dedicated support"
 msgstr "Dedizierter Support"
 
 msgid "Priority service"
-msgstr "Prioritätsservice"
+msgstr "PrioritГ¤tsservice"
 
 msgid "Enterprise solutions"
-msgstr "Unternehmenslösungen"
+msgstr "UnternehmenslГ¶sungen"
 
 msgid "Get in Touch"
 msgstr "Kontakt aufnehmen"
@@ -82,9 +82,9 @@ msgid "Need Help Choosing?"
 msgstr "Brauchen Sie Hilfe bei der Auswahl?"
 
 msgid "Contact our team for a free consultation and we'll help you select the perfect package for your project."
-msgstr "Kontaktieren Sie unser Team für eine kostenlose Beratung und wir helfen Ihnen, das perfekte Paket für Ihr Projekt auszuwählen."
+msgstr "Kontaktieren Sie unser Team fГјr eine kostenlose Beratung und wir helfen Ihnen, das perfekte Paket fГјr Ihr Projekt auszuwГ¤hlen."
 
-# Элементы макросов и альтернативные тексты
+# Р­Р»РµРјРµРЅС‚С‹ РјР°РєСЂРѕСЃРѕРІ Рё Р°Р»СЊС‚РµСЂРЅР°С‚РёРІРЅС‹Рµ С‚РµРєСЃС‚С‹
 msgid "English Flag"
 msgstr "Englische Flagge"
 
@@ -92,14 +92,14 @@ msgid "German Flag"
 msgstr "Deutsche Flagge"
 
 msgid "Search posts..."
-msgstr "Beiträge suchen..."
+msgstr "BeitrГ¤ge suchen..."
 
-# Макросы для доступности (aria-label)
+# РњР°РєСЂРѕСЃС‹ РґР»СЏ РґРѕСЃС‚СѓРїРЅРѕСЃС‚Рё (aria-label)
 msgid "Close"
-msgstr "Schließen"
+msgstr "SchlieГџen"
 
 msgid "Previous"
-msgstr "Zurück"
+msgstr "ZurГјck"
 
 msgid "Next"
 msgstr "Weiter"
@@ -110,6 +110,7 @@ msgstr "Seitennavigation"
 msgid "Rozoom Assistant"
 msgstr "Rozoom-Assistent"
 
-# Дополнительные элементы форм
+# Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ СЌР»РµРјРµРЅС‚С‹ С„РѕСЂРј
 msgid "Choose a username or leave blank to use your email"
-msgstr "Wählen Sie einen Benutzernamen oder lassen Sie das Feld leer, um Ihre E-Mail zu verwenden"
+msgstr "WГ¤hlen Sie einen Benutzernamen oder lassen Sie das Feld leer, um Ihre E-Mail zu verwenden"
+

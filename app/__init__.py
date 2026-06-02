@@ -144,6 +144,19 @@ def create_app():
         # Configure PostgreSQL schema at metadata level AFTER models are imported
         if 'postgresql' in app.config['SQLALCHEMY_DATABASE_URI']:
             schema = app.config.get('POSTGRES_SCHEMA', 'rozoom_ki_schema')
+            schema_candidates = [
+                app.config.get('POSTGRES_SCHEMA'),
+                app.config.get('POSTGRES_SCHEMA_CLIENTS'),
+                app.config.get('POSTGRES_SCHEMA_PROJECTS'),
+                app.config.get('POSTGRES_SCHEMA_SHOP'),
+            ]
+
+            # Ensure all project schemas exist before model/table initialization.
+            for schema_name in {s for s in schema_candidates if s}:
+                safe_schema = schema_name.replace('"', '""')
+                db.session.execute(text(f'CREATE SCHEMA IF NOT EXISTS "{safe_schema}"'))
+            db.session.commit()
+
             # Set schema on metadata
             db.metadata.schema = schema
             # Also set schema on all existing tables

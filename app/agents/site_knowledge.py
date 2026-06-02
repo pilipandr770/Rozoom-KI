@@ -1,29 +1,29 @@
 """
-Модуль содержит структурированную информацию о сайте Rozoom-KI
-для использования в промптах чат-ассистентов
+РњРѕРґСѓР»СЊ СЃРѕРґРµСЂР¶РёС‚ СЃС‚СЂСѓРєС‚СѓСЂРёСЂРѕРІР°РЅРЅСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ СЃР°Р№С‚Рµ Andrii-IT
+РґР»СЏ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ РІ РїСЂРѕРјРїС‚Р°С… С‡Р°С‚-Р°СЃСЃРёСЃС‚РµРЅС‚РѕРІ
 """
 
-# Структура сайта и назначение страниц
+# РЎС‚СЂСѓРєС‚СѓСЂР° СЃР°Р№С‚Р° Рё РЅР°Р·РЅР°С‡РµРЅРёРµ СЃС‚СЂР°РЅРёС†
 SITE_STRUCTURE = {
     "home": {
         "de": {
             "title": "Startseite",
             "path": "/",
-            "description": "Hauptseite von Rozoom-KI mit Überblick über unsere KI-gestützten Entwicklungsdienstleistungen",
-            "purpose": "Präsentation unserer Hauptdienstleistungen und Generierung von Kundenanfragen für Softwareentwicklungsprojekte",
-            "key_elements": ["Hero-Banner", "Dienstleistungsübersicht", "Fallstudien", "Team", "Kontaktformular"]
+            "description": "Hauptseite von Andrii-IT mit Гњberblick Гјber unsere KI-gestГјtzten Entwicklungsdienstleistungen",
+            "purpose": "PrГ¤sentation unserer Hauptdienstleistungen und Generierung von Kundenanfragen fГјr Softwareentwicklungsprojekte",
+            "key_elements": ["Hero-Banner", "DienstleistungsГјbersicht", "Fallstudien", "Team", "Kontaktformular"]
         },
         "ru": {
-            "title": "Главная",
+            "title": "Р“Р»Р°РІРЅР°СЏ",
             "path": "/",
-            "description": "Главная страница Rozoom-KI с обзором наших услуг по разработке с использованием ИИ",
-            "purpose": "Презентация наших основных услуг и генерация клиентских запросов на разработку программного обеспечения",
-            "key_elements": ["Баннер", "Обзор услуг", "Примеры работ", "Команда", "Контактная форма"]
+            "description": "Р“Р»Р°РІРЅР°СЏ СЃС‚СЂР°РЅРёС†Р° Andrii-IT СЃ РѕР±Р·РѕСЂРѕРј РЅР°С€РёС… СѓСЃР»СѓРі РїРѕ СЂР°Р·СЂР°Р±РѕС‚РєРµ СЃ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµРј РР",
+            "purpose": "РџСЂРµР·РµРЅС‚Р°С†РёСЏ РЅР°С€РёС… РѕСЃРЅРѕРІРЅС‹С… СѓСЃР»СѓРі Рё РіРµРЅРµСЂР°С†РёСЏ РєР»РёРµРЅС‚СЃРєРёС… Р·Р°РїСЂРѕСЃРѕРІ РЅР° СЂР°Р·СЂР°Р±РѕС‚РєСѓ РїСЂРѕРіСЂР°РјРјРЅРѕРіРѕ РѕР±РµСЃРїРµС‡РµРЅРёСЏ",
+            "key_elements": ["Р‘Р°РЅРЅРµСЂ", "РћР±Р·РѕСЂ СѓСЃР»СѓРі", "РџСЂРёРјРµСЂС‹ СЂР°Р±РѕС‚", "РљРѕРјР°РЅРґР°", "РљРѕРЅС‚Р°РєС‚РЅР°СЏ С„РѕСЂРјР°"]
         },
         "en": {
             "title": "Homepage",
             "path": "/",
-            "description": "Main page of Rozoom-KI with overview of our AI-powered development services",
+            "description": "Main page of Andrii-IT with overview of our AI-powered development services",
             "purpose": "Presentation of our main services and generation of client inquiries for software development projects",
             "key_elements": ["Hero Banner", "Services Overview", "Case Studies", "Team", "Contact Form"]
         }
@@ -32,16 +32,16 @@ SITE_STRUCTURE = {
         "de": {
             "title": "Dienstleistungen",
             "path": "/services",
-            "description": "Detaillierte Übersicht unserer Dienstleistungen im Bereich Softwareentwicklung und KI-Integration",
+            "description": "Detaillierte Гњbersicht unserer Dienstleistungen im Bereich Softwareentwicklung und KI-Integration",
             "purpose": "Potentiellen Kunden einen tieferen Einblick in unsere Entwicklungsdienstleistungen geben",
             "key_elements": ["Web-Entwicklung", "Mobile App-Entwicklung", "KI-Integration", "Datenanalyse", "UX/UI Design"]
         },
         "ru": {
-            "title": "Услуги",
+            "title": "РЈСЃР»СѓРіРё",
             "path": "/services",
-            "description": "Подробный обзор наших услуг в области разработки ПО и интеграции ИИ",
-            "purpose": "Предоставить потенциальным клиентам более глубокое понимание наших услуг по разработке",
-            "key_elements": ["Веб-разработка", "Разработка мобильных приложений", "Интеграция ИИ", "Анализ данных", "UX/UI дизайн"]
+            "description": "РџРѕРґСЂРѕР±РЅС‹Р№ РѕР±Р·РѕСЂ РЅР°С€РёС… СѓСЃР»СѓРі РІ РѕР±Р»Р°СЃС‚Рё СЂР°Р·СЂР°Р±РѕС‚РєРё РџРћ Рё РёРЅС‚РµРіСЂР°С†РёРё РР",
+            "purpose": "РџСЂРµРґРѕСЃС‚Р°РІРёС‚СЊ РїРѕС‚РµРЅС†РёР°Р»СЊРЅС‹Рј РєР»РёРµРЅС‚Р°Рј Р±РѕР»РµРµ РіР»СѓР±РѕРєРѕРµ РїРѕРЅРёРјР°РЅРёРµ РЅР°С€РёС… СѓСЃР»СѓРі РїРѕ СЂР°Р·СЂР°Р±РѕС‚РєРµ",
+            "key_elements": ["Р’РµР±-СЂР°Р·СЂР°Р±РѕС‚РєР°", "Р Р°Р·СЂР°Р±РѕС‚РєР° РјРѕР±РёР»СЊРЅС‹С… РїСЂРёР»РѕР¶РµРЅРёР№", "РРЅС‚РµРіСЂР°С†РёСЏ РР", "РђРЅР°Р»РёР· РґР°РЅРЅС‹С…", "UX/UI РґРёР·Р°Р№РЅ"]
         },
         "en": {
             "title": "Services",
@@ -60,11 +60,11 @@ SITE_STRUCTURE = {
             "key_elements": ["Filterbarer Projektkatalog", "Detaillierte Fallstudien", "Technologie-Stack", "Kundenreferenzen"]
         },
         "ru": {
-            "title": "Проекты",
+            "title": "РџСЂРѕРµРєС‚С‹",
             "path": "/projects",
-            "description": "Примеры и кейсы проектов, которые мы успешно завершили",
-            "purpose": "Демонстрация нашего опыта и экспертизы в разработке различных типов программного обеспечения",
-            "key_elements": ["Фильтруемый каталог проектов", "Детальные кейсы", "Технологический стек", "Отзывы клиентов"]
+            "description": "РџСЂРёРјРµСЂС‹ Рё РєРµР№СЃС‹ РїСЂРѕРµРєС‚РѕРІ, РєРѕС‚РѕСЂС‹Рµ РјС‹ СѓСЃРїРµС€РЅРѕ Р·Р°РІРµСЂС€РёР»Рё",
+            "purpose": "Р”РµРјРѕРЅСЃС‚СЂР°С†РёСЏ РЅР°С€РµРіРѕ РѕРїС‹С‚Р° Рё СЌРєСЃРїРµСЂС‚РёР·С‹ РІ СЂР°Р·СЂР°Р±РѕС‚РєРµ СЂР°Р·Р»РёС‡РЅС‹С… С‚РёРїРѕРІ РїСЂРѕРіСЂР°РјРјРЅРѕРіРѕ РѕР±РµСЃРїРµС‡РµРЅРёСЏ",
+            "key_elements": ["Р¤РёР»СЊС‚СЂСѓРµРјС‹Р№ РєР°С‚Р°Р»РѕРі РїСЂРѕРµРєС‚РѕРІ", "Р”РµС‚Р°Р»СЊРЅС‹Рµ РєРµР№СЃС‹", "РўРµС…РЅРѕР»РѕРіРёС‡РµСЃРєРёР№ СЃС‚РµРє", "РћС‚Р·С‹РІС‹ РєР»РёРµРЅС‚РѕРІ"]
         },
         "en": {
             "title": "Projects",
@@ -76,18 +76,18 @@ SITE_STRUCTURE = {
     },
     "about": {
         "de": {
-            "title": "Über uns",
+            "title": "Гњber uns",
             "path": "/about",
-            "description": "Informationen über unser Team, unsere Geschichte und unsere Mission",
-            "purpose": "Vertrauensaufbau durch Transparenz über unser Unternehmen und unser Team",
+            "description": "Informationen Гјber unser Team, unsere Geschichte und unsere Mission",
+            "purpose": "Vertrauensaufbau durch Transparenz Гјber unser Unternehmen und unser Team",
             "key_elements": ["Unternehmensgeschichte", "Team-Mitglieder", "Mission und Vision", "Arbeitskultur"]
         },
         "ru": {
-            "title": "О нас",
+            "title": "Рћ РЅР°СЃ",
             "path": "/about",
-            "description": "Информация о нашей команде, истории и миссии",
-            "purpose": "Построение доверия через прозрачность о нашей компании и команде",
-            "key_elements": ["История компании", "Члены команды", "Миссия и видение", "Рабочая культура"]
+            "description": "РРЅС„РѕСЂРјР°С†РёСЏ Рѕ РЅР°С€РµР№ РєРѕРјР°РЅРґРµ, РёСЃС‚РѕСЂРёРё Рё РјРёСЃСЃРёРё",
+            "purpose": "РџРѕСЃС‚СЂРѕРµРЅРёРµ РґРѕРІРµСЂРёСЏ С‡РµСЂРµР· РїСЂРѕР·СЂР°С‡РЅРѕСЃС‚СЊ Рѕ РЅР°С€РµР№ РєРѕРјРїР°РЅРёРё Рё РєРѕРјР°РЅРґРµ",
+            "key_elements": ["РСЃС‚РѕСЂРёСЏ РєРѕРјРїР°РЅРёРё", "Р§Р»РµРЅС‹ РєРѕРјР°РЅРґС‹", "РњРёСЃСЃРёСЏ Рё РІРёРґРµРЅРёРµ", "Р Р°Р±РѕС‡Р°СЏ РєСѓР»СЊС‚СѓСЂР°"]
         },
         "en": {
             "title": "About Us",
@@ -101,16 +101,16 @@ SITE_STRUCTURE = {
         "de": {
             "title": "Kontakt",
             "path": "/contact",
-            "description": "Kontaktformulare und Informationen für potentielle Kunden",
-            "purpose": "Einfache Möglichkeit für Besucher, mit uns in Kontakt zu treten und Anfragen zu stellen",
+            "description": "Kontaktformulare und Informationen fГјr potentielle Kunden",
+            "purpose": "Einfache MГ¶glichkeit fГјr Besucher, mit uns in Kontakt zu treten und Anfragen zu stellen",
             "key_elements": ["Kontaktformular", "Adresse", "E-Mail", "Telefon", "Karte"]
         },
         "ru": {
-            "title": "Контакты",
+            "title": "РљРѕРЅС‚Р°РєС‚С‹",
             "path": "/contact",
-            "description": "Контактные формы и информация для потенциальных клиентов",
-            "purpose": "Простой способ для посетителей связаться с нами и задать вопросы",
-            "key_elements": ["Контактная форма", "Адрес", "Email", "Телефон", "Карта"]
+            "description": "РљРѕРЅС‚Р°РєС‚РЅС‹Рµ С„РѕСЂРјС‹ Рё РёРЅС„РѕСЂРјР°С†РёСЏ РґР»СЏ РїРѕС‚РµРЅС†РёР°Р»СЊРЅС‹С… РєР»РёРµРЅС‚РѕРІ",
+            "purpose": "РџСЂРѕСЃС‚РѕР№ СЃРїРѕСЃРѕР± РґР»СЏ РїРѕСЃРµС‚РёС‚РµР»РµР№ СЃРІСЏР·Р°С‚СЊСЃСЏ СЃ РЅР°РјРё Рё Р·Р°РґР°С‚СЊ РІРѕРїСЂРѕСЃС‹",
+            "key_elements": ["РљРѕРЅС‚Р°РєС‚РЅР°СЏ С„РѕСЂРјР°", "РђРґСЂРµСЃ", "Email", "РўРµР»РµС„РѕРЅ", "РљР°СЂС‚Р°"]
         },
         "en": {
             "title": "Contact",
@@ -124,16 +124,16 @@ SITE_STRUCTURE = {
         "de": {
             "title": "Projektanfrage",
             "path": "/brief",
-            "description": "Ein strukturiertes Formular für Kunden, um ihre Projektanforderungen zu spezifizieren",
-            "purpose": "Sammlung detaillierter Informationen über potentielle Projekte, um personalisierte Angebote erstellen zu können",
-            "key_elements": ["15-Fragen-Formular", "Anforderungserfassung", "Budget-Schätzung", "Zeitplan-Erfassung"]
+            "description": "Ein strukturiertes Formular fГјr Kunden, um ihre Projektanforderungen zu spezifizieren",
+            "purpose": "Sammlung detaillierter Informationen Гјber potentielle Projekte, um personalisierte Angebote erstellen zu kГ¶nnen",
+            "key_elements": ["15-Fragen-Formular", "Anforderungserfassung", "Budget-SchГ¤tzung", "Zeitplan-Erfassung"]
         },
         "ru": {
-            "title": "Запрос проекта",
+            "title": "Р—Р°РїСЂРѕСЃ РїСЂРѕРµРєС‚Р°",
             "path": "/brief",
-            "description": "Структурированная форма для клиентов для указания требований к проекту",
-            "purpose": "Сбор подробной информации о потенциальных проектах для создания персонализированных предложений",
-            "key_elements": ["Форма из 15 вопросов", "Сбор требований", "Оценка бюджета", "Фиксация сроков"]
+            "description": "РЎС‚СЂСѓРєС‚СѓСЂРёСЂРѕРІР°РЅРЅР°СЏ С„РѕСЂРјР° РґР»СЏ РєР»РёРµРЅС‚РѕРІ РґР»СЏ СѓРєР°Р·Р°РЅРёСЏ С‚СЂРµР±РѕРІР°РЅРёР№ Рє РїСЂРѕРµРєС‚Сѓ",
+            "purpose": "РЎР±РѕСЂ РїРѕРґСЂРѕР±РЅРѕР№ РёРЅС„РѕСЂРјР°С†РёРё Рѕ РїРѕС‚РµРЅС†РёР°Р»СЊРЅС‹С… РїСЂРѕРµРєС‚Р°С… РґР»СЏ СЃРѕР·РґР°РЅРёСЏ РїРµСЂСЃРѕРЅР°Р»РёР·РёСЂРѕРІР°РЅРЅС‹С… РїСЂРµРґР»РѕР¶РµРЅРёР№",
+            "key_elements": ["Р¤РѕСЂРјР° РёР· 15 РІРѕРїСЂРѕСЃРѕРІ", "РЎР±РѕСЂ С‚СЂРµР±РѕРІР°РЅРёР№", "РћС†РµРЅРєР° Р±СЋРґР¶РµС‚Р°", "Р¤РёРєСЃР°С†РёСЏ СЃСЂРѕРєРѕРІ"]
         },
         "en": {
             "title": "Project Brief",
@@ -147,16 +147,16 @@ SITE_STRUCTURE = {
         "de": {
             "title": "Blog",
             "path": "/blog",
-            "description": "Artikel über Softwareentwicklung, KI, Technologietrends und Branchennachrichten",
-            "purpose": "Demonstration unserer Fachkompetenz und Verbesserung des SEO durch regelmäßige Inhaltsveröffentlichung",
+            "description": "Artikel Гјber Softwareentwicklung, KI, Technologietrends und Branchennachrichten",
+            "purpose": "Demonstration unserer Fachkompetenz und Verbesserung des SEO durch regelmГ¤Гџige InhaltsverГ¶ffentlichung",
             "key_elements": ["Artikel nach Kategorien", "KI-Trends", "Entwicklungstipps", "Branchennachrichten"]
         },
         "ru": {
-            "title": "Блог",
+            "title": "Р‘Р»РѕРі",
             "path": "/blog",
-            "description": "Статьи о разработке программного обеспечения, ИИ, технологических тенденциях и отраслевых новостях",
-            "purpose": "Демонстрация нашей экспертизы и улучшение SEO через регулярные публикации контента",
-            "key_elements": ["Статьи по категориям", "Тренды ИИ", "Советы по разработке", "Новости индустрии"]
+            "description": "РЎС‚Р°С‚СЊРё Рѕ СЂР°Р·СЂР°Р±РѕС‚РєРµ РїСЂРѕРіСЂР°РјРјРЅРѕРіРѕ РѕР±РµСЃРїРµС‡РµРЅРёСЏ, РР, С‚РµС…РЅРѕР»РѕРіРёС‡РµСЃРєРёС… С‚РµРЅРґРµРЅС†РёСЏС… Рё РѕС‚СЂР°СЃР»РµРІС‹С… РЅРѕРІРѕСЃС‚СЏС…",
+            "purpose": "Р”РµРјРѕРЅСЃС‚СЂР°С†РёСЏ РЅР°С€РµР№ СЌРєСЃРїРµСЂС‚РёР·С‹ Рё СѓР»СѓС‡С€РµРЅРёРµ SEO С‡РµСЂРµР· СЂРµРіСѓР»СЏСЂРЅС‹Рµ РїСѓР±Р»РёРєР°С†РёРё РєРѕРЅС‚РµРЅС‚Р°",
+            "key_elements": ["РЎС‚Р°С‚СЊРё РїРѕ РєР°С‚РµРіРѕСЂРёСЏРј", "РўСЂРµРЅРґС‹ РР", "РЎРѕРІРµС‚С‹ РїРѕ СЂР°Р·СЂР°Р±РѕС‚РєРµ", "РќРѕРІРѕСЃС‚Рё РёРЅРґСѓСЃС‚СЂРёРё"]
         },
         "en": {
             "title": "Blog",
@@ -168,8 +168,8 @@ SITE_STRUCTURE = {
     }
 }
 
-# Структура формы ТЗ на странице «Услуги» (/services)
-# Локализованные поля и краткие подсказки для ассистента-специфікатора
+# РЎС‚СЂСѓРєС‚СѓСЂР° С„РѕСЂРјС‹ РўР— РЅР° СЃС‚СЂР°РЅРёС†Рµ В«РЈСЃР»СѓРіРёВ» (/services)
+# Р›РѕРєР°Р»РёР·РѕРІР°РЅРЅС‹Рµ РїРѕР»СЏ Рё РєСЂР°С‚РєРёРµ РїРѕРґСЃРєР°Р·РєРё РґР»СЏ Р°СЃСЃРёСЃС‚РµРЅС‚Р°-СЃРїРµС†РёС„С–РєР°С‚РѕСЂР°
 SERVICES_TZ_FORM = {
     "en": {
         "form_title": "Technical Specification (TZ) form",
@@ -201,164 +201,164 @@ SERVICES_TZ_FORM = {
                 "fields": ["Budget range", "Timeline / milestones", "Tech preferences (if any)"]
             }
         ],
-        "cta": "Open the Services page (/services), I’ll guide you step-by-step and prefill answers where possible."
+        "cta": "Open the Services page (/services), IвЂ™ll guide you step-by-step and prefill answers where possible."
     },
     "ru": {
-        "form_title": "Форма технического задания (ТЗ)",
+        "form_title": "Р¤РѕСЂРјР° С‚РµС…РЅРёС‡РµСЃРєРѕРіРѕ Р·Р°РґР°РЅРёСЏ (РўР—)",
         "path": "/services",
-        "intro": "На странице «Услуги» можно заполнить краткий бриф для старта ТЗ.",
+        "intro": "РќР° СЃС‚СЂР°РЅРёС†Рµ В«РЈСЃР»СѓРіРёВ» РјРѕР¶РЅРѕ Р·Р°РїРѕР»РЅРёС‚СЊ РєСЂР°С‚РєРёР№ Р±СЂРёС„ РґР»СЏ СЃС‚Р°СЂС‚Р° РўР—.",
         "sections": [
             {
-                "title": "Контакты",
-                "fields": ["Имя", "Email", "Телефон (необязательно)"]
+                "title": "РљРѕРЅС‚Р°РєС‚С‹",
+                "fields": ["РРјСЏ", "Email", "РўРµР»РµС„РѕРЅ (РЅРµРѕР±СЏР·Р°С‚РµР»СЊРЅРѕ)"]
             },
             {
-                "title": "Базовая информация о проекте",
+                "title": "Р‘Р°Р·РѕРІР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ Рѕ РїСЂРѕРµРєС‚Рµ",
                 "fields": [
-                    "Тип (сайт, веб‑приложение, мобильное, бот, интеграции)",
-                    "Главная цель / бизнес‑результат",
-                    "Целевая аудитория / пользователи"
+                    "РўРёРї (СЃР°Р№С‚, РІРµР±вЂ‘РїСЂРёР»РѕР¶РµРЅРёРµ, РјРѕР±РёР»СЊРЅРѕРµ, Р±РѕС‚, РёРЅС‚РµРіСЂР°С†РёРё)",
+                    "Р“Р»Р°РІРЅР°СЏ С†РµР»СЊ / Р±РёР·РЅРµСЃвЂ‘СЂРµР·СѓР»СЊС‚Р°С‚",
+                    "Р¦РµР»РµРІР°СЏ Р°СѓРґРёС‚РѕСЂРёСЏ / РїРѕР»СЊР·РѕРІР°С‚РµР»Рё"
                 ]
             },
             {
-                "title": "Объем и функциональность",
+                "title": "РћР±СЉРµРј Рё С„СѓРЅРєС†РёРѕРЅР°Р»СЊРЅРѕСЃС‚СЊ",
                 "fields": [
-                    "Ключевые функции (MVP)",
-                    "Интеграции (платежи, CRM, AI, мессенджеры)",
-                    "Контент/данные (языки, GDPR, персональные данные)"
+                    "РљР»СЋС‡РµРІС‹Рµ С„СѓРЅРєС†РёРё (MVP)",
+                    "РРЅС‚РµРіСЂР°С†РёРё (РїР»Р°С‚РµР¶Рё, CRM, AI, РјРµСЃСЃРµРЅРґР¶РµСЂС‹)",
+                    "РљРѕРЅС‚РµРЅС‚/РґР°РЅРЅС‹Рµ (СЏР·С‹РєРё, GDPR, РїРµСЂСЃРѕРЅР°Р»СЊРЅС‹Рµ РґР°РЅРЅС‹Рµ)"
                 ]
             },
             {
-                "title": "Ограничения",
-                "fields": ["Бюджет", "Сроки / этапы", "Технологические предпочтения (если есть)"]
+                "title": "РћРіСЂР°РЅРёС‡РµРЅРёСЏ",
+                "fields": ["Р‘СЋРґР¶РµС‚", "РЎСЂРѕРєРё / СЌС‚Р°РїС‹", "РўРµС…РЅРѕР»РѕРіРёС‡РµСЃРєРёРµ РїСЂРµРґРїРѕС‡С‚РµРЅРёСЏ (РµСЃР»Рё РµСЃС‚СЊ)"]
             }
         ],
-        "cta": "Откройте страницу /services — я помогу пройти форму и заполню черновик ТЗ."
+        "cta": "РћС‚РєСЂРѕР№С‚Рµ СЃС‚СЂР°РЅРёС†Сѓ /services — СЏ РїРѕРјРѕРіСѓ РїСЂРѕР№С‚Рё С„РѕСЂРјСѓ Рё Р·Р°РїРѕР»РЅСЋ С‡РµСЂРЅРѕРІРёРє РўР—."
     },
     "uk": {
-        "form_title": "Форма технічного завдання (ТЗ)",
+        "form_title": "Р¤РѕСЂРјР° С‚РµС…РЅС–С‡РЅРѕРіРѕ Р·Р°РІРґР°РЅРЅСЏ (РўР—)",
         "path": "/services",
-        "intro": "На сторінці «Сервіси» можна заповнити короткий бриф для старту ТЗ.",
+        "intro": "РќР° СЃС‚РѕСЂС–РЅС†С– В«РЎРµСЂРІС–СЃРёВ» РјРѕР¶РЅР° Р·Р°РїРѕРІРЅРёС‚Рё РєРѕСЂРѕС‚РєРёР№ Р±СЂРёС„ РґР»СЏ СЃС‚Р°СЂС‚Сѓ РўР—.",
         "sections": [
             {
-                "title": "Контакти",
-                "fields": ["Ім’я", "Email", "Телефон (необов’язково)"]
+                "title": "РљРѕРЅС‚Р°РєС‚Рё",
+                "fields": ["Р†РјвЂ™СЏ", "Email", "РўРµР»РµС„РѕРЅ (РЅРµРѕР±РѕРІвЂ™СЏР·РєРѕРІРѕ)"]
             },
             {
-                "title": "Базова інформація про проєкт",
+                "title": "Р‘Р°Р·РѕРІР° С–РЅС„РѕСЂРјР°С†С–СЏ РїСЂРѕ РїСЂРѕС”РєС‚",
                 "fields": [
-                    "Тип (сайт, веб‑додаток, мобільний, бот, інтеграції)",
-                    "Головна ціль / бізнес‑результат",
-                    "Цільова аудиторія / користувачі"
+                    "РўРёРї (СЃР°Р№С‚, РІРµР±вЂ‘РґРѕРґР°С‚РѕРє, РјРѕР±С–Р»СЊРЅРёР№, Р±РѕС‚, С–РЅС‚РµРіСЂР°С†С–С—)",
+                    "Р“РѕР»РѕРІРЅР° С†С–Р»СЊ / Р±С–Р·РЅРµСЃвЂ‘СЂРµР·СѓР»СЊС‚Р°С‚",
+                    "Р¦С–Р»СЊРѕРІР° Р°СѓРґРёС‚РѕСЂС–СЏ / РєРѕСЂРёСЃС‚СѓРІР°С‡С–"
                 ]
             },
             {
-                "title": "Обсяг і функціональність",
+                "title": "РћР±СЃСЏРі С– С„СѓРЅРєС†С–РѕРЅР°Р»СЊРЅС–СЃС‚СЊ",
                 "fields": [
-                    "Ключові функції (MVP)",
-                    "Інтеграції (платежі, CRM, AI, месенджери)",
-                    "Контент/дані (мови, GDPR, персональні дані)"
+                    "РљР»СЋС‡РѕРІС– С„СѓРЅРєС†С–С— (MVP)",
+                    "Р†РЅС‚РµРіСЂР°С†С–С— (РїР»Р°С‚РµР¶С–, CRM, AI, РјРµСЃРµРЅРґР¶РµСЂРё)",
+                    "РљРѕРЅС‚РµРЅС‚/РґР°РЅС– (РјРѕРІРё, GDPR, РїРµСЂСЃРѕРЅР°Р»СЊРЅС– РґР°РЅС–)"
                 ]
             },
             {
-                "title": "Обмеження",
-                "fields": ["Бюджет", "Терміни / етапи", "Технологічні вподобання (якщо є)"]
+                "title": "РћР±РјРµР¶РµРЅРЅСЏ",
+                "fields": ["Р‘СЋРґР¶РµС‚", "РўРµСЂРјС–РЅРё / РµС‚Р°РїРё", "РўРµС…РЅРѕР»РѕРіС–С‡РЅС– РІРїРѕРґРѕР±Р°РЅРЅСЏ (СЏРєС‰Рѕ С”)"]
             }
         ],
-        "cta": "Відкрийте сторінку /services — я проведу по формі та підготую чорновик ТЗ."
+        "cta": "Р’С–РґРєСЂРёР№С‚Рµ СЃС‚РѕСЂС–РЅРєСѓ /services — СЏ РїСЂРѕРІРµРґСѓ РїРѕ С„РѕСЂРјС– С‚Р° РїС–РґРіРѕС‚СѓСЋ С‡РѕСЂРЅРѕРІРёРє РўР—."
     },
     "de": {
-        "form_title": "Technisches Aufgabenblatt (TZ) – Formular",
+        "form_title": "Technisches Aufgabenblatt (TZ) вЂ“ Formular",
         "path": "/services",
-        "intro": "Auf der Seite Dienstleistungen können Sie ein kurzes Briefing für das TZ ausfüllen.",
+        "intro": "Auf der Seite Dienstleistungen kГ¶nnen Sie ein kurzes Briefing fГјr das TZ ausfГјllen.",
         "sections": [
             {
                 "title": "Kontaktdaten",
-                "fields": ["Name", "E‑Mail", "Telefon (optional)"]
+                "fields": ["Name", "EвЂ‘Mail", "Telefon (optional)"]
             },
             {
                 "title": "Projektgrundlagen",
                 "fields": [
-                    "Typ (Website, Web‑App, Mobile, Bot, Integrationen)",
-                    "Hauptziel / Business‑Outcome",
+                    "Typ (Website, WebвЂ‘App, Mobile, Bot, Integrationen)",
+                    "Hauptziel / BusinessвЂ‘Outcome",
                     "Zielgruppe / Nutzer"
                 ]
             },
             {
                 "title": "Umfang & Features",
                 "fields": [
-                    "Schlüsselfunktionen (MVP)",
+                    "SchlГјsselfunktionen (MVP)",
                     "Integrationen (Zahlungen, CRM, KI, Messenger)",
                     "Inhalt/Daten (Sprachen, DSGVO, personenbezogene Daten)"
                 ]
             },
             {
                 "title": "Rahmenbedingungen",
-                "fields": ["Budget", "Zeitplan / Meilensteine", "Tech‑Präferenzen (falls vorhanden)"]
+                "fields": ["Budget", "Zeitplan / Meilensteine", "TechвЂ‘PrГ¤ferenzen (falls vorhanden)"]
             }
         ],
-        "cta": "Öffnen Sie /services – ich führe Sie durch das Formular und erstelle einen TZ‑Entwurf."
+        "cta": "Г–ffnen Sie /services вЂ“ ich fГјhre Sie durch das Formular und erstelle einen TZвЂ‘Entwurf."
     }
 }
 
-# Подробности о технических заданиях и форме бриф-запроса
+# РџРѕРґСЂРѕР±РЅРѕСЃС‚Рё Рѕ С‚РµС…РЅРёС‡РµСЃРєРёС… Р·Р°РґР°РЅРёСЏС… Рё С„РѕСЂРјРµ Р±СЂРёС„-Р·Р°РїСЂРѕСЃР°
 BRIEF_FORM_INFO = {
     "de": {
         "form_title": "Projektanfrage - Technisches Aufgabenblatt",
         "description": "Ein kostenloses, unverbindliches Formular mit 15 Fragen, das Ihnen hilft, Ihre Projektanforderungen klar zu definieren.",
-        "purpose": "Sammlung ausreichender Informationen, um ein personalisiertes Angebot für Ihr Projekt zu erstellen.",
+        "purpose": "Sammlung ausreichender Informationen, um ein personalisiertes Angebot fГјr Ihr Projekt zu erstellen.",
         "questions": [
             "Art des Projekts (Website, Mobile App, Desktop-Anwendung, etc.)",
             "Hauptziel des Projekts",
             "Zielgruppe",
-            "Gewünschte Funktionen",
+            "GewГјnschte Funktionen",
             "Design-Vorlieben",
             "Bestehende Referenzen oder Beispiele",
             "Technische Anforderungen",
-            "Integrationsbedürfnisse",
+            "IntegrationsbedГјrfnisse",
             "Inhaltsanforderungen",
             "Zeitrahmen",
             "Budget-Bereich",
-            "Nach Fertigstellung benötigte Dienste",
+            "Nach Fertigstellung benГ¶tigte Dienste",
             "Wie haben Sie von uns erfahren?",
             "Bevorzugte Kommunikationsmethode",
-            "Zusätzliche Informationen"
+            "ZusГ¤tzliche Informationen"
         ],
         "benefits": [
             "Kostenlose Projektberatung",
             "Personalisiertes Angebot",
-            "Klarheit über Projektumfang",
-            "Bessere Budget- und Zeitplanschätzungen",
+            "Klarheit Гјber Projektumfang",
+            "Bessere Budget- und ZeitplanschГ¤tzungen",
             "Unverbindliche Anfrage"
         ]
     },
     "ru": {
-        "form_title": "Запрос проекта - Техническое задание",
-        "description": "Бесплатная, ни к чему не обязывающая форма из 15 вопросов, которая поможет вам четко определить требования к проекту.",
-        "purpose": "Сбор достаточной информации для создания персонализированного предложения для вашего проекта.",
+        "form_title": "Р—Р°РїСЂРѕСЃ РїСЂРѕРµРєС‚Р° - РўРµС…РЅРёС‡РµСЃРєРѕРµ Р·Р°РґР°РЅРёРµ",
+        "description": "Р‘РµСЃРїР»Р°С‚РЅР°СЏ, РЅРё Рє С‡РµРјСѓ РЅРµ РѕР±СЏР·С‹РІР°СЋС‰Р°СЏ С„РѕСЂРјР° РёР· 15 РІРѕРїСЂРѕСЃРѕРІ, РєРѕС‚РѕСЂР°СЏ РїРѕРјРѕР¶РµС‚ РІР°Рј С‡РµС‚РєРѕ РѕРїСЂРµРґРµР»РёС‚СЊ С‚СЂРµР±РѕРІР°РЅРёСЏ Рє РїСЂРѕРµРєС‚Сѓ.",
+        "purpose": "РЎР±РѕСЂ РґРѕСЃС‚Р°С‚РѕС‡РЅРѕР№ РёРЅС„РѕСЂРјР°С†РёРё РґР»СЏ СЃРѕР·РґР°РЅРёСЏ РїРµСЂСЃРѕРЅР°Р»РёР·РёСЂРѕРІР°РЅРЅРѕРіРѕ РїСЂРµРґР»РѕР¶РµРЅРёСЏ РґР»СЏ РІР°С€РµРіРѕ РїСЂРѕРµРєС‚Р°.",
         "questions": [
-            "Тип проекта (веб-сайт, мобильное приложение, десктопное приложение и т.д.)",
-            "Основная цель проекта",
-            "Целевая аудитория",
-            "Желаемые функции",
-            "Предпочтения по дизайну",
-            "Существующие референсы или примеры",
-            "Технические требования",
-            "Потребности в интеграции",
-            "Требования к контенту",
-            "Временные рамки",
-            "Диапазон бюджета",
-            "Необходимые услуги после завершения",
-            "Как вы о нас узнали?",
-            "Предпочтительный метод связи",
-            "Дополнительная информация"
+            "РўРёРї РїСЂРѕРµРєС‚Р° (РІРµР±-СЃР°Р№С‚, РјРѕР±РёР»СЊРЅРѕРµ РїСЂРёР»РѕР¶РµРЅРёРµ, РґРµСЃРєС‚РѕРїРЅРѕРµ РїСЂРёР»РѕР¶РµРЅРёРµ Рё С‚.Рґ.)",
+            "РћСЃРЅРѕРІРЅР°СЏ С†РµР»СЊ РїСЂРѕРµРєС‚Р°",
+            "Р¦РµР»РµРІР°СЏ Р°СѓРґРёС‚РѕСЂРёСЏ",
+            "Р–РµР»Р°РµРјС‹Рµ С„СѓРЅРєС†РёРё",
+            "РџСЂРµРґРїРѕС‡С‚РµРЅРёСЏ РїРѕ РґРёР·Р°Р№РЅСѓ",
+            "РЎСѓС‰РµСЃС‚РІСѓСЋС‰РёРµ СЂРµС„РµСЂРµРЅСЃС‹ РёР»Рё РїСЂРёРјРµСЂС‹",
+            "РўРµС…РЅРёС‡РµСЃРєРёРµ С‚СЂРµР±РѕРІР°РЅРёСЏ",
+            "РџРѕС‚СЂРµР±РЅРѕСЃС‚Рё РІ РёРЅС‚РµРіСЂР°С†РёРё",
+            "РўСЂРµР±РѕРІР°РЅРёСЏ Рє РєРѕРЅС‚РµРЅС‚Сѓ",
+            "Р’СЂРµРјРµРЅРЅС‹Рµ СЂР°РјРєРё",
+            "Р”РёР°РїР°Р·РѕРЅ Р±СЋРґР¶РµС‚Р°",
+            "РќРµРѕР±С…РѕРґРёРјС‹Рµ СѓСЃР»СѓРіРё РїРѕСЃР»Рµ Р·Р°РІРµСЂС€РµРЅРёСЏ",
+            "РљР°Рє РІС‹ Рѕ РЅР°СЃ СѓР·РЅР°Р»Рё?",
+            "РџСЂРµРґРїРѕС‡С‚РёС‚РµР»СЊРЅС‹Р№ РјРµС‚РѕРґ СЃРІСЏР·Рё",
+            "Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ"
         ],
         "benefits": [
-            "Бесплатная консультация по проекту",
-            "Персонализированное предложение",
-            "Ясность относительно объема проекта",
-            "Лучшие оценки бюджета и сроков",
-            "Необязывающий запрос"
+            "Р‘РµСЃРїР»Р°С‚РЅР°СЏ РєРѕРЅСЃСѓР»СЊС‚Р°С†РёСЏ РїРѕ РїСЂРѕРµРєС‚Сѓ",
+            "РџРµСЂСЃРѕРЅР°Р»РёР·РёСЂРѕРІР°РЅРЅРѕРµ РїСЂРµРґР»РѕР¶РµРЅРёРµ",
+            "РЇСЃРЅРѕСЃС‚СЊ РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅРѕ РѕР±СЉРµРјР° РїСЂРѕРµРєС‚Р°",
+            "Р›СѓС‡С€РёРµ РѕС†РµРЅРєРё Р±СЋРґР¶РµС‚Р° Рё СЃСЂРѕРєРѕРІ",
+            "РќРµРѕР±СЏР·С‹РІР°СЋС‰РёР№ Р·Р°РїСЂРѕСЃ"
         ]
     },
     "en": {
@@ -392,34 +392,34 @@ BRIEF_FORM_INFO = {
     }
 }
 
-# Информация о компании
+# РРЅС„РѕСЂРјР°С†РёСЏ Рѕ РєРѕРјРїР°РЅРёРё
 COMPANY_INFO = {
     "de": {
-        "name": "Rozoom-KI",
+        "name": "Andrii-IT",
         "location": "Frankfurt am Main, Deutschland",
-        "specialization": "KI-gestützte Softwareentwicklung und Digitallösungen",
+        "specialization": "KI-gestГјtzte Softwareentwicklung und DigitallГ¶sungen",
         "unique_selling_points": [
             "KI-Integration in bestehende Systeme",
-            "Maßgeschneiderte Softwareentwicklung",
-            "Automatisierung von Geschäftsprozessen",
+            "MaГџgeschneiderte Softwareentwicklung",
+            "Automatisierung von GeschГ¤ftsprozessen",
             "Datenanalyse und Vorhersagemodelle",
             "Mehrsprachiger Support (Deutsch, Englisch, Russisch)"
         ]
     },
     "ru": {
-        "name": "Rozoom-KI",
-        "location": "Франкфурт-на-Майне, Германия",
-        "specialization": "Разработка программного обеспечения с ИИ и цифровые решения",
+        "name": "Andrii-IT",
+        "location": "Р¤СЂР°РЅРєС„СѓСЂС‚-РЅР°-РњР°Р№РЅРµ, Р“РµСЂРјР°РЅРёСЏ",
+        "specialization": "Р Р°Р·СЂР°Р±РѕС‚РєР° РїСЂРѕРіСЂР°РјРјРЅРѕРіРѕ РѕР±РµСЃРїРµС‡РµРЅРёСЏ СЃ РР Рё С†РёС„СЂРѕРІС‹Рµ СЂРµС€РµРЅРёСЏ",
         "unique_selling_points": [
-            "Интеграция ИИ в существующие системы",
-            "Индивидуальная разработка программного обеспечения",
-            "Автоматизация бизнес-процессов",
-            "Анализ данных и предиктивные модели",
-            "Многоязычная поддержка (немецкий, английский, русский)"
+            "РРЅС‚РµРіСЂР°С†РёСЏ РР РІ СЃСѓС‰РµСЃС‚РІСѓСЋС‰РёРµ СЃРёСЃС‚РµРјС‹",
+            "РРЅРґРёРІРёРґСѓР°Р»СЊРЅР°СЏ СЂР°Р·СЂР°Р±РѕС‚РєР° РїСЂРѕРіСЂР°РјРјРЅРѕРіРѕ РѕР±РµСЃРїРµС‡РµРЅРёСЏ",
+            "РђРІС‚РѕРјР°С‚РёР·Р°С†РёСЏ Р±РёР·РЅРµСЃ-РїСЂРѕС†РµСЃСЃРѕРІ",
+            "РђРЅР°Р»РёР· РґР°РЅРЅС‹С… Рё РїСЂРµРґРёРєС‚РёРІРЅС‹Рµ РјРѕРґРµР»Рё",
+            "РњРЅРѕРіРѕСЏР·С‹С‡РЅР°СЏ РїРѕРґРґРµСЂР¶РєР° (РЅРµРјРµС†РєРёР№, Р°РЅРіР»РёР№СЃРєРёР№, СЂСѓСЃСЃРєРёР№)"
         ]
     },
     "en": {
-        "name": "Rozoom-KI",
+        "name": "Andrii-IT",
         "location": "Frankfurt am Main, Germany",
         "specialization": "AI-powered software development and digital solutions",
         "unique_selling_points": [
@@ -432,27 +432,27 @@ COMPANY_INFO = {
     }
 }
 
-# Роли ассистентов
+# Р РѕР»Рё Р°СЃСЃРёСЃС‚РµРЅС‚РѕРІ
 ASSISTANT_ROLES = {
     "de": {
         "greeter": {
-            "role": "Begrüßungs-Assistent",
-            "description": "Begrüßt Besucher, erklärt die Website und hilft bei der Navigation",
+            "role": "BegrГјГџungs-Assistent",
+            "description": "BegrГјГџt Besucher, erklГ¤rt die Website und hilft bei der Navigation",
             "goals": [
-                "Besucher willkommen heißen",
-                "Website-Funktionen erklären",
+                "Besucher willkommen heiГџen",
+                "Website-Funktionen erklГ¤ren",
                 "Zu relevanten Seiten navigieren helfen",
-                "Häufig gestellte Fragen beantworten"
+                "HГ¤ufig gestellte Fragen beantworten"
             ]
         },
         "project_consultant": {
             "role": "Projekt-Berater",
-            "description": "Hilft Besuchern, ihre Projektanforderungen zu definieren und führt sie zum TZ-Formular",
+            "description": "Hilft Besuchern, ihre Projektanforderungen zu definieren und fГјhrt sie zum TZ-Formular",
             "goals": [
-                "Besucher ermutigen, das kostenlose TZ-Formular auszufüllen",
-                "Die Vorteile eines detaillierten technischen Aufgabenblatts erklären",
+                "Besucher ermutigen, das kostenlose TZ-Formular auszufГјllen",
+                "Die Vorteile eines detaillierten technischen Aufgabenblatts erklГ¤ren",
                 "Bei Fragen zum Projektumfang helfen",
-                "Kontaktdaten sammeln für ein personalisiertes Angebot"
+                "Kontaktdaten sammeln fГјr ein personalisiertes Angebot"
             ]
         },
         "technical_advisor": {
@@ -460,41 +460,41 @@ ASSISTANT_ROLES = {
             "description": "Beantwortet technische Fragen und gibt Einblicke in unsere Entwicklungsmethoden",
             "goals": [
                 "Technische Fragen zu unseren Entwicklungsprozessen beantworten",
-                "Verwendete Technologien erklären",
+                "Verwendete Technologien erklГ¤ren",
                 "Projektmachbarkeit bewerten",
-                "Technische Aspekte verschiedener Lösungen erläutern"
+                "Technische Aspekte verschiedener LГ¶sungen erlГ¤utern"
             ]
         }
     },
     "ru": {
         "greeter": {
-            "role": "Приветствующий ассистент",
-            "description": "Приветствует посетителей, объясняет функции сайта и помогает с навигацией",
+            "role": "РџСЂРёРІРµС‚СЃС‚РІСѓСЋС‰РёР№ Р°СЃСЃРёСЃС‚РµРЅС‚",
+            "description": "РџСЂРёРІРµС‚СЃС‚РІСѓРµС‚ РїРѕСЃРµС‚РёС‚РµР»РµР№, РѕР±СЉСЏСЃРЅСЏРµС‚ С„СѓРЅРєС†РёРё СЃР°Р№С‚Р° Рё РїРѕРјРѕРіР°РµС‚ СЃ РЅР°РІРёРіР°С†РёРµР№",
             "goals": [
-                "Поприветствовать посетителей",
-                "Объяснить функции сайта",
-                "Помочь с навигацией по соответствующим страницам",
-                "Ответить на часто задаваемые вопросы"
+                "РџРѕРїСЂРёРІРµС‚СЃС‚РІРѕРІР°С‚СЊ РїРѕСЃРµС‚РёС‚РµР»РµР№",
+                "РћР±СЉСЏСЃРЅРёС‚СЊ С„СѓРЅРєС†РёРё СЃР°Р№С‚Р°",
+                "РџРѕРјРѕС‡СЊ СЃ РЅР°РІРёРіР°С†РёРµР№ РїРѕ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёРј СЃС‚СЂР°РЅРёС†Р°Рј",
+                "РћС‚РІРµС‚РёС‚СЊ РЅР° С‡Р°СЃС‚Рѕ Р·Р°РґР°РІР°РµРјС‹Рµ РІРѕРїСЂРѕСЃС‹"
             ]
         },
         "project_consultant": {
-            "role": "Консультант по проектам",
-            "description": "Помогает посетителям определить требования к проекту и направляет их к форме ТЗ",
+            "role": "РљРѕРЅСЃСѓР»СЊС‚Р°РЅС‚ РїРѕ РїСЂРѕРµРєС‚Р°Рј",
+            "description": "РџРѕРјРѕРіР°РµС‚ РїРѕСЃРµС‚РёС‚РµР»СЏРј РѕРїСЂРµРґРµР»РёС‚СЊ С‚СЂРµР±РѕРІР°РЅРёСЏ Рє РїСЂРѕРµРєС‚Сѓ Рё РЅР°РїСЂР°РІР»СЏРµС‚ РёС… Рє С„РѕСЂРјРµ РўР—",
             "goals": [
-                "Поощрять посетителей заполнить бесплатную форму ТЗ",
-                "Объяснить преимущества подробного технического задания",
-                "Помочь с вопросами об объеме проекта",
-                "Собрать контактные данные для персонализированного предложения"
+                "РџРѕРѕС‰СЂСЏС‚СЊ РїРѕСЃРµС‚РёС‚РµР»РµР№ Р·Р°РїРѕР»РЅРёС‚СЊ Р±РµСЃРїР»Р°С‚РЅСѓСЋ С„РѕСЂРјСѓ РўР—",
+                "РћР±СЉСЏСЃРЅРёС‚СЊ РїСЂРµРёРјСѓС‰РµСЃС‚РІР° РїРѕРґСЂРѕР±РЅРѕРіРѕ С‚РµС…РЅРёС‡РµСЃРєРѕРіРѕ Р·Р°РґР°РЅРёСЏ",
+                "РџРѕРјРѕС‡СЊ СЃ РІРѕРїСЂРѕСЃР°РјРё РѕР± РѕР±СЉРµРјРµ РїСЂРѕРµРєС‚Р°",
+                "РЎРѕР±СЂР°С‚СЊ РєРѕРЅС‚Р°РєС‚РЅС‹Рµ РґР°РЅРЅС‹Рµ РґР»СЏ РїРµСЂСЃРѕРЅР°Р»РёР·РёСЂРѕРІР°РЅРЅРѕРіРѕ РїСЂРµРґР»РѕР¶РµРЅРёСЏ"
             ]
         },
         "technical_advisor": {
-            "role": "Технический консультант",
-            "description": "Отвечает на технические вопросы и дает представление о наших методах разработки",
+            "role": "РўРµС…РЅРёС‡РµСЃРєРёР№ РєРѕРЅСЃСѓР»СЊС‚Р°РЅС‚",
+            "description": "РћС‚РІРµС‡Р°РµС‚ РЅР° С‚РµС…РЅРёС‡РµСЃРєРёРµ РІРѕРїСЂРѕСЃС‹ Рё РґР°РµС‚ РїСЂРµРґСЃС‚Р°РІР»РµРЅРёРµ Рѕ РЅР°С€РёС… РјРµС‚РѕРґР°С… СЂР°Р·СЂР°Р±РѕС‚РєРё",
             "goals": [
-                "Ответить на технические вопросы о наших процессах разработки",
-                "Объяснить используемые технологии",
-                "Оценить выполнимость проекта",
-                "Объяснить технические аспекты различных решений"
+                "РћС‚РІРµС‚РёС‚СЊ РЅР° С‚РµС…РЅРёС‡РµСЃРєРёРµ РІРѕРїСЂРѕСЃС‹ Рѕ РЅР°С€РёС… РїСЂРѕС†РµСЃСЃР°С… СЂР°Р·СЂР°Р±РѕС‚РєРё",
+                "РћР±СЉСЏСЃРЅРёС‚СЊ РёСЃРїРѕР»СЊР·СѓРµРјС‹Рµ С‚РµС…РЅРѕР»РѕРіРёРё",
+                "РћС†РµРЅРёС‚СЊ РІС‹РїРѕР»РЅРёРјРѕСЃС‚СЊ РїСЂРѕРµРєС‚Р°",
+                "РћР±СЉСЏСЃРЅРёС‚СЊ С‚РµС…РЅРёС‡РµСЃРєРёРµ Р°СЃРїРµРєС‚С‹ СЂР°Р·Р»РёС‡РЅС‹С… СЂРµС€РµРЅРёР№"
             ]
         }
     },
@@ -533,18 +533,18 @@ ASSISTANT_ROLES = {
 }
 
 def _pick_lang(d: dict, lang: str, fallbacks=("uk", "de", "en", "ru")):
-    """Безопасно выбирает локализацию: сначала lang, затем по порядку из fallbacks."""
+    """Р‘РµР·РѕРїР°СЃРЅРѕ РІС‹Р±РёСЂР°РµС‚ Р»РѕРєР°Р»РёР·Р°С†РёСЋ: СЃРЅР°С‡Р°Р»Р° lang, Р·Р°С‚РµРј РїРѕ РїРѕСЂСЏРґРєСѓ РёР· fallbacks."""
     if lang in d:
         return d[lang]
     for fb in fallbacks:
         if fb in d:
             return d[fb]
-    # как последний вариант — берем любой
+    # РєР°Рє РїРѕСЃР»РµРґРЅРёР№ РІР°СЂРёР°РЅС‚ — Р±РµСЂРµРј Р»СЋР±РѕР№
     return next(iter(d.values()))
 
 
 def get_site_info(lang='en'):
-    """Возвращает сводную информацию о сайте и бриф-формах для ассистентов."""
+    """Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРІРѕРґРЅСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ СЃР°Р№С‚Рµ Рё Р±СЂРёС„-С„РѕСЂРјР°С… РґР»СЏ Р°СЃСЃРёСЃС‚РµРЅС‚РѕРІ."""
     site_structure = {page: _pick_lang(data, lang) for page, data in SITE_STRUCTURE.items()}
     brief_form = _pick_lang(BRIEF_FORM_INFO, lang)
     company_info = _pick_lang(COMPANY_INFO, lang)
@@ -561,12 +561,12 @@ def get_site_info(lang='en'):
 
 
 def get_services_form_info(lang='en'):
-    """Отдает структуру формы ТЗ на странице /services для указанного языка (с безопасным фолбэком)."""
+    """РћС‚РґР°РµС‚ СЃС‚СЂСѓРєС‚СѓСЂСѓ С„РѕСЂРјС‹ РўР— РЅР° СЃС‚СЂР°РЅРёС†Рµ /services РґР»СЏ СѓРєР°Р·Р°РЅРЅРѕРіРѕ СЏР·С‹РєР° (СЃ Р±РµР·РѕРїР°СЃРЅС‹Рј С„РѕР»Р±СЌРєРѕРј)."""
     return _pick_lang(SERVICES_TZ_FORM, lang)
 
 
 def spec_agent_context(lang='en') -> str:
-    """Короткий текст-контекст для ассистента SPEC: где форма ТЗ и что в ней заполнять."""
+    """РљРѕСЂРѕС‚РєРёР№ С‚РµРєСЃС‚-РєРѕРЅС‚РµРєСЃС‚ РґР»СЏ Р°СЃСЃРёСЃС‚РµРЅС‚Р° SPEC: РіРґРµ С„РѕСЂРјР° РўР— Рё С‡С‚Рѕ РІ РЅРµР№ Р·Р°РїРѕР»РЅСЏС‚СЊ."""
     info = get_services_form_info(lang)
     title = info.get("form_title")
     path = info.get("path", "/services")
@@ -578,11 +578,12 @@ def spec_agent_context(lang='en') -> str:
         lines.append(intro)
     lines.append("")
     for sec in sections:
-        lines.append(f"• {sec.get('title')}:")
+        lines.append(f"вЂў {sec.get('title')}:")
         for f in sec.get('fields', []):
-            lines.append(f"  – {f}")
+            lines.append(f"  вЂ“ {f}")
     cta = info.get("cta")
     if cta:
         lines.append("")
         lines.append(cta)
     return "\n".join(lines)
+

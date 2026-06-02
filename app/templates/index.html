@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+﻿{% extends 'base.html' %}
 
 {% block content %}
 <section class="video-hero content-wrapper">
@@ -17,40 +17,64 @@
   </div>
   
   <div class="hero-content">
-    <h1 class="should-float gradient-animation">{{ _('Intelligent AI Solutions for Modern Business') }}</h1>
-    <p class="hero-subtitle floating" style="animation-delay: 0.2s;">{{ _('Transform your business with our state-of-the-art AI assistants and custom solutions') }}</p>
-    <div class="hero-cta floating" style="animation-delay: 0.4s;">
-      <a href="/services" class="btn btn-animated">{{ _('Explore Services') }}</a>
-      <a href="/contact" class="btn btn-secondary btn-animated">{{ _('Contact Us') }}</a>
+    <p class="ui-kicker mb-3">{{ _('AI Development Studio') }}</p>
+    <h1 class="should-float gradient-animation">{{ _('Build revenue-focused AI products and automations') }}</h1>
+    <p class="hero-subtitle floating">{{ _('We design and launch practical AI solutions for web platforms, operations, and client support with clear delivery milestones.') }}</p>
+    <div class="hero-proof-row">
+      <span class="ui-proof-pill">{{ _('Discovery in 48 hours') }}</span>
+      <span class="ui-proof-pill">{{ _('Transparent scope and pricing') }}</span>
+      <span class="ui-proof-pill">{{ _('Delivery with ongoing support') }}</span>
+    </div>
+    <div class="hero-cta floating">
+      <a href="{{ url_for('pages.services', lang=g.locale) }}" class="btn btn-animated" data-cta-track data-cta-id="home_hero_services" data-cta-location="home_hero" data-cta-text="explore_services" data-exp-role="primary-offer">{{ _('Explore Services') }}</a>
+      <a href="{{ url_for('pages.contact', lang=g.locale) }}" class="btn btn-secondary btn-animated" data-cta-track data-cta-id="home_hero_consultation" data-cta-location="home_hero" data-cta-text="book_consultation" data-exp-role="consultation-offer">{{ _('Book a Consultation') }}</a>
       {% if not current_user.is_authenticated %}
-      <a href="{{ url_for('auth.register') }}" class="btn btn-outline-primary btn-ripple">{{ _('Sign Up for Free') }}</a>
+      <a href="{{ url_for('auth.register', lang=g.locale) }}" class="btn btn-outline-primary btn-ripple" data-cta-track data-cta-id="home_hero_register" data-cta-location="home_hero" data-cta-text="create_workspace">{{ _('Create Workspace') }}</a>
       {% else %}
-      <a href="{{ url_for('dashboard.index') }}" class="btn btn-outline-primary btn-ripple">{{ _('Go to Dashboard') }}</a>
+      <a href="{{ url_for('dashboard.index', lang=g.locale) }}" class="btn btn-outline-primary btn-ripple" data-cta-track data-cta-id="home_hero_dashboard" data-cta-location="home_hero" data-cta-text="go_to_dashboard">{{ _('Go to Dashboard') }}</a>
       {% endif %}
     </div>
   </div>
 </section>
 
+<section class="impact-metrics content-wrapper">
+  <h2 class="section-title">{{ _('Real outcomes from recent projects') }}</h2>
+  <div class="impact-grid">
+    <article class="impact-card ui-surface-soft">
+      <p class="impact-value">60%</p>
+      <p class="impact-label">{{ _('Faster first response time after assistant launch') }}</p>
+    </article>
+    <article class="impact-card ui-surface-soft">
+      <p class="impact-value">40%</p>
+      <p class="impact-label">{{ _('Improvement in forecasting accuracy with ML workflows') }}</p>
+    </article>
+    <article class="impact-card ui-surface-soft">
+      <p class="impact-value">25%</p>
+      <p class="impact-label">{{ _('Revenue growth after analytics and conversion optimization') }}</p>
+    </article>
+  </div>
+</section>
+
 <section class="features content-wrapper">
   <h2 class="section-title gradient-animation">{{ _('How We Can Help') }}</h2>
-  <div class="feature-grid">
-    <div class="feature-card floating" style="animation-delay: 0s;">
+  <div class="feature-grid modern-feature-grid">
+    <div class="feature-card floating modern-feature-card">
       <div class="feature-icon">
-        <span class="emoji-icon">🌐</span>
+        <span class="feature-number">01</span>
       </div>
       <h3>{{ _('Web Development') }}</h3>
       <p>{{ _('Custom websites and web applications with AI-powered features to enhance user experience.') }}</p>
     </div>
-    <div class="feature-card floating" style="animation-delay: 0.3s;">
+    <div class="feature-card floating modern-feature-card">
       <div class="feature-icon">
-        <span class="emoji-icon">🧠</span>
+        <span class="feature-number">02</span>
       </div>
       <h3>{{ _('ML & AI Integration') }}</h3>
       <p>{{ _('Integrate machine learning models and AI capabilities into your existing software systems.') }}</p>
     </div>
-    <div class="feature-card floating" style="animation-delay: 0.6s;">
+    <div class="feature-card floating modern-feature-card">
       <div class="feature-icon">
-        <span class="emoji-icon">🤖</span>
+        <span class="feature-number">03</span>
       </div>
       <h3>{{ _('Process Automation') }}</h3>
       <p>{{ _('Streamline your business operations with intelligent automation and workflow solutions.') }}</p>
@@ -63,7 +87,7 @@
   <div class="testimonial-slider">
     <div class="testimonial-card">
       <div class="testimonial-content">
-        <p>"{{ _('Rozoom-KI transformed our customer service with their AI assistant. Response times dropped by 60 percent and customer satisfaction increased dramatically.') }}"</p>
+        <p>"{{ _('Andrii-IT transformed our customer service with their AI assistant. Response times dropped by 60 percent and customer satisfaction increased dramatically.') }}"</p>
       </div>
       <div class="testimonial-author">
         <strong>Michael Berger</strong>
@@ -136,8 +160,8 @@
           <div class="card-body p-4">
             <h3 class="card-title mb-4 text-center">{{ _('Register Now') }}</h3>
             <div class="d-grid gap-3">
-              <a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-lg">{{ _('Create Account') }}</a>
-              <a href="{{ url_for('auth.login') }}" class="btn btn-outline-secondary">{{ _('Already have an account? Login') }}</a>
+              <a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-lg" data-cta-track data-cta-id="home_account_register" data-cta-location="home_account" data-cta-text="create_account">{{ _('Create Account') }}</a>
+              <a href="{{ url_for('auth.login') }}" class="btn btn-outline-secondary" data-cta-track data-cta-id="home_account_login" data-cta-location="home_account" data-cta-text="login">{{ _('Already have an account? Login') }}</a>
             </div>
           </div>
         </div>
@@ -196,7 +220,8 @@
   <div class="video-content">
     <h2>{{ _('Ready to transform your business with AI?') }}</h2>
     <p>{{ _('Our team of experts is ready to help you implement intelligent solutions.') }}</p>
-    <a href="/contact" class="btn btn-animated">{{ _('Get Started Today') }}</a>
+    <a href="/contact" class="btn btn-animated" data-cta-track data-cta-id="home_bottom_get_started" data-cta-location="home_bottom" data-cta-text="get_started_today">{{ _('Get Started Today') }}</a>
   </div>
 </section>
 {% endblock %}
+

@@ -1,6 +1,6 @@
-{% extends 'base.html' %}
+﻿{% extends 'base.html' %}
 
-{% block title %}Dashboard - Rozoom-KI{% endblock %}
+{% block title %}Dashboard - Andrii-IT{% endblock %}
 
 {% block head %}
 {{ super() }}
@@ -23,7 +23,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="container-fluid py-4">
+<div class="container-fluid py-4 app-cabinet">
     <div class="row">
         <!-- Sidebar -->
         <div class="col-md-3 col-lg-2">
@@ -56,7 +56,7 @@
         
         <!-- Main Content -->
         <div class="col-md-9 col-lg-10">
-            <div class="d-flex justify-content-between align-items-center mb-4">
+            <div class="d-flex justify-content-between align-items-center mb-4 cabinet-toolbar">
                 <h1 class="mb-0">{{ _('Dashboard') }}</h1>
                 <div>
                     <span class="text-muted">{{ _('Welcome back') }}, {{ current_user.name }}</span>
@@ -217,3 +217,4 @@
     </div>
 </div>
 {% endblock %}
+

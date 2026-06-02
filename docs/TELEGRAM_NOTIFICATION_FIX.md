@@ -1,8 +1,8 @@
-# Telegram Notification System Fix
+﻿# Telegram Notification System Fix
 
 ## Issue Identified
 
-We identified an issue with the tech spec notifications in the Rozoom-KI application deployed on Render.com:
+We identified an issue with the tech spec notifications in the Andrii-IT application deployed on Render.com:
 
 1. **Contact Form Notifications** - These are working correctly because they send directly via `send_contact_form_notification()`.
 
@@ -57,3 +57,4 @@ app\agents\controller.py.bak
 ## Additional Note
 
 If you prefer the queue-based system in the future, you would need to add a worker service in the `render.yaml` file to run the `scripts/process_telegram_queue.py` script periodically, but for most use cases the direct sending approach is simpler and more reliable.
+

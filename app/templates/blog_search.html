@@ -1,17 +1,18 @@
 {% extends 'base.html' %}
 
-{% block title %}{{ _('Search Results') }}: {{ query }} — Rozoom-KI Blog{% endblock %}
+{% block title %}{{ _('Search Results') }}: {{ query }} — Andrii-IT Blog{% endblock %}
 
 {% block content %}
-<div class="blog-header">
+<div class="blog-header ui-surface-soft">
+  <p class="ui-kicker mb-2">{{ _('Search') }}</p>
   <h1>{{ _('Search Results') }}</h1>
   <p class="lead">{{ _('Showing results for') }} "{{ query }}"</p>
 </div>
 
 <div class="blog-container">
-  <main class="blog-main">
+  <main class="blog-main ui-surface-soft">
     {% if posts %}
-      <div class="search-results-count">
+      <div class="search-results-count ui-surface-soft">
         {{ _('Found') }} {{ pagination.total }} {{ _('result') }}{% if pagination.total != 1 %}{{ _('s') }}{% endif %}
       </div>
       
@@ -19,23 +20,23 @@
         <article class="blog-post">
           <div class="post-image">
             {% if post.image_data or post.image_url %}
-              <img src="{% if post.image_data %}{{ url_for('blog.get_image', post_id=post.id) }}{% else %}{{ post.image_url }}{% endif %}" alt="{{ post.title }}">
+              <img src="{% if post.image_data %}{{ url_for('blog.get_image', post_id=post.id) }}{% else %}{{ post.image_url }}{% endif %}" alt="{{ post.title }}" loading="lazy" decoding="async">
             {% else %}
-              <img src="{{ url_for('static', filename='img/blog/default-post.jpg') }}" alt="{{ post.title }}">
+              <img src="{{ url_for('static', filename='img/blog/default-post.jpg') }}" alt="{{ post.title }}" loading="lazy" decoding="async">
             {% endif %}
             {% if post.category %}
               <span class="post-category">{{ post.category }}</span>
             {% endif %}
           </div>
           <div class="post-content">
-            <h2><a href="{{ url_for('pages.blog_post', slug=post.slug) }}">{{ post.title }}</a></h2>
+            <h2><a href="{{ url_for('pages.blog_post', slug=post.slug, lang=g.locale) }}">{{ post.title }}</a></h2>
             <div class="post-meta">
               <span class="post-date">{{ post.created_at.strftime('%B %d, %Y') }}</span>
             </div>
             <div class="post-excerpt">
               <p>{{ post.search_excerpt|safe }}</p>
             </div>
-            <a href="{{ url_for('pages.blog_post', slug=post.slug) }}" class="btn">Read More</a>
+            <a href="{{ url_for('pages.blog_post', slug=post.slug, lang=g.locale) }}" class="btn">{{ _('Read More') }}</a>
           </div>
         </article>
       {% endfor %}
@@ -43,7 +44,7 @@
       {% if pagination.has_next or pagination.has_prev %}
         <div class="pagination">
           {% if pagination.has_prev %}
-            <a href="{{ url_for('pages.blog_search', q=query, page=pagination.prev_num) }}" class="pagination-prev">
+            <a href="{{ url_for('pages.blog_search', q=query, page=pagination.prev_num, lang=g.locale) }}" class="pagination-prev">
               {{ _('Previous') }}
             </a>
           {% endif %}
@@ -51,7 +52,7 @@
           <span class="pagination-info">{{ _('Page') }} {{ pagination.page }} {{ _('of') }} {{ pagination.pages }}</span>
           
           {% if pagination.has_next %}
-            <a href="{{ url_for('pages.blog_search', q=query, page=pagination.next_num) }}" class="pagination-next">
+            <a href="{{ url_for('pages.blog_search', q=query, page=pagination.next_num, lang=g.locale) }}" class="pagination-next">
               {{ _('Next') }}
             </a>
           {% endif %}
@@ -59,7 +60,7 @@
       {% endif %}
     {% else %}
       <div class="no-posts">
-        <span class="blog-icon">🔍</span>
+        <span class="blog-icon">рџ”Ќ</span>
         <h2>{{ _('No results found') }}</h2>
         <p>{{ _('Your search') }} "{{ query }}" {{ _('did not match any articles') }}.</p>
         <div class="search-suggestions">
@@ -70,17 +71,17 @@
             <li>{{ _('Try more general keywords.') }}</li>
           </ul>
         </div>
-        <a href="{{ url_for('pages.blog') }}" class="btn">{{ _('Back to Blog') }}</a>
+        <a href="{{ url_for('pages.blog', lang=g.locale) }}" class="btn">{{ _('Back to Blog') }}</a>
       </div>
     {% endif %}
   </main>
 
   <aside class="blog-sidebar">
-    <div class="sidebar-widget search-widget">
-      <h3>Search</h3>
-      <form action="{{ url_for('pages.blog_search') }}" method="GET">
+    <div class="sidebar-widget ui-surface-soft search-widget">
+      <h3>{{ _('Search') }}</h3>
+      <form action="{{ url_for('pages.blog_search', lang=g.locale) }}" method="GET">
         <div class="search-input">
-          <input type="text" name="q" placeholder="Search posts..." value="{{ query }}" required>
+          <input type="text" name="q" placeholder="{{ _('Search posts...') }}" value="{{ query }}" required>
           <button type="submit" class="search-button">
             {{ _('Search') }}
           </button>
@@ -88,46 +89,46 @@
       </form>
     </div>
 
-    <div class="sidebar-widget categories-widget">
-      <h3>Categories</h3>
+    <div class="sidebar-widget ui-surface-soft categories-widget">
+      <h3>{{ _('Categories') }}</h3>
       <ul class="category-list">
         {% if categories %}
           {% for category in categories %}
             <li>
-              <a href="{{ url_for('pages.blog_category', category=category.name) }}">
+              <a href="{{ url_for('pages.blog_category', category=category.name, lang=g.locale) }}">
                 {{ category.name }}
                 <span class="count">{{ category.count }}</span>
               </a>
             </li>
           {% endfor %}
         {% else %}
-          <li>No categories yet</li>
+          <li>{{ _('No categories yet') }}</li>
         {% endif %}
       </ul>
     </div>
 
-    <div class="sidebar-widget tags-widget">
-      <h3>Popular Tags</h3>
+    <div class="sidebar-widget ui-surface-soft tags-widget">
+      <h3>{{ _('Popular Tags') }}</h3>
       <div class="tag-cloud">
         {% if tags %}
           {% for tag in tags %}
-            <a href="{{ url_for('pages.blog_tag', tag=tag.name) }}" class="tag">
+            <a href="{{ url_for('pages.blog_tag', tag=tag.name, lang=g.locale) }}" class="tag">
               {{ tag.name }}
             </a>
           {% endfor %}
         {% else %}
-          <span>No tags yet</span>
+          <span>{{ _('No tags yet') }}</span>
         {% endif %}
       </div>
     </div>
 
-    <div class="sidebar-widget recent-widget">
-      <h3>Recent Posts</h3>
+    <div class="sidebar-widget ui-surface-soft recent-widget">
+      <h3>{{ _('Recent Posts') }}</h3>
       <ul class="recent-posts">
         {% if recent_posts %}
           {% for post in recent_posts %}
             <li>
-              <a href="{{ url_for('pages.blog_post', slug=post.slug) }}">
+              <a href="{{ url_for('pages.blog_post', slug=post.slug, lang=g.locale) }}">
                 <div class="recent-post-info">
                   <h4>{{ post.title }}</h4>
                   <span class="recent-post-date">{{ post.created_at.strftime('%B %d, %Y') }}</span>
@@ -136,10 +137,11 @@
             </li>
           {% endfor %}
         {% else %}
-          <li>No recent posts</li>
+          <li>{{ _('No recent posts') }}</li>
         {% endif %}
       </ul>
     </div>
   </aside>
 </div>
 {% endblock %}
+

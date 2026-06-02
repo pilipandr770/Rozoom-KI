@@ -1,20 +1,49 @@
 from flask import Blueprint, render_template, request, redirect, url_for, abort
 from app.models import BlogPost, BlogCategory, BlogTag
 from sqlalchemy import desc, func
+from sqlalchemy.orm import joinedload, selectinload
+import time
 
 blog = Blueprint('blog', __name__, url_prefix='/blog')
+
+_SIDEBAR_CACHE_TTL_SECONDS = 300
+_sidebar_cache = {
+    'expires_at': 0.0,
+    'categories': None,
+    'tags': None,
+}
+
+
+def get_sidebar_data():
+    """Return cached sidebar entities to cut repeat queries on list/search views."""
+    now = time.time()
+    if (
+        _sidebar_cache['categories'] is not None
+        and _sidebar_cache['tags'] is not None
+        and now < _sidebar_cache['expires_at']
+    ):
+        return _sidebar_cache['categories'], _sidebar_cache['tags']
+
+    categories = BlogCategory.query.all()
+    tags = BlogTag.query.all()
+    _sidebar_cache['categories'] = categories
+    _sidebar_cache['tags'] = tags
+    _sidebar_cache['expires_at'] = now + _SIDEBAR_CACHE_TTL_SECONDS
+    return categories, tags
 
 @blog.route('/')
 def index():
     """Main blog index page with pagination."""
     page = request.args.get('page', 1, type=int)
-    posts = BlogPost.query.filter_by(published=True).order_by(
+    posts = BlogPost.query.options(
+        joinedload(BlogPost.category),
+        selectinload(BlogPost.tags),
+    ).filter_by(published=True).order_by(
         desc(BlogPost.created_at)
     ).paginate(page=page, per_page=6, error_out=False)
     
-    # Get all categories and tags for sidebar
-    categories = BlogCategory.query.all()
-    tags = BlogTag.query.all()
+    # Get cached categories and tags for sidebar.
+    categories, tags = get_sidebar_data()
     
     return render_template(
         'blog/blog.html', 
@@ -28,10 +57,16 @@ def index():
 @blog.route('/post/<string:slug>')
 def post(slug):
     """Display a single blog post."""
-    post = BlogPost.query.filter_by(slug=slug, published=True).first_or_404()
+    post = BlogPost.query.options(
+        joinedload(BlogPost.category),
+        selectinload(BlogPost.tags),
+    ).filter_by(slug=slug, published=True).first_or_404()
     
     # Get related posts (same category or tag)
-    related_posts = BlogPost.query.filter(
+    related_posts = BlogPost.query.options(
+        joinedload(BlogPost.category),
+        selectinload(BlogPost.tags),
+    ).filter(
         BlogPost.id != post.id,
         BlogPost.published == True,
         (
@@ -48,16 +83,18 @@ def category(slug):
     category = BlogCategory.query.filter_by(slug=slug).first_or_404()
     page = request.args.get('page', 1, type=int)
     
-    posts = BlogPost.query.filter_by(
+    posts = BlogPost.query.options(
+        joinedload(BlogPost.category),
+        selectinload(BlogPost.tags),
+    ).filter_by(
         published=True, 
         category_id=category.id
     ).order_by(
         desc(BlogPost.created_at)
     ).paginate(page=page, per_page=6, error_out=False)
     
-    # Get all categories and tags for sidebar
-    categories = BlogCategory.query.all()
-    tags = BlogTag.query.all()
+    # Get cached categories and tags for sidebar.
+    categories, tags = get_sidebar_data()
     
     return render_template(
         'blog/blog_category.html', 
@@ -75,16 +112,18 @@ def tag(slug):
     tag = BlogTag.query.filter_by(slug=slug).first_or_404()
     page = request.args.get('page', 1, type=int)
     
-    posts = BlogPost.query.filter(
+    posts = BlogPost.query.options(
+        joinedload(BlogPost.category),
+        selectinload(BlogPost.tags),
+    ).filter(
         BlogPost.published == True,
         BlogPost.tags.any(BlogTag.id == tag.id)
     ).order_by(
         desc(BlogPost.created_at)
     ).paginate(page=page, per_page=6, error_out=False)
     
-    # Get all categories and tags for sidebar
-    categories = BlogCategory.query.all()
-    tags = BlogTag.query.all()
+    # Get cached categories and tags for sidebar.
+    categories, tags = get_sidebar_data()
     
     return render_template(
         'blog/blog_tag.html', 
@@ -106,7 +145,10 @@ def search():
         return redirect(url_for('blog.index'))
     
     # Search in title, content and excerpt
-    posts = BlogPost.query.filter(
+    posts = BlogPost.query.options(
+        joinedload(BlogPost.category),
+        selectinload(BlogPost.tags),
+    ).filter(
         BlogPost.published == True,
         (
             BlogPost.title.ilike(f'%{query}%') | 
@@ -117,9 +159,8 @@ def search():
         desc(BlogPost.created_at)
     ).paginate(page=page, per_page=6, error_out=False)
     
-    # Get all categories and tags for sidebar
-    categories = BlogCategory.query.all()
-    tags = BlogTag.query.all()
+    # Get cached categories and tags for sidebar.
+    categories, tags = get_sidebar_data()
     
     return render_template(
         'blog/blog_search.html', 

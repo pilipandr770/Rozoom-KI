@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Contact Us — Rozoom-KI{% endblock %}
+{% block title %}Contact Us — Andrii-IT{% endblock %}
 
 {% block content %}
 <div class="contact-header">
@@ -12,7 +12,7 @@
   <div class="contact-info">
     <div class="contact-card">
       <div class="contact-info-item">
-        <span class="contact-icon">📍</span>
+        <span class="contact-icon">рџ“Ќ</span>
         <div>
           <h3>{{ _('Address') }}</h3>
           <p>Bergmannweg 16<br>65934 Frankfurt am Main<br>Germany</p>
@@ -22,7 +22,7 @@
     
     <div class="contact-card">
       <div class="contact-info-item">
-        <span class="contact-icon">✉️</span>
+        <span class="contact-icon">вњ‰пёЏ</span>
         <div>
           <h3>{{ _('Email Us') }}</h3>
           <p>andrii.it.info@gmail.com</p>
@@ -32,7 +32,7 @@
     
     <div class="contact-card">
       <div class="contact-info-item">
-        <span class="contact-icon">📞</span>
+        <span class="contact-icon">рџ“ћ</span>
         <div>
           <h3>{{ _('Call Us') }}</h3>
           <p>+49 160 9503 0120<br>{{ _('Mon-Fri 9:00-18:00') }}</p>
@@ -41,39 +41,38 @@
     </div>
     
     <div class="social-links">
-      <a href="#" class="social-link-text" title="{{ _('LinkedIn') }}">LinkedIn</a>
-      <a href="#" class="social-link-text" title="{{ _('Twitter') }}">Twitter</a>
-      <a href="#" class="social-link-text" title="{{ _('Facebook') }}">Facebook</a>
-      <a href="#" class="social-link-text" title="{{ _('Instagram') }}">Instagram</a>
+      <a href="mailto:andrii.it.info@gmail.com" class="social-link-text" title="{{ _('Email') }}">{{ _('Email') }}</a>
+      <a href="tel:+4916095030120" class="social-link-text" title="{{ _('Phone') }}">{{ _('Phone') }}</a>
+      <a href="https://www.andrii-it.de" class="social-link-text" title="{{ _('Website') }}">{{ _('Website') }}</a>
     </div>
   </div>
   
   <div class="contact-form-container">
     <h2>{{ _('Send Us a Message') }}</h2>
-    <form method="post" action="/contact" class="contact-form">
+    <form method="post" action="/contact" class="contact-form" data-cta-form data-cta-id="contact_form_submit" data-cta-location="contact_form" data-cta-text="send_message">
       <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
       {% if success %}
       <div class="form-success">
-        <span class="emoji-icon">✅</span>
+        <span class="emoji-icon">вњ…</span>
         <p>{{ _('Your message has been sent successfully. We\'ll get back to you soon!') }}</p>
       </div>
       {% endif %}
       
       {% if error %}
       <div class="form-error">
-        <span class="emoji-icon">⚠️</span>
+        <span class="emoji-icon">вљ пёЏ</span>
         <p>{{ error }}</p>
       </div>
       {% endif %}
       
       <div class="form-group">
         <label for="name">{{ _('Full Name') }}</label>
-        <input type="text" id="name" name="name" placeholder="{{ _('Enter your full name') }}" required />
+        <input type="text" id="name" name="name" placeholder="{{ _('Enter your full name') }}" autocomplete="name" required />
       </div>
       
       <div class="form-group">
         <label for="email">{{ _('Email Address') }}</label>
-        <input type="email" id="email" name="email" placeholder="{{ _('Enter your email address') }}" required />
+        <input type="email" id="email" name="email" placeholder="{{ _('Enter your email address') }}" autocomplete="email" required />
       </div>
       
       <div class="form-group">
@@ -89,7 +88,7 @@
         </label>
       </div>
       
-      <button type="submit" class="btn">{{ _('Send Message') }}</button>
+      <button type="submit" class="btn" data-cta-track data-cta-id="contact_send_message" data-cta-location="contact_form" data-cta-text="send_message">{{ _('Send Message') }}</button>
     </form>
   </div>
 </div>
@@ -98,7 +97,7 @@
   <div class="container text-center py-4">
     <div class="card shadow-sm">
       <div class="card-body">
-        <span class="emoji-icon" style="font-size: 2.5em;">🏡💻</span>
+        <span class="emoji-icon remote-work-emoji">рџЏЎрџ’»</span>
         <h3>{{ _('Remote Work') }}</h3>
         <p class="remote-work-text">{{ _('We operate as a remote-first company with team members working from various locations. This allows us to serve clients worldwide while maintaining flexibility and efficiency.') }}</p>
       </div>
@@ -106,3 +105,4 @@
   </div>
 </div>
 {% endblock %}
+

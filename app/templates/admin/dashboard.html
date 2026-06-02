@@ -246,7 +246,7 @@
                                 </td>
                                 <td>
                                     <a href="{{ url_for('admin.edit_post', id=post.id) }}" class="btn btn-sm btn-outline-primary">Edit</a>
-                                    <a href="{{ url_for('blog.post', slug=post.slug) }}" class="btn btn-sm btn-outline-info" target="_blank">View</a>
+                                    <a href="{{ url_for('blog.post', slug=post.slug) }}" class="btn btn-sm btn-outline-info" target="_blank" rel="noopener noreferrer">View</a>
                                 </td>
                             </tr>
                             {% endfor %}
@@ -309,3 +309,4 @@
 {% endblock %}
 
 {% endblock %}
+

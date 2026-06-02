@@ -1,6 +1,6 @@
-﻿# Rozoom-KI — IT Business Card & Client Acquisition Platform
+﻿# Andrii-IT — IT Business Card & Client Acquisition Platform
 
-**Live:** https://rozoom-ki.onrender.com | **Custom domain:** https://www.andrii-it.de
+**Live:** https://andrii-it.onrender.com | **Custom domain:** https://www.andrii-it.de
 
 Flask-based IT freelancer platform: landing page, blog CMS with AI-generated content, AI sales chatbot, Stripe payments, multilingual (EN/DE/UK).
 
@@ -89,3 +89,4 @@ See `.env.example` for all variables. Key ones:
 - `STRIPE_SECRET_KEY` / `STRIPE_PUBLISHABLE_KEY` — Stripe keys
 - `TELEGRAM_BOT_TOKEN` / `TELEGRAM_CHAT_ID` — Telegram notifications
 - `SECRET_KEY` — Flask session secret
+

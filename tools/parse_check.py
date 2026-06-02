@@ -1,5 +1,7 @@
 import ast, traceback, sys
-fn = r"c:\Users\ПК\Rozoom-KI\app\commands\seed_blog.py"
+from pathlib import Path
+
+fn = str(Path(__file__).resolve().parents[1] / 'app' / 'commands' / 'seed_blog.py')
 try:
     with open(fn, 'r', encoding='utf-8') as f:
         src = f.read()

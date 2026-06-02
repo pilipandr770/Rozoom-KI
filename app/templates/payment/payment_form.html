@@ -1,6 +1,6 @@
-{% extends 'base.html' %}
+﻿{% extends 'base.html' %}
 
-{% block title %}Buy Development Hours — Rozoom-KI{% endblock %}
+{% block title %}Buy Development Hours вЂ” Andrii-IT{% endblock %}
 
 {% block head %}
 {{ super() }}
@@ -152,16 +152,16 @@
                                 <p>{{ payment_gettext('Pricing tiers:') }}</p>
                                 <ul>
                                     {% for package in packages %}
-                                    <li>{{ package.hours }}+ {{ payment_gettext('hours') }}: €{{ "%.2f"|format(package.price_per_hour) }} {{ payment_gettext('per hour') }}</li>
+                                    <li>{{ package.hours }}+ {{ payment_gettext('hours') }}: в‚¬{{ "%.2f"|format(package.price_per_hour) }} {{ payment_gettext('per hour') }}</li>
                                     {% endfor %}
                                 </ul>
                             </div>
                             
                             <div class="price-display">
                                 <div>{{ payment_gettext('Total Price') }}</div>
-                                <div class="total-price">€<span id="total-price">0</span></div>
+                                <div class="total-price">в‚¬<span id="total-price">0</span></div>
                                 <div class="price-per-hour">
-                                    €<span id="price-per-hour">0</span> {{ payment_gettext('per hour') }}
+                                    в‚¬<span id="price-per-hour">0</span> {{ payment_gettext('per hour') }}
                                 </div>
                             </div>
                             

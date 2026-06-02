@@ -1,6 +1,6 @@
-{% extends 'base.html' %}
+﻿{% extends 'base.html' %}
 
-{% block title %}{{ _('Login') }} - Rozoom-KI{% endblock %}
+{% block title %}{{ _('Login') }} - Andrii-IT{% endblock %}
 
 {% block extra_css %}{% endblock %}
 
@@ -17,11 +17,11 @@
                         {{ csrf_field() }}
                         <div class="mb-3">
                             <label for="login" class="form-label">{{ _('Email or Username') }}</label>
-                            <input type="text" class="form-control" id="login" name="login" required>
+                            <input type="text" class="form-control" id="login" name="login" autocomplete="username" inputmode="email" required>
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">{{ _('Password') }}</label>
-                            <input type="password" class="form-control" id="password" name="password" required>
+                            <input type="password" class="form-control" id="password" name="password" autocomplete="current-password" required>
                         </div>
                         <div class="mb-3 form-check">
                             <input type="checkbox" class="form-check-input" id="remember" name="remember">
@@ -43,3 +43,4 @@
     </div>
 </div>
 {% endblock %}
+

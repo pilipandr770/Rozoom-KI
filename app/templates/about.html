@@ -1,8 +1,49 @@
 {% extends 'base.html' %}
 
-{% block title %}{{ _('About') }} — Rozoom-KI{% endblock %}
+{% block title %}{{ _('About') }} — Andrii-IT{% endblock %}
 
 {% block content %}
-<h1>{{ _('About') }}</h1>
-<p>{{ _('About the author.') }}</p>
+<section class="about-page container my-5">
+	<div class="about-hero ui-surface-soft mb-4">
+		<p class="ui-kicker mb-2">{{ _('About the Studio') }}</p>
+		<h1>{{ _('I build practical AI products for growing businesses') }}</h1>
+		<p class="lead">{{ _('Andrii-IT is an independent engineering studio focused on automation, AI integration, and web platforms that improve operations and customer experience.') }}</p>
+		<div class="about-proof-row">
+			<span class="ui-proof-pill">{{ _('Based in Germany') }}</span>
+			<span class="ui-proof-pill">{{ _('Remote-first delivery') }}</span>
+			<span class="ui-proof-pill">{{ _('Business-oriented execution') }}</span>
+		</div>
+	</div>
+
+	<div class="row g-4">
+		<div class="col-lg-8">
+			<article class="about-surface ui-surface-soft p-4 h-100">
+				<h2>{{ _('How I work') }}</h2>
+				<p>{{ _('Each project starts with a focused discovery session, then moves into a clear execution plan with milestones, transparent scope, and weekly status updates.') }}</p>
+				<p>{{ _('The goal is simple: launch reliable solutions that create measurable business impact, not just technical complexity.') }}</p>
+
+				<h3>{{ _('Core areas') }}</h3>
+				<ul class="about-list">
+					<li>{{ _('Custom web platforms with AI-assisted workflows') }}</li>
+					<li>{{ _('Process automation for internal operations') }}</li>
+					<li>{{ _('Chat and assistant integrations for sales and support') }}</li>
+					<li>{{ _('Data-backed dashboards and decision support') }}</li>
+				</ul>
+			</article>
+		</div>
+		<div class="col-lg-4">
+			<aside class="about-surface ui-surface-soft p-4 h-100">
+				<h3>{{ _('Project principles') }}</h3>
+				<ul class="about-list compact">
+					<li>{{ _('Clear communication over vague promises') }}</li>
+					<li>{{ _('Small iterations with visible progress') }}</li>
+					<li>{{ _('Security and maintainability from day one') }}</li>
+					<li>{{ _('Long-term support after launch') }}</li>
+				</ul>
+				<a href="{{ url_for('pages.contact', lang=g.locale) }}" class="btn btn-animated mt-3">{{ _('Start a Conversation') }}</a>
+			</aside>
+		</div>
+	</div>
+</section>
 {% endblock %}
+

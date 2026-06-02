@@ -1,8 +1,75 @@
 {% extends 'base.html' %}
 
-{% block title %}{{ _('FAQ') }} — Rozoom-KI{% endblock %}
+{% block title %}{{ _('FAQ') }} — Andrii-IT{% endblock %}
 
 {% block content %}
-<h1>{{ _('FAQ') }}</h1>
-<p>{{ _('Frequently asked questions.') }}</p>
+<section class="faq-page container my-5">
+	<div class="faq-hero ui-surface-soft mb-4">
+		<p class="ui-kicker mb-2">{{ _('FAQ') }}</p>
+		<h1>{{ _('Frequently asked questions') }}</h1>
+		<p class="lead">{{ _('Quick answers about collaboration, timelines, pricing, and support.') }}</p>
+	</div>
+
+	<div class="faq-surface ui-surface-soft p-3 p-md-4">
+		<div class="accordion ui-accordion-contrast" id="faqAccordion">
+			<div class="accordion-item">
+				<h2 class="accordion-header" id="faqHeadingOne">
+					<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faqOne" aria-expanded="true" aria-controls="faqOne">
+						{{ _('What types of projects do you handle?') }}
+					</button>
+				</h2>
+				<div id="faqOne" class="accordion-collapse collapse show" aria-labelledby="faqHeadingOne" data-bs-parent="#faqAccordion">
+					<div class="accordion-body">
+						{{ _('I focus on AI-powered web products, process automation, chatbot integrations, and custom data workflows for small and medium businesses.') }}
+					</div>
+				</div>
+			</div>
+
+			<div class="accordion-item">
+				<h2 class="accordion-header" id="faqHeadingTwo">
+					<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqTwo" aria-expanded="false" aria-controls="faqTwo">
+						{{ _('How long does a typical project take?') }}
+					</button>
+				</h2>
+				<div id="faqTwo" class="accordion-collapse collapse" aria-labelledby="faqHeadingTwo" data-bs-parent="#faqAccordion">
+					<div class="accordion-body">
+						{{ _('Small implementations can take 2-4 weeks, while larger platforms are usually delivered in phased milestones over 2-4 months.') }}
+					</div>
+				</div>
+			</div>
+
+			<div class="accordion-item">
+				<h2 class="accordion-header" id="faqHeadingThree">
+					<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqThree" aria-expanded="false" aria-controls="faqThree">
+						{{ _('How is pricing organized?') }}
+					</button>
+				</h2>
+				<div id="faqThree" class="accordion-collapse collapse" aria-labelledby="faqHeadingThree" data-bs-parent="#faqAccordion">
+					<div class="accordion-body">
+						{{ _('You can choose predefined hour packages or request a tailored offer after discovery. Scope, deliverables, and costs are aligned before development starts.') }}
+					</div>
+				</div>
+			</div>
+
+			<div class="accordion-item">
+				<h2 class="accordion-header" id="faqHeadingFour">
+					<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqFour" aria-expanded="false" aria-controls="faqFour">
+						{{ _('Do you provide support after launch?') }}
+					</button>
+				</h2>
+				<div id="faqFour" class="accordion-collapse collapse" aria-labelledby="faqHeadingFour" data-bs-parent="#faqAccordion">
+					<div class="accordion-body">
+						{{ _('Yes. Ongoing support and improvement cycles are available to keep your system secure, stable, and aligned with business growth.') }}
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="faq-cta text-center mt-4 pt-2">
+			<p class="mb-3">{{ _('Did not find your question?') }}</p>
+			<a href="{{ url_for('pages.contact', lang=g.locale) }}" class="btn btn-animated">{{ _('Contact Me') }}</a>
+		</div>
+	</div>
+</section>
 {% endblock %}
+

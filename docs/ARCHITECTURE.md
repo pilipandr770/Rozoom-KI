@@ -2,7 +2,7 @@
 
 ## Overview
 
-Rozoom-KI is a modern web application built with Python/Flask on the backend and a responsive HTML/CSS/JavaScript frontend. The application serves as both a company website and a platform for delivering AI-enhanced services to clients.
+Andrii-IT is a modern web application built with Python/Flask on the backend and a responsive HTML/CSS/JavaScript frontend. The application serves as both a company website and a platform for delivering AI-enhanced services to clients.
 
 ### Core Technologies
 
@@ -234,4 +234,5 @@ The API is organized around REST principles with the following endpoints:
 - Regular dependency updates
 - Proper error handling and logging
 - Data encryption at rest and in transit
+
 

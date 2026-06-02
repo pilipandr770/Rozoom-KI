@@ -1,4 +1,4 @@
-"""
+﻿"""
 User authentication module
 """
 from flask_login import LoginManager, UserMixin
@@ -91,12 +91,16 @@ def create_admin_user(app):
             app.logger.warning(f"admin_users table not found. Available: {existing_tables}")
             return
 
-        admin = AdminUser.query.filter_by(username='admin').first()
+        try:
+            admin = AdminUser.query.filter_by(username='admin').first()
+        except Exception as e:
+            app.logger.warning(f"Skipping admin bootstrap due to schema mismatch: {e}")
+            return
         if not admin:
             try:
                 admin = AdminUser(
                     username='admin',
-                    email=os.environ.get('ADMIN_EMAIL', 'admin@rozoom-ki.com')
+                    email=os.environ.get('ADMIN_EMAIL', 'admin@andrii-it.com')
                 )
                 admin.set_password('admin')
                 db.session.add(admin)
@@ -116,3 +120,4 @@ def create_admin_user(app):
                     print(f"ERROR: Could not create admin user: {e2}")
         else:
             print("Admin user already exists.")
+

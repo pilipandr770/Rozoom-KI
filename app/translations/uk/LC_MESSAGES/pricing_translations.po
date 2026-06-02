@@ -1,8 +1,8 @@
-# Переводы для страницы цен
+﻿# РџРµСЂРµРІРѕРґС‹ РґР»СЏ СЃС‚СЂР°РЅРёС†С‹ С†РµРЅ
 msgid ""
 msgstr ""
-"Project-Id-Version: Rozoom-KI 1.0\n"
-"Report-Msgid-Bugs-To: info@rozoom-ki.com\n"
+"Project-Id-Version: Andrii-IT 1.0\n"
+"Report-Msgid-Bugs-To: info@andrii-it.com\n"
 "POT-Creation-Date: 2025-09-11 12:10+0200\n"
 "PO-Revision-Date: 2025-09-11 12:10+0200\n"
 "Last-Translator: \n"
@@ -15,130 +15,131 @@ msgstr ""
 "Generated-By: Babel 2.17.0\n"
 
 msgid "Choose Your Package"
-msgstr "Виберіть свій пакет"
+msgstr "Р’РёР±РµСЂС–С‚СЊ СЃРІС–Р№ РїР°РєРµС‚"
 
 msgid "Get the perfect amount of development time for your project needs"
-msgstr "Отримайте ідеальну кількість часу розробки для потреб вашого проекту"
+msgstr "РћС‚СЂРёРјР°Р№С‚Рµ С–РґРµР°Р»СЊРЅСѓ РєС–Р»СЊРєС–СЃС‚СЊ С‡Р°СЃСѓ СЂРѕР·СЂРѕР±РєРё РґР»СЏ РїРѕС‚СЂРµР± РІР°С€РѕРіРѕ РїСЂРѕРµРєС‚Сѓ"
 
 msgid "Most Popular"
-msgstr "Найпопулярніший"
+msgstr "РќР°Р№РїРѕРїСѓР»СЏСЂРЅС–С€РёР№"
 
 msgid "Hours"
-msgstr "Години"
+msgstr "Р“РѕРґРёРЅРё"
 
 msgid "per hour"
-msgstr "за годину"
+msgstr "Р·Р° РіРѕРґРёРЅСѓ"
 
 msgid "development hours"
-msgstr "годин розробки"
+msgstr "РіРѕРґРёРЅ СЂРѕР·СЂРѕР±РєРё"
 
 msgid "Custom solutions"
-msgstr "Індивідуальні рішення"
+msgstr "Р†РЅРґРёРІС–РґСѓР°Р»СЊРЅС– СЂС–С€РµРЅРЅСЏ"
 
 msgid "Support included"
-msgstr "Підтримка включена"
+msgstr "РџС–РґС‚СЂРёРјРєР° РІРєР»СЋС‡РµРЅР°"
 
 msgid "Regular updates"
-msgstr "Регулярні оновлення"
+msgstr "Р РµРіСѓР»СЏСЂРЅС– РѕРЅРѕРІР»РµРЅРЅСЏ"
 
 msgid "Select Package"
-msgstr "Виберіть пакет"
+msgstr "Р’РёР±РµСЂС–С‚СЊ РїР°РєРµС‚"
 
 msgid "Custom Package"
-msgstr "Індивідуальний пакет"
+msgstr "Р†РЅРґРёРІС–РґСѓР°Р»СЊРЅРёР№ РїР°РєРµС‚"
 
 msgid "Tailored to Your Needs"
-msgstr "Адаптовано до ваших потреб"
+msgstr "РђРґР°РїС‚РѕРІР°РЅРѕ РґРѕ РІР°С€РёС… РїРѕС‚СЂРµР±"
 
 msgid "For special requirements"
-msgstr "Для особливих вимог"
+msgstr "Р”Р»СЏ РѕСЃРѕР±Р»РёРІРёС… РІРёРјРѕРі"
 
 msgid "Flexible hours"
-msgstr "Гнучкі години"
+msgstr "Р“РЅСѓС‡РєС– РіРѕРґРёРЅРё"
 
 msgid "Custom development"
-msgstr "Індивідуальна розробка"
+msgstr "Р†РЅРґРёРІС–РґСѓР°Р»СЊРЅР° СЂРѕР·СЂРѕР±РєР°"
 
 msgid "Dedicated support"
-msgstr "Спеціалізована підтримка"
+msgstr "РЎРїРµС†С–Р°Р»С–Р·РѕРІР°РЅР° РїС–РґС‚СЂРёРјРєР°"
 
 msgid "Priority service"
-msgstr "Пріоритетне обслуговування"
+msgstr "РџСЂС–РѕСЂРёС‚РµС‚РЅРµ РѕР±СЃР»СѓРіРѕРІСѓРІР°РЅРЅСЏ"
 
 msgid "Enterprise solutions"
-msgstr "Корпоративні рішення"
+msgstr "РљРѕСЂРїРѕСЂР°С‚РёРІРЅС– СЂС–С€РµРЅРЅСЏ"
 
 msgid "Get in Touch"
-msgstr "Зв'язатися"
+msgstr "Р—РІ'СЏР·Р°С‚РёСЃСЏ"
 
 msgid "Need Help Choosing?"
-msgstr "Потрібна допомога у виборі?"
+msgstr "РџРѕС‚СЂС–Р±РЅР° РґРѕРїРѕРјРѕРіР° Сѓ РІРёР±РѕСЂС–?"
 
 msgid "Contact our team for a free consultation and we'll help you select the perfect package for your project."
-msgstr "Зв'яжіться з нашою командою для безкоштовної консультації, і ми допоможемо вам вибрати ідеальний пакет для вашого проекту."
+msgstr "Р—РІ'СЏР¶С–С‚СЊСЃСЏ Р· РЅР°С€РѕСЋ РєРѕРјР°РЅРґРѕСЋ РґР»СЏ Р±РµР·РєРѕС€С‚РѕРІРЅРѕС— РєРѕРЅСЃСѓР»СЊС‚Р°С†С–С—, С– РјРё РґРѕРїРѕРјРѕР¶РµРјРѕ РІР°Рј РІРёР±СЂР°С‚Рё С–РґРµР°Р»СЊРЅРёР№ РїР°РєРµС‚ РґР»СЏ РІР°С€РѕРіРѕ РїСЂРѕРµРєС‚Сѓ."
 
 msgid "No pricing packages are currently available. Please contact us for custom pricing."
-msgstr "Наразі немає доступних пакетів цін. Будь ласка, зв'яжіться з нами для індивідуального ціноутворення."
+msgstr "РќР°СЂР°Р·С– РЅРµРјР°С” РґРѕСЃС‚СѓРїРЅРёС… РїР°РєРµС‚С–РІ С†С–РЅ. Р‘СѓРґСЊ Р»Р°СЃРєР°, Р·РІ'СЏР¶С–С‚СЊСЃСЏ Р· РЅР°РјРё РґР»СЏ С–РЅРґРёРІС–РґСѓР°Р»СЊРЅРѕРіРѕ С†С–РЅРѕСѓС‚РІРѕСЂРµРЅРЅСЏ."
 
 msgid "Pricing Plans"
-msgstr "Тарифні плани"
+msgstr "РўР°СЂРёС„РЅС– РїР»Р°РЅРё"
 
-msgid "All prices are in Euro (€) and exclude VAT"
-msgstr "Всі ціни в євро (€) без ПДВ"
+msgid "All prices are in Euro (в‚¬) and exclude VAT"
+msgstr "Р’СЃС– С†С–РЅРё РІ С”РІСЂРѕ (в‚¬) Р±РµР· РџР”Р’"
 
 msgid "Monthly billing available"
-msgstr "Доступне щомісячне виставлення рахунків"
+msgstr "Р”РѕСЃС‚СѓРїРЅРµ С‰РѕРјС–СЃСЏС‡РЅРµ РІРёСЃС‚Р°РІР»РµРЅРЅСЏ СЂР°С…СѓРЅРєС–РІ"
 
 msgid "Annual discount available"
-msgstr "Доступна річна знижка"
+msgstr "Р”РѕСЃС‚СѓРїРЅР° СЂС–С‡РЅР° Р·РЅРёР¶РєР°"
 
 msgid "Free setup included"
-msgstr "Безкоштовне налаштування включено"
+msgstr "Р‘РµР·РєРѕС€С‚РѕРІРЅРµ РЅР°Р»Р°С€С‚СѓРІР°РЅРЅСЏ РІРєР»СЋС‡РµРЅРѕ"
 
 msgid "Money-back guarantee"
-msgstr "Гарантія повернення грошей"
+msgstr "Р“Р°СЂР°РЅС‚С–СЏ РїРѕРІРµСЂРЅРµРЅРЅСЏ РіСЂРѕС€РµР№"
 
 msgid "Choose Your Package"
-msgstr "Виберіть свій пакет"
+msgstr "Р’РёР±РµСЂС–С‚СЊ СЃРІС–Р№ РїР°РєРµС‚"
 
 msgid "Get the perfect amount of development time for your project needs"
-msgstr "Отримайте ідеальну кількість часу розробки для потреб вашого проекту"
+msgstr "РћС‚СЂРёРјР°Р№С‚Рµ С–РґРµР°Р»СЊРЅСѓ РєС–Р»СЊРєС–СЃС‚СЊ С‡Р°СЃСѓ СЂРѕР·СЂРѕР±РєРё РґР»СЏ РїРѕС‚СЂРµР± РІР°С€РѕРіРѕ РїСЂРѕРµРєС‚Сѓ"
 
 msgid "Most Popular"
-msgstr "Найпопулярніший"
+msgstr "РќР°Р№РїРѕРїСѓР»СЏСЂРЅС–С€РёР№"
 
 msgid "Hours"
-msgstr "Години"
+msgstr "Р“РѕРґРёРЅРё"
 
 msgid "per hour"
-msgstr "за годину"
+msgstr "Р·Р° РіРѕРґРёРЅСѓ"
 
 msgid "development hours"
-msgstr "годин розробки"
+msgstr "РіРѕРґРёРЅ СЂРѕР·СЂРѕР±РєРё"
 
 msgid "Custom solutions"
-msgstr "Індивідуальні рішення"
+msgstr "Р†РЅРґРёРІС–РґСѓР°Р»СЊРЅС– СЂС–С€РµРЅРЅСЏ"
 
 msgid "Support included"
-msgstr "Підтримка включена"
+msgstr "РџС–РґС‚СЂРёРјРєР° РІРєР»СЋС‡РµРЅР°"
 
 msgid "Regular updates"
-msgstr "Регулярні оновлення"
+msgstr "Р РµРіСѓР»СЏСЂРЅС– РѕРЅРѕРІР»РµРЅРЅСЏ"
 
 msgid "Select Package"
-msgstr "Виберіть пакет"
+msgstr "Р’РёР±РµСЂС–С‚СЊ РїР°РєРµС‚"
 
 msgid "Tailored to Your Needs"
-msgstr "Адаптовано до ваших потреб"
+msgstr "РђРґР°РїС‚РѕРІР°РЅРѕ РґРѕ РІР°С€РёС… РїРѕС‚СЂРµР±"
 
 msgid "For special requirements"
-msgstr "Для особливих вимог"
+msgstr "Р”Р»СЏ РѕСЃРѕР±Р»РёРІРёС… РІРёРјРѕРі"
 
 msgid "Flexible hours"
-msgstr "Гнучкі години"
+msgstr "Р“РЅСѓС‡РєС– РіРѕРґРёРЅРё"
 
 msgid "Custom development"
-msgstr "Індивідуальна розробка"
+msgstr "Р†РЅРґРёРІС–РґСѓР°Р»СЊРЅР° СЂРѕР·СЂРѕР±РєР°"
 
 msgid "Dedicated support"
-msgstr "Спеціалізована підтримка"
+msgstr "РЎРїРµС†С–Р°Р»С–Р·РѕРІР°РЅР° РїС–РґС‚СЂРёРјРєР°"
+
