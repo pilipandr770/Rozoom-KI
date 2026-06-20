@@ -1,4 +1,4 @@
-﻿from urllib.parse import urlparse, urlunparse, urlencode, parse_qs, urljoin
+from urllib.parse import urlparse, urlunparse, urlencode, parse_qs, urljoin
 from flask import Blueprint, request, current_app, jsonify, make_response, redirect, session
 
 lang_bp = Blueprint('lang', __name__)

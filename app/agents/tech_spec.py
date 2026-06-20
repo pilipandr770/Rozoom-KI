@@ -1,4 +1,4 @@
-﻿from typing import Dict, List, Optional
+from typing import Dict, List, Optional
 from flask import current_app
 
 # РћРїСЂРµРґРµР»РµРЅРёРµ СЃС‚СЂСѓРєС‚СѓСЂС‹ С‚РµС…РЅРёС‡РµСЃРєРѕРіРѕ Р·Р°РґР°РЅРёСЏ

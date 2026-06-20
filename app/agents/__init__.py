@@ -1,4 +1,4 @@
-﻿from dataclasses import dataclass
+from dataclasses import dataclass
 from typing import Dict, List, Optional, Union
 
 # РРјРїРѕСЂС‚РёСЂСѓРµРј РєРѕРЅС‚СЂРѕР»Р»РµСЂ Р°РіРµРЅС‚РѕРІ, С‡С‚РѕР±С‹ РѕРЅ Р±С‹Р» РґРѕСЃС‚СѓРїРµРЅ РїСЂРё Р·Р°РїСѓСЃРєРµ РїСЂРёР»РѕР¶РµРЅРёСЏ

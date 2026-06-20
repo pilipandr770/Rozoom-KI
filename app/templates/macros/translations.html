@@ -1,4 +1,4 @@
-﻿{% macro language_switcher() %}
+{% macro language_switcher() %}
 <div class="language-switcher">
   <div class="language-buttons">
     <a class="lang-button {% if g.locale == 'en' %}active{% endif %}" href="{{ url_for('lang.set_language', lang='en', next=request.path) }}" title="English" data-lang="en">

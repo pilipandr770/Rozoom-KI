@@ -1,4 +1,4 @@
-﻿"""
+"""
 Emergency fix for chat functionality
 """
 from flask import current_app

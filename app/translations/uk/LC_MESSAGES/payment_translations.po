@@ -1,4 +1,4 @@
-﻿# Payment translations for Ukrainian.
+# Payment translations for Ukrainian.
 # Copyright (C) 2025 Andrii-IT
 # This file is distributed under the same license as the Andrii-IT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2025.

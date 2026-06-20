@@ -1,4 +1,4 @@
-﻿from typing import Callable, Iterable, Mapping, Sequence
+from typing import Callable, Iterable, Mapping, Sequence
 
 from flask import current_app, g, request, url_for
 

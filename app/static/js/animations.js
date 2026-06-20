@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Animation effects for Andrii-IT website
  */
 

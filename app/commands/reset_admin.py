@@ -1,4 +1,4 @@
-﻿import click
+import click
 from flask.cli import with_appcontext
 from app import db
 from app.auth import AdminUser

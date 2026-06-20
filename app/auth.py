@@ -1,4 +1,4 @@
-﻿"""
+"""
 User authentication module
 """
 from flask_login import LoginManager, UserMixin

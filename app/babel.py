@@ -1,4 +1,4 @@
-﻿from flask import request, g, current_app, session
+from flask import request, g, current_app, session
 from flask_babel import Babel
 from .i18n_patch import domain_manager, payment_domain
 
