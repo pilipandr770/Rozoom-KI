@@ -1,0 +1,70 @@
+/* Particle canvas — replaces both video backgrounds */
+
+.particle-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 0;
+}
+
+/* Overlays must sit above the canvas */
+.video-background .video-overlay,
+.video-background .wave-animation {
+  z-index: 1;
+}
+
+.hero-video-background .hero-video-overlay,
+.hero-video-background .cta-canvas-overlay {
+  z-index: 1;
+  background: linear-gradient(to bottom,
+    rgba(4, 17, 30, 0.18) 0%,
+    rgba(4, 17, 30, 0.52) 100%);
+}
+
+/* 3D tilt cards */
+.modern-feature-card {
+  will-change: transform;
+  transform-style: preserve-3d;
+  transition: transform 0.45s ease, box-shadow 0.45s ease;
+  cursor: default;
+}
+
+/* Reduced motion — disable everything animated */
+@media (prefers-reduced-motion: reduce) {
+  #hero-canvas,
+  #cta-canvas {
+    display: none;
+  }
+  .video-background::after,
+  .hero-video-background::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #080f1e 0%, #0d2040 60%, #080f1e 100%);
+    z-index: 0;
+  }
+  .modern-feature-card {
+    will-change: auto;
+    transition: none;
+  }
+}
+
+/* Mobile — hide canvas, show static gradient fallback, disable tilt */
+@media (max-width: 768px) {
+  #hero-canvas {
+    display: none;
+  }
+  .video-background::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #080f1e 0%, #0d2040 60%, #080f1e 100%);
+    z-index: 0;
+  }
+  .modern-feature-card {
+    will-change: auto;
+  }
+}

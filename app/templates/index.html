@@ -1,12 +1,14 @@
 {% extends 'base.html' %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/particle-canvas.css') }}">
+{% endblock %}
+
 {% block content %}
 <section class="video-hero content-wrapper">
-  <!-- Enhanced Video Background -->
+  <!-- Particle network canvas — replaces video background -->
   <div class="video-background">
-    <video autoplay loop muted playsinline preload="none" class="hero-video">
-      <source src="{{ url_for('static', filename='videos/hero_background.mp4') }}" type="video/mp4">
-    </video>
+    <canvas id="hero-canvas" class="particle-canvas" aria-hidden="true"></canvas>
     <div class="video-overlay"></div>
     <div class="wave-animation">
       <div class="wave wave1"></div>
@@ -210,12 +212,10 @@
 
 {% block aftermain %}
 <section class="video-background-section">
+  <!-- Particle canvas — replaces ai_background.mp4 -->
   <div class="hero-video-background">
-    <video autoplay loop muted playsinline preload="none">
-      <source src="{{ url_for('static', filename='videos/ai_background.mp4') }}" type="video/mp4">
-      <div class="fallback-background"></div>
-    </video>
-    <div class="hero-video-overlay"></div>
+    <canvas id="cta-canvas" class="particle-canvas" aria-hidden="true"></canvas>
+    <div class="hero-video-overlay cta-canvas-overlay"></div>
   </div>
   <div class="video-content">
     <h2>{{ _('Ready to transform your business with AI?') }}</h2>
@@ -225,3 +225,7 @@
 </section>
 {% endblock %}
 
+{% block scripts %}
+{{ super() }}
+<script src="{{ url_for('static', filename='js/particle-canvas.js') }}" defer></script>
+{% endblock %}
