@@ -56,7 +56,7 @@
       {% endif %}
     {% else %}
       <div class="no-posts">
-        <span class="blog-icon">рџЏ·пёЏ</span>
+        <span class="blog-icon"><i class="fas fa-tag"></i></span>
         <h2>{{ _('No posts with this tag') }}</h2>
         <p>{{ _('There are currently no articles tagged with') }} "{{ tag }}".</p>
         <a href="{{ url_for('pages.blog', lang=g.locale) }}" class="btn">{{ _('Back to Blog') }}</a>

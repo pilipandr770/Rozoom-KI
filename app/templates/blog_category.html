@@ -54,7 +54,7 @@
       {% endif %}
     {% else %}
       <div class="no-posts">
-        <span class="blog-icon">рџ“Ѓ</span>
+        <span class="blog-icon"><i class="fas fa-folder-open"></i></span>
         <h2>{{ _('No posts in this category') }}</h2>
         <p>{{ _('There are currently no articles in the') }} {{ category }} {{ _('category') }}.</p>
         <a href="{{ url_for('pages.blog', lang=g.locale) }}" class="btn">{{ _('Back to Blog') }}</a>

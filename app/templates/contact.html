@@ -12,7 +12,7 @@
   <div class="contact-info">
     <div class="contact-card">
       <div class="contact-info-item">
-        <span class="contact-icon">рџ“Ќ</span>
+        <span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span>
         <div>
           <h3>{{ _('Address') }}</h3>
           <p>Bergmannweg 16<br>65934 Frankfurt am Main<br>Germany</p>
@@ -22,7 +22,7 @@
     
     <div class="contact-card">
       <div class="contact-info-item">
-        <span class="contact-icon">вњ‰пёЏ</span>
+        <span class="contact-icon"><i class="fas fa-envelope"></i></span>
         <div>
           <h3>{{ _('Email Us') }}</h3>
           <p>andrii.it.info@gmail.com</p>
@@ -32,7 +32,7 @@
     
     <div class="contact-card">
       <div class="contact-info-item">
-        <span class="contact-icon">рџ“ћ</span>
+        <span class="contact-icon"><i class="fas fa-phone-alt"></i></span>
         <div>
           <h3>{{ _('Call Us') }}</h3>
           <p>+49 160 9503 0120<br>{{ _('Mon-Fri 9:00-18:00') }}</p>
@@ -53,14 +53,14 @@
       <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
       {% if success %}
       <div class="form-success">
-        <span class="emoji-icon">вњ…</span>
+        <span class="emoji-icon"><i class="fas fa-check-circle"></i></span>
         <p>{{ _('Your message has been sent successfully. We\'ll get back to you soon!') }}</p>
       </div>
       {% endif %}
       
       {% if error %}
       <div class="form-error">
-        <span class="emoji-icon">вљ пёЏ</span>
+        <span class="emoji-icon"><i class="fas fa-exclamation-triangle"></i></span>
         <p>{{ error }}</p>
       </div>
       {% endif %}
@@ -97,7 +97,7 @@
   <div class="container text-center py-4">
     <div class="card shadow-sm">
       <div class="card-body">
-        <span class="emoji-icon remote-work-emoji">рџЏЎрџ’»</span>
+        <span class="emoji-icon remote-work-emoji"><i class="fas fa-laptop"></i></span>
         <h3>{{ _('Remote Work') }}</h3>
         <p class="remote-work-text">{{ _('We operate as a remote-first company with team members working from various locations. This allows us to serve clients worldwide while maintaining flexibility and efficiency.') }}</p>
       </div>
