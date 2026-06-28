@@ -13,7 +13,7 @@ def index():
     """Отображает главную страницу управления автоматическим контентом"""
     # Проверяем, является ли пользователь администратором
     if not current_user.is_admin:
-        flash('У вас нет доступа к этой странице', 'danger')
+        flash('Access denied.', 'danger')
         return redirect(url_for('main.index'))
     
     # Получаем все расписания
@@ -36,7 +36,7 @@ def create_schedule():
     """Создает новое расписание для генерации контента"""
     # Проверяем, является ли пользователь администратором
     if not current_user.is_admin:
-        flash('У вас нет доступа к этой странице', 'danger')
+        flash('Access denied.', 'danger')
         return redirect(url_for('main.index'))
     
     # Получаем все категории для выбора
@@ -53,7 +53,7 @@ def create_schedule():
 
         # Validate: category must exist
         if not category_id or not BlogCategory.query.get(category_id):
-            flash('Сначала создайте хотя бы одну категорию блога.', 'danger')
+            flash('Please create at least one blog category first.', 'danger')
             return render_template('admin/auto_content/create_schedule.html',
                                    categories=categories,
                                    frequencies=[f.value for f in PublishFrequency])
@@ -92,7 +92,7 @@ def create_schedule():
         db.session.add(schedule)
         db.session.commit()
         
-        flash('Расписание успешно создано', 'success')
+        flash('Schedule created successfully.', 'success')
         return redirect(url_for('auto_content.index'))
     
     return render_template('admin/auto_content/create_schedule.html',
@@ -105,7 +105,7 @@ def edit_schedule(id):
     """Редактирует существующее расписание"""
     # Проверяем, является ли пользователь администратором
     if not current_user.is_admin:
-        flash('У вас нет доступа к этой странице', 'danger')
+        flash('Access denied.', 'danger')
         return redirect(url_for('main.index'))
     
     # Получаем расписание
@@ -126,7 +126,7 @@ def edit_schedule(id):
         
         db.session.commit()
         
-        flash('Расписание успешно обновлено', 'success')
+        flash('Schedule updated successfully.', 'success')
         return redirect(url_for('auto_content.index'))
     
     return render_template('admin/auto_content/edit_schedule.html',
@@ -140,7 +140,7 @@ def delete_schedule(id):
     """Удаляет расписание"""
     # Проверяем, является ли пользователь администратором
     if not current_user.is_admin:
-        flash('У вас нет доступа к этой странице', 'danger')
+        flash('Access denied.', 'danger')
         return redirect(url_for('main.index'))
     
     # Получаем расписание
@@ -149,7 +149,7 @@ def delete_schedule(id):
     db.session.delete(schedule)
     db.session.commit()
     
-    flash('Расписание успешно удалено', 'success')
+    flash('Schedule deleted successfully.', 'success')
     return redirect(url_for('auto_content.index'))
 
 @auto_content.route('/schedules/<int:id>/generate', methods=['POST'])
@@ -158,7 +158,7 @@ def generate_now(id):
     """Немедленно генерирует контент для выбранного расписания"""
     # Проверяем, является ли пользователь администратором
     if not current_user.is_admin:
-        flash('У вас нет доступа к этой странице', 'danger')
+        flash('Access denied.', 'danger')
         return redirect(url_for('main.index'))
     
     # Получаем расписание
@@ -172,11 +172,11 @@ def generate_now(id):
         en_post, de_post = ContentSchedulerService.publish_content(generated_content)
         
         if en_post and de_post:
-            flash('Контент успешно сгенерирован и опубликован', 'success')
+            flash('Content generated and published successfully.', 'success')
         else:
-            flash('Контент сгенерирован, но возникла ошибка при публикации', 'warning')
+            flash('Content generated, but publishing failed.', 'warning')
     else:
-        flash('Произошла ошибка при генерации контента', 'danger')
+        flash('Content generation failed.', 'danger')
     
     return redirect(url_for('auto_content.index'))
 
@@ -186,7 +186,7 @@ def generated_content():
     """Отображает список сгенерированного контента"""
     # Проверяем, является ли пользователь администратором
     if not current_user.is_admin:
-        flash('У вас нет доступа к этой странице', 'danger')
+        flash('Access denied.', 'danger')
         return redirect(url_for('main.index'))
     
     # Получаем весь сгенерированный контент
@@ -200,7 +200,7 @@ def view_content(id):
     """Просмотр сгенерированного контента"""
     # Проверяем, является ли пользователь администратором
     if not current_user.is_admin:
-        flash('У вас нет доступа к этой странице', 'danger')
+        flash('Access denied.', 'danger')
         return redirect(url_for('main.index'))
     
     # Получаем контент
@@ -214,7 +214,7 @@ def publish_content(id):
     """Публикует сгенерированный контент"""
     # Проверяем, является ли пользователь администратором
     if not current_user.is_admin:
-        flash('У вас нет доступа к этой странице', 'danger')
+        flash('Access denied.', 'danger')
         return redirect(url_for('main.index'))
     
     # Получаем контент
@@ -224,9 +224,9 @@ def publish_content(id):
     en_post, de_post = ContentSchedulerService.publish_content(content)
     
     if en_post and de_post:
-        flash('Контент успешно опубликован', 'success')
+        flash('Content published successfully.', 'success')
     else:
-        flash('Произошла ошибка при публикации контента', 'danger')
+        flash('Content publishing failed.', 'danger')
     
     return redirect(url_for('auto_content.generated_content'))
 
@@ -236,7 +236,7 @@ def test_openai():
     """Тестирует подключение к OpenAI API"""
     # Проверяем, является ли пользователь администратором
     if not current_user.is_admin:
-        flash('У вас нет доступа к этой странице', 'danger')
+        flash('Access denied.', 'danger')
         return redirect(url_for('main.index'))
 
     from app.services.openai_service import OpenAIService
@@ -272,7 +272,7 @@ def system_status():
     """Показывает статус системы и переменных окружения"""
     # Проверяем, является ли пользователь администратором
     if not current_user.is_admin:
-        flash('У вас нет доступа к этой странице', 'danger')
+        flash('Access denied.', 'danger')
         return redirect(url_for('main.index'))
 
     import os

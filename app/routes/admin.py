@@ -214,7 +214,7 @@ def delete_post(id):
         
     # Разрешаем оба метода, но обрабатываем их по-разному
     if request.method == 'GET':
-        flash('Для удаления поста используйте кнопку удаления на странице списка постов.', 'info')
+        flash('To delete a post, use the delete button on the posts list page.', 'info')
         return redirect(url_for('admin.blog_posts'))
     
     # Отладочное сообщение
@@ -224,7 +224,7 @@ def delete_post(id):
     # Проверяем наличие CSRF токена для отладки
     if 'csrf_token' not in request.form:
         current_app.logger.error(f"CSRF token missing in delete request for post ID {id}")
-        flash('Ошибка безопасности: CSRF токен отсутствует в запросе.', 'danger')
+        flash('Security error: CSRF token missing in request.', 'danger')
         return redirect(url_for('admin.blog_posts'))
     
     # Получаем пост
@@ -262,6 +262,37 @@ def delete_post(id):
         flash(f'Error deleting post: {str(e)}', 'danger')
     
     return redirect(url_for('admin.blog_posts'))
+
+@admin.route('/test-telegram')
+@login_required
+def test_telegram():
+    """Send a test message to Telegram and show the result."""
+    if not current_user.is_admin:
+        flash('Access denied.', 'danger')
+        return redirect(url_for('admin.dashboard'))
+    import os
+    from app.services.telegram_service import send_telegram_message
+    token = os.environ.get('TELEGRAM_BOT_TOKEN', '')
+    chat_id = os.environ.get('TELEGRAM_CHAT_ID', '')
+    if not token or not chat_id:
+        flash(
+            f'Telegram env vars missing: '
+            f'TELEGRAM_BOT_TOKEN={"SET" if token else "MISSING"}, '
+            f'TELEGRAM_CHAT_ID={"SET" if chat_id else "MISSING"}',
+            'danger'
+        )
+        return redirect(url_for('admin.dashboard'))
+    ok = send_telegram_message('✅ Test message from Rozoom-KI admin panel.')
+    if ok:
+        flash('Telegram test message sent successfully!', 'success')
+    else:
+        flash(
+            'Telegram send FAILED. Check server logs for details. '
+            f'Token prefix: {token[:10]}... Chat ID: {chat_id}',
+            'danger'
+        )
+    return redirect(url_for('admin.dashboard'))
+
 
 @admin.route('/blog/categories')
 @login_required

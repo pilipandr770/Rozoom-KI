@@ -26,7 +26,7 @@ def login():
         
         if admin and admin.check_password(password):
             login_user(admin, remember=remember)
-            flash('Вход выполнен успешно!', 'success')
+            flash('Logged in successfully!', 'success')
             next_page = request.args.get('next')
             return redirect(next_page or url_for('admin.dashboard'))
         
@@ -43,7 +43,7 @@ def login():
             next_page = request.args.get('next')
             return redirect(next_page or url_for('dashboard.index'))
         else:
-            flash('Неверные учетные данные', 'danger')
+            flash('Invalid credentials. Please try again.', 'danger')
     
     return render_template('auth/login.html')
 

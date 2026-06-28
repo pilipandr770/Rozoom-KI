@@ -201,14 +201,14 @@ def create_app():
             
             # Check if token expired
             if 'истек' in error_str or 'expired' in error_str:
-                flash('Срок действия сессии истек. Пожалуйста, попробуйте снова.', 'warning')
+                flash('Your session has expired. Please try again.', 'warning')
                 # Regenerate CSRF token
                 session.pop('_csrf_token', None)
                 # If this is a form submission from contact page, redirect back there
                 if request.referrer and 'contact' in request.referrer:
                     return redirect(url_for('pages.contact'))
             else:
-                flash('Ошибка безопасности: CSRF токен отсутствует или неверен. Пожалуйста, попробуйте снова.', 'danger')
+                flash('Security error: form token missing or invalid. Please try again.', 'danger')
             
             # Determine where to redirect based on the referrer URL
             if request.referrer:

@@ -441,15 +441,21 @@ def contact():
                 # Send notification via Telegram
                 try:
                     from app.services import send_contact_form_notification
-                    form_data = {
+                    tg_data = {
                         'name': name,
                         'email': email,
                         'message': message
                     }
-                    send_contact_form_notification(form_data)
+                    ok = send_contact_form_notification(tg_data)
+                    if ok:
+                        current_app.logger.info(f"Telegram contact notification sent for {email}")
+                    else:
+                        current_app.logger.error(
+                            f"Telegram contact notification FAILED (returned False) for {email}. "
+                            "Check TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID env vars on Render."
+                        )
                 except Exception as e:
-                    # Log the error but don't disrupt the user experience
-                    print(f"Failed to send Telegram notification: {str(e)}")
+                    current_app.logger.error(f"Telegram contact notification exception: {e}", exc_info=True)
                 
                 success = True
             except Exception as e:
